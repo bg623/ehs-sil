@@ -137,3 +137,20 @@
     });
 
 })();
+
+// Filter by category (called from category cards)
+function filterByCategory(category) {
+    var input = document.getElementById('searchInput');
+    if (input) {
+        // Clear search and trigger category filter
+        var allBtns = document.querySelectorAll('.filter-bar .filter-btn');
+        allBtns.forEach(function(b) {
+            b.classList.remove('active');
+            if (b.dataset.filter === category) {
+                b.classList.add('active');
+            }
+        });
+        // Scroll to filter bar
+        document.querySelector('.filter-bar').scrollIntoView({behavior: 'smooth'});
+    }
+}

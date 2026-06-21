@@ -29,7 +29,7 @@
     {
       "name": "Pre-Task-Planning-Template.pdf",
       "path": "Pre-Task-Planning-Template.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -134,7 +134,7 @@
     {
       "name": "高压清洗作业的安全最佳实践.pdf",
       "path": "高压清洗作业的安全最佳实践.pdf",
-      "category": "其他",
+      "category": "作业安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -264,7 +264,7 @@
     {
       "name": "紫皮书 PGS3-1999-v0.1-quantitative-risk-assessment.pdf",
       "path": "紫皮书 PGS3-1999-v0.1-quantitative-risk-assessment.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -552,7 +552,7 @@
     {
       "name": "LSW_Leader Standard work_template.xlsx",
       "path": "LSW_Leader Standard work_template.xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -749,7 +749,7 @@
     {
       "name": "SHP_Safety-Walk-Arounds-for-Managers.pdf",
       "path": "SHP_Safety-Walk-Arounds-for-Managers.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -920,7 +920,7 @@
     {
       "name": "A&D log EHS Meeting ZSXQ.xlsm",
       "path": "A&D log EHS Meeting ZSXQ.xlsm",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -986,7 +986,7 @@
     {
       "name": "Overriding Permit绕开安全设施许可证.docx",
       "path": "Overriding Permit绕开安全设施许可证.docx",
-      "category": "其他",
+      "category": "作业安全",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -999,7 +999,7 @@
     {
       "name": "A&D log EHS Meeting ZSXQ.xlsx",
       "path": "A&D log EHS Meeting ZSXQ.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1038,7 +1038,7 @@
     {
       "name": "pre-use-inspection-mewp-combined-sup-137-e-en.pdf",
       "path": "pre-use-inspection-mewp-combined-sup-137-e-en.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1207,7 +1207,7 @@
     {
       "name": "GBT 26148-2025高压水射流清洗作业安全规范.pdf",
       "path": "GBT 26148-2025高压水射流清洗作业安全规范.pdf",
-      "category": "其他",
+      "category": "作业安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1272,7 +1272,7 @@
     {
       "name": "hazard_identification_and_control_中文.pdf",
       "path": "hazard_identification_and_control_中文.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": true,
       "description": "其他工具 · PDF格式 · 中英双语",
@@ -1443,7 +1443,7 @@
     {
       "name": "风险点登记台账.xlsx",
       "path": "风险点登记台账.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1575,7 +1575,7 @@
     {
       "name": "上锁，挂牌，试验程序XQ.pdf",
       "path": "上锁，挂牌，试验程序XQ.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1627,7 +1627,7 @@
     {
       "name": "风险点登记台账2024.xlsx",
       "path": "风险点登记台账2024.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1784,7 +1784,7 @@
     {
       "name": "Pre-use-inspection-MEWP.xlsx",
       "path": "Pre-use-inspection-MEWP.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1850,7 +1850,7 @@
     {
       "name": "上锁，挂牌，试验程序XQ.docx",
       "path": "上锁，挂牌，试验程序XQ.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -1943,7 +1943,7 @@
     {
       "name": "Process-Safety-Management.pdf",
       "path": "Process-Safety-Management.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1956,7 +1956,7 @@
     {
       "name": "Guidelines-and-Resources-for-PTP-Implementation-and-Assessment-in-Construction.pdf",
       "path": "Guidelines-and-Resources-for-PTP-Implementation-and-Assessment-in-Construction.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2296,7 +2296,7 @@
     {
       "name": "MEWP-Pre-Use-Inspection.pdf",
       "path": "MEWP-Pre-Use-Inspection.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2427,7 +2427,7 @@
     {
       "name": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.pdf",
       "path": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.pdf",
-      "category": "其他",
+      "category": "作业安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2492,7 +2492,7 @@
     {
       "name": "Standard Operating Procedure 标准作业流程- SOP.docx",
       "path": "Standard Operating Procedure 标准作业流程- SOP.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2544,7 +2544,7 @@
     {
       "name": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.docx",
       "path": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.docx",
-      "category": "其他",
+      "category": "作业安全",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2596,7 +2596,7 @@
     {
       "name": "IEC_FDIS_31010_Risk_management.pdf",
       "path": "IEC_FDIS_31010_Risk_management.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2609,7 +2609,7 @@
     {
       "name": "Guide for MEWP 移动升降平台使用指南.pdf",
       "path": "Guide for MEWP 移动升降平台使用指南.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2726,7 +2726,7 @@
     {
       "name": "OPCW_Report_on_Needs_and_Best_Practices_on_Chemical_Safety_and_Security_ManagementV3-2_1.2.pdf",
       "path": "OPCW_Report_on_Needs_and_Best_Practices_on_Chemical_Safety_and_Security_ManagementV3-2_1.2.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2778,7 +2778,7 @@
     {
       "name": "Pre-use-inspection-MEWP 使用前检查：移动升降工作平台.xlsx",
       "path": "Pre-use-inspection-MEWP 使用前检查：移动升降工作平台.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2921,7 +2921,7 @@
     {
       "name": "2-安全生产方针及目标25.doc",
       "path": "2-安全生产方针及目标25.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2934,7 +2934,7 @@
     {
       "name": "Maintenance Plan 停车检修计划.xlsx",
       "path": "Maintenance Plan 停车检修计划.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -3104,7 +3104,7 @@
     {
       "name": "KTY危险预知训练 记录表.xlsx",
       "path": "KTY危险预知训练 记录表.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -3327,7 +3327,7 @@
     {
       "name": "Plan list.docx",
       "path": "Plan list.docx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5440,7 +5440,7 @@
     {
       "name": "SOP Template.docx",
       "path": "Insight EHS/SOP Template.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5557,7 +5557,7 @@
     {
       "name": "Monthly Extinguisher Inspection Form & How To.xlsx",
       "path": "Insight EHS/Monthly Extinguisher Inspection Form & How To.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5622,7 +5622,7 @@
     {
       "name": "Meeting Minutes Goal Tracking Template.docx",
       "path": "Insight EHS/Meeting Minutes Goal Tracking Template.docx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5817,7 +5817,7 @@
     {
       "name": "Risk Management Our Approach.docx",
       "path": "ZSXQ/Risk management/Risk Management Our Approach.docx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5843,7 +5843,7 @@
     {
       "name": "GR Risk Tolerability Criteria.pdf",
       "path": "ZSXQ/Risk management/GR Risk Tolerability Criteria.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5856,7 +5856,7 @@
     {
       "name": "Risk Management Program.docx",
       "path": "ZSXQ/Risk management/Risk Management Program.docx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5869,7 +5869,7 @@
     {
       "name": "Risk Management Overall Procedure.docx",
       "path": "ZSXQ/Risk management/Risk Management Overall Procedure.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5908,7 +5908,7 @@
     {
       "name": "risk-management-plan.docx",
       "path": "ZSXQ/Risk management/risk-management-plan.docx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -5934,7 +5934,7 @@
     {
       "name": "2025 Operation plan List_20250405.xlsx",
       "path": "ZSXQ/工具/2025 Operation plan List_20250405.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6258,7 +6258,7 @@
     {
       "name": "个人安全行动计划 template.doc",
       "path": "ZSXQ/工具/个人安全行动计划 template.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -6453,7 +6453,7 @@
     {
       "name": "Competence development 能力发展.docx",
       "path": "ZSXQ/工具/Competence development 能力发展.docx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -6505,7 +6505,7 @@
     {
       "name": "Template - Leader Standard Work Schedules.xlsm",
       "path": "ZSXQ/工具/Template - Leader Standard Work Schedules.xlsm",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6570,7 +6570,7 @@
     {
       "name": "Template - Policy Deployment MNC Site.xlsx",
       "path": "ZSXQ/工具/Template - Policy Deployment MNC Site.xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6764,7 +6764,7 @@
     {
       "name": "excel dashboard templates 14.xlsx",
       "path": "ZSXQ/工具/excel dashboard templates 14.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6881,7 +6881,7 @@
     {
       "name": "2025 Operation plan sorting.xlsx",
       "path": "ZSXQ/工具/2025 Operation plan sorting.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6960,7 +6960,7 @@
     {
       "name": "1-安全生产目标及方针22.pdf",
       "path": "2.1方针目标/1-安全生产目标及方针22.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -6973,7 +6973,7 @@
     {
       "name": "1-安全生产方针及目标23.doc",
       "path": "2.1方针目标/1-安全生产方针及目标23.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -6986,7 +6986,7 @@
     {
       "name": "1-安全生产目标及方针22.doc",
       "path": "2.1方针目标/1-安全生产目标及方针22.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7194,7 +7194,7 @@
     {
       "name": "设备部门承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/设备部门承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7207,7 +7207,7 @@
     {
       "name": "1-安全生产方针及目标24.doc",
       "path": "承诺书+目标责任书24/1-安全生产方针及目标24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7220,7 +7220,7 @@
     {
       "name": "部门经理承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/部门经理承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7233,7 +7233,7 @@
     {
       "name": "EHSQ部门承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/EHSQ部门承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7246,7 +7246,7 @@
     {
       "name": "供应链部门承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/供应链部门承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7259,7 +7259,7 @@
     {
       "name": "生产部门承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/生产部门承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7272,7 +7272,7 @@
     {
       "name": "财务部门承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/财务部门承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -7285,7 +7285,7 @@
     {
       "name": "办公室承诺书+目标责任书-24.doc",
       "path": "承诺书+目标责任书24/办公室承诺书+目标责任书-24.doc",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",

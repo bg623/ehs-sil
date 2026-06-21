@@ -7,6 +7,14 @@
     <title>工具库 · EHS-SIL</title>
     <link rel="stylesheet" href="../css/tools.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+
+            <style>
+            .cat-overview{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:1.5rem 0 0}
+            .cat-card{display:flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;color:rgba(255,255,255,.85);cursor:pointer;transition:all .2s;font-size:.82rem}
+            .cat-card:hover{background:rgba(255,255,255,.15);border-color:var(--accent);transform:translateY(-1px)}
+            .cat-emoji{font-size:1rem}
+            .cat-count{font-size:.7rem;color:var(--accent);font-weight:600}
+            </style>
 </head>
 <body>
     <header class="tools-header">
@@ -28,6 +36,23 @@
                     <input type="text" id="searchInput" class="search-input" placeholder="搜索工具名称、关键词如：BBS、HAZOP、JSA、ISO 45001..." autofocus>
                 </div>
             </div>
+            <div class="cat-overview">
+<button class="cat-card" data-cat="培训课件" onclick="filterByCategory('培训课件')"><span class="cat-emoji">📚</span><span class="cat-name">培训课件</span><span class="cat-count">63</span></button>
+<button class="cat-card" data-cat="风险辨识" onclick="filterByCategory('风险辨识')"><span class="cat-emoji">🔬</span><span class="cat-name">风险辨识</span><span class="cat-count">56</span></button>
+<button class="cat-card" data-cat="绩效指标" onclick="filterByCategory('绩效指标')"><span class="cat-emoji">📈</span><span class="cat-name">绩效指标</span><span class="cat-count">52</span></button>
+<button class="cat-card" data-cat="隐患排查" onclick="filterByCategory('隐患排查')"><span class="cat-emoji">📋</span><span class="cat-name">隐患排查</span><span class="cat-count">50</span></button>
+<button class="cat-card" data-cat="管理体系" onclick="filterByCategory('管理体系')"><span class="cat-emoji">🏗️</span><span class="cat-name">管理体系</span><span class="cat-count">42</span></button>
+<button class="cat-card" data-cat="行为安全" onclick="filterByCategory('行为安全')"><span class="cat-emoji">🛡️</span><span class="cat-name">行为安全</span><span class="cat-count">39</span></button>
+<button class="cat-card" data-cat="工艺安全" onclick="filterByCategory('工艺安全')"><span class="cat-emoji">⚗️</span><span class="cat-name">工艺安全</span><span class="cat-count">37</span></button>
+<button class="cat-card" data-cat="5S/可视化" onclick="filterByCategory('5S/可视化')"><span class="cat-emoji">🧹</span><span class="cat-name">5S/可视化</span><span class="cat-count">36</span></button>
+<button class="cat-card" data-cat="项目管理" onclick="filterByCategory('项目管理')"><span class="cat-emoji">📊</span><span class="cat-name">项目管理</span><span class="cat-count">33</span></button>
+<button class="cat-card" data-cat="LOTO/作业许可" onclick="filterByCategory('LOTO/作业许可')"><span class="cat-emoji">🔒</span><span class="cat-name">LOTO/作业许可</span><span class="cat-count">32</span></button>
+<button class="cat-card" data-cat="职业健康" onclick="filterByCategory('职业健康')"><span class="cat-emoji">🏥</span><span class="cat-name">职业健康</span><span class="cat-count">12</span></button>
+<button class="cat-card" data-cat="根源分析" onclick="filterByCategory('根源分析')"><span class="cat-emoji">🔍</span><span class="cat-name">根源分析</span><span class="cat-count">12</span></button>
+<button class="cat-card" data-cat="EHS英语" onclick="filterByCategory('EHS英语')"><span class="cat-emoji">🌐</span><span class="cat-name">EHS英语</span><span class="cat-count">10</span></button>
+<button class="cat-card" data-cat="作业安全" onclick="filterByCategory('作业安全')"><span class="cat-emoji">⚠️</span><span class="cat-name">作业安全</span><span class="cat-count">7</span></button>
+<button class="cat-card" data-cat="人因与组织绩效" onclick="filterByCategory('人因与组织绩效')"><span class="cat-emoji">🧠</span><span class="cat-name">人因与组织绩效</span><span class="cat-count">5</span></button>
+</div>
         </div>
     </header>
 
