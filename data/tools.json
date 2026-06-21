@@ -27,19 +27,6 @@
       ]
     },
     {
-      "name": "PMD English Word 2019 (Employee Behaviours)Xu Zhilin.docx",
-      "path": "PMD English Word 2019 (Employee Behaviours)Xu Zhilin.docx",
-      "category": "其他",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
       "name": "Pre-Task-Planning-Template.pdf",
       "path": "Pre-Task-Planning-Template.pdf",
       "category": "其他",
@@ -171,8 +158,8 @@
       ]
     },
     {
-      "name": "Strategic Planning 2024-2028_Zibo.pptx",
-      "path": "Strategic Planning 2024-2028_Zibo.pptx",
+      "name": "Strategic Planning 2024-2028_Site.pptx",
+      "path": "Strategic Planning 2024-2028_Site.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -2032,19 +2019,6 @@
       ]
     },
     {
-      "name": "LSW_Xu Zhilin_template.xlsx",
-      "path": "LSW_Xu Zhilin_template.xlsx",
-      "category": "其他",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
       "name": "承包商管理制1.doc",
       "path": "承包商管理制1.doc",
       "category": "其他",
@@ -2607,19 +2581,6 @@
       ]
     },
     {
-      "name": "LSW_Xu Zhilin_202504.xlsx",
-      "path": "LSW_Xu Zhilin_202504.xlsx",
-      "category": "其他",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
       "name": "Template - What-If - ENG.xlsx",
       "path": "Template - What-If - ENG.xlsx",
       "category": "其他",
@@ -3025,19 +2986,6 @@
     {
       "name": "Maintenance Plan 停车检修计划.xlsx",
       "path": "Maintenance Plan 停车检修计划.xlsx",
-      "category": "其他",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
-      "name": "LSW_Feng Kai_20250309.xlsx",
-      "path": "LSW_Feng Kai_20250309.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -3822,8 +3770,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块6 有感领导-编辑.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块6 有感领导-编辑.pptx",
+      "name": "MNC 领导力培训 模块6 有感领导-编辑.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块6 有感领导-编辑.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -3835,8 +3783,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块2 参与和反馈-XQ.pdf",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块2 参与和反馈-XQ.pdf",
+      "name": "MNC 领导力培训 模块2 参与和反馈-XQ.pdf",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块2 参与和反馈-XQ.pdf",
       "category": "外企EHS培训库",
       "format": "pdf",
       "bilingual": false,
@@ -3874,8 +3822,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod1 Incident Investigation.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp HS Leadership training Mod1 Incident Investigation.pptx",
+      "name": "MNC HS Leadership training Mod1 Incident Investigation.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC HS Leadership training Mod1 Incident Investigation.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -3887,8 +3835,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块1 从事故中学习-编辑.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块1 从事故中学习-编辑.pptx",
+      "name": "MNC 领导力培训 模块1 从事故中学习-编辑.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块1 从事故中学习-编辑.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": true,
@@ -3901,8 +3849,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块2 参与和反馈.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块2 参与和反馈.pptx",
+      "name": "MNC 领导力培训 模块2 参与和反馈.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块2 参与和反馈.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -3914,8 +3862,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块2 参与和反馈-编辑.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块2 参与和反馈-编辑.pptx",
+      "name": "MNC 领导力培训 模块2 参与和反馈-编辑.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块2 参与和反馈-编辑.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -3940,8 +3888,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块5 风险.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块5 风险.pptx",
+      "name": "MNC 领导力培训 模块5 风险.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块5 风险.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -3953,8 +3901,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块4 健康与安全会议-编辑版.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块4 健康与安全会议-编辑版.pptx",
+      "name": "MNC 领导力培训 模块4 健康与安全会议-编辑版.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块4 健康与安全会议-编辑版.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -3979,8 +3927,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块2 参与和反馈-XQ.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块2 参与和反馈-XQ.pptx",
+      "name": "MNC 领导力培训 模块2 参与和反馈-XQ.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块2 参与和反馈-XQ.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4005,8 +3953,8 @@
       ]
     },
     {
-      "name": "Perstorp 领导力培训 模块3 稳步推进-编辑版.pptx",
-      "path": "02 外企培训库/领导力培训材料/Perstorp 领导力培训 模块3 稳步推进-编辑版.pptx",
+      "name": "MNC 领导力培训 模块3 稳步推进-编辑版.pptx",
+      "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块3 稳步推进-编辑版.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4018,8 +3966,8 @@
       ]
     },
     {
-      "name": "Site Zibo - 5S Implementation outlines - office area.pptx",
-      "path": "02 外企培训库/杂项/Site Zibo - 5S Implementation outlines - office area.pptx",
+      "name": "Site Site - 5S Implementation outlines - office area.pptx",
+      "path": "02 外企培训库/杂项/Site Site - 5S Implementation outlines - office area.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4096,8 +4044,8 @@
       ]
     },
     {
-      "name": "7.11 5S & Visual Management (Perstorp GB Course).pptx",
-      "path": "02 外企培训库/杂项/7.11 5S & Visual Management (Perstorp GB Course).pptx",
+      "name": "7.11 5S & Visual Management (MNC GB Course).pptx",
+      "path": "02 外企培训库/杂项/7.11 5S & Visual Management (MNC GB Course).pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4122,8 +4070,8 @@
       ]
     },
     {
-      "name": "7.11 5S & Visual Management (Perstorp GB Course).pdf",
-      "path": "02 外企培训库/杂项/7.11 5S & Visual Management (Perstorp GB Course).pdf",
+      "name": "7.11 5S & Visual Management (MNC GB Course).pdf",
+      "path": "02 外企培训库/杂项/7.11 5S & Visual Management (MNC GB Course).pdf",
       "category": "外企EHS培训库",
       "format": "pdf",
       "bilingual": false,
@@ -4707,8 +4655,8 @@
       ]
     },
     {
-      "name": "2.10 VSM (Perstorp YB Course)--Bi.pptx",
-      "path": "02 外企培训库/入库/003 Lean six sigma/2.10 VSM (Perstorp YB Course)--Bi.pptx",
+      "name": "2.10 VSM (MNC YB Course)--Bi.pptx",
+      "path": "02 外企培训库/入库/003 Lean six sigma/2.10 VSM (MNC YB Course)--Bi.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4720,8 +4668,8 @@
       ]
     },
     {
-      "name": "3.10 Benefits & COPQ (Perstorp YB Course)-Bi.pptx",
-      "path": "02 外企培训库/入库/003 Lean six sigma/3.10 Benefits & COPQ (Perstorp YB Course)-Bi.pptx",
+      "name": "3.10 Benefits & COPQ (MNC YB Course)-Bi.pptx",
+      "path": "02 外企培训库/入库/003 Lean six sigma/3.10 Benefits & COPQ (MNC YB Course)-Bi.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4772,8 +4720,8 @@
       ]
     },
     {
-      "name": "2.50 Pareto Analysis (Perstorp YB Course)-Bi.pptx",
-      "path": "02 外企培训库/入库/003 Lean six sigma/2.50 Pareto Analysis (Perstorp YB Course)-Bi.pptx",
+      "name": "2.50 Pareto Analysis (MNC YB Course)-Bi.pptx",
+      "path": "02 外企培训库/入库/003 Lean six sigma/2.50 Pareto Analysis (MNC YB Course)-Bi.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4876,8 +4824,8 @@
       ]
     },
     {
-      "name": "2.00 7 Wastes (Perstorp YB Course)-Bi.pptx",
-      "path": "02 外企培训库/入库/003 Lean six sigma/新建文件夹/2.00 7 Wastes (Perstorp YB Course)-Bi.pptx",
+      "name": "2.00 7 Wastes (MNC YB Course)-Bi.pptx",
+      "path": "02 外企培训库/入库/003 Lean six sigma/新建文件夹/2.00 7 Wastes (MNC YB Course)-Bi.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4889,8 +4837,8 @@
       ]
     },
     {
-      "name": "0.3 Overview of DMAIC (Perstorp YB Course)-Bi.pptx",
-      "path": "02 外企培训库/入库/003 Lean six sigma/新建文件夹/0.3 Overview of DMAIC (Perstorp YB Course)-Bi.pptx",
+      "name": "0.3 Overview of DMAIC (MNC YB Course)-Bi.pptx",
+      "path": "02 外企培训库/入库/003 Lean six sigma/新建文件夹/0.3 Overview of DMAIC (MNC YB Course)-Bi.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4902,8 +4850,8 @@
       ]
     },
     {
-      "name": "1.10 SIPOC (Perstorp YB Course)--Bi.pptx",
-      "path": "02 外企培训库/入库/003 Lean six sigma/新建文件夹/1.10 SIPOC (Perstorp YB Course)--Bi.pptx",
+      "name": "1.10 SIPOC (MNC YB Course)--Bi.pptx",
+      "path": "02 外企培训库/入库/003 Lean six sigma/新建文件夹/1.10 SIPOC (MNC YB Course)--Bi.pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -5072,8 +5020,8 @@
       ]
     },
     {
-      "name": "安全设施清单-淄博 Safety equipment list -overriding.xlsx",
-      "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全设施清单-淄博 Safety equipment list -overriding.xlsx",
+      "name": "安全设施清单-Site Safety equipment list -overriding.xlsx",
+      "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全设施清单-Site Safety equipment list -overriding.xlsx",
       "category": "外企EHS培训库",
       "format": "excel",
       "bilingual": false,
@@ -6335,8 +6283,8 @@
       ]
     },
     {
-      "name": "Perstorp Group - Risk Management.pptx",
-      "path": "ZSXQ/Risk management/Perstorp Group - Risk Management.pptx",
+      "name": "MNC Group - Risk Management.pptx",
+      "path": "ZSXQ/Risk management/MNC Group - Risk Management.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -6426,8 +6374,8 @@
       ]
     },
     {
-      "name": "Toledo Master MOC Status Tracking Spreadsheet.xlsx",
-      "path": "ZSXQ/工具/Toledo Master MOC Status Tracking Spreadsheet.xlsx",
+      "name": "Global Master MOC Status Tracking Spreadsheet.xlsx",
+      "path": "ZSXQ/工具/Global Master MOC Status Tracking Spreadsheet.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -6685,8 +6633,8 @@
       ]
     },
     {
-      "name": "Zibo OIP strategy intro for workshop_bilingual.pptx",
-      "path": "ZSXQ/工具/Zibo OIP strategy intro for workshop_bilingual.pptx",
+      "name": "Site OIP strategy intro for workshop_bilingual.pptx",
+      "path": "ZSXQ/工具/Site OIP strategy intro for workshop_bilingual.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -6698,8 +6646,8 @@
       ]
     },
     {
-      "name": "Training Management Zibo Leadrship.xlsx",
-      "path": "ZSXQ/工具/Training Management Zibo Leadrship.xlsx",
+      "name": "Training Management Site Leadrship.xlsx",
+      "path": "ZSXQ/工具/Training Management Site Leadrship.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -7075,8 +7023,8 @@
       ]
     },
     {
-      "name": "Template - Policy Deployment Perstorp Site.xlsx",
-      "path": "ZSXQ/工具/Template - Policy Deployment Perstorp Site.xlsx",
+      "name": "Template - Policy Deployment MNC Site.xlsx",
+      "path": "ZSXQ/工具/Template - Policy Deployment MNC Site.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -7219,19 +7167,6 @@
     {
       "name": "PSSR Checklist Short Format 2025-09-03.xlsx",
       "path": "ZSXQ/工具/PSSR Checklist Short Format 2025-09-03.xlsx",
-      "category": "其他",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
-      "name": "OIP action list Xu Zhilin.xlsx",
-      "path": "ZSXQ/工具/OIP action list Xu Zhilin.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -8939,8 +8874,8 @@
       ]
     },
     {
-      "name": "Careway_关怀之路评审培训_Careway_Assessment_Training.pptx",
-      "path": "EHS Careway Audit 外企安全体系审核/Careway_关怀之路评审培训_Careway_Assessment_Training.pptx",
+      "name": "EHS_关怀之路评审培训_EHS_Assessment_Training.pptx",
+      "path": "EHS EHS Audit 外企安全体系审核/EHS_关怀之路评审培训_EHS_Assessment_Training.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -8952,8 +8887,8 @@
       ]
     },
     {
-      "name": "Careway Assessment Protocol 体系评估方案.xlsx",
-      "path": "EHS Careway Audit 外企安全体系审核/Careway Assessment Protocol 体系评估方案.xlsx",
+      "name": "EHS Assessment Protocol 体系评估方案.xlsx",
+      "path": "EHS EHS Audit 外企安全体系审核/EHS Assessment Protocol 体系评估方案.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -8966,7 +8901,7 @@
     },
     {
       "name": "EHS_文化调查问卷_EHS_Culture_Survey.docx",
-      "path": "EHS Careway Audit 外企安全体系审核/EHS_文化调查问卷_EHS_Culture_Survey.docx",
+      "path": "EHS EHS Audit 外企安全体系审核/EHS_文化调查问卷_EHS_Culture_Survey.docx",
       "category": "其他",
       "format": "word",
       "bilingual": false,
@@ -8978,8 +8913,8 @@
       ]
     },
     {
-      "name": "Careway Assessment Protocol ZIB 2021.xlsx",
-      "path": "EHS Careway Audit 外企安全体系审核/Careway Assessment Protocol ZIB 2021.xlsx",
+      "name": "EHS Assessment Protocol ZIB 2021.xlsx",
+      "path": "EHS EHS Audit 外企安全体系审核/EHS Assessment Protocol ZIB 2021.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -8992,7 +8927,7 @@
     },
     {
       "name": "EHS_文化调查问卷_EHS_Culture_Survey (1).docx",
-      "path": "EHS Careway Audit 外企安全体系审核/EHS_文化调查问卷_EHS_Culture_Survey (1).docx",
+      "path": "EHS EHS Audit 外企安全体系审核/EHS_文化调查问卷_EHS_Culture_Survey (1).docx",
       "category": "其他",
       "format": "word",
       "bilingual": false,
@@ -9005,7 +8940,7 @@
     },
     {
       "name": "EHS_文化成熟度测量表_EHS_Culture_Maturity_Matrix.docx",
-      "path": "EHS Careway Audit 外企安全体系审核/EHS_文化成熟度测量表_EHS_Culture_Maturity_Matrix.docx",
+      "path": "EHS EHS Audit 外企安全体系审核/EHS_文化成熟度测量表_EHS_Culture_Maturity_Matrix.docx",
       "category": "其他",
       "format": "word",
       "bilingual": false,
@@ -10097,8 +10032,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod5 Risk Sensitivity.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Mod5 Risk Sensitivity.pptx",
+      "name": "MNC HS Leadership training Mod5 Risk Sensitivity.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Mod5 Risk Sensitivity.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10110,8 +10045,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Train the Trainer.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Train the Trainer.pptx",
+      "name": "MNC HS Leadership training Train the Trainer.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Train the Trainer.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10123,8 +10058,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod6 Visible Felt Leadership.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Mod6 Visible Felt Leadership.pptx",
+      "name": "MNC HS Leadership training Mod6 Visible Felt Leadership.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Mod6 Visible Felt Leadership.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10136,8 +10071,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod2 Engagement and Feedback.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Mod2 Engagement and Feedback.pptx",
+      "name": "MNC HS Leadership training Mod2 Engagement and Feedback.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Mod2 Engagement and Feedback.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10149,8 +10084,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod1 Incident Investigation.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Mod1 Incident Investigation.pptx",
+      "name": "MNC HS Leadership training Mod1 Incident Investigation.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Mod1 Incident Investigation.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10162,8 +10097,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod3 Progressive Motivation.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Mod3 Progressive Motivation.pptx",
+      "name": "MNC HS Leadership training Mod3 Progressive Motivation.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Mod3 Progressive Motivation.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10175,8 +10110,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training all modules.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training all modules.pptx",
+      "name": "MNC HS Leadership training all modules.pptx",
+      "path": "HS leadership training/MNC HS Leadership training all modules.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10188,8 +10123,8 @@
       ]
     },
     {
-      "name": "Perstorp HS Leadership training Mod4 Health and Safety Meetings.pptx",
-      "path": "HS leadership training/Perstorp HS Leadership training Mod4 Health and Safety Meetings.pptx",
+      "name": "MNC HS Leadership training Mod4 Health and Safety Meetings.pptx",
+      "path": "HS leadership training/MNC HS Leadership training Mod4 Health and Safety Meetings.pptx",
       "category": "其他",
       "format": "ppt",
       "bilingual": false,
@@ -10201,7 +10136,7 @@
       ]
     }
   ],
-  "total": 782,
+  "total": 777,
   "categories": [
     "其他",
     "项目管理",
