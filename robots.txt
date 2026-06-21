@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bg623.github.io/ehs-sil/sitemap.xml
