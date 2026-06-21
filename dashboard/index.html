@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>数据仪表盘 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--bg:#ece8e0;--bg-card:#f5f2eb;--primary:#1a4b5c;--primary-dark:#0f3342;--accent:#c9954e;--text:#2d3436;--text-secondary:#636e72;--text-muted:#95a5a6;--border:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+a{color:inherit;text-decoration:none}
+.dash-header{background:var(--primary-dark);color:#fff;padding:2rem 0 2.5rem}
+.dash-header h1{font-size:2rem;font-weight:700}
+.dash-header p{color:rgba(255,255,255,.7);margin-top:.3rem}
+.back-link{color:var(--accent);font-size:.85rem;margin-bottom:.5rem;display:inline-block}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:-1.5rem;position:relative;z-index:2}
+.stat-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center}
+.stat-box .num{display:block;font-size:2rem;font-weight:800;color:var(--primary)}
+.stat-box .label{font-size:.78rem;color:var(--text-muted);margin-top:.2rem}
+.stat-box .sub{font-size:.7rem;color:#16a34a;margin-top:.1rem}
+.section{margin:2rem 0}
+.section h2{font-size:1.2rem;color:var(--primary-dark);margin-bottom:1rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.kpi-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem}
+.kpi-card h3{font-size:.8rem;color:var(--text-muted);margin-bottom:.3rem;font-weight:500}
+.kpi-card .val{font-size:1.3rem;font-weight:700;color:var(--text)}
+.kpi-card .change{font-size:.72rem;color:#16a34a}
+.tracker-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.tracker-section h3{font-size:1rem;color:var(--primary-dark);margin-bottom:1rem}
+.tracker-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.6rem;align-items:end}
+.tracker-form label{font-size:.78rem;color:var(--text-secondary);display:block;margin-bottom:.2rem}
+.tracker-form input{padding:.5rem;border:1px solid var(--border);border-radius:5px;font-size:.85rem;width:100%}
+.tracker-form input:focus{outline:none;border-color:var(--primary)}
+.tracker-form button{padding:.5rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:5px;cursor:pointer;white-space:nowrap}
+.tracker-form button:hover{background:var(--primary-dark)}
+.history-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.82rem}
+.history-table th,.history-table td{padding:.5rem;text-align:left;border-bottom:1px solid var(--border)}
+.history-table th{color:var(--text-muted);font-weight:500;font-size:.75rem}
+.history-table .del-btn{color:#dc2626;cursor:pointer;font-size:.75rem;opacity:.6}
+.history-table .del-btn:hover{opacity:1}
+.revenue-highlight{background:linear-gradient(135deg,var(--primary-dark),#1a5a6a);color:#fff;border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+.revenue-highlight h3{font-size:1rem;margin-bottom:.5rem;opacity:.8}
+.revenue-highlight .big{font-size:2.5rem;font-weight:800}
+.revenue-highlight .detail{font-size:.82rem;opacity:.6;margin-top:.3rem}
+@media(max-width:640px){.grid-4{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:1fr}.tracker-form{grid-template-columns:1fr}}
+footer{text-align:center;padding:2rem;font-size:.82rem;color:var(--text-muted);border-top:1px solid var(--border);margin-top:2rem}
+</style>
+</head>
+<body>
+<header class="dash-header"><div class="container">
+<a href="../index.html" class="back-link">&larr; 返回首页</a>
+<h1>&#128202; 副业数据仪表盘</h1>
+<p>各平台增长 · 星球收入 · 内容表现</p>
+</div></header>
+
+<main class="container">
+<div class="grid-4">
+<div class="stat-box"><span class="num" id="wxCount">10,000+</span><span class="label">公众号粉丝</span><span class="sub">&#9650; 主阵地</span></div>
+<div class="stat-box"><span class="num" id="planetCount">350+</span><span class="label">星球总成员</span><span class="sub">&#9650; 付费用户</span></div>
+<div class="stat-box"><span class="num" id="toolCount">782</span><span class="label">工具总数</span><span class="sub">&#9650; 持续增长</span></div>
+<div class="stat-box"><span class="num" id="revenue">&#165;5.3万</span><span class="label">年化收入</span><span class="sub">&#9650; 目标10万</span></div>
+</div>
+
+<div class="section">
+<h2>&#128200; 细分数据</h2>
+<div class="kpi-grid">
+<div class="kpi-card"><h3>&#128172; 小红书</h3><div class="val">1,500</div><div class="change">&#9650; 持续增长中</div></div>
+<div class="kpi-card"><h3>&#127916; 抖音</h3><div class="val">3,000</div><div class="change">&#9650; 需加强</div></div>
+<div class="kpi-card"><h3>&#127909; 视频号</h3><div class="val">3,000</div><div class="change">&#9650; 同步增长</div></div>
+</div>
+</div>
+
+<div class="revenue-highlight">
+<h3>&#128176; 当前年化收入</h3>
+<div class="big">&#165;53,650</div>
+<div class="detail">工具箱 300人 &times; 129元 + 培训库 50人 &times; 299元</div>
+</div>
+
+<div class="tracker-section">
+<h3>&#128221; 数据记录</h3>
+<p style="font-size:.8rem;color:var(--text-muted);margin-bottom:1rem">记录各平台每日数据，追踪增长趋势</p>
+<form class="tracker-form" id="dataForm" onsubmit="addRecord(event)">
+<div><label>平台</label><input type="text" id="platformInput" placeholder="公众号/小红书/抖音" required></div>
+<div><label>粉丝数</label><input type="number" id="fansInput" placeholder="10000" required></div>
+<div><label>日期</label><input type="date" id="dateInput" required></div>
+<button type="submit">记录</button>
+</form>
+<table class="history-table"><thead><tr><th>日期</th><th>平台</th><th>粉丝</th><th></th></tr></thead><tbody id="historyBody"></tbody></table>
+</div>
+
+<div class="tracker-section">
+<h3>&#128202; 收入追踪</h3>
+<p style="font-size:.8rem;color:var(--text-muted);margin-bottom:1rem">记录每月星球收入，看清增长曲线</p>
+<form class="tracker-form" id="incomeForm" onsubmit="addIncome(event)">
+<div><label>来源</label><input type="text" id="sourceInput" placeholder="工具箱/培训库" required></div>
+<div><label>金额(元)</label><input type="number" id="amountInput" placeholder="129" required></div>
+<div><label>日期</label><input type="date" id="incomeDateInput" required></div>
+<button type="submit">记录</button>
+</form>
+<table class="history-table"><thead><tr><th>日期</th><th>来源</th><th>金额</th><th></th></tr></thead><tbody id="incomeBody"></tbody></table>
+</div>
+</main>
+<footer>&copy; 2026 EHS-SIL · 数据本地存储，安全可靠</footer>
+
+<script>
+(function(){
+function loadTable(id, storageKey, cols){
+    var tbody = document.getElementById(id);
+    var data = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    function render(){
+        tbody.innerHTML = data.map(function(r,i){
+            var vals = cols.map(function(c){return r[c] || "";});
+            return "<tr><td>" + vals.join("</td><td>") + '</td><td><span class="del-btn" onclick="deleteRecord(\'' + storageKey + "\'," + i + ')">\u2716</span></td></tr>';
+        }).join("");
+    }
+    render();
+    return {data:data,render:render};
+}
+window.loadTable = loadTable;
+window.deleteRecord = function(key, idx){
+    var d = JSON.parse(localStorage.getItem(key) || "[]");
+    d.splice(idx,1);
+    localStorage.setItem(key, JSON.stringify(d));
+    location.reload();
+};
+
+loadTable("historyBody","platformHistory",["date","platform","fans"]);
+loadTable("incomeBody","incomeHistory",["date","source","amount"]);
+})();
+
+function addRecord(e){
+    e.preventDefault();
+    var p = document.getElementById("platformInput").value;
+    var f = document.getElementById("fansInput").value;
+    var d = document.getElementById("dateInput").value;
+    var data = JSON.parse(localStorage.getItem("platformHistory") || "[]");
+    data.unshift({date:d,platform:p,fans:f});
+    localStorage.setItem("platformHistory", JSON.stringify(data));
+    location.reload();
+}
+function addIncome(e){
+    e.preventDefault();
+    var s = document.getElementById("sourceInput").value;
+    var a = document.getElementById("amountInput").value;
+    var d = document.getElementById("incomeDateInput").value;
+    var data = JSON.parse(localStorage.getItem("incomeHistory") || "[]");
+    data.unshift({date:d,source:s,amount:a});
+    localStorage.setItem("incomeHistory", JSON.stringify(data));
+    location.reload();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>内容分发助手 · EHS-SIL</title>
+<link rel="stylesheet" href="../css/product.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--bg:#ece8e0;--bg-card:#f5f2eb;--primary:#1a4b5c;--primary-dark:#0f3342;--accent:#c9954e;--text:#2d3436;--text-secondary:#636e72;--text-muted:#95a5a6;--border:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+a{color:inherit;text-decoration:none}
+.tool-header{background:var(--primary-dark);color:#fff;padding:2rem 0 3rem;text-align:center}
+.tool-header h1{font-size:2rem;font-weight:700;margin-bottom:.5rem}
+.tool-header p{color:rgba(255,255,255,.7);font-size:1rem}
+.back-link{display:inline-block;margin-bottom:1rem;color:var(--accent);font-size:.85rem}
+.tool-body{padding:2rem 0}
+.input-section{background:#fff;border:1px solid var(--border);border-radius:12px;padding:2rem;margin-bottom:2rem}
+.input-section h2{font-size:1.2rem;color:var(--primary-dark);margin-bottom:1rem}
+.input-section label{display:block;font-size:.85rem;color:var(--text-secondary);margin-bottom:.3rem;font-weight:500}
+.input-section input,.input-section textarea{width:100%;padding:.7rem;border:1px solid var(--border);border-radius:6px;font-size:.9rem;font-family:var(--font-sans);transition:border-color .2s}
+.input-section input:focus,.input-section textarea:focus{outline:none;border-color:var(--primary)}
+.input-section textarea{min-height:120px;resize:vertical}
+.form-group{margin-bottom:1rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.generate-btn{width:100%;padding:.9rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .2s}
+.generate-btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.output-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.output-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.output-header{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;background:var(--bg-card);border-bottom:1px solid var(--border)}
+.output-header h3{font-size:.9rem;color:var(--primary-dark)}
+.copy-btn{padding:.3rem .7rem;font-size:.75rem;background:var(--primary);color:#fff;border:none;border-radius:4px;cursor:pointer;transition:all .2s}
+.copy-btn:hover{background:var(--accent)}
+.copy-btn.copied{background:#16a34a}
+.output-body{padding:1rem;font-size:.82rem;line-height:1.7;color:var(--text);white-space:pre-wrap;min-height:100px;max-height:300px;overflow-y:auto}
+.placeholder{color:var(--text-muted);font-style:italic}
+.platform-tip{font-size:.72rem;color:var(--text-muted);padding:.3rem 1rem .8rem}
+@media(max-width:640px){.form-row,.output-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="tool-header"><div class="container">
+<a href="../index.html" class="back-link">&larr; 返回首页</a>
+<h1>&#128221; 内容分发助手</h1>
+<p>一篇文章 &rarr; 自动生成4个平台的发布格式</p>
+</div></header>
+<main class="tool-body"><div class="container">
+
+<div class="input-section">
+<h2>填入你的内容</h2>
+<div class="form-row">
+<div class="form-group"><label>文章标题</label><input type="text" id="articleTitle" placeholder="例如：外企为何总在'小题大做'？"></div>
+<div class="form-group"><label>核心关键词（逗号分隔）</label><input type="text" id="articleKeywords" placeholder="EHS, 安全管理, 外企"></div>
+</div>
+<div class="form-group">
+<label>文章要点 / 核心内容（每行一个要点）</label>
+<textarea id="articlePoints" placeholder="1. 海因里希法则：每起严重事故背后有29起轻微事故和300起未遂&#10;2. 外企的'过度'反应实质是系统性风险防控&#10;3. 小异常不处理可能导致系统性溃堤"></textarea>
+</div>
+<button class="generate-btn" onclick="generateContent()">&#127919; 生成4平台内容 &rarr;</button>
+</div>
+
+<div class="output-grid" id="outputGrid">
+<div class="output-card"><div class="output-header"><h3>&#128226; 公众号正文</h3><button class="copy-btn" onclick="copyContent(0)">复制</button></div><div class="output-body" id="output0"><span class="placeholder">填入内容后点击生成</span></div><div class="platform-tip">&#128161; 公众号适合深度长文，保持800-1500字，用故事引入</div></div>
+<div class="output-card"><div class="output-header"><h3>&#128213; 小红书图文</h3><button class="copy-btn" onclick="copyContent(1)">复制</button></div><div class="output-body" id="output1"><span class="placeholder">填入内容后点击生成</span></div><div class="platform-tip">&#128161; 小红书标题要抓眼球，正文用emoji分段，加3-5个标签</div></div>
+<div class="output-card"><div class="output-header"><h3>&#127916; 短视频脚本</h3><button class="copy-btn" onclick="copyContent(2)">复制</button></div><div class="output-body" id="output2"><span class="placeholder">填入内容后点击生成</span></div><div class="platform-tip">&#128161; 短视频前3秒决定完播率，开场用提问或惊人数据</div></div>
+<div class="output-card"><div class="output-header"><h3>&#11088; 知识星球帖</h3><button class="copy-btn" onclick="copyContent(3)">复制</button></div><div class="output-body" id="output3"><span class="placeholder">填入内容后点击生成</span></div><div class="platform-tip">&#128161; 星球帖要有独享价值，给会员额外的深度内容或模板下载</div></div>
+</div>
+</div></main>
+
+<footer style="text-align:center;padding:2rem;font-size:.82rem;color:var(--text-muted);border-top:1px solid var(--border)"><p>&copy; 2026 EHS-SIL · 用更少时间，做更多内容</p></footer>
+
+<script>
+var outputs = ["","","",""];
+function generateContent() {
+    var title = document.getElementById('articleTitle').value.trim();
+    var keywords = document.getElementById('articleKeywords').value.trim();
+    var points = document.getElementById('articlePoints').value.trim();
+    if (!title && !points) { alert("请至少填入文章标题或内容要点"); return; }
+    var pts = points ? points.split(String.fromCharCode(10)).filter(function(p){return p.trim()}) : ["内容要点待补充"];
+    outputs[0] = "# " + title + "\n\n" + pts.map(function(p,i){return "## " + (i+1) + ". " + p;}).join("\n\n");
+    outputs[1] = "\ud83d\udd25 " + title + "\n\n" + pts.map(function(p){return "\u2705 " + p;}).join("\n") + "\n\n#EHS #安全管理" + (keywords ? " #" + keywords.split(",").join(" #") : "");
+    outputs[2] = "【标题】" + title + "\n\n【开场】\u2753 " + (pts[0] ? pts[0].substring(0,40) : "...") + "\n\n【正文】\n" + pts.slice(0,3).map(function(p,i){return "第"+(i+1)+"点："+p.substring(0,50);}).join("\n") + "\n\n【结尾】关注EHS-SIL，每天一个外企EHS实战技巧";
+    outputs[3] = "\ud83d\udce2 【独家分享】" + title + "\n\n" + pts.map(function(p){return "\u2022 " + p;}).join("\n") + "\n\n\ud83d\udcac 欢迎在评论区分享你的看法";
+    for (var i = 0; i < 4; i++) {
+        var el = document.getElementById("output" + i);
+        el.textContent = outputs[i];
+        el.classList.remove("placeholder");
+    }
+}
+function copyContent(i) {
+    if (!outputs[i]) return;
+    navigator.clipboard.writeText(outputs[i]).then(function() {
+        var btns = document.querySelectorAll(".copy-btn");
+        btns[i].textContent = "\u2705 \u5df2\u590d\u5236";
+        btns[i].classList.add("copied");
+        setTimeout(function(){ btns[i].textContent = "\u590d\u5236"; btns[i].classList.remove("copied"); }, 1500);
+    });
+}
+</script>
+</body>
+</html>
