@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>工作台 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--bg:#ece8e0;--bg-card:#f5f2eb;--primary:#1a4b5c;--primary-dark:#0f3342;--accent:#c9954e;--text:#2d3436;--text-secondary:#636e72;--text-muted:#95a5a6;--border:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+.container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+.header{background:var(--primary-dark);color:#fff;padding:2rem 0;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700}
+.header p{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.3rem}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:2rem 0}
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all .2s}
+.card:hover{box-shadow:0 6px 16px rgba(0,0,0,.06);transform:translateY(-2px)}
+.card h2{font-size:1rem;color:var(--primary-dark);margin-bottom:.3rem}
+.card p{font-size:.82rem;color:var(--text-secondary);margin-bottom:.8rem}
+.card a{display:inline-block;padding:.4rem 1rem;background:var(--primary);color:#fff;border-radius:5px;font-size:.82rem;font-weight:600;text-decoration:none}
+.card a:hover{background:var(--primary-dark)}
+.footer{text-align:center;padding:2rem;font-size:.78rem;color:var(--text-muted)}
+@media(max-width:480px){.tools{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<h1>&#128187; EHS-SIL 工作台</h1>
+<p>John Yu · 仅限本人使用</p>
+</div></div>
+<div class="container">
+<div class="tools">
+<div class="card"><h2>&#128221; 内容分发助手</h2><p>一篇文章生成4个平台格式：公众号、小红书、短视频、知识星球</p><a href="../tools/content-repurposer.html">打开 &rarr;</a></div>
+<div class="card"><h2>&#128202; 数据仪表盘</h2><p>各平台粉丝、星球收入、增长趋势统一查看</p><a href="../dashboard/">打开 &rarr;</a></div>
+<div class="card"><h2>&#128269; 工具库管理</h2><p>搜索684份工具，管理工具分类，查看索引</p><a href="../tools/">打开 &rarr;</a></div>
+<div class="card"><h2>&#127760; 网站管理</h2><p>查看线上效果、更新内容、检查统计</p><a href="https://bg623.github.io/ehs-sil/" target="_blank">打开 &rarr;</a></div>
+<div class="card"><h2>&#128230; 本地文件清理</h2><p>运行清理脚本，去除本地文件中的敏感信息</p><a href="../cleanup_local_files.py" download>下载脚本</a></div>
+<div class="card"><h2>&#128200; 百度统计</h2><p>查看网站访问数据，了解用户来路和行为</p><a href="https://tongji.baidu.com/main/setting/10000726865/home/site/index" target="_blank">打开 &rarr;</a></div>
+</div>
+</div>
+<div class="footer"><div class="container">
+<p>&copy; 2026 EHS-SIL · 密码保护 · 仅限John Yu访问</p>
+</div></div>
+<script src="../js/auth.js"></script>
+</body>
+</html>
