@@ -1,10 +1,10 @@
 (function() {
     var PASSWORD = 'ehs-sil-2026';
     function checkAuth() {
-        if (sessionStorage.getItem('ehs_sil_auth') === 'true') return;
+        if (localStorage.getItem('ehs_sil_auth') === 'true') return;
         var attempt = prompt('请输入访问密码');
         if (attempt === PASSWORD) {
-            sessionStorage.setItem('ehs_sil_auth', 'true');
+            localStorage.setItem('ehs_sil_auth', 'true');
             return;
         }
         if (attempt === null) {
