@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>内容工坊 · EHS-SIL 工作台</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--bg:#ece8e0;--bg-card:#f5f2eb;--primary:#1a4b5c;--primary-dark:#0f3342;--accent:#c9954e;--text:#2d3436;--text-secondary:#636e72;--text-muted:#95a5a6;--border:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:var(--primary-dark);color:#fff;padding:1.5rem 0 2rem;text-align:center}
+.header h1{font-size:1.3rem;font-weight:700}
+.header p{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:.2rem}
+.back{color:var(--accent);font-size:.82rem;text-decoration:none;display:inline-block;margin-bottom:.5rem}
+.section{padding:1.5rem 0}
+.section h2{font-size:1.1rem;color:var(--primary-dark);margin-bottom:.8rem}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.25rem}
+.card h3{font-size:.9rem;color:var(--primary-dark);margin-bottom:.5rem}
+.card p{font-size:.8rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem}
+.tag{font-size:.7rem;padding:.15rem .5rem;background:var(--primary-light);color:var(--primary);border-radius:10px}
+.quick-form{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.quick-form label{font-size:.8rem;color:var(--text-secondary);display:block;margin-bottom:.3rem}
+.quick-form input,.quick-form textarea,.quick-form select{width:100%;padding:.5rem;border:1px solid var(--border);border-radius:5px;font-size:.85rem;margin-bottom:.6rem;font-family:var(--font-sans)}
+.quick-form textarea{min-height:60px;resize:vertical}
+.quick-form button{padding:.4rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:5px;font-size:.82rem;cursor:pointer}
+.quick-form button:hover{background:var(--primary-dark)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.list-item{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
+.list-item .title{font-size:.85rem;color:var(--text);font-weight:500}
+.list-item .meta{font-size:.72rem;color:var(--text-muted)}
+.list-item .del{color:#dc2626;cursor:pointer;font-size:.75rem;opacity:.6;background:none;border:none;padding:.2rem}
+.list-item .del:hover{opacity:1}
+.ideas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.idea-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center;cursor:pointer;transition:all .2s}
+.idea-card:hover{border-color:var(--primary);transform:translateY(-1px)}
+.idea-card .icon{font-size:1.8rem;margin-bottom:.3rem}
+.idea-card .name{font-size:.8rem;color:var(--text)}
+.idea-card .desc{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+@media(max-width:640px){.cards,.form-row{grid-template-columns:1fr}.ideas-grid{grid-template-columns:1fr}}
+footer{text-align:center;padding:2rem;font-size:.75rem;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="admin.html" class="back">&larr; 返回工作台</a>
+<h1>&#9997; 内容工坊</h1>
+<p>选题规划 · 素材收集 · 文章速成</p>
+</div></div>
+
+<div class="container">
+<div class="section">
+<h2>&#128161; 灵感一触即发 — 点击选题直接生成文章大纲</h2>
+<div class="ideas-grid" id="ideaGrid">
+<div class="idea-card" onclick="startIdea('海因里希法则')"><div class="icon">&#9888;</div><div class="name">海因里希法则</div><div class="desc">事故金字塔分析</div></div>
+<div class="idea-card" onclick="startIdea('外企安全文化')"><div class="icon">&#127757;</div><div class="name">外企安全文化</div><div class="desc">Bradley曲线解读</div></div>
+<div class="idea-card" onclick="startIdea('化工事故复盘')"><div class="icon">&#128300;</div><div class="name">化工事故复盘</div><div class="desc">典型事故分析</div></div>
+<div class="idea-card" onclick="startIdea('EHS职业路径')"><div class="icon">&#128200;</div><div class="name">EHS职业路径</div><div class="desc">从专员到总监</div></div>
+<div class="idea-card" onclick="startIdea('工具推荐')"><div class="icon">&#128269;</div><div class="name">工具推荐</div><div class="desc">JSA/BBS/RCA教程</div></div>
+<div class="idea-card" onclick="startIdea('合规审计')"><div class="icon">&#128203;</div><div class="name">合规审计</div><div class="desc">ISO审核实战</div></div>
+<div class="idea-card" onclick="startIdea('安全数字化')"><div class="icon">&#128187;</div><div class="name">安全数字化</div><div class="desc">AI在EHS的应用</div></div>
+<div class="idea-card" onclick="startIdea('承包商管理')"><div class="icon">&#128737;</div><div class="name">承包商管理</div><div class="desc">全流程管控</div></div>
+<div class="idea-card" onclick="startIdea('行为安全')"><div class="icon">&#128170;</div><div class="name">行为安全</div><div class="desc">BBS/SafeStart</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>&#128221; 当前选题</h2>
+<div class="quick-form">
+<div class="form-row">
+<div><label>文章标题</label><input id="topicTitle" placeholder="例如：外企如何做事故调查"></div>
+<div><label>内容类型</label>
+<select id="topicType">
+<option value="公众号长文">公众号长文</option>
+<option value="短视频脚本">短视频脚本</option>
+<option value="小红书图文">小红书图文</option>
+<option value="知识星球帖">知识星球帖</option>
+</select></div>
+</div>
+<div><label>文章要点 / 大纲（每行一个）</label><textarea id="topicOutline" rows="4" placeholder="1. 事故调查的核心逻辑&#10;2. Tripod Beta方法论介绍&#10;3. 实际案例演练"></textarea></div>
+<div><label>参考素材/链接</label><textarea id="topicRef" rows="2" placeholder="https://mp.weixin.qq.com/s/xxx&#10;相关工具链接等"></textarea></div>
+<div style="display:flex;gap:.5rem">
+<button onclick="saveTopic()">&#128190; 保存选题</button>
+<button onclick="sendToDistributor()" style="background:var(--accent);color:var(--primary-dark)">&#128228; 发送到分发助手</button>
+</div>
+</div>
+<div id="topicList"></div>
+</div>
+</div>
+
+<footer><div class="container"><p>数据保存在本地浏览器 · 仅John Yu可访问</p></div></footer>
+<script src="../js/auth.js"></script>
+<script>
+var topics = JSON.parse(localStorage.getItem('ehs_topics') || '[]');
+renderTopics();
+
+function saveTopic() {
+    var title = document.getElementById('topicTitle').value.trim();
+    var type = document.getElementById('topicType').value;
+    var outline = document.getElementById('topicOutline').value.trim();
+    var ref = document.getElementById('topicRef').value.trim();
+    if (!title) { alert('请输入文章标题'); return; }
+    topics.unshift({
+        id: Date.now(), title: title, type: type,
+        outline: outline, ref: ref,
+        date: new Date().toLocaleDateString('zh-CN')
+    });
+    localStorage.setItem('ehs_topics', JSON.stringify(topics));
+    renderTopics();
+    document.getElementById('topicTitle').value = '';
+    document.getElementById('topicOutline').value = '';
+    document.getElementById('topicRef').value = '';
+}
+
+function renderTopics() {
+    var html = '';
+    topics.forEach(function(t, i) {
+        html += '<div class="list-item"><div><div class="title">' + t.title + '</div><div class="meta">' + t.type + ' · ' + t.date + (t.outline ? ' · ' + t.outline.split('\n').length + '个要点' : '') + '</div></div><button class="del" onclick="delTopic(' + i + ')">删除</button></div>';
+    });
+    document.getElementById('topicList').innerHTML = html || '<p style="font-size:.82rem;color:var(--text-muted);padding:.5rem 0">还没有选题，点击上面的灵感卡片快速创建</p>';
+}
+
+function delTopic(i) {
+    topics.splice(i, 1);
+    localStorage.setItem('ehs_topics', JSON.stringify(topics));
+    renderTopics();
+}
+
+function startIdea(topic) {
+    document.getElementById('topicTitle').value = topic + '：从外企视角深度解析';
+    document.getElementById('topicOutline').focus();
+    window.scrollTo({top: 200, behavior: 'smooth'});
+}
+
+function sendToDistributor() {
+    var title = document.getElementById('topicTitle').value.trim();
+    if (!title) { alert('先填写文章标题'); return; }
+    var outline = document.getElementById('topicOutline').value.trim();
+    // Save and open content repurposer
+    saveTopic();
+    var keywords = title.split(' ').slice(0,3).join(',');
+    window.open('../tools/content-repurposer.html?title=' + encodeURIComponent(title) + '&points=' + encodeURIComponent(outline), '_blank');
+}
+</script>
+</body>
+</html>
