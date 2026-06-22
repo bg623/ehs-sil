@@ -485,19 +485,6 @@
       ]
     },
     {
-      "name": "TMP设备断电停运_RCA-5Whys.xlsx",
-      "path": "TMP设备断电停运_RCA-5Whys.xlsx",
-      "category": "根源分析",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
       "name": "LOTO 审核表.docx",
       "path": "LOTO 审核表.docx",
       "category": "LOTO/作业许可",
@@ -1136,19 +1123,6 @@
       "tags": [
         "其他",
         "pdf",
-        "英文"
-      ]
-    },
-    {
-      "name": "FMEA_Neo小包装线.xlsx",
-      "path": "FMEA_Neo小包装线.xlsx",
-      "category": "风险辨识",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
         "英文"
       ]
     },
@@ -1915,19 +1889,6 @@
       ]
     },
     {
-      "name": "SWP流程培训-CNZIBZGZ_2021.06(1).pdf",
-      "path": "SWP流程培训-CNZIBZGZ_2021.06(1).pdf",
-      "category": "LOTO/作业许可",
-      "format": "pdf",
-      "bilingual": false,
-      "description": "其他工具 · PDF格式",
-      "tags": [
-        "其他",
-        "pdf",
-        "英文"
-      ]
-    },
-    {
       "name": "Weighted-Decision-Matrix-Template 加权决策矩阵模板.xlsx",
       "path": "Weighted-Decision-Matrix-Template 加权决策矩阵模板.xlsx",
       "category": "其他",
@@ -2002,19 +1963,6 @@
       "tags": [
         "其他",
         "excel",
-        "英文"
-      ]
-    },
-    {
-      "name": "TMP安全操作规程.docx",
-      "path": "TMP安全操作规程.docx",
-      "category": "其他",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
         "英文"
       ]
     },
@@ -2828,19 +2776,6 @@
       ]
     },
     {
-      "name": "DMS ZIB - TOR.pptx",
-      "path": "DMS ZIB - TOR.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
       "name": "KYT-EN.pdf",
       "path": "KYT-EN.pdf",
       "category": "行为安全",
@@ -2850,19 +2785,6 @@
       "tags": [
         "其他",
         "pdf",
-        "英文"
-      ]
-    },
-    {
-      "name": "XX装置安全操作规程.docx",
-      "path": "XX装置安全操作规程.docx",
-      "category": "其他",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
         "英文"
       ]
     },
@@ -2915,19 +2837,6 @@
       "tags": [
         "其他",
         "pdf",
-        "英文"
-      ]
-    },
-    {
-      "name": "2-安全生产方针及目标25.doc",
-      "path": "2-安全生产方针及目标25.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
         "英文"
       ]
     },
@@ -3757,19 +3666,6 @@
       ]
     },
     {
-      "name": "MNC HS Leadership training Mod1 Incident Investigation.pptx",
-      "path": "02 外企培训库/领导力培训材料/MNC HS Leadership training Mod1 Incident Investigation.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
       "name": "MNC 领导力培训 模块1 从事故中学习-编辑.pptx",
       "path": "02 外企培训库/领导力培训材料/MNC 领导力培训 模块1 从事故中学习-编辑.pptx",
       "category": "外企EHS培训库",
@@ -3903,19 +3799,6 @@
     {
       "name": "Site Site - 5S Implementation outlines - office area.pptx",
       "path": "02 外企培训库/杂项/Site Site - 5S Implementation outlines - office area.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "SWP流程培训-CNZIBZGZ_2021.06(1).pptx",
-      "path": "02 外企培训库/杂项/SWP流程培训-CNZIBZGZ_2021.06(1).pptx",
       "category": "外企EHS培训库",
       "format": "ppt",
       "bilingual": false,
@@ -4824,85 +4707,6 @@
       ]
     },
     {
-      "name": "健康安全领导力-模块5：风险的敏感度.pptx",
-      "path": "02 外企培训库/入库/002 EHS leadership training/健康安全领导力-模块5：风险的敏感度.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "健康安全领导力-模块1 从事件中学习.pptx",
-      "path": "02 外企培训库/入库/002 EHS leadership training/健康安全领导力-模块1 从事件中学习.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": true,
-      "description": "外企EHS培训库工具 · PPT格式 · 中英双语",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "中文",
-        "英文"
-      ]
-    },
-    {
-      "name": "健康安全领导力-模块3 建立标准和稳步推进.pptx",
-      "path": "02 外企培训库/入库/002 EHS leadership training/健康安全领导力-模块3 建立标准和稳步推进.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "健康安全领导力-模块2 参与和反馈.pptx",
-      "path": "02 外企培训库/入库/002 EHS leadership training/健康安全领导力-模块2 参与和反馈.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "健康安全领导力-模块4 健康与安全会议.pptx",
-      "path": "02 外企培训库/入库/002 EHS leadership training/健康安全领导力-模块4 健康与安全会议.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "健康安全领导力-模块6 有感领导.pptx",
-      "path": "02 外企培训库/入库/002 EHS leadership training/健康安全领导力-模块6 有感领导.pptx",
-      "category": "外企EHS培训库",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · PPT格式",
-      "tags": [
-        "外企EHS培训库",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
       "name": "Controlled_Override_Protocol-Training material.pdf",
       "path": "02 外企培训库/Overriding safety devices/Controlled_Override_Protocol-Training material.pdf",
       "category": "外企EHS培训库",
@@ -4990,19 +4794,6 @@
       "tags": [
         "外企EHS培训库",
         "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "安全设施清单-TMP.xlsx",
-      "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全设施清单-TMP.xlsx",
-      "category": "外企EHS培训库",
-      "format": "excel",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · EXCEL格式",
-      "tags": [
-        "外企EHS培训库",
-        "excel",
         "英文"
       ]
     },
@@ -5134,19 +4925,6 @@
       "tags": [
         "外企EHS培训库",
         "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "安全设施清单-NEO.xlsx",
-      "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全设施清单-NEO.xlsx",
-      "category": "外企EHS培训库",
-      "format": "excel",
-      "bilingual": false,
-      "description": "外企EHS培训库工具 · EXCEL格式",
-      "tags": [
-        "外企EHS培训库",
-        "excel",
         "英文"
       ]
     },
@@ -5986,19 +5764,6 @@
     {
       "name": "Competence formulation data collection 20241022.xlsx",
       "path": "ZSXQ/工具/Competence formulation data collection 20241022.xlsx",
-      "category": "其他",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
-      "name": "ZIB CI Governance RACI.xlsx",
-      "path": "ZSXQ/工具/ZIB CI Governance RACI.xlsx",
       "category": "其他",
       "format": "excel",
       "bilingual": false,
@@ -6971,320 +6736,8 @@
       ]
     },
     {
-      "name": "1-安全生产方针及目标23.doc",
-      "path": "2.1方针目标/1-安全生产方针及目标23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
       "name": "1-安全生产目标及方针22.doc",
       "path": "2.1方针目标/1-安全生产目标及方针22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "设备部门承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/设备部门承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "供应链部门承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/供应链部门承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "部门经理承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/部门经理承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "EHSQ部门承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/EHSQ部门承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "财务部门承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/财务部门承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "办公室承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/办公室承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "生产部门承诺书+目标责任书-22.doc",
-      "path": "2.1方针目标/安全目标责任书-22/生产部门承诺书+目标责任书-22.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "设备部门承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/设备部门承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "供应链部门承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/供应链部门承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "EHSQ部门承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/EHSQ部门承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "部门经理承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/部门经理承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "办公室承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/办公室承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "财务部门承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/财务部门承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "生产部门承诺书+目标责任书-23.doc",
-      "path": "2.1方针目标/安全目标责任书-23/生产部门承诺书+目标责任书-23.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "年度EHS消防目标回顾及计划-2024.pptx",
-      "path": "承诺书+目标责任书24/年度EHS消防目标回顾及计划-2024.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "设备部门承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/设备部门承诺书+目标责任书-24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "1-安全生产方针及目标24.doc",
-      "path": "承诺书+目标责任书24/1-安全生产方针及目标24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "部门经理承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/部门经理承诺书+目标责任书-24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "EHSQ部门承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/EHSQ部门承诺书+目标责任书-24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "供应链部门承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/供应链部门承诺书+目标责任书-24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "生产部门承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/生产部门承诺书+目标责任书-24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "财务部门承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/财务部门承诺书+目标责任书-24.doc",
-      "category": "绩效指标",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
-        "英文"
-      ]
-    },
-    {
-      "name": "办公室承诺书+目标责任书-24.doc",
-      "path": "承诺书+目标责任书24/办公室承诺书+目标责任书-24.doc",
       "category": "绩效指标",
       "format": "word",
       "bilingual": false,
@@ -8419,19 +7872,6 @@
       ]
     },
     {
-      "name": "EHS Assessment Protocol ZIB 2021.xlsx",
-      "path": "EHS EHS Audit 外企安全体系审核/EHS Assessment Protocol ZIB 2021.xlsx",
-      "category": "隐患排查",
-      "format": "excel",
-      "bilingual": false,
-      "description": "其他工具 · EXCEL格式",
-      "tags": [
-        "其他",
-        "excel",
-        "英文"
-      ]
-    },
-    {
       "name": "EHS_文化调查问卷_EHS_Culture_Survey (1).docx",
       "path": "EHS EHS Audit 外企安全体系审核/EHS_文化调查问卷_EHS_Culture_Survey (1).docx",
       "category": "隐患排查",
@@ -8584,19 +8024,6 @@
       "tags": [
         "项目管理",
         "excel",
-        "英文"
-      ]
-    },
-    {
-      "name": "EHS快报-NEO车间叉车撞坏卷帘门20240325.docx",
-      "path": "Tools 6sigma/EHS快报-NEO车间叉车撞坏卷帘门20240325.docx",
-      "category": "5S/可视化",
-      "format": "word",
-      "bilingual": false,
-      "description": "其他工具 · WORD格式",
-      "tags": [
-        "其他",
-        "word",
         "英文"
       ]
     },
@@ -9497,100 +8924,9 @@
         "pdf",
         "英文"
       ]
-    },
-    {
-      "name": "MNC HS Leadership training Mod5 Risk Sensitivity.pptx",
-      "path": "HS leadership training/MNC HS Leadership training Mod5 Risk Sensitivity.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "MNC HS Leadership training Train the Trainer.pptx",
-      "path": "HS leadership training/MNC HS Leadership training Train the Trainer.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "MNC HS Leadership training Mod6 Visible Felt Leadership.pptx",
-      "path": "HS leadership training/MNC HS Leadership training Mod6 Visible Felt Leadership.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "MNC HS Leadership training Mod2 Engagement and Feedback.pptx",
-      "path": "HS leadership training/MNC HS Leadership training Mod2 Engagement and Feedback.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "MNC HS Leadership training Mod3 Progressive Motivation.pptx",
-      "path": "HS leadership training/MNC HS Leadership training Mod3 Progressive Motivation.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "MNC HS Leadership training all modules.pptx",
-      "path": "HS leadership training/MNC HS Leadership training all modules.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
-    },
-    {
-      "name": "MNC HS Leadership training Mod4 Health and Safety Meetings.pptx",
-      "path": "HS leadership training/MNC HS Leadership training Mod4 Health and Safety Meetings.pptx",
-      "category": "培训课件",
-      "format": "ppt",
-      "bilingual": false,
-      "description": "其他工具 · PPT格式",
-      "tags": [
-        "其他",
-        "ppt",
-        "英文"
-      ]
     }
   ],
-  "total": 735,
+  "total": 684,
   "categories": [
     "5S/可视化",
     "EHS英语",
