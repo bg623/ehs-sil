@@ -399,19 +399,220 @@
       "type": "国际标准",
       "cat": "机械安全",
       "c": "国际"
+    },
+    {
+      "cn": "安全生产培训管理办法",
+      "en": "Regulations on Safety Production Training Management",
+      "num": "安监总局令第44号",
+      "auth": "应急管理部",
+      "yr": 2015,
+      "type": "部门规章",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "生产经营单位安全培训规定",
+      "en": "Provisions on Safety Training for Production and Business Units",
+      "num": "安监总局令第3号",
+      "auth": "应急管理部",
+      "yr": 2015,
+      "type": "部门规章",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "建设项目安全设施'三同时'监督管理办法",
+      "en": "Administration of Safety Facilities with Construction Projects",
+      "num": "安监总局令第36号",
+      "auth": "应急管理部",
+      "yr": 2015,
+      "type": "部门规章",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品重大危险源监督管理暂行规定",
+      "en": "Interim Provisions on Supervision of Major Hazard Installations",
+      "num": "安监总局令第40号",
+      "auth": "应急管理部",
+      "yr": 2015,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "工贸企业有限空间作业安全管理与监督暂行规定",
+      "en": "Safety Management of Confined Space Operations",
+      "num": "安监总局令第59号",
+      "auth": "应急管理部",
+      "yr": 2013,
+      "type": "部门规章",
+      "cat": "作业安全",
+      "c": "中国"
+    },
+    {
+      "cn": "企业安全生产费用提取和使用管理办法",
+      "en": "Measures for Withdrawal and Use of Safety Production Expenses",
+      "num": "财企〔2012〕16号",
+      "auth": "财政部/应急管理部",
+      "yr": 2012,
+      "type": "部门规章",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "用人单位职业健康监护监督管理办法",
+      "en": "Supervision of Occupational Health Surveillance",
+      "num": "安监总局令第49号",
+      "auth": "应急管理部",
+      "yr": 2012,
+      "type": "部门规章",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "建筑设计防火规范",
+      "en": "Code for Fire Protection Design of Buildings",
+      "num": "GB 50016-2014",
+      "auth": "住建部",
+      "yr": 2014,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "石油化工企业设计防火标准",
+      "en": "Fire Prevention Standard for Petrochemical Enterprises",
+      "num": "GB 50160-2008",
+      "auth": "住建部",
+      "yr": 2008,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "爆炸危险环境电力装置设计规范",
+      "en": "Code for Design of Electrical Installations in Explosive Atmospheres",
+      "num": "GB 50058-2014",
+      "auth": "住建部",
+      "yr": 2014,
+      "type": "国家标准",
+      "cat": "电气安全",
+      "c": "中国"
+    },
+    {
+      "cn": "职业健康监护技术规范",
+      "en": "Technical Specifications for Occupational Health Surveillance",
+      "num": "GBZ 188-2014",
+      "auth": "国家卫生健康委员会",
+      "yr": 2014,
+      "type": "职业卫生标准",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "固定式钢梯及平台安全要求",
+      "en": "Safety requirements for fixed steel ladders and platforms",
+      "num": "GB 4053.1-2009",
+      "auth": "国家标准化管理委员会",
+      "yr": 2009,
+      "type": "国家标准",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "危险物质危害等级标识",
+      "en": "Standard System for Identification of Hazards of Materials",
+      "num": "NFPA 704",
+      "auth": "NFPA",
+      "yr": 2022,
+      "type": "国际标准",
+      "cat": "化学品",
+      "c": "国际"
+    },
+    {
+      "cn": "工艺安全管理",
+      "en": "Recommended Practice on Process Safety Management",
+      "num": "API RP 752",
+      "auth": "API",
+      "yr": 2023,
+      "type": "国际标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "社会责任指南",
+      "en": "Guidance on Social Responsibility",
+      "num": "ISO 26000:2010",
+      "auth": "ISO",
+      "yr": 2010,
+      "type": "国际标准",
+      "cat": "ESG",
+      "c": "国际"
+    },
+    {
+      "cn": "欧盟Seveso III指令",
+      "en": "Seveso III Directive - Control of Major Accident Hazards",
+      "num": "2012/18/EU",
+      "auth": "EU",
+      "yr": 2012,
+      "type": "法规",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "美国EPA风险管理计划",
+      "en": "EPA Risk Management Plan (RMP)",
+      "num": "40 CFR Part 68",
+      "auth": "EPA",
+      "yr": 2024,
+      "type": "法规",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "英国COMAH条例",
+      "en": "Control of Major Accident Hazards Regulations",
+      "num": "COMAH 2015",
+      "auth": "UK HSE",
+      "yr": 2015,
+      "type": "法规",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "加拿大CSA Z462 电气安全工作",
+      "en": "Workplace Electrical Safety Standard",
+      "num": "CSA Z462",
+      "auth": "CSA",
+      "yr": 2021,
+      "type": "国际标准",
+      "cat": "电气安全",
+      "c": "国际"
+    },
+    {
+      "cn": "澳洲/新西兰ISO 45001等效标准",
+      "en": "OHSMS - Australian/New Zealand adoption",
+      "num": "AS/NZS ISO 45001",
+      "auth": "Standards Australia",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
     }
   ],
-  "total": 40,
+  "total": 60,
   "types": [
-    "国际标准",
-    "行业标准",
     "国家标准",
-    "职业卫生标准",
-    "行政法规",
+    "国际公约",
+    "国际标准",
     "指南",
     "法律",
-    "国际公约",
-    "法规"
+    "法规",
+    "职业卫生标准",
+    "行业标准",
+    "行政法规",
+    "部门规章"
   ],
   "countries": [
     "中国",
