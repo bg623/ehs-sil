@@ -1,0 +1,420 @@
+{
+  "regulations": [
+    {
+      "cn": "安全生产法",
+      "en": "Work Safety Law",
+      "num": "主席令第88号",
+      "auth": "全国人大常委会",
+      "yr": 2021,
+      "type": "法律",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "环境保护法",
+      "en": "Environmental Protection Law",
+      "num": "主席令第9号",
+      "auth": "全国人大常委会",
+      "yr": 2014,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "职业病防治法",
+      "en": "Law on Prevention and Control of Occupational Diseases",
+      "num": "主席令第24号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "消防法",
+      "en": "Fire Protection Law",
+      "num": "主席令第81号",
+      "auth": "全国人大常委会",
+      "yr": 2021,
+      "type": "法律",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "劳动法",
+      "en": "Labor Law",
+      "num": "主席令第28号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "特种设备安全法",
+      "en": "Special Equipment Safety Law",
+      "num": "主席令第4号",
+      "auth": "全国人大常委会",
+      "yr": 2013,
+      "type": "法律",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品安全管理条例",
+      "en": "Regulations on Safety Management of Hazardous Chemicals",
+      "num": "国务院令第591号",
+      "auth": "国务院",
+      "yr": 2011,
+      "type": "行政法规",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "生产安全事故应急条例",
+      "en": "Regulations on Emergency Response to Production Safety Accidents",
+      "num": "国务院令第708号",
+      "auth": "国务院",
+      "yr": 2019,
+      "type": "行政法规",
+      "cat": "应急",
+      "c": "中国"
+    },
+    {
+      "cn": "工伤保险条例",
+      "en": "Regulations on Work-Related Injury Insurance",
+      "num": "国务院令第586号",
+      "auth": "国务院",
+      "yr": 2010,
+      "type": "行政法规",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "生产安全事故报告和调查处理条例",
+      "en": "Regulations on Reporting and Investigation of Production Safety Accidents",
+      "num": "国务院令第493号",
+      "auth": "国务院",
+      "yr": 2007,
+      "type": "行政法规",
+      "cat": "事故",
+      "c": "中国"
+    },
+    {
+      "cn": "易制毒化学品管理条例",
+      "en": "Regulations on Management of Precursor Chemicals",
+      "num": "国务院令第445号",
+      "auth": "国务院",
+      "yr": 2018,
+      "type": "行政法规",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "安全生产许可证条例",
+      "en": "Regulations on Work Safety Permits",
+      "num": "国务院令第397号",
+      "auth": "国务院",
+      "yr": 2014,
+      "type": "行政法规",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "女职工劳动保护特别规定",
+      "en": "Special Regulations on Labor Protection for Female Employees",
+      "num": "国务院令第619号",
+      "auth": "国务院",
+      "yr": 2012,
+      "type": "行政法规",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "职业健康安全管理体系 要求及使用指南",
+      "en": "OHSMS - Requirements with guidance",
+      "num": "GB/T 45001-2020",
+      "auth": "国家标准化管理委员会",
+      "yr": 2020,
+      "type": "国家标准",
+      "cat": "管理体系",
+      "c": "中国"
+    },
+    {
+      "cn": "环境管理体系 要求及使用指南",
+      "en": "EMS - Requirements with guidance",
+      "num": "GB/T 24001-2016",
+      "auth": "国家标准化管理委员会",
+      "yr": 2016,
+      "type": "国家标准",
+      "cat": "管理体系",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品重大危险源辨识",
+      "en": "Identification of major hazard installations",
+      "num": "GB 18218-2018",
+      "auth": "国家标准化管理委员会",
+      "yr": 2018,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品企业特殊作业安全规范",
+      "en": "Safety specification for special operations",
+      "num": "GB 30871-2022",
+      "auth": "国家标准化管理委员会",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "作业安全",
+      "c": "中国"
+    },
+    {
+      "cn": "企业职工伤亡事故分类",
+      "en": "Classification of casualty accidents",
+      "num": "GB 6441-86",
+      "auth": "国家标准化管理委员会",
+      "yr": 1986,
+      "type": "国家标准",
+      "cat": "事故",
+      "c": "中国"
+    },
+    {
+      "cn": "生产过程危险和有害因素分类与代码",
+      "en": "Classification of hazardous factors",
+      "num": "GB/T 13861-2022",
+      "auth": "国家标准化管理委员会",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "风险",
+      "c": "中国"
+    },
+    {
+      "cn": "安全标志及其使用导则",
+      "en": "Safety signs and guideline for the use",
+      "num": "GB 2894-2008",
+      "auth": "国家标准化管理委员会",
+      "yr": 2008,
+      "type": "国家标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "生产经营单位生产安全事故应急预案编制导则",
+      "en": "Guidelines for emergency response plan",
+      "num": "GB/T 29639-2020",
+      "auth": "国家标准化管理委员会",
+      "yr": 2020,
+      "type": "国家标准",
+      "cat": "应急",
+      "c": "中国"
+    },
+    {
+      "cn": "工作场所有害因素职业接触限值",
+      "en": "Occupational exposure limits",
+      "num": "GBZ 2.1-2019",
+      "auth": "国家卫生健康委员会",
+      "yr": 2019,
+      "type": "职业卫生标准",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "安全色与安全标识",
+      "en": "Safety colors and safety signs",
+      "num": "GB 2893-2008",
+      "auth": "国家标准化管理委员会",
+      "yr": 2008,
+      "type": "国家标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "职业健康安全管理体系",
+      "en": "Occupational Health and Safety Management Systems",
+      "num": "ISO 45001:2018",
+      "auth": "ISO",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "环境管理体系",
+      "en": "Environmental Management Systems",
+      "num": "ISO 14001:2015",
+      "auth": "ISO",
+      "yr": 2015,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "风险管理 指南",
+      "en": "Risk Management - Guidelines",
+      "num": "ISO 31000:2018",
+      "auth": "ISO",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "风险",
+      "c": "国际"
+    },
+    {
+      "cn": "质量管理体系",
+      "en": "Quality Management Systems",
+      "num": "ISO 9001:2015",
+      "auth": "ISO",
+      "yr": 2015,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "能源管理体系",
+      "en": "Energy Management Systems",
+      "num": "ISO 50001:2018",
+      "auth": "ISO",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "功能安全 安全仪表系统",
+      "en": "Functional Safety - Safety Instrumented Systems",
+      "num": "IEC 61511",
+      "auth": "IEC",
+      "yr": 2016,
+      "type": "国际标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "机械安全 控制系统安全相关部件",
+      "en": "Safety of machinery - Safety-related parts of control systems",
+      "num": "ISO 13849-1",
+      "auth": "ISO",
+      "yr": 2015,
+      "type": "国际标准",
+      "cat": "机械安全",
+      "c": "国际"
+    },
+    {
+      "cn": "美国职业安全与健康标准",
+      "en": "OSHA 29 CFR 1910 - Occupational Safety and Health Standards",
+      "num": "29 CFR 1910",
+      "auth": "OSHA",
+      "yr": 1970,
+      "type": "国际标准",
+      "cat": "综合",
+      "c": "国际"
+    },
+    {
+      "cn": "国际劳工组织职业安全与健康公约",
+      "en": "ILO Convention 155 - Occupational Safety and Health",
+      "num": "C155",
+      "auth": "ILO",
+      "yr": 1981,
+      "type": "国际公约",
+      "cat": "综合",
+      "c": "国际"
+    },
+    {
+      "cn": "API 754 工艺安全指标",
+      "en": "Process Safety Performance Indicators",
+      "num": "API RP 754",
+      "auth": "API",
+      "yr": 2021,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "CCPS 基于风险的过程安全",
+      "en": "Risk Based Process Safety",
+      "num": "CCPS RBPS",
+      "auth": "CCPS/AIChE",
+      "yr": 2007,
+      "type": "指南",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "IOGP 生命拯救规则",
+      "en": "Life-Saving Rules",
+      "num": "IOGP 459",
+      "auth": "IOGP",
+      "yr": 2018,
+      "type": "行业标准",
+      "cat": "行为安全",
+      "c": "国际"
+    },
+    {
+      "cn": "IOGP 工艺安全关键绩效指标",
+      "en": "Process Safety Key Performance Indicators",
+      "num": "IOGP 456",
+      "auth": "IOGP",
+      "yr": 2017,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "欧盟REACH法规",
+      "en": "Registration, Evaluation, Authorisation and Restriction of Chemicals",
+      "num": "EC 1907/2006",
+      "auth": "EU",
+      "yr": 2006,
+      "type": "法规",
+      "cat": "化学品",
+      "c": "国际"
+    },
+    {
+      "cn": "全球化学品统一分类和标签制度",
+      "en": "Globally Harmonized System (GHS)",
+      "num": "GHS Rev.10",
+      "auth": "UN",
+      "yr": 2023,
+      "type": "国际标准",
+      "cat": "化学品",
+      "c": "国际"
+    },
+    {
+      "cn": "IEC 61508 电气/电子/可编程电子安全相关系统的功能安全",
+      "en": "Functional Safety of E/E/PE Safety-Related Systems",
+      "num": "IEC 61508",
+      "auth": "IEC",
+      "yr": 2010,
+      "type": "国际标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "机械设备安全  EN ISO 12100",
+      "en": "Safety of machinery - General principles for design",
+      "num": "EN ISO 12100",
+      "auth": "ISO/CEN",
+      "yr": 2010,
+      "type": "国际标准",
+      "cat": "机械安全",
+      "c": "国际"
+    }
+  ],
+  "total": 40,
+  "types": [
+    "国际标准",
+    "行业标准",
+    "国家标准",
+    "职业卫生标准",
+    "行政法规",
+    "指南",
+    "法律",
+    "国际公约",
+    "法规"
+  ],
+  "countries": [
+    "中国",
+    "国际"
+  ]
+}
