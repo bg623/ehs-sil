@@ -129,3 +129,16 @@
         initScrollAnimations();
     });
 })();
+
+// Back-to-top button
+(function() {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    }, { passive: true });
+})();
