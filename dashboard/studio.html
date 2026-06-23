@@ -2,147 +2,339 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>内容工坊 · EHS-SIL 工作台</title>
+<title>内容工坊 Pro · EHS-SIL 工作台</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <style>
-:root{--bg:#ece8e0;--bg-card:#f5f2eb;--primary:#1a4b5c;--primary-dark:#0f3342;--accent:#c9954e;--text:#2d3436;--text-secondary:#636e72;--text-muted:#95a5a6;--border:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+:root{--bg:#ece8e0;--bg-card:#f5f2eb;--primary:#1a4b5c;--primary-dark:#0f3342;--accent:#c9954e;--accent-light:#f5ede2;--text:#2d3436;--text-secondary:#636e72;--text-muted:#95a5a6;--border:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
-.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
-.header{background:var(--primary-dark);color:#fff;padding:1.5rem 0 2rem;text-align:center}
-.header h1{font-size:1.3rem;font-weight:700}
-.header p{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:.2rem}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.header{background:var(--primary-dark);color:#fff;padding:1.5rem 0;text-align:center}
+.header h1{font-size:1.3rem;font-weight:700}.header p{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:.2rem}
 .back{color:var(--accent);font-size:.82rem;text-decoration:none;display:inline-block;margin-bottom:.5rem}
-.section{padding:1.5rem 0}
-.section h2{font-size:1.1rem;color:var(--primary-dark);margin-bottom:.8rem}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.25rem}
-.card h3{font-size:.9rem;color:var(--primary-dark);margin-bottom:.5rem}
-.card p{font-size:.8rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.5rem}
-.tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem}
-.tag{font-size:.7rem;padding:.15rem .5rem;background:var(--primary-light);color:var(--primary);border-radius:10px}
-.quick-form{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem}
-.quick-form label{font-size:.8rem;color:var(--text-secondary);display:block;margin-bottom:.3rem}
-.quick-form input,.quick-form textarea,.quick-form select{width:100%;padding:.5rem;border:1px solid var(--border);border-radius:5px;font-size:.85rem;margin-bottom:.6rem;font-family:var(--font-sans)}
-.quick-form textarea{min-height:60px;resize:vertical}
-.quick-form button{padding:.4rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:5px;font-size:.82rem;cursor:pointer}
-.quick-form button:hover{background:var(--primary-dark)}
+.tabs{display:flex;gap:.3rem;margin:1rem 0;border-bottom:1px solid var(--border)}
+.tab{padding:.5rem 1rem;border:none;background:none;color:var(--text-secondary);cursor:pointer;font-size:.85rem;border-bottom:2px solid transparent;transition:all .2s}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
+.tab:hover{color:var(--primary)}
+.tab-content{display:none}.tab-content.active{display:block}
+.section{padding:1.5rem 0}.section h2{font-size:1.05rem;color:var(--primary-dark);margin-bottom:1rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;transition:all .2s}
+.card:hover{box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.card h3{font-size:.88rem;color:var(--primary-dark);margin-bottom:.3rem}
+.card p{font-size:.78rem;color:var(--text-secondary);line-height:1.5}
+.card-tag{display:inline-block;font-size:.65rem;padding:.1rem .4rem;border-radius:3px;background:var(--primary-light);color:var(--primary);margin-right:.3rem}
+.idea-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.8rem;text-align:center;cursor:pointer;transition:all .2s}
+.idea-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.idea-card .icon{font-size:1.5rem;margin-bottom:.2rem}
+.idea-card .name{font-size:.78rem;color:var(--text);font-weight:500}
+.idea-card .desc{font-size:.68rem;color:var(--text-muted)}
+.form-group{margin-bottom:.6rem}
+.form-group label{font-size:.78rem;color:var(--text-secondary);display:block;margin-bottom:.2rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:.5rem;border:1px solid var(--border);border-radius:5px;font-size:.82rem;font-family:var(--font-sans)}
+.form-group textarea{min-height:50px;resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.list-item{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
-.list-item .title{font-size:.85rem;color:var(--text);font-weight:500}
-.list-item .meta{font-size:.72rem;color:var(--text-muted)}
-.list-item .del{color:#dc2626;cursor:pointer;font-size:.75rem;opacity:.6;background:none;border:none;padding:.2rem}
-.list-item .del:hover{opacity:1}
-.ideas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
-.idea-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center;cursor:pointer;transition:all .2s}
-.idea-card:hover{border-color:var(--primary);transform:translateY(-1px)}
-.idea-card .icon{font-size:1.8rem;margin-bottom:.3rem}
-.idea-card .name{font-size:.8rem;color:var(--text)}
-.idea-card .desc{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
-@media(max-width:640px){.cards,.form-row{grid-template-columns:1fr}.ideas-grid{grid-template-columns:1fr}}
-footer{text-align:center;padding:2rem;font-size:.75rem;color:var(--text-muted)}
+.btn{padding:.4rem 1rem;border:none;border-radius:5px;font-size:.82rem;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{opacity:.9}
+.btn-sm{padding:.25rem .6rem;font-size:.72rem}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-secondary)}.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+.list-item{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.6rem .8rem;margin-bottom:.4rem;display:flex;justify-content:space-between;align-items:center}
+.list-item .title{font-size:.82rem;font-weight:500;color:var(--text)}
+.list-item .meta{font-size:.7rem;color:var(--text-muted)}
+.list-item .del{color:#dc2626;cursor:pointer;font-size:.72rem;opacity:.5;background:none;border:none;padding:.2rem}.list-item .del:hover{opacity:1}
+.badge{display:inline-block;font-size:.65rem;padding:.15rem .5rem;border-radius:10px;font-weight:500}
+.badge-draft{background:#fef3c7;color:#d97706}
+.badge-published{background:#dcfce7;color:#16a34a}
+.badge-scheduled{background:#dbeafe;color:#2563eb}
+.calendar{margin:1rem 0}
+.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.cal-header h3{font-size:.9rem;color:var(--primary-dark)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-grid .day-label{font-size:.68rem;color:var(--text-muted);padding:.3rem 0}
+.cal-grid .day{font-size:.75rem;padding:.4rem 0;background:#fff;border-radius:4px;min-height:40px;vertical-align:top}
+.cal-grid .day.today{background:var(--primary-light);font-weight:700}
+.cal-grid .day.has-post{position:relative}
+.cal-grid .day.has-post::after{content:"";position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--primary)}
+.cal-grid .day .post-dot{display:inline-block;width:4px;height:4px;border-radius:50%;margin:1px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.stat-card .num{display:block;font-size:1.5rem;font-weight:700;color:var(--primary)}
+.stat-card .label{font-size:.72rem;color:var(--text-muted);margin-top:.2rem}
+.tmpl-preview{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:.8rem;font-size:.78rem;line-height:1.7;color:var(--text-secondary);white-space:pre-wrap;max-height:200px;overflow-y:auto}
+@media(max-width:640px){.grid-2,.grid-3,.stat-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+footer{text-align:center;padding:2rem;font-size:.72rem;color:var(--text-muted)}
 </style>
 </head>
 <body>
 <div class="header"><div class="container">
-<a href="admin.html" class="back" style="color:var(--accent);font-size:.82rem;text-decoration:none;display:inline-block;margin-bottom:.5rem">&larr; 返回工作台</a>
-<h1>&#9997; 内容工坊</h1>
-<p>选题规划 · 素材收集 · 文章速成</p>
+<a href="admin.html" class="back">&larr; 返回工作台</a>
+<h1>内容工坊 Pro</h1>
+<p>选题 &rarr; 写作 &rarr; 分发 &rarr; 追踪</p>
 </div></div>
 
 <div class="container">
-<div class="section">
-<h2>&#128161; 灵感一触即发 — 点击选题直接生成文章大纲</h2>
-<div class="ideas-grid" id="ideaGrid">
-<div class="idea-card" onclick="startIdea('海因里希法则')"><div class="icon">&#9888;</div><div class="name">海因里希法则</div><div class="desc">事故金字塔分析</div></div>
-<div class="idea-card" onclick="startIdea('外企安全文化')"><div class="icon">&#127757;</div><div class="name">外企安全文化</div><div class="desc">Bradley曲线解读</div></div>
-<div class="idea-card" onclick="startIdea('化工事故复盘')"><div class="icon">&#128300;</div><div class="name">化工事故复盘</div><div class="desc">典型事故分析</div></div>
-<div class="idea-card" onclick="startIdea('EHS职业路径')"><div class="icon">&#128200;</div><div class="name">EHS职业路径</div><div class="desc">从专员到总监</div></div>
-<div class="idea-card" onclick="startIdea('工具推荐')"><div class="icon">&#128269;</div><div class="name">工具推荐</div><div class="desc">JSA/BBS/RCA教程</div></div>
-<div class="idea-card" onclick="startIdea('合规审计')"><div class="icon">&#128203;</div><div class="name">合规审计</div><div class="desc">ISO审核实战</div></div>
-<div class="idea-card" onclick="startIdea('安全数字化')"><div class="icon">&#128187;</div><div class="name">安全数字化</div><div class="desc">AI在EHS的应用</div></div>
-<div class="idea-card" onclick="startIdea('承包商管理')"><div class="icon">&#128737;</div><div class="name">承包商管理</div><div class="desc">全流程管控</div></div>
-<div class="idea-card" onclick="startIdea('行为安全')"><div class="icon">&#128170;</div><div class="name">行为安全</div><div class="desc">BBS/SafeStart</div></div>
-</div>
+<div class="tabs" id="tabBar">
+<button class="tab active" onclick="switchTab('topics')">选题看板</button>
+<button class="tab" onclick="switchTab('templates')">写作模板</button>
+<button class="tab" onclick="switchTab('calendar')">内容日历</button>
+<button class="tab" onclick="switchTab('stats')">发布统计</button>
 </div>
 
+<div class="tab-content active" id="tab-topics">
 <div class="section">
-<h2>&#128221; 当前选题</h2>
-<div class="quick-form">
-<div class="form-row">
-<div><label>文章标题</label><input id="topicTitle" placeholder="例如：外企如何做事故调查"></div>
-<div><label>内容类型</label>
-<select id="topicType">
-<option value="公众号长文">公众号长文</option>
-<option value="短视频脚本">短视频脚本</option>
-<option value="小红书图文">小红书图文</option>
-<option value="知识星球帖">知识星球帖</option>
-</select></div>
+<h2>热点选题</h2>
+<div class="grid-3" id="ideaGrid"></div>
 </div>
-<div><label>文章要点 / 大纲（每行一个）</label><textarea id="topicOutline" rows="4" placeholder="1. 事故调查的核心逻辑&#10;2. Tripod Beta方法论介绍&#10;3. 实际案例演练"></textarea></div>
-<div><label>参考素材/链接</label><textarea id="topicRef" rows="2" placeholder="https://mp.weixin.qq.com/s/xxx&#10;相关工具链接等"></textarea></div>
-<div style="display:flex;gap:.5rem">
-<button onclick="saveTopic()">&#128190; 保存选题</button>
-<button onclick="sendToDistributor()" style="background:var(--accent);color:var(--primary-dark)">&#128228; 发送到分发助手</button>
+<div class="section">
+<h2>我的选题 <span id="topicCount" style="font-weight:400;font-size:.78rem;color:var(--text-muted)">(0)</span></h2>
+<div class="card" style="margin-bottom:1rem">
+<div class="form-row">
+<div class="form-group"><label>文章标题</label><input id="topicTitle" placeholder="输入标题"></div>
+<div class="form-group"><label>内容类型</label>
+<select id="topicType"><option>公众号长文</option><option>短视频脚本</option><option>小红书图文</option><option>知识星球帖</option></select></div>
+</div>
+<div class="form-group"><label>文章大纲 / 要点</label><textarea id="topicOutline" rows="3" placeholder="每行一个要点"></textarea></div>
+<div class="form-group"><label>参考素材/链接</label><textarea id="topicRef" rows="1" placeholder="相关链接"></textarea></div>
+<div style="display:flex;gap:.5rem;flex-wrap:wrap">
+<button class="btn btn-primary" onclick="saveTopic()">保存选题</button>
+<button class="btn btn-accent" onclick="sendToDistributor()">分发 &rarr;</button>
 </div>
 </div>
 <div id="topicList"></div>
 </div>
 </div>
 
-<footer><div class="container"><p>数据保存在本地浏览器 · 仅John Yu可访问</p></div></footer>
+<div class="tab-content" id="tab-templates">
+<div class="section">
+<h2>选择文章类型，一键生成大纲</h2>
+<div class="grid-2" id="templateGrid"></div>
+</div>
+</div>
+
+<div class="tab-content" id="tab-calendar">
+<div class="section">
+<h2>发布日历</h2>
+<div class="card" style="margin-bottom:1rem">
+<div class="form-row">
+<div class="form-group"><label>标题</label><input id="calTitle" placeholder="文章标题"></div>
+<div class="form-group"><label>平台</label>
+<select id="calPlatform"><option>公众号</option><option>抖音</option><option>小红书</option><option>视频号</option><option>知识星球</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>日期</label><input type="date" id="calDate"></div>
+<div class="form-group"><label>状态</label>
+<select id="calStatus"><option value="draft">草稿</option><option value="published">已发布</option><option value="scheduled">已排期</option></select></div>
+</div>
+<button class="btn btn-primary" onclick="addCalendar()">添加到日历</button>
+</div>
+<div id="calendarView"></div>
+<div id="calPosts"></div>
+</div>
+</div>
+
+<div class="tab-content" id="tab-stats">
+<div class="section">
+<div class="stat-grid" id="statGrid"></div>
+</div>
+<div class="section">
+<h2>近期发布</h2>
+<div id="recentPosts"></div>
+</div>
+</div>
+</div>
+<footer>数据保存在本地浏览器</footer>
 <script src="../js/auth.js"></script>
 <script>
 var topics = JSON.parse(localStorage.getItem('ehs_topics') || '[]');
-renderTopics();
+var calendar = JSON.parse(localStorage.getItem('ehs_calendar') || '[]');
+var recentPosts = JSON.parse(localStorage.getItem('ehs_recent') || '[]');
 
-function saveTopic() {
+function switchTab(tab){
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
+    document.getElementById('tab-'+tab).classList.add('active');
+    document.querySelector('.tab[onclick*="'+tab+'"]').classList.add('active');
+}
+
+// Hot topics
+var hotTopics = [
+    {icon:'⚠️',name:'海因里希法则',desc:'事故金字塔分析'},
+    {icon:'🌏',name:'外企安全文化',desc:'Bradley曲线解读'},
+    {icon:'🔬',name:'化工事故复盘',desc:'典型事故分析'},
+    {icon:'📈',name:'EHS职业路径',desc:'从专员到总监'},
+    {icon:'🔍',name:'工具推荐',desc:'JSA/BBS/RCA教程'},
+    {icon:'📋',name:'合规审计',desc:'ISO审核实战'},
+    {icon:'💻',name:'安全数字化',desc:'AI在EHS的应用'},
+    {icon:'🛡️',name:'承包商管理',desc:'全流程管控'},
+    {icon:'💪',name:'行为安全',desc:'BBS/SafeStart'},
+    {icon:'🌀',name:'Poka Yoke防呆',desc:'零事故神兵'},
+    {icon:'🧠',name:'Tripod Beta',desc:'事故调查方法'},
+    {icon:'🏭',name:'建筑/工程EHS',desc:'施工安全'},
+    {icon:'🌍',name:'ESG与EHS',desc:'可持续发展'},
+    {icon:'🌊',name:'危化品管理',desc:'GHS/REACH'},
+    {icon:'🧱',name:'LOTO上锁挂牌',desc:'能量隔离'},
+];
+
+// Writing templates
+var templates = {
+    '事故复盘类': '标题：××事故复盘及外企如何预防
+开篇：一个令人震惊的数据/真实案例
+事故回顾：时间线/原因分析
+外企视角：同类问题的防范措施
+总结：给读者的5条建议',
+    '方法论类': '标题：××方法全解析：外企EHS的实战应用
+什么是：定义+核心原理
+为什么要用：价值角度分析
+怎么用：步骤+案例
+“口诀”：一句话总结',
+    '工具推荐类': '标题：EHS从业者必备的××工具
+痛点：你是否遇到过这些问题
+工具介绍：能解决什么问题
+操作步骤：怎么用
+案例展示：真实效果
+获取方式：加入工具箱',
+    '职业发展类': '标题：从××到××：外企EHS人的破局之道
+开篇：行业痛点/真实痛苦
+阶梯解析：职业发展路径
+能力要素：硬技能+软技能
+实战建议：给读者的行动指南',
+    '法规解读类': '标题：最新××法规解读：外企EHS的合规实践
+法规背景：出台原因
+核心要求：重点条款
+影响分析：对企业的实际影响
+建议：如何应对',
+};
+
+function renderIdeas(){
+    var html = '';
+    hotTopics.forEach(function(t){
+        html += '<div class="idea-card" onclick="startIdea(\''+t.name.replace(/'/g,"\\'")+'\')"><div class="icon">'+t.icon+'</div><div class="name">'+t.name+'</div><div class="desc">'+t.desc+'</div></div>';
+    });
+    document.getElementById('ideaGrid').innerHTML = html;
+}
+
+function renderTemplates(){
+    var html = '';
+    for(var key in templates){
+        html += '<div class="card"><h3>'+key+'</h3><div class="tmpl-preview">'+templates[key].split('\n').join('<br>')+'</div><button class="btn btn-primary btn-sm" style="margin-top:.5rem" onclick="useTemplate(\''+key+'\')">使用此模板</button></div>';
+    }
+    document.getElementById('templateGrid').innerHTML = html;
+}
+
+function renderTopics(){
+    var html = '';
+    topics.forEach(function(t,i){
+        var status = t.status || 'draft';
+        var badge = status === 'published' ? '<span class="badge badge-published">已发布</span>' : (status === 'scheduled' ? '<span class="badge badge-scheduled">已排期</span>' : '<span class="badge badge-draft">草稿</span>');
+        html += '<div class="list-item"><div><div class="title">'+t.title+'</div><div class="meta">'+t.type+' · '+t.date+' '+badge+'</div></div><button class="del" onclick="delTopic('+i+')">删除</button></div>';
+    });
+    document.getElementById('topicList').innerHTML = html || '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0">还没有选题</p>';
+    document.getElementById('topicCount').textContent = '('+topics.length+')';
+}
+
+function renderCalendar(){
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var first = new Date(year, month, 1).getDay();
+    var days = new Date(year, month+1, 0).getDate();
+    var html = '<div class="cal-header"><h3>'+year+'年'+(month+1)+'月</h3></div><div class="cal-grid">';
+    var labels = ['日','一','二','三','四','五','六'];
+    labels.forEach(function(l){html += '<div class="day-label">'+l+'</div>'});
+    for(var i=0;i<first;i++){html += '<div></div>'}
+    for(var d=1;d<=days;d++){
+        var cls = 'day';
+        if(d === now.getDate()) cls += ' today';
+        var has = false;
+        calendar.forEach(function(p){if(p.date === year+'-'+(month+1).toString().padStart(2,'0')+'-'+d.toString().padStart(2,'0')) has = true;});
+        if(has) cls += ' has-post';
+        html += '<div class="'+cls+'">'+d+'</div>';
+    }
+    html += '</div>';
+    document.getElementById('calendarView').innerHTML = html;
+    // Calendar posts list
+    var postHtml = '<h2 style="font-size:.9rem;color:var(--primary-dark);margin:.5rem 0">当月排期</h2>';
+    calendar.sort(function(a,b){return a.date > b.date ? 1 : -1});
+    calendar.forEach(function(p,i){
+        var badge = p.status === 'published' ? '<span class="badge badge-published">已发布</span>' : (p.status === 'scheduled' ? '<span class="badge badge-scheduled">已排期</span>' : '<span class="badge badge-draft">草稿</span>');
+        postHtml += '<div class="list-item"><div><div class="title">'+p.title+'</div><div class="meta">'+p.platform+' · '+p.date+' '+badge+'</div></div><button class="del" onclick="delCal('+i+')">删除</button></div>';
+    });
+    document.getElementById('calPosts').innerHTML = postHtml || '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0">暂无排期</p>';
+}
+
+function renderStats(){
+    var totalTopics = topics.length;
+    var published = topics.filter(function(t){return t.status === 'published'}).length;
+    var monthTopics = topics.filter(function(t){return t.date && t.date.indexOf(new Date().toLocaleDateString('zh-CN').slice(0,7)) !== -1}).length;
+    var platforms = {};
+    calendar.forEach(function(p){platforms[p.platform] = (platforms[p.platform]||0)+1});
+    var platformHtml = Object.keys(platforms).map(function(k){return k+':'+platforms[k]}).join(' · ');
+    document.getElementById('statGrid').innerHTML = '<div class="stat-card"><span class="num">'+totalTopics+'</span><span class="label">总选题</span></div><div class="stat-card"><span class="num">'+published+'</span><span class="label">已发布</span></div><div class="stat-card"><span class="num">'+monthTopics+'</span><span class="label">本月新增</span></div><div class="stat-card"><span class="num" style="font-size:1rem">'+platformHtml+'</span><span class="label">平台分布</span></div>';
+    // Recent posts
+    var recentHtml = '';
+    calendar.filter(function(p){return p.status === 'published'}).sort(function(a,b){return a.date < b.date ? 1 : -1}).slice(0,10).forEach(function(p){
+        recentHtml += '<div class="list-item"><div><div class="title">'+p.title+'</div><div class="meta">'+p.platform+' · '+p.date+'</div></div></div>';
+    });
+    document.getElementById('recentPosts').innerHTML = recentHtml || '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0">尚无发布记录</p>';
+}
+
+function startIdea(topic){
+    document.getElementById('topicTitle').value = topic + '：从外企视角深度解析';
+    switchTab('topics');
+    document.getElementById('topicOutline').focus();
+    window.scrollTo({top:200,behavior:'smooth'});
+}
+
+function saveTopic(){
     var title = document.getElementById('topicTitle').value.trim();
     var type = document.getElementById('topicType').value;
     var outline = document.getElementById('topicOutline').value.trim();
-    var ref = document.getElementById('topicRef').value.trim();
-    if (!title) { alert('请输入文章标题'); return; }
+    if(!title){alert('请输入标题');return;}
     topics.unshift({
-        id: Date.now(), title: title, type: type,
-        outline: outline, ref: ref,
-        date: new Date().toLocaleDateString('zh-CN')
+        id: Date.now(), title: title, type: type, outline: outline,
+        date: new Date().toLocaleDateString('zh-CN'), status: 'draft'
     });
     localStorage.setItem('ehs_topics', JSON.stringify(topics));
     renderTopics();
-    document.getElementById('topicTitle').value = '';
-    document.getElementById('topicOutline').value = '';
-    document.getElementById('topicRef').value = '';
+    document.getElementById('topicTitle').value='';
+    document.getElementById('topicOutline').value='';
 }
 
-function renderTopics() {
-    var html = '';
-    topics.forEach(function(t, i) {
-        html += '<div class="list-item"><div><div class="title">' + t.title + '</div><div class="meta">' + t.type + ' · ' + t.date + (t.outline ? ' · ' + t.outline.split('\n').length + '个要点' : '') + '</div></div><button class="del" onclick="delTopic(' + i + ')">删除</button></div>';
-    });
-    document.getElementById('topicList').innerHTML = html || '<p style="font-size:.82rem;color:var(--text-muted);padding:.5rem 0">还没有选题，点击上面的灵感卡片快速创建</p>';
-}
+function delTopic(i){topics.splice(i,1);localStorage.setItem('ehs_topics',JSON.stringify(topics));renderTopics();}
 
-function delTopic(i) {
-    topics.splice(i, 1);
-    localStorage.setItem('ehs_topics', JSON.stringify(topics));
-    renderTopics();
-}
-
-function startIdea(topic) {
-    document.getElementById('topicTitle').value = topic + '：从外企视角深度解析';
-    document.getElementById('topicOutline').focus();
-    window.scrollTo({top: 200, behavior: 'smooth'});
-}
-
-function sendToDistributor() {
+function sendToDistributor(){
     var title = document.getElementById('topicTitle').value.trim();
-    if (!title) { alert('先填写文章标题'); return; }
-    var outline = document.getElementById('topicOutline').value.trim();
-    // Save and open content repurposer
+    if(!title){alert('先填写标题');return;}
     saveTopic();
-    var keywords = title.split(' ').slice(0,3).join(',');
-    window.open('../tools/content-repurposer.html?title=' + encodeURIComponent(title) + '&points=' + encodeURIComponent(outline), '_blank');
+    window.open('../tools/content-repurposer.html?title='+encodeURIComponent(title), '_blank');
 }
+
+function useTemplate(name){
+    var t = templates[name];
+    document.getElementById('topicTitle').value = name.replace('类','') + '类文章处理：从外企角度解析';
+    switchTab('topics');
+    document.getElementById('topicOutline').focus();
+    alert('模板已备用，参考结构：\n'+t.substring(0,100)+'...');
+}
+
+function addCalendar(){
+    var title = document.getElementById('calTitle').value.trim();
+    var platform = document.getElementById('calPlatform').value;
+    var date = document.getElementById('calDate').value;
+    var status = document.getElementById('calStatus').value;
+    if(!title||!date){alert('请填写完整');return;}
+    calendar.push({title:title,platform:platform,date:date,status:status});
+    localStorage.setItem('ehs_calendar',JSON.stringify(calendar));
+    renderCalendar();
+    document.getElementById('calTitle').value='';
+}
+
+function delCal(i){calendar.splice(i,1);localStorage.setItem('ehs_calendar',JSON.stringify(calendar));renderCalendar();}
+
+// Init
+renderIdeas(); renderTemplates(); renderTopics(); renderCalendar(); renderStats();
 </script>
 </body>
 </html>
