@@ -5,23 +5,23 @@
 
 /* ---------- Variables ---------- */
 :root {
-    --bg: #ece8e0;
-    --bg-card: #f5f2eb;
+    --bg: #f5f1ea;
+    --bg-card: #ffffff;
     --bg-warm: #e5e0d6;
-    --primary: #1a4b5c;
-    --primary-dark: #0f3342;
+    --primary: #0d2836;
+    --primary-dark: #071d27;
     --primary-light: #e8f2f5;
-    --accent: #c9954e;
+    --accent: #b8860b;
     --accent-light: #f5ede2;
     --text: #2d3436;
-    --text-secondary: #636e72;
-    --text-muted: #95a5a6;
+    --text-secondary: #4a555a;
+    --text-muted: #7f8c8d;
     --border: #e8e4de;
     --border-light: #e3ddd2;
-    --shadow: rgba(0, 0, 0, 0.06);
-    --shadow-hover: rgba(0, 0, 0, 0.1);
+    --shadow: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
-    --section-py: 5rem;
+    --section-py: 5.5rem;
     --container-w: 1200px;
     --t-fast: 0.2s ease;
     --t-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -65,6 +65,7 @@ ul { list-style: none; }
     color: var(--primary-dark);
     line-height: 1.25;
     margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
 }
 .section-desc {
     font-size: 1.05rem;
@@ -174,7 +175,7 @@ ul { list-style: none; }
     background: var(--bg-card); border: 1px solid var(--border-light);
     border-radius: 10px; padding: 2rem; transition: all var(--t-fast);
 }
-.why-card:hover { border-color: var(--border); box-shadow: 0 8px 24px var(--shadow); transform: translateY(-2px); }
+.why-card:hover { border-color: var(--border); box-shadow: 0 12px 32px var(--shadow); transform: translateY(-3px); }
 .why-icon { width: 44px; height: 44px; margin-bottom: 1rem; color: var(--primary); }
 .why-icon svg { width: 100%; height: 100%; }
 .why-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-dark); }
@@ -287,7 +288,7 @@ ul { list-style: none; }
 .cta-section .btn-primary:hover { background: #d4a373; box-shadow: 0 4px 16px rgba(201,149,78,0.3); }
 
 /* FOOTER */
-.site-footer { padding: 4rem 0 2rem; background: #1a1a2e; color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+.site-footer { padding: 4rem 0 2rem; background: #0d1b1f; color: rgba(255,255,255,0.7); font-size: 0.85rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
 .footer-logo .logo-mark, .footer-logo .logo-sil { color: white; font-size: 1.2rem; }
 .footer-logo .logo-sep { font-size: 1.2rem; }
