@@ -37,6 +37,10 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .tag-standard{background:#dcfce7;color:#16a34a}
 .count{font-size:.78rem;color:var(--text-muted);text-align:center;padding:.5rem}
 @media(max-width:480px){.header h1{font-size:1.4rem}.tabs{flex-wrap:wrap}}
+
+            .dl-btn{display:inline-block;padding:.15rem .5rem;font-size:.7rem;background:var(--primary);color:#fff;border:none;border-radius:3px;cursor:pointer;transition:all .2s}
+            .dl-btn:hover{background:var(--primary-dark)}
+            .item{position:relative}
 </style>
 </head>
 <body>
@@ -83,6 +87,16 @@ function filterRegs(){
     render();
 }
 
+
+function downloadReg(r){
+    var c = '法规名称: ' + r.cn + '\n英文名称: ' + r.en + '\n标准编号: ' + r.num + '\n发布机构: ' + r.auth + '\n发布时间: ' + r.yr + '年\n法规类型: ' + r.type + '\n所属分类: ' + r.cat + '\n国家/地区: ' + r.c + '\n\n说明：完整法规文件请参考官方发布渠道\n下载日期: ' + new Date().toLocaleDateString('zh-CN');
+    var blob = new Blob([c], {type:'text/plain;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = (r.num || r.cn) + '.txt';
+    a.click(); URL.revokeObjectURL(url);
+}
+
 function render(){
     var results = data;
     if(currentTab !== 'all') results = results.filter(function(r){return (currentTab === '中国' && r.c === '中国') || (currentTab === '国际' && r.c === '国际')});
@@ -91,12 +105,13 @@ function render(){
         return c.indexOf(currentQuery) !== -1;
     });
     document.getElementById('count').textContent = results.length + ' / ' + data.length + ' 条法规';
-    document.getElementById('list').innerHTML = results.map(function(r){
+    document.getElementById('list').innerHTML = results.map(function(r, idx){
         var tag = r.c === '中国' ? '<span class="tag tag-cn">中国</span>' : '<span class="tag tag-intl">国际</span>';
         var typeTag = '';
         if(r.type.indexOf('法') !== -1) typeTag = '<span class="tag tag-law">' + r.type + '</span>';
         else if(r.type.indexOf('标准') !== -1) typeTag = '<span class="tag tag-standard">' + r.type + '</span>';
-        return '<div class="item"><h3>' + r.cn + '</h3><div class="meta">' + tag + typeTag + '<span>' + r.num + '</span><span>' + r.auth + '</span><span>' + r.yr + '年</span></div><div class="desc">' + r.en + '</div></div>';
+        var dl = '<button class="dl-btn" onclick="downloadReg(results[' + idx + '])">下载</button>';
+        return '<div class="item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><h3>' + r.cn + '</h3><div class="meta">' + tag + typeTag + '<span>' + r.num + '</span><span>' + r.auth + '</span><span>' + r.yr + '年</span></div><div class="desc">' + r.en + '</div></div><div style="flex-shrink:0;margin-left:.5rem">' + dl + '</div></div></div>';
     }).join('');
 }
 </script>
