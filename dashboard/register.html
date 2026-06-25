@@ -118,6 +118,7 @@ function doLogin(e) {
     btn.disabled = true; btn.textContent = '登录中...';
     var email = document.getElementById('loginEmail').value;
     var pwd = document.getElementById('loginPwd').value;
+    try {
     var result = login(email, pwd);
     if (result.ok) {
         showMsg('登录成功', 'success');
@@ -125,6 +126,10 @@ function doLogin(e) {
     } else {
         btn.disabled = false; btn.textContent = '登录';
         showMsg(result.msg, 'error');
+    }
+    } catch(e) {
+        btn.disabled = false; btn.textContent = '登录';
+        showMsg('登录出错：' + e.message, 'error');
     }
 }
 
@@ -135,6 +140,7 @@ function doRegister(e) {
     var name = document.getElementById('regName').value;
     var email = document.getElementById('regEmail').value;
     var pwd = document.getElementById('regPwd').value;
+    try {
     var result = register(email, pwd, name);
     if (result.ok) {
         showMsg(result.msg, 'success');
@@ -144,6 +150,10 @@ function doRegister(e) {
         btn.disabled = false; btn.textContent = '注册';
         showMsg(result.msg, 'error');
     }
+    } catch(e) {
+        btn.disabled = false; btn.textContent = '注册';
+        showMsg('注册出错：' + e.message, 'error');
+    }
 }
 
 function doActivate() {
@@ -151,6 +161,7 @@ function doActivate() {
     if (!code) { showMsg('请输入激活码', 'error'); return; }
     var btn = document.querySelector('.vip-code-wrap button');
     btn.disabled = true; btn.textContent = '激活中...';
+    try {
     var s = getSession();
     if (!s) { showMsg('请先登录后再激活VIP', 'error'); return; }
     var result = activateVip(code, s.email);
@@ -160,6 +171,10 @@ function doActivate() {
     } else {
         btn.disabled = false; btn.textContent = '激活';
         showMsg(result.msg, 'error');
+    }
+    } catch(e) {
+        btn.disabled = false; btn.textContent = '激活';
+        showMsg('激活出错：' + e.message, 'error');
     }
 }
 </script>
