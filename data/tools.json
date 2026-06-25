@@ -16,7 +16,7 @@
     {
       "name": "Pre-Task-Planning-Template.pdf",
       "path": "Pre-Task-Planning-Template.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -55,7 +55,7 @@
     {
       "name": "ladder-osha-compliance-checklist 中文.pdf",
       "path": "ladder-osha-compliance-checklist 中文.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": true,
       "description": "其他工具 · PDF格式 · 中英双语",
@@ -121,7 +121,7 @@
     {
       "name": "ladder-osha-compliance-checklist.pdf",
       "path": "ladder-osha-compliance-checklist.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -186,7 +186,7 @@
     {
       "name": "紫皮书 PGS3-1999-v0.1-quantitative-risk-assessment.pdf",
       "path": "紫皮书 PGS3-1999-v0.1-quantitative-risk-assessment.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -225,7 +225,7 @@
     {
       "name": "胜任力矩阵Competency Matrix  .xls",
       "path": "胜任力矩阵Competency Matrix  .xls",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -238,7 +238,7 @@
     {
       "name": "IOGP-459-1-Life-Saving-Rules-Start-Work-Checks.pdf",
       "path": "IOGP-459-1-Life-Saving-Rules-Start-Work-Checks.pdf",
-      "category": "其他",
+      "category": "工艺安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -278,7 +278,7 @@
     {
       "name": "how_to_build_competency_matrix_zQG9meCTvm(OCR).pdf",
       "path": "how_to_build_competency_matrix_zQG9meCTvm(OCR).pdf",
-      "category": "其他",
+      "category": "培训课件",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -291,7 +291,7 @@
     {
       "name": "Lean-and-CI-Terminology-List.pdf",
       "path": "Lean-and-CI-Terminology-List.pdf",
-      "category": "其他",
+      "category": "培训课件",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -304,7 +304,7 @@
     {
       "name": "Incident management-事故管理 参考.pdf",
       "path": "Incident management-事故管理 参考.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -357,7 +357,7 @@
     {
       "name": "Risk Assessment of social events.docx",
       "path": "Risk Assessment of social events.docx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -436,7 +436,7 @@
     {
       "name": "Methodology for the Determination of a Process Safety Culture (1).pdf",
       "path": "Methodology for the Determination of a Process Safety Culture (1).pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -449,7 +449,7 @@
     {
       "name": "ASMT_17_ALARP-Concept_v2.pdf",
       "path": "ASMT_17_ALARP-Concept_v2.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -488,7 +488,7 @@
     {
       "name": "stair-platform-osha-compliance-checklist_中文.docx",
       "path": "stair-platform-osha-compliance-checklist_中文.docx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "word",
       "bilingual": true,
       "description": "其他工具 · WORD格式 · 中英双语",
@@ -515,7 +515,7 @@
     {
       "name": "工作表 在 Good Maintenance Practice 20190829.et",
       "path": "工作表 在 Good Maintenance Practice 20190829.et",
-      "category": "其他",
+      "category": "管理体系",
       "format": "其他",
       "bilingual": false,
       "description": "其他工具 · 其他格式",
@@ -579,7 +579,7 @@
     {
       "name": "Manual handling assessment charts.pdf",
       "path": "Manual handling assessment charts.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -631,7 +631,7 @@
     {
       "name": "IOGP-456-Process-Safety-Recommended-practice-on-key-performance-indicators 中文.pdf",
       "path": "IOGP-456-Process-Safety-Recommended-practice-on-key-performance-indicators 中文.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": true,
       "description": "其他工具 · PDF格式 · 中英双语",
@@ -763,7 +763,7 @@
     {
       "name": "ASMT_17_ALARP-Concept_v2_中文.pdf",
       "path": "ASMT_17_ALARP-Concept_v2_中文.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": true,
       "description": "其他工具 · PDF格式 · 中英双语",
@@ -777,7 +777,7 @@
     {
       "name": "Overriding Permit绕开安全设施许可证.docx",
       "path": "Overriding Permit绕开安全设施许可证.docx",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -790,7 +790,7 @@
     {
       "name": "A&D log EHS Meeting ZSXQ.xlsx",
       "path": "A&D log EHS Meeting ZSXQ.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -816,7 +816,7 @@
     {
       "name": "pre-use-inspection-mewp-combined-sup-137-e-en.pdf",
       "path": "pre-use-inspection-mewp-combined-sup-137-e-en.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -829,7 +829,7 @@
     {
       "name": "ladder-safety-inspection-checklist-sept.-2025.pdf",
       "path": "ladder-safety-inspection-checklist-sept.-2025.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -842,7 +842,7 @@
     {
       "name": "工作表 在 Good Maintenance Practice 20190829.xlsx",
       "path": "工作表 在 Good Maintenance Practice 20190829.xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -933,7 +933,7 @@
     {
       "name": "how_to_build_competency_matrix_zQG9meCTvm(OCR).xlsx",
       "path": "how_to_build_competency_matrix_zQG9meCTvm(OCR).xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1038,7 +1038,7 @@
     {
       "name": "ladder-osha-compliance-checklist 中文.docx",
       "path": "ladder-osha-compliance-checklist 中文.docx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "word",
       "bilingual": true,
       "description": "其他工具 · WORD格式 · 中英双语",
@@ -1065,7 +1065,7 @@
     {
       "name": "人类行为与事故关系的ABC模型.docx",
       "path": "人类行为与事故关系的ABC模型.docx",
-      "category": "其他",
+      "category": "根源分析",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -1182,7 +1182,7 @@
     {
       "name": "679042.WashingtonStatePSMforRefineries.POSTER.Rev_.2024.03.23.pdf",
       "path": "679042.WashingtonStatePSMforRefineries.POSTER.Rev_.2024.03.23.pdf",
-      "category": "其他",
+      "category": "工艺安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1195,7 +1195,7 @@
     {
       "name": "风险点登记台账.xlsx",
       "path": "风险点登记台账.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1288,7 +1288,7 @@
     {
       "name": "Safety Walk and Talk TOR.pdf",
       "path": "Safety Walk and Talk TOR.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1314,7 +1314,7 @@
     {
       "name": "上锁，挂牌，试验程序XQ.pdf",
       "path": "上锁，挂牌，试验程序XQ.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1327,7 +1327,7 @@
     {
       "name": "ccps_process_safety_metrics_-_v4.1.pdf",
       "path": "ccps_process_safety_metrics_-_v4.1.pdf",
-      "category": "其他",
+      "category": "工艺安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1353,7 +1353,7 @@
     {
       "name": "Human_Organizational_Performance_Takeaway.pdf",
       "path": "Human_Organizational_Performance_Takeaway.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1392,7 +1392,7 @@
     {
       "name": "GHS Rev10c_0.pdf",
       "path": "GHS Rev10c_0.pdf",
-      "category": "其他",
+      "category": "工艺安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1458,7 +1458,7 @@
     {
       "name": "EHS文化调查问卷 EHS Culture Survey.docx",
       "path": "EHS文化调查问卷 EHS Culture Survey.docx",
-      "category": "其他",
+      "category": "行为安全",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -1523,7 +1523,7 @@
     {
       "name": "Pre-use-inspection-MEWP.xlsx",
       "path": "Pre-use-inspection-MEWP.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1576,7 +1576,7 @@
     {
       "name": "上锁，挂牌，试验程序XQ.docx",
       "path": "上锁，挂牌，试验程序XQ.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -1630,7 +1630,7 @@
     {
       "name": "People Performance Management Toolkit (06.04.22) new.pdf",
       "path": "People Performance Management Toolkit (06.04.22) new.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1682,7 +1682,7 @@
     {
       "name": "Safe Work Permit安全作业许可程序.docx",
       "path": "Safe Work Permit安全作业许可程序.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -1695,7 +1695,7 @@
     {
       "name": "人工搬运风险评估 评分表.xlsx",
       "path": "人工搬运风险评估 评分表.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1721,7 +1721,7 @@
     {
       "name": "Application_of_ALARP_to_Radiological_Risk.pdf",
       "path": "Application_of_ALARP_to_Radiological_Risk.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1799,7 +1799,7 @@
     {
       "name": "how_to_build_competency_matrix_zQG9meCTvm.xlsx",
       "path": "how_to_build_competency_matrix_zQG9meCTvm.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -1891,7 +1891,7 @@
     {
       "name": "GHS Rev10e.pdf",
       "path": "GHS Rev10e.pdf",
-      "category": "其他",
+      "category": "工艺安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1917,7 +1917,7 @@
     {
       "name": "Methodology for the Determination of a Process Safety Culture.pdf",
       "path": "Methodology for the Determination of a Process Safety Culture.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1957,7 +1957,7 @@
     {
       "name": "MEWP-Pre-Use-Inspection.pdf",
       "path": "MEWP-Pre-Use-Inspection.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1970,7 +1970,7 @@
     {
       "name": "过程安全衡量指标指南 领先指标滞后指标2022.pdf",
       "path": "过程安全衡量指标指南 领先指标滞后指标2022.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -1983,7 +1983,7 @@
     {
       "name": "EHS_文化成熟度测量表_EHS_Culture_Maturity_Matrix.docx",
       "path": "EHS_文化成熟度测量表_EHS_Culture_Maturity_Matrix.docx",
-      "category": "其他",
+      "category": "行为安全",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -1996,7 +1996,7 @@
     {
       "name": "BBS-Observation-Checklist.xlsx",
       "path": "BBS-Observation-Checklist.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2009,7 +2009,7 @@
     {
       "name": "ladder-checklist.pdf",
       "path": "ladder-checklist.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2062,7 +2062,7 @@
     {
       "name": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.pdf",
       "path": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.pdf",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2088,7 +2088,7 @@
     {
       "name": "stair-platform-osha-compliance-checklist.pdf",
       "path": "stair-platform-osha-compliance-checklist.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2101,7 +2101,7 @@
     {
       "name": "Human-Performance.pdf",
       "path": "Human-Performance.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2114,7 +2114,7 @@
     {
       "name": "Standard Operating Procedure 标准作业流程- SOP.docx",
       "path": "Standard Operating Procedure 标准作业流程- SOP.docx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2127,7 +2127,7 @@
     {
       "name": "API 754_Aug 2021.pdf",
       "path": "API 754_Aug 2021.pdf",
-      "category": "其他",
+      "category": "工艺安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2153,7 +2153,7 @@
     {
       "name": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.docx",
       "path": "关键EHS设备绕开许可_EHS_Device_Bypass_Permit.docx",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2205,7 +2205,7 @@
     {
       "name": "IEC_FDIS_31010_Risk_management.pdf",
       "path": "IEC_FDIS_31010_Risk_management.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2218,7 +2218,7 @@
     {
       "name": "Guide for MEWP 移动升降平台使用指南.pdf",
       "path": "Guide for MEWP 移动升降平台使用指南.pdf",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2257,7 +2257,7 @@
     {
       "name": "monday-activity-dupont-safety-culture-curve-worksheet.pdf",
       "path": "monday-activity-dupont-safety-culture-curve-worksheet.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2270,7 +2270,7 @@
     {
       "name": "管理层 PMD KPI.xlsx",
       "path": "管理层 PMD KPI.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2283,7 +2283,7 @@
     {
       "name": "绩效发展计划-PERFORMANCE DEVELOPMENT PLAN TEMPLAT.docx",
       "path": "绩效发展计划-PERFORMANCE DEVELOPMENT PLAN TEMPLAT.docx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2296,7 +2296,7 @@
     {
       "name": "Methodology for the Determination of a Process Safety Culture (1)_translated.pdf",
       "path": "Methodology for the Determination of a Process Safety Culture (1)_translated.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2309,7 +2309,7 @@
     {
       "name": "Cause-and-Effect-FishboneDiagram.xlsx",
       "path": "Cause-and-Effect-FishboneDiagram.xlsx",
-      "category": "其他",
+      "category": "根源分析",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2322,7 +2322,7 @@
     {
       "name": "naem-webinar-human-organizational-performance-safety-management.pdf",
       "path": "naem-webinar-human-organizational-performance-safety-management.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2387,7 +2387,7 @@
     {
       "name": "Pre-use-inspection-MEWP 使用前检查：移动升降工作平台.xlsx",
       "path": "Pre-use-inspection-MEWP 使用前检查：移动升降工作平台.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2426,7 +2426,7 @@
     {
       "name": "《Minimize the Risks of Flammable Materials》.pdf",
       "path": "《Minimize the Risks of Flammable Materials》.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2478,7 +2478,7 @@
     {
       "name": "Maintenance Plan 停车检修计划.xlsx",
       "path": "Maintenance Plan 停车检修计划.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2491,7 +2491,7 @@
     {
       "name": "ladder-osha-compliance-checklist 中文.xlsx",
       "path": "ladder-osha-compliance-checklist 中文.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": true,
       "description": "其他工具 · EXCEL格式 · 中英双语",
@@ -2518,7 +2518,7 @@
     {
       "name": "Methodology for the Determination of a Process Safety Culture (1)_billingual.pdf",
       "path": "Methodology for the Determination of a Process Safety Culture (1)_billingual.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2544,7 +2544,7 @@
     {
       "name": "HSE Global Action Plan.xlsx",
       "path": "HSE Global Action Plan.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2583,7 +2583,7 @@
     {
       "name": "45.18_IA_Cklist_Sample.pdf",
       "path": "45.18_IA_Cklist_Sample.pdf",
-      "category": "其他",
+      "category": "培训课件",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2661,7 +2661,7 @@
     {
       "name": "安全文化培育导则.pdf",
       "path": "安全文化培育导则.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2687,7 +2687,7 @@
     {
       "name": "how_to_build_competency_matrix_zQG9meCTvm(OCR).docx",
       "path": "how_to_build_competency_matrix_zQG9meCTvm(OCR).docx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2700,7 +2700,7 @@
     {
       "name": "Project Risk and Opportunities 项目风险与机遇分析表.xlsx",
       "path": "Project Risk and Opportunities 项目风险与机遇分析表.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -2791,7 +2791,7 @@
     {
       "name": "KIER-Pre-Task-Planning-Work-English-1.pdf",
       "path": "KIER-Pre-Task-Planning-Work-English-1.pdf",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2818,7 +2818,7 @@
     {
       "name": "stair-platform-osha-compliance-checklist_中文.pdf",
       "path": "stair-platform-osha-compliance-checklist_中文.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": true,
       "description": "其他工具 · PDF格式 · 中英双语",
@@ -2832,7 +2832,7 @@
     {
       "name": "HFC2019 - Rob Fisher - An Introduction to Human and Organizational Performance.pdf",
       "path": "HFC2019 - Rob Fisher - An Introduction to Human and Organizational Performance.pdf",
-      "category": "其他",
+      "category": "人因与组织绩效",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2845,7 +2845,7 @@
     {
       "name": "Plan list.docx",
       "path": "Plan list.docx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2858,7 +2858,7 @@
     {
       "name": "GBZT 229.3—2025职业病危害作业分级标准 第3部分：高温作业 2026-02-01 实施.pdf",
       "path": "GBZT 229.3—2025职业病危害作业分级标准 第3部分：高温作业 2026-02-01 实施.pdf",
-      "category": "其他",
+      "category": "管理体系",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -2911,7 +2911,7 @@
     {
       "name": "Incident management-事故管理 参考.docx",
       "path": "Incident management-事故管理 参考.docx",
-      "category": "其他",
+      "category": "根源分析",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -2937,7 +2937,7 @@
     {
       "name": "EHS  tool list.xlsx",
       "path": "EHS  tool list.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -3004,7 +3004,7 @@
     {
       "name": "competency_matrix 能力矩阵.xlsx",
       "path": "competency_matrix 能力矩阵.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -3251,7 +3251,7 @@
     {
       "name": "关于优化“外企EHS工具库”及开发“外企EHS培训库”的意见征集－默认报告.docx",
       "path": "02 外企培训库/杂项/关于优化“外企EHS工具库”及开发“外企EHS培训库”的意见征集－默认报告.docx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -3290,7 +3290,7 @@
     {
       "name": "pre-use-inspection-mewp-combined-sup-137-e-en.xlsx",
       "path": "02 外企培训库/杂项/pre-use-inspection-mewp-combined-sup-137-e-en.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4069,7 +4069,7 @@
     {
       "name": "Overriding safety devices permit绕开安全设施许可表.docx",
       "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/Overriding safety devices permit绕开安全设施许可表.docx",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -4082,7 +4082,7 @@
     {
       "name": "安全设施清单-淄博 Safety equipment list -overriding.xlsx",
       "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全设施清单-淄博 Safety equipment list -overriding.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4200,7 +4200,7 @@
     {
       "name": "安全防护-Maintenance Du.xlsx",
       "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全防护-Maintenance Du.xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4213,7 +4213,7 @@
     {
       "name": "安全设施清单-Safety critical equipment list.xlsx",
       "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/安全设施清单-Safety critical equipment list.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4226,7 +4226,7 @@
     {
       "name": "Safe Work Permit安全工作许可.docx",
       "path": "02 外企培训库/Overriding safety devices/绕开安全设置Overriding Safety Device/Safe Work Permit安全工作许可.docx",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -4393,7 +4393,7 @@
     {
       "name": "Performance Assessment Tool.xlsx",
       "path": "Insight EHS/Performance Assessment Tool.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4419,7 +4419,7 @@
     {
       "name": "Periodic Lockout Inspection Template (1).docx",
       "path": "Insight EHS/Periodic Lockout Inspection Template (1).docx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -4432,7 +4432,7 @@
     {
       "name": "Incident Investigation Report Template.docx",
       "path": "Insight EHS/Incident Investigation Report Template.docx",
-      "category": "其他",
+      "category": "根源分析",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -4458,7 +4458,7 @@
     {
       "name": "Extinguisher Audit Form.xlsx",
       "path": "Insight EHS/Extinguisher Audit Form.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4471,7 +4471,7 @@
     {
       "name": "Emergency Lighting & Exit Sign Checklist Inspection Template.xlsx",
       "path": "Insight EHS/Emergency Lighting & Exit Sign Checklist Inspection Template.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4549,7 +4549,7 @@
     {
       "name": "EHS Culture eBook - Final.pdf",
       "path": "Insight EHS/EHS Culture eBook - Final.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -4587,7 +4587,7 @@
     {
       "name": "Emergency Exit Route Checklist Plan Template.xlsx",
       "path": "Insight EHS/Emergency Exit Route Checklist Plan Template.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4600,7 +4600,7 @@
     {
       "name": "Lockout Inspection Question Set.xlsx",
       "path": "Insight EHS/Lockout Inspection Question Set.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4651,7 +4651,7 @@
     {
       "name": "Monthly Extinguisher Inspection Form & How To.xlsx",
       "path": "Insight EHS/Monthly Extinguisher Inspection Form & How To.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4677,7 +4677,7 @@
     {
       "name": "Lockout-Tagout Procedure (Template).xlsx",
       "path": "Insight EHS/Lockout-Tagout Procedure (Template).xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -4715,7 +4715,7 @@
     {
       "name": "Meeting Minutes Goal Tracking Template.docx",
       "path": "Insight EHS/Meeting Minutes Goal Tracking Template.docx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -4885,7 +4885,7 @@
     {
       "name": "危险化学品典型事故案例分析.pdf",
       "path": "培训课件23.8/危险化学品典型事故案例分析.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -4937,7 +4937,7 @@
     {
       "name": "牢记国之大者 主动自发落实主体责任 织密织牢危化品安全风险防控网.pdf",
       "path": "培训课件23.8/牢记国之大者 主动自发落实主体责任 织密织牢危化品安全风险防控网.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -4950,7 +4950,7 @@
     {
       "name": "聚焦“一防三提升” 强化化工和危险化学品安全风险防控.pdf",
       "path": "培训课件23.8/聚焦“一防三提升” 强化化工和危险化学品安全风险防控.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -4989,7 +4989,7 @@
     {
       "name": "Takecare_Chinese_Manual_De-sensitized.xlsx",
       "path": "Take Care 小册子/Takecare_Chinese_Manual_De-sensitized.xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5002,7 +5002,7 @@
     {
       "name": "Takecare_Chinese_Manual 当心观察 中文.xlsx",
       "path": "Take Care 小册子/Takecare_Chinese_Manual 当心观察 中文.xlsx",
-      "category": "其他",
+      "category": "管理体系",
       "format": "excel",
       "bilingual": true,
       "description": "其他工具 · EXCEL格式 · 中英双语",
@@ -5016,7 +5016,7 @@
     {
       "name": "lpb267_pg07变革管理.pdf",
       "path": "IchemE incidents/lpb267_pg07变革管理.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5029,7 +5029,7 @@
     {
       "name": "lpb253pg23危险识别——电力工程师能否从流程工业中汲取经验？.pdf",
       "path": "IchemE incidents/lpb253pg23危险识别——电力工程师能否从流程工业中汲取经验？.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": true,
       "description": "其他工具 · PDF格式 · 中英双语",
@@ -5043,7 +5043,7 @@
     {
       "name": "lpb267_pg26成功管理涉及三家关闭化工厂的变革.pdf",
       "path": "IchemE incidents/lpb267_pg26成功管理涉及三家关闭化工厂的变革.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5056,7 +5056,7 @@
     {
       "name": "lpb206pg3_5邦斯菲尔德.pdf",
       "path": "IchemE incidents/lpb206pg3_5邦斯菲尔德.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5069,7 +5069,7 @@
     {
       "name": "lpb251_pg18切尔诺贝利30周年.pdf",
       "path": "IchemE incidents/lpb251_pg18切尔诺贝利30周年.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5082,7 +5082,7 @@
     {
       "name": "lpb264_pg09调查与偏见.pdf",
       "path": "IchemE incidents/lpb264_pg09调查与偏见.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5095,7 +5095,7 @@
     {
       "name": "boilover-4-2.pdf",
       "path": "IchemE incidents/boilover-4-2.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5108,7 +5108,7 @@
     {
       "name": "lpb272online Loss Prevention Bullet.pdf",
       "path": "IchemE incidents/lpb272online Loss Prevention Bullet.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5121,7 +5121,7 @@
     {
       "name": "lpb294_pg02重访博帕尔.pdf",
       "path": "IchemE incidents/lpb294_pg02重访博帕尔.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5134,7 +5134,7 @@
     {
       "name": "lpb237_p21弗利克斯伯里.pdf",
       "path": "IchemE incidents/lpb237_p21弗利克斯伯里.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5147,7 +5147,7 @@
     {
       "name": "lpb294_pg05事故后补救和去污：对博帕尔的呼吁.pdf",
       "path": "IchemE incidents/lpb294_pg05事故后补救和去污：对博帕尔的呼吁.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5160,7 +5160,7 @@
     {
       "name": "lpb284_pg02 贝鲁特港.pdf",
       "path": "IchemE incidents/lpb284_pg02 贝鲁特港.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5186,7 +5186,7 @@
     {
       "name": "lpb295_pg02重温乔纳瓦号氨气罐爆炸.pdf",
       "path": "IchemE incidents/lpb295_pg02重温乔纳瓦号氨气罐爆炸.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5199,7 +5199,7 @@
     {
       "name": "lpb269_pg25图卢兹事故.pdf",
       "path": "IchemE incidents/lpb269_pg25图卢兹事故.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5212,7 +5212,7 @@
     {
       "name": "env_agency_issue_final.pdf",
       "path": "IchemE incidents/env_agency_issue_final.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5225,7 +5225,7 @@
     {
       "name": "lpb192pg3-12德克萨斯城.pdf",
       "path": "IchemE incidents/lpb192pg3-12德克萨斯城.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5238,7 +5238,7 @@
     {
       "name": "krausmannnew.pdf",
       "path": "IchemE incidents/krausmannnew.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5251,7 +5251,7 @@
     {
       "name": "lpb251_pg32硝酸铵风险与安全管理.pdf",
       "path": "IchemE incidents/lpb251_pg32硝酸铵风险与安全管理.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5264,7 +5264,7 @@
     {
       "name": "lpb260_pg06哈姆雷特鸡肉加工.pdf",
       "path": "IchemE incidents/lpb260_pg06哈姆雷特鸡肉加工.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5277,7 +5277,7 @@
     {
       "name": "lpb251_pg26挑战者号 航天飞机.pdf",
       "path": "IchemE incidents/lpb251_pg26挑战者号 航天飞机.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5290,7 +5290,7 @@
     {
       "name": "lpb242_pg15涉及化肥的重大事故.pdf",
       "path": "IchemE incidents/lpb242_pg15涉及化肥的重大事故.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5303,7 +5303,7 @@
     {
       "name": "lpb261_pg03Piper AIpar what have we learn.pdf",
       "path": "IchemE incidents/lpb261_pg03Piper AIpar what have we learn.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5316,7 +5316,7 @@
     {
       "name": "lpb254pg23应急准备方面的经验总结.pdf",
       "path": "IchemE incidents/lpb254pg23应急准备方面的经验总结.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5329,7 +5329,7 @@
     {
       "name": "lpb262_pg04朗福德的教训.pdf",
       "path": "IchemE incidents/lpb262_pg04朗福德的教训.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5342,7 +5342,7 @@
     {
       "name": "lpb251_pg14塞维索 40年.pdf",
       "path": "IchemE incidents/lpb251_pg14塞维索 40年.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5355,7 +5355,7 @@
     {
       "name": "lpb294online.pdf",
       "path": "IchemE incidents/lpb294online.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5368,7 +5368,7 @@
     {
       "name": "lpb264_pg24棘手的问题 波士顿糖蜜泄露.pdf",
       "path": "IchemE incidents/lpb264_pg24棘手的问题 波士顿糖蜜泄露.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5381,7 +5381,7 @@
     {
       "name": "lpb270_pg02事故分析的缺陷.pdf",
       "path": "IchemE incidents/lpb270_pg02事故分析的缺陷.pdf",
-      "category": "其他",
+      "category": "根源分析",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5628,7 +5628,7 @@
     {
       "name": "Safety_Maturity_The_Path_to_Excellence.pdf",
       "path": "Insight mature/Notebook LM 安全文化成熟度模型培训素材/安全文化成熟度模型-Download/Safety_Maturity_The_Path_to_Excellence.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5641,7 +5641,7 @@
     {
       "name": "Proactive_To_Safety_Excellence.pdf",
       "path": "Insight mature/Notebook LM 安全文化成熟度模型培训素材/安全文化成熟度模型-Download/Proactive_To_Safety_Excellence.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5654,7 +5654,7 @@
     {
       "name": "Safety_Culture_Maturity.pdf",
       "path": "Insight mature/Notebook LM 安全文化成熟度模型培训素材/安全文化成熟度模型-Download/Safety_Culture_Maturity.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5667,7 +5667,7 @@
     {
       "name": "Safety_Culture_Upgrade_Maturity_Model.pdf",
       "path": "Insight mature/Notebook LM 安全文化成熟度模型培训素材/安全文化成熟度模型-Download/Safety_Culture_Upgrade_Maturity_Model.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5680,7 +5680,7 @@
     {
       "name": "Safety_Culture_Level_Five.pdf",
       "path": "Insight mature/Notebook LM 安全文化成熟度模型培训素材/安全文化成熟度模型-Download/Safety_Culture_Level_Five.pdf",
-      "category": "其他",
+      "category": "行为安全",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5706,7 +5706,7 @@
     {
       "name": "重大事故隐患判定标准Checklist.xlsx",
       "path": "01 外企EHS工具箱/重大事故隐患判定标准Checklist.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5745,7 +5745,7 @@
     {
       "name": "PMD-Performance Management 中英.xlsx",
       "path": "01 外企EHS工具箱/PMD-Performance Management 中英.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": true,
       "description": "其他工具 · EXCEL格式 · 中英双语",
@@ -5759,7 +5759,7 @@
     {
       "name": "企业级_EHS_Leading_指标管理系统.xlsx",
       "path": "01 外企EHS工具箱/企业级_EHS_Leading_指标管理系统.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5772,7 +5772,7 @@
     {
       "name": "PMD_Performance_Management_2025_Optimized.xlsx",
       "path": "01 外企EHS工具箱/PMD_Performance_Management_2025_Optimized.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5785,7 +5785,7 @@
     {
       "name": "企业级_EHS_Leading_指标管理系统_交付版.xlsx",
       "path": "01 外企EHS工具箱/企业级_EHS_Leading_指标管理系统_交付版.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5824,7 +5824,7 @@
     {
       "name": "杜邦安全文化成熟度详细评估表_增强版.xlsx",
       "path": "01 外企EHS工具箱/杜邦安全文化成熟度详细评估表_增强版.xlsx",
-      "category": "其他",
+      "category": "行为安全",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5864,7 +5864,7 @@
     {
       "name": "EHS_Leading_Indicators_Dashboard_Template.xlsx",
       "path": "01 外企EHS工具箱/EHS_Leading_Indicators_Dashboard_Template.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5877,7 +5877,7 @@
     {
       "name": "BBS-Observation-Checklist.pdf",
       "path": "01 外企EHS工具箱/BBS-Observation-Checklist.pdf",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -5890,7 +5890,7 @@
     {
       "name": "化工企业Lagging安全指标自动计算工具_Bilingual.xlsx",
       "path": "01 外企EHS工具箱/化工企业Lagging安全指标自动计算工具_Bilingual.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5903,7 +5903,7 @@
     {
       "name": "Office Ergonomics Self-Assessment Checklist.xlsx",
       "path": "01 外企EHS工具箱/Office Ergonomics Self-Assessment Checklist.xlsx",
-      "category": "其他",
+      "category": "隐患排查",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -5969,7 +5969,7 @@
     {
       "name": "Project_dashboard_PM.com_template-1-fx-v3.xls",
       "path": "Project Template/Project_dashboard_PM.com_template-1-fx-v3.xls",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6034,7 +6034,7 @@
     {
       "name": "Free_Equipment_Inventory_List_ProjectManager_WLNK.xlsx",
       "path": "Project Template/Free_Equipment_Inventory_List_ProjectManager_WLNK.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6060,7 +6060,7 @@
     {
       "name": "Free_Resource_Plan_Template_ProjectManager_WLNK.xlsx",
       "path": "Project Template/Free_Resource_Plan_Template_ProjectManager_WLNK.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6125,7 +6125,7 @@
     {
       "name": "Control-Plan-LearnLeanSigma.xlsx",
       "path": "Tools 6sigma/Control-Plan-LearnLeanSigma.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6151,7 +6151,7 @@
     {
       "name": "Risk_Assessment_Matrix.xlsx",
       "path": "Tools 6sigma/Risk_Assessment_Matrix.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6190,7 +6190,7 @@
     {
       "name": "Risk-Assessment-Template.xlsx",
       "path": "Tools 6sigma/Risk-Assessment-Template.xlsx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6229,7 +6229,7 @@
     {
       "name": "EHSS_North__America_Business_Critical_EHS_Device_Bypass_Permit.docx",
       "path": "Tools 6sigma/EHSS_North__America_Business_Critical_EHS_Device_Bypass_Permit.docx",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -6412,7 +6412,7 @@
     {
       "name": "Cause-and-Effect-FishboneDiagram-Excel-Format.xlsx",
       "path": "Tools 6sigma/Cause-and-Effect-FishboneDiagram-Excel-Format.xlsx",
-      "category": "其他",
+      "category": "根源分析",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6451,7 +6451,7 @@
     {
       "name": "Cause-and-Effect-FishboneDiagram-Excel-Format - 副本.xlsx",
       "path": "Tools 6sigma/Cause-and-Effect-FishboneDiagram-Excel-Format - 副本.xlsx",
-      "category": "其他",
+      "category": "根源分析",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6516,7 +6516,7 @@
     {
       "name": "EHSS_North__America_Business_Critical_EHS_Device_Bypass_Permit.xlsx",
       "path": "Tools 6sigma/EHSS_North__America_Business_Critical_EHS_Device_Bypass_Permit.xlsx",
-      "category": "其他",
+      "category": "LOTO/作业许可",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6594,7 +6594,7 @@
     {
       "name": "Communication-Plan.xlsx",
       "path": "Tools 6sigma/Communication-Plan.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6659,7 +6659,7 @@
     {
       "name": "Monitoring-and-Response-Plan-LLS.xlsx",
       "path": "Tools 6sigma/Monitoring-and-Response-Plan-LLS.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6698,7 +6698,7 @@
     {
       "name": "Action-Todo-List-Learnleansigma.xlsx",
       "path": "Tools 6sigma/Action-Todo-List-Learnleansigma.xlsx",
-      "category": "其他",
+      "category": "培训课件",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6789,7 +6789,7 @@
     {
       "name": "LLS-Data-Collection-Plan-LearnLeanSigma.xlsx",
       "path": "Tools 6sigma/LLS-Data-Collection-Plan-LearnLeanSigma.xlsx",
-      "category": "其他",
+      "category": "绩效指标",
       "format": "excel",
       "bilingual": false,
       "description": "其他工具 · EXCEL格式",
@@ -6867,7 +6867,7 @@
     {
       "name": "risk assessment template.docx",
       "path": "RAMS risk assessment method statement/risk assessment template.docx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -6880,7 +6880,7 @@
     {
       "name": "method statement template.docx",
       "path": "RAMS risk assessment method statement/method statement template.docx",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "word",
       "bilingual": false,
       "description": "其他工具 · WORD格式",
@@ -6893,7 +6893,7 @@
     {
       "name": "Risk Assessment Method Statement.pdf",
       "path": "RAMS risk assessment method statement/Risk Assessment Method Statement.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -6906,7 +6906,7 @@
     {
       "name": "Risk-Assessment-Method-Statement (2).zip",
       "path": "RAMS risk assessment method statement/Risk-Assessment-Method-Statement (2).zip",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "其他",
       "bilingual": false,
       "description": "其他工具 · 其他格式",
@@ -6918,7 +6918,7 @@
     {
       "name": "Risk Assessment and Method Statement.pdf",
       "path": "RAMS risk assessment method statement/Risk Assessment and Method Statement.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -6931,7 +6931,7 @@
     {
       "name": "Example-RAMS.pdf",
       "path": "RAMS risk assessment method statement/Example-RAMS.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -6944,7 +6944,7 @@
     {
       "name": "Risk-Assessment-and-Method-Statement.zip",
       "path": "RAMS risk assessment method statement/Risk-Assessment-and-Method-Statement.zip",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "其他",
       "bilingual": false,
       "description": "其他工具 · 其他格式",
@@ -6956,7 +6956,7 @@
     {
       "name": "Risk-Assessment-Method-Statement.zip",
       "path": "RAMS risk assessment method statement/Risk-Assessment-Method-Statement.zip",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "其他",
       "bilingual": false,
       "description": "其他工具 · 其他格式",
@@ -6968,7 +6968,7 @@
     {
       "name": "risk-assessment-method-statement-template.pdf",
       "path": "RAMS risk assessment method statement/risk-assessment-method-statement-template.pdf",
-      "category": "其他",
+      "category": "风险辨识",
       "format": "pdf",
       "bilingual": false,
       "description": "其他工具 · PDF格式",
@@ -6989,9 +6989,12 @@
     "人因与组织绩效",
     "其他",
     "培训课件",
+    "工艺安全",
     "根源分析",
     "管理体系",
+    "绩效指标",
     "行为安全",
+    "隐患排查",
     "风险辨识",
     "风险防控"
   ]

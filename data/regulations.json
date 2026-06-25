@@ -599,9 +599,349 @@
       "type": "国际标准",
       "cat": "管理体系",
       "c": "国际"
+    },
+    {
+      "cn": "大气污染防治法",
+      "en": "Air Pollution Prevention and Control Law",
+      "num": "主席令第31号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "水污染防治法",
+      "en": "Water Pollution Prevention and Control Law",
+      "num": "主席令第70号",
+      "auth": "全国人大常委会",
+      "yr": 2017,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "固体废物污染环境防治法",
+      "en": "Law on Prevention of Environmental Pollution by Solid Waste",
+      "num": "主席令第57号",
+      "auth": "全国人大常委会",
+      "yr": 2020,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "环境噪声污染防治法",
+      "en": "Law on Prevention of Environmental Noise Pollution",
+      "num": "主席令第77号",
+      "auth": "全国人大常委会",
+      "yr": 2021,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "环境影响评价法",
+      "en": "Environmental Impact Assessment Law",
+      "num": "主席令第77号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "土壤污染防治法",
+      "en": "Soil Pollution Prevention and Control Law",
+      "num": "主席令第8号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "节约能源法",
+      "en": "Energy Conservation Law",
+      "num": "主席令第77号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "能源",
+      "c": "中国"
+    },
+    {
+      "cn": "清洁生产促进法",
+      "en": "Cleaner Production Promotion Law",
+      "num": "主席令第54号",
+      "auth": "全国人大常委会",
+      "yr": 2012,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "环境保护税法",
+      "en": "Environmental Protection Tax Law",
+      "num": "主席令第61号",
+      "auth": "全国人大常委会",
+      "yr": 2018,
+      "type": "法律",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "大气污染物综合排放标准",
+      "en": "Integrated Emission Standard of Air Pollutants",
+      "num": "GB 16297-1996",
+      "auth": "国家环保局",
+      "yr": 1996,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "工业企业厂界环境噪声排放标准",
+      "en": "Emission Standard for Industrial Enterprises Noise",
+      "num": "GB 12348-2008",
+      "auth": "环保部",
+      "yr": 2008,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "工作场所有害因素职业接触限值 化学有害因素",
+      "en": "Occupational Exposure Limits for Hazardous Agents - Chemical",
+      "num": "GBZ 2.1-2019",
+      "auth": "国家卫健委",
+      "yr": 2019,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "工作场所职业病危害警示标识",
+      "en": "Warning Signs for Occupational Hazards",
+      "num": "GBZ 158-2003",
+      "auth": "卫生部",
+      "yr": 2003,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "职业健康监护技术规范",
+      "en": "Technical Specification for Occupational Health Surveillance",
+      "num": "GBZ 188-2014",
+      "auth": "国家卫健委",
+      "yr": 2014,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "企业安全生产标准化基本规范",
+      "en": "Basic Standard for Work Safety Standardization",
+      "num": "GB/T 33000-2016",
+      "auth": "国家标准委",
+      "yr": 2016,
+      "type": "国家标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "高处作业分级",
+      "en": "Classification of Work at Heights",
+      "num": "GB/T 3608-2008",
+      "auth": "国家标准委",
+      "yr": 2008,
+      "type": "国家标准",
+      "cat": "作业安全",
+      "c": "中国"
+    },
+    {
+      "cn": "爆破安全规程",
+      "en": "Safety Regulations for Blasting",
+      "num": "GB 6722-2014",
+      "auth": "国家标准委",
+      "yr": 2014,
+      "type": "国家标准",
+      "cat": "作业安全",
+      "c": "中国"
+    },
+    {
+      "cn": "安全评价通则",
+      "en": "General Principle for Safety Assessment",
+      "num": "AQ 8001-2007",
+      "auth": "应急管理部",
+      "yr": 2007,
+      "type": "行业标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "生产经营单位安全生产事故应急预案编制导则",
+      "en": "Guidelines for Emergency Response Plan",
+      "num": "GB/T 29639-2020",
+      "auth": "国家标准委",
+      "yr": 2020,
+      "type": "国家标准",
+      "cat": "应急",
+      "c": "中国"
+    },
+    {
+      "cn": "生产安全事故应急预案管理办法",
+      "en": "Emergency Response Plan Management",
+      "num": "应急管理部令第2号",
+      "auth": "应急管理部",
+      "yr": 2019,
+      "type": "部门规章",
+      "cat": "应急",
+      "c": "中国"
+    },
+    {
+      "cn": "安全生产事故隐患排查治理暂行规定",
+      "en": "Interim Provisions on Hazard Investigation",
+      "num": "安监总局令第16号",
+      "auth": "应急管理部",
+      "yr": 2007,
+      "type": "部门规章",
+      "cat": "隐患排查",
+      "c": "中国"
+    },
+    {
+      "cn": "工作场所职业卫生管理规定",
+      "en": "Regulations on Occupational Health Management",
+      "num": "卫健委令第5号",
+      "auth": "国家卫健委",
+      "yr": 2021,
+      "type": "部门规章",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "ISO 14004 环境管理体系 通用实施指南",
+      "en": "EMS - General Guidelines on Implementation",
+      "num": "ISO 14004:2016",
+      "auth": "ISO",
+      "yr": 2016,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "ISO 19011 管理体系审核指南",
+      "en": "Guidelines for Auditing Management Systems",
+      "num": "ISO 19011:2018",
+      "auth": "ISO",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "ISO 22301 业务连续性管理体系",
+      "en": "Security and Resilience - Business Continuity",
+      "num": "ISO 22301:2019",
+      "auth": "ISO",
+      "yr": 2019,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "ISO 20400 可持续采购",
+      "en": "Sustainable Procurement",
+      "num": "ISO 20400:2017",
+      "auth": "ISO",
+      "yr": 2017,
+      "type": "国际标准",
+      "cat": "ESG",
+      "c": "国际"
+    },
+    {
+      "cn": "API RP 750 工艺安全管理",
+      "en": "Process Safety Management",
+      "num": "API RP 750",
+      "auth": "API",
+      "yr": 1990,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "NFPA 101 生命安全规范",
+      "en": "Life Safety Code",
+      "num": "NFPA 101",
+      "auth": "NFPA",
+      "yr": 2021,
+      "type": "国际标准",
+      "cat": "消防",
+      "c": "国际"
+    },
+    {
+      "cn": "美国EPA 40 CFR Part 68 风险管理计划",
+      "en": "Risk Management Programs for Chemical Accidental Release",
+      "num": "40 CFR Part 68",
+      "auth": "EPA",
+      "yr": 2024,
+      "type": "法规",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "中国地震动参数区划图",
+      "en": "Seismic Ground Motion Parameter Zonation Map",
+      "num": "GB 18306-2015",
+      "auth": "国家标准委",
+      "yr": 2015,
+      "type": "国家标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "建筑防火通用规范",
+      "en": "General Code for Fire Protection of Buildings",
+      "num": "GB 55037-2022",
+      "auth": "住建部",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品企业安全风险隐患排查治理导则",
+      "en": "Guidelines for Hazard Investigation in Chemical Enterprises",
+      "num": "应急〔2019〕78号",
+      "auth": "应急管理部",
+      "yr": 2019,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "关于加强化工过程安全管理的指导意见",
+      "en": "Guidance on Strengthening Chemical Process Safety",
+      "num": "安监总管三〔2013〕38号",
+      "auth": "应急管理部",
+      "yr": 2013,
+      "type": "部门规章",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品登记管理办法",
+      "en": "Regulations on Registration of Hazardous Chemicals",
+      "num": "安监总局令第53号",
+      "auth": "应急管理部",
+      "yr": 2012,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
     }
   ],
-  "total": 60,
+  "total": 94,
   "types": [
     "国家标准",
     "国际公约",
@@ -609,6 +949,7 @@
     "指南",
     "法律",
     "法规",
+    "职业卫生",
     "职业卫生标准",
     "行业标准",
     "行政法规",
