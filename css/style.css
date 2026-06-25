@@ -323,15 +323,3 @@ ul { list-style: none; }
 .back-to-top.show { opacity: 1; visibility: visible; }
 .back-to-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
 
-/* ---------- Subtle Background Texture ---------- */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image:
-        radial-gradient(ellipse at 15% 20%, rgba(184,134,11,0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 80%, rgba(13,40,54,0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-}
-.container, footer, .header, section, .hero { position: relative; z-index: 1; }
