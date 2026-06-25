@@ -122,7 +122,7 @@ function doLogin(e) {
     var result = login(email, pwd);
     if (result.ok) {
         showMsg('登录成功', 'success');
-        setTimeout(function(){ window.location.replace('../dashboard/account.html'); }, 100);
+        setTimeout(function(){ window.location.replace('../index.html'); }, 100);
     } else {
         btn.disabled = false; btn.textContent = '登录';
         showMsg(result.msg, 'error');
@@ -167,7 +167,7 @@ function doActivate() {
     var result = activateVip(code, s.email);
     if (result.ok) {
         showMsg(result.msg, 'success');
-        setTimeout(function(){ window.location.replace('../dashboard/account.html'); }, 200);
+        setTimeout(function(){ window.location.replace('../dashboard/account.html'); }, 300);
     } else {
         btn.disabled = false; btn.textContent = '激活';
         showMsg(result.msg, 'error');
