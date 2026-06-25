@@ -17,6 +17,15 @@ var STORAGE_KEYS = {
     VIP: 'ehs_sil_vip'
 };
 
+// === Event Tracking (Baidu Analytics) ===
+function trackEvent(category, action, label) {
+    try {
+        if (typeof _hmt !== "undefined" && _hmt.push) {
+            _hmt.push(["_trackEvent", category, action, label, 1]);
+        }
+    } catch(e) {}
+}
+
 // === User Management ===
 function getUsers() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || {}; }
@@ -33,6 +42,7 @@ function register(email, password, name) {
     if (password.length < 4) return { ok: false, msg: '密码至少4位字符' };
     users[email] = { email: email, password: btoa(password), name: name || email.split('@')[0], registered: new Date().toISOString(), vip: false };
     saveUsers(users);
+    trackEvent('auth', 'register', email);
     return { ok: true, msg: '注册成功！请登录' };
 }
 
@@ -42,6 +52,7 @@ function login(email, password) {
     if (!user) return { ok: false, msg: '该邮箱未注册' };
     if (user.password !== btoa(password)) return { ok: false, msg: '密码错误' };
     localStorage.setItem(STORAGE_KEYS.SESSION, JSON.stringify({ email: email, name: user.name, vip: user.vip, loginTime: Date.now() }));
+    trackEvent('auth', 'login', email);
     return { ok: true, msg: '登录成功' };
 }
 
@@ -81,6 +92,7 @@ function activateVip(code, email) {
     if (!users[email]) return { ok: false, msg: '用户不存在，请先注册' };
     users[email].vip = true;
     saveUsers(users);
+    trackEvent('vip', 'activate', email);
     // Update session
     var session = getSession();
     if (session) { session.vip = true; localStorage.setItem(STORAGE_KEYS.SESSION, JSON.stringify(session)); }
