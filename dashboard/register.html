@@ -119,7 +119,7 @@ function doLogin(e) {
     var result = login(email, pwd);
     if (result.ok) {
         showMsg('登录成功！正在跳转...', 'success');
-        setTimeout(function(){ window.location.href = '../tools/risk-analysis.html'; }, 800);
+        setTimeout(function(){ window.location.href = '../dashboard/account.html'; }, 800);
     } else {
         showMsg(result.msg, 'error');
     }
@@ -147,7 +147,7 @@ function doActivate() {
     var result = activateVip(code, s.email);
     if (result.ok) {
         showMsg(result.msg, 'success');
-        setTimeout(function(){ window.location.href = '../tools/risk-analysis.html'; }, 1000);
+        setTimeout(function(){ window.location.href = '../dashboard/account.html'; }, 1000);
     } else {
         showMsg(result.msg, 'error');
     }

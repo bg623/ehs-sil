@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的账户 · EHS-SIL</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#e8e1d4;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#7f8c8d;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100vh}
+.container{max-width:700px;margin:0 auto;padding:1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0;text-align:center}
+.header h1{font-size:1.3rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.8rem;margin-top:.2rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none;display:block;margin-bottom:.3rem}
+.card{background:#fff;border-radius:10px;border:1px solid #e3ddd2;padding:1.5rem;margin:1rem 0}
+.card h2{font-size:1rem;color:var(--primary);font-weight:600;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.status-badge{display:inline-flex;align-items:center;gap:.25rem;padding:.2rem .6rem;border-radius:20px;font-size:.72rem;font-weight:600}
+.status-vip{background:#fef3c7;color:#b8860b}
+.status-normal{background:#e8e8e8;color:#888}
+.status-active{background:#dcfce7;color:#16a34a}
+.btn{display:inline-block;padding:.5rem 1rem;border:none;border-radius:6px;font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s;text-decoration:none}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#a0750a}
+.btn-outline{border:1.5px solid var(--primary);color:var(--primary);background:transparent}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.35rem .7rem;font-size:.75rem}
+.btn-block{width:100%;text-align:center}
+.vip-input{display:flex;gap:.4rem;margin-top:.5rem}
+.vip-input input{flex:1;padding:.5rem .6rem;border:1.5px solid #ddd;border-radius:6px;font-size:.82rem;outline:none}
+.vip-input input:focus{border-color:var(--accent)}
+.msg{padding:.5rem;border-radius:6px;font-size:.78rem;margin-bottom:.6rem;text-align:center;display:none}
+.msg.error{background:#fee2e2;color:#dc2626;display:block}
+.msg.success{background:#dcfce7;color:#16a34a;display:block}
+.tool-links{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.tool-link{display:flex;align-items:center;gap:.3rem;padding:.4rem .6rem;font-size:.78rem;color:var(--text-secondary);text-decoration:none;border:1px solid #e3ddd2;border-radius:6px;transition:.2s}
+.tool-link:hover{border-color:var(--accent);color:var(--primary)}
+.tool-link .icon{font-size:.9rem}
+.tool-link .badge{font-size:.6rem;padding:0 .25rem;border-radius:2px}
+.badge-free{background:#dcfce7;color:#16a34a}
+.badge-vip{background:#fef3c7;color:#b8860b}
+.footer-actions{display:flex;gap:.5rem;justify-content:center;margin:1rem 0}
+@media(max-width:480px){.tool-links{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="../index.html" class="back">&larr; 返回首页</a>
+<h1>&#128100; 我的账户</h1>
+<p id="accountSub">管理您的 VIP 状态与工具权限</p>
+</div></div>
+
+<div class="container" id="app">
+
+<!-- Not logged in -->
+<div id="notLoggedIn" style="display:none">
+<div class="card" style="text-align:center;padding:2.5rem">
+<div style="font-size:3rem;margin-bottom:.5rem">&#128274;</div>
+<h2>请先登录</h2>
+<p style="font-size:.82rem;color:#666;margin:.5rem 0 1rem">登录后可激活VIP并访问全部高级工具</p>
+<a href="register.html" class="btn btn-primary btn-block" style="max-width:250px;margin:0 auto">去登录 / 注册</a>
+</div>
+</div>
+
+<!-- Logged in -->
+<div id="loggedIn" style="display:none">
+
+<!-- Welcome + Status -->
+<div class="card">
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+<div>
+<h2 style="margin-bottom:.2rem">&#128075; 欢迎回来，<span id="userName">用户</span></h2>
+<p style="font-size:.75rem;color:var(--text-muted)"><span id="userEmail"></span></p>
+</div>
+<span id="vipStatusBadge" class="status-badge status-normal">&#128274; 普通用户</span>
+</div>
+</div>
+
+<!-- VIP Activation (for non-VIP) -->
+<div id="vipActivateSection" class="card">
+<h2>&#11088; 激活 VIP</h2>
+<p style="font-size:.78rem;color:var(--text-secondary);margin-bottom:.6rem">已购买「外企EHS工具箱」或「外企培训库」的朋友，请输入专属激活码解锁全部高级工具。</p>
+<div class="vip-input">
+<input type="text" id="vipCodeInput" placeholder="输入您的激活码（购买知识星球后获取）" onkeydown="if(event.key==='Enter')activate()">
+<button class="btn btn-accent" onclick="activate()" style="white-space:nowrap">&#10003; 激活</button>
+</div>
+<div id="vipMsg" class="msg"></div>
+<div style="margin-top:.5rem;font-size:.72rem;color:var(--text-muted)">
+还不知道激活码？<a href="https://wx.zsxq.com/group/88882255181182" target="_blank" style="color:var(--accent)">购买「外企EHS工具箱」</a> 或 <a href="https://wx.zsxq.com/group/51115515242254" target="_blank" style="color:var(--accent)">「外企培训库」</a> 即可获取
+</div>
+</div>
+
+<!-- VIP Benefits (for VIP users) -->
+<div id="vipBenefitsSection" style="display:none">
+<div class="card" style="background:#fefce8;border:1px solid #fde68a">
+<h2>&#127881; VIP 特权已激活</h2>
+<p style="font-size:.78rem;color:#666;margin-bottom:.8rem">您现在可以访问以下所有高级工具与模板：</p>
+<div class="tool-links">
+<a href="../tools/fmea-guide.html" class="tool-link"><span class="icon">&#128220;</span> FMEA 失效模式分析 <span class="badge badge-vip">VIP</span></a>
+<a href="../tools/what-if-guide.html" class="tool-link"><span class="icon">&#10067;</span> What-If 假设分析 <span class="badge badge-vip">VIP</span></a>
+<a href="../tools/apollo-rca-guide.html" class="tool-link"><span class="icon">&#128214;</span> Apollo RCA 根源分析 <span class="badge badge-vip">VIP</span></a>
+<a href="../tools/tripod-guide.html" class="tool-link"><span class="icon">&#128202;</span> Tripod Beta 事故分析 <span class="badge badge-vip">VIP</span></a>
+</div>
+<p style="font-size:.72rem;color:#999;margin-top:.6rem">&#128230; VIP专享模板工具请在知识星球「外企EHS工具箱」中下载完整版</p>
+</div>
+</div>
+
+<!-- Free Tools Access -->
+<div class="card">
+<h2>&#128269; 免费工具</h2>
+<p style="font-size:.78rem;color:var(--text-secondary);margin-bottom:.6rem">以下工具无需VIP，登录后即可使用：</p>
+<div class="tool-links">
+<a href="../tools/jsa-tool.html" class="tool-link"><span class="icon">&#128269;</span> JSA 工作安全分析 <span class="badge badge-free">免费</span></a>
+<a href="../tools/rca-tool.html" class="tool-link"><span class="icon">&#128200;</span> 5Why + 鱼骨图 <span class="badge badge-free">免费</span></a>
+<a href="../tools/risk-analysis.html" class="tool-link"><span class="icon">&#128200;</span> 风险分析总览 <span class="badge badge-free">免费</span></a>
+<a href="../tools/regulations.html" class="tool-link"><span class="icon">&#128214;</span> 法规速查 <span class="badge badge-free">免费</span></a>
+</div>
+</div>
+
+<!-- Account Actions -->
+<div class="footer-actions">
+<button class="btn btn-outline btn-sm" onclick="logout()">&#128682; 退出登录</button>
+<a href="../index.html" class="btn btn-primary btn-sm">&#127968; 返回首页</a>
+</div>
+
+</div>
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+function showMessage(msg, type) {
+    var el = document.getElementById('vipMsg');
+    el.textContent = msg;
+    el.className = 'msg ' + type;
+}
+
+function loadAccount() {
+    var session = getSession();
+    var loggedInSection = document.getElementById('loggedIn');
+    var notLoggedInSection = document.getElementById('notLoggedIn');
+
+    if (!session) {
+        notLoggedInSection.style.display = 'block';
+        loggedInSection.style.display = 'none';
+        return;
+    }
+
+    notLoggedInSection.style.display = 'none';
+    loggedInSection.style.display = 'block';
+
+    document.getElementById('userName').textContent = session.name || '用户';
+    document.getElementById('userEmail').textContent = session.email || '';
+
+    // Check VIP status
+    var isVip = checkVipStatus();
+    var badge = document.getElementById('vipStatusBadge');
+    var vipActivate = document.getElementById('vipActivateSection');
+    var vipBenefits = document.getElementById('vipBenefitsSection');
+
+    if (isVip) {
+        badge.className = 'status-badge status-active';
+        badge.innerHTML = '&#11088; VIP 会员';
+        vipActivate.style.display = 'none';
+        vipBenefits.style.display = 'block';
+    } else {
+        badge.className = 'status-badge status-normal';
+        badge.innerHTML = '&#128274; 普通用户';
+        vipActivate.style.display = 'block';
+        vipBenefits.style.display = 'none';
+    }
+}
+
+function activate() {
+    var code = document.getElementById('vipCodeInput').value.trim();
+    if (!code) { showMessage('请输入激活码', 'error'); return; }
+    var session = getSession();
+    if (!session) { showMessage('请先登录后再激活', 'error'); return; }
+    var result = activateVip(code, session.email);
+    if (result.ok) {
+        showMessage(result.msg + '! 页面即将刷新', 'success');
+        setTimeout(function(){ window.location.reload(); }, 1000);
+    } else {
+        showMessage(result.msg, 'error');
+    }
+}
+
+loadAccount();
+</script>
+</body>
+</html>

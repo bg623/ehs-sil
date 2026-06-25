@@ -566,5 +566,20 @@
 
     <script src="js/main.js"></script>
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+<script>
+(function(){
+    var s; try { s = JSON.parse(localStorage.getItem("ehs_sil_session")); } catch(e) {}
+    var u = document.getElementById("navLinks");
+    if (!u) return;
+    var l = document.createElement("li");
+    var a = document.createElement("a");
+    if (s) { a.href = "dashboard/account.html"; a.className = "nav-link"; a.textContent = "账户"; }
+    else { a.href = "dashboard/register.html"; a.className = "nav-link"; a.textContent = "登录"; }
+    l.appendChild(a);
+    var last = u.querySelector("li:last-child");
+    u.insertBefore(l, last.nextSibling);
+})();
+</script>
+
 </body>
 </html>

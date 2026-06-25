@@ -127,11 +127,11 @@ function showGateModal(type) {
     var html = '<button onclick="this.closest(\'#gateOverlay\').remove()" style="position:absolute;top:.5rem;right:.8rem;border:none;background:none;font-size:1.5rem;cursor:pointer;color:#999">&times;</button>';
     if (type === 'login') {
         html += '<div style="font-size:2.5rem;margin-bottom:.5rem">&#128274;</div><h3 style="margin:0 0 .3rem;color:#0d2836">请先登录</h3><p style="font-size:.85rem;color:#666;margin-bottom:1.2rem">登录后即可使用此工具</p>' +
-            '<a href="../dashboard/register.html" style="display:block;padding:.7rem;background:#0d2836;color:#fff;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;margin-bottom:.5rem">登录 / 注册</a>' +
+            '<a href="../dashboard/account.html" style="display:block;padding:.7rem;background:#0d2836;color:#fff;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;margin-bottom:.5rem">登录 / 注册</a>' +
             '<a href="javascript:void(0)" onclick="this.closest(\'#gateOverlay\').remove()" style="font-size:.8rem;color:#999">稍后再说</a>';
     } else {
         html += '<div style="font-size:2.5rem;margin-bottom:.5rem">&#11088;</div><h3 style="margin:0 0 .3rem;color:#0d2836">需要VIP权限</h3><p style="font-size:.85rem;color:#666;margin-bottom:1.2rem">购买知识星球产品的粉丝可免费获取激活码</p>' +
-            '<a href="../dashboard/register.html?tab=vip" style="display:block;padding:.7rem;background:#b8860b;color:#fff;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;margin-bottom:.5rem">激活VIP</a>' +
+            '<a href="../dashboard/account.html" style="display:block;padding:.7rem;background:#b8860b;color:#fff;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:500;margin-bottom:.5rem">激活VIP</a>' +
             '<a href="javascript:void(0)" onclick="this.closest(\'#gateOverlay\').remove()" style="font-size:.8rem;color:#999">稍后再说</a>';
     }
     card.innerHTML = html;
