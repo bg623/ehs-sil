@@ -939,9 +939,699 @@
       "type": "部门规章",
       "cat": "化学品",
       "c": "中国"
+    },
+    {
+      "cn": "关于加强化工安全仪表系统管理的指导意见",
+      "en": "Guidance on Safety Instrumented System Management in Chemical Industry",
+      "num": "安监总管三〔2014〕116号",
+      "auth": "应急管理部",
+      "yr": 2014,
+      "type": "部门规章",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "化工(危险化学品)企业安全检查重点指导目录",
+      "en": "Key Inspection Items for Chemical Enterprises",
+      "num": "应急〔2018〕2号",
+      "auth": "应急管理部",
+      "yr": 2018,
+      "type": "部门规章",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "危险与可操作性分析(HAZOP)应用导则",
+      "en": "Application Guide for HAZOP Analysis",
+      "num": "AQ/T 3049-2013",
+      "auth": "应急管理部",
+      "yr": 2013,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "保护层分析(LOPS)应用导则",
+      "en": "Application Guide for Layers of Protection Analysis",
+      "num": "AQ/T 3054-2015",
+      "auth": "应急管理部",
+      "yr": 2015,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "安全仪表系统功能安全 验收规范",
+      "en": "Functional Safety of SIS - Acceptance Specification",
+      "num": "GB/T 21109-2022",
+      "auth": "国家标准化管理委员会",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "石油化工可燃气体和有毒气体检测报警设计标准",
+      "en": "Design Standard for Gas Detection in Petrochemical Industry",
+      "num": "GB/T 50493-2019",
+      "auth": "住建部",
+      "yr": 2019,
+      "type": "国家标准",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "化工企业工艺安全管理实施导则",
+      "en": "Implementation Guide for PSM in Chemical Enterprises",
+      "num": "AQ/T 3034-2022",
+      "auth": "应急管理部",
+      "yr": 2022,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品储存通则",
+      "en": "General Rules for Hazardous Chemicals Storage",
+      "num": "GB 15603-2022",
+      "auth": "国家标准化管理委员会",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品仓库储存通则",
+      "en": "General Rules for Warehouse Storage of Hazardous Chemicals",
+      "num": "GB 17914-2013",
+      "auth": "国家标准化管理委员会",
+      "yr": 2013,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "易燃易爆性商品储存养护技术条件",
+      "en": "Storage Conditions for Flammable and Explosive Goods",
+      "num": "GB 17914-2013",
+      "auth": "国家标准化管理委员会",
+      "yr": 2013,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "腐蚀性商品储存养护技术条件",
+      "en": "Storage Conditions for Corrosive Goods",
+      "num": "GB 17915-2013",
+      "auth": "国家标准化管理委员会",
+      "yr": 2013,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "毒害性商品储存养护技术条件",
+      "en": "Storage Conditions for Toxic Goods",
+      "num": "GB 17916-2013",
+      "auth": "国家标准化管理委员会",
+      "yr": 2013,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "危险货物道路运输安全管理办法",
+      "en": "Regulations on Road Transport of Dangerous Goods",
+      "num": "交通运输部令2019年第29号",
+      "auth": "交通运输部",
+      "yr": 2019,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "工作场所空气中粉尘测定 第1部分：总粉尘浓度",
+      "en": "Determination of Dust in Workplace - Part 1",
+      "num": "GBZ/T 192.1-2007",
+      "auth": "国家卫健委",
+      "yr": 2007,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "工作场所物理因素测量 噪声",
+      "en": "Measurement of Physical Factors - Noise",
+      "num": "GBZ/T 189.8-2007",
+      "auth": "国家卫健委",
+      "yr": 2007,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "工业企业设计卫生标准",
+      "en": "Hygienic Standards for Industrial Enterprises Design",
+      "num": "GBZ 1-2010",
+      "auth": "国家卫健委",
+      "yr": 2010,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "医用X射线诊断放射防护要求",
+      "en": "Radiological Protection Requirements for Medical X-Ray",
+      "num": "GBZ 130-2020",
+      "auth": "国家卫健委",
+      "yr": 2020,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "用人单位职业病危害告知与警示标识管理规范",
+      "en": "Occupational Hazard Warning Signs Management",
+      "num": "安监总厅安健〔2014〕111号",
+      "auth": "应急管理部",
+      "yr": 2014,
+      "type": "部门规章",
+      "cat": "职业健康",
+      "c": "中国"
+    },
+    {
+      "cn": "自动喷水灭火系统设计规范",
+      "en": "Code for Design of Sprinkler Systems",
+      "num": "GB 50084-2017",
+      "auth": "住建部",
+      "yr": 2017,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "火灾自动报警系统设计规范",
+      "en": "Code for Design of Fire Alarm Systems",
+      "num": "GB 50116-2013",
+      "auth": "住建部",
+      "yr": 2013,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "建筑灭火器配置设计规范",
+      "en": "Code for Fire Extinguisher Configuration",
+      "num": "GB 50140-2005",
+      "auth": "住建部",
+      "yr": 2005,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "消防安全标志设置要求",
+      "en": "Requirements for Fire Safety Signs",
+      "num": "GB 15630-1995",
+      "auth": "国家标准化管理委员会",
+      "yr": 1995,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国"
+    },
+    {
+      "cn": "污水综合排放标准",
+      "en": "Integrated Wastewater Discharge Standard",
+      "num": "GB 8978-1996",
+      "auth": "国家环保局",
+      "yr": 1996,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "危险废物贮存污染控制标准",
+      "en": "Standard for Hazardous Waste Storage Pollution Control",
+      "num": "GB 18597-2023",
+      "auth": "生态环境部",
+      "yr": 2023,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "危险废物填埋污染控制标准",
+      "en": "Standard for Hazardous Waste Landfill Pollution Control",
+      "num": "GB 18598-2019",
+      "auth": "生态环境部",
+      "yr": 2019,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "一般工业固体废物贮存和填埋污染控制标准",
+      "en": "Standard for General Industrial Solid Waste Storage",
+      "num": "GB 18599-2020",
+      "auth": "生态环境部",
+      "yr": 2020,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "中华人民共和国环境保护法实施条例",
+      "en": "Regulations for Environmental Protection Law",
+      "num": "国务院令第682号",
+      "auth": "国务院",
+      "yr": 2017,
+      "type": "行政法规",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "排污许可管理条例",
+      "en": "Regulations on Pollutant Discharge Permits",
+      "num": "国务院令第736号",
+      "auth": "国务院",
+      "yr": 2021,
+      "type": "行政法规",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "挥发性有机物无组织排放控制标准",
+      "en": "Standard for Fugitive Emission of VOCs",
+      "num": "GB 37822-2019",
+      "auth": "生态环境部",
+      "yr": 2019,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国"
+    },
+    {
+      "cn": "固定式压力容器安全技术监察规程",
+      "en": "Supervision Regulation on Fixed Pressure Vessels",
+      "num": "TSG 21-2016",
+      "auth": "国家市场监管总局",
+      "yr": 2016,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "移动式压力容器安全技术监察规程",
+      "en": "Supervision Regulation on Mobile Pressure Vessels",
+      "num": "TSG R0005-2011",
+      "auth": "国家质检总局",
+      "yr": 2011,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "气瓶安全技术规程",
+      "en": "Safety Technical Regulation for Gas Cylinders",
+      "num": "TSG 23-2021",
+      "auth": "国家市场监管总局",
+      "yr": 2021,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "起重机械安全规程",
+      "en": "Safety Code for Lifting Appliances",
+      "num": "GB 6067.1-2010",
+      "auth": "国家标准化管理委员会",
+      "yr": 2010,
+      "type": "国家标准",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "场(厂)内专用机动车辆安全技术规程",
+      "en": "Safety Regulation on Special Vehicles in Plants",
+      "num": "TSG 81-2022",
+      "auth": "国家市场监管总局",
+      "yr": 2022,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "中国"
+    },
+    {
+      "cn": "低压配电设计规范",
+      "en": "Code for Design of Low Voltage Distribution",
+      "num": "GB 50054-2011",
+      "auth": "住建部",
+      "yr": 2011,
+      "type": "国家标准",
+      "cat": "电气安全",
+      "c": "中国"
+    },
+    {
+      "cn": "建筑物防雷设计规范",
+      "en": "Code for Protection Against Lightning of Buildings",
+      "num": "GB 50057-2010",
+      "auth": "住建部",
+      "yr": 2010,
+      "type": "国家标准",
+      "cat": "电气安全",
+      "c": "中国"
+    },
+    {
+      "cn": "用电安全导则",
+      "en": "General Guide for Electrical Safety",
+      "num": "GB/T 13869-2017",
+      "auth": "国家标准化管理委员会",
+      "yr": 2017,
+      "type": "国家标准",
+      "cat": "电气安全",
+      "c": "中国"
+    },
+    {
+      "cn": "企业安全文化建设导则",
+      "en": "Guidelines for Enterprise Safety Culture Construction",
+      "num": "AQ/T 9004-2008",
+      "auth": "应急管理部",
+      "yr": 2008,
+      "type": "行业标准",
+      "cat": "行为安全",
+      "c": "中国"
+    },
+    {
+      "cn": "安全培训管理信息系统建设规范",
+      "en": "Specification for Safety Training Info System",
+      "num": "AQ/T 8012-2016",
+      "auth": "应急管理部",
+      "yr": 2016,
+      "type": "行业标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "企业安全生产网络化监测系统技术规范",
+      "en": "Technical Specification for Safety Monitoring",
+      "num": "AQ/T 9009-2015",
+      "auth": "应急管理部",
+      "yr": 2015,
+      "type": "行业标准",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "化工和危险化学品生产经营单位重大生产安全事故隐患判定标准",
+      "en": "Major Hazard Criteria for Chemical Enterprises",
+      "num": "应急〔2017〕121号",
+      "auth": "应急管理部",
+      "yr": 2017,
+      "type": "部门规章",
+      "cat": "隐患排查",
+      "c": "中国"
+    },
+    {
+      "cn": "工贸行业重大生产安全事故隐患判定标准",
+      "en": "Major Hazard Criteria for Industrial and Trade Industries",
+      "num": "应急〔2017〕121号",
+      "auth": "应急管理部",
+      "yr": 2017,
+      "type": "部门规章",
+      "cat": "隐患排查",
+      "c": "中国"
+    },
+    {
+      "cn": "安全验收评价导则",
+      "en": "Guidelines for Safety Acceptance Assessment",
+      "num": "AQ 8003-2007",
+      "auth": "应急管理部",
+      "yr": 2007,
+      "type": "行业标准",
+      "cat": "风险",
+      "c": "中国"
+    },
+    {
+      "cn": "安全预评价导则",
+      "en": "Guidelines for Safety Pre-assessment",
+      "num": "AQ 8002-2007",
+      "auth": "应急管理部",
+      "yr": 2007,
+      "type": "行业标准",
+      "cat": "风险",
+      "c": "中国"
+    },
+    {
+      "cn": "药品生产质量管理规范",
+      "en": "Good Manufacturing Practice for Pharmaceutical Products",
+      "num": "卫生部令第79号",
+      "auth": "国家药监局",
+      "yr": 2011,
+      "type": "部门规章",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "药品生产监督管理办法",
+      "en": "Regulations on Pharmaceutical Production Supervision",
+      "num": "国家药监局令第28号",
+      "auth": "国家药监局",
+      "yr": 2020,
+      "type": "部门规章",
+      "cat": "综合",
+      "c": "中国"
+    },
+    {
+      "cn": "生产安全事故信息报告和处置办法",
+      "en": "Regulations on Incident Reporting",
+      "num": "安监总局令第21号",
+      "auth": "应急管理部",
+      "yr": 2009,
+      "type": "部门规章",
+      "cat": "事故",
+      "c": "中国"
+    },
+    {
+      "cn": "安全生产行政执法统计调查制度",
+      "en": "Statistics System for Safety Administrative Enforcement",
+      "num": "应急〔2019〕23号",
+      "auth": "应急管理部",
+      "yr": 2019,
+      "type": "部门规章",
+      "cat": "事故",
+      "c": "中国"
+    },
+    {
+      "cn": "NFPA 70 国家电气规范",
+      "en": "National Electrical Code",
+      "num": "NFPA 70",
+      "auth": "NFPA",
+      "yr": 2023,
+      "type": "国际标准",
+      "cat": "电气安全",
+      "c": "国际"
+    },
+    {
+      "cn": "NFPA 70E 工作场所电气安全",
+      "en": "Standard for Electrical Safety in the Workplace",
+      "num": "NFPA 70E",
+      "auth": "NFPA",
+      "yr": 2021,
+      "type": "国际标准",
+      "cat": "电气安全",
+      "c": "国际"
+    },
+    {
+      "cn": "NFPA 30 易燃可燃液体规范",
+      "en": "Flammable and Combustible Liquids Code",
+      "num": "NFPA 30",
+      "auth": "NFPA",
+      "yr": 2021,
+      "type": "国际标准",
+      "cat": "消防",
+      "c": "国际"
+    },
+    {
+      "cn": "NFPA 68 爆炸防护的泄压通风",
+      "en": "Standard on Explosion Protection by Deflagration Venting",
+      "num": "NFPA 68",
+      "auth": "NFPA",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "NFPA 69 爆炸防护系统",
+      "en": "Standard on Explosion Prevention Systems",
+      "num": "NFPA 69",
+      "auth": "NFPA",
+      "yr": 2019,
+      "type": "国际标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "API 510 压力容器检验规范",
+      "en": "Pressure Vessel Inspection Code",
+      "num": "API 510",
+      "auth": "API",
+      "yr": 2020,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "国际"
+    },
+    {
+      "cn": "API 570 管道检验规范",
+      "en": "Piping Inspection Code",
+      "num": "API 570",
+      "auth": "API",
+      "yr": 2020,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "国际"
+    },
+    {
+      "cn": "API 653 储罐检验、维修、改造和重建",
+      "en": "Tank Inspection, Repair, Alteration, and Reconstruction",
+      "num": "API 653",
+      "auth": "API",
+      "yr": 2021,
+      "type": "行业标准",
+      "cat": "设备安全",
+      "c": "国际"
+    },
+    {
+      "cn": "CCPS 过程安全导则要素指南",
+      "en": "Guidelines for Risk Based Process Safety Elements",
+      "num": "CCPS RBPS",
+      "auth": "CCPS/AIChE",
+      "yr": 2007,
+      "type": "指南",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "IOGP 454 陆上石油工业安全关键人员能力",
+      "en": "Safety Competence of Key Personnel",
+      "num": "IOGP 454",
+      "auth": "IOGP",
+      "yr": 2017,
+      "type": "行业标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "IOGP 457 工艺安全事件报告指南",
+      "en": "Process Safety Incident Reporting Guidelines",
+      "num": "IOGP 457",
+      "auth": "IOGP",
+      "yr": 2017,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "国际"
+    },
+    {
+      "cn": "ISO 45001:2018 职业健康安全管理体系",
+      "en": "Occupational Health and Safety Management Systems",
+      "num": "ISO 45001:2018",
+      "auth": "ISO",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际"
+    },
+    {
+      "cn": "ISO 14064 温室气体排放核查",
+      "en": "Greenhouse Gas Verification",
+      "num": "ISO 14064-1:2018",
+      "auth": "ISO",
+      "yr": 2018,
+      "type": "国际标准",
+      "cat": "环境",
+      "c": "国际"
+    },
+    {
+      "cn": "CDP 碳排放披露要求",
+      "en": "Carbon Disclosure Project",
+      "num": "CDP Framework",
+      "auth": "CDP",
+      "yr": 2024,
+      "type": "国际标准",
+      "cat": "ESG",
+      "c": "国际"
+    },
+    {
+      "cn": "危险化学品目录（2015版）",
+      "en": "Catalogue of Hazardous Chemicals",
+      "num": "安监总局等10部门公告2015年第5号",
+      "auth": "应急管理部等",
+      "yr": 2015,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "首批重点监管的危险化学品名录",
+      "en": "List of Key Monitored Hazardous Chemicals",
+      "num": "安监总管三〔2011〕95号",
+      "auth": "应急管理部",
+      "yr": 2011,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品生产许可证实施细则",
+      "en": "Implementation Rules for Hazardous Chemicals Production License",
+      "num": "质检总局令第XX号",
+      "auth": "国家质检总局",
+      "yr": 2018,
+      "type": "部门规章",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "常用化学危险品贮存通则",
+      "en": "General Rules for Storage of Common Hazardous Chemicals",
+      "num": "GB 15603-2022",
+      "auth": "国家标准化管理委员会",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国"
+    },
+    {
+      "cn": "国家突发环境事件应急预案",
+      "en": "National Emergency Plan for Environmental Incidents",
+      "num": "国办函〔2014〕119号",
+      "auth": "国务院办公厅",
+      "yr": 2014,
+      "type": "行政法规",
+      "cat": "应急",
+      "c": "中国"
+    },
+    {
+      "cn": "危险化学品事故应急救援预案编制导则",
+      "en": "Guidelines for Emergency Plan of Chemical Accidents",
+      "num": "安监管危化〔2004〕43号",
+      "auth": "应急管理部",
+      "yr": 2004,
+      "type": "部门规章",
+      "cat": "应急",
+      "c": "中国"
+    },
+    {
+      "cn": "生产安全事故应急演练指南",
+      "en": "Guidelines for Emergency Drills",
+      "num": "AQ/T 9007-2019",
+      "auth": "应急管理部",
+      "yr": 2019,
+      "type": "行业标准",
+      "cat": "应急",
+      "c": "中国"
     }
   ],
-  "total": 94,
+  "total": 163,
   "types": [
     "国家标准",
     "国际公约",

@@ -88,7 +88,7 @@
                     <h3>没有找到匹配的工具</h3>
                     <p>试试其他关键词，或者换个分类</p>
                     <a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="join-cta">
-                        加入工具箱 · 获取全部 782+ 工具 →
+                        加入工具箱 · 获取全部 535+ 工具 →
                     </a>
                 </div>`;
             return;
