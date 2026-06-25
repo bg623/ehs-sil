@@ -95,6 +95,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <button class="btn btn-sm btn-outline" onclick="saveLocal()">&#128190; 保存</button>
 <button class="btn btn-sm btn-outline" onclick="loadLocal()">&#128194; 载入</button>
 <button class="btn btn-sm btn-accent" onclick="generateRCARpt()">&#128196; 导出报告</button>
+<button class="btn btn-sm btn-outline" onclick="exportToExcel()">&#128203; 导出 Excel</button>
 </div>
 </div>
 
@@ -344,6 +345,43 @@ function printRCARpt() {
     win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>RCA Report</title><style>body{font-family:-apple-system,sans-serif;padding:1.5rem;font-size:13px;color:#333}h3{color:#0d2836}table{width:100%}td{padding:.2rem .5rem}ul{margin:.3rem 0 .3rem 1.5rem}li{margin:.15rem 0}@media print{body{padding:.5in}}</style></head><body>' + content + '</body></html>');
     win.document.close();
     setTimeout(function(){win.print()}, 500);
+}
+
+function exportToExcel() {
+    var title = document.getElementById('problemTitle').value || '未命名';
+    var date = document.getElementById('problemDate').value || '';
+    var desc = esc(document.getElementById('problemDesc').value || '');
+    var area = document.getElementById('problemArea').value || '';
+
+    var bom = '\uFEFF';
+    var rows = [];
+    rows.push('根因分析 (RCA) 报告');
+    rows.push('问题,日期,描述,区域');
+    rows.push('"' + title.replace(/"/g,'""') + '","' + date + '","' + desc.replace(/"/g,'""') + '","' + area.replace(/"/g,'""') + '"');
+    rows.push('');
+    rows.push('维度,原因,Why1,Why2,Why3,Why4,Why5');
+
+    CATEGORIES.forEach(function(cat){
+        var causes = rcaData.causes[cat.id] || [];
+        causes.forEach(function(c){
+            var txt = c.text.replace(/"/g,'""');
+            var why1 = (c.why && c.why[0]) ? c.why[0].replace(/"/g,'""') : '';
+            var why2 = (c.why && c.why[1]) ? c.why[1].replace(/"/g,'""') : '';
+            var why3 = (c.why && c.why[2]) ? c.why[2].replace(/"/g,'""') : '';
+            var why4 = (c.why && c.why[3]) ? c.why[3].replace(/"/g,'""') : '';
+            var why5 = (c.why && c.why[4]) ? c.why[4].replace(/"/g,'""') : '';
+            rows.push('"' + cat.label.replace(/<[^>]*>/g,'') + '","' + txt + '","' + why1 + '","' + why2 + '","' + why3 + '","' + why4 + '","' + why5 + '"');
+        });
+    });
+    rows.push('');
+    rows.push('生成日期: ' + new Date().toLocaleDateString('zh-CN') + ' EHS-SIL');
+
+    var blob = new Blob([bom + rows.join('\n')], {type:'text/csv;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'RCA_' + title + '.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
 }
 
 function hideRpt() {
