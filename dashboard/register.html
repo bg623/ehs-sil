@@ -114,27 +114,34 @@ function showMsg(text, type) {
 
 function doLogin(e) {
     e.preventDefault();
+    var btn = document.querySelector('#loginForm button[type="submit"]');
+    btn.disabled = true; btn.textContent = '登录中...';
     var email = document.getElementById('loginEmail').value;
     var pwd = document.getElementById('loginPwd').value;
     var result = login(email, pwd);
     if (result.ok) {
-        showMsg('登录成功！正在跳转...', 'success');
-        setTimeout(function(){ window.location.href = '../dashboard/account.html'; }, 800);
+        showMsg('登录成功', 'success');
+        setTimeout(function(){ window.location.replace('../dashboard/account.html'); }, 100);
     } else {
+        btn.disabled = false; btn.textContent = '登录';
         showMsg(result.msg, 'error');
     }
 }
 
 function doRegister(e) {
     e.preventDefault();
+    var btn = document.querySelector('#registerForm button[type="submit"]');
+    btn.disabled = true; btn.textContent = '注册中...';
     var name = document.getElementById('regName').value;
     var email = document.getElementById('regEmail').value;
     var pwd = document.getElementById('regPwd').value;
     var result = register(email, pwd, name);
     if (result.ok) {
         showMsg(result.msg, 'success');
-        setTimeout(function(){ switchTab('login'); document.getElementById('loginEmail').value = email; }, 600);
+        btn.disabled = false; btn.textContent = '注册';
+        setTimeout(function(){ switchTab('login'); document.getElementById('loginEmail').value = email; }, 300);
     } else {
+        btn.disabled = false; btn.textContent = '注册';
         showMsg(result.msg, 'error');
     }
 }
@@ -142,13 +149,16 @@ function doRegister(e) {
 function doActivate() {
     var code = document.getElementById('vipCode').value.trim();
     if (!code) { showMsg('请输入激活码', 'error'); return; }
+    var btn = document.querySelector('.vip-code-wrap button');
+    btn.disabled = true; btn.textContent = '激活中...';
     var s = getSession();
     if (!s) { showMsg('请先登录后再激活VIP', 'error'); return; }
     var result = activateVip(code, s.email);
     if (result.ok) {
         showMsg(result.msg, 'success');
-        setTimeout(function(){ window.location.href = '../dashboard/account.html'; }, 1000);
+        setTimeout(function(){ window.location.replace('../dashboard/account.html'); }, 200);
     } else {
+        btn.disabled = false; btn.textContent = '激活';
         showMsg(result.msg, 'error');
     }
 }

@@ -178,13 +178,16 @@ function loadAccount() {
 function activate() {
     var code = document.getElementById('vipCodeInput').value.trim();
     if (!code) { showMessage('请输入激活码', 'error'); return; }
+    var btn = document.querySelector('.vip-input .btn-accent');
+    btn.disabled = true; btn.textContent = '激活中...';
     var session = getSession();
     if (!session) { showMessage('请先登录后再激活', 'error'); return; }
     var result = activateVip(code, session.email);
     if (result.ok) {
         showMessage(result.msg + '! 页面即将刷新', 'success');
-        setTimeout(function(){ window.location.reload(); }, 1000);
+        setTimeout(function(){ window.location.reload(); }, 200);
     } else {
+        btn.disabled = false; btn.innerHTML = '&#10003; 激活';
         showMessage(result.msg, 'error');
     }
 }
