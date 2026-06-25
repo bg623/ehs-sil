@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>根因分析：5Why + 鱼骨图 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--accent-light:#f5ede2;--bg:#f5f1ea;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#95a5a6;--border:#d6d0c4;--border-light:#e8e4dc;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836 0%,#1a4b5c 100%);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.6rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.82rem;max-width:500px;margin:.3rem auto 1rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.back:hover{opacity:.8}
+.section{background:#fff;border-radius:10px;border:1px solid var(--border-light);padding:1.5rem;margin:1.5rem 0}
+.section h2{font-size:1.05rem;color:var(--primary);font-weight:600;margin-bottom:.8rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.6rem}
+.form-group{margin-bottom:.6rem}
+.form-group label{display:block;font-size:.75rem;color:var(--text-secondary);font-weight:500;margin-bottom:.15rem}
+.form-group input,.form-group textarea{width:100%;padding:.5rem .6rem;border:1.5px solid var(--border-light);border-radius:6px;font-size:.82rem;outline:none;transition:.2s;font-family:var(--font-sans)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.08)}
+.form-group textarea{min-height:50px;resize:vertical}
+.btn{padding:.5rem 1rem;border:none;border-radius:6px;font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#a0750a}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.35rem .7rem;font-size:.75rem}
+.btn-danger{background:#dc2626;color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.btn-secondary{background:#f0f0f0;color:#555}
+.btn-secondary:hover{background:#e0e0e0}
+.fishbone-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin:.8rem 0}
+.fish-card{border:1.5px solid var(--border-light);border-radius:8px;padding:.8rem;transition:.2s;cursor:pointer}
+.fish-card:hover{border-color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.fish-card.active{border-color:var(--accent);background:var(--accent-light)}
+.fish-card h4{font-size:.82rem;color:var(--primary);margin-bottom:.3rem;display:flex;align-items:center;gap:.3rem}
+.fish-card .cat-icon{font-size:1rem}
+.fish-card .cause-list{font-size:.75rem;color:var(--text-secondary)}
+.fish-card .cause-item{padding:.15rem 0;display:flex;align-items:flex-start;gap:.3rem;font-size:.75rem}
+.cause-item .why-badge{display:inline-block;font-size:.6rem;padding:0 .25rem;background:var(--accent);color:#fff;border-radius:2px;cursor:pointer;flex-shrink:0;margin-top:.1rem}
+.cause-item .why-badge.done{background:#16a34a}
+.tips{background:#fefce8;border:1px solid #fde68a;border-radius:8px;padding:1rem;font-size:.78rem;color:#92400e;margin:1rem 0;line-height:1.6}
+.why-chain{background:#fafaf5;border-radius:6px;padding:.6rem .8rem;margin:.4rem 0}
+.why-step{display:flex;gap:.4rem;align-items:flex-start;margin-bottom:.15rem;font-size:.75rem;color:var(--text-secondary)}
+.why-level{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--primary);color:#fff;font-size:.6rem;font-weight:600;flex-shrink:0;margin-top:.1rem}
+.why-level.done{background:#16a34a}
+.empty-state{text-align:center;padding:2rem;color:var(--text-muted);font-size:.85rem}
+.empty-state .icon{font-size:2.5rem;margin-bottom:.5rem}
+.report-content{background:#fff;padding:1.5rem;border:1px solid var(--border);border-radius:8px;font-size:.8rem;display:none}
+.report-content.active{display:block}
+.report-content table{width:100%;border-collapse:collapse;font-size:.78rem}
+.report-content th,.report-content td{border:1px solid var(--border);padding:.4rem .5rem;text-align:left}
+.report-content th{background:var(--primary);color:#fff}
+.toolbar{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;margin-bottom:.6rem}
+@media(max-width:480px){.fishbone-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128200; 5Why + 鱼骨图分析</h1>
+<p>结合因果分析(鱼骨图)与深度追问(5Why)，系统定位问题的根本原因</p>
+</div></div>
+
+<div class="container" id="app">
+
+<div class="tips">
+<strong>&#128161; 操作指南：</strong><br>
+① 定义问题 → ② 在鱼骨图的六个维度下添加可能的原因 → ③ 对每个原因点击"5Why"深度追问 → ④ 整理根因与建议 → ⑤ 导出报告
+</div>
+
+<!-- Problem Definition -->
+<div class="section">
+<h2>&#128204; 问题定义</h2>
+<div class="form-row">
+<div class="form-group"><label>事件/问题标题 *</label><input id="problemTitle" placeholder="例：反应釜温度异常报警"></div>
+<div class="form-group"><label>发生日期</label><input id="problemDate" type="date"></div>
+</div>
+<div class="form-group"><label>问题描述 *</label><textarea id="problemDesc" placeholder="描述发生了什么、何时发生、影响范围" rows="3"></textarea></div>
+<div class="form-group"><label>涉及区域/部门</label><input id="problemArea" placeholder="生产车间 / 公用工程"></div>
+</div>
+
+<!-- Fishbone: 6M Categories -->
+<div class="section">
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem">
+<h2 style="margin-bottom:0">&#128220; 鱼骨图 — 原因分类</h2>
+<div>
+<button class="btn btn-sm btn-outline" onclick="saveLocal()">&#128190; 保存</button>
+<button class="btn btn-sm btn-outline" onclick="loadLocal()">&#128194; 载入</button>
+<button class="btn btn-sm btn-accent" onclick="generateRCARpt()">&#128196; 导出报告</button>
+</div>
+</div>
+
+<p style="font-size:.75rem;color:var(--text-muted);margin-bottom:.6rem">点击原因旁的数字图标进行 5Why 深度追问</p>
+
+<div class="fishbone-grid" id="fishGrid">
+<!-- Dynamically rendered -->
+</div>
+</div>
+
+<!-- 5Why Modal -->
+<div id="whyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center" onclick="if(event.target===this)closeWhyModal()">
+<div style="background:#fff;border-radius:12px;padding:1.5rem;max-width:500px;width:92%;max-height:80vh;overflow-y:auto">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem">
+<div><h3 id="whyModalTitle" style="font-size:.95rem;color:var(--primary)">5Why 追问</h3><p id="whyModalSub" style="font-size:.72rem;color:var(--text-muted)"></p></div>
+<button onclick="closeWhyModal()" style="border:none;background:none;font-size:1.2rem;cursor:pointer;color:#999">&times;</button>
+</div>
+<div id="whyChain"></div>
+<div style="display:flex;gap:.3rem;margin-top:.5rem">
+<input id="whyInput" style="flex:1;padding:.5rem;border:1.5px solid var(--border);border-radius:6px;font-size:.8rem;outline:none" placeholder="输入下一个Why...">
+<button class="btn btn-primary btn-sm" onclick="addWhy()">添加</button>
+</div>
+<button class="btn btn-secondary btn-sm" onclick="closeWhyModal()" style="margin-top:.5rem;width:100%">完成</button>
+</div>
+</div>
+
+<!-- Report View -->
+<div class="section">
+<div class="report-content" id="rptContent">
+<div style="text-align:center;padding:2rem;color:var(--text-muted)">
+<div style="font-size:2rem;margin-bottom:.5rem">&#128196;</div>
+<p>点击"导出报告"生成根因分析报告</p>
+</div>
+</div>
+<div id="rptActions" style="display:none;margin-top:.5rem;text-align:right">
+<button class="btn btn-sm btn-primary" onclick="printRCARpt()">&#128424; 打印</button>
+<button class="btn btn-sm btn-secondary" onclick="hideRpt()">关闭</button>
+</div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · 数据仅保存在本地浏览器</p></footer>
+
+<script>
+// 6M Categories
+var CATEGORIES = [
+    {id:'man', icon:'&#128104;', label:'人员 (Man)', desc:'操作技能、培训、疲劳、沟通'},
+    {id:'machine', icon:'&#9881;', label:'设备 (Machine)', desc:'维护状态、设计缺陷、校准'},
+    {id:'material', icon:'&#128230;', label:'物料 (Material)', desc:'原材料、化学性质、供应商'},
+    {id:'method', icon:'&#128209;', label:'方法 (Method)', desc:'SOP、工作流程、检查清单'},
+    {id:'measurement', icon:'&#128202;', label:'测量 (Measurement)', desc:'仪表精度、数据记录、KPI'},
+    {id:'environment', icon:'&#127758;', label:'环境 (Environment)', desc:'温湿度、照明、噪声、空间'}
+];
+
+// Data structure: { causes: { cat_id: [{text, why: [string]}] } }
+var rcaData = { causes: {} };
+
+CATEGORIES.forEach(function(c){ rcaData.causes[c.id] = []; });
+
+// Current editing state
+var currentCat = null;
+var currentCauseIdx = -1;
+
+document.getElementById('problemDate').valueAsDate = new Date();
+
+function renderFishbone() {
+    var el = document.getElementById('fishGrid');
+    var html = '';
+    var totalCauses = 0;
+    CATEGORIES.forEach(function(cat){
+        var causes = rcaData.causes[cat.id] || [];
+        totalCauses += causes.length;
+        var causeHtml = '';
+        if (causes.length) {
+            causeHtml = '<div class="cause-list">';
+            causes.forEach(function(c, i){
+                var whyDone = c.why && c.why.length > 0;
+                causeHtml += '<div class="cause-item"><span style="flex:1">&#8226; ' + esc(c.text) + '</span>' +
+                    '<span class="why-badge ' + (whyDone ? 'done' : '') + '" onclick="openWhyModal(\'' + cat.id + '\',' + i + ')" title="5Why 追问">' + (c.why ? c.why.length : 0) + 'Why' +
+                    '</span></div>';
+            });
+            causeHtml += '</div>';
+        } else {
+            causeHtml += '<div class="cause-list" style="color:#ccc;font-size:.72rem">暂无原因</div>';
+        }
+        html += '<div class="fish-card" data-cat="' + cat.id + '"><h4><span class="cat-icon">' + cat.icon + '</span> ' + cat.label + '</h4>' +
+            '<div style="font-size:.7rem;color:var(--text-muted);margin-bottom:.3rem">' + cat.desc + '</div>' +
+            causeHtml +
+            '<div style="margin-top:.4rem;display:flex;gap:.2rem"><input id="input_' + cat.id + '" style="flex:1;padding:.3rem .4rem;border:1px solid var(--border-light);border-radius:4px;font-size:.72rem;outline:none" placeholder="添加原因...">' +
+            '<button class="btn btn-sm btn-primary" onclick="addCause(\'' + cat.id + '\')" style="padding:.2rem .5rem">+</button></div></div>';
+    });
+    el.innerHTML = html;
+    document.getElementById('totalCauses').textContent = totalCauses + ' 个原因';
+}
+
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function addCause(catId) {
+    var input = document.getElementById('input_' + catId);
+    var text = input.value.trim();
+    if (!text) return;
+    (rcaData.causes[catId] = rcaData.causes[catId] || []).push({text: text, why: []});
+    input.value = '';
+    renderFishbone();
+}
+
+function openWhyModal(catId, idx) {
+    currentCat = catId;
+    currentCauseIdx = idx;
+    var cause = rcaData.causes[catId][idx];
+    document.getElementById('whyModalTitle').textContent = '5Why 追问';
+    document.getElementById('whyModalSub').textContent = '"' + cause.text + '"';
+    renderWhyChain();
+    document.getElementById('whyModal').style.display = 'flex';
+    setTimeout(function(){ document.getElementById('whyInput').focus(); }, 200);
+}
+
+function closeWhyModal() {
+    document.getElementById('whyModal').style.display = 'none';
+    renderFishbone();
+}
+
+function renderWhyChain() {
+    var cause = rcaData.causes[currentCat][currentCauseIdx];
+    var el = document.getElementById('whyChain');
+    if (!cause.why || !cause.why.length) {
+        el.innerHTML = '<div style="text-align:center;padding:1rem;color:#999;font-size:.8rem"><p>尚未添加追问，输入第一个 Why</p><p style="font-size:.7rem;margin-top:.2rem">为何会发生这个原因？</p></div>';
+        return;
+    }
+    var html = '';
+    cause.why.forEach(function(w, i){
+        html += '<div class="why-step"><span class="why-level done">W' + (i+1) + '</span><div style="flex:1"><div style="font-weight:500;font-size:.8rem">' + esc(w) + '</div>' +
+            '<div style="font-size:.65rem;color:#999;margin-top:.05rem">第 ' + (i+1) + ' 层追问</div></div></div>';
+        if (i < cause.why.length - 1) {
+            html += '<div style="text-align:center;font-size:.6rem;color:#ccc;margin:-.05rem 0">&#8595;</div>';
+        }
+    });
+    if (cause.why.length >= 5) {
+        html += '<div style="text-align:center;padding:.3rem;font-size:.7rem;color:#16a34a;font-weight:500">&#10003; 已到达5层追问，根因基本明确</div>';
+    }
+    el.innerHTML = html;
+}
+
+function addWhy() {
+    var input = document.getElementById('whyInput');
+    var text = input.value.trim();
+    if (!text) return;
+    var cause = rcaData.causes[currentCat][currentCauseIdx];
+    if (!cause.why) cause.why = [];
+    if (cause.why.length >= 5) { alert('已到达5Why深度，建议整理根因'); return; }
+    cause.why.push(text);
+    input.value = '';
+    renderWhyChain();
+    setTimeout(function(){ input.focus(); }, 100);
+}
+
+// Save / Load
+function saveLocal() {
+    var data = {
+        title: document.getElementById('problemTitle').value,
+        date: document.getElementById('problemDate').value,
+        desc: document.getElementById('problemDesc').value,
+        area: document.getElementById('problemArea').value,
+        causes: rcaData.causes,
+        saved: new Date().toISOString()
+    };
+    localStorage.setItem('ehs_sil_rca', JSON.stringify(data));
+    alert('已保存');
+}
+
+function loadLocal() {
+    var raw = localStorage.getItem('ehs_sil_rca');
+    if (!raw) { alert('没有找到保存的数据'); return; }
+    try {
+        var data = JSON.parse(raw);
+        document.getElementById('problemTitle').value = data.title || '';
+        document.getElementById('problemDate').value = data.date || '';
+        document.getElementById('problemDesc').value = data.desc || '';
+        document.getElementById('problemArea').value = data.area || '';
+        rcaData.causes = data.causes || {};
+        CATEGORIES.forEach(function(c){
+            if (!rcaData.causes[c.id]) rcaData.causes[c.id] = [];
+        });
+        renderFishbone();
+        alert('已载入');
+    } catch(e) { alert('数据读取失败'); }
+}
+
+function resetAll() {
+    if (!confirm('确定重置所有数据？')) return;
+    rcaData.causes = {};
+    CATEGORIES.forEach(function(c){ rcaData.causes[c.id] = []; });
+    document.getElementById('problemTitle').value = '';
+    document.getElementById('problemDate').valueAsDate = new Date();
+    document.getElementById('problemDesc').value = '';
+    document.getElementById('problemArea').value = '';
+    renderFishbone();
+}
+
+// Report
+function generateRCARpt() {
+    var title = document.getElementById('problemTitle').value || '(未填写)';
+    var date = document.getElementById('problemDate').value || '';
+    var desc = document.getElementById('problemDesc').value || '';
+    var area = document.getElementById('problemArea').value || '';
+    var now = new Date().toLocaleString('zh-CN');
+
+    var html = '<h3 style="margin-bottom:.3rem;color:var(--primary)">根因分析 (RCA) 报告</h3>' +
+        '<p style="font-size:.72rem;color:#999;margin-bottom:.8rem">生成时间: ' + now + '</p>' +
+        '<table><tr><td style="border:none;padding:.2rem .5rem"><strong>问题:</strong> ' + esc(title) + '</td>' +
+        '<td style="border:none;padding:.2rem .5rem"><strong>日期:</strong> ' + date + '</td></tr>' +
+        '<tr><td style="border:none;padding:.2rem .5rem" colspan="2"><strong>描述:</strong> ' + esc(desc) + '</td></tr>' +
+        '<tr><td style="border:none;padding:.2rem .5rem" colspan="2"><strong>区域:</strong> ' + esc(area) + '</td></tr></table>' +
+        '<h4 style="margin:.8rem 0 .4rem;font-size:.85rem;color:var(--primary)">鱼骨图原因分析</h4>';
+
+    var hasData = false;
+    CATEGORIES.forEach(function(cat){
+        var causes = rcaData.causes[cat.id] || [];
+        if (!causes.length) return;
+        hasData = true;
+        html += '<div style="margin-bottom:.6rem"><strong style="font-size:.78rem">' + cat.icon + ' ' + cat.label + '</strong><ul style="margin:.2rem 0 .2rem 1rem;font-size:.76rem">';
+        causes.forEach(function(c){
+            html += '<li>' + esc(c.text);
+            if (c.why && c.why.length) {
+                html += '<ul style="margin:.1rem 0 .1rem 1rem;font-size:.72rem;color:#666">';
+                c.why.forEach(function(w, i){ html += '<li>Why' + (i+1) + ': ' + esc(w) + '</li>'; });
+                html += '</ul>';
+            }
+            html += '</li>';
+        });
+        html += '</ul></div>';
+    });
+
+    if (!hasData) html += '<p style="font-size:.78rem;color:#999">未添加原因分析</p>';
+    html += '<p style="margin-top:.5rem;font-size:.7rem;color:#999;border-top:1px solid #eee;padding-top:.5rem">EHS-SIL · 外企EHS实操指南</p>';
+
+    document.getElementById('rptContent').innerHTML = html;
+    document.getElementById('rptContent').classList.add('active');
+    document.getElementById('rptActions').style.display = 'block';
+    document.getElementById('rptContent').scrollIntoView({behavior:'smooth'});
+}
+
+function printRCARpt() {
+    var content = document.getElementById('rptContent').innerHTML;
+    var win = window.open('', '_blank');
+    win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>RCA Report</title><style>body{font-family:-apple-system,sans-serif;padding:1.5rem;font-size:13px;color:#333}h3{color:#0d2836}table{width:100%}td{padding:.2rem .5rem}ul{margin:.3rem 0 .3rem 1.5rem}li{margin:.15rem 0}@media print{body{padding:.5in}}</style></head><body>' + content + '</body></html>');
+    win.document.close();
+    setTimeout(function(){win.print()}, 500);
+}
+
+function hideRpt() {
+    document.getElementById('rptContent').classList.remove('active');
+    document.getElementById('rptActions').style.display = 'none';
+}
+
+// Init
+renderFishbone();
+</script>
+</body>
+</html>

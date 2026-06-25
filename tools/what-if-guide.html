@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>What-If 假设分析 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.content{background:#fff;border-radius:10px;border:1px solid #e8e4dc;padding:1.5rem;margin:1.5rem 0}
+.content h2{font-size:1rem;color:var(--primary);margin:1rem 0 .4rem;border-left:3px solid var(--accent);padding-left:.6rem}
+.content p{font-size:.82rem;color:#555;line-height:1.7;margin-bottom:.5rem}
+.content ul{list-style:none;padding:0;margin-bottom:.5rem}
+.content ul li{font-size:.8rem;color:#555;padding:.2rem 0 .2rem 1rem;position:relative}
+.content ul li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.gate-card{background:#fefce8;border:2px dashed #fde68a;border-radius:12px;padding:2rem;max-width:400px;margin:0 auto;text-align:center}
+.gate-card .icon{font-size:3rem;margin-bottom:.5rem}
+.gate-card h3{font-size:1rem;color:var(--primary);margin-bottom:.3rem}
+.gate-card p{font-size:.82rem;color:#666;margin-bottom:1rem}
+.gate-card .btn-gate{display:inline-block;padding:.5rem 1.2rem;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:500}
+.gate-card .btn-gate:hover{opacity:.9}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#10067; What-If 假设分析</h1>
+<p>Structured Brainstorming for Risk Identification — 结构化风险辨识工具</p>
+</div></div>
+
+<div class="container">
+
+<div class="content">
+<h2>什么是 What-If 分析？</h2>
+<p>What-If 分析是一种结构化的头脑风暴方法，通过系统地提出"如果...怎么办"的问题，识别工艺、设备或操作中的潜在偏差和风险。该方法灵活、易于掌握，适用于HAZOP前的初步评估或非工艺场景的风险辨识。</p>
+<p>在化工行业，What-If 分析常用于：新工艺/新设备的首次风险评估、变更管理(MOC)风险筛查、非日常作业的安全评审、小型技术改造的安全评估。</p>
+
+<h2>典型What-If问题示例</h2>
+<ul>
+<li>如果进料阀门意外关闭会怎样？</li>
+<li>如果冷却水中断会怎样？</li>
+<li>如果操作人员误读仪表读数会怎样？</li>
+<li>如果安全阀失效无法开启会怎样？</li>
+<li>如果电源故障导致仪表失电会怎样？</li>
+<li>如果在夜间没有充足照明下进行维修会怎样？</li>
+</ul>
+
+<h2>分析步骤</h2>
+<p>1. 定义分析范围和边界 → 2. 收集工艺/设备资料 → 3. 组建多专业团队 → 4. 系统提出"What-If"问题 → 5. 评估后果和现有防护 → 6. 提出改进建议 → 7. 编制分析报告 → 8. 跟踪改进措施的落实</p>
+
+<h2>模板资源</h2>
+<p>VIP会员可访问What-If分析模板（Excel格式），含结构化问题清单、风险评分和行动追踪。</p>
+
+<div id="gateBlock"></div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+(function(){
+    if (checkVipStatus()) {
+        document.getElementById('gateBlock').innerHTML = '<div style="background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:1rem;margin-top:.8rem">' +
+            '<h3 style="font-size:.85rem;color:#16a34a;margin-bottom:.3rem">&#10003; VIP已激活</h3>' +
+            '<p style="font-size:.78rem;color:#333">您可以使用以下资源：</p>' +
+            '<ul style="margin-top:.3rem"><li>What-If分析模板（Excel，含化工场景示例）</li>' +
+            '<li>What-If问题清单（覆盖10+常见化工工艺场景）</li>' +
+            '<li>风险评分标准表</li>' +
+            '<li>What-If vs HAZOP对比指南</li></ul>' +
+            '<p style="font-size:.78rem;color:#666;margin-top:.5rem">完整资料请在知识星球「外企EHS工具箱」中下载</p></div>';
+    } else {
+        document.getElementById('gateBlock').innerHTML = '<div class="gate-card"><div class="icon">&#11088;</div><h3>VIP专享内容</h3><p>登录并激活VIP后查看完整What-If模板与指南</p><a href="../dashboard/register.html?tab=vip" class="btn-gate">激活VIP &rarr;</a><div style="margin-top:.5rem"><a href="risk-analysis.html" style="font-size:.78rem;color:#999">返回工具集</a></div></div>';
+    }
+})();
+</script>
+</body>
+</html>

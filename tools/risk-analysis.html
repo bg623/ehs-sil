@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>风险辨识与事故分析工具 · EHS-SIL</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#f5f1ea;--bg-card:#f5f2eb;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#95a5a6;--border:#d6d0c4;--border-light:#e8e4dc;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836 0%,#1a4b5c 100%);color:#fff;padding:2.5rem 0 3.5rem;text-align:center}
+.header h1{font-size:1.8rem;font-weight:700;margin-bottom:.3rem;letter-spacing:-.5px}
+.header p{color:rgba(255,255,255,.7);font-size:.9rem;max-width:600px;margin:.5rem auto 1.5rem}
+.back{color:var(--accent);font-size:.82rem;text-decoration:none;display:inline-block;margin-bottom:.5rem}
+.back:hover{opacity:.8}
+.module{margin:2.5rem 0}
+.module-title{font-size:1.25rem;font-weight:700;color:var(--primary);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+.module-desc{font-size:.85rem;color:var(--text-secondary);margin-bottom:1.2rem}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.tool-card{background:#fff;border:1px solid var(--border-light);border-radius:10px;padding:1.25rem;transition:all .3s;position:relative;overflow:hidden}
+.tool-card:hover{border-color:var(--border);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-2px)}
+.tool-icon{font-size:1.8rem;margin-bottom:.5rem}
+.tool-card h3{font-size:.95rem;font-weight:600;color:var(--primary);margin-bottom:.25rem}
+.tool-card .sub{font-size:.78rem;color:var(--text-muted);margin-bottom:.4rem}
+.tool-card .desc{font-size:.8rem;color:var(--text-secondary);line-height:1.5;margin-bottom:.8rem}
+.tool-card .tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.8rem}
+.tag-free{display:inline-block;font-size:.65rem;padding:.1rem .45rem;border-radius:3px;font-weight:500;background:#dcfce7;color:#16a34a}
+.tag-vip{display:inline-block;font-size:.65rem;padding:.1rem .45rem;border-radius:3px;font-weight:500;background:#fef3c7;color:#b8860b}
+.tool-card .btn-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:500;color:var(--primary);text-decoration:none;padding:.35rem .8rem;border:1px solid var(--primary);border-radius:6px;transition:.2s}
+.tool-card .btn-link:hover{background:var(--primary);color:#fff}
+.tool-card .btn-link.disabled{opacity:.4;cursor:not-allowed;border-color:#ccc;color:#999}
+.tool-card .btn-link.disabled:hover{background:transparent;color:#999}
+.promo-banner{background:linear-gradient(135deg,#b8860b,#d4a44a);color:#fff;border-radius:10px;padding:1.5rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.promo-banner h3{font-size:1rem;font-weight:600;margin-bottom:.2rem}
+.promo-banner p{font-size:.82rem;opacity:.9;margin:0}
+.promo-banner .btn-light{display:inline-block;padding:.5rem 1.2rem;background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:500;transition:.2s;white-space:nowrap}
+.promo-banner .btn-light:hover{background:rgba(255,255,255,.3)}
+.methodology{margin:2rem 0}
+.methodology h3{font-size:1rem;color:var(--primary);margin-bottom:.8rem;border-left:3px solid var(--accent);padding-left:.7rem}
+.methodology p{font-size:.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:.5rem}
+.methodology ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.5rem}
+.methodology ul li{font-size:.8rem;color:var(--text-secondary);padding:.3rem .5rem .3rem 1.2rem;position:relative}
+.methodology ul li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700}
+@media(max-width:480px){.header h1{font-size:1.4rem}.tool-grid{grid-template-columns:1fr}.promo-banner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="../index.html" class="back">&larr; 返回首页</a>
+<h1>&#128269; 风险辨识与事故分析工具</h1>
+<p>基于国际最佳实践的 EHS 工具集 — 从预防到调查，覆盖安全管理全链路</p>
+</div></div>
+
+<div class="container">
+
+<div class="promo-banner">
+<div><h3>&#128230; 购买知识星球即可解锁全部工具</h3><p>已购买「外企EHS工具箱」或「外企培训库」的粉丝可免费获取VIP激活码</p></div>
+<a href="../dashboard/register.html" class="btn-light">激活 VIP &rarr;</a>
+</div>
+
+<!-- Module 1: 风险辨识与评估 -->
+<div class="module">
+<div class="module-title"><span>&#128200;</span> 风险辨识与评估</div>
+<p class="module-desc">系统化识别工作场所危害、评估风险等级、制定控制措施的方法论与工具</p>
+<div class="tool-grid">
+
+<!-- JSA — 免费 -->
+<div class="tool-card">
+<div class="tool-icon">&#128269;</div>
+<h3>JSA 工作安全分析</h3>
+<div class="sub">Job Safety Analysis</div>
+<div class="tags"><span class="tag-free">免费使用</span><span class="tag-free" style="background:#dbeafe;color:#1e40af">在线工具</span></div>
+<p class="desc">将工作任务分解为步骤，识别每一步的潜在危害，制定控制措施。适用于化工检修、高风险作业等场景。</p>
+<a href="jsa-tool.html" class="btn-link">开始使用 &rarr;</a>
+</div>
+
+<!-- FMEA — VIP -->
+<div class="tool-card">
+<div class="tool-icon">&#128220;</div>
+<h3>FMEA 失效模式与影响分析</h3>
+<div class="sub">Failure Mode &amp; Effects Analysis</div>
+<div class="tags"><span class="tag-vip">VIP专属</span></div>
+<p class="desc">系统化识别工艺/设备潜在的失效模式、原因及其影响。包含风险优先数(RPN)评估与改进跟踪。</p>
+<a href="fmea-guide.html" class="btn-link disabled">VIP 专享</a>
+</div>
+
+<!-- What-If — VIP -->
+<div class="tool-card">
+<div class="tool-icon">&#10067;</div>
+<h3>What-If 假设分析</h3>
+<div class="sub">What-If Analysis</div>
+<div class="tags"><span class="tag-vip">VIP专属</span></div>
+<p class="desc">通过结构化"假设-后果"问题链，系统排查工艺偏差与非正常工况下的潜在风险。适用于HAZOP前的初步筛查。</p>
+<a href="what-if-guide.html" class="btn-link disabled">VIP 专享</a>
+</div>
+
+</div></div>
+
+<!-- Module 2: 事故分析与根因调查 -->
+<div class="module">
+<div class="module-title"><span>&#128270;</span> 事故分析与根因调查</div>
+<p class="module-desc">从事发现场到根本原因，系统化分析框架帮助组织从事件中学习，防止重蹈覆辙</p>
+<div class="tool-grid">
+
+<!-- 5Why + 鱼骨图 — 免费 -->
+<div class="tool-card">
+<div class="tool-icon">&#128200;</div>
+<h3>5Why + 鱼骨图</h3>
+<div class="sub">5 Whys & Fishbone Diagram</div>
+<div class="tags"><span class="tag-free">免费使用</span><span class="tag-free" style="background:#dbeafe;color:#1e40af">在线工具</span></div>
+<p class="desc">结合因果分析(鱼骨图)与深层追问(5Why)，从人-机-料-法-环-测六个维度系统定位问题根因。</p>
+<a href="rca-tool.html" class="btn-link">开始使用 &rarr;</a>
+</div>
+
+<!-- Apollo RCA — VIP -->
+<div class="tool-card">
+<div class="tool-icon">&#128214;</div>
+<h3>Apollo RCA</h3>
+<div class="sub">Apollo Root Cause Analysis</div>
+<div class="tags"><span class="tag-vip">VIP专属</span></div>
+<p class="desc">聚焦"原因-效果"链而非故障树，通过系统化访谈与证据收集，找出导致事件的根本原因和促成因素。</p>
+<a href="apollo-rca-guide.html" class="btn-link disabled">VIP 专享</a>
+</div>
+
+<!-- Tripod Beta — VIP -->
+<div class="tool-card">
+<div class="tool-icon">&#128202;</div>
+<h3>Tripod Beta</h3>
+<div class="sub">Tripod Beta Incident Analysis</div>
+<div class="tags"><span class="tag-vip">VIP专属</span></div>
+<p class="desc">基于"故障树+潜在失误路径"的事故分析模型，从组织缺陷和潜在条件角度系统性调查重大事故。</p>
+<a href="tripod-guide.html" class="btn-link disabled">VIP 专享</a>
+</div>
+
+</div></div>
+
+<div class="methodology">
+<h3>为什么选择这些工具？</h3>
+<p>这些方法论均来自国际EHS最佳实践，经过世界500强化工企业验证：</p>
+<ul>
+<li>JSA / What-If：OSHA、CCPS推荐的过程安全工具</li>
+<li>FMEA：源自美国军方(MIL-STD-1629)，广泛用于化工&制造业</li>
+<li>5Why + 鱼骨图：丰田生产系统核心分析工具</li>
+<li>Apollo RCA：适用于复杂、非标事的系统化调查</li>
+<li>Tripod Beta：源自荷兰埃因霍温理工大学，Shell/BP广泛采用</li>
+</ul>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:2rem;font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border);margin-top:1rem">
+<p>&copy; 2026 EHS-SIL · 工具仅供学习与工作参考</p>
+</footer>
+
+<script>
+// Check VIP status and update button states
+(function(){
+    var isVipUser = false;
+    try {
+        var s = JSON.parse(localStorage.getItem('ehs_sil_session'));
+        isVipUser = s && s.vip === true;
+    } catch(e) {}
+    if (isVipUser) {
+        document.querySelectorAll('.tool-card').forEach(function(card){
+            var link = card.querySelector('.btn-link');
+            link.classList.remove('disabled');
+            link.textContent = link.textContent.replace('VIP 专享','进入 &rarr;');
+        });
+        document.querySelector('.promo-banner').style.display = 'none';
+    }
+})();
+</script>
+</body>
+</html>

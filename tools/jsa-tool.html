@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JSA 工作安全分析 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#95a5a6;--border:#d6d0c4;--border-light:#e8e4dc;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836 0%,#1a4b5c 100%);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.6rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.82rem;max-width:500px;margin:.3rem auto 1rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.back:hover{opacity:.8}
+.section{background:#fff;border-radius:10px;border:1px solid var(--border-light);padding:1.5rem;margin:1.5rem 0}
+.section h2{font-size:1.05rem;color:var(--primary);font-weight:600;margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.6rem}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:.6rem}
+.form-group{margin-bottom:.6rem}
+.form-group label{display:block;font-size:.75rem;color:var(--text-secondary);font-weight:500;margin-bottom:.15rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.5rem .6rem;border:1.5px solid var(--border-light);border-radius:6px;font-size:.82rem;outline:none;transition:.2s;font-family:var(--font-sans)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.08)}
+.form-group textarea{min-height:60px;resize:vertical}
+.btn{padding:.5rem 1rem;border:none;border-radius:6px;font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#a0750a}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.35rem .7rem;font-size:.75rem}
+.btn-danger{background:#dc2626;color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.btn-secondary{background:#f0f0f0;color:#555}
+.btn-secondary:hover{background:#e0e0e0}
+.step-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.8rem}
+.step-table th{background:var(--primary);color:#fff;padding:.5rem .4rem;text-align:left;font-weight:500;white-space:nowrap}
+.step-table td{padding:.45rem .4rem;border-bottom:1px solid var(--border-light);vertical-align:top}
+.step-table tr:hover{background:#fafaf5}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:.7rem;font-weight:600;flex-shrink:0}
+.risk-badge{display:inline-block;padding:.05rem .35rem;border-radius:3px;font-size:.65rem;font-weight:600;white-space:nowrap}
+.risk-low{background:#dcfce7;color:#16a34a}
+.risk-med{background:#fef9c3;color:#a16207}
+.risk-high{background:#fee2e2;color:#dc2626}
+.risk-extreme{background:#fce7f3;color:#be185d}
+.risk-matrix{display:grid;grid-template-columns:auto repeat(5,1fr);gap:2px;max-width:300px;font-size:.72rem;margin:.5rem 0}
+.risk-matrix .cell{text-align:center;padding:.25rem .15rem;border-radius:2px;font-weight:600}
+.matrix-label{font-weight:600;color:var(--text-secondary);display:flex;align-items:center;justify-content:center}
+.toolbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem}
+.toolbar-right{margin-left:auto;display:flex;gap:.4rem}
+.empty-state{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.85rem}
+.empty-state .icon{font-size:2.5rem;margin-bottom:.5rem}
+.tips{margin:1rem 0;padding:1rem;background:#fefce8;border:1px solid #fde68a;border-radius:8px;font-size:.78rem;color:#92400e;line-height:1.6}
+.report-view{display:none}
+.report-view.active{display:block}
+.report-content{background:#fff;padding:1.5rem;border:1px solid var(--border);border-radius:8px;font-size:.8rem}
+.report-content table{width:100%;border-collapse:collapse;font-size:.78rem}
+.report-content th,.report-content td{border:1px solid var(--border);padding:.4rem .5rem;text-align:left}
+.report-content th{background:var(--primary);color:#fff}
+.save-status{font-size:.72rem;color:var(--text-muted);margin-left:.5rem}
+@media(max-width:480px){.form-row,.form-row-3{grid-template-columns:1fr}.header h1{font-size:1.2rem}.step-table{font-size:.7rem}}
+</style>
+</head>
+<body>
+
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128269; JSA 工作安全分析</h1>
+<p>将工作任务分解为步骤，识别危害、评估风险、制定控制措施</p>
+</div></div>
+
+<div class="container" id="app">
+
+<!-- Job Info -->
+<div class="section" id="jobInfo">
+<h2>&#128203; 作业信息</h2>
+<div class="form-row">
+<div class="form-group"><label>作业名称 *</label><input id="jobName" placeholder="例：离心泵检修" value=""></div>
+<div class="form-group"><label>作业编号</label><input id="jobRef" placeholder="JSA-2026-001"></div>
+</div>
+<div class="form-row-3">
+<div class="form-group"><label>部门/区域</label><input id="jobDept" placeholder="生产部 / 公用工程"></div>
+<div class="form-group"><label>评估人 *</label><input id="jobAssessor" placeholder="姓名"></div>
+<div class="form-group"><label>日期</label><input id="jobDate" type="date"></div>
+</div>
+</div>
+
+<div class="tips" id="stepTips">
+<strong>&#128161; JSA 操作指南：</strong>
+将作业分解为3-8个逻辑步骤。对每个步骤：①描述作业动作 → ②识别潜在危害 → ③列出已有控制措施 → ④评估风险等级(L×S) → ⑤提出补充控制。完成所有步骤后，可以导出为报告。
+</div>
+
+<!-- Add Step -->
+<div class="section" id="addStep">
+<h2>&#10133; 添加作业步骤</h2>
+<div class="form-row">
+<div class="form-group"><label>步骤描述 *</label><textarea id="stepDesc" placeholder="描述此步骤的具体作业动作（例：关闭进口阀门）" rows="2"></textarea></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>潜在危害 *</label><textarea id="stepHazard" placeholder="识别可能的危害（例：阀门泄漏、残留物料喷溅）" rows="2"></textarea></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>现有控制措施</label><textarea id="stepCtrl" placeholder="已有的安全措施（例：穿戴防护手套、使用防爆工具）" rows="2"></textarea></div>
+</div>
+<div class="form-row-3">
+<div class="form-group"><label>可能性 (L)</label><select id="stepL"><option value="1">1 - 极低</option><option value="2">2 - 低</option><option value="3" selected>3 - 中</option><option value="4">4 - 高</option><option value="5">5 - 极高</option></select></div>
+<div class="form-group"><label>严重性 (S)</label><select id="stepS"><option value="1">1 - 轻微</option><option value="2">2 - 一般</option><option value="3" selected>3 - 严重</option><option value="4">4 - 重大</option><option value="5">5 - 特大</option></select></div>
+<div class="form-group"><label>风险等级 R = L×S</label><div id="riskPreview" style="padding:.5rem;font-size:.85rem;font-weight:600;text-align:center;border-radius:6px;background:#fef9c3;color:#a16207">9 - 中风险</div></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>补充控制措施</label><textarea id="stepAddCtrl" placeholder="需要增加的额外安全措施（例：增加气体检测、设置监护人员）" rows="2"></textarea></div>
+</div>
+<div style="display:flex;gap:.5rem;margin-top:.5rem">
+<button class="btn btn-primary" onclick="addStep()">&#10133; 添加步骤</button>
+<button class="btn btn-secondary" onclick="clearForm()">清空表单</button>
+</div>
+</div>
+
+<!-- Steps List -->
+<div class="section">
+<div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">
+<h2 style="margin-bottom:0">&#128221; 作业步骤列表</h2>
+<span id="stepCount" style="font-size:.78rem;color:var(--text-muted)">0 个步骤</span>
+<div class="toolbar-right">
+<button class="btn btn-sm btn-outline" onclick="saveToLocal()">&#128190; 保存</button>
+<button class="btn btn-sm btn-outline" onclick="loadFromLocal()">&#128194; 载入</button>
+<button class="btn btn-sm btn-accent" onclick="generateReport()">&#128196; 导出报告</button>
+<button class="btn btn-sm btn-danger" onclick="clearAll()">&#128465; 清空</button>
+</div>
+</div>
+
+<div id="stepList"><div class="empty-state"><div class="icon">&#128221;</div><p>暂无作业步骤，请在上方添加</p><p style="font-size:.72rem;color:#bbb">将作业分解为逻辑步骤，逐一分析危害与控制措施</p></div></div>
+
+<!-- Risk Matrix Legend -->
+<div style="margin-top:.6rem;font-size:.72rem;color:var(--text-muted);display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+<span>风险矩阵:</span>
+<span class="risk-badge risk-low">低 1-4</span>
+<span class="risk-badge risk-med">中 5-9</span>
+<span class="risk-badge risk-high">高 10-16</span>
+<span class="risk-badge risk-extreme">极高 17-25</span>
+<span style="margin-left:auto">L=可能性 S=严重性 RPN=L×S</span>
+</div>
+</div>
+
+<!-- Report View -->
+<div class="section report-view" id="reportSection">
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem">
+<h2 style="margin-bottom:0">&#128196; 报告预览</h2>
+<div style="display:flex;gap:.4rem">
+<button class="btn btn-sm btn-primary" onclick="printReport()">&#128424; 打印</button>
+<button class="btn btn-sm btn-secondary" onclick="closeReport()">关闭</button>
+</div>
+</div>
+<div class="report-content" id="reportContent"></div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · 数据仅保存在本地浏览器</p></footer>
+
+<script>
+var steps = [];
+var STORAGE_KEY = 'ehs_sil_jsa';
+
+// Set default date
+document.getElementById('jobDate').valueAsDate = new Date();
+
+// Risk preview
+function updateRiskPreview() {
+    var l = parseInt(document.getElementById('stepL').value);
+    var s = parseInt(document.getElementById('stepS').value);
+    var r = l * s;
+    var el = document.getElementById('riskPreview');
+    el.textContent = r + ' - ' + getRiskLabel(r);
+    el.className = 'risk-badge ' + getRiskClass(r);
+    el.style.display = 'block';
+    el.style.padding = '.5rem';
+    el.style.fontSize = '.85rem';
+    el.style.fontWeight = '600';
+    el.style.textAlign = 'center';
+    el.style.borderRadius = '6px';
+}
+document.getElementById('stepL').onchange = updateRiskPreview;
+document.getElementById('stepS').onchange = updateRiskPreview;
+updateRiskPreview();
+
+function getRiskLabel(r) {
+    if (r <= 4) return '低风险';
+    if (r <= 9) return '中风险';
+    if (r <= 16) return '高风险';
+    return '极高风险';
+}
+
+function getRiskClass(r) {
+    if (r <= 4) return 'risk-low';
+    if (r <= 9) return 'risk-med';
+    if (r <= 16) return 'risk-high';
+    return 'risk-extreme';
+}
+
+function addStep() {
+    var desc = document.getElementById('stepDesc').value.trim();
+    var hazard = document.getElementById('stepHazard').value.trim();
+    if (!desc || !hazard) { alert('请填写步骤描述和潜在危害'); return; }
+    steps.push({
+        id: Date.now(),
+        step: steps.length + 1,
+        desc: desc,
+        hazard: hazard,
+        existingCtrl: document.getElementById('stepCtrl').value.trim(),
+        L: parseInt(document.getElementById('stepL').value),
+        S: parseInt(document.getElementById('stepS').value),
+        R: parseInt(document.getElementById('stepL').value) * parseInt(document.getElementById('stepS').value),
+        addCtrl: document.getElementById('stepAddCtrl').value.trim()
+    });
+    clearForm();
+    renderSteps();
+}
+
+function clearForm() {
+    document.getElementById('stepDesc').value = '';
+    document.getElementById('stepHazard').value = '';
+    document.getElementById('stepCtrl').value = '';
+    document.getElementById('stepAddCtrl').value = '';
+    document.getElementById('stepL').value = '3';
+    document.getElementById('stepS').value = '3';
+    updateRiskPreview();
+    document.getElementById('stepDesc').focus();
+}
+
+function removeStep(id) {
+    steps = steps.filter(function(s){return s.id !== id});
+    steps.forEach(function(s,i){s.step = i + 1});
+    renderSteps();
+}
+
+function clearAll() {
+    if (!steps.length) return;
+    if (!confirm('确定清空所有步骤？')) return;
+    steps = [];
+    renderSteps();
+}
+
+function renderSteps() {
+    var el = document.getElementById('stepList');
+    document.getElementById('stepCount').textContent = steps.length + ' 个步骤';
+    if (!steps.length) {
+        el.innerHTML = '<div class="empty-state"><div class="icon">&#128221;</div><p>暂无作业步骤，请在上方添加</p><p style="font-size:.72rem;color:#bbb">将作业分解为逻辑步骤，逐一分析危害与控制措施</p></div>';
+        return;
+    }
+    var html = '<table class="step-table"><thead><tr><th style="width:40px">#</th><th style="width:18%">步骤描述</th><th style="width:18%">潜在危害</th><th style="width:15%">现有控制</th><th style="width:50px">L</th><th style="width:50px">S</th><th style="width:60px">风险</th><th style="width:15%">补充控制</th><th style="width:40px"></th></tr></thead><tbody>';
+    steps.forEach(function(s){
+        var riskClass = getRiskClass(s.R);
+        html += '<tr><td><span class="step-num">' + s.step + '</span></td>' +
+            '<td>' + esc(s.desc) + '</td>' +
+            '<td>' + esc(s.hazard) + '</td>' +
+            '<td>' + esc(s.existingCtrl) + '</td>' +
+            '<td style="text-align:center">' + s.L + '</td>' +
+            '<td style="text-align:center">' + s.S + '</td>' +
+            '<td><span class="risk-badge ' + riskClass + '">' + s.R + '</span></td>' +
+            '<td>' + esc(s.addCtrl) + '</td>' +
+            '<td><button class="btn btn-sm btn-danger" onclick="removeStep(' + s.id + ')">&#10005;</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    el.innerHTML = html;
+}
+
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// Save/Load
+function saveToLocal() {
+    var data = {
+        jobName: document.getElementById('jobName').value,
+        jobRef: document.getElementById('jobRef').value,
+        jobDept: document.getElementById('jobDept').value,
+        jobAssessor: document.getElementById('jobAssessor').value,
+        jobDate: document.getElementById('jobDate').value,
+        steps: steps,
+        saved: new Date().toISOString()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    showSaveStatus('已保存');
+}
+
+function loadFromLocal() {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) { alert('没有找到保存的数据'); return; }
+    try {
+        var data = JSON.parse(raw);
+        document.getElementById('jobName').value = data.jobName || '';
+        document.getElementById('jobRef').value = data.jobRef || '';
+        document.getElementById('jobDept').value = data.jobDept || '';
+        document.getElementById('jobAssessor').value = data.jobAssessor || '';
+        document.getElementById('jobDate').value = data.jobDate || '';
+        steps = data.steps || [];
+        renderSteps();
+        showSaveStatus('已载入 ' + (data.saved ? new Date(data.saved).toLocaleString() : ''));
+    } catch(e) { alert('数据读取失败'); }
+}
+
+function showSaveStatus(msg) {
+    var el = document.createElement('span');
+    el.className = 'save-status';
+    el.textContent = msg;
+    var parent = document.getElementById('stepCount');
+    var old = parent.parentNode.querySelector('.save-status');
+    if (old) old.remove();
+    parent.parentNode.appendChild(el);
+    setTimeout(function(){if(el.parentNode)el.remove()}, 2000);
+}
+
+// Report Generation
+function generateReport() {
+    if (!steps.length) { alert('请先添加至少一个作业步骤'); return; }
+    var name = document.getElementById('jobName').value || '(未填写)';
+    var ref = document.getElementById('jobRef').value || '';
+    var dept = document.getElementById('jobDept').value || '';
+    var assessor = document.getElementById('jobAssessor').value || '';
+    var date = document.getElementById('jobDate').value || '';
+    var now = new Date().toLocaleString('zh-CN');
+    var html = '<h3 style="margin-bottom:.3rem">JSA 工作安全分析报告</h3>' +
+        '<p style="font-size:.72rem;color:#999;margin-bottom:.8rem">生成时间: ' + now + '</p>' +
+        '<table style="width:100%;margin-bottom:.8rem"><tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>作业名称:</strong> ' + esc(name) + '</td>' +
+        '<td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>编号:</strong> ' + esc(ref) + '</td></tr>' +
+        '<tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>部门/区域:</strong> ' + esc(dept) + '</td>' +
+        '<td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>评估人:</strong> ' + esc(assessor) + '</td></tr>' +
+        '<tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>日期:</strong> ' + date + '</td><td style="border:none;padding:.2rem .5rem;font-size:.78rem"></td></tr></table>' +
+        '<table><thead><tr><th>步骤</th><th>作业描述</th><th>潜在危害</th><th>现有控制</th><th>L</th><th>S</th><th>RPN</th><th>风险等级</th><th>补充控制</th></tr></thead><tbody>';
+    steps.forEach(function(s){
+        html += '<tr><td>' + s.step + '</td><td>' + esc(s.desc) + '</td><td>' + esc(s.hazard) + '</td><td>' + esc(s.existingCtrl) + '</td>' +
+            '<td>' + s.L + '</td><td>' + s.S + '</td><td>' + s.R + '</td><td>' + getRiskLabel(s.R) + '</td><td>' + esc(s.addCtrl) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    // Summary
+    var highCount = steps.filter(function(s){return s.R >= 10}).length;
+    html += '<p style="margin-top:.5rem;font-size:.78rem;color:#666">共 ' + steps.length + ' 个步骤，其中高风险以上 ' + highCount + ' 项。</p>';
+    html += '<p style="margin-top:.5rem;font-size:.7rem;color:#999;border-top:1px solid #eee;padding-top:.5rem">EHS-SIL · 外企EHS实操指南 · ' + now + '</p>';
+    document.getElementById('reportContent').innerHTML = html;
+    document.getElementById('reportSection').classList.add('active');
+    document.getElementById('reportSection').scrollIntoView({behavior:'smooth'});
+}
+
+function printReport() {
+    var content = document.getElementById('reportContent').innerHTML;
+    var win = window.open('', '_blank');
+    win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>JSA Report</title><style>body{font-family:-apple-system,sans-serif;padding:1.5rem;font-size:13px;color:#333}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{border:1px solid #ccc;padding:.4rem .5rem;text-align:left;font-size:12px}th{background:#0d2836;color:#fff}h3{color:#0d2836}@media print{body{padding:.5in}}</style></head><body>' + content + '</body></html>');
+    win.document.close();
+    setTimeout(function(){win.print()}, 500);
+}
+
+function closeReport() {
+    document.getElementById('reportSection').classList.remove('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FMEA 失效模式与影响分析 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.content{background:#fff;border-radius:10px;border:1px solid #e8e4dc;padding:1.5rem;margin:1.5rem 0}
+.content h2{font-size:1rem;color:var(--primary);margin:1rem 0 .4rem;border-left:3px solid var(--accent);padding-left:.6rem}
+.content p{font-size:.82rem;color:#555;line-height:1.7;margin-bottom:.5rem}
+.content ul{list-style:none;padding:0;margin-bottom:.5rem}
+.content ul li{font-size:.8rem;color:#555;padding:.2rem 0 .2rem 1rem;position:relative}
+.content ul li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.gate-overlay{display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center}
+.gate-card{background:#fefce8;border:2px dashed #fde68a;border-radius:12px;padding:2rem;max-width:400px;margin:0 auto}
+.gate-card .icon{font-size:3rem;margin-bottom:.5rem}
+.gate-card h3{font-size:1rem;color:var(--primary);margin-bottom:.3rem}
+.gate-card p{font-size:.82rem;color:#666;margin-bottom:1rem}
+.gate-card .btn-gate{display:inline-block;padding:.5rem 1.2rem;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:500}
+.gate-card .btn-gate:hover{opacity:.9}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128220; FMEA 失效模式与影响分析</h1>
+<p>Systematic Failure Prevention — 系统化失效预防工具</p>
+</div></div>
+
+<div class="container">
+
+<div id="gateContent" class="content">
+<h2>什么是FMEA？</h2>
+<p>FMEA (Failure Mode and Effects Analysis) 是一种系统化的前瞻性分析方法，用于识别工艺、设备或产品中潜在的失效模式、原因及其影响。通过评估每种失效模式的风险优先数(RPN)，确定改进优先级并制定预防措施。</p>
+<p>在化工行业，FMEA广泛应用于：工艺安全分析、设备可靠性评估、HAZOP补充分析、变更管理(MOC)风险评估等场景。</p>
+
+<h2>核心要素</h2>
+<ul>
+<li><strong>失效模式：</strong>什么可能出错？</li>
+<li><strong>失效原因：</strong>为什么会发生？</li>
+<li><strong>失效影响：</strong>后果是什么？</li>
+<li><strong>严重度(S)：</strong>后果的严重程度 (1-10)</li>
+<li><strong>发生频度(O)：</strong>原因发生的频率 (1-10)</li>
+<li><strong>探测度(D)：</strong>当前控制的探测能力 (1-10)</li>
+<li><strong>风险优先数：RPN = S × O × D</strong></li>
+</ul>
+
+<h2>FMEA 分析流程</h2>
+<p>1. 确定分析对象和范围 → 2. 组建跨职能团队 → 3. 列出所有可能的失效模式 → 4. 确定每个失效模式的原因和影响 → 5. 评估S/O/D → 6. 计算RPN → 7. 制定改进措施 → 8. 重新评估风险</p>
+
+<h2>模板下载</h2>
+<p>VIP会员可下载FMEA模板（Excel格式），含标准FMEA表格、RPN自动计算和优先级矩阵。</p>
+
+<div id="gateBlock"></div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+(function(){
+    if (checkVipStatus()) {
+        document.getElementById('gateBlock').innerHTML = '<div style="background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:1rem;margin-top:.8rem">' +
+            '<h3 style="font-size:.85rem;color:#16a34a;margin-bottom:.3rem">&#10003; VIP已激活</h3>' +
+            '<p style="font-size:.78rem;color:#333">您可以使用以下资源：</p>' +
+            '<ul style="margin-top:.3rem"><li>FMEA模板（Excel格式，含RPN自动计算）</li>' +
+            '<li>FMEA实施指南（含化工行业案例）</li>' +
+            '<li>S/O/D评分标准表（行业标准参考）</li>' +
+            '<li>FMEA团队工作表（可打印）</li></ul>' +
+            '<p style="font-size:.78rem;color:#666;margin-top:.5rem">完整资料请在知识星球「外企EHS工具箱」中下载</p></div>';
+    } else {
+        document.getElementById('gateBlock').innerHTML = '<div class="gate-card"><div class="icon">&#11088;</div><h3>VIP专享内容</h3><p>登录并激活VIP后查看完整FMEA模板与指南</p><a href="../dashboard/register.html?tab=vip" class="btn-gate">激活VIP &rarr;</a><div style="margin-top:.5rem"><a href="risk-analysis.html" style="font-size:.78rem;color:#999">返回工具集</a></div></div>';
+    }
+})();
+</script>
+</body>
+</html>

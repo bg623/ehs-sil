@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>登录 / 注册 · EHS-SIL</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#f5f1ea}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased}
+.auth-wrap{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);width:400px;max-width:92%;padding:2rem;position:relative}
+.back{position:absolute;top:1rem;left:1rem;font-size:.78rem;color:var(--primary);text-decoration:none;opacity:.6}
+.back:hover{opacity:1}
+.logo{text-align:center;margin-bottom:1.5rem}
+.logo h1{font-size:1.4rem;color:var(--primary);font-weight:700}
+.logo p{font-size:.75rem;color:#888;margin-top:.2rem}
+.tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid #eee}
+.tab{flex:1;padding:.6rem;text-align:center;font-size:.85rem;font-weight:500;color:#999;cursor:pointer;border:none;background:none;transition:.2s;border-bottom:2px solid transparent;margin-bottom:-2px}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.tab:hover{color:var(--primary)}
+.form{display:block}
+.form.hidden{display:none}
+.form-group{margin-bottom:.9rem}
+label{display:block;font-size:.78rem;color:#555;margin-bottom:.25rem;font-weight:500}
+input[type="email"],input[type="password"],input[type="text"]{width:100%;padding:.65rem .75rem;border:1.5px solid #ddd;border-radius:8px;font-size:.85rem;outline:none;transition:.2s}
+input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.1)}
+.btn{width:100%;padding:.7rem;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;transition:.2s;margin-top:.3rem}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#a0750a}
+.msg{font-size:.78rem;padding:.4rem;border-radius:4px;margin-bottom:.8rem;text-align:center;display:none}
+.msg.error{color:#dc2626;background:#fee2e2;display:block}
+.msg.success{color:#16a34a;background:#dcfce7;display:block}
+.hint{font-size:.72rem;color:#999;margin-top:.5rem;text-align:center}
+.hint a{color:var(--accent);cursor:pointer;text-decoration:underline}
+.vip-section{margin-top:1rem;padding-top:1rem;border-top:1px solid #eee}
+.vip-section h4{font-size:.8rem;color:var(--primary);margin-bottom:.5rem;text-align:center}
+.vip-code-wrap{display:flex;gap:.3rem}
+.vip-code-wrap input{flex:1}
+.vip-code-wrap button{padding:.65rem .9rem}
+</style>
+</head>
+<body>
+<div class="auth-wrap">
+<a href="../index.html" class="back">&larr; 返回</a>
+<div class="logo">
+<h1>EHS-SIL</h1>
+<p>外企EHS实操指南 · 登录后可解锁全部工具</p>
+</div>
+
+<div class="tabs">
+<button class="tab active" data-tab="login" onclick="switchTab('login')">登录</button>
+<button class="tab" data-tab="register" onclick="switchTab('register')">注册</button>
+</div>
+
+<div id="msg" class="msg"></div>
+
+<form id="loginForm" class="form" onsubmit="doLogin(event)">
+<div class="form-group"><label>邮箱</label><input type="email" id="loginEmail" required placeholder="your@email.com"></div>
+<div class="form-group"><label>密码</label><input type="password" id="loginPwd" required placeholder="输入密码"></div>
+<button type="submit" class="btn btn-primary">登录</button>
+<div class="hint">还没有账号？<a onclick="switchTab('register')">立即注册</a></div>
+</form>
+
+<form id="registerForm" class="form hidden" onsubmit="doRegister(event)">
+<div class="form-group"><label>昵称（选填）</label><input type="text" id="regName" placeholder="如何称呼您"></div>
+<div class="form-group"><label>邮箱</label><input type="email" id="regEmail" required placeholder="your@email.com"></div>
+<div class="form-group"><label>密码</label><input type="password" id="regPwd" required minlength="4" placeholder="至少4位"></div>
+<button type="submit" class="btn btn-primary">注册</button>
+<div class="hint">已有账号？<a onclick="switchTab('login')">去登录</a></div>
+</form>
+
+<div class="vip-section">
+<h4>&#11088; VIP 激活</h4>
+<p style="font-size:.72rem;color:#999;text-align:center;margin-bottom:.6rem">已购买知识星球产品？输入专属激活码解锁全部工具</p>
+<div class="vip-code-wrap">
+<input type="text" id="vipCode" placeholder="输入激活码" onkeydown="if(event.key==='Enter')doActivate()">
+<button class="btn btn-accent" onclick="doActivate()" style="white-space:nowrap;padding:.65rem .8rem;margin:0;flex-shrink:0">激活</button>
+</div>
+</div>
+</div>
+
+<script src="../js/auth.js"></script>
+<script>
+// Check URL params for tab
+var params = new URLSearchParams(window.location.search);
+if (params.get('tab') === 'vip') {
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.querySelector('[data-tab="login"]').classList.add('active');
+    document.getElementById('loginForm').classList.remove('hidden');
+    setTimeout(function(){ document.getElementById('vipCode').focus(); }, 300);
+}
+if (params.get('tab') === 'register') {
+    switchTab('register');
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+    document.querySelector('[data-tab="'+tab+'"]').classList.add('active');
+    document.getElementById('loginForm').className = tab === 'login' ? 'form' : 'form hidden';
+    document.getElementById('registerForm').className = tab === 'register' ? 'form' : 'form hidden';
+    document.getElementById('msg').className = 'msg';
+}
+
+function showMsg(text, type) {
+    var el = document.getElementById('msg');
+    el.textContent = text;
+    el.className = 'msg ' + type;
+}
+
+function doLogin(e) {
+    e.preventDefault();
+    var email = document.getElementById('loginEmail').value;
+    var pwd = document.getElementById('loginPwd').value;
+    var result = login(email, pwd);
+    if (result.ok) {
+        showMsg('登录成功！正在跳转...', 'success');
+        setTimeout(function(){ window.location.href = '../tools/risk-analysis.html'; }, 800);
+    } else {
+        showMsg(result.msg, 'error');
+    }
+}
+
+function doRegister(e) {
+    e.preventDefault();
+    var name = document.getElementById('regName').value;
+    var email = document.getElementById('regEmail').value;
+    var pwd = document.getElementById('regPwd').value;
+    var result = register(email, pwd, name);
+    if (result.ok) {
+        showMsg(result.msg, 'success');
+        setTimeout(function(){ switchTab('login'); document.getElementById('loginEmail').value = email; }, 600);
+    } else {
+        showMsg(result.msg, 'error');
+    }
+}
+
+function doActivate() {
+    var code = document.getElementById('vipCode').value.trim();
+    if (!code) { showMsg('请输入激活码', 'error'); return; }
+    var s = getSession();
+    if (!s) { showMsg('请先登录后再激活VIP', 'error'); return; }
+    var result = activateVip(code, s.email);
+    if (result.ok) {
+        showMsg(result.msg, 'success');
+        setTimeout(function(){ window.location.href = '../tools/risk-analysis.html'; }, 1000);
+    } else {
+        showMsg(result.msg, 'error');
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Apollo RCA 根源分析 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.content{background:#fff;border-radius:10px;border:1px solid #e8e4dc;padding:1.5rem;margin:1.5rem 0}
+.content h2{font-size:1rem;color:var(--primary);margin:1rem 0 .4rem;border-left:3px solid var(--accent);padding-left:.6rem}
+.content p{font-size:.82rem;color:#555;line-height:1.7;margin-bottom:.5rem}
+.content ul{list-style:none;padding:0;margin-bottom:.5rem}
+.content ul li{font-size:.8rem;color:#555;padding:.2rem 0 .2rem 1rem;position:relative}
+.content ul li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.gate-card{background:#fefce8;border:2px dashed #fde68a;border-radius:12px;padding:2rem;max-width:400px;margin:0 auto;text-align:center}
+.gate-card .icon{font-size:3rem;margin-bottom:.5rem}
+.gate-card h3{font-size:1rem;color:var(--primary);margin-bottom:.3rem}
+.gate-card p{font-size:.82rem;color:#666;margin-bottom:1rem}
+.gate-card .btn-gate{display:inline-block;padding:.5rem 1.2rem;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:500}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128214; Apollo RCA 根源分析</h1>
+<p>Cause-Effect Driven Investigation — 基于因果链的系统化调查方法</p>
+</div></div>
+
+<div class="container">
+
+<div class="content">
+<h2>什么是 Apollo RCA？</h2>
+<p>Apollo Root Cause Analysis (Apollo RCA) 是一种基于"原因-效果"链的系统化事故调查方法。与传统的故障树分析不同，Apollo RCA 不预设故障模型，而是通过系统化访谈和证据收集，追踪导致事件的所有因果路径，找到根本原因和促成因素。</p>
+<p>Apollo RCA 由其创始人 Dean Gano 在 20 世纪 80 年代开发，广泛应用于化工、航空、核能等高危行业。它的核心理念是：<strong>所有事件都有原因，找到原因就能防止复发</strong>。</p>
+
+<h2>Apollo RCA 核心原则</h2>
+<ul>
+<li><strong>因果定律：</strong>每个效果都有原因，每个原因也是上一个原因的效果</li>
+<li><strong>根本原因是可以管理的：</strong>找到可采取行动的原因，而非抽象结论</li>
+<li><strong>多方参与：</strong>需要一线人员、技术专家、管理层的共同参与</li>
+<li><strong>基于证据：</strong>所有因果链必须由物理证据、文档或可靠证词支撑</li>
+</ul>
+
+<h2>分析流程</h2>
+<p>1. 定义问题(事件描述) → 2. 收集数据和证据 → 3. 构建因果图(原因-效果链) → 4. 识别根本原因和促成因素 → 5. 制定可执行的改进建议 → 6. 撰写报告并跟踪落实</p>
+
+<h2>模板与工具</h2>
+<p>VIP会员可获取Apollo RCA分析模板、因果图工作表和案例研究。</p>
+
+<div id="gateBlock"></div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+(function(){
+    if (checkVipStatus()) {
+        document.getElementById('gateBlock').innerHTML = '<div style="background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:1rem;margin-top:.8rem">' +
+            '<h3 style="font-size:.85rem;color:#16a34a;margin-bottom:.3rem">&#10003; VIP已激活</h3>' +
+            '<p style="font-size:.78rem;color:#333">您可以使用以下资源：</p>' +
+            '<ul style="margin-top:.3rem"><li>Apollo RCA分析模板（含因果图框架）</li>' +
+            '<li>因果图构建指南（带化工案例）</li>' +
+            '<li>证据收集清单与访谈模板</li>' +
+            '<li>RCA报告模板（可直接套用）</li></ul>' +
+            '<p style="font-size:.78rem;color:#666;margin-top:.5rem">完整资料请在知识星球「外企EHS工具箱」中下载</p></div>';
+    } else {
+        document.getElementById('gateBlock').innerHTML = '<div class="gate-card"><div class="icon">&#11088;</div><h3>VIP专享内容</h3><p>登录并激活VIP后查看完整Apollo RCA模板与指南</p><a href="../dashboard/register.html?tab=vip" class="btn-gate">激活VIP &rarr;</a><div style="margin-top:.5rem"><a href="risk-analysis.html" style="font-size:.78rem;color:#999">返回工具集</a></div></div>';
+    }
+})();
+</script>
+</body>
+</html>
