@@ -83,7 +83,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="sub">Failure Mode &amp; Effects Analysis</div>
 <div class="tags"><span class="tag-vip">VIP专属</span></div>
 <p class="desc">系统化识别工艺/设备潜在的失效模式、原因及其影响。包含风险优先数(RPN)评估与改进跟踪。</p>
-<a href="fmea-tool.html" class="btn-link" style="color:#b8860b;border-color:#b8860b">VIP在线工具 class="btn-link disabled">VIP 专享</a>rarr;</a>
+<a href="fmea-tool.html" class="btn-link" style="color:#b8860b;border-color:#b8860b">VIP在线工具 &rarr;</a>
 </div>
 
 <!-- What-If — VIP -->
@@ -93,7 +93,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="sub">What-If Analysis</div>
 <div class="tags"><span class="tag-vip">VIP专属</span></div>
 <p class="desc">通过结构化"假设-后果"问题链，系统排查工艺偏差与非正常工况下的潜在风险。适用于HAZOP前的初步筛查。</p>
-<a href="what-if-tool.html" class="btn-link" style="color:#b8860b;border-color:#b8860b">VIP在线工具 class="btn-link disabled">VIP 专享</a>rarr;</a>
+<a href="what-if-tool.html" class="btn-link" style="color:#b8860b;border-color:#b8860b">VIP在线工具 &rarr;</a>
 </div>
 
 </div></div>
@@ -121,7 +121,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="sub">Apollo Root Cause Analysis</div>
 <div class="tags"><span class="tag-vip">VIP专属</span></div>
 <p class="desc">聚焦"原因-效果"链而非故障树，通过系统化访谈与证据收集，找出导致事件的根本原因和促成因素。</p>
-<a href="apollo-rca-guide.html" class="btn-link" style="color:#b8860b;border-color:#b8860b">VIP在线工具 class="btn-link disabled">VIP 专享</a>rarr;</a>
+<a href="apollo-rca-guide.html" class="btn-link disabled">VIP 专享</a>
 </div>
 
 <!-- Tripod Beta — VIP -->
@@ -131,7 +131,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="sub">Tripod Beta Incident Analysis</div>
 <div class="tags"><span class="tag-vip">VIP专属</span></div>
 <p class="desc">基于"故障树+潜在失误路径"的事故分析模型，从组织缺陷和潜在条件角度系统性调查重大事故。</p>
-<a href="tripod-guide.html" class="btn-link" style="color:#b8860b;border-color:#b8860b">VIP在线工具 class="btn-link disabled">VIP 专享</a>rarr;</a>
+<a href="tripod-guide.html" class="btn-link disabled">VIP 专享</a>
 </div>
 
 </div></div>
@@ -154,21 +154,17 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <p>&copy; 2026 EHS-SIL · 工具仅供学习与工作参考</p>
 </footer>
 
+<scrip
+<script src="../js/auth.js"></script>
 <script>
-// Check VIP status and update button states
 (function(){
-    var isVipUser = false;
-    try {
-        var s = JSON.parse(localStorage.getItem('ehs_sil_session'));
-        isVipUser = s && s.vip === true;
-    } catch(e) {}
-    if (isVipUser) {
-        document.querySelectorAll('.tool-card').forEach(function(card){
-            var link = card.querySelector('.btn-link');
+    if (isVip()) {
+        document.querySelectorAll('.btn-link.disabled').forEach(function(link){
             link.classList.remove('disabled');
-            link.textContent = link.textContent.replace('VIP 专享','进入 &rarr;');
+            link.textContent = '进入 &rarr;';
         });
-        document.querySelector('.promo-banner').style.display = 'none';
+        var banner = document.querySelector('.promo-banner');
+        if (banner) banner.style.display = 'none';
     }
 })();
 </script>
