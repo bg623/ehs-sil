@@ -45,154 +45,31 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .footer-actions{display:flex;gap:.5rem;justify-content:center;margin:1rem 0}
 @media(max-width:480px){.tool-links{grid-template-columns:1fr}}
 </style>
-<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?10000726865";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script></head>
-<body>
-<div class="header"><div class="container">
-<a href="../index.html" class="back">&larr; 返回首页</a>
-<h1>&#128100; 我的账户</h1>
-<p id="accountSub">管理您的 VIP 状态与工具权限</p>
-</div></div>
-
-<div class="container" id="app">
-
-<!-- Not logged in -->
-<div id="notLoggedIn" style="display:none">
-<div class="card" style="text-align:center;padding:2.5rem">
-<div style="font-size:3rem;margin-bottom:.5rem">&#128274;</div>
-<h2>请先登录</h2>
-<p style="font-size:.82rem;color:#666;margin:.5rem 0 1rem">登录后可激活VIP并访问全部高级工具</p>
-<a href="register.html" class="btn btn-primary btn-block" style="max-width:250px;margin:0 auto">去登录 / 注册</a>
-</div>
-</div>
-
-<!-- Logged in -->
-<div id="loggedIn" style="display:none">
-
-<!-- Welcome + Status -->
-<div class="card">
-<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
-<div>
-<h2 style="margin-bottom:.2rem">&#128075; 欢迎回来，<span id="userName">用户</span></h2>
-<p style="font-size:.75rem;color:var(--text-muted)"><span id="userEmail"></span></p>
-</div>
-<span id="vipStatusBadge" class="status-badge status-normal">&#128274; 普通用户</span>
-</div>
-</div>
-
-<!-- VIP Activation (for non-VIP) -->
-<div id="vipActivateSection" class="card">
-<h2>&#11088; 激活 VIP</h2>
-<p style="font-size:.78rem;color:var(--text-secondary);margin-bottom:.6rem">已购买「外企EHS工具箱」或「外企培训库」的朋友，请输入专属激活码解锁全部高级工具。</p>
-<div class="vip-input">
-<input type="text" id="vipCodeInput" placeholder="输入您的激活码（购买知识星球后获取）" onkeydown="if(event.key==='Enter')activate()">
-<button class="btn btn-accent" onclick="activate()" style="white-space:nowrap">&#10003; 激活</button>
-</div>
-<div id="vipMsg" class="msg"></div>
-<div style="margin-top:.5rem;font-size:.72rem;color:var(--text-muted)">
-还不知道激活码？<a href="https://wx.zsxq.com/group/88882255181182" target="_blank" style="color:var(--accent)">购买「外企EHS工具箱」</a> 或 <a href="https://wx.zsxq.com/group/51115515242254" target="_blank" style="color:var(--accent)">「外企培训库」</a> 即可获取
-</div>
-</div>
-
-<!-- VIP Benefits (for VIP users) -->
-<div id="vipBenefitsSection" style="display:none">
-<div class="card" style="background:#fefce8;border:1px solid #fde68a">
-<h2>&#127881; VIP 特权已激活</h2>
-<p style="font-size:.78rem;color:#666;margin-bottom:.8rem">您现在可以访问以下所有高级工具与模板：</p>
-<div class="tool-links">
-<a href="../tools/fmea-guide.html" class="tool-link"><span class="icon">&#128220;</span> FMEA 失效模式分析 <span class="badge badge-vip">VIP</span></a>
-<a href="../tools/what-if-guide.html" class="tool-link"><span class="icon">&#10067;</span> What-If 假设分析 <span class="badge badge-vip">VIP</span></a>
-<a href="../tools/apollo-rca-guide.html" class="tool-link"><span class="icon">&#128214;</span> Apollo RCA 根源分析 <span class="badge badge-vip">VIP</span></a>
-<a href="../tools/tripod-guide.html" class="tool-link"><span class="icon">&#128202;</span> Tripod Beta 事故分析 <span class="badge badge-vip">VIP</span></a>
-</div>
-<p style="font-size:.72rem;color:#999;margin-top:.6rem">&#128230; VIP专享模板工具请在知识星球「外企EHS工具箱」中下载完整版</p>
-</div>
-</div>
-
-<!-- Free Tools Access -->
-<div class="card">
-<h2>&#128269; 免费工具</h2>
-<p style="font-size:.78rem;color:var(--text-secondary);margin-bottom:.6rem">以下工具无需VIP，登录后即可使用：</p>
-<div class="tool-links">
-<a href="../tools/jsa-tool.html" class="tool-link"><span class="icon">&#128269;</span> JSA 工作安全分析 <span class="badge badge-free">免费</span></a>
-<a href="../tools/rca-tool.html" class="tool-link"><span class="icon">&#128200;</span> 5Why + 鱼骨图 <span class="badge badge-free">免费</span></a>
-<a href="../tools/risk-analysis.html" class="tool-link"><span class="icon">&#128200;</span> 风险分析总览 <span class="badge badge-free">免费</span></a>
-<a href="../tools/regulations.html" class="tool-link"><span class="icon">&#128214;</span> 法规速查 <span class="badge badge-free">免费</span></a>
-</div>
-</div>
-
-<!-- Account Actions -->
-<div class="footer-actions">
-<button class="btn btn-outline btn-sm" onclick="logout()">&#128682; 退出登录</button>
-<a href="../index.html" class="btn btn-primary btn-sm">&#127968; 返回首页</a>
-</div>
-
-</div>
-</div>
-
-<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
 
 <script src="../js/auth.js"></script>
 <script>
-function showMessage(msg, type) {
-    var el = document.getElementById('vipMsg');
-    el.textContent = msg;
-    el.className = 'msg ' + type;
-}
-
-function loadAccount() {
-    var session = getSession();
-    var loggedInSection = document.getElementById('loggedIn');
-    var notLoggedInSection = document.getElementById('notLoggedIn');
-
-    if (!session) {
-        notLoggedInSection.style.display = 'block';
-        loggedInSection.style.display = 'none';
-        return;
-    }
-
-    notLoggedInSection.style.display = 'none';
-    loggedInSection.style.display = 'block';
-
-    document.getElementById('userName').textContent = session.name || '用户';
-    document.getElementById('userEmail').textContent = session.email || '';
-
-    // Check VIP status
-    var isVip = checkVipStatus();
-    var badge = document.getElementById('vipStatusBadge');
-    var vipActivate = document.getElementById('vipActivateSection');
-    var vipBenefits = document.getElementById('vipBenefitsSection');
-
-    if (isVip) {
-        badge.className = 'status-badge status-active';
-        badge.innerHTML = '&#11088; VIP 会员';
-        vipActivate.style.display = 'none';
-        vipBenefits.style.display = 'block';
+(function(){
+    var card = document.getElementById('vipStatusCard');
+    var icon = document.getElementById('vipIcon');
+    var title = document.getElementById('vipTitle');
+    var desc = document.getElementById('vipDesc');
+    var actions = document.getElementById('vipActions');
+    if (!card) return;
+    if (isVip()) {
+        icon.innerHTML = '&#127881;';
+        title.textContent = 'VIP 会员';
+        title.style.color = '#b8860b';
+        desc.textContent = '您已激活VIP权限，可以使用所有高级工具';
+        actions.innerHTML = '<div style="margin-top:.5rem"><a href="../tools/risk-analysis.html" style="display:inline-block;padding:.5rem 1rem;background:#0d2836;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem">访问VIP工具</a></div>';
+        card.style.borderColor = '#fde68a';
+        card.style.background = '#fefce8';
     } else {
-        badge.className = 'status-badge status-normal';
-        badge.innerHTML = '&#128274; 普通用户';
-        vipActivate.style.display = 'block';
-        vipBenefits.style.display = 'none';
+        icon.innerHTML = '&#128274;';
+        title.textContent = '普通用户';
+        desc.textContent = '输入激活码解锁全部高级工具';
+        actions.innerHTML = '<div style="margin-top:.5rem"><a href="register.html" style="display:inline-block;padding:.5rem 1rem;background:#b8860b;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem">激活VIP &rarr;</a></div>';
     }
-}
-
-function activate() {
-    var code = document.getElementById('vipCodeInput').value.trim();
-    if (!code) { showMessage('请输入激活码', 'error'); return; }
-    var btn = document.querySelector('.vip-input .btn-accent');
-    btn.disabled = true; btn.textContent = '激活中...';
-    var session = getSession();
-    if (!session) { showMessage('请先登录后再激活', 'error'); return; }
-    var result = activateVip(code, session.email);
-    if (result.ok) {
-        showMessage(result.msg + '! 页面即将刷新', 'success');
-        setTimeout(function(){ window.location.reload(); }, 200);
-    } else {
-        btn.disabled = false; btn.innerHTML = '&#10003; 激活';
-        showMessage(result.msg, 'error');
-    }
-}
-
-loadAccount();
+})();
 </script>
 </body>
 </html>

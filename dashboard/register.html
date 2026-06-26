@@ -50,133 +50,14 @@ input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.1)}
 <p>外企EHS实操指南 · 登录后可解锁全部工具</p>
 </div>
 
-<div class="tabs">
-<button class="tab active" data-tab="login" onclick="switchTab('login')">登录</button>
-<button class="tab" data-tab="register" onclick="switchTab('register')">注册</button>
+<div style="text-align:center;margin-bottom:1.5rem">
+<h1 style="font-size:1.4rem;color:#0d2836;font-weight:700">VIP 激活</h1>
+<p style="font-size:.75rem;color:#888;margin-top:.2rem">已购买知识星球产品？输入激活码解锁全部高级工具</p>
 </div>
 
-<div id="msg" class="msg"></div>
+<div id="gateContainer"></div>
 
-<form id="loginForm" class="form" onsubmit="doLogin(event)">
-<div class="form-group"><label>邮箱</label><input type="email" id="loginEmail" required placeholder="your@email.com"></div>
-<div class="form-group"><label>密码</label><input type="password" id="loginPwd" required placeholder="输入密码"></div>
-<button type="submit" class="btn btn-primary">登录</button>
-<div class="hint">还没有账号？<a onclick="switchTab('register')">立即注册</a></div>
-</form>
-
-<form id="registerForm" class="form hidden" onsubmit="doRegister(event)">
-<div class="form-group"><label>昵称（选填）</label><input type="text" id="regName" placeholder="如何称呼您"></div>
-<div class="form-group"><label>邮箱</label><input type="email" id="regEmail" required placeholder="your@email.com"></div>
-<div class="form-group"><label>密码</label><input type="password" id="regPwd" required minlength="4" placeholder="至少4位"></div>
-<button type="submit" class="btn btn-primary">注册</button>
-<div class="hint">已有账号？<a onclick="switchTab('login')">去登录</a></div>
-</form>
-
-<div class="vip-section">
-<h4>&#11088; VIP 激活</h4>
-<p style="font-size:.72rem;color:#999;text-align:center;margin-bottom:.6rem">已购买知识星球产品？输入专属激活码解锁全部工具</p>
-<div class="vip-code-wrap">
-<input type="text" id="vipCode" placeholder="输入激活码" onkeydown="if(event.key==='Enter')doActivate()">
-<button class="btn btn-accent" onclick="doActivate()" style="white-space:nowrap;padding:.65rem .8rem;margin:0;flex-shrink:0">激活</button>
+<div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #eee;text-align:center;font-size:.72rem;color:#999">
+<p style="margin-bottom:.3rem">还不知道激活码？</p>
+<p>购买「<a href="https://wx.zsxq.com/group/88882255181182" target="_blank" style="color:#b8860b">外企EHS工具箱</a>」或「<a href="https://wx.zsxq.com/group/51115515242254" target="_blank" style="color:#b8860b">外企培训库</a>」即可获取</p>
 </div>
-</div>
-</div>
-
-<script src="../js/auth.js"></script>
-<script>
-// Check URL params for tab
-var params = new URLSearchParams(window.location.search);
-if (params.get('tab') === 'vip') {
-    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.querySelector('[data-tab="login"]').classList.add('active');
-    document.getElementById('loginForm').classList.remove('hidden');
-    setTimeout(function(){ document.getElementById('vipCode').focus(); }, 300);
-}
-if (params.get('tab') === 'register') {
-    switchTab('register');
-}
-
-function switchTab(tab) {
-    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
-    document.querySelector('[data-tab="'+tab+'"]').classList.add('active');
-    document.getElementById('loginForm').className = tab === 'login' ? 'form' : 'form hidden';
-    document.getElementById('registerForm').className = tab === 'register' ? 'form' : 'form hidden';
-    document.getElementById('msg').className = 'msg';
-}
-
-function showMsg(text, type) {
-    var el = document.getElementById('msg');
-    el.textContent = text;
-    el.className = 'msg ' + type;
-}
-
-function doLogin(e) {
-    e.preventDefault();
-    var btn = document.querySelector('#loginForm button[type="submit"]');
-    btn.disabled = true; btn.textContent = '登录中...';
-    var email = document.getElementById('loginEmail').value;
-    var pwd = document.getElementById('loginPwd').value;
-    try {
-    var result = login(email, pwd);
-    if (result.ok) {
-        showMsg('登录成功', 'success');
-        setTimeout(function(){ window.location.replace('../index.html'); }, 100);
-    } else {
-        btn.disabled = false; btn.textContent = '登录';
-        showMsg(result.msg, 'error');
-    }
-    } catch(e) {
-        btn.disabled = false; btn.textContent = '登录';
-        showMsg('登录出错：' + e.message, 'error');
-    }
-}
-
-function doRegister(e) {
-    e.preventDefault();
-    var btn = document.querySelector('#registerForm button[type="submit"]');
-    btn.disabled = true; btn.textContent = '注册中...';
-    var name = document.getElementById('regName').value;
-    var email = document.getElementById('regEmail').value;
-    var pwd = document.getElementById('regPwd').value;
-    try {
-    var result = register(email, pwd, name);
-    if (result.ok) {
-        showMsg(result.msg, 'success');
-        btn.disabled = false; btn.textContent = '注册';
-        setTimeout(function(){ switchTab('login'); document.getElementById('loginEmail').value = email; }, 300);
-    } else {
-        btn.disabled = false; btn.textContent = '注册';
-        showMsg(result.msg, 'error');
-    }
-    } catch(e) {
-        btn.disabled = false; btn.textContent = '注册';
-        showMsg('注册出错：' + e.message, 'error');
-    }
-}
-
-function doActivate() {
-    var code = document.getElementById('vipCode').value.trim();
-    if (!code) { showMsg('请输入激活码', 'error'); return; }
-    var btn = document.querySelector('.vip-code-wrap button');
-    btn.disabled = true; btn.textContent = '激活中...';
-    try {
-    var s = getSession();
-    if (!s) { showMsg('请先登录后再激活VIP', 'error'); return; }
-    var result = activateVip(code, s.email);
-    if (result.ok) {
-        showMsg(result.msg, 'success');
-        setTimeout(function(){ window.location.replace('../dashboard/account.html'); }, 300);
-    } else {
-        btn.disabled = false; btn.textContent = '激活';
-        showMsg(result.msg, 'error');
-    }
-    } catch(e) {
-        btn.disabled = false; btn.textContent = '激活';
-        showMsg('激活出错：' + e.message, 'error');
-    }
-}
-</script>
-</body>
-</html>

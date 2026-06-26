@@ -44,6 +44,7 @@
                     <li><a href="#about" class="nav-link">关于</a></li>
                     <li><a href="tools/regulations.html" class="nav-link">法规速查</a></li>
                     <li><a href="#footer" class="nav-link">联系</a></li>
+                    <li><a href="dashboard/register.html" class="nav-link">VIP</a></li>
                 </ul>
             </nav>
         </div>
@@ -566,7 +567,6 @@
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 <script>
 (function(){
-    var s; try { s = JSON.parse(localStorage.getItem("ehs_sil_session")); } catch(e) {}
     var u = document.getElementById("navLinks");
     if (!u) return;
     var l = document.createElement("li");
@@ -577,7 +577,6 @@
     var last = u.querySelector("li:last-child");
     u.insertBefore(l, last.nextSibling);
 })();
-</script>
 
 </body>
 </html>

@@ -62,20 +62,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <script src="../js/auth.js"></script>
 <script>
-(function(){
-    if (checkVipStatus()) {
-        document.getElementById('gateBlock').innerHTML = '<div style="background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:1rem;margin-top:.8rem">' +
-            '<h3 style="font-size:.85rem;color:#16a34a;margin-bottom:.3rem">&#10003; VIP已激活</h3>' +
-            '<p style="font-size:.78rem;color:#333">您可以使用以下资源：</p>' +
-            '<ul style="margin-top:.3rem"><li>Tripod Beta 分析模板（含因果图）</li>' +
-            '<li>Tripod Beta 用户指南（中文版）</li>' +
-            '<li>潜在条件分类清单</li>' +
-            '<li>化工事故案例研究（使用Tripod分析）</li></ul>' +
-            '<p style="font-size:.78rem;color:#666;margin-top:.5rem">完整资料请在知识星球「外企EHS工具箱」中下载</p></div>';
-    } else {
-        document.getElementById('gateBlock').innerHTML = '<div class="gate-card"><div class="icon">&#11088;</div><h3>VIP专享内容</h3><p>登录并激活VIP后查看完整Tripod Beta模板与指南</p><a href="../dashboard/register.html?tab=vip" class="btn-gate">激活VIP &rarr;</a><div style="margin-top:.5rem"><a href="risk-analysis.html" style="font-size:.78rem;color:#999">返回工具集</a></div></div>';
-    }
-})();
+renderSimpleGate("gateBlock");
 </script>
 </body>
 </html>
