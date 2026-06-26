@@ -135,8 +135,6 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <script src="../js/auth.js"></script>
 <script>
-try {
-
 // === VIP GATE ===
 var vipActive = renderSimpleGate('gateContainer');
 if (vipActive) document.getElementById('toolContent').style.display = 'block';
@@ -287,11 +285,6 @@ function exportCSV() {
     a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
     a.download = 'FMEA_' + (document.getElementById('projName').value||'report') + '.csv';
     a.click();
-
-} catch(e) {
-    var gc = document.getElementById("gateContainer");
-    if (gc) gc.innerHTML = '<div style="background:#fee2e2;border:2px solid #dc2626;border-radius:8px;padding:1rem;margin:.5rem;font-size:.78rem"><strong style="color:#dc2626">⚠️ 脚本错误:</strong><br><span style="color:#666">' + e.message + '</span></div>';
-}
 </script>
 </body>
 </html>
