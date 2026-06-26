@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FMEA 失效模式与影响分析 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?10000726865";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#e8e1d4;--bg-card:#faf7f2;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#7f8c8d;--border:#d6d0c4;--border-light:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.82rem;max-width:500px;margin:.3rem auto 1rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.section{background:#fff;border-radius:10px;border:1px solid var(--border-light);padding:1.5rem;margin:1.2rem 0}
+.section h2{font-size:1rem;color:var(--primary);font-weight:600;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
+.form-row-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.8rem}
+.form-group{margin-bottom:.6rem}
+.form-group label{display:block;font-size:.72rem;color:var(--text-secondary);font-weight:500;margin-bottom:.15rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.45rem .5rem;border:1.5px solid var(--border-light);border-radius:5px;font-size:.8rem;outline:none;transition:.2s;font-family:var(--font-sans)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.form-group textarea{min-height:50px;resize:vertical}
+.btn{padding:.45rem .9rem;border:none;border-radius:5px;font-size:.78rem;font-weight:500;cursor:pointer;transition:.2s;display:inline-block}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#a0750a}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.3rem .6rem;font-size:.72rem}
+.btn-danger{background:#dc2626;color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.toolbar{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;margin-bottom:.6rem}
+.toolbar-right{margin-left:auto;display:flex;gap:.4rem}
+.data-table{width:100%;border-collapse:collapse;font-size:.74rem;margin-top:.6rem}
+.data-table th{background:var(--primary);color:#fff;padding:.35rem .3rem;text-align:left;font-weight:500;white-space:nowrap}
+.data-table td{padding:.35rem .3rem;border-bottom:1px solid var(--border-light);vertical-align:top}
+.data-table tr:hover{background:#fafaf5}
+.rpn-badge{display:inline-block;padding:.05rem .35rem;border-radius:3px;font-size:.65rem;font-weight:600;white-space:nowrap}
+.rpn-low{background:#dcfce7;color:#16a34a}
+.rpn-med{background:#fef9c3;color:#a16207}
+.rpn-high{background:#fed7aa;color:#c2410c}
+.rpn-critical{background:#fee2e2;color:#dc2626}
+.empty-state{text-align:center;padding:2rem;color:var(--text-muted);font-size:.85rem}
+.empty-state .icon{font-size:2.5rem;margin-bottom:.5rem}
+.rpn-preview{display:inline-block;padding:.35rem .6rem;border-radius:4px;font-size:.82rem;font-weight:600;text-align:center}
+.legend{display:flex;gap:.5rem;flex-wrap:wrap;font-size:.7rem;color:var(--text-muted);margin-top:.5rem}
+#gateContainer{max-width:450px;margin:2rem auto}
+@media(max-width:480px){.form-row,.form-row-3,.form-row-4{grid-template-columns:1fr}.header h1{font-size:1.2rem}}
+</style>
+</head>
+<body>
+
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128220; FMEA 失效模式与影响分析</h1>
+<p>识别潜在失效模式，评估风险优先数(RPN)，制定改进措施</p>
+</div></div>
+
+<div class="container">
+<div id="gateContainer"></div>
+
+<div id="toolContent" style="display:none">
+
+<!-- Project Info -->
+<div class="section">
+<h2>&#128203; 项目信息</h2>
+<div class="form-row">
+<div class="form-group"><label>项目名称 *</label><input id="projName" placeholder="例：反应釜冷却系统FMEA"></div>
+<div class="form-group"><label>分析对象/系统</label><input id="projSystem" placeholder="例：冷却水循环系统"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>日期</label><input id="projDate" type="date"></div>
+<div class="form-group"><label>分析团队</label><input id="projTeam" placeholder="工艺、设备、安全"></div>
+</div>
+</div>
+
+<!-- Add Failure Mode -->
+<div class="section">
+<h2>&#10133; 添加失效模式</h2>
+<div class="form-row"><div class="form-group"><label>项目/功能 *</label><input id="fmFunction" placeholder="例：冷却水循环泵"></div></div>
+<div class="form-row"><div class="form-group"><label>潜在失效模式 *</label><textarea id="fmMode" rows="2" placeholder="什么可能出错？例：泵轴密封失效泄漏"></textarea></div></div>
+<div class="form-row"><div class="form-group"><label>失效影响 *</label><textarea id="fmEffect" rows="2" placeholder="后果是什么？例：冷却水泄漏→温度升高→反应失控"></textarea></div></div>
+<div class="form-row"><div class="form-group"><label>失效原因 *</label><textarea id="fmCause" rows="2" placeholder="为什么会发生？例：密封件磨损/安装不当"></textarea></div></div>
+<div class="form-row"><div class="form-group"><label>现有控制措施</label><textarea id="fmControl" rows="2" placeholder="例：定期巡检、压力监测报警"></textarea></div></div>
+<div class="form-row-4">
+<div class="form-group"><label>严重度 (S) 1-10</label><select id="fmS"><option value="1">1 - 无影响</option><option value="2">2 - 轻微</option><option value="3">3 - 较小</option><option value="4">4 - 中等偏低</option><option value="5">5 - 中等</option><option value="6">6 - 中等偏高</option><option value="7" selected>7 - 较严重</option><option value="8">8 - 严重</option><option value="9">9 - 很严重</option><option value="10">10 - 灾难性</option></select></div>
+<div class="form-group"><label>发生频度 (O) 1-10</label><select id="fmO"><option value="1">1 - 极低</option><option value="2">2 - 低</option><option value="3">3 - 较低</option><option value="4" selected>4 - 中等偏低</option><option value="5">5 - 中等</option><option value="6">6 - 中等偏高</option><option value="7">7 - 较高</option><option value="8">8 - 高</option><option value="9">9 - 很高</option><option value="10">10 - 极高</option></select></div>
+<div class="form-group"><label>探测度 (D) 1-10</label><select id="fmD"><option value="1">1 - 几乎肯定</option><option value="2">2 - 很高</option><option value="3">3 - 高</option><option value="4">4 - 中等偏高</option><option value="5" selected>5 - 中等</option><option value="6">6 - 中等偏低</option><option value="7">7 - 低</option><option value="8">8 - 很低</option><option value="9">9 - 极低</option><option value="10">10 - 无法探测</option></select></div>
+<div class="form-group"><label>RPN = S×O×D</label><div id="rpnPreview" class="rpn-preview rpn-med" style="width:100%;text-align:center;padding:.45rem">140</div></div>
+</div>
+<div class="form-row"><div class="form-group"><label>建议措施</label><textarea id="fmAction" rows="2" placeholder="例：升级密封材质、增加泄漏检测仪"></textarea></div></div>
+<div class="form-row"><div class="form-group"><label>责任人</label><input id="fmOwner" placeholder="例：张三"></div>
+<div class="form-group"><label>目标完成日期</label><input id="fmDue" type="date"></div></div>
+<div style="display:flex;gap:.5rem;margin-top:.5rem">
+<button class="btn btn-primary" onclick="addFM()">&#10133; 添加</button>
+<button class="btn btn-secondary" onclick="clearForm()">清空</button>
+</div>
+</div>
+
+<!-- Table -->
+<div class="section">
+<div class="toolbar">
+<h2 style="margin-bottom:0">&#128221; 失效模式列表</h2>
+<span id="fmCount" style="font-size:.75rem;color:var(--text-muted)">0 项</span>
+<div class="toolbar-right">
+<button class="btn btn-sm btn-outline" onclick="saveData()">&#128190; 保存</button>
+<button class="btn btn-sm btn-outline" onclick="loadData()">&#128194; 载入</button>
+<button class="btn btn-sm btn-accent" onclick="exportCSV()">&#128203; 导出 CSV</button>
+<button class="btn btn-sm btn-danger" onclick="if(confirm('清空所有数据？')){fmeaData.items=[];renderTable();}">&#128465; 清空</button>
+</div>
+</div>
+<div id="fmTable"><div class="empty-state"><div class="icon">&#128221;</div><p>暂无失效模式数据</p></div></div>
+<div class="legend">
+<span>风险等级：</span>
+<span class="rpn-badge rpn-low">低 1-100</span>
+<span class="rpn-badge rpn-med">中 100-300</span>
+<span class="rpn-badge rpn-high">高 300-500</span>
+<span class="rpn-badge rpn-critical">关键 500-1000</span>
+</div>
+</div>
+
+</div><!-- end toolContent -->
+</div>
+
+<footer style="text-align:center;padding:1.2rem;font-size:.72rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+// === VIP GATE ===
+var isVip = renderSimpleGate('gateContainer');
+if (isVip) document.getElementById('toolContent').style.display = 'block';
+
+// === DATA MODEL ===
+var fmeaData = { items: [] };
+
+// RPN helpers
+function getRPNClass(rpn) {
+    if (rpn <= 100) return 'rpn-low';
+    if (rpn <= 300) return 'rpn-med';
+    if (rpn <= 500) return 'rpn-high';
+    return 'rpn-critical';
+}
+function getRPNLabel(rpn) {
+    if (rpn <= 100) return '低';
+    if (rpn <= 300) return '中';
+    if (rpn <= 500) return '高';
+    return '关键';
+}
+
+// RPN preview
+function updateRPN() {
+    var s = parseInt(document.getElementById('fmS').value);
+    var o = parseInt(document.getElementById('fmO').value);
+    var d = parseInt(document.getElementById('fmD').value);
+    var rpn = s * o * d;
+    var el = document.getElementById('rpnPreview');
+    el.textContent = rpn + ' - ' + getRPNLabel(rpn);
+    el.className = 'rpn-preview ' + getRPNClass(rpn);
+}
+document.getElementById('fmS').onchange = updateRPN;
+document.getElementById('fmO').onchange = updateRPN;
+document.getElementById('fmD').onchange = updateRPN;
+document.getElementById('projDate').valueAsDate = new Date();
+updateRPN();
+
+function addFM() {
+    var fn = document.getElementById('fmFunction').value.trim();
+    var md = document.getElementById('fmMode').value.trim();
+    if (!fn || !md) { alert('请填写项目和失效模式'); return; }
+    fmeaData.items.push({
+        id: Date.now(),
+        function: fn,
+        mode: md,
+        effect: document.getElementById('fmEffect').value.trim(),
+        cause: document.getElementById('fmCause').value.trim(),
+        control: document.getElementById('fmControl').value.trim(),
+        S: parseInt(document.getElementById('fmS').value),
+        O: parseInt(document.getElementById('fmO').value),
+        D: parseInt(document.getElementById('fmD').value),
+        RPN: parseInt(document.getElementById('fmS').value) * parseInt(document.getElementById('fmO').value) * parseInt(document.getElementById('fmD').value),
+        action: document.getElementById('fmAction').value.trim(),
+        owner: document.getElementById('fmOwner').value.trim(),
+        due: document.getElementById('fmDue').value
+    });
+    clearForm();
+    renderTable();
+}
+
+function clearForm() {
+    ['fmFunction','fmMode','fmEffect','fmCause','fmControl','fmAction','fmOwner','fmDue'].forEach(function(id){
+        document.getElementById(id).value = '';
+    });
+    document.getElementById('fmS').value = '7';
+    document.getElementById('fmO').value = '4';
+    document.getElementById('fmD').value = '5';
+    updateRPN();
+    document.getElementById('fmFunction').focus();
+}
+
+function deleteFM(id) {
+    fmeaData.items = fmeaData.items.filter(function(i){return i.id !== id});
+    renderTable();
+}
+
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function renderTable() {
+    var items = fmeaData.items;
+    document.getElementById('fmCount').textContent = items.length + ' 项';
+    if (!items.length) {
+        document.getElementById('fmTable').innerHTML = '<div class="empty-state"><div class="icon">&#128221;</div><p>暂无失效模式数据</p></div>';
+        return;
+    }
+    // Sort by RPN descending
+    items.sort(function(a,b){return b.RPN - a.RPN});
+    var html = '<table class="data-table"><thead><tr><th>#</th><th>项目/功能</th><th style="min-width:100px">失效模式</th><th>影响</th><th>原因</th><th style="width:45px">S</th><th style="width:45px">O</th><th style="width:45px">D</th><th style="width:60px">RPN</th><th>建议措施</th><th>责任人</th><th style="width:35px"></th></tr></thead><tbody>';
+    items.forEach(function(i, idx){
+        var cls = getRPNClass(i.RPN);
+        html += '<tr><td>' + (idx+1) + '</td><td>' + esc(i.function) + '</td><td>' + esc(i.mode) + '</td><td>' + esc(i.effect) + '</td><td>' + esc(i.cause) + '</td>' +
+            '<td style="text-align:center">' + i.S + '</td><td style="text-align:center">' + i.O + '</td><td style="text-align:center">' + i.D + '</td>' +
+            '<td><span class="rpn-badge ' + cls + '">' + i.RPN + '</span></td>' +
+            '<td>' + esc(i.action) + '</td><td>' + esc(i.owner) + '</td>' +
+            '<td><button class="btn btn-sm btn-danger" onclick="deleteFM(' + i.id + ')">&#10005;</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('fmTable').innerHTML = html;
+}
+
+function saveData() {
+    var data = {
+        name: document.getElementById('projName').value,
+        system: document.getElementById('projSystem').value,
+        date: document.getElementById('projDate').value,
+        team: document.getElementById('projTeam').value,
+        items: fmeaData.items,
+        saved: new Date().toISOString()
+    };
+    localStorage.setItem('ehs_sil_fmea', JSON.stringify(data));
+    alert('已保存');
+}
+
+function loadData() {
+    var raw = localStorage.getItem('ehs_sil_fmea');
+    if (!raw) { alert('暂无保存数据'); return; }
+    try {
+        var d = JSON.parse(raw);
+        document.getElementById('projName').value = d.name || '';
+        document.getElementById('projSystem').value = d.system || '';
+        document.getElementById('projDate').value = d.date || '';
+        document.getElementById('projTeam').value = d.team || '';
+        fmeaData.items = d.items || [];
+        renderTable();
+        alert('已载入');
+    } catch(e) { alert('数据读取失败'); }
+}
+
+function exportCSV() {
+    var items = fmeaData.items;
+    if (!items.length) { alert('暂无数据可导出'); return; }
+    var bom = '\uFEFF';
+    var rows = [['项目','失效模式','影响','原因','现有控制','S','O','D','RPN','风险等级','建议措施','责任人','目标日期']];
+    items.sort(function(a,b){return b.RPN - a.RPN}).forEach(function(i){
+        rows.push([i.function,i.mode,i.effect,i.cause,i.control,i.S,i.O,i.D,i.RPN,getRPNLabel(i.RPN),i.action,i.owner,i.due||'']);
+    });
+    var csv = bom + rows.map(function(r){return r.map(function(c){return '"' + (c||'').toString().replace(/"/g,'""') + '"'}).join(',')}).join('\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
+    a.download = 'FMEA_' + (document.getElementById('projName').value || 'report') + '.csv';
+    a.click();
+}
+</script>
+</body>
+</html>

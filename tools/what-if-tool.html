@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>What-If 假设分析 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?10000726865";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#e8e1d4;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#7f8c8d;--border-light:#e3ddd2;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.82rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.section{background:#fff;border-radius:10px;border:1px solid var(--border-light);padding:1.5rem;margin:1.2rem 0}
+.section h2{font-size:1rem;color:var(--primary);margin-bottom:.6rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form-row-3{display:grid;gap:.8rem;grid-template-columns:1fr 1fr 1fr}
+.form-group{margin-bottom:.6rem}
+.form-group label{display:block;font-size:.72rem;color:var(--text-secondary);margin-bottom:.15rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.45rem .5rem;border:1.5px solid var(--border-light);border-radius:5px;font-size:.8rem;outline:none;font-family:var(--font-sans)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.form-group textarea{min-height:50px;resize:vertical}
+.btn{padding:.45rem .9rem;border:none;border-radius:5px;font-size:.78rem;font-weight:500;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-outline{border:1.5px solid var(--primary);color:var(--primary);background:transparent}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.3rem .6rem;font-size:.72rem}
+.btn-danger{background:#dc2626;color:#fff}
+.toolbar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem}
+.toolbar-right{margin-left:auto;display:flex;gap:.4rem}
+.data-table{width:100%;border-collapse:collapse;font-size:.74rem}
+.data-table th{background:var(--primary);color:#fff;padding:.35rem .3rem;text-align:left;font-weight:500;white-space:nowrap}
+.data-table td{padding:.35rem .3rem;border-bottom:1px solid var(--border-light)}
+.data-table tr:hover{background:#fafaf5}
+.risk-badge{display:inline-block;padding:.05rem .35rem;border-radius:3px;font-size:.65rem;font-weight:600}
+.risk-low{background:#dcfce7;color:#16a34a}
+.risk-med{background:#fef9c3;color:#a16207}
+.risk-high{background:#fee2e2;color:#dc2626}
+.empty-state{text-align:center;padding:2rem;color:var(--text-muted)}
+.empty-state .icon{font-size:2.5rem;margin-bottom:.5rem}
+.rpn-preview{display:inline-block;padding:.35rem .6rem;border-radius:4px;font-size:.82rem;font-weight:600;text-align:center}
+#gateContainer{max-width:450px;margin:2rem auto}
+@media(max-width:480px){.form-row,.form-row-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#10067; What-If 假设分析</h1>
+<p>系统化"如果…怎么办"问题链，识别非正常工况下的潜在风险</p>
+</div></div>
+
+<div class="container">
+<div id="gateContainer"></div>
+<div id="toolContent" style="display:none">
+
+<div class="section">
+<h2>&#128203; 项目信息</h2>
+<div class="form-row">
+<div class="form-group"><label>项目/设备名称</label><input id="projName" placeholder="例：甲醇储罐区转运作业"></div>
+<div class="form-group"><label>日期</label><input id="projDate" type="date"></div>
+</div>
+</div>
+
+<div class="section">
+<h2>&#10133; 添加 What-If 问题</h2>
+<div class="form-group"><label>What-If 问题 *</label><textarea id="wiQuestion" rows="2" placeholder="例：如果甲醇泵出口阀门意外关闭会怎样？"></textarea></div>
+<div class="form-group"><label>后果/影响 *</label><textarea id="wiConsequence" rows="2" placeholder="可能发生什么？例：泵憋压→密封泄漏→甲醇外泄"></textarea></div>
+<div class="form-group"><label>现有安全措施</label><textarea id="wiSafeguard" rows="2" placeholder="例：压力高报、安全阀、操作规程"></textarea></div>
+<div class="form-row-3">
+<div class="form-group"><label>可能性 (L) 1-5</label><select id="wiL"><option value="1">1 - 极低</option><option value="2">2 - 低</option><option value="3" selected>3 - 中</option><option value="4">4 - 高</option><option value="5">5 - 极高</option></select></div>
+<div class="form-group"><label>严重性 (S) 1-5</label><select id="wiS"><option value="1">1 - 轻微</option><option value="2">2 - 一般</option><option value="3" selected>3 - 严重</option><option value="4">4 - 重大</option><option value="5">5 - 特大</option></select></div>
+<div class="form-group"><label>风险 = L×S</label><div id="riskPreview" class="rpn-preview risk-med" style="width:100%;padding:.45rem">9</div></div>
+</div>
+<div class="form-group"><label>建议/改进措施</label><textarea id="wiAction" rows="2" placeholder="例：增加低流量联锁、操作培训"></textarea></div>
+<div style="display:flex;gap:.5rem;margin-top:.5rem">
+<button class="btn btn-primary" onclick="addWI()">&#10133; 添加</button>
+<button class="btn btn-secondary" onclick="clearWI()">清空</button>
+</div>
+</div>
+
+<div class="section">
+<div class="toolbar">
+<h2 style="margin-bottom:0">&#128221; What-If 问题列表</h2>
+<span id="wiCount" style="font-size:.75rem;color:var(--text-muted)">0 项</span>
+<div class="toolbar-right">
+<button class="btn btn-sm btn-outline" onclick="saveWI()">&#128190; 保存</button>
+<button class="btn btn-sm btn-accent" onclick="exportWI()">&#128203; 导出 CSV</button>
+<button class="btn btn-sm btn-danger" onclick="if(confirm('清空？')){wiData.items=[];renderWI();}">&#128465; 清空</button>
+</div>
+</div>
+<div id="wiTable"><div class="empty-state"><div class="icon">&#128221;</div><p>暂无 What-If 问题</p></div></div>
+</div>
+
+</div>
+</div>
+<footer style="text-align:center;padding:1.2rem;font-size:.72rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+var isVip = renderSimpleGate('gateContainer');
+if (isVip) document.getElementById('toolContent').style.display = 'block';
+
+var wiData = { items: [] };
+document.getElementById('projDate').valueAsDate = new Date();
+
+function updateRisk() {
+    var l = parseInt(document.getElementById('wiL').value);
+    var s = parseInt(document.getElementById('wiS').value);
+    var r = l * s;
+    var el = document.getElementById('riskPreview');
+    el.textContent = r;
+    el.className = 'rpn-preview ' + (r <= 4 ? 'risk-low' : r <= 9 ? 'risk-med' : 'risk-high');
+}
+document.getElementById('wiL').onchange = updateRisk;
+document.getElementById('wiS').onchange = updateRisk;
+
+function addWI() {
+    var q = document.getElementById('wiQuestion').value.trim();
+    if (!q) { alert('请输入What-If问题'); return; }
+    wiData.items.push({
+        id: Date.now(),
+        question: q,
+        consequence: document.getElementById('wiConsequence').value.trim(),
+        safeguard: document.getElementById('wiSafeguard').value.trim(),
+        L: parseInt(document.getElementById('wiL').value),
+        S: parseInt(document.getElementById('wiS').value),
+        risk: parseInt(document.getElementById('wiL').value) * parseInt(document.getElementById('wiS').value),
+        action: document.getElementById('wiAction').value.trim()
+    });
+    clearWI(); renderWI();
+}
+
+function clearWI() {
+    ['wiQuestion','wiConsequence','wiSafeguard','wiAction'].forEach(function(id){document.getElementById(id).value=''});
+    document.getElementById('wiL').value='3'; document.getElementById('wiS').value='3'; updateRisk();
+    document.getElementById('wiQuestion').focus();
+}
+
+function deleteWI(id) { wiData.items = wiData.items.filter(function(i){return i.id !== id}); renderWI(); }
+
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function renderWI() {
+    var items = wiData.items;
+    document.getElementById('wiCount').textContent = items.length + ' 项';
+    if (!items.length) { document.getElementById('wiTable').innerHTML = '<div class="empty-state"><div class="icon">&#128221;</div><p>暂无 What-If 问题</p></div>'; return; }
+    var html = '<table class="data-table"><thead><tr><th>#</th><th>What-If问题</th><th>后果</th><th>现有措施</th><th style="width:40px">L</th><th style="width:40px">S</th><th style="width:50px">风险</th><th>建议</th><th style="width:35px"></th></tr></thead><tbody>';
+    items.sort(function(a,b){return b.risk - a.risk}).forEach(function(i,idx){
+        var cls = i.risk <= 4 ? 'risk-low' : i.risk <= 9 ? 'risk-med' : 'risk-high';
+        html += '<tr><td>' + (idx+1) + '</td><td>' + esc(i.question) + '</td><td>' + esc(i.consequence) + '</td><td>' + esc(i.safeguard) + '</td>' +
+            '<td style="text-align:center">' + i.L + '</td><td style="text-align:center">' + i.S + '</td>' +
+            '<td><span class="risk-badge ' + cls + '">' + i.risk + '</span></td><td>' + esc(i.action) + '</td>' +
+            '<td><button class="btn btn-sm btn-danger" onclick="deleteWI(' + i.id + ')">&#10005;</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('wiTable').innerHTML = html;
+}
+
+function saveWI() {
+    var d = { name: document.getElementById('projName').value, items: wiData.items };
+    localStorage.setItem('ehs_sil_whatif', JSON.stringify(d));
+    alert('已保存');
+}
+
+function loadWI() {
+    var raw = localStorage.getItem('ehs_sil_whatif');
+    if (!raw) { alert('暂无保存数据'); return; }
+    try { var d = JSON.parse(raw); document.getElementById('projName').value = d.name||''; wiData.items=d.items||[]; renderWI(); alert('已载入'); }
+    catch(e) { alert('读取失败'); }
+}
+
+function exportWI() {
+    if (!wiData.items.length) { alert('暂无数据'); return; }
+    var bom = '\uFEFF';
+    var rows = [['What-If问题','后果','现有措施','L','S','风险','建议措施']];
+    wiData.items.sort(function(a,b){return b.risk - a.risk}).forEach(function(i){
+        rows.push([i.question,i.consequence,i.safeguard,i.L,i.S,i.risk,i.action]);
+    });
+    var csv = bom + rows.map(function(r){return r.map(function(c){return '"'+(c||'').toString().replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    a.download = 'WhatIf_' + (document.getElementById('projName').value||'report') + '.csv';
+    a.click();
+}
+</script>
+</body>
+</html>
