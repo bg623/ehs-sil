@@ -136,6 +136,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <script src="../js/auth.js"></script>
 <script>
 // === VIP GATE ===
+document.getElementById('gateContainer').innerHTML = '<div style="background:#1a4b5c;color:white;padding:8px 12px;border-radius:6px;font-size:.78rem;margin:1rem 0">✅ 脚本正在运行 | VIP: ' + (isVip() ? '已激活' : '未激活') + '</div>';
 var vipActive = renderSimpleGate('gateContainer');
 if (vipActive) document.getElementById('toolContent').style.display = 'block';
 
