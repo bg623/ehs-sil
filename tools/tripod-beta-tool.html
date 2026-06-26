@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tripod Beta 事故分析 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?10000726865";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#e8e1d4;--text:#2d3436;--font-sans:-apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.82rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.section{background:#fff;border-radius:10px;border:1px solid #e3ddd2;padding:1.25rem;margin:1rem 0}
+.section h2{font-size:.95rem;color:var(--primary);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.3rem}
+.form-group{margin-bottom:.4rem}
+.form-group label{display:block;font-size:.7rem;color:#555;margin-bottom:.1rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.4rem .45rem;border:1.5px solid #e3ddd2;border-radius:5px;font-size:.78rem;outline:none;font-family:var(--font-sans)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.form-group textarea{min-height:40px;resize:vertical}
+.btn{padding:.4rem .8rem;border:none;border-radius:5px;font-size:.75rem;font-weight:500;cursor:pointer;transition:.2s;display:inline-block}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.25rem .5rem;font-size:.7rem}
+.btn-danger{background:#dc2626;color:#fff}
+.toolbar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
+.toolbar-right{margin-left:auto;display:flex;gap:.3rem}
+.data-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.data-table th{background:var(--primary);color:#fff;padding:.3rem .25rem;text-align:left;font-weight:500;white-space:nowrap}
+.data-table td{padding:.3rem .25rem;border-bottom:1px solid #e3ddd2;vertical-align:top}
+.data-table tr:hover{background:#fafaf5}
+.empty-state{text-align:center;padding:1.5rem;color:#999;font-size:.82rem}
+.empty-state .icon{font-size:2rem;margin-bottom:.3rem}
+#gateContainer{max-width:450px;margin:2rem auto}
+.layer-tabs{display:flex;gap:.3rem;margin-bottom:.6rem;flex-wrap:wrap}
+.layer-tab{padding:.3rem .7rem;border-radius:15px;font-size:.75rem;border:1px solid #e3ddd2;background:#fff;color:#666;cursor:pointer;transition:.2s}
+.layer-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.layer-tab:hover{border-color:var(--primary)}
+.layer-panel{display:none}
+.layer-panel.active{display:block}
+.tag-layer{display:inline-block;font-size:.6rem;padding:.05rem .3rem;border-radius:2px;font-weight:600}
+.tag-direct{background:#fee2e2;color:#dc2626}
+.tag-precond{background:#fef9c3;color:#a16207}
+.tag-org{background:#dbeafe;color:#1e40af}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128202; Tripod Beta 事故分析</h1>
+<p>三层模型分析：直接原因 → 潜在条件 → 组织缺陷</p>
+</div></div>
+
+<div class="container">
+<div id="gateContainer"></div>
+<div id="toolContent" style="display:none">
+
+<div class="section">
+<h2>&#128203; 事件信息</h2>
+<div class="form-row">
+<div class="form-group"><label>事件标题</label><input id="tripTitle" placeholder="例：反应釜超压事故"></div>
+<div class="form-group"><label>日期</label><input id="tripDate" type="date"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>区域/部门</label><input id="tripArea" placeholder="例：生产部"></div>
+<div class="form-group"><label>事件描述</label><textarea id="tripDesc" rows="2" placeholder="发生了什么？"></textarea></div>
+</div>
+</div>
+
+<div class="section">
+<h2>&#128220; 三层次分析</h2>
+<p style="font-size:.72rem;color:#999;margin-bottom:.6rem">从直接原因追溯到组织缺陷，系统性分析事故的深层原因</p>
+
+<div class="layer-tabs">
+<button class="layer-tab active" onclick="showTab('direct')">1️⃣ 直接原因</button>
+<button class="layer-tab" onclick="showTab('precond')">2️⃣ 潜在条件</button>
+<button class="layer-tab" onclick="showTab('org')">3️⃣ 组织缺陷</button>
+</div>
+
+<div id="panel-direct" class="layer-panel active">
+<div class="form-row">
+<div class="form-group"><label>直接原因 *</label><textarea id="tpDirect" rows="2" placeholder="例：操作员误关闭进料阀"></textarea></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>类型</label><select id="tpDirectType"><option value="失误">失误(Error)</option><option value="违规">违规(Violation)</option></select></div>
+<div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.2rem">
+<button class="btn btn-primary" onclick="addFactor('direct')" style="width:100%">&#10133; 添加</button>
+</div>
+</div>
+</div>
+
+<div id="panel-precond" class="layer-panel">
+<div class="form-row">
+<div class="form-group"><label>潜在条件 *</label><textarea id="tpPrecond" rows="2" placeholder="例：操作员未接受过该工况培训、操作程序不清晰"></textarea></div>
+</div>
+<div class="form-row">
+<div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.2rem">
+<button class="btn btn-primary" onclick="addFactor('precond')" style="width:100%">&#10133; 添加</button>
+</div>
+</div>
+</div>
+
+<div id="panel-org" class="layer-panel">
+<div class="form-row">
+<div class="form-group"><label>组织缺陷 *</label><textarea id="tpOrg" rows="2" placeholder="例：培训预算削减、人员编制不足、管理层未重视"></textarea></div>
+</div>
+<div class="form-row">
+<div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.2rem">
+<button class="btn btn-primary" onclick="addFactor('org')" style="width:100%">&#10133; 添加</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>&#10133; 建议措施</h2>
+<div class="form-row">
+<div class="form-group"><label>建议措施</label><textarea id="tpAction" rows="2" placeholder="例：更新操作规程、增加培训频次"></textarea></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>对应层次</label><select id="tpActionLayer"><option value="直接原因">直接原因</option><option value="潜在条件">潜在条件</option><option value="组织缺陷">组织缺陷</option></select></div>
+<div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.2rem">
+<button class="btn btn-primary" onclick="addAction()" style="width:100%">&#10133; 添加</button>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="toolbar">
+<h2 style="margin-bottom:0">&#128221; 分析汇总</h2>
+<span id="tripCount" style="font-size:.72rem;color:#999">0 项</span>
+<div class="toolbar-right">
+<button class="btn btn-sm btn-outline" onclick="saveTrip()">&#128190; 保存</button>
+<button class="btn btn-sm btn-outline" onclick="loadTrip()">&#128194; 载入</button>
+<button class="btn btn-sm btn-accent" onclick="exportTrip()">&#128203; 导出CSV</button>
+</div>
+</div>
+<div id="tripTable"><div class="empty-state"><div class="icon">&#128202;</div><p>添加分析项，系统化追溯事故根因</p></div></div>
+</div>
+
+</div></div>
+
+<footer style="text-align:center;padding:1rem;font-size:.7rem;color:#999"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+var vipActive = renderSimpleGate('gateContainer');
+if (vipActive) document.getElementById('toolContent').style.display = 'block';
+
+var tripData = { factors: [], actions: [] };
+document.getElementById('tripDate').valueAsDate = new Date();
+var currentTab = 'direct';
+function showTab(tab){
+    currentTab = tab;
+    document.querySelectorAll('.layer-tab').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.layer-panel').forEach(function(p){p.classList.remove('active')});
+    document.querySelector('.layer-tab[onclick*="'+tab+'"]').classList.add('active');
+    document.getElementById('panel-'+tab).classList.add('active');
+}
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function addFactor(layer){
+    var textarea = document.getElementById('tp'+layer.charAt(0).toUpperCase()+layer.slice(1));
+    // Handle direct cause with type selector
+    var text = textarea.value.trim();
+    if(!text){alert('请输入描述');return;}
+    var type = '';
+    if(layer === 'direct') type = document.getElementById('tpDirectType').value;
+    tripData.factors.push({id:Date.now()+Math.random(),layer:layer,text:text,type:type});
+    textarea.value='';textarea.focus();
+    renderTrip();
+}
+
+function addAction(){
+    var text=document.getElementById('tpAction').value.trim();
+    if(!text){alert('请输入建议措施');return;}
+    tripData.actions.push({id:Date.now()+Math.random(),text:text,layer:document.getElementById('tpActionLayer').value});
+    document.getElementById('tpAction').value='';document.getElementById('tpAction').focus();
+    renderTrip();
+}
+
+function deleteItem(id){
+    tripData.factors=tripData.factors.filter(function(i){return i.id!==id});
+    tripData.actions=tripData.actions.filter(function(i){return i.id!==id});
+    renderTrip();
+}
+
+function renderTrip(){
+    var factors=tripData.factors, actions=tripData.actions;
+    document.getElementById('tripCount').textContent=(factors.length+actions.length)+' 项';
+    if(!factors.length && !actions.length){
+        document.getElementById('tripTable').innerHTML='<div class="empty-state"><div class="icon">&#128202;</div><p>添加分析项，系统化追溯事故根因</p></div>';
+        return;
+    }
+    var html='';
+    if(factors.length){
+        html+='<div style="overflow-x:auto"><table class="data-table"><thead><tr><th style="width:35px">#</th><th>层次</th><th>类型</th><th>描述</th><th style="width:30px"></th></tr></thead><tbody>';
+        factors.forEach(function(i,idx){
+            var tagClass=i.layer==='direct'?'tag-direct':i.layer==='precond'?'tag-precond':'tag-org';
+            var layerLabel=i.layer==='direct'?'直接原因':i.layer==='precond'?'潜在条件':'组织缺陷';
+            html+='<tr><td>'+(idx+1)+'</td><td><span class="tag-layer '+tagClass+'">'+layerLabel+'</span></td><td>'+(i.type||'')+'</td><td>'+esc(i.text)+'</td>'+
+                '<td><button class="btn btn-sm btn-danger" onclick="deleteItem('+i.id+')">&#10005;</button></td></tr>';
+        });
+        html+='</tbody></table></div>';
+    }
+    if(actions.length){
+        html+='<h3 style="font-size:.8rem;color:var(--primary);margin:.6rem 0 .3rem">&#128221; 建议措施</h3>';
+        html+='<div style="overflow-x:auto"><table class="data-table"><thead><tr><th style="width:35px">#</th><th>对应层次</th><th>措施</th><th style="width:30px"></th></tr></thead><tbody>';
+        actions.forEach(function(i,idx){
+            html+='<tr><td>'+(idx+1)+'</td><td>'+esc(i.layer)+'</td><td>'+esc(i.text)+'</td>'+
+                '<td><button class="btn btn-sm btn-danger" onclick="deleteItem('+i.id+')">&#10005;</button></td></tr>';
+        });
+        html+='</tbody></table></div>';
+    }
+    document.getElementById('tripTable').innerHTML=html;
+}
+
+function saveTrip(){
+    var d={title:document.getElementById('tripTitle').value,date:document.getElementById('tripDate').value,area:document.getElementById('tripArea').value,desc:document.getElementById('tripDesc').value,factors:tripData.factors,actions:tripData.actions};
+    localStorage.setItem('ehs_sil_tripod',JSON.stringify(d));
+    alert('已保存');
+}
+function loadTrip(){
+    var raw=localStorage.getItem('ehs_sil_tripod');
+    if(!raw){alert('暂无保存数据');return;}
+    try{var d=JSON.parse(raw);document.getElementById('tripTitle').value=d.title||'';document.getElementById('tripDate').value=d.date||'';document.getElementById('tripArea').value=d.area||'';document.getElementById('tripDesc').value=d.desc||'';tripData.factors=d.factors||[];tripData.actions=d.actions||[];renderTrip();alert('已载入');}catch(e){alert('读取失败');}
+}
+function exportTrip(){
+    if(!tripData.factors.length&&!tripData.actions.length){alert('暂无数据');return;}
+    var bom='\uFEFF',rows=[['层次','类型','描述']];
+    tripData.factors.forEach(function(i){
+        var layerLabel=i.layer==='direct'?'直接原因':i.layer==='precond'?'潜在条件':'组织缺陷';
+        rows.push([layerLabel,i.type||'',i.text]);
+    });
+    if(tripData.actions.length){
+        rows.push(['','','']);
+        rows.push(['建议措施','对应层次','措施']);
+        tripData.actions.forEach(function(i){rows.push(['',i.layer,i.text]);});
+    }
+    var csv=bom+rows.map(function(r){return r.map(function(c){return '"'+(c||'').toString().replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    a.download='TripodBeta_'+(document.getElementById('tripTitle').value||'report')+'.csv';
+    a.click();
+}
+</script>
+</body>
+</html>

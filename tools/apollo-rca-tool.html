@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Apollo RCA 根源分析 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?10000726865";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#e8e1d4;--text:#2d3436;--font-sans:-apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.header p{color:rgba(255,255,255,.7);font-size:.82rem}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.section{background:#fff;border-radius:10px;border:1px solid #e3ddd2;padding:1.25rem;margin:1rem 0}
+.section h2{font-size:.95rem;color:var(--primary);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.3rem}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:.3rem}
+.form-group{margin-bottom:.4rem}
+.form-group label{display:block;font-size:.7rem;color:#555;margin-bottom:.1rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.4rem .45rem;border:1.5px solid #e3ddd2;border-radius:5px;font-size:.78rem;outline:none;font-family:var(--font-sans)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.form-group textarea{min-height:40px;resize:vertical}
+.btn{padding:.4rem .8rem;border:none;border-radius:5px;font-size:.75rem;font-weight:500;cursor:pointer;transition:.2s;display:inline-block}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.25rem .5rem;font-size:.7rem}
+.btn-danger{background:#dc2626;color:#fff}
+.toolbar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
+.toolbar-right{margin-left:auto;display:flex;gap:.3rem}
+.data-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.data-table th{background:var(--primary);color:#fff;padding:.3rem .25rem;text-align:left;font-weight:500;white-space:nowrap}
+.data-table td{padding:.3rem .25rem;border-bottom:1px solid #e3ddd2;vertical-align:top}
+.data-table tr:hover{background:#fafaf5}
+.empty-state{text-align:center;padding:1.5rem;color:#999;font-size:.82rem}
+.empty-state .icon{font-size:2rem;margin-bottom:.3rem}
+#gateContainer{max-width:450px;margin:2rem auto}
+.tag-root{display:inline-block;font-size:.6rem;padding:.05rem .3rem;border-radius:2px;background:#dcfce7;color:#16a34a;font-weight:600}
+.tag-chain{display:inline-block;font-size:.6rem;padding:.05rem .3rem;border-radius:2px;background:#dbeafe;color:#1e40af}
+@media(max-width:480px){.form-row,.form-row-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128214; Apollo RCA 根源分析</h1>
+<p>基于原因-效果链的系统化事故调查方法</p>
+</div></div>
+
+<div class="container">
+<div id="gateContainer"></div>
+<div id="toolContent" style="display:none">
+
+<div class="section">
+<h2>&#128203; 事件信息</h2>
+<div class="form-row">
+<div class="form-group"><label>事件标题</label><input id="incTitle" placeholder="例：反应釜温度异常报警"></div>
+<div class="form-group"><label>日期</label><input id="incDate" type="date"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>区域/部门</label><input id="incArea" placeholder="例：生产车间"></div>
+<div class="form-group"><label>事件描述</label><textarea id="incDesc" rows="2" placeholder="发生了什么？影响范围？"></textarea></div>
+</div>
+</div>
+
+<div class="section">
+<h2>&#10133; 添加原因-效果对</h2>
+<p style="font-size:.72rem;color:#999;margin-bottom:.4rem">从事件出发，追问"为什么会发生"——每个原因也是一个效果，由其上一层原因导致</p>
+<div class="form-group"><label>原因 *</label><textarea id="rcaCause" rows="2" placeholder="为什么会发生？例：密封件磨损导致泄漏"></textarea></div>
+<div class="form-group"><label>效果 *</label><textarea id="rcaEffect" rows="2" placeholder="导致了什么？例：冷却水泄漏→温度升高"></textarea></div>
+<div class="form-row-3">
+<div class="form-group"><label>是否为根本原因？</label><select id="rcaRoot"><option value="no">否</option><option value="yes">是 - 根本原因</option></select></div>
+<div class="form-group"><label>备注</label><input id="rcaNote" placeholder="例：可采取管理措施"></div>
+<div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.2rem">
+<button class="btn btn-primary" onclick="addRCA()" style="width:100%">&#10133; 添加</button>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="toolbar">
+<h2 style="margin-bottom:0">&#128221; 原因-效果链</h2>
+<span id="rcaCount" style="font-size:.72rem;color:#999">0 项</span>
+<div class="toolbar-right">
+<button class="btn btn-sm btn-outline" onclick="saveRCA()">&#128190; 保存</button>
+<button class="btn btn-sm btn-outline" onclick="loadRCA()">&#128194; 载入</button>
+<button class="btn btn-sm btn-accent" onclick="exportRCA()">&#128203; 导出CSV</button>
+</div>
+</div>
+<div id="rcaTable"><div class="empty-state"><div class="icon">&#128214;</div><p>添加原因-效果对，构建分析链</p></div></div>
+</div>
+
+</div></div>
+
+<footer style="text-align:center;padding:1rem;font-size:.7rem;color:#999"><p>&copy; 2026 EHS-SIL</p></footer>
+
+<script src="../js/auth.js"></script>
+<script>
+var vipActive = renderSimpleGate('gateContainer');
+if (vipActive) document.getElementById('toolContent').style.display = 'block';
+
+var rcaData = { items: [] };
+document.getElementById('incDate').valueAsDate = new Date();
+
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function addRCA(){
+    var cause=document.getElementById('rcaCause').value.trim();
+    var effect=document.getElementById('rcaEffect').value.trim();
+    if(!cause||!effect){alert('请填写原因和效果');return;}
+    rcaData.items.push({
+        id:Date.now(),cause:cause,effect:effect,
+        isRoot:document.getElementById('rcaRoot').value==='yes',
+        note:document.getElementById('rcaNote').value.trim()
+    });
+    document.getElementById('rcaCause').value='';
+    document.getElementById('rcaEffect').value='';
+    document.getElementById('rcaNote').value='';
+    document.getElementById('rcaCause').focus();
+    renderRCA();
+}
+
+function deleteRCA(id){rcaData.items=rcaData.items.filter(function(i){return i.id!==id});renderRCA();}
+
+function renderRCA(){
+    var items=rcaData.items;
+    document.getElementById('rcaCount').textContent=items.length+' 项';
+    if(!items.length){
+        document.getElementById('rcaTable').innerHTML='<div class="empty-state"><div class="icon">&#128214;</div><p>添加原因-效果对，构建分析链</p></div>';
+        return;
+    }
+    var rootCount=items.filter(function(i){return i.isRoot}).length;
+    var html='<div style="font-size:.72rem;color:#999;margin-bottom:.4rem">根本原因: '+rootCount+' 项 | 共 '+items.length+' 个因果对</div>';
+    html+='<div style="overflow-x:auto"><table class="data-table"><thead><tr><th style="width:35px">#</th><th>原因</th><th>效果</th><th style="width:60px">类型</th><th>备注</th><th style="width:30px"></th></tr></thead><tbody>';
+    items.forEach(function(i,idx){
+        var tag=i.isRoot?'<span class="tag-root">根本原因</span>':'<span class="tag-chain">中间原因</span>';
+        html+='<tr style="'+(i.isRoot?'background:#f0fdf4':'')+'"><td>'+(idx+1)+'</td><td>'+esc(i.cause)+'</td><td>'+esc(i.effect)+'</td><td>'+tag+'</td><td>'+esc(i.note)+'</td>'+
+            '<td><button class="btn btn-sm btn-danger" onclick="deleteRCA('+i.id+')">&#10005;</button></td></tr>';
+    });
+    html+='</tbody></table></div>';
+    document.getElementById('rcaTable').innerHTML=html;
+}
+
+function saveRCA(){
+    var d={title:document.getElementById('incTitle').value,date:document.getElementById('incDate').value,area:document.getElementById('incArea').value,desc:document.getElementById('incDesc').value,items:rcaData.items};
+    localStorage.setItem('ehs_sil_apollo',JSON.stringify(d));
+    alert('已保存');
+}
+
+function loadRCA(){
+    var raw=localStorage.getItem('ehs_sil_apollo');
+    if(!raw){alert('暂无保存数据');return;}
+    try{var d=JSON.parse(raw);document.getElementById('incTitle').value=d.title||'';document.getElementById('incDate').value=d.date||'';document.getElementById('incArea').value=d.area||'';document.getElementById('incDesc').value=d.desc||'';rcaData.items=d.items||[];renderRCA();alert('已载入');}catch(e){alert('读取失败');}
+}
+
+function exportRCA(){
+    if(!rcaData.items.length){alert('暂无数据');return;}
+    var bom='\uFEFF',rows=[['原因','效果','类型','备注']];
+    rcaData.items.forEach(function(i){
+        rows.push([i.cause,i.effect,i.isRoot?'根本原因':'中间原因',i.note||'']);
+    });
+    var csv=bom+rows.map(function(r){return r.map(function(c){return '"'+(c||'').toString().replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    a.download='ApolloRCA_'+(document.getElementById('incTitle').value||'report')+'.csv';
+    a.click();
+}
+</script>
+</body>
+</html>
