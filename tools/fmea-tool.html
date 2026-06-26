@@ -285,6 +285,6 @@ function exportCSV() {
     a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
     a.download = 'FMEA_' + (document.getElementById('projName').value||'report') + '.csv';
     a.click();
-}/script>
+</script>
 </body>
 </html>
