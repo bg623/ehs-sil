@@ -50,7 +50,8 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 </style>
 </head>
 <body>
-<div class="header"><div class="container">
+<div class="header"><div class="container"><div id="diag" style="background:#333;color:#0f0;padding:8px;font-size:.75rem;margin:8px 0;border-radius:4px;font-family:monospace">诊断: JS未运行或出错</div>
+
 <a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
 <h1>&#128220; FMEA 失效模式与影响分析</h1>
 <p>识别潜在失效模式，评估风险优先数(RPN)，制定改进措施</p>
@@ -113,7 +114,14 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <script src="../js/auth.js"></script>
 <script>
-var vipActive = renderSimpleGate('gateContainer');
+var diagEl = document.getElementById('diag');
+try {
+    var vipActive = renderSimpleGate('gateContainer');
+    if (diagEl) diagEl.textContent = '诊断: renderSimpleGate=' + (typeof renderSimpleGate) + ' isVip=' + isVip() + ' vipActive=' + vipActive;
+} catch(e) {
+    if (diagEl) diagEl.textContent = '诊断: 错误 ' + e.message;
+    throw e;
+}
 if (vipActive) document.getElementById('toolContent').style.display = 'block';
 
 var fmData = { items: [] };
