@@ -8,7 +8,8 @@
       "yr": 2021,
       "type": "法律",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=安全生产法"
     },
     {
       "cn": "环境保护法",
@@ -18,7 +19,8 @@
       "yr": 2014,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=环境保护法"
     },
     {
       "cn": "职业病防治法",
@@ -28,7 +30,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=职业病防治法"
     },
     {
       "cn": "消防法",
@@ -38,7 +41,8 @@
       "yr": 2021,
       "type": "法律",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=消防法"
     },
     {
       "cn": "劳动法",
@@ -48,7 +52,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=劳动法"
     },
     {
       "cn": "特种设备安全法",
@@ -58,7 +63,8 @@
       "yr": 2013,
       "type": "法律",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=特种设备安全法"
     },
     {
       "cn": "危险化学品安全管理条例",
@@ -68,7 +74,8 @@
       "yr": 2011,
       "type": "行政法规",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "生产安全事故应急条例",
@@ -78,7 +85,8 @@
       "yr": 2019,
       "type": "行政法规",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "工伤保险条例",
@@ -88,7 +96,8 @@
       "yr": 2010,
       "type": "行政法规",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "生产安全事故报告和调查处理条例",
@@ -98,7 +107,8 @@
       "yr": 2007,
       "type": "行政法规",
       "cat": "事故",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "易制毒化学品管理条例",
@@ -108,7 +118,8 @@
       "yr": 2018,
       "type": "行政法规",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "安全生产许可证条例",
@@ -118,7 +129,8 @@
       "yr": 2014,
       "type": "行政法规",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "女职工劳动保护特别规定",
@@ -128,7 +140,8 @@
       "yr": 2012,
       "type": "行政法规",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "职业健康安全管理体系 要求及使用指南",
@@ -138,7 +151,8 @@
       "yr": 2020,
       "type": "国家标准",
       "cat": "管理体系",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=职业健康安全管理体系 要求及使用指南"
     },
     {
       "cn": "环境管理体系 要求及使用指南",
@@ -148,7 +162,8 @@
       "yr": 2016,
       "type": "国家标准",
       "cat": "管理体系",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=环境管理体系 要求及使用指南"
     },
     {
       "cn": "危险化学品重大危险源辨识",
@@ -158,7 +173,8 @@
       "yr": 2018,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险化学品重大危险源辨识"
     },
     {
       "cn": "危险化学品企业特殊作业安全规范",
@@ -168,7 +184,8 @@
       "yr": 2022,
       "type": "国家标准",
       "cat": "作业安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险化学品企业特殊作业安全规范"
     },
     {
       "cn": "企业职工伤亡事故分类",
@@ -178,7 +195,8 @@
       "yr": 1986,
       "type": "国家标准",
       "cat": "事故",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=企业职工伤亡事故分类"
     },
     {
       "cn": "生产过程危险和有害因素分类与代码",
@@ -188,7 +206,8 @@
       "yr": 2022,
       "type": "国家标准",
       "cat": "风险",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=生产过程危险和有害因素分类与代码"
     },
     {
       "cn": "安全标志及其使用导则",
@@ -198,7 +217,8 @@
       "yr": 2008,
       "type": "国家标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=安全标志及其使用导则"
     },
     {
       "cn": "生产经营单位生产安全事故应急预案编制导则",
@@ -208,7 +228,8 @@
       "yr": 2020,
       "type": "国家标准",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=生产经营单位生产安全事故应急预案编制导则"
     },
     {
       "cn": "工作场所有害因素职业接触限值",
@@ -218,7 +239,8 @@
       "yr": 2019,
       "type": "职业卫生标准",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所有害因素职业接触限值"
     },
     {
       "cn": "安全色与安全标识",
@@ -228,7 +250,8 @@
       "yr": 2008,
       "type": "国家标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=安全色与安全标识"
     },
     {
       "cn": "职业健康安全管理体系",
@@ -238,7 +261,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=职业健康安全管理体系"
     },
     {
       "cn": "环境管理体系",
@@ -248,7 +272,8 @@
       "yr": 2015,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=环境管理体系"
     },
     {
       "cn": "风险管理 指南",
@@ -258,7 +283,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "风险",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=风险管理 指南"
     },
     {
       "cn": "质量管理体系",
@@ -268,7 +294,8 @@
       "yr": 2015,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=质量管理体系"
     },
     {
       "cn": "能源管理体系",
@@ -278,7 +305,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=能源管理体系"
     },
     {
       "cn": "功能安全 安全仪表系统",
@@ -288,7 +316,8 @@
       "yr": 2016,
       "type": "国际标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iec.ch/"
     },
     {
       "cn": "机械安全 控制系统安全相关部件",
@@ -298,7 +327,8 @@
       "yr": 2015,
       "type": "国际标准",
       "cat": "机械安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=机械安全 控制系统安全相关部件"
     },
     {
       "cn": "美国职业安全与健康标准",
@@ -308,7 +338,8 @@
       "yr": 1970,
       "type": "国际标准",
       "cat": "综合",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=美国职业安全与健康标准"
     },
     {
       "cn": "国际劳工组织职业安全与健康公约",
@@ -318,7 +349,8 @@
       "yr": 1981,
       "type": "国际公约",
       "cat": "综合",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=国际劳工组织职业安全与健康公约"
     },
     {
       "cn": "API 754 工艺安全指标",
@@ -328,7 +360,8 @@
       "yr": 2021,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.api.org/"
     },
     {
       "cn": "CCPS 基于风险的过程安全",
@@ -338,7 +371,8 @@
       "yr": 2007,
       "type": "指南",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.aiche.org/ccps"
     },
     {
       "cn": "IOGP 生命拯救规则",
@@ -348,7 +382,8 @@
       "yr": 2018,
       "type": "行业标准",
       "cat": "行为安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iogp.org/"
     },
     {
       "cn": "IOGP 工艺安全关键绩效指标",
@@ -358,7 +393,8 @@
       "yr": 2017,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iogp.org/"
     },
     {
       "cn": "欧盟REACH法规",
@@ -368,7 +404,8 @@
       "yr": 2006,
       "type": "法规",
       "cat": "化学品",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://eur-lex.europa.eu/"
     },
     {
       "cn": "全球化学品统一分类和标签制度",
@@ -378,7 +415,8 @@
       "yr": 2023,
       "type": "国际标准",
       "cat": "化学品",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=全球化学品统一分类和标签制度"
     },
     {
       "cn": "IEC 61508 电气/电子/可编程电子安全相关系统的功能安全",
@@ -388,7 +426,8 @@
       "yr": 2010,
       "type": "国际标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iec.ch/"
     },
     {
       "cn": "机械设备安全  EN ISO 12100",
@@ -398,7 +437,8 @@
       "yr": 2010,
       "type": "国际标准",
       "cat": "机械安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=机械设备安全  EN ISO 12100"
     },
     {
       "cn": "安全生产培训管理办法",
@@ -408,7 +448,8 @@
       "yr": 2015,
       "type": "部门规章",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "生产经营单位安全培训规定",
@@ -418,7 +459,8 @@
       "yr": 2015,
       "type": "部门规章",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "建设项目安全设施'三同时'监督管理办法",
@@ -428,7 +470,8 @@
       "yr": 2015,
       "type": "部门规章",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "危险化学品重大危险源监督管理暂行规定",
@@ -438,7 +481,8 @@
       "yr": 2015,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "工贸企业有限空间作业安全管理与监督暂行规定",
@@ -448,7 +492,8 @@
       "yr": 2013,
       "type": "部门规章",
       "cat": "作业安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "企业安全生产费用提取和使用管理办法",
@@ -458,7 +503,8 @@
       "yr": 2012,
       "type": "部门规章",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=企业安全生产费用提取和使用管理办法"
     },
     {
       "cn": "用人单位职业健康监护监督管理办法",
@@ -468,7 +514,8 @@
       "yr": 2012,
       "type": "部门规章",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "建筑设计防火规范",
@@ -478,7 +525,8 @@
       "yr": 2014,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=建筑设计防火规范"
     },
     {
       "cn": "石油化工企业设计防火标准",
@@ -488,7 +536,8 @@
       "yr": 2008,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=石油化工企业设计防火标准"
     },
     {
       "cn": "爆炸危险环境电力装置设计规范",
@@ -498,7 +547,8 @@
       "yr": 2014,
       "type": "国家标准",
       "cat": "电气安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=爆炸危险环境电力装置设计规范"
     },
     {
       "cn": "职业健康监护技术规范",
@@ -508,7 +558,8 @@
       "yr": 2014,
       "type": "职业卫生标准",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=职业健康监护技术规范"
     },
     {
       "cn": "固定式钢梯及平台安全要求",
@@ -518,7 +569,8 @@
       "yr": 2009,
       "type": "国家标准",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=固定式钢梯及平台安全要求"
     },
     {
       "cn": "危险物质危害等级标识",
@@ -528,7 +580,8 @@
       "yr": 2022,
       "type": "国际标准",
       "cat": "化学品",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "工艺安全管理",
@@ -538,7 +591,8 @@
       "yr": 2023,
       "type": "国际标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.api.org/"
     },
     {
       "cn": "社会责任指南",
@@ -548,7 +602,8 @@
       "yr": 2010,
       "type": "国际标准",
       "cat": "ESG",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=社会责任指南"
     },
     {
       "cn": "欧盟Seveso III指令",
@@ -558,7 +613,8 @@
       "yr": 2012,
       "type": "法规",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://eur-lex.europa.eu/"
     },
     {
       "cn": "美国EPA风险管理计划",
@@ -568,7 +624,8 @@
       "yr": 2024,
       "type": "法规",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=美国EPA风险管理计划"
     },
     {
       "cn": "英国COMAH条例",
@@ -578,7 +635,8 @@
       "yr": 2015,
       "type": "法规",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=英国COMAH条例"
     },
     {
       "cn": "加拿大CSA Z462 电气安全工作",
@@ -588,7 +646,8 @@
       "yr": 2021,
       "type": "国际标准",
       "cat": "电气安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=加拿大CSA Z462 电气安全工作"
     },
     {
       "cn": "澳洲/新西兰ISO 45001等效标准",
@@ -598,7 +657,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=澳洲/新西兰ISO 45001等效标准"
     },
     {
       "cn": "大气污染防治法",
@@ -608,7 +668,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=大气污染防治法"
     },
     {
       "cn": "水污染防治法",
@@ -618,7 +679,8 @@
       "yr": 2017,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=水污染防治法"
     },
     {
       "cn": "固体废物污染环境防治法",
@@ -628,7 +690,8 @@
       "yr": 2020,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=固体废物污染环境防治法"
     },
     {
       "cn": "环境噪声污染防治法",
@@ -638,7 +701,8 @@
       "yr": 2021,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=环境噪声污染防治法"
     },
     {
       "cn": "环境影响评价法",
@@ -648,7 +712,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=环境影响评价法"
     },
     {
       "cn": "土壤污染防治法",
@@ -658,7 +723,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=土壤污染防治法"
     },
     {
       "cn": "节约能源法",
@@ -668,7 +734,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "能源",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=节约能源法"
     },
     {
       "cn": "清洁生产促进法",
@@ -678,7 +745,8 @@
       "yr": 2012,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=清洁生产促进法"
     },
     {
       "cn": "环境保护税法",
@@ -688,7 +756,8 @@
       "yr": 2018,
       "type": "法律",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/search.html?keyword=环境保护税法"
     },
     {
       "cn": "大气污染物综合排放标准",
@@ -698,7 +767,8 @@
       "yr": 1996,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=大气污染物综合排放标准"
     },
     {
       "cn": "工业企业厂界环境噪声排放标准",
@@ -708,7 +778,8 @@
       "yr": 2008,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工业企业厂界环境噪声排放标准"
     },
     {
       "cn": "工作场所有害因素职业接触限值 化学有害因素",
@@ -718,7 +789,8 @@
       "yr": 2019,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所有害因素职业接触限值 化学有害因素"
     },
     {
       "cn": "工作场所职业病危害警示标识",
@@ -728,7 +800,8 @@
       "yr": 2003,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所职业病危害警示标识"
     },
     {
       "cn": "职业健康监护技术规范",
@@ -738,7 +811,8 @@
       "yr": 2014,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=职业健康监护技术规范"
     },
     {
       "cn": "企业安全生产标准化基本规范",
@@ -748,7 +822,8 @@
       "yr": 2016,
       "type": "国家标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=企业安全生产标准化基本规范"
     },
     {
       "cn": "高处作业分级",
@@ -758,7 +833,8 @@
       "yr": 2008,
       "type": "国家标准",
       "cat": "作业安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=高处作业分级"
     },
     {
       "cn": "爆破安全规程",
@@ -768,7 +844,8 @@
       "yr": 2014,
       "type": "国家标准",
       "cat": "作业安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=爆破安全规程"
     },
     {
       "cn": "安全评价通则",
@@ -778,7 +855,8 @@
       "yr": 2007,
       "type": "行业标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "生产经营单位安全生产事故应急预案编制导则",
@@ -788,7 +866,8 @@
       "yr": 2020,
       "type": "国家标准",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=生产经营单位安全生产事故应急预案编制导则"
     },
     {
       "cn": "生产安全事故应急预案管理办法",
@@ -798,7 +877,8 @@
       "yr": 2019,
       "type": "部门规章",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "安全生产事故隐患排查治理暂行规定",
@@ -808,7 +888,8 @@
       "yr": 2007,
       "type": "部门规章",
       "cat": "隐患排查",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "工作场所职业卫生管理规定",
@@ -818,7 +899,8 @@
       "yr": 2021,
       "type": "部门规章",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "ISO 14004 环境管理体系 通用实施指南",
@@ -828,7 +910,8 @@
       "yr": 2016,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=ISO 14004 环境管理体系 通用实施指南"
     },
     {
       "cn": "ISO 19011 管理体系审核指南",
@@ -838,7 +921,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=ISO 19011 管理体系审核指南"
     },
     {
       "cn": "ISO 22301 业务连续性管理体系",
@@ -848,7 +932,8 @@
       "yr": 2019,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=ISO 22301 业务连续性管理体系"
     },
     {
       "cn": "ISO 20400 可持续采购",
@@ -858,7 +943,8 @@
       "yr": 2017,
       "type": "国际标准",
       "cat": "ESG",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=ISO 20400 可持续采购"
     },
     {
       "cn": "API RP 750 工艺安全管理",
@@ -868,7 +954,8 @@
       "yr": 1990,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.api.org/"
     },
     {
       "cn": "NFPA 101 生命安全规范",
@@ -878,7 +965,8 @@
       "yr": 2021,
       "type": "国际标准",
       "cat": "消防",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "美国EPA 40 CFR Part 68 风险管理计划",
@@ -888,7 +976,8 @@
       "yr": 2024,
       "type": "法规",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=美国EPA 40 CFR Part 68 风险管理计划"
     },
     {
       "cn": "中国地震动参数区划图",
@@ -898,7 +987,8 @@
       "yr": 2015,
       "type": "国家标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=中国地震动参数区划图"
     },
     {
       "cn": "建筑防火通用规范",
@@ -908,7 +998,8 @@
       "yr": 2022,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=建筑防火通用规范"
     },
     {
       "cn": "危险化学品企业安全风险隐患排查治理导则",
@@ -918,7 +1009,8 @@
       "yr": 2019,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=危险化学品企业安全风险隐患排查治理导则"
     },
     {
       "cn": "关于加强化工过程安全管理的指导意见",
@@ -928,7 +1020,8 @@
       "yr": 2013,
       "type": "部门规章",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=关于加强化工过程安全管理的指导意见"
     },
     {
       "cn": "危险化学品登记管理办法",
@@ -938,7 +1031,8 @@
       "yr": 2012,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "关于加强化工安全仪表系统管理的指导意见",
@@ -948,7 +1042,8 @@
       "yr": 2014,
       "type": "部门规章",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=关于加强化工安全仪表系统管理的指导意见"
     },
     {
       "cn": "化工(危险化学品)企业安全检查重点指导目录",
@@ -958,7 +1053,8 @@
       "yr": 2018,
       "type": "部门规章",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=化工(危险化学品)企业安全检查重点指导目录"
     },
     {
       "cn": "危险与可操作性分析(HAZOP)应用导则",
@@ -968,7 +1064,8 @@
       "yr": 2013,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "保护层分析(LOPS)应用导则",
@@ -978,7 +1075,8 @@
       "yr": 2015,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "安全仪表系统功能安全 验收规范",
@@ -988,7 +1086,8 @@
       "yr": 2022,
       "type": "国家标准",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=安全仪表系统功能安全 验收规范"
     },
     {
       "cn": "石油化工可燃气体和有毒气体检测报警设计标准",
@@ -998,7 +1097,8 @@
       "yr": 2019,
       "type": "国家标准",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=石油化工可燃气体和有毒气体检测报警设计标准"
     },
     {
       "cn": "化工企业工艺安全管理实施导则",
@@ -1008,7 +1108,8 @@
       "yr": 2022,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "危险化学品储存通则",
@@ -1018,7 +1119,8 @@
       "yr": 2022,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险化学品储存通则"
     },
     {
       "cn": "危险化学品仓库储存通则",
@@ -1028,7 +1130,8 @@
       "yr": 2013,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险化学品仓库储存通则"
     },
     {
       "cn": "易燃易爆性商品储存养护技术条件",
@@ -1038,7 +1141,8 @@
       "yr": 2013,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=易燃易爆性商品储存养护技术条件"
     },
     {
       "cn": "腐蚀性商品储存养护技术条件",
@@ -1048,7 +1152,8 @@
       "yr": 2013,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=腐蚀性商品储存养护技术条件"
     },
     {
       "cn": "毒害性商品储存养护技术条件",
@@ -1058,7 +1163,8 @@
       "yr": 2013,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=毒害性商品储存养护技术条件"
     },
     {
       "cn": "危险货物道路运输安全管理办法",
@@ -1068,7 +1174,8 @@
       "yr": 2019,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "工作场所空气中粉尘测定 第1部分：总粉尘浓度",
@@ -1078,7 +1185,8 @@
       "yr": 2007,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所空气中粉尘测定 第1部分：总粉尘浓度"
     },
     {
       "cn": "工作场所物理因素测量 噪声",
@@ -1088,7 +1196,8 @@
       "yr": 2007,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所物理因素测量 噪声"
     },
     {
       "cn": "工业企业设计卫生标准",
@@ -1098,7 +1207,8 @@
       "yr": 2010,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工业企业设计卫生标准"
     },
     {
       "cn": "医用X射线诊断放射防护要求",
@@ -1108,7 +1218,8 @@
       "yr": 2020,
       "type": "职业卫生",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=医用X射线诊断放射防护要求"
     },
     {
       "cn": "用人单位职业病危害告知与警示标识管理规范",
@@ -1118,7 +1229,8 @@
       "yr": 2014,
       "type": "部门规章",
       "cat": "职业健康",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=用人单位职业病危害告知与警示标识管理规范"
     },
     {
       "cn": "自动喷水灭火系统设计规范",
@@ -1128,7 +1240,8 @@
       "yr": 2017,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=自动喷水灭火系统设计规范"
     },
     {
       "cn": "火灾自动报警系统设计规范",
@@ -1138,7 +1251,8 @@
       "yr": 2013,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=火灾自动报警系统设计规范"
     },
     {
       "cn": "建筑灭火器配置设计规范",
@@ -1148,7 +1262,8 @@
       "yr": 2005,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=建筑灭火器配置设计规范"
     },
     {
       "cn": "消防安全标志设置要求",
@@ -1158,7 +1273,8 @@
       "yr": 1995,
       "type": "国家标准",
       "cat": "消防",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=消防安全标志设置要求"
     },
     {
       "cn": "污水综合排放标准",
@@ -1168,7 +1284,8 @@
       "yr": 1996,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=污水综合排放标准"
     },
     {
       "cn": "危险废物贮存污染控制标准",
@@ -1178,7 +1295,8 @@
       "yr": 2023,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险废物贮存污染控制标准"
     },
     {
       "cn": "危险废物填埋污染控制标准",
@@ -1188,7 +1306,8 @@
       "yr": 2019,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险废物填埋污染控制标准"
     },
     {
       "cn": "一般工业固体废物贮存和填埋污染控制标准",
@@ -1198,7 +1317,8 @@
       "yr": 2020,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=一般工业固体废物贮存和填埋污染控制标准"
     },
     {
       "cn": "中华人民共和国环境保护法实施条例",
@@ -1208,7 +1328,8 @@
       "yr": 2017,
       "type": "行政法规",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "排污许可管理条例",
@@ -1218,7 +1339,8 @@
       "yr": 2021,
       "type": "行政法规",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.gov.cn/zhengce/content/"
     },
     {
       "cn": "挥发性有机物无组织排放控制标准",
@@ -1228,7 +1350,8 @@
       "yr": 2019,
       "type": "国家标准",
       "cat": "环境",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=挥发性有机物无组织排放控制标准"
     },
     {
       "cn": "固定式压力容器安全技术监察规程",
@@ -1238,7 +1361,8 @@
       "yr": 2016,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.samr.gov.cn/"
     },
     {
       "cn": "移动式压力容器安全技术监察规程",
@@ -1248,7 +1372,8 @@
       "yr": 2011,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.samr.gov.cn/"
     },
     {
       "cn": "气瓶安全技术规程",
@@ -1258,7 +1383,8 @@
       "yr": 2021,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.samr.gov.cn/"
     },
     {
       "cn": "起重机械安全规程",
@@ -1268,7 +1394,8 @@
       "yr": 2010,
       "type": "国家标准",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=起重机械安全规程"
     },
     {
       "cn": "场(厂)内专用机动车辆安全技术规程",
@@ -1278,7 +1405,8 @@
       "yr": 2022,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.samr.gov.cn/"
     },
     {
       "cn": "低压配电设计规范",
@@ -1288,7 +1416,8 @@
       "yr": 2011,
       "type": "国家标准",
       "cat": "电气安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=低压配电设计规范"
     },
     {
       "cn": "建筑物防雷设计规范",
@@ -1298,7 +1427,8 @@
       "yr": 2010,
       "type": "国家标准",
       "cat": "电气安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=建筑物防雷设计规范"
     },
     {
       "cn": "用电安全导则",
@@ -1308,7 +1438,8 @@
       "yr": 2017,
       "type": "国家标准",
       "cat": "电气安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=用电安全导则"
     },
     {
       "cn": "企业安全文化建设导则",
@@ -1318,7 +1449,8 @@
       "yr": 2008,
       "type": "行业标准",
       "cat": "行为安全",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "安全培训管理信息系统建设规范",
@@ -1328,7 +1460,8 @@
       "yr": 2016,
       "type": "行业标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "企业安全生产网络化监测系统技术规范",
@@ -1338,7 +1471,8 @@
       "yr": 2015,
       "type": "行业标准",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "化工和危险化学品生产经营单位重大生产安全事故隐患判定标准",
@@ -1348,7 +1482,8 @@
       "yr": 2017,
       "type": "部门规章",
       "cat": "隐患排查",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=化工和危险化学品生产经营单位重大生产安全事故隐患判定标准"
     },
     {
       "cn": "工贸行业重大生产安全事故隐患判定标准",
@@ -1358,7 +1493,8 @@
       "yr": 2017,
       "type": "部门规章",
       "cat": "隐患排查",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=工贸行业重大生产安全事故隐患判定标准"
     },
     {
       "cn": "安全验收评价导则",
@@ -1368,7 +1504,8 @@
       "yr": 2007,
       "type": "行业标准",
       "cat": "风险",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "安全预评价导则",
@@ -1378,7 +1515,8 @@
       "yr": 2007,
       "type": "行业标准",
       "cat": "风险",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "药品生产质量管理规范",
@@ -1388,7 +1526,8 @@
       "yr": 2011,
       "type": "部门规章",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "药品生产监督管理办法",
@@ -1398,7 +1537,8 @@
       "yr": 2020,
       "type": "部门规章",
       "cat": "综合",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "生产安全事故信息报告和处置办法",
@@ -1408,7 +1548,8 @@
       "yr": 2009,
       "type": "部门规章",
       "cat": "事故",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "安全生产行政执法统计调查制度",
@@ -1418,7 +1559,8 @@
       "yr": 2019,
       "type": "部门规章",
       "cat": "事故",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=安全生产行政执法统计调查制度"
     },
     {
       "cn": "NFPA 70 国家电气规范",
@@ -1428,7 +1570,8 @@
       "yr": 2023,
       "type": "国际标准",
       "cat": "电气安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "NFPA 70E 工作场所电气安全",
@@ -1438,7 +1581,8 @@
       "yr": 2021,
       "type": "国际标准",
       "cat": "电气安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "NFPA 30 易燃可燃液体规范",
@@ -1448,7 +1592,8 @@
       "yr": 2021,
       "type": "国际标准",
       "cat": "消防",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "NFPA 68 爆炸防护的泄压通风",
@@ -1458,7 +1603,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "NFPA 69 爆炸防护系统",
@@ -1468,7 +1614,8 @@
       "yr": 2019,
       "type": "国际标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.nfpa.org/"
     },
     {
       "cn": "API 510 压力容器检验规范",
@@ -1478,7 +1625,8 @@
       "yr": 2020,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.api.org/"
     },
     {
       "cn": "API 570 管道检验规范",
@@ -1488,7 +1636,8 @@
       "yr": 2020,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.api.org/"
     },
     {
       "cn": "API 653 储罐检验、维修、改造和重建",
@@ -1498,7 +1647,8 @@
       "yr": 2021,
       "type": "行业标准",
       "cat": "设备安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.api.org/"
     },
     {
       "cn": "CCPS 过程安全导则要素指南",
@@ -1508,7 +1658,8 @@
       "yr": 2007,
       "type": "指南",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.aiche.org/ccps"
     },
     {
       "cn": "IOGP 454 陆上石油工业安全关键人员能力",
@@ -1518,7 +1669,8 @@
       "yr": 2017,
       "type": "行业标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iogp.org/"
     },
     {
       "cn": "IOGP 457 工艺安全事件报告指南",
@@ -1528,7 +1680,8 @@
       "yr": 2017,
       "type": "行业标准",
       "cat": "工艺安全",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iogp.org/"
     },
     {
       "cn": "ISO 45001:2018 职业健康安全管理体系",
@@ -1538,7 +1691,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "管理体系",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=ISO 45001:2018 职业健康安全管理体系"
     },
     {
       "cn": "ISO 14064 温室气体排放核查",
@@ -1548,7 +1702,8 @@
       "yr": 2018,
       "type": "国际标准",
       "cat": "环境",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.iso.org/search.html?q=ISO 14064 温室气体排放核查"
     },
     {
       "cn": "CDP 碳排放披露要求",
@@ -1558,7 +1713,8 @@
       "yr": 2024,
       "type": "国际标准",
       "cat": "ESG",
-      "c": "国际"
+      "c": "国际",
+      "link": "https://www.google.com/search?q=CDP 碳排放披露要求"
     },
     {
       "cn": "危险化学品目录（2015版）",
@@ -1568,7 +1724,8 @@
       "yr": 2015,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "首批重点监管的危险化学品名录",
@@ -1578,7 +1735,8 @@
       "yr": 2011,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=首批重点监管的危险化学品名录"
     },
     {
       "cn": "危险化学品生产许可证实施细则",
@@ -1588,7 +1746,8 @@
       "yr": 2018,
       "type": "部门规章",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
     },
     {
       "cn": "常用化学危险品贮存通则",
@@ -1598,7 +1757,8 @@
       "yr": 2022,
       "type": "国家标准",
       "cat": "化学品",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=常用化学危险品贮存通则"
     },
     {
       "cn": "国家突发环境事件应急预案",
@@ -1608,7 +1768,8 @@
       "yr": 2014,
       "type": "行政法规",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=国家突发环境事件应急预案"
     },
     {
       "cn": "危险化学品事故应急救援预案编制导则",
@@ -1618,7 +1779,8 @@
       "yr": 2004,
       "type": "部门规章",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=危险化学品事故应急救援预案编制导则"
     },
     {
       "cn": "生产安全事故应急演练指南",
@@ -1628,10 +1790,297 @@
       "yr": 2019,
       "type": "行业标准",
       "cat": "应急",
-      "c": "中国"
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/gk/gwgg/"
+    },
+    {
+      "cn": "化学品生产单位特殊作业安全规范",
+      "en": "Safety Code for Special Operations in Chemical Plants",
+      "num": "GB 30871-2022",
+      "auth": "国家标准化管理委员会",
+      "yr": 2022,
+      "type": "国家标准",
+      "cat": "作业安全",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=化学品生产单位特殊作业安全规范"
+    },
+    {
+      "cn": "石油化工企业设计防火规范",
+      "en": "Fire Protection Design Code for Petrochemical Enterprises",
+      "num": "GB 50160-2008",
+      "auth": "住建部",
+      "yr": 2008,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=石油化工企业设计防火规范"
+    },
+    {
+      "cn": "储罐区防火堤设计规范",
+      "en": "Code for Design of Fire Dikes in Tank Farms",
+      "num": "GB 50351-2014",
+      "auth": "住建部",
+      "yr": 2014,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=储罐区防火堤设计规范"
+    },
+    {
+      "cn": "泡沫灭火系统技术标准",
+      "en": "Technical Standard for Foam Fire Extinguishing Systems",
+      "num": "GB 50151-2021",
+      "auth": "住建部",
+      "yr": 2021,
+      "type": "国家标准",
+      "cat": "消防",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=泡沫灭火系统技术标准"
+    },
+    {
+      "cn": "化工建设项目环境保护设计规范",
+      "en": "Environmental Protection Design Code for Chemical Projects",
+      "num": "GB 50483-2019",
+      "auth": "住建部",
+      "yr": 2019,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=化工建设项目环境保护设计规范"
+    },
+    {
+      "cn": "污水排入城镇下水道水质标准",
+      "en": "Wastewater Quality Standards for Discharge to Municipal Sewers",
+      "num": "GB/T 31962-2015",
+      "auth": "国家标准化管理委员会",
+      "yr": 2015,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=污水排入城镇下水道水质标准"
+    },
+    {
+      "cn": "危险废物鉴别标准 通则",
+      "en": "General Rules for Hazardous Waste Identification",
+      "num": "GB 5085.7-2019",
+      "auth": "生态环境部",
+      "yr": 2019,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=危险废物鉴别标准 通则"
+    },
+    {
+      "cn": "工作场所空气中粉尘测定标准",
+      "en": "Standard for Dust Measurement in Workplace Air",
+      "num": "GBZ/T 192-2007",
+      "auth": "国家卫健委",
+      "yr": 2007,
+      "type": "职业卫生",
+      "cat": "职业健康",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=工作场所空气中粉尘测定标准"
+    },
+    {
+      "cn": "噪声作业分级",
+      "en": "Classification of Noise Exposure",
+      "num": "LD 80-1995",
+      "auth": "劳动部",
+      "yr": 1995,
+      "type": "行业标准",
+      "cat": "职业健康",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=噪声作业分级"
+    },
+    {
+      "cn": "化工企业安全卫生设计规范",
+      "en": "Safety and Health Design Code for Chemical Plants",
+      "num": "HG 20571-2014",
+      "auth": "工信部",
+      "yr": 2014,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=化工企业安全卫生设计规范"
+    },
+    {
+      "cn": "石油化工企业职业安全卫生设计规范",
+      "en": "Occupational Safety and Health Design Code for Petrochemicals",
+      "num": "SH 3047-2021",
+      "auth": "工信部",
+      "yr": 2021,
+      "type": "行业标准",
+      "cat": "职业健康",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=石油化工企业职业安全卫生设计规范"
+    },
+    {
+      "cn": "危险化学品经营企业安全技术基本要求",
+      "en": "Basic Safety Requirements for Hazardous Chemical Trading",
+      "num": "GB 18265-2019",
+      "auth": "国家标准化管理委员会",
+      "yr": 2019,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=危险化学品经营企业安全技术基本要求"
+    },
+    {
+      "cn": "危险化学品单位应急救援物资配备要求",
+      "en": "Emergency Rescue Equipment Requirements for Chemical Units",
+      "num": "GB 30077-2013",
+      "auth": "国家标准化管理委员会",
+      "yr": 2013,
+      "type": "国家标准",
+      "cat": "应急",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=危险化学品单位应急救援物资配备要求"
+    },
+    {
+      "cn": "石油化工企业安全管理体系标准",
+      "en": "Safety Management System Standard for Petrochemicals",
+      "num": "AQ/T 3012-2008",
+      "auth": "应急管理部",
+      "yr": 2008,
+      "type": "行业标准",
+      "cat": "管理体系",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=石油化工企业安全管理体系标准"
+    },
+    {
+      "cn": "危险化学品从业单位安全标准化通用规范",
+      "en": "Safety Standardization for Chemical Companies",
+      "num": "AQ 3013-2008",
+      "auth": "应急管理部",
+      "yr": 2008,
+      "type": "行业标准",
+      "cat": "综合",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=危险化学品从业单位安全标准化通用规范"
+    },
+    {
+      "cn": "石油化工企业安全检查标准",
+      "en": "Safety Inspection Standard for Petrochemicals",
+      "num": "AQ/T 3016-2008",
+      "auth": "应急管理部",
+      "yr": 2008,
+      "type": "行业标准",
+      "cat": "隐患排查",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=石油化工企业安全检查标准"
+    },
+    {
+      "cn": "化学工业建设项目试车规范",
+      "en": "Commissioning Specification for Chemical Construction Projects",
+      "num": "HG 20231-2014",
+      "auth": "工信部",
+      "yr": 2014,
+      "type": "行业标准",
+      "cat": "工艺安全",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=化学工业建设项目试车规范"
+    },
+    {
+      "cn": "环境空气质量标准",
+      "en": "Ambient Air Quality Standards",
+      "num": "GB 3095-2012",
+      "auth": "生态环境部",
+      "yr": 2012,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=环境空气质量标准"
+    },
+    {
+      "cn": "地下水质量标准",
+      "en": "Quality Standard for Ground Water",
+      "num": "GB/T 14848-2017",
+      "auth": "国家标准化管理委员会",
+      "yr": 2017,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=地下水质量标准"
+    },
+    {
+      "cn": "土壤环境质量 建设用地土壤污染风险管控标准",
+      "en": "Soil Environmental Quality Risk Control Standard for Soil Contamination of Development Land",
+      "num": "GB 36600-2018",
+      "auth": "生态环境部",
+      "yr": 2018,
+      "type": "国家标准",
+      "cat": "环境",
+      "c": "中国",
+      "link": "https://www.baidu.com/s?wd=土壤环境质量 建设用地土壤污染风险管控标准"
+    },
+    {
+      "cn": "ISO 14001 环境管理体系实施指南",
+      "en": "EMS - Guidelines for Implementation",
+      "num": "ISO 14004:2016",
+      "auth": "ISO",
+      "yr": 2016,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际",
+      "link": "https://www.google.com/search?q=ISO 14001 环境管理体系实施指南"
+    },
+    {
+      "cn": "ISO 45001 职业健康安全管理体系实施指南",
+      "en": "OHSMS - Implementation Guidelines",
+      "num": "ISO 45002:2020",
+      "auth": "ISO",
+      "yr": 2020,
+      "type": "国际标准",
+      "cat": "管理体系",
+      "c": "国际",
+      "link": "https://www.google.com/search?q=ISO 45001 职业健康安全管理体系实施指南"
+    },
+    {
+      "cn": "NFPA 704 危险品紧急响应系统",
+      "en": "Standard System for Identification of Hazards of Materials for Emergency Response",
+      "num": "NFPA 704",
+      "auth": "NFPA",
+      "yr": 2022,
+      "type": "国际标准",
+      "cat": "化学品",
+      "c": "国际",
+      "link": "https://www.google.com/search?q=NFPA 704 危险品紧急响应系统"
+    },
+    {
+      "cn": "NFPA 30 易燃和可燃液体规范",
+      "en": "Flammable and Combustible Liquids Code",
+      "num": "NFPA 30",
+      "auth": "NFPA",
+      "yr": 2021,
+      "type": "国际标准",
+      "cat": "消防",
+      "c": "国际",
+      "link": "https://www.google.com/search?q=NFPA 30 易燃和可燃液体规范"
+    },
+    {
+      "cn": "OSHA 29 CFR 1910.119 工艺安全管理",
+      "en": "Process Safety Management of Highly Hazardous Chemicals",
+      "num": "29 CFR 1910.119",
+      "auth": "OSHA",
+      "yr": 1992,
+      "type": "法规",
+      "cat": "工艺安全",
+      "c": "国际",
+      "link": "https://www.google.com/search?q=OSHA 29 CFR 1910.119 工艺安全管理"
+    },
+    {
+      "cn": "CCPS 基于风险的过程安全指南",
+      "en": "Risk Based Process Safety",
+      "num": "CCPS RBPS",
+      "auth": "CCPS/AIChE",
+      "yr": 2007,
+      "type": "指南",
+      "cat": "工艺安全",
+      "c": "国际",
+      "link": "https://www.google.com/search?q=CCPS 基于风险的过程安全指南"
     }
   ],
-  "total": 163,
+  "total": 189,
   "types": [
     "国家标准",
     "国际公约",
