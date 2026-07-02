@@ -158,10 +158,10 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font
 </div>
 <div class="form-row">
 <div class="form-group" style="grid-column:1/-1"><label>观察类型</label>
-<div style="display:flex;gap:.5rem;margin-top:.2rem">
-<label style="display:flex;align-items:center;gap:.3rem;font-size:.78rem;cursor:pointer"><input type="radio" name="obsType" value="计划观察" checked> 计划观察</label>
-<label style="display:flex;align-items:center;gap:.3rem;font-size:.78rem;cursor:pointer"><input type="radio" name="obsType" value="随机观察"> 随机观察</label>
-<label style="display:flex;align-items:center;gap:.3rem;font-size:.78rem;cursor:pointer"><input type="radio" name="obsType" value="专项观察"> 专项观察</label>
+<div style="display:flex;flex-wrap:wrap;gap:.3rem .8rem;margin-top:.2rem;padding:.2rem 0">
+<label style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;cursor:pointer;padding:.2rem .1rem;white-space:nowrap"><input type="radio" name="obsType" value="计划观察" checked> 计划观察</label>
+<label style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;cursor:pointer;padding:.2rem .1rem;white-space:nowrap"><input type="radio" name="obsType" value="随机观察"> 随机观察</label>
+<label style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;cursor:pointer;padding:.2rem .1rem;white-space:nowrap"><input type="radio" name="obsType" value="专项观察"> 专项观察</label>
 </div></div>
 </div>
 </div>
@@ -218,19 +218,14 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font
 <div id="tab-history" class="tab-content">
 <div class="section">
 <div class="filter-bar" id="histFilterBar">
-<span>&#128100; 查看：</span>
-<select id="histFilter" onchange="renderHist()">
-<option value="me">我的记录（当前用户）</option>
-<option value="all">全部记录</option>
-</select>
-<span style="font-size:.65rem;color:var(--text-muted);margin-left:.3rem" id="histPrivacyHint">其他用户的数据不可见</span>
+<span style="font-size:.65rem;color:var(--text-muted)">&#128274; 当前身份的数据 — 切换身份可查看不同数据</span>
 </div>
 <div class="toolbar">
 <h2 style="margin-bottom:0;font-size:.95rem">&#128214; 观察记录</h2>
 <span id="obsCount" style="font-size:.72rem;color:#999">0 条记录</span>
 <div class="toolbar-right">
 <button class="btn btn-sm btn-outline" onclick="exportBBS()">&#128203; 导出CSV</button>
-<button class="btn btn-sm btn-danger" onclick="if(confirm('确定永久清除所有数据？（此操作不可恢复）')){localStorage.removeItem('ehs_sil_bbs');bbsData.items=[];renderHist();renderDash();}">&#128465; 清除设备数据</button>
+<button class="btn btn-sm btn-danger" onclick="if(confirm('确定永久清除所有数据？（此操作不可恢复）')){var ck = 'ehs_sil_bbs_' + encodeURIComponent(currentUser || 'default');localStorage.removeItem(ck);bbsData.items=[];renderHist();renderDash();}">&#128465; 清除设备数据</button>
 </div>
 </div>
 <div id="obsTable"><div class="empty-state"><div class="icon">&#128214;</div><p>暂无观察记录，开始你的第一次BBS观察吧</p></div></div>
@@ -241,13 +236,7 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font
 <!-- Tab: 数据看板 -->
 <div id="tab-dashboard" class="tab-content">
 <div class="section">
-<div class="filter-bar">
-<span>&#128100; 数据来源：</span>
-<select id="dashFilter" onchange="renderDash()">
-<option value="me">我的记录（当前用户）</option>
-<option value="all">全部记录</option>
-</select>
-</div>
+
 <h2>&#128200; 观察统计概览</h2>
 <div class="dash-grid" id="dashSummary"><div class="empty-state" style="grid-column:1/-1"><div class="icon">&#128200;</div><p>暂无数据</p></div></div>
 <h2 style="font-size:.9rem;margin-top:.5rem">&#128202; 安全行为趋势</h2>
@@ -302,22 +291,21 @@ function closeIdentityModal(){
 function setIdentity(){
     var name = document.getElementById('idInput').value.trim();
     if(!name){ alert('请输入您的姓名或昵称'); return; }
+    // Save current data before switching
+    if(currentUser && currentUser !== name){ saveBBS(); }
     currentUser = name;
     localStorage.setItem('ehs_sil_bbs_user', name);
     document.getElementById('currentUserName').textContent = name;
     document.getElementById('obsObserver').value = name;
-    document.getElementById('histPrivacyHint').textContent = '仅显示 ' + name + ' 的记录';
     closeIdentityModal();
-    renderHist();
-    renderDash();
+    // Reload from new identity's storage
+    bbsData.items = [];
+    loadBBS();
 }
 
 /* ============ Helpers ============ */
-function getFilteredItems(mode){
-    if(mode === 'me' && currentUser){
-        return bbsData.items.filter(function(i){ return i.observer === currentUser; });
-    }
-    return bbsData.items;
+function getAllItems(){
+    return bbsData.items || [];
 }
 
 function esc(t){ return (t||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -399,13 +387,32 @@ function submitObservation(){
 
 /* ============ Storage ============ */
 function saveBBS(){
-    localStorage.setItem('ehs_sil_bbs', JSON.stringify(bbsData));
+    var key = 'ehs_sil_bbs_' + encodeURIComponent(currentUser || 'default');
+    localStorage.setItem(key, JSON.stringify(bbsData));
 }
 function loadBBS(){
-    var raw = localStorage.getItem('ehs_sil_bbs');
+    var key = 'ehs_sil_bbs_' + encodeURIComponent(currentUser || 'default');
+    var raw = localStorage.getItem(key);
     if(raw){
         try { bbsData = JSON.parse(raw); if(!bbsData.items) bbsData.items = []; }
         catch(e){ bbsData = { items: [] }; }
+    } else {
+        // Migration: check old shared key
+        var oldRaw = localStorage.getItem('ehs_sil_bbs');
+        if(oldRaw && currentUser){
+            try {
+                var oldData = JSON.parse(oldRaw);
+                if(oldData && oldData.items){
+                    // Only keep items matching current user
+                    var myItems = oldData.items.filter(function(i){ return i.observer === currentUser; });
+                    if(myItems.length > 0){
+                        bbsData = { items: myItems };
+                        saveBBS();
+                        console.log('Migrated ' + myItems.length + ' records for ' + currentUser);
+                    }
+                }
+            } catch(e){}
+        }
     }
     renderHist();
     renderDash();
@@ -413,9 +420,7 @@ function loadBBS(){
 
 /* ============ History ============ */
 function renderHist(){
-    var filterEl = document.getElementById('histFilter');
-    var mode = filterEl ? filterEl.value : 'me';
-    var items = getFilteredItems(mode);
+    var items = getAllItems();
     
     document.getElementById('obsCount').textContent = items.length + ' 条记录';
     if(!items.length){
@@ -460,9 +465,7 @@ function countSel(sel){
 
 /* ============ Dashboard ============ */
 function renderDash(){
-    var filterEl = document.getElementById('dashFilter');
-    var mode = filterEl ? filterEl.value : 'me';
-    var items = getFilteredItems(mode);
+    var items = getAllItems();
     
     if(!items.length){
         document.getElementById('dashSummary').innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="icon">&#128200;</div><p>暂无' + (mode==='me'?'你的':'') + '数据</p></div>';
@@ -552,9 +555,7 @@ function renderDash(){
 
 /* ============ Export ============ */
 function exportBBS(){
-    var filterEl = document.getElementById('histFilter');
-    var mode = filterEl ? filterEl.value : 'me';
-    var items = getFilteredItems(mode);
+    var items = getAllItems();
     if(!items.length){ alert('暂无数据可导出'); return; }
     
     var catNames = {ppe:'PPE', position:'位置', reaction:'反应', tools:'工具', procedures:'程序', housekeeping:'现场'};
