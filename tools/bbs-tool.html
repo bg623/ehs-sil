@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BBS 行为安全观察 · 在线工具 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#e8e1d4;--bg-card:#f5f2eb;--text:#2d3436;--text-second:#4a555a;--text-muted:#95a5a6;--border:#d6d0c4;--border-light:#e8e4dc;--font:-apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}
+body{font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.15rem}
+.header p{color:rgba(255,255,255,.7);font-size:.8rem;max-width:500px;margin:.2rem auto 0}
+.back{color:var(--accent);font-size:.78rem;text-decoration:none;display:inline-block;margin-bottom:.3rem}
+.back:hover{opacity:.8}
+.section{background:#fff;border-radius:10px;border:1px solid var(--border);padding:1.25rem;margin:1rem 0}
+.section h2{font-size:.95rem;color:var(--primary);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.3rem}
+.form-group{margin-bottom:.4rem}
+.form-group label{display:block;font-size:.7rem;color:#555;margin-bottom:.1rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.4rem .45rem;border:1.5px solid var(--border-light);border-radius:5px;font-size:.78rem;outline:none;font-family:var(--font)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.form-group textarea{min-height:36px;resize:vertical}
+.btn{padding:.4rem .8rem;border:none;border-radius:5px;font-size:.75rem;font-weight:500;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:#071d27}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.25rem .5rem;font-size:.7rem}
+.btn-danger{background:#dc2626;color:#fff}
+.btn-success{background:#16a34a;color:#fff}
+.toolbar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem;align-items:center}
+.toolbar-right{margin-left:auto;display:flex;gap:.3rem}
+
+/* Observation Categories */
+.obs-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.obs-card{border:1.5px solid var(--border-light);border-radius:8px;padding:.8rem;transition:.2s}
+.obs-card:hover{border-color:var(--border)}
+.obs-card h4{font-size:.78rem;color:var(--primary);font-weight:600;margin-bottom:.2rem}
+.obs-card .sub{font-size:.65rem;color:var(--text-muted);margin-bottom:.4rem}
+.obs-options{display:flex;gap:.3rem}
+.obs-opt{flex:1;text-align:center;padding:.3rem .2rem;border-radius:5px;font-size:.68rem;font-weight:500;cursor:pointer;border:1.5px solid var(--border-light);transition:.2s;background:#fafafa}
+.obs-opt.safe{color:#16a34a}
+.obs-opt.safe.selected{background:#dcfce7;border-color:#16a34a}
+.obs-opt.risk{color:#dc2626}
+.obs-opt.risk.selected{background:#fee2e2;border-color:#dc2626}
+.obs-opt.na{color:#999}
+.obs-opt.na.selected{background:#f3f4f6;border-color:#d1d5db}
+.obs-opt.safe:hover{background:#dcfce7}
+.obs-opt.risk:hover{background:#fee2e2}
+
+/* Data tables */
+.data-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.data-table th{background:var(--primary);color:#fff;padding:.3rem .25rem;text-align:left;font-weight:500;white-space:nowrap}
+.data-table td{padding:.3rem .25rem;border-bottom:1px solid var(--border-light);vertical-align:top}
+.data-table tr:hover{background:#fafaf5}
+.empty-state{text-align:center;padding:1.5rem;color:var(--text-muted);font-size:.82rem}
+.empty-state .icon{font-size:2rem;margin-bottom:.3rem}
+
+/* Dashboard */
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.8rem}
+.dash-card{background:#fafaf5;border:1px solid var(--border-light);border-radius:8px;padding:.8rem;text-align:center}
+.dash-card .num{font-size:1.5rem;font-weight:700;color:var(--primary)}
+.dash-card .num.green{color:#16a34a}
+.dash-card .num.red{color:#dc2626}
+.dash-card .label{font-size:.65rem;color:var(--text-muted);margin-top:.1rem}
+.dash-trend{margin:.8rem 0}
+.dash-trend .bar-row{display:flex;align-items:center;gap:.3rem;margin-bottom:.2rem;font-size:.68rem}
+.dash-trend .bar{flex:1;height:16px;border-radius:3px;overflow:hidden;display:flex}
+.dash-trend .bar .safe{background:#16a34a;transition:width .3s}
+.dash-trend .bar .risk{background:#dc2626;transition:width .3s}
+.dash-trend .pct{width:30px;text-align:right;font-weight:600;font-size:.65rem}
+.category-stats{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;font-size:.68rem}
+.cat-bar{display:flex;align-items:center;gap:.3rem}
+.cat-bar .label{width:80px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-bar .track{flex:1;height:12px;border-radius:3px;background:#eee;overflow:hidden}
+.cat-bar .track .fill{height:100%;border-radius:3px;transition:width .3s}
+.cat-bar .pct{width:30px;text-align:right;font-weight:600;font-size:.62rem}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:.8rem;border-bottom:2px solid var(--border-light)}
+.tab{padding:.4rem .8rem;font-size:.75rem;font-weight:500;cursor:pointer;border:none;background:none;color:var(--text-muted);transition:.2s;border-bottom:2px solid transparent;margin-bottom:-2px}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Safe Score */
+.safe-score{display:inline-flex;align-items:center;gap:.2rem;font-weight:700;font-size:1rem}
+.safe-score.green{color:#16a34a}
+.safe-score.red{color:#dc2626}
+.safe-score.yellow{color:#ca8a04}
+
+/* Feedback conversation section */
+.conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.feedback-item{background:#f9fafb;border:1px solid var(--border-light);border-radius:6px;padding:.4rem .5rem;font-size:.72rem}
+.feedback-item .who{font-weight:600;color:var(--primary)}
+.feedback-item .what{color:var(--text-second);margin-top:.1rem}
+
+@media(max-width:480px){.form-row{grid-template-columns:1fr}.obs-grid,.conv-grid,.dash-grid,.category-stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container">
+<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
+<h1>&#128065; BBS 行为安全观察</h1>
+<p>基于国际BBS最佳实践 — 观察、记录、反馈、分析、改进</p>
+</div></div>
+
+<div class="container" id="app">
+
+<!-- Tabs -->
+<div class="tabs">
+<button class="tab active" data-tab="observe" onclick="switchTab('observe')">&#128065; 开始观察</button>
+<button class="tab" data-tab="history" onclick="switchTab('history')">&#128214; 历史记录</button>
+<button class="tab" data-tab="dashboard" onclick="switchTab('dashboard')">&#128200; 数据看板</button>
+</div>
+
+<!-- Tab: 开始观察 -->
+<div id="tab-observe" class="tab-content active">
+
+<div class="section">
+<h2>&#128203; 观察信息</h2>
+<div class="form-row">
+<div class="form-group"><label>观察者 *</label><input id="obsObserver" placeholder="您的姓名"></div>
+<div class="form-group"><label>被观察者</label><input id="obsSubject" placeholder="被观察人员姓名/岗位"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>区域/部门 *</label><select id="obsArea"><option value="">选择区域...</option><option>生产车间</option><option>仓储区</option><option>维修车间</option><option>实验室</option><option>公用工程</option><option>办公区</option><option>施工现场</option><option>装卸区</option><option>其他</option></select></div>
+<div class="form-group"><label>观察日期</label><input id="obsDate" type="date"></div>
+</div>
+<div class="form-row">
+<div class="form-group" style="grid-column:1/-1"><label>观察类型</label>
+<div style="display:flex;gap:.5rem;margin-top:.2rem">
+<label style="display:flex;align-items:center;gap:.3rem;font-size:.78rem;cursor:pointer"><input type="radio" name="obsType" value="计划观察" checked> 计划观察</label>
+<label style="display:flex;align-items:center;gap:.3rem;font-size:.78rem;cursor:pointer"><input type="radio" name="obsType" value="随机观察"> 随机观察</label>
+<label style="display:flex;align-items:center;gap:.3rem;font-size:.78rem;cursor:pointer"><input type="radio" name="obsType" value="专项观察"> 专项观察</label>
+</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>&#128065; 行为观察</h2>
+<p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.6rem">在每个类别中选择观察到的行为状态</p>
+<div class="obs-grid" id="obsCategories">
+<script>
+(function(){
+    var cats = [
+        {id:'ppe', name:'个人防护装备', sub:'头部/眼部/手部/脚部/听力/呼吸防护', examples:'安全帽、护目镜、手套、安全鞋、耳塞、口罩'},
+        {id:'position', name:'人员位置与姿势', sub:'人体工学 / 接近移动设备 / 高空作业', examples:'弯腰、伸手、站位、人员与移动设备距离、登高'},
+        {id:'reaction', name:'人员反应', sub:'调整/纠正 / 停止 / 防护 / 提醒他人', examples:'主动调整姿势、停止不安全动作、使用防护、提醒同事'},
+        {id:'tools', name:'工具与设备', sub:'正确使用 / 状态良好 / 适合任务', examples:'使用正确工具、工具完好、专用工具用于专用任务'},
+        {id:'procedures', name:'程序与规则', sub:'遵守 / 适用 / 理解', examples:'工作许可、作业指导书、安全规程、标签标识'},
+        {id:'housekeeping', name:'现场秩序', sub:'整洁 / 通道畅通 / 废物处置', examples:'地面清洁、通道无堆积、化学品正确存放、垃圾分类'}
+    ];
+    var h = '';
+    cats.forEach(function(c){
+        h += '<div class="obs-card" data-cat="' + c.id + '">';
+        h += '<h4>' + c.name + '</h4>';
+        h += '<div class="sub">' + c.sub + '</div>';
+        h += '<div class="obs-options">';
+        h += '<div class="obs-opt safe" data-val="safe" onclick="selectObs(this,\'' + c.id + '\')">&#10003; 安全</div>';
+        h += '<div class="obs-opt risk" data-val="risk" onclick="selectObs(this,\'' + c.id + '\')">&#10007; 风险</div>';
+        h += '<div class="obs-opt na" data-val="na" onclick="selectObs(this,\'' + c.id + '\')">— N/A</div>';
+        h += '</div>';
+        h += '<div class="sub" style="margin-top:.2rem;color:#999">' + c.examples + '</div>';
+        h += '</div>';
+    });
+    document.write(h);
+})();
+</script>
+</div>
+</div>
+
+<div class="section">
+<h2>&#128172; 安全对话与反馈</h2>
+<p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.4rem">记录与被观察者的沟通内容和改进建议</p>
+<div class="form-group"><label>观察到的好行为（Safe）</label><textarea id="obsGood" rows="2" placeholder="例：员工正确佩戴了全部PPE，站位安全"></textarea></div>
+<div class="form-group"><label>观察到的不安全行为（At-Risk）</label><textarea id="obsBad" rows="2" placeholder="例：未使用护栏进行高空作业"></textarea></div>
+<div class="form-group"><label>对话要点 / 反馈内容</label><textarea id="obsFeedback" rows="3" placeholder="例：与员工讨论了为什么不使用护栏 → 确认护栏可用但嫌麻烦 → 重申高空坠落风险 → 员工承诺改正"></textarea></div>
+<div class="form-group"><label>整改建议 / 跟踪事项</label><textarea id="obsFollowup" rows="2" placeholder="例：安排安全培训，增加护栏检查频率"></textarea></div>
+</div>
+
+<div class="section" style="text-align:center">
+<button class="btn btn-primary" onclick="submitObservation()" style="padding:.5rem 1.5rem;font-size:.85rem">&#128229; 提交观察记录</button>
+<span id="submitMsg" style="font-size:.72rem;color:var(--text-muted);margin-left:.5rem"></span>
+</div>
+</div>
+
+<!-- Tab: 历史记录 -->
+<div id="tab-history" class="tab-content">
+<div class="section">
+<div class="toolbar">
+<h2 style="margin-bottom:0">&#128214; 观察记录</h2>
+<span id="obsCount" style="font-size:.72rem;color:#999">0 条记录</span>
+<div class="toolbar-right">
+<button class="btn btn-sm btn-outline" onclick="exportBBS()">&#128203; 导出CSV</button>
+<button class="btn btn-sm btn-danger" onclick="if(confirm('确定清除所有数据？')){localStorage.removeItem('ehs_sil_bbs');renderHist();renderDash();}">&#128465; 清除</button>
+</div>
+</div>
+<div id="obsTable"><div class="empty-state"><div class="icon">&#128214;</div><p>暂无观察记录，开始你的第一次BBS观察吧</p></div></div>
+</div>
+</div>
+
+<!-- Tab: 数据看板 -->
+<div id="tab-dashboard" class="tab-content">
+<div class="section">
+<h2>&#128200; 观察统计概览</h2>
+<div class="dash-grid" id="dashSummary"><div class="empty-state" style="grid-column:1/-1"><div class="icon">&#128200;</div><p>暂无数据</p></div></div>
+<h2 style="font-size:.9rem;margin-top:.5rem">&#128202; 安全行为趋势</h2>
+<div id="dashTrend" class="dash-trend"><div class="empty-state"><div class="icon">&#128202;</div><p>数据不足以生成趋势</p></div></div>
+<div class="form-row" style="margin-top:.5rem">
+<div class="form-group"><label>分类统计</label><div id="dashCategory" class="category-stats"><div class="empty-state" style="grid-column:1/-1"><div class="icon">&#128202;</div><p>数据不足以生成分类统计</p></div></div></div>
+<div class="form-group"><label>最新观察摘要</label><div id="dashRecent" style="font-size:.72rem"></div></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:1rem;font-size:.7rem;color:#999"><p>&copy; 2026 EHS-SIL · BBS行为安全观察工具 v1.0 · 参考外企BBS最佳实践</p></footer>
+
+<script>
+var bbsData = { items: [] };
+
+document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('obsDate').valueAsDate = new Date();
+    loadBBS();
+});
+
+// Tab switching
+function switchTab(name){
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(c){ c.classList.remove('active'); });
+    var tab = document.querySelector('[data-tab="' + name + '"]');
+    if(tab) tab.classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+    if(name === 'history') renderHist();
+    if(name === 'dashboard') renderDash();
+}
+
+// Observation selection
+function selectObs(el, catId){
+    var parent = el.parentElement;
+    parent.querySelectorAll('.obs-opt').forEach(function(o){ o.classList.remove('selected'); });
+    el.classList.add('selected');
+}
+
+function getObsSelections(){
+    var result = {};
+    document.querySelectorAll('.obs-card').forEach(function(card){
+        var cat = card.getAttribute('data-cat');
+        var sel = card.querySelector('.obs-opt.selected');
+        result[cat] = sel ? sel.getAttribute('data-val') : 'na';
+    });
+    return result;
+}
+
+// Submit observation
+function submitObservation(){
+    var observer = document.getElementById('obsObserver').value.trim();
+    if(!observer){ document.getElementById('submitMsg').textContent = '请输入观察者姓名'; return; }
+    var area = document.getElementById('obsArea').value;
+    if(!area){ document.getElementById('submitMsg').textContent = '请选择区域'; return; }
+    
+    var sel = getObsSelections();
+    var obsType = document.querySelector('[name="obsType"]:checked');
+    
+    var item = {
+        id: Date.now(),
+        date: document.getElementById('obsDate').value,
+        observer: observer,
+        subject: document.getElementById('obsSubject').value.trim(),
+        area: area,
+        type: obsType ? obsType.value : '计划观察',
+        selections: sel,
+        good: document.getElementById('obsGood').value.trim(),
+        bad: document.getElementById('obsBad').value.trim(),
+        feedback: document.getElementById('obsFeedback').value.trim(),
+        followup: document.getElementById('obsFollowup').value.trim()
+    };
+    
+    bbsData.items.push(item);
+    saveBBS();
+    
+    // Count safe vs risk vs na
+    var safe = 0, risk = 0, na = 0;
+    Object.keys(sel).forEach(function(k){
+        if(sel[k] === 'safe') safe++;
+        else if(sel[k] === 'risk') risk++;
+        else na++;
+    });
+    
+    var msg = '✅ 观察记录已保存！安全行为 ' + safe + '/' + (safe+risk) + '，风险项 ' + risk + ' 项';
+    document.getElementById('submitMsg').textContent = msg;
+    
+    // Clear form
+    document.getElementById('obsSubject').value = '';
+    document.getElementById('obsGood').value = '';
+    document.getElementById('obsBad').value = '';
+    document.getElementById('obsFeedback').value = '';
+    document.getElementById('obsFollowup').value = '';
+    document.querySelectorAll('.obs-opt').forEach(function(o){ o.classList.remove('selected'); });
+    
+    renderHist();
+    renderDash();
+}
+
+// LocalStorage
+function saveBBS(){
+    localStorage.setItem('ehs_sil_bbs', JSON.stringify(bbsData));
+}
+function loadBBS(){
+    var raw = localStorage.getItem('ehs_sil_bbs');
+    if(raw){
+        try { bbsData = JSON.parse(raw); if(!bbsData.items) bbsData.items = []; }
+        catch(e){ bbsData = { items: [] }; }
+    }
+    renderHist();
+    renderDash();
+}
+
+// Render History
+function renderHist(){
+    var items = bbsData.items;
+    document.getElementById('obsCount').textContent = items.length + ' 条记录';
+    if(!items.length){
+        document.getElementById('obsTable').innerHTML = '<div class="empty-state"><div class="icon">&#128214;</div><p>暂无观察记录，开始你的第一次BBS观察吧</p></div>';
+        return;
+    }
+    items.sort(function(a,b){ return b.id - a.id; });
+    var h = '<div style="overflow-x:auto"><table class="data-table"><thead><tr><th>日期</th><th>观察者</th><th>区域</th><th>类型</th><th>安全/风险</th><th>反馈</th><th style="width:30px"></th></tr></thead><tbody>';
+    items.forEach(function(i){
+        var cnt = countSel(i.selections);
+        var scorePct = cnt.total > 0 ? Math.round(cnt.safe/cnt.total*100) : 0;
+        h += '<tr><td style="white-space:nowrap">' + i.date + '</td><td>' + esc(i.observer) + '</td><td>' + esc(i.area) + '</td><td>' + i.type + '</td>' +
+            '<td><span class="safe-score ' + (scorePct>=80?'green':scorePct>=50?'yellow':'red') + '">' + cnt.safe + '/' + cnt.total + '</span>' +
+            '<span style="font-size:.62rem;color:#999"> ' + scorePct + '%</span></td>' +
+            '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(i.feedback||'-') + '</td>' +
+            '<td><button class="btn btn-sm btn-danger" onclick="deleteObs(' + i.id + ')">&#10005;</button></td></tr>';
+    });
+    h += '</tbody></table></div>';
+    document.getElementById('obsTable').innerHTML = h;
+}
+
+function deleteObs(id){
+    bbsData.items = bbsData.items.filter(function(i){ return i.id !== id; });
+    saveBBS();
+    renderHist();
+    renderDash();
+}
+
+function countSel(sel){
+    var safe = 0, risk = 0, total = 0;
+    if(!sel) return {safe:0, risk:0, total:0};
+    Object.keys(sel).forEach(function(k){
+        if(sel[k] === 'safe') { safe++; total++; }
+        else if(sel[k] === 'risk') { risk++; total++; }
+    });
+    return {safe:safe, risk:risk, total:total};
+}
+
+// Render Dashboard
+function renderDash(){
+    var items = bbsData.items;
+    if(!items.length){
+        document.getElementById('dashSummary').innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="icon">&#128200;</div><p>暂无数据</p></div>';
+        document.getElementById('dashTrend').innerHTML = '<div class="empty-state"><div class="icon">&#128202;</div><p>数据不足以生成趋势</p></div>';
+        document.getElementById('dashCategory').innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="icon">&#128202;</div><p>数据不足以生成分类统计</p></div>';
+        return;
+    }
+    
+    var total = items.length;
+    var totalSafe = 0, totalRisk = 0, totalObs = 0;
+    items.forEach(function(i){
+        var c = countSel(i.selections);
+        totalSafe += c.safe;
+        totalRisk += c.risk;
+        totalObs += c.total;
+    });
+    var safePct = totalObs > 0 ? Math.round(totalSafe/totalObs*100) : 0;
+    
+    // Summary cards
+    document.getElementById('dashSummary').innerHTML = 
+        '<div class="dash-card"><div class="num green">' + safePct + '%</div><div class="label">安全行为率</div></div>' +
+        '<div class="dash-card"><div class="num">' + total + '</div><div class="label">观察次数</div></div>' +
+        '<div class="dash-card"><div class="num green">' + totalSafe + '</div><div class="label">安全行为</div></div>' +
+        '<div class="dash-card"><div class="num red">' + totalRisk + '</div><div class="label">风险行为</div></div>';
+    
+    // Trend (by date)
+    var dateMap = {};
+    items.forEach(function(i){
+        if(!dateMap[i.date]) dateMap[i.date] = {safe:0, risk:0, total:0};
+        var c = countSel(i.selections);
+        dateMap[i.date].safe += c.safe;
+        dateMap[i.date].risk += c.risk;
+        dateMap[i.date].total += c.total;
+    });
+    var dates = Object.keys(dateMap).sort();
+    if(dates.length > 1){
+        var h = '<div class="bar-row" style="font-weight:600;margin-bottom:.3rem"><span style="width:80px">日期</span><span class="bar" style="flex:1;background:none"></span><span class="pct">安全%</span></div>';
+        dates.forEach(function(d){
+            var info = dateMap[d];
+            var pct = info.total > 0 ? Math.round(info.safe/info.total*100) : 0;
+            h += '<div class="bar-row"><span style="width:80px;font-size:.6rem;color:#999">' + d.slice(5) + '</span>' +
+                '<div class="bar"><div class="safe" style="width:' + pct + '%"></div><div class="risk" style="width:' + (100-pct) + '%"></div></div>' +
+                '<span class="pct ' + (pct>=80?'green':pct>=50?'yellow':'red') + '">' + pct + '%</span></div>';
+        });
+        document.getElementById('dashTrend').innerHTML = h;
+    } else {
+        document.getElementById('dashTrend').innerHTML = '<div style="font-size:.78rem;color:var(--text-muted);text-align:center;padding:.5rem">至少需要2天的数据才能生成趋势图 — 积累更多观察记录后会自动显示</div>';
+    }
+    
+    // Category breakdown
+    var catNames = {ppe:'个人防护', position:'位置姿势', reaction:'人员反应', tools:'工具设备', procedures:'程序规则', housekeeping:'现场秩序'};
+    var catStats = {};
+    items.forEach(function(i){
+        if(!i.selections) return;
+        Object.keys(i.selections).forEach(function(k){
+            if(!catStats[k]) catStats[k] = {safe:0, risk:0};
+            if(i.selections[k] === 'safe') catStats[k].safe++;
+            else if(i.selections[k] === 'risk') catStats[k].risk++;
+        });
+    });
+    var catKeys = Object.keys(catStats);
+    if(catKeys.length){
+        var ch = '';
+        catKeys.forEach(function(k){
+            var s = catStats[k];
+            var total_c = s.safe + s.risk;
+            var pct = total_c > 0 ? Math.round(s.safe/total_c*100) : 0;
+            ch += '<div class="cat-bar"><span class="label" title="' + (catNames[k]||k) + '">' + (catNames[k]||k) + '</span>' +
+                '<div class="track"><div class="fill" style="width:' + pct + '%;background:' + (pct>=80?'#16a34a':pct>=50?'#ca8a04':'#dc2626') + '"></div></div>' +
+                '<span class="pct ' + (pct>=80?'green':pct>=50?'yellow':'red') + '">' + pct + '%</span></div>';
+        });
+        document.getElementById('dashCategory').innerHTML = ch;
+    }
+    
+    // Recent observations
+    var recent = items.slice(0, 5);
+    var rh = '<div style="font-size:.72rem">';
+    recent.forEach(function(i){
+        var c = countSel(i.selections);
+        rh += '<div style="padding:.25rem 0;border-bottom:1px solid #eee">' +
+            '<strong>' + i.date + '</strong> ' + esc(i.area) + ' | ' + esc(i.observer) +
+            ' | 安全率 <span class="safe-score ' + (c.total>0 && c.safe/c.total>=0.8?'green':c.total>0 && c.safe/c.total>=0.5?'yellow':'red') + '">' + 
+            (c.total>0 ? Math.round(c.safe/c.total*100) : 0) + '%</span></div>';
+    });
+    rh += '</div>';
+    document.getElementById('dashRecent').innerHTML = rh;
+}
+
+// Export CSV
+function exportBBS(){
+    var items = bbsData.items;
+    if(!items.length){ alert('暂无数据'); return; }
+    
+    var catNames = {ppe:'PPE', position:'位置', reaction:'反应', tools:'工具', procedures:'程序', housekeeping:'现场'};
+    var bom = '\uFEFF';
+    var headers = ['日期','观察者','被观察者','区域','类型'];
+    var catKeys = Object.keys(catNames);
+    catKeys.forEach(function(k){ headers.push(catNames[k]); });
+    headers = headers.concat(['好行为','风险行为','反馈内容','整改建议']);
+    
+    var rows = [headers];
+    items.forEach(function(i){
+        var row = [i.date, i.observer, i.subject, i.area, i.type];
+        catKeys.forEach(function(k){
+            var v = 'N/A';
+            if(i.selections && i.selections[k]){
+                v = i.selections[k] === 'safe' ? 'S' : i.selections[k] === 'risk' ? 'R' : 'N/A';
+            }
+            row.push(v);
+        });
+        row = row.concat([i.good, i.bad, i.feedback, i.followup]);
+        rows.push(row);
+    });
+    
+    var csv = bom + rows.map(function(r){
+        return r.map(function(c){ return '"' + (c||'').toString().replace(/"/g,'""') + '"'; }).join(',');
+    }).join('\n');
+    
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
+    a.download = 'BBS_观察记录_' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click();
+}
+
+function esc(t){ return (t||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
+</body>
+</html>
