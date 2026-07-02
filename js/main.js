@@ -179,12 +179,18 @@
         var tools = data.tools || [];
         if (tools.length === 0) return;
         var day = new Date().getDate();
-        var idx = day % tools.length;
-        var tool = tools[idx];
-        var name = tool.name;
-        if (name.length > 35) name = name.substring(0, 32) + "...";
-        el.textContent = name;
+        // BBS featured 60% of the time (days 1-6, 11-16, 21-26, 31)
+        var showBBS = (day % 10) >= 1 && (day % 10) <= 6;
+        if (showBBS) {
+            el.innerHTML = '<a href="tools/bbs-tool.html" style="color:var(--primary-dark);text-decoration:none">BBS 行为安全观察 · 免费在线工具</a>';
+        } else {
+            var idx = day % tools.length;
+            var tool = tools[idx];
+            var name = tool.name;
+            if (name.length > 35) name = name.substring(0, 32) + "...";
+            el.textContent = name;
+        }
     }).catch(function() {
-        el.textContent = "\u67e5\u770b\u5de5\u5177\u5e93 535\u4efd\u5b9e\u6218\u5de5\u5177";
+        el.innerHTML = '<a href="tools/bbs-tool.html" style="color:var(--primary-dark);text-decoration:none">BBS 行为安全观察 · 免费在线工具</a>';
     });
 })();
