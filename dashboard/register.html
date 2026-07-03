@@ -25,8 +25,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
 .btn-accent:hover{opacity:.9}
 input[type="text"]{width:100%;padding:.55rem .65rem;border:1.5px solid #ddd;border-radius:6px;font-size:.82rem;outline:none}
 input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.08)}
-
-/* Purchase card */
 .purchase-box{text-align:center}
 .purchase-box .price{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1.2}
 .purchase-box .price span{font-size:.9rem;font-weight:400;color:#888}
@@ -44,14 +42,11 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
 .steps .num{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--primary);color:#fff;font-size:.6rem;font-weight:600;margin-right:.3rem;flex-shrink:0}
 .contact-line{font-size:.75rem;color:#999;margin-top:.5rem;text-align:center}
 .contact-line strong{color:var(--primary)}
-
-/* VIP already active */
 .active-box{text-align:center;padding:.5rem 0}
 .active-box .icon{font-size:2.5rem;margin-bottom:.3rem}
 .active-box .title{font-size:1.1rem;font-weight:700;color:#16a34a;margin-bottom:.2rem}
 .active-box .info{font-size:.78rem;color:#555;margin-bottom:.5rem}
 .active-box .btn{font-size:.75rem}
-
 @media(max-width:480px){.container{padding:1rem}.card{padding:1.2rem}}
 </style>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
@@ -115,13 +110,13 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
 
 <div class="steps">
 <div class="step"><span class="num">1</span>打开微信扫描上方二维码，支付 <strong>29.9元</strong></div>
-<div class="step"><span class="num">2</span>添加微信号 <strong>EHS-SIL</strong>，发送付款截图</div>
+<div class="step"><span class="num">2</span>添加微信号 <strong>houzhihoujue4009</strong>，发送付款截图</div>
 <div class="step"><span class="num">3</span>管理员核实后，将回复您的专属激活码</div>
 <div class="step"><span class="num">4</span>在上方"已有激活码"输入框粘贴激活码，点击激活</div>
 </div>
 
 <div class="contact-line">
-<strong>微信号：EHS-SIL</strong> · 核实后通常在 24 小时内回复
+<strong>微信号：houzhihoujue4009</strong> · 核实后通常在 24 小时内回复
 </div>
 </div>
 
@@ -141,7 +136,6 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
 <script src="../js/auth.js"></script>
 <script>
 (function() {
-    // Check VIP status and show appropriate section
     if (isVip()) {
         document.getElementById('vipActiveSection').style.display = 'block';
         document.getElementById('vipInactiveSection').style.display = 'none';
@@ -154,8 +148,6 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
         document.getElementById('vipInactiveSection').style.display = 'block';
         renderSimpleGate('gateContainer');
     }
-    
-    // QR image error fallback
     var qrImg = document.getElementById('payQR');
     if (qrImg) {
         qrImg.onerror = function() {
