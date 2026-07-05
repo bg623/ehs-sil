@@ -85,6 +85,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font
 <div class="logout">
 <button class="btn-link" onclick="logout()">退出登入</button>
 </div>
+<div style="text-align:center;margin-top:.5rem">
+<button class="btn-link" onclick="if(confirm('确定重置所有已发出记录？此操作不可撤销')){localStorage.removeItem('ehs_sil_admin_pool');location.reload()}" style="color:#dc2626">&#128465; 重置已发出记录</button>
+</div>
 </div>
 </div>
 
