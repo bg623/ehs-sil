@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>激活码管理 · EHS-SIL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--font:-apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{max-width:480px;margin:0 auto;padding:1rem}
+
+/* Login */
+.login-box{background:#fff;border-radius:12px;padding:2rem;text-align:center;margin-top:3rem;border:1px solid #e3ddd2}
+.login-box h2{font-size:1.2rem;margin-bottom:.3rem;color:var(--primary)}
+.login-box p{font-size:.8rem;color:#888;margin-bottom:1rem}
+.login-box input{width:100%;padding:.6rem;border:1.5px solid #ddd;border-radius:6px;font-size:.9rem;text-align:center;outline:none;margin-bottom:.6rem}
+.login-box input:focus{border-color:var(--primary)}
+.login-box .btn{width:100%;padding:.6rem;border:none;border-radius:6px;font-size:.9rem;font-weight:600;background:var(--primary);color:#fff;cursor:pointer}
+.login-box .err{font-size:.78rem;color:#dc2626;margin-top:.3rem;display:none}
+
+/* Dashboard */
+.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;border-radius:10px;padding:1rem;text-align:center;margin-bottom:1rem}
+.header h1{font-size:1.1rem;font-weight:600}
+.header p{font-size:.72rem;color:rgba(255,255,255,.7);margin-top:.2rem}
+
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;margin-bottom:1rem}
+.stat-card{background:#fff;border-radius:8px;padding:.6rem;text-align:center;border:1px solid #e3ddd2}
+.stat-card .num{font-size:1.4rem;font-weight:700;color:var(--primary)}
+.stat-card .num.green{color:#16a34a}
+.stat-card .num.red{color:#dc2626}
+.stat-card .label{font-size:.65rem;color:#999;margin-top:.1rem}
+
+.get-code{background:#fff;border-radius:10px;padding:1.2rem;text-align:center;border:1px solid #e3ddd2;margin-bottom:1rem}
+.get-code .btn-big{display:block;width:100%;padding:.8rem;border:none;border-radius:8px;font-size:1rem;font-weight:700;background:#b8860b;color:#fff;cursor:pointer;transition:.2s}
+.get-code .btn-big:active{opacity:.8}
+.get-code .btn-big:disabled{background:#ccc;cursor:not-allowed}
+.result-box{margin-top:.8rem;display:none}
+.result-box .code-display{font-size:1.1rem;font-weight:700;color:var(--primary);padding:.6rem;background:#fefce8;border:2px dashed #fde68a;border-radius:6px;letter-spacing:1px;word-break:break-all}
+.result-box .code-label{font-size:.7rem;color:#999;margin-top:.3rem}
+.result-box .btn-copy{display:inline-block;padding:.4rem .8rem;margin-top:.4rem;border:none;border-radius:5px;font-size:.78rem;background:var(--primary);color:#fff;cursor:pointer}
+
+.history{background:#fff;border-radius:10px;padding:1rem;border:1px solid #e3ddd2}
+.history h3{font-size:.85rem;color:var(--primary);margin-bottom:.5rem}
+.history .item{font-size:.72rem;padding:.3rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between}
+.history .item:last-child{border-bottom:none}
+.history .item .code{color:var(--primary);font-weight:500}
+.history .item .date{color:#999;font-size:.65rem}
+.history .empty{font-size:.75rem;color:#bbb;text-align:center;padding:.5rem}
+
+/* Log out button */
+.logout{text-align:center;margin-top:.8rem}
+.logout .btn-link{font-size:.72rem;color:#999;cursor:pointer;text-decoration:underline;border:none;background:none}
+
+@media(max-width:380px){.stats{grid-template-columns:1fr 1fr}.header{padding:.8rem}}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div id="loginSection">
+<div class="container">
+<div class="login-box">
+<h2>&#128274; 激活码管理</h2>
+<p>请输入管理密码</p>
+<input type="password" id="adminPwd" placeholder="输入管理密码" onkeydown="if(event.key==='Enter')login()">
+<button class="btn" onclick="login()">登入</button>
+<div class="err" id="loginErr">密码错误，请重试</div>
+</div>
+</div>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboardSection" style="display:none">
+<div class="container">
+<div class="header">
+<h1>&#128230; 激活码管理</h1>
+<p>预设码池 · 客服手机端操作</p>
+</div>
+
+<div class="stats">
+<div class="stat-card"><div class="num green" id="statTotal">0</div><div class="label">总码数</div></div>
+<div class="stat-card"><div class="num" id="statRemain">0</div><div class="label">剩余</div></div>
+<div class="stat-card"><div class="num red" id="statUsed">0</div><div class="label">已发出</div></div>
+</div>
+
+<div class="get-code">
+<button class="btn-big" id="getCodeBtn" onclick="getNextCode()">&#128229; 获取新激活码</button>
+<div class="result-box" id="resultBox">
+<div class="code-display" id="codeDisplay">EHS-XXXX</div>
+<div class="code-label" id="codeLabel">VIP年卡(1年) · 有效期至 2027-07-05</div>
+<button class="btn-copy" onclick="copyCode()">&#128203; 复制激活码</button>
+</div>
+</div>
+
+<div class="history">
+<h3>&#128214; 已发出记录</h3>
+<div id="historyList"><div class="empty">暂无发出记录</div></div>
+</div>
+
+<div class="logout">
+<button class="btn-link" onclick="logout()">退出登入</button>
+</div>
+</div>
+</div>
+
+<!-- Cloudflare cache indicator -->
+<span id="deployVer" style="display:none">20260705</span>
+
+<script>
+var ADMIN_PWD = 'ehs-sil-admin';
+var STORAGE_KEY = 'ehs_sil_admin_pool';
+
+// VIP_CODES pool (from auth.js) - 50 pre-generated codes
+var VIP_POOL = [];
+
+// Load VIP_CODES from auth.js
+function loadPool(){
+    // Read the VIP_CODES from the same auth.js
+    // (auth.js is loaded on this page via script tag)
+    // But since we don't load auth.js here, embed the codes directly
+    // Actually, let's fetch auth.js dynamically
+    
+    fetch('../js/auth.js')
+        .then(function(r){ return r.text(); })
+        .then(function(js){
+            // Extract VIP_CODES array using eval-like approach
+            // Use Function constructor for safety
+            try {
+                // Find the VIP_CODES array in the JS
+                var match = js.match(/var VIP_CODES = (\[[\s\S]*?\]);/);
+                if (!match) { alert('无法读取码池'); return; }
+                
+                var allCodes = new Function('return ' + match[1])();
+                
+                // Filter out the original EHS-SIL-2026 code
+                VIP_POOL = allCodes.filter(function(c){ return c.code !== 'EHS-SIL-2026'; });
+                VIP_POOL.sort(function(a,b){ return a.code.localeCompare(b.code); });
+                
+                updateStats();
+            } catch(e) {
+                console.error('Failed to parse codes:', e);
+            }
+        })
+        .catch(function(){ alert('加载码池失败，请刷新重试'); });
+}
+
+function getUsedSet(){
+    try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? new Set(JSON.parse(raw)) : new Set();
+    } catch(e){ return new Set(); }
+}
+
+function markUsed(code){
+    var used = getUsedSet();
+    used.add(code);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([].concat.apply([], [used])));
+    // Alternative: convert Set to Array
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(used))); } catch(e){}
+}
+
+function updateStats(){
+    var used = getUsedSet();
+    var total = VIP_POOL.length;
+    var usedCount = 0;
+    VIP_POOL.forEach(function(c){
+        if (used.has(c.code)) usedCount++;
+    });
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statRemain').textContent = total - usedCount;
+    document.getElementById('statUsed').textContent = usedCount;
+    renderHistory();
+}
+
+function getNextCode(){
+    var used = getUsedSet();
+    var next = null;
+    for (var i = 0; i < VIP_POOL.length; i++){
+        if (!used.has(VIP_POOL[i].code)){
+            next = VIP_POOL[i];
+            break;
+        }
+    }
+    if (!next){
+        alert('码池已用完！请联系管理员补充新码');
+        return;
+    }
+    
+    // Display the code
+    document.getElementById('codeDisplay').textContent = next.code;
+    document.getElementById('codeLabel').textContent = next.label + ' · 有效期至 ' + next.expires;
+    document.getElementById('resultBox').style.display = 'block';
+    document.getElementById('getCodeBtn').disabled = true;
+    
+    // Mark as used
+    markUsed(next.code);
+    updateStats();
+}
+
+function copyCode(){
+    var code = document.getElementById('codeDisplay').textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(function(){
+            var btn = document.querySelector('.btn-copy');
+            btn.textContent = '✅ 已复制';
+            setTimeout(function(){ btn.textContent = '📋 复制激活码'; }, 2000);
+        });
+    } else {
+        // Fallback
+        var ta = document.createElement('textarea');
+        ta.value = code;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var btn = document.querySelector('.btn-copy');
+        btn.textContent = '✅ 已复制';
+        setTimeout(function(){ btn.textContent = '📋 复制激活码'; }, 2000);
+    }
+}
+
+function renderHistory(){
+    var used = getUsedSet();
+    var list = [];
+    VIP_POOL.forEach(function(c){
+        if (used.has(c.code)){
+            list.push(c);
+        }
+    });
+    
+    var el = document.getElementById('historyList');
+    if (!list.length){
+        el.innerHTML = '<div class="empty">暂无发出记录</div>';
+        return;
+    }
+    
+    var h = '';
+    list.reverse().forEach(function(c){
+        h += '<div class="item"><span class="code">' + c.code + '</span><span class="date">' + c.expires + '</span></div>';
+    });
+    el.innerHTML = h;
+}
+
+function login(){
+    var pwd = document.getElementById('adminPwd').value.trim();
+    if (pwd === ADMIN_PWD){
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('dashboardSection').style.display = 'block';
+        loadPool();
+    } else {
+        document.getElementById('loginErr').style.display = 'block';
+    }
+}
+
+function logout(){
+    document.getElementById('loginSection').style.display = 'block';
+    document.getElementById('dashboardSection').style.display = 'none';
+    document.getElementById('adminPwd').value = '';
+    document.getElementById('loginErr').style.display = 'none';
+}
+</script>
+</body>
+</html>
