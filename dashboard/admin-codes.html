@@ -9,8 +9,6 @@
 :root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--font:-apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}
 body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 .container{max-width:480px;margin:0 auto;padding:1rem}
-
-/* Login */
 .login-box{background:#fff;border-radius:12px;padding:2rem;text-align:center;margin-top:3rem;border:1px solid #e3ddd2}
 .login-box h2{font-size:1.2rem;margin-bottom:.3rem;color:var(--primary)}
 .login-box p{font-size:.8rem;color:#888;margin-bottom:1rem}
@@ -18,19 +16,15 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font
 .login-box input:focus{border-color:var(--primary)}
 .login-box .btn{width:100%;padding:.6rem;border:none;border-radius:6px;font-size:.9rem;font-weight:600;background:var(--primary);color:#fff;cursor:pointer}
 .login-box .err{font-size:.78rem;color:#dc2626;margin-top:.3rem;display:none}
-
-/* Dashboard */
 .header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;border-radius:10px;padding:1rem;text-align:center;margin-bottom:1rem}
 .header h1{font-size:1.1rem;font-weight:600}
 .header p{font-size:.72rem;color:rgba(255,255,255,.7);margin-top:.2rem}
-
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;margin-bottom:1rem}
 .stat-card{background:#fff;border-radius:8px;padding:.6rem;text-align:center;border:1px solid #e3ddd2}
 .stat-card .num{font-size:1.4rem;font-weight:700;color:var(--primary)}
 .stat-card .num.green{color:#16a34a}
 .stat-card .num.red{color:#dc2626}
 .stat-card .label{font-size:.65rem;color:#999;margin-top:.1rem}
-
 .get-code{background:#fff;border-radius:10px;padding:1.2rem;text-align:center;border:1px solid #e3ddd2;margin-bottom:1rem}
 .get-code .btn-big{display:block;width:100%;padding:.8rem;border:none;border-radius:8px;font-size:1rem;font-weight:700;background:#b8860b;color:#fff;cursor:pointer;transition:.2s}
 .get-code .btn-big:active{opacity:.8}
@@ -39,7 +33,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font
 .result-box .code-display{font-size:1.1rem;font-weight:700;color:var(--primary);padding:.6rem;background:#fefce8;border:2px dashed #fde68a;border-radius:6px;letter-spacing:1px;word-break:break-all}
 .result-box .code-label{font-size:.7rem;color:#999;margin-top:.3rem}
 .result-box .btn-copy{display:inline-block;padding:.4rem .8rem;margin-top:.4rem;border:none;border-radius:5px;font-size:.78rem;background:var(--primary);color:#fff;cursor:pointer}
-
 .history{background:#fff;border-radius:10px;padding:1rem;border:1px solid #e3ddd2}
 .history h3{font-size:.85rem;color:var(--primary);margin-bottom:.5rem}
 .history .item{font-size:.72rem;padding:.3rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between}
@@ -47,17 +40,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font
 .history .item .code{color:var(--primary);font-weight:500}
 .history .item .date{color:#999;font-size:.65rem}
 .history .empty{font-size:.75rem;color:#bbb;text-align:center;padding:.5rem}
-
-/* Log out button */
 .logout{text-align:center;margin-top:.8rem}
 .logout .btn-link{font-size:.72rem;color:#999;cursor:pointer;text-decoration:underline;border:none;background:none}
-
 @media(max-width:380px){.stats{grid-template-columns:1fr 1fr}.header{padding:.8rem}}
 </style>
 </head>
 <body>
 
-<!-- Login -->
 <div id="loginSection">
 <div class="container">
 <div class="login-box">
@@ -70,20 +59,17 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font
 </div>
 </div>
 
-<!-- Dashboard -->
 <div id="dashboardSection" style="display:none">
 <div class="container">
 <div class="header">
 <h1>&#128230; 激活码管理</h1>
-<p>预设码池 · 客服手机端操作</p>
+<p>手机端操作 · 点击获取新码发给用户</p>
 </div>
-
 <div class="stats">
 <div class="stat-card"><div class="num green" id="statTotal">0</div><div class="label">总码数</div></div>
 <div class="stat-card"><div class="num" id="statRemain">0</div><div class="label">剩余</div></div>
 <div class="stat-card"><div class="num red" id="statUsed">0</div><div class="label">已发出</div></div>
 </div>
-
 <div class="get-code">
 <button class="btn-big" id="getCodeBtn" onclick="getNextCode()">&#128229; 获取新激活码</button>
 <div class="result-box" id="resultBox">
@@ -92,58 +78,22 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font
 <button class="btn-copy" onclick="copyCode()">&#128203; 复制激活码</button>
 </div>
 </div>
-
 <div class="history">
 <h3>&#128214; 已发出记录</h3>
 <div id="historyList"><div class="empty">暂无发出记录</div></div>
 </div>
-
 <div class="logout">
 <button class="btn-link" onclick="logout()">退出登入</button>
 </div>
 </div>
 </div>
 
-<!-- Cloudflare cache indicator -->
-<span id="deployVer" style="display:none">20260705</span>
-
 <script>
 var ADMIN_PWD = 'ehs-sil-admin';
 var STORAGE_KEY = 'ehs_sil_admin_pool';
 
-// VIP_CODES pool (from auth.js) - 50 pre-generated codes
-var VIP_POOL = [];
-
-// Load VIP_CODES from auth.js
-function loadPool(){
-    // Read the VIP_CODES from the same auth.js
-    // (auth.js is loaded on this page via script tag)
-    // But since we don't load auth.js here, embed the codes directly
-    // Actually, let's fetch auth.js dynamically
-    
-    fetch('../js/auth.js')
-        .then(function(r){ return r.text(); })
-        .then(function(js){
-            // Extract VIP_CODES array using eval-like approach
-            // Use Function constructor for safety
-            try {
-                // Find the VIP_CODES array in the JS
-                var match = js.match(/var VIP_CODES = (\[[\s\S]*?\]);/);
-                if (!match) { alert('无法读取码池'); return; }
-                
-                var allCodes = new Function('return ' + match[1])();
-                
-                // Filter out the original EHS-SIL-2026 code
-                VIP_POOL = allCodes.filter(function(c){ return c.code !== 'EHS-SIL-2026'; });
-                VIP_POOL.sort(function(a,b){ return a.code.localeCompare(b.code); });
-                
-                updateStats();
-            } catch(e) {
-                console.error('Failed to parse codes:', e);
-            }
-        })
-        .catch(function(){ alert('加载码池失败，请刷新重试'); });
-}
+// ===== 预设激活码池 (50个) =====
+var VIP_POOL = [{"code": "EHS-7PAD2RVJA4", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-QHG7JF4V3S", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-LDHQ64YYER", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-KM2PETZJ49", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-VYKLCJQWVY", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-6WHU6D4ZDF", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-LXXQN5X25S", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-5NZMPDV7D7", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-K9PCJALEKV", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-F4T7SMWEMT", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-KWMULQ9ZRU", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-MANRXUEWZ2", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-XPNCRJQLCH", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-FH24K2UUQ3", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-Z9EGNU64PC", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-4EWNRLDFH6", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-Y9U52TMGL4", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-6ZQQW5GALL", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-6XQDFG9UAH", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-YCG234MCW9", "label": "VIP年卡(1年)", "expires": "2027-07-05"}, {"code": "EHS-KJ9F23EVZD", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-9FRH5475D6", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-7KKGSVKFPM", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-49VGFHLW7K", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-9G722LGHSW", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-L2K37KXEJF", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-KJ3YS7GE4J", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-YQ5FZSJUCT", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-H3JALNGRGS", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-D3AMVX3SA7", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-FEHHUEPTZ3", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-3HMDRCU9LZ", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-4UCDMUK3ZX", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-F5FDWARMN6", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-RVKSDJVWRP", "label": "VIP年卡(2年)", "expires": "2028-07-04"}, {"code": "EHS-4FLLAVTHJZ", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-4R9GG2FUTZ", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-M2L3TEEJMJ", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-JR969P2Z66", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-VSKVYV9KA4", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-CD2YCWMLXR", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-RKJ29E4Q6Z", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-QGKKPN7QCR", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-2KT7FXHH75", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-ALHWPVX2AV", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-4PA4FM2ZZG", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-4277GM6AE6", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-KURZRJYE5D", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-MPN4ALJ5Q2", "label": "VIP年卡(3年)", "expires": "2029-07-04"}, {"code": "EHS-9GMP4FXWD5", "label": "VIP年卡(3年)", "expires": "2029-07-04"}];
 
 function getUsedSet(){
     try {
@@ -155,18 +105,14 @@ function getUsedSet(){
 function markUsed(code){
     var used = getUsedSet();
     used.add(code);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([].concat.apply([], [used])));
-    // Alternative: convert Set to Array
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(used))); } catch(e){}
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(used)));
 }
 
 function updateStats(){
     var used = getUsedSet();
     var total = VIP_POOL.length;
     var usedCount = 0;
-    VIP_POOL.forEach(function(c){
-        if (used.has(c.code)) usedCount++;
-    });
+    VIP_POOL.forEach(function(c){ if (used.has(c.code)) usedCount++; });
     document.getElementById('statTotal').textContent = total;
     document.getElementById('statRemain').textContent = total - usedCount;
     document.getElementById('statUsed').textContent = usedCount;
@@ -183,17 +129,13 @@ function getNextCode(){
         }
     }
     if (!next){
-        alert('码池已用完！请联系管理员补充新码');
+        alert('所有激活码已发完！请联系管理员补充新码');
         return;
     }
-    
-    // Display the code
     document.getElementById('codeDisplay').textContent = next.code;
     document.getElementById('codeLabel').textContent = next.label + ' · 有效期至 ' + next.expires;
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('getCodeBtn').disabled = true;
-    
-    // Mark as used
     markUsed(next.code);
     updateStats();
 }
@@ -204,10 +146,9 @@ function copyCode(){
         navigator.clipboard.writeText(code).then(function(){
             var btn = document.querySelector('.btn-copy');
             btn.textContent = '✅ 已复制';
-            setTimeout(function(){ btn.textContent = '📋 复制激活码'; }, 2000);
+            setTimeout(function(){ btn.textContent = '&#128203; 复制激活码'; }, 2000);
         });
     } else {
-        // Fallback
         var ta = document.createElement('textarea');
         ta.value = code;
         document.body.appendChild(ta);
@@ -216,29 +157,18 @@ function copyCode(){
         document.body.removeChild(ta);
         var btn = document.querySelector('.btn-copy');
         btn.textContent = '✅ 已复制';
-        setTimeout(function(){ btn.textContent = '📋 复制激活码'; }, 2000);
+        setTimeout(function(){ btn.textContent = '&#128203; 复制激活码'; }, 2000);
     }
 }
 
 function renderHistory(){
     var used = getUsedSet();
     var list = [];
-    VIP_POOL.forEach(function(c){
-        if (used.has(c.code)){
-            list.push(c);
-        }
-    });
-    
+    VIP_POOL.forEach(function(c){ if (used.has(c.code)) list.push(c); });
     var el = document.getElementById('historyList');
-    if (!list.length){
-        el.innerHTML = '<div class="empty">暂无发出记录</div>';
-        return;
-    }
-    
+    if (!list.length){ el.innerHTML = '<div class="empty">暂无发出记录</div>'; return; }
     var h = '';
-    list.reverse().forEach(function(c){
-        h += '<div class="item"><span class="code">' + c.code + '</span><span class="date">' + c.expires + '</span></div>';
-    });
+    list.reverse().forEach(function(c){ h += '<div class="item"><span class="code">' + c.code + '</span><span class="date">' + c.expires + '</span></div>'; });
     el.innerHTML = h;
 }
 
@@ -247,7 +177,7 @@ function login(){
     if (pwd === ADMIN_PWD){
         document.getElementById('loginSection').style.display = 'none';
         document.getElementById('dashboardSection').style.display = 'block';
-        loadPool();
+        updateStats();
     } else {
         document.getElementById('loginErr').style.display = 'block';
     }
