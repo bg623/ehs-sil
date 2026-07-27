@@ -135,18 +135,18 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
 
 <script src="../js/auth.js"></script>
 <script>
-(function() {
-    if (isVip()) {
+(async function() {
+    var info = await getVipInfo(true);
+    if (info && info.active) {
         document.getElementById('vipActiveSection').style.display = 'block';
         document.getElementById('vipInactiveSection').style.display = 'none';
-        var info = getVipInfo();
-        var expiryStr = (info && info.expires) ? '有效期至 ' + info.expires : '';
+        var expiryStr = (info && info.expires) ? '有效期至 ' + String(info.expires).slice(0, 10) : '';
         var labelStr = (info && info.label) ? '激活方式：' + info.label : '';
         document.getElementById('vipActiveInfo').textContent = expiryStr + (expiryStr && labelStr ? ' · ' : '') + labelStr;
     } else {
         document.getElementById('vipActiveSection').style.display = 'none';
         document.getElementById('vipInactiveSection').style.display = 'block';
-        renderSimpleGate('gateContainer');
+        await renderSimpleGate('gateContainer');
     }
     var qrImg = document.getElementById('payQR');
     if (qrImg) {

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>出了事故除了罚款通报，还能做什么？LFI事故学习方法详解｜EHS-SIL</title>
+  <meta name="description" content="系统讲解Learning From Incident（LFI，从事故中学习）的四大机制：公正文化、根本原因分析、Safety Alert和横向展开，帮助企业减少重复事故。">
+  <meta name="keywords" content="LFI,Learning From Incident,从事故中学习,事故调查,RCA,根本原因分析,Just Culture,Safety Alert,EHS">
+  <link rel="canonical" href="https://ehs-sil.com/articles/lfi-learning-from-incident.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="EHS-SIL">
+  <meta property="og:title" content="出了事故除了罚款通报，还能做什么？LFI事故学习方法详解">
+  <meta property="og:description" content="把一次事故转化为组织安全能力：从公正文化、RCA到Safety Alert与横向展开。">
+  <meta property="og:url" content="https://ehs-sil.com/articles/lfi-learning-from-incident.html">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "出了事故除了罚款通报，还能做什么？LFI事故学习方法详解",
+    "description": "系统讲解Learning From Incident（LFI，从事故中学习）的四大机制和落地方法。",
+    "datePublished": "2026-07-24",
+    "dateModified": "2026-07-26",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": "https://ehs-sil.com/articles/lfi-learning-from-incident.html",
+    "author": {"@type": "Organization", "name": "EHS-SIL"},
+    "publisher": {"@type": "Organization", "name": "EHS-SIL", "url": "https://ehs-sil.com"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "什么是LFI？",
+        "acceptedAnswer": {"@type": "Answer", "text": "LFI是Learning From Incident的缩写，中文通常译为“从事故中学习”。它强调识别事故背后的系统性原因，并把经验转化为可复用的改进措施。"}
+      },
+      {
+        "@type": "Question",
+        "name": "LFI和传统事故通报有什么不同？",
+        "acceptedAnswer": {"@type": "Answer", "text": "传统事故通报常聚焦责任与处罚；LFI更关注事实、根本原因、系统改进、经验共享和整改闭环。"}
+      },
+      {
+        "@type": "Question",
+        "name": "企业如何开始建立LFI机制？",
+        "acceptedAnswer": {"@type": "Answer", "text": "可先从未遂事件无惩罚报告、标准化RCA、1至2页Safety Alert，以及针对同类场景的横向排查开始。"}
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root{--ink:#17313a;--muted:#5f7077;--brand:#1a4b5c;--accent:#d98d39;--paper:#fff;--soft:#f3f7f8;--line:#dbe5e8}
+    *{box-sizing:border-box}body{margin:0;background:var(--soft);color:var(--ink);font:17px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:var(--brand)}header{background:var(--brand);color:#fff}nav{max-width:1080px;margin:auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+    nav a{color:#fff;text-decoration:none}.brand{font-weight:800;letter-spacing:.04em}.back{font-size:14px;opacity:.9}
+    main{max-width:860px;margin:42px auto;padding:0 20px}.article{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:clamp(24px,6vw,64px);box-shadow:0 10px 36px rgba(23,49,58,.07)}
+    .eyebrow{color:var(--accent);font-size:14px;font-weight:700;letter-spacing:.1em}.meta{color:var(--muted);font-size:14px;margin:14px 0 32px}
+    h1{font-size:clamp(30px,5vw,48px);line-height:1.25;margin:10px 0 0}h2{font-size:28px;line-height:1.4;margin:48px 0 16px;border-left:5px solid var(--accent);padding-left:15px}h3{font-size:21px;margin-top:30px}
+    p{margin:14px 0}.lead{font-size:20px;color:#38525b}.callout{background:#edf5f6;border-radius:12px;padding:20px 24px;margin:28px 0}.steps{counter-reset:item;padding:0;list-style:none}.steps li{counter-increment:item;margin:18px 0;padding-left:48px;position:relative}.steps li:before{content:counter(item);position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff;font-weight:700}
+    table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}th,td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}th{background:var(--brand);color:#fff}
+    .cta{margin-top:50px;padding:28px;background:var(--brand);color:#fff;border-radius:12px}.cta a{color:#fff;font-weight:700}.source{font-size:14px;color:var(--muted);margin-top:34px}
+    footer{text-align:center;color:var(--muted);font-size:14px;padding:28px}@media(max-width:640px){body{font-size:16px}.article{border-radius:10px;padding:24px 20px}table{display:block;overflow-x:auto;white-space:nowrap}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav><a class="brand" href="/">EHS-SIL</a><a class="back" href="/#content">返回内容库</a></nav>
+  </header>
+  <main>
+    <article class="article">
+      <div class="eyebrow">事故调查 · 组织学习</div>
+      <h1>出了事故除了“罚款＋通报”，还能做什么？聊聊外企的 LFI</h1>
+      <div class="meta">EHS-SIL · 2026年7月24日 · 约 8 分钟阅读</div>
+      <p class="lead">处罚可以迅速表态，却未必能阻止同类事故再次发生。LFI（Learning From Incident，从事故中学习）的真正价值，是把已经付出的事故代价转化为组织能力。</p>
+
+      <div class="callout"><strong>核心判断：</strong>如果整改措施只有“加强培训、提高意识、严肃处罚”，事故背后的设备、流程、资源与管理机制就可能仍然没有改变。</div>
+
+      <h2>为什么企业总在重复踩坑？</h2>
+      <p>很多事故调查把“员工违章”“注意力不集中”当作终点。但从瑞士奶酪模型和系统思维看，人的失误通常只是事件链末端的表现。设备设计、作业流程、培训质量、防护配置、绩效导向和现场监督等屏障，可能早已连续失效。</p>
+      <p>只替换或处罚最后一个犯错的人，而不修补系统漏洞，就像换了一名操作员继续站在同一个陷阱前。下一次事故只是时间问题。</p>
+
+      <h2>LFI 的四大核心机制</h2>
+      <ol class="steps">
+        <li><strong>公正文化与心理安全。</strong>区分非故意失误、系统诱发错误和蓄意高风险行为。员工确信如实报告不会自动招致处罚，组织才有机会看见真实风险。</li>
+        <li><strong>深入开展 RCA。</strong>调查不能停在“未佩戴PPE”或“操作不当”。通过5-Why、鱼骨图等方法，继续追问工具配置、流程便利性、资源投入和KPI导向。</li>
+        <li><strong>制作 Safety Alert。</strong>用1至2页说明发生了什么、直接原因与根本原因、系统性改进措施，以及其他部门可以立即使用的自查清单。</li>
+        <li><strong>横向展开与闭环。</strong>把经验分享给具有相似设备、物料或作业场景的团队，完成对照排查、行动跟踪和有效性验证。</li>
+      </ol>
+
+      <h2>传统事故处理与 LFI 的差异</h2>
+      <table>
+        <thead><tr><th>维度</th><th>传统处理</th><th>LFI方法</th></tr></thead>
+        <tbody>
+          <tr><td>关注点</td><td>谁做错了</td><td>系统为何允许错误演变成事故</td></tr>
+          <tr><td>调查终点</td><td>违章、意识淡薄</td><td>设备、流程、组织与管理机制</td></tr>
+          <tr><td>典型措施</td><td>处罚、通报、再培训</td><td>工程控制、流程优化、资源与制度调整</td></tr>
+          <tr><td>信息传播</td><td>强调责任与警示</td><td>分享事实、原因、措施和自查问题</td></tr>
+          <tr><td>成功标准</td><td>完成通报和签字</td><td>同类风险得到横向消除且措施有效</td></tr>
+        </tbody>
+      </table>
+
+      <h2>国内企业可以怎样落地？</h2>
+      <h3>1. 先改变调查报告的语言</h3>
+      <p>把“责任心不强”改为可验证的管理事实，例如“作业点没有便捷可得的面部防护用品”“SOP未明确关键确认步骤”。语言变化会推动团队寻找更具体的整改措施。</p>
+      <h3>2. 建立轻量化 LFI 数据库</h3>
+      <p>先用现有工具整理近三年的事故和未遂事件，记录场景、原因、措施、适用范围与验证结果。真实的内部案例，是新人培训和班前会最有说服力的素材。</p>
+      <h3>3. 从未遂事件无惩罚报告开始</h3>
+      <p>为主动报告未遂事件的员工提供明确保护，并公开展示报告如何推动了现场改善。当员工看见“讲真话会带来改变”，报告文化才会逐步形成。</p>
+
+      <h2>一份可直接使用的 LFI 闭环清单</h2>
+      <ul>
+        <li>是否保护了报告人和相关人员的合理隐私？</li>
+        <li>调查是否超越了“人的不安全行为”？</li>
+        <li>根本原因是否有事实证据支持？</li>
+        <li>措施是否优先考虑消除、替代和工程控制？</li>
+        <li>是否识别了其他具有相似风险的场景？</li>
+        <li>是否明确责任人、截止时间和有效性验证方式？</li>
+      </ul>
+
+      <div class="cta">事故已经带来损失，不要再浪费其中的学习价值。关注 <strong>EHS-SIL</strong>，持续获取外企 EHS 管理工具与实操方法。</div>
+      <p class="source">原始内容首发于微信公众号：<a href="https://mp.weixin.qq.com/s/YVBuxisPDzM5qyT6GggJsA" rel="noopener">阅读公众号原文</a></p>
+    </article>
+  </main>
+  <footer>© 2026 EHS-SIL · 外企EHS实操指南</footer>
+</body>
+</html>

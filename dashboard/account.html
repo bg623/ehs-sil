@@ -48,14 +48,14 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <script src="../js/auth.js"></script>
 <script>
-(function(){
+(async function(){
     var card = document.getElementById('vipStatusCard');
     var icon = document.getElementById('vipIcon');
     var title = document.getElementById('vipTitle');
     var desc = document.getElementById('vipDesc');
     var actions = document.getElementById('vipActions');
     if (!card) return;
-    if (isVip()) {
+    if (await isVip()) {
         icon.innerHTML = '&#127881;';
         title.textContent = 'VIP 会员';
         title.style.color = '#b8860b';

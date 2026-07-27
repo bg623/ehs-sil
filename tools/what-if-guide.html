@@ -1,72 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
 <title>What-If 假设分析 · EHS-SIL</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
-<link rel="stylesheet" href="../css/style.css">
 <style>
-:root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
-.container{max-width:800px;margin:0 auto;padding:0 1.5rem}
-.header{background:linear-gradient(135deg,#0d2836,#1a4b5c);color:#fff;padding:2rem 0 2.5rem;text-align:center}
-.header h1{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
-.back{color:var(--accent);font-size:.78rem;text-decoration:none}
-.content{background:#fff;border-radius:10px;border:1px solid #e8e4dc;padding:1.5rem;margin:1.5rem 0}
-.content h2{font-size:1rem;color:var(--primary);margin:1rem 0 .4rem;border-left:3px solid var(--accent);padding-left:.6rem}
-.content p{font-size:.82rem;color:#555;line-height:1.7;margin-bottom:.5rem}
-.content ul{list-style:none;padding:0;margin-bottom:.5rem}
-.content ul li{font-size:.8rem;color:#555;padding:.2rem 0 .2rem 1rem;position:relative}
-.content ul li::before{content:"→";position:absolute;left:0;color:var(--accent)}
-.gate-card{background:#fefce8;border:2px dashed #fde68a;border-radius:12px;padding:2rem;max-width:400px;margin:0 auto;text-align:center}
-.gate-card .icon{font-size:3rem;margin-bottom:.5rem}
-.gate-card h3{font-size:1rem;color:var(--primary);margin-bottom:.3rem}
-.gate-card p{font-size:.82rem;color:#666;margin-bottom:1rem}
-.gate-card .btn-gate{display:inline-block;padding:.5rem 1.2rem;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:500}
-.gate-card .btn-gate:hover{opacity:.9}
+:root{--primary:#0d2836;--accent:#b8860b;--bg:#f5f1ea;--border:#e3ddd2}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;color:#333}
+.card{width:min(92vw,460px);padding:2rem;background:#fff;border:1px solid var(--border);border-radius:14px;text-align:center;box-shadow:0 12px 40px rgba(13,40,54,.08)}
+h1{font-size:1.25rem;color:var(--primary);margin:.5rem 0}.badge{font-size:2.5rem}.note{font-size:.84rem;line-height:1.7;color:#666}
+a{display:inline-block;margin-top:1rem;padding:.65rem 1rem;border-radius:7px;background:var(--primary);color:#fff;text-decoration:none;font-size:.84rem}
 </style>
-<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script></head>
+</head>
 <body>
-<div class="header"><div class="container">
-<a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
-<h1>&#10067; What-If 假设分析</h1>
-<p>Structured Brainstorming for Risk Identification — 结构化风险辨识工具</p>
-</div></div>
-
-<div class="container">
-
-<div class="content">
-<h2>什么是 What-If 分析？</h2>
-<p>What-If 分析是一种结构化的头脑风暴方法，通过系统地提出"如果...怎么办"的问题，识别工艺、设备或操作中的潜在偏差和风险。该方法灵活、易于掌握，适用于HAZOP前的初步评估或非工艺场景的风险辨识。</p>
-<p>在化工行业，What-If 分析常用于：新工艺/新设备的首次风险评估、变更管理(MOC)风险筛查、非日常作业的安全评审、小型技术改造的安全评估。</p>
-
-<h2>典型What-If问题示例</h2>
-<ul>
-<li>如果进料阀门意外关闭会怎样？</li>
-<li>如果冷却水中断会怎样？</li>
-<li>如果操作人员误读仪表读数会怎样？</li>
-<li>如果安全阀失效无法开启会怎样？</li>
-<li>如果电源故障导致仪表失电会怎样？</li>
-<li>如果在夜间没有充足照明下进行维修会怎样？</li>
-</ul>
-
-<h2>分析步骤</h2>
-<p>1. 定义分析范围和边界 → 2. 收集工艺/设备资料 → 3. 组建多专业团队 → 4. 系统提出"What-If"问题 → 5. 评估后果和现有防护 → 6. 提出改进建议 → 7. 编制分析报告 → 8. 跟踪改进措施的落实</p>
-
-<h2>模板资源</h2>
-<p>VIP会员可访问What-If分析模板（Excel格式），含结构化问题清单、风险评分和行动追踪。</p>
-
-<div id="gateBlock"></div>
-</div>
-
-</div>
-
-<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL</p></footer>
-
-<script src="../js/auth.js"></script>
-<script>
-renderSimpleGate("gateBlock");
-</script>
+<main class="card">
+<div class="badge" aria-hidden="true">🔒</div>
+<h1>VIP 工具已迁移至安全服务</h1>
+<p class="note">此公开页面不再包含工具源码或激活数据。部署安全服务后，已登录 VIP 将直接进入工具。</p>
+<a href="/dashboard/register.html?returnTo=%2Ftools%2Fwhat-if-guide.html">验证 VIP 身份</a>
+</main>
 </body>
 </html>
