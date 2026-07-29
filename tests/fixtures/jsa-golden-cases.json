@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "case_set_version": "0.1.0",
+  "data_source": "product_owner_provided_deidentified_jsa_samples",
+  "real_case_count": 0,
+  "notice": "以下20个槽位不是虚构案例。产品负责人提供并确认脱敏样本后才能填充和启用。",
+  "cases": [
+    {"case_id":"JSA-GOLD-001","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-002","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-003","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-004","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-005","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-006","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-007","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-008","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-009","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-010","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-011","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-012","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-013","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-014","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-015","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-016","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-017","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-018","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-019","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
+    {"case_id":"JSA-GOLD-020","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null}
+  ]
+}
