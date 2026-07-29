@@ -163,9 +163,15 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · 数据仅保存在本地浏览器</p></footer>
 
+<script src="../js/analytics.js"></script>
 <script>
 var steps = [];
 var STORAGE_KEY = 'ehs_sil_jsa';
+var experienceMode = new URLSearchParams(location.search).get('example') === '1' ? 'example' : 'user';
+
+if (window.EhsSilAnalytics) {
+    window.EhsSilAnalytics.trackOnce('visit_jsa_coach', {mode: experienceMode});
+}
 
 // Set default date
 document.getElementById('jobDate').valueAsDate = new Date();
@@ -218,6 +224,9 @@ function addStep() {
         R: parseInt(document.getElementById('stepL').value) * parseInt(document.getElementById('stepS').value),
         addCtrl: document.getElementById('stepAddCtrl').value.trim()
     });
+    if (window.EhsSilAnalytics) {
+        window.EhsSilAnalytics.track('add_jsa_step', {mode: experienceMode});
+    }
     clearForm();
     renderSteps();
 }
@@ -341,6 +350,9 @@ function generateReport() {
     html += '<p style="margin-top:.5rem;font-size:.78rem;color:#666">共 ' + steps.length + ' 个步骤，其中高风险以上 ' + highCount + ' 项。</p>';
     html += '<p style="margin-top:.5rem;font-size:.7rem;color:#999;border-top:1px solid #eee;padding-top:.5rem">EHS-SIL · 外企EHS实操指南 · ' + now + '</p>';
     document.getElementById('reportContent').innerHTML = html;
+    if (window.EhsSilAnalytics) {
+        window.EhsSilAnalytics.track('view_jsa_preview', {mode: experienceMode});
+    }
     document.getElementById('reportSection').classList.add('active');
     document.getElementById('reportSection').scrollIntoView({behavior:'smooth'});
 }
@@ -350,6 +362,9 @@ function printReport() {
     var win = window.open('', '_blank');
     win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>JSA Report</title><style>body{font-family:-apple-system,sans-serif;padding:1.5rem;font-size:13px;color:#333}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{border:1px solid #ccc;padding:.4rem .5rem;text-align:left;font-size:12px}th{background:#0d2836;color:#fff}h3{color:#0d2836}@media print{body{padding:.5in}}</style></head><body>' + content + '</body></html>');
     win.document.close();
+    if (window.EhsSilAnalytics) {
+        window.EhsSilAnalytics.track('print_or_export_result', {mode: experienceMode});
+    }
     setTimeout(function(){win.print()}, 500);
 }
 
@@ -381,6 +396,9 @@ function exportToExcel() {
     rows.push('生成日期: ' + new Date().toLocaleDateString('zh-CN') + ' EHS-SIL');
 
     var blob = new Blob([bom + rows.join('\n')], {type:'text/csv;charset=utf-8'});
+    if (window.EhsSilAnalytics) {
+        window.EhsSilAnalytics.track('print_or_export_result', {mode: experienceMode});
+    }
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'JSA_' + (document.getElementById('jobName').value || 'report') + '.csv';
