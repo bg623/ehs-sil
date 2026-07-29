@@ -1,7 +1,7 @@
 # 会员状态与激活数据模型
 
 版本：1.0  
-状态：实施设计，尚未部署数据库迁移
+状态：私有Worker迁移已建立并通过本地SQLite验证，尚未部署
 
 ## 会员状态
 
@@ -34,3 +34,10 @@
 - 会员状态由服务端返回，浏览器不自行声明；
 - 任何数据库迁移先在测试环境验证，再由产品负责人批准生产执行。
 
+## 实施记录
+
+- 私有包迁移：`ehs-sil-vip-worker/migrations/0003_member_entitlements.sql`；
+- 新增字段：`entitlement_source`、`starts_at`、`bound_user`、`activation_status`、`renewal_status`、`updated_at`；
+- 服务端会话返回会员状态和权益来源，浏览器只展示服务端结果；
+- 2026-07-29 已在临时SQLite数据库顺序执行0001、0002、0003迁移并验证结构；
+- 未连接或修改Cloudflare生产D1，生产执行仍需产品负责人批准。
