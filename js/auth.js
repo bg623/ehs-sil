@@ -77,7 +77,7 @@
     function gateMarkup() {
         return '<div style="background:#fefce8;border:2px dashed #fde68a;border-radius:12px;padding:1.5rem 2rem;text-align:center;max-width:440px;margin:0 auto">' +
             '<div style="font-size:2.5rem;margin-bottom:.3rem">&#11088;</div>' +
-            '<h3 style="font-size:1rem;color:#0d2836;margin-bottom:.3rem">VIP 专享内容</h3>' +
+            '<h3 style="font-size:1rem;color:#0d2836;margin-bottom:.3rem">工具箱会员专业内容</h3>' +
             '<p style="font-size:.82rem;color:#666;margin-bottom:1rem">激活码将由安全服务器验证，浏览器不会保存激活码。</p>' +
             '<form id="vipGateForm" style="display:flex;gap:.3rem;max-width:320px;margin:0 auto">' +
             '<label for="gateCode" style="position:absolute;left:-9999px">VIP 激活码</label>' +
@@ -85,7 +85,7 @@
             '<button type="submit" style="padding:.5rem .8rem;background:#b8860b;color:#fff;border:none;border-radius:6px;font-size:.82rem;font-weight:500;cursor:pointer;white-space:nowrap">激活</button>' +
             '</form>' +
             '<div id="gateMsg" role="status" aria-live="polite" style="font-size:.78rem;margin-top:.5rem;display:none"></div>' +
-            '<div style="font-size:.72rem;color:#999;margin-top:.7rem">还没有激活码？<a href="/dashboard/register.html" style="color:#b8860b">查看 VIP 方案 →</a></div>' +
+            '<div style="font-size:.72rem;color:#999;margin-top:.7rem">还没有激活码？<a href="/dashboard/register.html" style="color:#b8860b">查看会员权益 →</a></div>' +
             '</div>';
     }
 
@@ -98,9 +98,9 @@
 
         if (session.active) {
             element.innerHTML = '<div style="background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:1rem;margin-top:.8rem">' +
-                '<h3 style="font-size:.85rem;color:#166534;margin-bottom:.3rem">&#10003; VIP 已验证</h3>' +
+                '<h3 style="font-size:.85rem;color:#166534;margin-bottom:.3rem">&#10003; 会员权益已验证</h3>' +
                 '<p style="font-size:.78rem;color:#333">' +
-                escapeHtml(session.label || 'VIP') + ' · 有效期至 ' +
+                escapeHtml(session.label || '工具箱会员') + ' · 有效期至 ' +
                 escapeHtml(String(session.expires || '').slice(0, 10)) +
                 '</p></div>';
             if (options && options.contentId) {

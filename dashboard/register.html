@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VIP激活 / 购买 · EHS-SIL</title>
+<title>工具箱会员激活 · EHS-SIL</title>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <style>
@@ -56,20 +56,20 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
 <a href="../index.html" class="back">&larr; 返回首页</a>
 
 <div class="card" style="text-align:center">
-<h2 style="justify-content:center;font-size:1.2rem">&#11088; EHS-SIL VIP</h2>
-<div style="font-size:.8rem;color:#888;margin-top:.2rem">解锁全部高级工具 · 年费制</div>
+<h2 style="justify-content:center;font-size:1.2rem">&#11088; 工具箱会员在线权益</h2>
+<div style="font-size:.8rem;color:#888;margin-top:.2rem">外企EHS工具箱会员包含网站专业工具权益</div>
 </div>
 
 <!-- VIP已激活状态 -->
 <div id="vipActiveSection" style="display:none">
 <div class="card active-box" id="vipActiveCard">
 <div class="icon">&#9989;</div>
-<div class="title">VIP已激活</div>
+<div class="title">会员权益已激活</div>
 <div class="info" id="vipActiveInfo">加载中...</div>
 <button class="btn btn-primary" onclick="if(confirm('确定清除VIP信息？')){clearVip()}">清除VIP信息</button>
 </div>
 <div class="card" style="text-align:center;font-size:.78rem;color:#888;line-height:1.6">
-<p>&#128161; VIP到期后可重新购买或输入新的激活码续期</p>
+<p>&#128161; 工具箱会员到期后，可续费并使用新的激活码续期</p>
 <p style="margin-top:.3rem">已失效或过期的激活码需要联系管理员更新</p>
 </div>
 </div>
@@ -79,53 +79,28 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
 
 <div class="card">
 <h2>&#128273; 已有激活码？</h2>
-<div class="sub">输入激活码解锁VIP工具（知识星球用户或已购买VIP年卡）</div>
+<div class="sub">输入管理员安全发放的激活码，验证工具箱会员或原网站VIP权益</div>
 <div id="gateContainer"></div>
 </div>
 
-<div class="or-divider">或者</div>
-
 <div class="card purchase-box">
-<h2 style="justify-content:center">&#128176; 购买VIP激活码</h2>
-<div class="sub">单年 VIP · 有效期内不限次数使用当前及新上线的 VIP 在线工具</div>
-
-<div class="price">29.9 <span>元/年</span></div>
+<h2 style="justify-content:center">&#128218; 加入外企EHS工具箱</h2>
+<div class="sub">网站已停止销售29.9元独立VIP。工具箱会员在有效期内使用对应网站专业工具。</div>
 
 <ul class="perks">
-<li>解锁 FMEA、What-If、Apollo RCA、Tripod Beta 等高级在线工具</li>
-<li>有效期内自动包含新上线的 VIP 在线工具</li>
+<li>获取535份工具、模板、检查表和课件</li>
+<li>使用会员范围内的专业在线工具</li>
+<li>获取配套案例、方法资料、持续更新和专业答疑</li>
 <li>单人年卡默认支持最多 3 次浏览器或设备激活</li>
-<li>工具数据默认保存在当前浏览器；可按工具支持导出报告或 Excel</li>
+<li>已有29.9元原网站VIP继续履约至原到期日</li>
 </ul>
 
-<div class="qr-area">
-<div class="qr-image">
-<img src="../assets/wechat-pay-qr.jpg?v=20260703" alt="微信收款码" id="payQR"
-     onerror="this.style.display='none';document.getElementById('qrPlaceholder').style.display='flex'">
-<div class="placeholder" id="qrPlaceholder" style="display:none">
-请替换为您的<br>微信收款码<br><span style="font-size:.6rem;color:#ccc">assets/wechat-pay-qr.jpg</span>
-</div>
-</div>
-<div class="qr-label">&#128073; 微信扫码支付 29.9元</div>
-</div>
-
-<div class="steps">
-<div class="step"><span class="num">1</span>打开微信扫描上方二维码，支付 <strong>29.9元</strong></div>
-<div class="step"><span class="num">2</span>添加微信号 <strong>houzhihoujue4009</strong>，发送付款截图</div>
-<div class="step"><span class="num">3</span>管理员核实后，将回复您的专属激活码</div>
-<div class="step"><span class="num">4</span>在上方"已有激活码"输入框粘贴激活码，点击激活</div>
-</div>
-
-<div class="contact-line">
-<strong>微信号：houzhihoujue4009</strong> · 核实后通常在 24 小时内回复
-</div>
+<a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%;margin-top:.4rem">查看工具箱会员 · 129元/年</a>
 </div>
 
 <div class="card" style="text-align:center;font-size:.78rem;color:#888;line-height:1.6">
-<p>&#128218; 需要更多？购买知识星球产品可获取长期激活码</p>
+<p>已有工具箱会员请使用上方激活码；尚未收到激活码可联系管理员核验购买记录。</p>
 <p style="margin-top:.3rem">
-<a href="https://wx.zsxq.com/group/88882255181182" target="_blank" style="color:var(--accent)">外企EHS工具箱 129元/年 →</a>
-&nbsp;|&nbsp;
 <a href="https://wx.zsxq.com/group/51115515242254" target="_blank" style="color:var(--accent)">外企培训库 299元/年 →</a>
 </p>
 </div>
@@ -148,13 +123,6 @@ input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(1
         document.getElementById('vipActiveSection').style.display = 'none';
         document.getElementById('vipInactiveSection').style.display = 'block';
         await renderSimpleGate('gateContainer');
-    }
-    var qrImg = document.getElementById('payQR');
-    if (qrImg) {
-        qrImg.onerror = function() {
-            qrImg.style.display = 'none';
-            document.getElementById('qrPlaceholder').style.display = 'flex';
-        };
     }
 })();
 </script>
