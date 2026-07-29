@@ -1,0 +1,48 @@
+# JSA Coach 产品指标
+
+版本：V0.1  
+真实数据状态：尚未开始收集
+
+## 用户分组
+
+- `toolbox_member`：现有工具箱会员；
+- `public_non_member`：公众号或公开渠道非会员；
+- `ehs_supervisor_manager`：EHS主管或经理；
+- `junior_ehs`：初级EHS人员；
+- `unknown`：尚未确认分组。
+
+会员与非会员的购买、导出和复访数据不得混合统计。
+
+## 核心事件
+
+- `visit_jsa_coach`
+- `start_scene_identification`
+- `complete_scene_identification`
+- `use_risk_prompt`
+- `complete_jsa`
+- `view_completeness_check`
+- `print_or_export_result`
+- `report_found_omission`
+- `report_used_for_real_work`
+- `return_within_30_days`
+- `non_member_purchase`
+- `member_renewal_intent`
+
+## 北极星指标
+
+完成 JSA 完整性检查，并将结果用于实际工作的用户数量。
+
+该指标必须由：
+
+1. `view_completeness_check`；
+2. 用户明确反馈 `report_used_for_real_work`
+
+共同确认，不能通过页面访问推断。
+
+## 数据边界
+
+- 不采集企业名称、人员姓名和完整作业内容；
+- 不将示例体验计入真实工作采用指标；
+- 不将自动化测试计入产品指标；
+- 未经用户明确反馈，不推断其发现遗漏、用于实际工作或愿意付费。
+
