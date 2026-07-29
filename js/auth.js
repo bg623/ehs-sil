@@ -1,5 +1,5 @@
 /**
- * EHS-SIL VIP client
+ * EHS-SIL membership client
  *
  * Authorization is decided by /api/vip on the server. No activation codes,
  * passwords, expiry claims, or privileged content are stored in the browser.
@@ -80,7 +80,7 @@
             '<h3 style="font-size:1rem;color:#0d2836;margin-bottom:.3rem">工具箱会员专业内容</h3>' +
             '<p style="font-size:.82rem;color:#666;margin-bottom:1rem">激活码将由安全服务器验证，浏览器不会保存激活码。</p>' +
             '<form id="vipGateForm" style="display:flex;gap:.3rem;max-width:320px;margin:0 auto">' +
-            '<label for="gateCode" style="position:absolute;left:-9999px">VIP 激活码</label>' +
+            '<label for="gateCode" style="position:absolute;left:-9999px">会员激活码</label>' +
             '<input id="gateCode" name="code" type="password" autocomplete="one-time-code" style="flex:1;min-width:0;padding:.5rem .6rem;border:1.5px solid #ddd;border-radius:6px;font-size:.82rem;outline:none" placeholder="输入激活码" required>' +
             '<button type="submit" style="padding:.5rem .8rem;background:#b8860b;color:#fff;border:none;border-radius:6px;font-size:.82rem;font-weight:500;cursor:pointer;white-space:nowrap">激活</button>' +
             '</form>' +
@@ -93,7 +93,7 @@
         var element = document.getElementById(containerId);
         if (!element) return false;
 
-        element.innerHTML = '<div style="padding:1rem;text-align:center;color:#777;font-size:.82rem">正在验证 VIP 状态…</div>';
+        element.innerHTML = '<div style="padding:1rem;text-align:center;color:#777;font-size:.82rem">正在验证会员状态…</div>';
         var session = await getVipInfo(Boolean(options && options.forceRefresh));
 
         if (session.active) {

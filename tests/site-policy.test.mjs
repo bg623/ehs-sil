@@ -9,6 +9,8 @@ const home = read("index.html");
 const jsa = read("tools/jsa-tool.html");
 const register = read("dashboard/register.html");
 const toolbox = read("products/toolbox.html");
+const riskAnalysis = read("tools/risk-analysis.html");
+const account = read("dashboard/account.html");
 const rules = JSON.parse(read("data/jsa-rules.json"));
 
 const hero = home.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0] || "";
@@ -33,6 +35,8 @@ assert.doesNotMatch(register, /付款二维码|扫码支付|立即购买29\.9/);
 assert.doesNotMatch(`${home}\n${register}\n${toolbox}`, /一次付费.{0,8}永久使用/);
 assert.match(toolbox, /129/);
 assert.match(toolbox, /元\/年/);
+assert.doesNotMatch(`${home}\n${riskAnalysis}\n${account}`, /\bVIP\b/);
+assert.match(riskAnalysis, /工具箱会员包含专业工具权益/);
 
 assert.equal(rules.publication_status, "pending_product_owner_review");
 assert.ok(rules.rules.length > 0);

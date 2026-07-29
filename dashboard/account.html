@@ -57,9 +57,9 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
     if (!card) return;
     if (await isVip()) {
         icon.innerHTML = '&#127881;';
-        title.textContent = 'VIP 会员';
+        title.textContent = '工具箱会员';
         title.style.color = '#b8860b';
-        desc.textContent = '您已激活VIP权限，可以使用所有高级工具';
+        desc.textContent = '您的会员权益已激活，可使用权益范围内的专业工具';
         actions.innerHTML = '<div style="margin-top:.5rem"><a href="../tools/risk-analysis.html" style="display:inline-block;padding:.5rem 1rem;background:#0d2836;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem">浏览全部工具</a></div>';
         card.style.borderColor = '#fde68a';
         card.style.background = '#fefce8';
@@ -67,7 +67,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
         icon.innerHTML = '&#128274;';
         title.textContent = '普通用户';
         desc.textContent = '输入激活码解锁全部高级工具';
-        actions.innerHTML = '<div style="margin-top:.5rem"><a href="register.html" style="display:inline-block;padding:.5rem 1rem;background:#b8860b;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem">激活VIP &rarr;</a></div>';
+        actions.innerHTML = '<div style="margin-top:.5rem"><a href="register.html" style="display:inline-block;padding:.5rem 1rem;background:#b8860b;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem">激活会员权益 &rarr;</a></div>';
     }
 })();
 </script>
