@@ -37,7 +37,18 @@ assert.ok(!ids.includes("JSA-HOTWORK-001"), "不应触发动火规则");
 assert.equal(
   engine.evaluateRules(rules, maintenanceContext, { includePending: false }).length,
   0,
-  "未经审核的规则不得进入生产规则集",
+  "缺少黄金案例或生产就绪状态的规则不得进入生产规则集",
+);
+
+const productionFixture = structuredClone(
+  rules.find((rule) => rule.rule_id === "JSA-HOTWORK-001"),
+);
+productionFixture.production_status = "production_ready";
+productionFixture.golden_case_ids = ["JSA-GOLD-TEST"];
+assert.equal(
+  engine.filterUsableRules([productionFixture], {includePending: false}).length,
+  1,
+  "同时满足专业批准、生产就绪和黄金案例覆盖的规则才可加载",
 );
 
 console.log(JSON.stringify({ status: "PASS", triggeredInDeveloperFixture: ids }));

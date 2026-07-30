@@ -17,15 +17,27 @@
 - `version`
 - `reviewer`
 - `review_date`
+- `review_notes`
 - `status`
+- `production_status`
+- `golden_case_ids`
 
 ## 状态
 
 - `draft`：结构或内容尚未完成；
 - `pending_review`：等待产品负责人专业审核；
+- `changes_requested`：产品负责人要求修改，修改完成后需要再次确认；
 - `approved`：产品负责人已审核，可进入内部测试；
 - `retired`：停止使用，但保留历史；
 - `rejected`：审核未通过。
+
+## 生产状态
+
+- `blocked_pending_product_owner_review`：尚未完成产品负责人审核；
+- `blocked_pending_product_owner_reapproval`：已按意见修改，等待产品负责人复核；
+- `blocked_pending_golden_case`：专业内容已批准，但缺少黄金案例覆盖；
+- `production_ready`：已满足专业审核、黄金案例和回归测试门槛；
+- `retired`：已停止生产使用。
 
 ## 上线门槛
 
@@ -37,7 +49,14 @@
 4. 至少有一个黄金案例覆盖；
 5. 全部回归测试通过。
 
-当前候选规则全部标记为 `pending_review`，内容仅供产品负责人审核，不代表已上线专业结论。
+2026-07-30首轮审核结果：
+
+- 6条规则完成专业内容批准；
+- 5条规则要求将英文触发条件改为中英文显示，等待产品负责人复核；
+- 0条规则获得黄金案例覆盖；
+- 0条规则为`production_ready`。
+
+GB 30871-2022适用于危险化学品生产、经营（带储存）企业以及化工、医药企业。规则用于其他行业前，应补充相应行业来源或收窄适用范围。
 
 ## 变更控制
 
@@ -51,4 +70,3 @@
 6. 由产品负责人重新审核专业含义。
 
 不得把规则硬编码在HTML页面或事件处理函数中。
-

@@ -348,7 +348,7 @@ function renderFindings(containerId, findings) {
     if (!findings.length) {
         var message = includePendingRules
             ? '当前选择没有触发候选规则。仍需由专业人员结合现场进行完整审查。'
-            : '当前没有可用的已审核规则。产品负责人审核规则后才能提供专业提示。';
+            : '当前没有达到生产发布门槛的规则。仍需由专业人员结合现场完成完整审查。';
         container.className = 'empty-findings';
         container.textContent = message;
         return;
@@ -555,7 +555,7 @@ function generateReport() {
         });
         html += '</tbody></table>';
     } else {
-        html += '<p style="font-size:.75rem;color:#666">没有可用的已审核规则，需由专业人员人工审查。</p>';
+        html += '<p style="font-size:.75rem;color:#666">没有达到生产发布门槛的规则，需由专业人员人工审查。</p>';
     }
     // Summary
     var highCount = steps.filter(function(s){return s.R >= 10}).length;

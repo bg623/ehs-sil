@@ -13,6 +13,26 @@
     'use strict';
 
     var DECISIONS = ['pending', 'approved', 'needs_revision', 'rejected'];
+    var DISPLAY_LABELS = {
+        electrical: '电气 electrical',
+        mechanical: '机械 mechanical',
+        hydraulic: '液压 hydraulic',
+        pneumatic: '气动 pneumatic',
+        thermal: '热能 thermal',
+        gravity: '重力势能 gravity',
+        chemical: '化学品 chemical',
+        toxic: '有毒 toxic',
+        corrosive: '腐蚀性 corrosive',
+        flammable: '易燃 flammable',
+        hot_work: '动火作业 hot_work',
+        confined_space: '受限空间 confined_space',
+        work_at_height: '高处作业 work_at_height',
+        lifting: '吊装作业 lifting',
+        simultaneous_operations: '同时作业 simultaneous_operations',
+        contractor_work: '承包商作业 contractor_work',
+        non_routine: '非例行作业 non_routine',
+        ppe: '个体防护装备 PPE'
+    };
 
     function normalizeText(value) {
         return String(value == null ? '' : value).trim();
@@ -28,12 +48,19 @@
     }
 
     function emptyReview(rule) {
+        var decision = rule.status === 'approved'
+            ? 'approved'
+            : rule.status === 'changes_requested'
+                ? 'needs_revision'
+                : rule.status === 'rejected'
+                    ? 'rejected'
+                    : 'pending';
         return {
             rule_id: rule.rule_id,
             rule_version: rule.version,
-            decision: 'pending',
+            decision: decision,
             source: rule.source || '',
-            comments: ''
+            comments: rule.review_notes || ''
         };
     }
 
@@ -42,6 +69,9 @@
         var savedReviews = savedState && Array.isArray(savedState.reviews)
             ? savedState.reviews
             : [];
+        var firstReviewedRule = ruleset.rules.find(function (rule) {
+            return rule.reviewer && rule.review_date;
+        }) || {};
 
         savedReviews.forEach(function (review) {
             if (review && review.rule_id) savedById[review.rule_id] = review;
@@ -50,8 +80,12 @@
         return {
             schema_version: '1.0',
             ruleset_version: ruleset.ruleset_version,
-            reviewer: normalizeText(savedState && savedState.reviewer),
-            review_date: normalizeText(savedState && savedState.review_date),
+            reviewer: normalizeText(
+                savedState && savedState.reviewer || firstReviewedRule.reviewer
+            ),
+            review_date: normalizeText(
+                savedState && savedState.review_date || firstReviewedRule.review_date
+            ),
             reviews: ruleset.rules.map(function (rule) {
                 var review = Object.assign(emptyReview(rule), savedById[rule.rule_id] || {});
                 review.rule_id = rule.rule_id;
@@ -140,15 +174,20 @@
     function describeTrigger(trigger) {
         if (!trigger || typeof trigger !== 'object') return '未定义';
         if (Array.isArray(trigger.any_selected)) {
-            return '当任一危险或场景被选中：' + trigger.any_selected.join('、');
+            return '当任一危险或场景被选中：' + trigger.any_selected.map(function (value) {
+                return DISPLAY_LABELS[value] || value;
+            }).join('、');
         }
         if (trigger.boolean_equals) {
             return Object.keys(trigger.boolean_equals).map(function (key) {
-                return key + ' = ' + (trigger.boolean_equals[key] ? '是' : '否');
+                return (DISPLAY_LABELS[key] || key) + ' = ' +
+                    (trigger.boolean_equals[key] ? '是' : '否');
             }).join('；');
         }
         if (Array.isArray(trigger.control_text_pattern)) {
-            return '当控制措施包含：' + trigger.control_text_pattern.join('、');
+            return '当控制措施包含：' + trigger.control_text_pattern.map(function (value) {
+                return DISPLAY_LABELS[value] || value;
+            }).join('、');
         }
         if (trigger.severity_at_least != null) {
             return '当后果等级不低于 ' + trigger.severity_at_least;

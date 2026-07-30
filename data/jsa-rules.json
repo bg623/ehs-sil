@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "ruleset_version": "0.1.0-draft",
-  "publication_status": "pending_product_owner_review",
-  "last_updated": "2026-07-29",
+  "ruleset_version": "0.1.1-review",
+  "publication_status": "partially_reviewed_not_production_ready",
+  "last_updated": "2026-07-30",
   "rules": [
     {
       "rule_id": "JSA-ENERGY-001",
@@ -14,11 +14,14 @@
       "reason": "只写“停机”或“关闭阀门”通常不足以证明所有危险能量已被隔离和验证。",
       "recommended_action": "明确能量类型、隔离点、上锁挂牌责任、残余能量处理方式和验证方法。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "触发条件中的英文危险类型改为中英文显示，其他内容认可。",
+      "status": "changes_requested",
+      "production_status": "blocked_pending_product_owner_reapproval",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-CHEM-001",
@@ -30,11 +33,14 @@
       "reason": "设备停止运行后仍可能存在残余物料、压力或有害气氛。",
       "recommended_action": "核对介质性质、隔离边界、排放位置、置换标准、检测要求、PPE和泄漏处置。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "相关英文场景改为中英文显示，其他内容认可。",
+      "status": "changes_requested",
+      "production_status": "blocked_pending_product_owner_reapproval",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-HOTWORK-001",
@@ -46,11 +52,14 @@
       "reason": "动火风险不仅来自火源，还取决于周边可燃物、工艺隔离和环境变化。",
       "recommended_action": "明确检测位置与频次、监护职责、消防设施、火花飞溅控制和异常中止条件。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "",
+      "status": "approved",
+      "production_status": "blocked_pending_golden_case",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-CONFINED-001",
@@ -62,11 +71,14 @@
       "reason": "受限空间条件可能动态变化，进入前检测不能替代作业期间持续确认。",
       "recommended_action": "明确进入条件、检测项目和频次、监护职责、进出控制、通讯和可执行的救援方案。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "",
+      "status": "approved",
+      "production_status": "blocked_pending_golden_case",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-HEIGHT-001",
@@ -78,11 +90,14 @@
       "reason": "高处作业控制不能只写安全带，还需考虑集体防护、锚点可靠性和下方区域。",
       "recommended_action": "优先确认平台或护栏等工程控制，并明确锚点、工具防坠、隔离区和停止作业条件。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "",
+      "status": "approved",
+      "production_status": "blocked_pending_golden_case",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-LIFTING-001",
@@ -94,11 +109,14 @@
       "reason": "吊装事故常与载荷不明、吊具不匹配、人员进入吊物下方或沟通失效有关。",
       "recommended_action": "明确载荷重量和重心、吊点、吊具检查、试吊、指挥信号、路径和禁入区。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "",
+      "status": "approved",
+      "production_status": "blocked_pending_golden_case",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-SIMOPS-001",
@@ -110,11 +128,14 @@
       "reason": "单项作业的控制措施可能因相邻作业而失效或产生新的风险。",
       "recommended_action": "识别相邻作业、接口负责人、冲突条件、隔离方式、沟通频次和暂停优先级。",
       "severity": "medium",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "触发条件中的simultaneous_operations改为中英文显示，其他内容认可。",
+      "status": "changes_requested",
+      "production_status": "blocked_pending_product_owner_reapproval",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-CONTRACTOR-001",
@@ -126,11 +147,14 @@
       "reason": "承包商可能不熟悉企业特定设备、程序、能量边界和异常报告机制。",
       "recommended_action": "确认资质与能力、现场负责人、双向交底、作业许可接口、监督要求和异常升级路径。",
       "severity": "medium",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "相关英文场景改为中英文显示，其他内容认可。",
+      "status": "changes_requested",
+      "production_status": "blocked_pending_product_owner_reapproval",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-NONROUTINE-001",
@@ -142,11 +166,14 @@
       "reason": "缺少成熟经验和重复执行形成的稳定控制，会增加遗漏和错误假设。",
       "recommended_action": "安排跨专业评审，确认人员能力、关键假设、现场核实、动态复评和Stop Work条件。",
       "severity": "medium",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "触发条件中的non_routine改为中英文显示，其他内容认可。",
+      "status": "changes_requested",
+      "production_status": "blocked_pending_product_owner_reapproval",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-CONTROL-001",
@@ -158,11 +185,14 @@
       "reason": "仅依赖人员行为的控制更容易受现场条件、疲劳、沟通和执行偏差影响。",
       "recommended_action": "依次考虑消除、替代、工程控制和管理控制，再确认必要的PPE。",
       "severity": "medium",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "",
+      "status": "approved",
+      "production_status": "blocked_pending_golden_case",
+      "golden_case_ids": []
     },
     {
       "rule_id": "JSA-EMERGENCY-001",
@@ -174,11 +204,14 @@
       "reason": "预防措施不能完全消除异常，需要提前约定发现异常后的可执行响应。",
       "recommended_action": "定义停止作业触发条件、现场报警和通讯方式、撤离路径、应急资源和责任人。",
       "severity": "high",
-      "source": "待产品负责人补充并审核来源",
+      "source": "GB 30871-2022《危险化学品企业特殊作业安全规范》；应急管理部2022-04-13修订颁布说明",
       "version": "0.1.0",
-      "reviewer": null,
-      "review_date": null,
-      "status": "pending_review"
+      "reviewer": "Go by John",
+      "review_date": "2026-07-30",
+      "review_notes": "",
+      "status": "approved",
+      "production_status": "blocked_pending_golden_case",
+      "golden_case_ids": []
     }
   ]
 }

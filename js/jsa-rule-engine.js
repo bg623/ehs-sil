@@ -44,10 +44,19 @@
     function filterUsableRules(rules, options) {
         var includePending = Boolean(options && options.includePending);
         return (rules || []).filter(function (rule) {
-            if (rule.status === 'approved') {
-                return Boolean(rule.reviewer && /^\d{4}-\d{2}-\d{2}$/.test(rule.review_date || ''));
+            var professionallyApproved = rule.status === 'approved' &&
+                Boolean(rule.reviewer && /^\d{4}-\d{2}-\d{2}$/.test(rule.review_date || ''));
+            var hasGoldenCase = Array.isArray(rule.golden_case_ids) &&
+                rule.golden_case_ids.length > 0;
+
+            if (includePending) {
+                return professionallyApproved ||
+                    rule.status === 'pending_review' ||
+                    rule.status === 'changes_requested';
             }
-            return includePending && rule.status === 'pending_review';
+            return professionallyApproved &&
+                rule.production_status === 'production_ready' &&
+                hasGoldenCase;
         });
     }
 

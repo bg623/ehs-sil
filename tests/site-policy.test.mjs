@@ -51,16 +51,22 @@ assert.match(riskAnalysis, /<h3>JSA 工作安全分析<\/h3>/);
 assert.match(riskAnalysis, /专业教练 V0\.1/);
 assert.match(riskAnalysis, /href="jsa-tool\.html"[^>]*>开始JSA分析/);
 
-assert.equal(rules.publication_status, "pending_product_owner_review");
+assert.equal(rules.publication_status, "partially_reviewed_not_production_ready");
 assert.ok(rules.rules.length > 0);
-assert.ok(
-  rules.rules.every(
-    (rule) =>
-      rule.status === "pending_review" &&
-      rule.reviewer === null &&
-      rule.review_date === null,
-  ),
-  "候选规则在产品负责人审核前不得标记为已批准",
+assert.equal(
+  rules.rules.filter((rule) => rule.status === "approved").length,
+  6,
+  "应记录产品负责人批准的6条规则",
+);
+assert.equal(
+  rules.rules.filter((rule) => rule.status === "changes_requested").length,
+  5,
+  "应记录产品负责人要求修改的5条规则",
+);
+assert.equal(
+  rules.rules.filter((rule) => rule.production_status === "production_ready").length,
+  0,
+  "没有黄金案例覆盖时不得产生生产就绪规则",
 );
 
 console.log(
@@ -69,6 +75,10 @@ console.log(
     hero_actions: 6,
     jsa_location: "risk-analysis",
     candidate_rules: rules.rules.length,
-    deployment_ready_rules: 0,
+    professionally_approved_rules: 6,
+    changes_requested_rules: 5,
+    deployment_ready_rules: rules.rules.filter(
+      (rule) => rule.production_status === "production_ready",
+    ).length,
   }),
 );
