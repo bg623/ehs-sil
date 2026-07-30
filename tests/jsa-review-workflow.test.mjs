@@ -30,6 +30,7 @@ state.reviewer = "John Yu";
 state.review_date = "2026-07-30";
 state.reviews[0].decision = "approved";
 state.reviews[0].source = "待产品负责人补充并审核来源";
+state.reviews[0].source_refs = [];
 
 let errors = reviewWorkflow.validateReview(
   state.reviews[0],
@@ -39,6 +40,7 @@ let errors = reviewWorkflow.validateReview(
 assert.ok(errors.includes("批准前需要补充可追溯的专业来源"));
 
 state.reviews[0].source = "产品负责人审核的企业危险能量控制程序，第4章";
+state.reviews[0].source_refs = ["GB-T-44686-2024"];
 errors = reviewWorkflow.validateReview(
   state.reviews[0],
   state,
@@ -66,20 +68,24 @@ assert.equal(exported.summary.approved, 7);
 assert.equal(exported.summary.needs_revision, 4);
 assert.equal(exported.summary.pending, 0);
 assert.equal(exported.reviews[0].reviewer, "John Yu");
+assert.deepEqual(exported.reviews[0].source_refs, ["GB-T-44686-2024"]);
+assert.equal(exported.reviews[0].source_review_confirmed, true);
 assert.equal(exported.reviews[2].reviewer, "John Yu");
 assert.match(exported.notice, /不代表规则已通过黄金案例或生产发布门槛/);
 assert.equal(JSON.stringify(ruleset), initialRuleJson, "审核流程不得直接修改生产规则数据");
 assert.match(
   reviewWorkflow.describeTrigger(ruleset.rules[0].trigger_condition),
-  /电气 electrical.*机械 mechanical/,
+  /电气（Electrical）.*机械（Mechanical）/,
 );
 assert.match(
   reviewWorkflow.describeTrigger(ruleset.rules[6].trigger_condition),
-  /同时作业 simultaneous_operations/,
+  /同时作业（Simultaneous Operations，SIMOPS）/,
 );
 
 assert.match(reviewPage, /本页面不会直接修改线上规则/);
 assert.match(reviewPage, /下载审核结果/);
+assert.match(reviewPage, /已核实的专业来源或参考标准/);
+assert.match(reviewPage, /jsa-source-catalog\.json/);
 assert.match(reviewPage, /needs_revision/);
 assert.match(reviewPage, /noindex,nofollow/);
 assert.doesNotMatch(reviewPage, /password|token|activation.?code/i);

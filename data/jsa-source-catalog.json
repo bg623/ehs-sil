@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "verified_on": "2026-07-30",
+  "notice": "来源状态仅表示已核对官方发布页面，不代表自动判定法规适用性或合规性。",
+  "sources": {
+    "GB-T-44686-2024": {
+      "reference": "GB/T 44686-2024",
+      "title_zh": "机械安全 危险能量控制 通则",
+      "title_en": "Safety of machinery—Control of hazardous energy—General principles",
+      "publisher_zh": "国家市场监督管理总局、国家标准化管理委员会",
+      "publisher_en": "State Administration for Market Regulation (SAMR) and Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=9F31288F3AAB19992ED75852CF2C26F6",
+      "status": "verified_current",
+      "scope_note": "现行通用标准，用于机械危险能量识别、隔离和控制原则。"
+    },
+    "GB-T-33579-2017": {
+      "reference": "GB/T 33579-2017",
+      "title_zh": "机械安全 危险能量控制方法 上锁/挂牌",
+      "title_en": "Safety of machinery—Control methods of hazardous energy—Lockout/Tagout",
+      "publisher_zh": "国家标准化管理委员会",
+      "publisher_en": "Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=16D1DA57CF32F78752D2E669C40293AB",
+      "status": "verified_current",
+      "scope_note": "现行推荐性国家标准，支持上锁挂牌（Lockout/Tagout，LOTO）控制方法。"
+    },
+    "OSHA-1910-147": {
+      "reference": "OSHA 29 CFR 1910.147",
+      "title_zh": "危险能量控制（上锁/挂牌）",
+      "title_en": "The Control of Hazardous Energy (Lockout/Tagout)",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.147",
+      "status": "verified_current",
+      "scope_note": "适用于一般工业设备检维修中的意外启动、再通能和储存能量释放控制。"
+    },
+    "GB-30871-2022": {
+      "reference": "GB 30871-2022",
+      "title_zh": "危险化学品企业特殊作业安全规范",
+      "title_en": "Safety Specifications of Special Work in Hazardous Chemicals Enterprises",
+      "publisher_zh": "国家市场监督管理总局、国家标准化管理委员会",
+      "publisher_en": "State Administration for Market Regulation (SAMR) and Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=561B95121C30853A6B45CA9471F39239&refer=outter",
+      "status": "verified_current",
+      "scope_note": "强制性现行标准，适用于危险化学品生产、带储存经营以及化工、医药企业的特殊作业；其他行业只能结合本行业要求参考使用。"
+    },
+    "OSHA-1910-119": {
+      "reference": "OSHA 29 CFR 1910.119",
+      "title_zh": "高危化学品过程安全管理",
+      "title_en": "Process Safety Management of Highly Hazardous Chemicals",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.119",
+      "status": "verified_current",
+      "scope_note": "用于高危化学品过程的设备或管线打开、承包商、非例行作业授权和应急操作等安全工作实践。"
+    },
+    "OSHA-1910-119-APPC": {
+      "reference": "OSHA 29 CFR 1910.119附录C第10节",
+      "title_zh": "过程安全管理合规指南和建议——非例行作业授权",
+      "title_en": "Compliance Guidelines and Recommendations for Process Safety Management—Nonroutine Work Authorizations",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.119AppC",
+      "status": "verified_current",
+      "scope_note": "附录C是非强制性指导材料，第10节用于高危化学品过程附近或过程区域内的非例行作业授权。"
+    },
+    "OSHA-1910-252": {
+      "reference": "OSHA 29 CFR 1910.252",
+      "title_zh": "焊接、切割和钎焊通用要求",
+      "title_en": "General Requirements for Welding, Cutting, and Brazing",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.252",
+      "status": "verified_current",
+      "scope_note": "支持动火区域检查、可燃物控制、动火监护、灭火准备和书面许可等要求。"
+    },
+    "OSHA-1910-146": {
+      "reference": "OSHA 29 CFR 1910.146",
+      "title_zh": "需许可受限空间",
+      "title_en": "Permit-Required Confined Spaces",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.146",
+      "status": "verified_current",
+      "scope_note": "适用于一般工业需许可受限空间的危险评估、隔离、检测、监护、通讯和救援。"
+    },
+    "GB-3608-2025": {
+      "reference": "GB 3608-2025",
+      "title_zh": "高处作业分级",
+      "title_en": "Classification of Work at Heights",
+      "publisher_zh": "国家市场监督管理总局、国家标准化管理委员会",
+      "publisher_en": "State Administration for Market Regulation (SAMR) and Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=D2C19D86441622FA0450DA7AB59F5929",
+      "status": "verified_current",
+      "scope_note": "现行强制性国家标准，自2026年5月1日起实施；已替代废止的GB/T 3608-2008。"
+    },
+    "OSHA-1910-FALL": {
+      "reference": "OSHA 29 CFR 1910.28、1910.29、1910.140",
+      "title_zh": "坠落与坠物防护职责、系统准则及个人防坠系统",
+      "title_en": "Fall and Falling Object Protection, System Criteria, and Personal Fall Protection Systems",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.28",
+      "related_urls": [
+        {
+          "label_zh": "坠落防护系统及坠物防护准则",
+          "label_en": "Fall Protection Systems and Falling Object Protection—Criteria and Practices",
+          "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.29"
+        },
+        {
+          "label_zh": "个人防坠系统",
+          "label_en": "Personal Fall Protection Systems",
+          "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.140"
+        }
+      ],
+      "status": "verified_current",
+      "scope_note": "适用于一般工业高处坠落、坠物、护栏、安全网和个人防坠系统。"
+    },
+    "GB-T-23723-1-2009": {
+      "reference": "GB/T 23723.1-2009",
+      "title_zh": "起重机 安全使用 第1部分：总则",
+      "title_en": "Cranes—Safe Use—Part 1: General",
+      "publisher_zh": "国家标准化管理委员会",
+      "publisher_en": "Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=23D0C41EE50A0B7F40F13DAAC7F18813",
+      "status": "verified_current",
+      "scope_note": "现行推荐性国家标准，用于起重机安全使用、作业计划、人员职责和作业组织。"
+    },
+    "GB-T-6067-1-2010": {
+      "reference": "GB/T 6067.1-2010",
+      "title_zh": "起重机械安全规程 第1部分：总则",
+      "title_en": "Safety Rules for Lifting Appliances—Part 1: General",
+      "publisher_zh": "国家标准化管理委员会",
+      "publisher_en": "Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=9DED7058601D511BFD5EEE88677548D8&refer=outter",
+      "status": "verified_current",
+      "scope_note": "现行推荐性国家标准，用于起重机械安全要求。"
+    },
+    "IOGP-577": {
+      "reference": "IOGP Report 577",
+      "title_zh": "制造场地施工安全推荐实践——危险作业，第11章：同时作业",
+      "title_en": "Fabrication Site Construction Safety Recommended Practice—Hazardous Activities, Section 11: Simultaneous Operations",
+      "publisher_zh": "国际石油天然气生产商协会",
+      "publisher_en": "International Association of Oil & Gas Producers (IOGP)",
+      "url": "https://www.iogp.org/bookstore/wp-content/uploads/sites/2/woocommerce_uploads/2018/03/577.pdf",
+      "status": "verified_current",
+      "scope_note": "用于制造、预调试和调试现场的同时作业（Simultaneous Operations，SIMOPS）接口识别、许可、沟通和暂停条件。"
+    },
+    "GB-T-45001-2020": {
+      "reference": "GB/T 45001-2020",
+      "title_zh": "职业健康安全管理体系 要求及使用指南",
+      "title_en": "Occupational Health and Safety Management Systems—Requirements with Guidance for Use",
+      "publisher_zh": "国家市场监督管理总局、国家标准化管理委员会",
+      "publisher_en": "State Administration for Market Regulation (SAMR) and Standardization Administration of China (SAC)",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=A509BECF074159862C3E3E2DEC2487E6",
+      "status": "verified_current",
+      "scope_note": "现行推荐性国家标准；相关条款包括8.1.2消除危险源和降低风险、8.1.3变更管理、8.1.4.2承包商及8.2应急准备和响应。"
+    },
+    "NIOSH-HIERARCHY": {
+      "reference": "NIOSH Hierarchy of Controls",
+      "title_zh": "控制层级",
+      "title_en": "Hierarchy of Controls",
+      "publisher_zh": "美国国家职业安全卫生研究所",
+      "publisher_en": "National Institute for Occupational Safety and Health (NIOSH)",
+      "url": "https://www.cdc.gov/niosh/hierarchy-of-controls/index.html",
+      "status": "verified_current",
+      "scope_note": "通用控制优先顺序：消除、替代、工程控制、管理控制和个体防护装备（Personal Protective Equipment，PPE）。"
+    },
+    "OSHA-1910-38": {
+      "reference": "OSHA 29 CFR 1910.38",
+      "title_zh": "应急行动计划",
+      "title_en": "Emergency Action Plans",
+      "publisher_zh": "美国职业安全健康管理局",
+      "publisher_en": "Occupational Safety and Health Administration (OSHA)",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.38",
+      "status": "verified_current",
+      "scope_note": "适用于应急报告、撤离、人员清点、救援或医疗职责和联络责任。"
+    }
+  }
+}

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>JSA专业规则审核 · EHS-SIL</title>
+<title>工作安全分析（JSA）专业规则审核 · EHS-SIL</title>
 <style>
 :root{
     --text:#263238;--background:#f7f4ee;--surface:#fff;--primary:#123b4a;
@@ -64,8 +64,17 @@ button{cursor:pointer}
 .decision span{display:block;text-align:center;background:#fff;border:1px solid var(--border);border-radius:7px;padding:.48rem .35rem;font-size:.76rem;font-weight:700}
 .decision input:checked+span{background:var(--primary);border-color:var(--primary);color:#fff}
 .review-fields{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.review-fields .source{grid-column:1/-1}
 .review-fields .comments{grid-column:1/-1}
 .review-fields textarea{min-height:78px;resize:vertical}
+.verified-sources{grid-column:1/-1;background:#fff;border:1px solid var(--border);border-radius:8px;padding:.75rem}
+.verified-sources h3{font-size:.76rem;color:var(--primary-dark);margin:0 0 .55rem}
+.source-list{display:grid;gap:.55rem}
+.source-item{border-left:3px solid var(--secondary);padding-left:.65rem;font-size:.76rem}
+.source-item strong{display:block;color:var(--text)}
+.source-item span{display:block;color:var(--muted)}
+.source-item a{color:var(--primary);font-weight:700;text-decoration-thickness:1px;text-underline-offset:2px}
+.source-warning{color:var(--warning)!important;margin-top:.15rem}
 .validation{display:none;color:var(--danger);font-size:.75rem;margin-top:.6rem;font-weight:700}
 .validation.show{display:block}
 .empty{display:none;text-align:center;padding:3rem 1rem;color:var(--muted)}
@@ -93,7 +102,7 @@ button{cursor:pointer}
 <header class="header">
 <div class="container">
 <a href="admin.html">&larr; 返回工作台</a>
-<h1>JSA专业规则审核</h1>
+<h1>工作安全分析（JSA）专业规则审核</h1>
 <p>逐条确认专业含义，形成可追溯的产品负责人审核记录</p>
 </div>
 </header>
@@ -101,7 +110,7 @@ button{cursor:pointer}
 <main>
 <div class="container">
 <div class="notice">
-<strong>安全边界：</strong>本页面不会直接修改线上规则，也不会自动发布专业结论。审核草稿仅保存在当前浏览器；下载审核结果后，仍需导入规则库、补充黄金案例并通过回归测试。
+<strong>安全边界：</strong>专业来源已通过官方发布页面核对，但仍需产品负责人确认其适用范围。核对来源不等于认定法规适用、作业合规或风险可接受。本页面不会直接修改线上规则；审核草稿仅保存在当前浏览器，导出后仍需黄金案例和回归测试。
 </div>
 </div>
 
@@ -161,6 +170,7 @@ button{cursor:pointer}
 
     var STORAGE_PREFIX = 'ehs_sil_jsa_review_';
     var ruleset = null;
+    var sourceCatalog = {};
     var state = null;
     var rulesById = {};
     var labels = {
@@ -170,18 +180,29 @@ button{cursor:pointer}
         rejected: '拒绝'
     };
     var scenarioLabels = {
-        all: '所有场景 all', maintenance: '检维修 maintenance',
-        equipment_opening: '设备打开 equipment_opening',
-        electrical_work: '电气作业 electrical_work',
-        chemical_handling: '化学品操作 chemical_handling',
-        hot_work: '动火作业 hot_work', confined_space: '受限空间 confined_space',
-        work_at_height: '高处作业 work_at_height', lifting: '吊装作业 lifting'
+        all: '所有场景（All Scenarios）', maintenance: '检维修（Maintenance）',
+        equipment_opening: '设备打开（Equipment Opening）',
+        electrical_work: '电气作业（Electrical Work）',
+        chemical_handling: '化学品操作（Chemical Handling）',
+        hot_work: '动火作业（Hot Work）',
+        confined_space: '受限空间（Confined Space）',
+        work_at_height: '高处作业（Work at Height）',
+        lifting: '吊装作业（Lifting）'
     };
 
     function escapeHtml(value) {
         return String(value == null ? '' : value)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    function safeSourceUrl(value) {
+        try {
+            var url = new URL(String(value || ''));
+            return url.protocol === 'https:' ? url.href : '';
+        } catch (error) {
+            return '';
+        }
     }
 
     function storageKey() {
@@ -231,6 +252,39 @@ button{cursor:pointer}
         }).join('');
     }
 
+    function sourceMarkup(rule) {
+        var refs = Array.isArray(rule.source_refs) ? rule.source_refs : [];
+        if (!refs.length) {
+            return '<div class="source-item"><strong>尚未关联已核实来源</strong>' +
+                '<span class="source-warning">批准前需要补充可追溯来源。</span></div>';
+        }
+        return refs.map(function (sourceId) {
+            var source = sourceCatalog[sourceId];
+            if (!source) {
+                return '<div class="source-item"><strong>' + escapeHtml(sourceId) +
+                    '</strong><span class="source-warning">来源目录中未找到该记录。</span></div>';
+            }
+            var url = safeSourceUrl(source.url);
+            var title = source.title_zh + '（' + source.title_en + '）';
+            var links = [];
+            if (url) {
+                links.push('<a href="' + escapeHtml(url) +
+                    '" target="_blank" rel="noopener noreferrer">查看官方来源</a>');
+            }
+            (source.related_urls || []).forEach(function (item) {
+                var relatedUrl = safeSourceUrl(item.url);
+                if (relatedUrl) {
+                    links.push('<a href="' + escapeHtml(relatedUrl) +
+                        '" target="_blank" rel="noopener noreferrer">' +
+                        escapeHtml(item.label_zh + '（' + item.label_en + '）') + '</a>');
+                }
+            });
+            return '<div class="source-item"><strong>' + escapeHtml(source.reference) + ' · ' +
+                escapeHtml(title) + '</strong><span>' + escapeHtml(source.scope_note) + '</span>' +
+                links.join(' · ') + '</div>';
+        }).join('');
+    }
+
     function renderRule(rule) {
         var review = getReview(rule.rule_id);
         var scenarios = (rule.applicable_scenario || []).map(function (scenario) {
@@ -251,9 +305,13 @@ button{cursor:pointer}
             '<div class="detail"><dt>建议行动</dt><dd>' + escapeHtml(rule.recommended_action) + '</dd></div>' +
             '</dl><div class="review-box"><div class="decision-group">' +
             decisionMarkup(rule.rule_id, review.decision) + '</div><div class="review-fields">' +
-            '<div class="field"><label for="source-' + escapeHtml(rule.rule_id) + '">专业来源或参考标准</label>' +
-            '<input id="source-' + escapeHtml(rule.rule_id) + '" class="source-input" value="' +
-            escapeHtml(review.source) + '" placeholder="批准前必须填写可追溯来源"></div>' +
+            '<div class="verified-sources"><h3>已核实的专业来源或参考标准</h3><div class="source-list">' +
+            sourceMarkup(rule) + '</div></div>' +
+            '<div class="field source"><label for="source-' + escapeHtml(rule.rule_id) +
+            '">审核采用的专业来源或参考标准</label>' +
+            '<textarea id="source-' + escapeHtml(rule.rule_id) +
+            '" class="source-input" placeholder="批准前必须确认可追溯来源">' +
+            escapeHtml(review.source) + '</textarea></div>' +
             '<div class="field comments"><label for="comments-' + escapeHtml(rule.rule_id) +
             '">审核意见</label><textarea id="comments-' + escapeHtml(rule.rule_id) +
             '" class="comments-input" placeholder="需要修改或拒绝时必须说明原因">' +
@@ -335,12 +393,12 @@ button{cursor:pointer}
         var blob = new Blob([JSON.stringify(payload, null, 2) + '\n'], {type: 'application/json'});
         var link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'JSA专业规则审核结果-' + (state.review_date || new Date().toISOString().slice(0, 10)) + '.json';
+        link.download = '工作安全分析JSA专业规则审核结果-' + (state.review_date || new Date().toISOString().slice(0, 10)) + '.json';
         document.body.appendChild(link);
         link.click();
         link.remove();
         URL.revokeObjectURL(link.href);
-        showMessage('审核结果已下载，请交给Codex导入并执行测试');
+        showMessage('结构化审核结果（JSON）已下载，请交给 Codex 导入并执行测试');
     }
 
     function importReview(file) {
@@ -364,7 +422,8 @@ button{cursor:pointer}
     }
 
     function initialize(data) {
-        ruleset = data;
+        ruleset = data.ruleset;
+        sourceCatalog = data.sourceCatalog.sources || {};
         ruleset.rules.forEach(function (rule) { rulesById[rule.rule_id] = rule; });
         var saved = null;
         try { saved = JSON.parse(localStorage.getItem(STORAGE_PREFIX + ruleset.ruleset_version)); } catch (error) {}
@@ -391,10 +450,17 @@ button{cursor:pointer}
     document.getElementById('reviewer').addEventListener('input', function () { syncMetadata(); saveDraft(false); });
     document.getElementById('reviewDate').addEventListener('change', function () { syncMetadata(); saveDraft(false); });
 
-    fetch('../data/jsa-rules.json', {cache: 'no-store'})
-        .then(function (response) {
-            if (!response.ok) throw new Error('规则库加载失败');
-            return response.json();
+    Promise.all([
+        fetch('../data/jsa-rules.json', {cache: 'no-store'}),
+        fetch('../data/jsa-source-catalog.json', {cache: 'no-store'})
+    ])
+        .then(function (responses) {
+            if (!responses[0].ok) throw new Error('规则库加载失败');
+            if (!responses[1].ok) throw new Error('专业来源目录加载失败');
+            return Promise.all(responses.map(function (response) { return response.json(); }));
+        })
+        .then(function (data) {
+            return {ruleset: data[0], sourceCatalog: data[1]};
         })
         .then(initialize)
         .catch(function (error) {

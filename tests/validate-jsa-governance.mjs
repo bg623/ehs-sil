@@ -2,6 +2,9 @@ import fs from "node:fs";
 import assert from "node:assert/strict";
 
 const rules = JSON.parse(fs.readFileSync(new URL("../data/jsa-rules.json", import.meta.url)));
+const sourceCatalog = JSON.parse(
+  fs.readFileSync(new URL("../data/jsa-source-catalog.json", import.meta.url)),
+);
 const cases = JSON.parse(
   fs.readFileSync(new URL("./fixtures/jsa-golden-cases.json", import.meta.url)),
 );
@@ -17,6 +20,8 @@ const ruleFields = [
   "recommended_action",
   "severity",
   "source",
+  "source_refs",
+  "source_review_status",
   "version",
   "reviewer",
   "review_date",
@@ -42,6 +47,7 @@ assert.equal(cases.cases.length, 20, "必须保留20个黄金案例槽位");
 assert.equal(cases.real_case_count, 0, "尚未收到产品负责人样本时，真实案例数必须为0");
 
 const ruleIds = new Set();
+const sourcesById = sourceCatalog.sources;
 const goldenCasesById = new Map(
   cases.cases.map((testCase) => [testCase.case_id, testCase]),
 );
@@ -70,10 +76,26 @@ for (const rule of rules.rules) {
     `${rule.rule_id}生产状态无效`,
   );
   assert.ok(Array.isArray(rule.golden_case_ids), `${rule.rule_id}黄金案例字段必须为数组`);
+  assert.ok(Array.isArray(rule.source_refs), `${rule.rule_id}来源引用字段必须为数组`);
+  assert.ok(rule.source_refs.length > 0, `${rule.rule_id}至少需要一个来源引用`);
+  assert.equal(
+    rule.source_review_status,
+    "verified_candidate_pending_product_owner_confirmation",
+    `${rule.rule_id}来源审核状态无效`,
+  );
+  for (const sourceId of rule.source_refs) {
+    const source = sourcesById[sourceId];
+    assert.ok(source, `${rule.rule_id}引用不存在的来源${sourceId}`);
+    assert.equal(source.status, "verified_current", `${sourceId}不是已核实现行来源`);
+    assert.match(source.url, /^https:\/\//, `${sourceId}必须使用HTTPS官方来源`);
+    assert.ok(source.title_zh && source.title_en, `${sourceId}缺少中英文标题`);
+    assert.ok(source.publisher_zh && source.publisher_en, `${sourceId}缺少中英文发布机构`);
+  }
   if (rule.status === "approved") {
     assert.ok(rule.reviewer, `${rule.rule_id}已批准但缺少审核人`);
     assert.match(rule.review_date || "", /^\d{4}-\d{2}-\d{2}$/, `${rule.rule_id}审核日期无效`);
     assert.doesNotMatch(rule.source, /待.*补充|待.*审核/, `${rule.rule_id}缺少专业来源`);
+    assert.ok(rule.source_refs.length > 0, `${rule.rule_id}缺少已核实来源引用`);
   }
   if (rule.status === "changes_requested") {
     assert.ok(rule.reviewer, `${rule.rule_id}缺少提出修改意见的审核人`);
@@ -128,6 +150,7 @@ console.log(
     ).length,
     goldenCaseSlots: cases.cases.length,
     approvedGoldenCases: cases.cases.filter((item) => item.status === "approved").length,
+    verifiedSources: Object.keys(sourcesById).length,
     status: "PASS",
   }),
 );

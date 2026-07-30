@@ -14,24 +14,24 @@
 
     var DECISIONS = ['pending', 'approved', 'needs_revision', 'rejected'];
     var DISPLAY_LABELS = {
-        electrical: '电气 electrical',
-        mechanical: '机械 mechanical',
-        hydraulic: '液压 hydraulic',
-        pneumatic: '气动 pneumatic',
-        thermal: '热能 thermal',
-        gravity: '重力势能 gravity',
-        chemical: '化学品 chemical',
-        toxic: '有毒 toxic',
-        corrosive: '腐蚀性 corrosive',
-        flammable: '易燃 flammable',
-        hot_work: '动火作业 hot_work',
-        confined_space: '受限空间 confined_space',
-        work_at_height: '高处作业 work_at_height',
-        lifting: '吊装作业 lifting',
-        simultaneous_operations: '同时作业 simultaneous_operations',
-        contractor_work: '承包商作业 contractor_work',
-        non_routine: '非例行作业 non_routine',
-        ppe: '个体防护装备 PPE'
+        electrical: '电气（Electrical）',
+        mechanical: '机械（Mechanical）',
+        hydraulic: '液压（Hydraulic）',
+        pneumatic: '气动（Pneumatic）',
+        thermal: '热能（Thermal）',
+        gravity: '重力势能（Gravity）',
+        chemical: '化学品（Chemical）',
+        toxic: '有毒（Toxic）',
+        corrosive: '腐蚀性（Corrosive）',
+        flammable: '易燃（Flammable）',
+        hot_work: '动火作业（Hot Work）',
+        confined_space: '受限空间（Confined Space）',
+        work_at_height: '高处作业（Work at Height）',
+        lifting: '吊装作业（Lifting）',
+        simultaneous_operations: '同时作业（Simultaneous Operations，SIMOPS）',
+        contractor_work: '承包商作业（Contractor Work）',
+        non_routine: '非例行作业（Non-routine Work）',
+        ppe: '个体防护装备（Personal Protective Equipment，PPE）'
     };
 
     function normalizeText(value) {
@@ -60,6 +60,7 @@
             rule_version: rule.version,
             decision: decision,
             source: rule.source || '',
+            source_refs: Array.isArray(rule.source_refs) ? rule.source_refs.slice() : [],
             comments: rule.review_notes || ''
         };
     }
@@ -92,6 +93,9 @@
                 review.rule_version = rule.version;
                 if (DECISIONS.indexOf(review.decision) < 0) review.decision = 'pending';
                 review.source = normalizeText(review.source);
+                review.source_refs = Array.isArray(review.source_refs)
+                    ? review.source_refs.map(normalizeText).filter(Boolean)
+                    : [];
                 review.comments = normalizeText(review.comments);
                 return review;
             })
@@ -112,6 +116,12 @@
 
         if (decision === 'approved' && !isUsableSource(record.source)) {
             errors.push('批准前需要补充可追溯的专业来源');
+        }
+        if (
+            decision === 'approved' &&
+            (!Array.isArray(record.source_refs) || record.source_refs.length === 0)
+        ) {
+            errors.push('批准前需要关联已核实的来源目录');
         }
         if (
             (decision === 'needs_revision' || decision === 'rejected') &&
@@ -163,6 +173,10 @@
                     rule_version: record.rule_version,
                     decision: record.decision,
                     source: normalizeText(record.source),
+                    source_refs: Array.isArray(record.source_refs)
+                        ? record.source_refs.map(normalizeText).filter(Boolean)
+                        : [],
+                    source_review_confirmed: record.decision === 'approved',
                     comments: normalizeText(record.comments),
                     reviewer: record.decision === 'pending' ? null : normalizeText(state.reviewer),
                     review_date: record.decision === 'pending' ? null : normalizeText(state.review_date)
