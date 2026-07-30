@@ -30,6 +30,8 @@ assert.equal(
 assert.match(home, /href="tools\/" class="nav-link">工具库</);
 assert.match(home, /risk-analysis\.html#risk-assessment" class="nav-link">风险分析</);
 assert.doesNotMatch(home, /class="nav-link">JSA专业教练</);
+assert.doesNotMatch(home, /加入球星|735份|一次付费，永久使用/);
+assert.match(home, /按年加入，有效期内持续更新/);
 
 assert.doesNotMatch(jsa, /JSA得分|质量良好/);
 assert.doesNotMatch(jsa, /function\s+(?:exportToExcel|saveToLocal|loadFromLocal)\s*\(/);
@@ -43,6 +45,8 @@ assert.doesNotMatch(register, /付款二维码|扫码支付|立即购买29\.9/);
 assert.doesNotMatch(`${register}\n${toolbox}`, /一次付费.{0,8}永久使用/);
 assert.match(toolbox, /129/);
 assert.match(toolbox, /元\/年/);
+assert.match(read("tools/index.html"), /网站当前用于检索和内容预览，不提供文件下载/);
+assert.match(read("tools/index.html"), /正式发布及可下载文件以知识星球为准/);
 assert.match(riskAnalysis, /<h3>JSA 工作安全分析<\/h3>/);
 assert.match(riskAnalysis, /专业教练 V0\.1/);
 assert.match(riskAnalysis, /href="jsa-tool\.html"[^>]*>开始JSA分析/);

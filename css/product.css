@@ -1,8 +1,9 @@
 :root {
-    --bg: #f5f1ea; --bg-card: #ffffff; --primary: #0d2836; --primary-dark: #071d27;
-    --primary-light: #e8f2f5; --accent: #b8860b; --accent-light: #f5ede2;
-    --text: #2d3436; --text-secondary: #4a555a; --text-muted: #95a5a6;
-    --border: #e3ddd2; --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    --text: #263238; --bg: #f7f4ee; --primary: #123b4a; --secondary: #dce9e7; --accent: #96630b;
+    --bg-card: #ffffff; --primary-dark: #082630; --primary-light: #e6f0ef;
+    --accent-light: #f6ebd8; --accent-on-dark: #f0c879;
+    --text-secondary: #4a5b61; --text-muted: #5f6f74;
+    --border: #d7d1c6; --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
@@ -14,18 +15,18 @@ a{color:inherit;text-decoration:none}
     transition:all .2s;cursor:pointer;border:none;
 }
 .btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,75,92,.25)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(18,59,74,.25)}
 .btn-lg{padding:1rem 2.5rem;font-size:1.1rem}
 
 /* Header */
 .prod-header{background:var(--primary-dark);color:#fff;padding:1.5rem 0 4rem}
 .prod-logo{font-size:1.2rem;font-weight:800}
-.prod-logo .lm{color:#fff}.prod-logo .ls{color:var(--accent)}.prod-logo .lsil{color:#fff}
+.prod-logo .lm{color:#fff}.prod-logo .ls{color:var(--accent-on-dark)}.prod-logo .lsil{color:#fff}
 .prod-hero{text-align:center;max-width:700px;margin:2.5rem auto 0}
-.prod-badge{display:inline-block;font-size:.8rem;background:rgba(201,149,78,.15);color:var(--accent);padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem}
+.prod-badge{display:inline-block;font-size:.8rem;background:rgba(240,200,121,.14);color:var(--accent-on-dark);padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem}
 .prod-title{font-size:2.5rem;font-weight:800;margin-bottom:.5rem}
 .prod-sub{font-size:1.05rem;color:rgba(255,255,255,.7);margin-bottom:2rem}
-.prod-sub strong{color:var(--accent)}
+.prod-sub strong{color:var(--accent-on-dark)}
 .prod-note{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.8rem}
 
 /* Sections */

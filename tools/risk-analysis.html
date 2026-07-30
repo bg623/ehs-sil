@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <style>
-:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#f5f1ea;--bg-card:#f5f2eb;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#95a5a6;--border:#d6d0c4;--border-light:#e8e4dc;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+:root{--text:#263238;--bg:#f7f4ee;--primary:#123b4a;--secondary:#dce9e7;--accent:#96630b;--primary-dark:#082630;--accent-on-dark:#f0c879;--bg-card:#fff;--text-secondary:#4a5b61;--text-muted:#5f6f74;--border:#d7d1c6;--border-light:#e7e1d8;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
 .container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
-.header{background:linear-gradient(135deg,#0d2836 0%,#1a4b5c 100%);color:#fff;padding:2.5rem 0 3.5rem;text-align:center}
+.header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:2.5rem 0 3.5rem;text-align:center}
 .header h1{font-size:1.8rem;font-weight:700;margin-bottom:.3rem;letter-spacing:-.5px}
 .header p{color:rgba(255,255,255,.7);font-size:.9rem;max-width:600px;margin:.5rem auto 1.5rem}
-.back{color:var(--accent);font-size:.82rem;text-decoration:none;display:inline-block;margin-bottom:.5rem}
+.back{color:var(--accent-on-dark);font-size:.82rem;text-decoration:none;display:inline-block;margin-bottom:.5rem}
 .back:hover{opacity:.8}
 .module{margin:2.5rem 0}
 .module-title{font-size:1.25rem;font-weight:700;color:var(--primary);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
@@ -32,7 +32,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .tool-card .btn-link:hover{background:var(--primary);color:#fff}
 .tool-card .btn-link.disabled{opacity:.4;cursor:not-allowed;border-color:#ccc;color:#999}
 .tool-card .btn-link.disabled:hover{background:transparent;color:#999}
-.promo-banner{background:linear-gradient(135deg,#b8860b,#d4a44a);color:#fff;border-radius:10px;padding:1.5rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.promo-banner{background:linear-gradient(135deg,#805207,var(--accent));color:#fff;border-radius:10px;padding:1.5rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .promo-banner h3{font-size:1rem;font-weight:600;margin-bottom:.2rem}
 .promo-banner p{font-size:.82rem;opacity:.9;margin:0}
 .promo-banner .btn-light{display:inline-block;padding:.5rem 1.2rem;background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:500;transition:.2s;white-space:nowrap}
@@ -147,13 +147,13 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <div class="methodology">
 <h3>为什么选择这些工具？</h3>
-<p>这些方法论均来自国际EHS最佳实践，经过世界500强化工企业验证：</p>
+<p>这些方法各有适用场景，可帮助EHS人员从作业步骤、失效模式、因果关系和组织因素等不同角度开展分析：</p>
 <ul>
-<li>JSA / What-If：OSHA、CCPS推荐的过程安全工具</li>
-<li>FMEA：源自美国军方(MIL-STD-1629)，广泛用于化工&制造业</li>
-<li>5Why + 鱼骨图：丰田生产系统核心分析工具</li>
-<li>Apollo RCA：适用于复杂、非标事的系统化调查</li>
-<li>Tripod Beta：源自荷兰埃因霍温理工大学，Shell/BP广泛采用</li>
+<li>JSA：按作业步骤识别危险，并检查控制措施是否完整</li>
+<li>What-If / FMEA：从偏差假设或潜在失效模式发现风险</li>
+<li>5Why + 鱼骨图：梳理问题背后的直接原因与系统因素</li>
+<li>Apollo RCA：用因果关系图分析复杂事件</li>
+<li>Tripod Beta：从屏障失效、潜在条件和组织因素调查事故</li>
 </ul>
 </div>
 

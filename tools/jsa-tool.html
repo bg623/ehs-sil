@@ -6,14 +6,14 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <link rel="stylesheet" href="../css/style.css">
 <style>
-:root{--primary:#0d2836;--primary-dark:#071d27;--accent:#b8860b;--bg:#f5f1ea;--text:#2d3436;--text-secondary:#4a555a;--text-muted:#95a5a6;--border:#d6d0c4;--border-light:#e8e4dc;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+:root{--text:#263238;--bg:#f7f4ee;--primary:#123b4a;--secondary:#dce9e7;--accent:#96630b;--primary-dark:#082630;--accent-on-dark:#f0c879;--text-secondary:#4a5b61;--text-muted:#5f6f74;--border:#d7d1c6;--border-light:#e7e1d8;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
 .container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
-.header{background:linear-gradient(135deg,#0d2836 0%,#1a4b5c 100%);color:#fff;padding:2rem 0 2.5rem;text-align:center}
+.header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:2rem 0 2.5rem;text-align:center}
 .header h1{font-size:1.6rem;font-weight:700;margin-bottom:.2rem}
 .header p{color:rgba(255,255,255,.7);font-size:.82rem;max-width:500px;margin:.3rem auto 1rem}
-.back{color:var(--accent);font-size:.78rem;text-decoration:none}
+.back{color:var(--accent-on-dark);font-size:.78rem;text-decoration:none}
 .back:hover{opacity:.8}
 .section{background:#fff;border-radius:10px;border:1px solid var(--border-light);padding:1.5rem;margin:1.5rem 0}
 .section h2{font-size:1.05rem;color:var(--primary);font-weight:600;margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
@@ -28,7 +28,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .btn-primary{background:var(--primary);color:#fff}
 .btn-primary:hover{background:var(--primary-dark)}
 .btn-accent{background:var(--accent);color:#fff}
-.btn-accent:hover{background:#a0750a}
+.btn-accent:hover{background:#805207}
 .btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
 .btn-outline:hover{background:var(--primary);color:#fff}
 .btn-sm{padding:.35rem .7rem;font-size:.75rem}
@@ -61,11 +61,11 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .report-content th,.report-content td{border:1px solid var(--border);padding:.4rem .5rem;text-align:left}
 .report-content th{background:var(--primary);color:#fff}
 .save-status{font-size:.72rem;color:var(--text-muted);margin-left:.5rem}
-.scope-banner{padding:.85rem 1rem;background:#edf6f7;border:1px solid #bdd9dd;border-radius:8px;font-size:.76rem;color:#28525e;line-height:1.6;margin:1rem 0}
+.scope-banner{padding:.85rem 1rem;background:var(--secondary);border:1px solid #b9d1ce;border-radius:8px;font-size:.76rem;color:var(--primary);line-height:1.6;margin:1rem 0}
 .review-banner{display:none;padding:.85rem 1rem;background:#fff4ce;border:1px solid #e8c86c;border-radius:8px;font-size:.76rem;color:#765900;margin:1rem 0}
 .scenario-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;margin:.6rem 0 1rem}
 .check-card{display:flex;align-items:flex-start;gap:.45rem;padding:.7rem;background:#fafaf7;border:1px solid var(--border-light);border-radius:7px;font-size:.76rem;color:var(--text-secondary);cursor:pointer}
-.check-card:has(input:checked){border-color:var(--primary);background:#edf3f4;color:var(--primary)}
+.check-card:has(input:checked){border-color:var(--primary);background:var(--secondary);color:var(--primary)}
 .check-card input{margin-top:.15rem}
 .scenario-subtitle{font-size:.78rem;color:var(--primary);font-weight:700;margin:1rem 0 .4rem}
 .findings{display:grid;gap:.65rem;margin-top:.8rem}
