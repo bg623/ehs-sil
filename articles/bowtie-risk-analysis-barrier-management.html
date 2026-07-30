@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BowTie蝴蝶结分析怎么做？8步绘图与屏障管理指南 | EHS-SIL</title>
+<meta name="description" content="BowTie蝴蝶结风险分析实操指南：从危险源、顶事件、威胁和后果，到预防屏障、减缓屏障、升级因素、责任人与绩效标准，附8步绘图流程和常见误区。">
+<meta name="keywords" content="BowTie分析,蝴蝶结分析,BowTie风险分析,屏障管理,Barrier Management,顶事件,Top Event,风险评估,工艺安全,屏障绩效">
+<link rel="canonical" href="https://ehs-sil.com/articles/bowtie-risk-analysis-barrier-management.html">
+<meta property="og:title" content="BowTie蝴蝶结分析怎么做？8步绘图与屏障管理指南"><meta property="og:description" content="把威胁、顶事件、后果和关键屏障放进一张图，并把风险分析转化为可持续的屏障管理。"><meta property="og:url" content="https://ehs-sil.com/articles/bowtie-risk-analysis-barrier-management.html"><meta property="og:type" content="article"><meta property="og:site_name" content="EHS-SIL · 外企EHS实操指南">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"BowTie蝴蝶结分析怎么做？8步绘图与屏障管理指南","description":"从危险源、顶事件、威胁和后果到屏障绩效管理的BowTie实操指南。","datePublished":"2026-07-30","dateModified":"2026-07-30","author":{"@type":"Person","name":"Thunder"},"publisher":{"@type":"Organization","name":"EHS-SIL"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ehs-sil.com/articles/bowtie-risk-analysis-barrier-management.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"BowTie蝴蝶结分析是什么？","acceptedAnswer":{"@type":"Answer","text":"BowTie是一种定性风险与屏障分析方法，以危险源失去控制的顶事件为中心，左侧展示威胁和预防屏障，右侧展示后果和减缓屏障，并可记录升级因素和控制。"}},{"@type":"Question","name":"BowTie中的屏障和LOPA中的IPL一样吗？","acceptedAnswer":{"@type":"Answer","text":"不完全一样。BowTie可展示技术、程序和组织等各类控制；LOPA中的IPL只有在特定场景下满足独立性、有效性和可审查性等严格条件时才可获得定量信用。"}},{"@type":"Question","name":"BowTie图完成后还需要做什么？","acceptedAnswer":{"@type":"Answer","text":"需要为关键屏障明确功能、性能标准、责任人、验证方式和失效指标，并通过检查、测试、审核、事件学习和变更管理持续确认屏障有效。"}}]}</script>
+<link rel="stylesheet" href="../css/style.css"><style>.lead{font-size:19px;color:#b9770e;line-height:1.8;margin:20px 0 30px;padding:20px;background:rgba(243,156,18,.08);border-radius:8px;border-left:4px solid #f39c12}.tbl{width:100%;border-collapse:collapse;margin:22px 0;font-size:15px}.tbl th,.tbl td{border:1px solid #dfe6e9;padding:10px;text-align:left;vertical-align:top}.tbl th{background:#edf3f5;color:#0d2836}.bow{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;background:#f5f7f8;padding:22px;border-radius:10px;margin:24px 0}.wing{padding:16px;border-radius:8px;background:#fff;border:1px solid #dfe6e9}.center{background:#b9770e;color:#fff;padding:16px 10px;border-radius:50%;text-align:center;font-weight:700}.note{background:#fff8e7;border:1px solid #f1d59a;border-radius:8px;padding:16px 18px;margin:20px 0}.sources li{margin-bottom:10px}@media(max-width:700px){.bow{grid-template-columns:1fr}.center{border-radius:8px}}</style></head><body>
+<header class="site-header"><div class="container"><nav class="nav-bar"><a href="/" class="logo">EHS-SIL</a><ul class="nav-links"><li><a href="/">首页</a></li><li><a href="/articles/">全部文章</a></li><li><a href="/tools/risk-analysis.html#risk-assessment">风险分析工具</a></li><li><a href="/#products">产品</a></li></ul></nav></div></header>
+<main style="max-width:900px;margin:100px auto 60px;padding:0 24px"><article><p style="color:#8899aa;font-size:14px">2026年7月30日 · Thunder · EI/CCPS/IEC资料校核版</p>
+<h1>BowTie蝴蝶结分析怎么做？8步绘图与屏障管理指南</h1>
+<p class="lead">BowTie的价值不只是“画出一张漂亮的蝴蝶结”，而是让团队看清：什么会导致失控、哪些屏障负责预防、失控后如何减轻后果，以及每道关键屏障由谁持续证明有效。</p>
+<p>Energy Institute与CCPS将BowTie描述为定性风险管理和屏障分析方法。它把复杂事故路径压缩成便于沟通的结构，适合连接风险评估、关键设备、程序、培训、检查、审计和绩效指标。</p>
+
+<h2>BowTie图的基本结构</h2><div class="bow"><div class="wing"><strong>左侧：失控前</strong><br>威胁 → 预防屏障 → 顶事件</div><div class="center">顶事件<br>Top Event</div><div class="wing"><strong>右侧：失控后</strong><br>顶事件 → 减缓屏障 → 后果</div></div>
+<table class="tbl"><thead><tr><th>元素</th><th>含义</th><th>压力管道示例</th></tr></thead><tbody>
+<tr><td>危险源 Hazard</td><td>具有造成伤害或损失潜力的对象、活动或状态</td><td>管道内受压的易燃烃类</td></tr>
+<tr><td>顶事件 Top Event</td><td>对危险源失去控制的时刻，不等同于最终事故后果</td><td>烃类从管道失去包容</td></tr>
+<tr><td>威胁 Threat</td><td>可能直接导致顶事件的原因路径</td><td>外腐蚀、超压、第三方破坏</td></tr>
+<tr><td>后果 Consequence</td><td>顶事件进一步发展可能造成的损失</td><td>火灾、人员暴露、环境污染</td></tr>
+<tr><td>预防屏障</td><td>降低威胁导致顶事件可能性的控制</td><td>腐蚀监测、压力控制、物理防护</td></tr>
+<tr><td>减缓屏障</td><td>顶事件发生后限制升级或减轻后果</td><td>泄漏检测、紧急切断、消防与疏散</td></tr>
+<tr><td>升级因素</td><td>使屏障失效、削弱或不可用的条件</td><td>检测逾期、旁路未复位、人员能力不足</td></tr>
+</tbody></table>
+
+<h2>8步完成一张可用的BowTie</h2>
+<h3>第1步：定义分析范围和危险源</h3><p>先确定装置、活动、操作阶段和边界。危险源通常是正常业务中必须存在但具有潜在危害的对象或活动，例如受压易燃物料，而不是笼统写“泄漏事故”。</p>
+<h3>第2步：选定一个清晰的顶事件</h3><p>顶事件是控制刚刚丧失的临界点。太早会变成威胁，太晚会变成后果。好的顶事件能够让左侧预防和右侧减缓自然分开，例如“有毒气体失去包容”。</p>
+<h3>第3步：识别相互独立的威胁路径</h3><p>逐条记录能直接造成顶事件的原因，包括设备失效、人因、外部事件和组织变化。避免把根本原因、升级因素或后果混进威胁列表。</p>
+<h3>第4步：定义可信且具体的后果</h3><p>后果应描述对人、环境、资产或业务的实际影响。不要只写“风险增加”，也不要把同一后果换词后重复列出。</p>
+<h3>第5步：布置预防屏障</h3><p>在每条威胁到顶事件的路径上列出真正能中断该路径的控制。屏障名称应描述功能，而不是只写文件名，例如“检测并报警高高压力，使操作员在规定时间内停车”。</p>
+<h3>第6步：布置减缓屏障</h3><p>在顶事件与后果之间列出限制升级、减少暴露或降低损失的控制。紧急切断、围堰、消防、应急响应等是否有效，要结合具体后果路径判断。</p>
+<h3>第7步：识别升级因素及控制</h3><p>询问每道屏障“在什么情况下会失效”。共用电源、维护逾期、误旁路、恶劣天气、程序复杂和人员负荷都可能削弱屏障；随后为重要升级因素建立控制。</p>
+<h3>第8步：分配责任和绩效标准</h3><p>给关键屏障明确所有者、预期功能、性能标准、检查测试方式、频率和失效处置。没有责任和验证的屏障，只是图上的一个方框。</p>
+
+<h2>屏障是否合格，要问六个问题</h2><ol><li>它针对哪条具体威胁或后果路径？</li><li>它通过什么机制阻止或减缓事件？</li><li>需要多快动作、达到什么能力？</li><li>如何证明它处于可用状态？</li><li>什么会使它退化或失效？</li><li>谁负责监测、维护和恢复？</li></ol>
+<div class="note"><strong>重要区别：</strong>BowTie中的“屏障”不自动等于LOPA中的“独立保护层IPL”。BowTie可以容纳更广泛的技术、程序和组织控制；只有满足LOPA严格条件的屏障，才可能在特定场景中获得PFD信用。</div>
+
+<h2>BowTie、HAZOP和LOPA怎么配合</h2><table class="tbl"><thead><tr><th>方法</th><th>主要任务</th><th>与BowTie的关系</th></tr></thead><tbody>
+<tr><td>HAZOP</td><td>系统识别偏差、原因、后果和现有保护</td><td>为BowTie提供场景和控制信息</td></tr>
+<tr><td>BowTie</td><td>可视化威胁—顶事件—后果及屏障</td><td>用于沟通、关键控制识别和屏障管理</td></tr>
+<tr><td>LOPA</td><td>对单一原因—后果场景进行半定量评价</td><td>验证某些屏障能否作为IPL并判断风险缺口</td></tr>
+</tbody></table>
+<p>详细边界请阅读：<a href="/articles/hazop-vs-lopa-differences-workflow.html"><strong>HAZOP与LOPA的区别及衔接流程</strong></a>；需要计算步骤时阅读：<a href="/articles/lopa-analysis-sil-determination-guide.html"><strong>LOPA分析与SIL定级指南</strong></a>。</p>
+
+<h2>让BowTie从图纸进入日常管理</h2><ul><li><strong>关联检查测试：</strong>屏障对应设备、程序和验证任务；</li><li><strong>设置领先指标：</strong>监测旁路、逾期测试、故障和能力缺口；</li><li><strong>连接事件学习：</strong>未遂事件和事故映射到失效屏障；</li><li><strong>纳入MOC：</strong>变更时检查是否新增威胁或削弱屏障；</li><li><strong>用于PSSR：</strong>开车前验证安全关键屏障是否真实可用；</li><li><strong>定期复审：</strong>结合运行经验、审计和外部事故更新模型。</li></ul>
+<p>相关开车验证方法见：<a href="/articles/pssr-pre-startup-safety-review-checklist.html"><strong>PSSR开车前安全审查指南</strong></a>。</p>
+
+<h2>五个常见错误</h2><ol><li><strong>顶事件写成最终后果：</strong>左右两侧无法正确区分；</li><li><strong>把所有管理活动都叫屏障：</strong>与具体路径没有直接控制关系；</li><li><strong>图越大越好：</strong>失去沟通价值，应重新调整范围；</li><li><strong>只有设备没有人因：</strong>忽略程序、能力、工作负荷和组织因素；</li><li><strong>画完即结束：</strong>没有绩效标准、责任人和监测数据。</li></ol>
+
+<h2>权威依据与延伸阅读</h2><ul class="sources"><li><a href="https://www.energyinst.org/technical/publications/topics/human-and-organisational-factors/bow-ties-in-risk-management-a-concept-book-for-process-safety" target="_blank" rel="noopener">Energy Institute/CCPS：Bow Ties in Risk Management</a></li><li><a href="https://www.caa.co.uk/safety-initiatives/working-with-industry/bowtie/" target="_blank" rel="noopener">英国民航局：BowTie元素与实施指南</a></li><li><a href="https://www.hse.gov.uk/regulating-major-hazards/assets/docs/major-hazards-regulatory-model.pdf" target="_blank" rel="noopener">英国HSE：重大事故风险屏障与BowTie模型</a></li><li><a href="https://www.iso.org/cms/%20render/live/en/sites/isoorg/contents/data/standard/07/21/72140.html" target="_blank" rel="noopener">IEC 31010:2019：风险评估技术</a></li></ul>
+<hr style="margin:50px 0;border:none;border-top:1px solid #eee"><div style="text-align:center;background:#edf3f5;border-radius:10px;padding:26px 18px"><h2 style="margin-top:0">需要可编辑的BowTie分析模板？</h2><p>获取BowTie模板、屏障台账及使用说明，进入「外企EHS工具箱」。加入后先使用BowTie相关文件，不需要从资料库第一页翻找。</p><a href="/products/toolbox.html?utm_source=seo&utm_medium=article&utm_campaign=SEO-TOOL-99&utm_content=bowtie" style="background:#1a4b5c;color:#fff;text-decoration:none;padding:12px 30px;border-radius:6px;display:inline-block">查看BowTie模板与工具箱</a></div>
+<p style="text-align:center;color:#8899aa;margin-top:24px">原文首发：<a href="https://mp.weixin.qq.com/s/Z0U3mtqIPnCxlsx4UjIfGg">微信公众号 EHS-SIL</a> · <a href="/articles/">查看全部文章</a></p>
+</article></main><footer class="footer"><div class="container"><p>© 2026 EHS-SIL · 外企EHS实操指南</p></div></footer></body></html>
