@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
 <title>工作台 · EHS-SIL</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <style>
@@ -26,10 +27,11 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <body>
 <div class="header"><div class="container">
 <h1>&#128187; EHS-SIL 工作台</h1>
-<p>John Yu · 仅限本人使用<a href="#" onclick="event.preventDefault();localStorage.removeItem('ehs_sil_auth');location.reload();" style="color:rgba(255,255,255,.5);font-size:.75rem;margin-left:1rem;text-decoration:none">退出</a></p>
+<p>John Yu · 内容、数据与专业规则管理入口</p>
 </div></div>
 <div class="container">
 <div class="tools">
+<div class="card"><h2>&#9989; JSA专业规则审核</h2><p>逐条批准、提出修改意见或拒绝候选规则，导出可追溯审核结果</p><a href="jsa-rule-review.html">开始审核 &rarr;</a></div>
 <div class="card"><h2>&#128221; 内容分发助手</h2><p>一篇文章生成4个平台格式：公众号、小红书、短视频、知识星球</p><a href="../tools/content-repurposer.html">打开 &rarr;</a></div>
 <div class="card"><h2>&#128202; 数据仪表盘</h2><p>各平台粉丝、星球收入、增长趋势统一查看</p><a href="../dashboard/">打开 &rarr;</a></div>
 <div class="card"><h2>&#128269; 工具库管理</h2><p>搜索535份工具，管理工具分类，查看索引</p><a href="../tools/">打开 &rarr;</a></div>
@@ -39,8 +41,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 </div>
 </div>
 <div class="footer"><div class="container">
-<p>&copy; 2026 EHS-SIL · 密码保护 · 仅限John Yu访问</p>
+<p>&copy; 2026 EHS-SIL · 浏览器工作台 · 敏感操作通过受保护的服务端完成</p>
 </div></div>
-<script src="../js/auth.js"></script>
 </body>
 </html>
