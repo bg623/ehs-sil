@@ -60,11 +60,7 @@
                 // For larger numbers, count faster
                 const duration = target > 5000 ? 2000 : 1500;
                 const increment = target > 5000 ? Math.ceil(target / 60) : Math.ceil(target / 50);
-                let current = parseInt(counter.textContent.replace(/,/g, ''), 10) || 0;
-                if (current >= target) {
-                    counter.textContent = target.toLocaleString();
-                    return;
-                }
+                let current = 0;
 
                 function updateCounter() {
                     current += increment;
