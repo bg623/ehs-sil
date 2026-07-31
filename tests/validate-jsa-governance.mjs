@@ -78,11 +78,7 @@ for (const rule of rules.rules) {
   assert.ok(Array.isArray(rule.golden_case_ids), `${rule.rule_id}黄金案例字段必须为数组`);
   assert.ok(Array.isArray(rule.source_refs), `${rule.rule_id}来源引用字段必须为数组`);
   assert.ok(rule.source_refs.length > 0, `${rule.rule_id}至少需要一个来源引用`);
-  assert.equal(
-    rule.source_review_status,
-    "verified_candidate_pending_product_owner_confirmation",
-    `${rule.rule_id}来源审核状态无效`,
-  );
+  assert.equal(rule.source_review_status, "product_owner_confirmed", `${rule.rule_id}来源尚未获产品负责人确认`);
   for (const sourceId of rule.source_refs) {
     const source = sourcesById[sourceId];
     assert.ok(source, `${rule.rule_id}引用不存在的来源${sourceId}`);
@@ -112,6 +108,20 @@ for (const rule of rules.rules) {
     }
   }
 }
+
+assert.equal(rules.publication_status, "professionally_approved_not_production_ready");
+assert.ok(Array.isArray(rules.approval_history) && rules.approval_history.length > 0);
+assert.equal(rules.approval_history.at(-1).result, "approved_for_internal_testing");
+assert.equal(rules.approval_history.at(-1).approval_date, "2026-07-31");
+assert.equal(rules.rules.filter((rule) => rule.status === "approved").length, 11);
+assert.equal(
+  rules.rules.filter((rule) => rule.source_review_status === "product_owner_confirmed").length,
+  11,
+);
+assert.equal(
+  rules.rules.filter((rule) => rule.production_status === "blocked_pending_golden_case").length,
+  11,
+);
 
 const caseIds = new Set();
 for (const testCase of cases.cases) {

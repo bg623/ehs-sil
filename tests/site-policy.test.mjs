@@ -51,17 +51,17 @@ assert.match(riskAnalysis, /<h3>JSA 工作安全分析<\/h3>/);
 assert.match(riskAnalysis, /专业教练 V0\.1/);
 assert.match(riskAnalysis, /href="jsa-tool\.html"[^>]*>开始JSA分析/);
 
-assert.equal(rules.publication_status, "partially_reviewed_not_production_ready");
+assert.equal(rules.publication_status, "professionally_approved_not_production_ready");
 assert.ok(rules.rules.length > 0);
 assert.equal(
   rules.rules.filter((rule) => rule.status === "approved").length,
-  6,
-  "应记录产品负责人批准的6条规则",
+  11,
+  "应记录产品负责人批准的11条规则",
 );
 assert.equal(
   rules.rules.filter((rule) => rule.status === "changes_requested").length,
-  5,
-  "应记录产品负责人要求修改的5条规则",
+  0,
+  "双语显示和来源复核后不应保留待修改规则",
 );
 assert.equal(
   rules.rules.filter((rule) => rule.production_status === "production_ready").length,
@@ -75,8 +75,8 @@ console.log(
     hero_actions: 6,
     jsa_location: "risk-analysis",
     candidate_rules: rules.rules.length,
-    professionally_approved_rules: 6,
-    changes_requested_rules: 5,
+    professionally_approved_rules: 11,
+    changes_requested_rules: 0,
     deployment_ready_rules: rules.rules.filter(
       (rule) => rule.production_status === "production_ready",
     ).length,

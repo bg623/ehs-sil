@@ -21,13 +21,13 @@ const state = reviewWorkflow.createReviewState(ruleset, null);
 assert.equal(state.reviews.length, 11, "审核页必须加载全部候选规则");
 assert.deepEqual(
   reviewWorkflow.summarize(state.reviews),
-  {pending: 0, approved: 6, needs_revision: 5, rejected: 0},
+  {pending: 0, approved: 11, needs_revision: 0, rejected: 0},
 );
 assert.equal(state.reviewer, "Go by John");
-assert.equal(state.review_date, "2026-07-30");
+assert.equal(state.review_date, "2026-07-31");
 
 state.reviewer = "John Yu";
-state.review_date = "2026-07-30";
+state.review_date = "2026-07-31";
 state.reviews[0].decision = "approved";
 state.reviews[0].source = "待产品负责人补充并审核来源";
 state.reviews[0].source_refs = [];
@@ -61,11 +61,11 @@ state.reviews[1].comments = "补充设备打开前的介质确认要求";
 const exported = reviewWorkflow.buildExport(
   ruleset,
   state,
-  "2026-07-30T10:00:00.000Z",
+  "2026-07-31T10:00:00.000Z",
 );
 assert.equal(exported.export_type, "jsa_product_owner_review");
-assert.equal(exported.summary.approved, 7);
-assert.equal(exported.summary.needs_revision, 4);
+assert.equal(exported.summary.approved, 10);
+assert.equal(exported.summary.needs_revision, 1);
 assert.equal(exported.summary.pending, 0);
 assert.equal(exported.reviews[0].reviewer, "John Yu");
 assert.deepEqual(exported.reviews[0].source_refs, ["GB-T-44686-2024"]);
