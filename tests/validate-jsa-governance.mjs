@@ -44,7 +44,9 @@ const caseFields = [
 ];
 
 assert.equal(cases.cases.length, 20, "必须保留20个黄金案例槽位");
-assert.equal(cases.real_case_count, 0, "尚未收到产品负责人样本时，真实案例数必须为0");
+assert.equal(cases.real_case_count, 5, "应登记5份产品负责人提供的真实脱敏样本");
+assert.equal(cases.candidate_case_count, 5, "应有5个待专家确认候选案例");
+assert.equal(cases.approved_case_count, 0, "产品负责人确认前不得存在已批准黄金案例");
 
 const ruleIds = new Set();
 const sourcesById = sourceCatalog.sources;
@@ -133,6 +135,18 @@ for (const testCase of cases.cases) {
     assert.ok(testCase.input_scenario, `${testCase.case_id}缺少输入场景`);
     assert.ok(testCase.expert_confirmed_result, `${testCase.case_id}缺少专家确认结果`);
     assert.ok(testCase.reviewer, `${testCase.case_id}缺少审核人`);
+    for (const id of [
+      ...testCase.expected_triggered_rules,
+      ...testCase.rules_that_must_not_trigger,
+    ]) {
+      assert.ok(ruleIds.has(id), `${testCase.case_id}引用不存在的规则${id}`);
+    }
+  } else if (testCase.status === "pending_expert_confirmation") {
+    assert.ok(testCase.input_scenario, `${testCase.case_id}候选案例缺少输入场景`);
+    assert.match(testCase.sample_reference || "", /^JSA-SAMPLE-\d{2}$/, `${testCase.case_id}样本引用无效`);
+    assert.equal(testCase.expert_confirmed_result, null, `${testCase.case_id}不得虚构专家结论`);
+    assert.equal(testCase.reviewer, null, `${testCase.case_id}不得预填审核人`);
+    assert.equal(testCase.review_date, null, `${testCase.case_id}不得预填审核日期`);
     for (const id of [
       ...testCase.expected_triggered_rules,
       ...testCase.rules_that_must_not_trigger,
