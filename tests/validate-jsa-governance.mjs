@@ -45,8 +45,9 @@ const caseFields = [
 
 assert.equal(cases.cases.length, 20, "必须保留20个黄金案例槽位");
 assert.equal(cases.real_case_count, 5, "应登记5份产品负责人提供的真实脱敏样本");
-assert.equal(cases.candidate_case_count, 5, "应有5个待专家确认候选案例");
-assert.equal(cases.approved_case_count, 0, "产品负责人确认前不得存在已批准黄金案例");
+assert.equal(cases.candidate_case_count, 0, "5个候选均已完成授权专业审核");
+assert.equal(cases.approved_case_count, 5, "应有5个已批准黄金案例");
+assert.equal(cases.minimum_required_case_count, 20, "完整黄金案例集最低要求必须保持20个");
 
 const ruleIds = new Set();
 const sourcesById = sourceCatalog.sources;
@@ -95,6 +96,11 @@ for (const rule of rules.rules) {
     assert.doesNotMatch(rule.source, /待.*补充|待.*审核/, `${rule.rule_id}缺少专业来源`);
     assert.ok(rule.source_refs.length > 0, `${rule.rule_id}缺少已核实来源引用`);
   }
+  for (const caseId of rule.golden_case_ids) {
+    const goldenCase = goldenCasesById.get(caseId);
+    assert.ok(goldenCase, `${rule.rule_id}引用不存在的黄金案例${caseId}`);
+    assert.equal(goldenCase.status, "approved", `${caseId}尚未完成专家确认`);
+  }
   if (rule.status === "changes_requested") {
     assert.ok(rule.reviewer, `${rule.rule_id}缺少提出修改意见的审核人`);
     assert.match(rule.review_date || "", /^\d{4}-\d{2}-\d{2}$/, `${rule.rule_id}审核日期无效`);
@@ -111,7 +117,7 @@ for (const rule of rules.rules) {
   }
 }
 
-assert.equal(rules.publication_status, "professionally_approved_not_production_ready");
+assert.equal(rules.publication_status, "professionally_approved_partial_golden_coverage_not_production_ready");
 assert.ok(Array.isArray(rules.approval_history) && rules.approval_history.length > 0);
 assert.equal(rules.approval_history.at(-1).result, "approved_for_internal_testing");
 assert.equal(rules.approval_history.at(-1).approval_date, "2026-07-31");
@@ -133,8 +139,11 @@ for (const testCase of cases.cases) {
 
   if (testCase.status === "approved") {
     assert.ok(testCase.input_scenario, `${testCase.case_id}缺少输入场景`);
+    assert.ok(testCase.confirmed_input_context, `${testCase.case_id}缺少已确认规则上下文`);
     assert.ok(testCase.expert_confirmed_result, `${testCase.case_id}缺少专家确认结果`);
+    assert.equal(testCase.expert_confirmed_result.decision, "approved_for_regression_testing", `${testCase.case_id}审核结论无效`);
     assert.ok(testCase.reviewer, `${testCase.case_id}缺少审核人`);
+    assert.match(testCase.review_date || "", /^\d{4}-\d{2}-\d{2}$/, `${testCase.case_id}审核日期无效`);
     for (const id of [
       ...testCase.expected_triggered_rules,
       ...testCase.rules_that_must_not_trigger,

@@ -17,6 +17,7 @@ const maintenanceContext = {
   simultaneous_operations: false,
   non_routine: true,
   controlText: "加强培训，佩戴PPE",
+  controlEntries: ["加强培训，佩戴PPE"],
   maxSeverity: 4,
 };
 const ids = engine
@@ -34,6 +35,30 @@ for (const expected of [
   assert.ok(ids.includes(expected), `开发者单元测试应触发${expected}`);
 }
 assert.ok(!ids.includes("JSA-HOTWORK-001"), "不应触发动火规则");
+
+const mixedControlContext = {
+  scenarios: ["maintenance"],
+  selectedTags: ["mechanical"],
+  controlText: "佩戴PPE，并使用盲板隔离、上锁挂牌和机械防护罩",
+  controlEntries: ["佩戴PPE，并使用盲板隔离、上锁挂牌和机械防护罩"],
+  maxSeverity: 2,
+};
+const controlRule = rules.find((rule) => rule.rule_id === "JSA-CONTROL-001");
+assert.equal(
+  engine.evaluateRules([controlRule], mixedControlContext, {includePending: true}).length,
+  0,
+  "同时存在更高层级控制时，不得仅因出现PPE字样误报",
+);
+
+const stepLevelControlContext = {
+  ...mixedControlContext,
+  controlEntries: ["认真操作，佩戴手套", "使用盲板隔离并上锁挂牌"],
+};
+assert.equal(
+  engine.evaluateRules([controlRule], stepLevelControlContext, {includePending: true}).length,
+  1,
+  "任一作业步骤仅依赖PPE或行为提醒时应提示控制层级",
+);
 assert.equal(
   engine.evaluateRules(rules, maintenanceContext, { includePending: false }).length,
   0,

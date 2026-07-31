@@ -51,7 +51,7 @@ assert.match(riskAnalysis, /<h3>JSA 工作安全分析<\/h3>/);
 assert.match(riskAnalysis, /专业教练 V0\.1/);
 assert.match(riskAnalysis, /href="jsa-tool\.html"[^>]*>开始JSA分析/);
 
-assert.equal(rules.publication_status, "professionally_approved_not_production_ready");
+assert.equal(rules.publication_status, "professionally_approved_partial_golden_coverage_not_production_ready");
 assert.ok(rules.rules.length > 0);
 assert.equal(
   rules.rules.filter((rule) => rule.status === "approved").length,
@@ -66,7 +66,7 @@ assert.equal(
 assert.equal(
   rules.rules.filter((rule) => rule.production_status === "production_ready").length,
   0,
-  "没有黄金案例覆盖时不得产生生产就绪规则",
+  "尚未达到20个黄金案例最低要求时不得产生生产就绪规则",
 );
 
 console.log(

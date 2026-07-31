@@ -293,6 +293,9 @@ function collectContext() {
         controlText: steps.map(function(step) {
             return (step.existingCtrl || '') + ' ' + (step.addCtrl || '');
         }).join(' '),
+        controlEntries: steps.map(function(step) {
+            return ((step.existingCtrl || '') + ' ' + (step.addCtrl || '')).trim();
+        }).filter(Boolean),
         maxSeverity: steps.reduce(function(max, step) {
             return Math.max(max, Number(step.S || 0));
         }, 0)

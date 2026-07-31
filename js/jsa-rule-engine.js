@@ -27,6 +27,22 @@
                 return text.indexOf(String(pattern).toLowerCase()) >= 0;
             });
         }
+        if (condition.control_dependency_check) {
+            var dependencyPatterns = condition.control_dependency_check.dependency_patterns || [];
+            var higherOrderPatterns = condition.control_dependency_check.higher_order_patterns || [];
+            var entries = context.controlEntries.length ? context.controlEntries : [context.controlText];
+            return entries.some(function (entry) {
+                var text = String(entry || '').toLowerCase();
+                if (!text) return false;
+                var hasDependency = dependencyPatterns.some(function (pattern) {
+                    return text.indexOf(String(pattern).toLowerCase()) >= 0;
+                });
+                var hasHigherOrderControl = higherOrderPatterns.some(function (pattern) {
+                    return text.indexOf(String(pattern).toLowerCase()) >= 0;
+                });
+                return hasDependency && !hasHigherOrderControl;
+            });
+        }
         if (condition.severity_at_least) {
             return Number(context.maxSeverity || 0) >= Number(condition.severity_at_least);
         }
@@ -75,6 +91,7 @@
             contractor_work: Boolean(value.contractor_work),
             non_routine: Boolean(value.non_routine),
             controlText: String(value.controlText || ''),
+            controlEntries: Array.isArray(value.controlEntries) ? value.controlEntries : [],
             maxSeverity: Number(value.maxSeverity || 0)
         };
     }

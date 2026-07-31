@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "ruleset_version": "0.1.3-professionally-approved",
-  "publication_status": "professionally_approved_not_production_ready",
-  "last_updated": "2026-07-31",
+  "ruleset_version": "0.1.4-five-golden-cases-approved",
+  "publication_status": "professionally_approved_partial_golden_coverage_not_production_ready",
+  "last_updated": "2026-08-01",
   "approval_history": [
     {
       "approval_id": "JSA-APPROVAL-2026-07-31-001",
@@ -34,7 +34,7 @@
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-CHEM-001",
@@ -55,7 +55,7 @@
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-HOTWORK-001",
@@ -76,7 +76,7 @@
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-CONFINED-001",
@@ -97,7 +97,7 @@
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-004"]
     },
     {
       "rule_id": "JSA-HEIGHT-001",
@@ -118,7 +118,7 @@
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-002","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-LIFTING-001",
@@ -139,7 +139,7 @@
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-002","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-SIMOPS-001",
@@ -160,7 +160,7 @@
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-002"]
     },
     {
       "rule_id": "JSA-CONTRACTOR-001",
@@ -181,7 +181,7 @@
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-002","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-NONROUTINE-001",
@@ -202,13 +202,13 @@
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-CONTROL-001",
       "rule_name": "控制措施过度依赖个体防护装备（Personal Protective Equipment，PPE）或培训",
       "applicable_scenario": ["all"],
-      "trigger_condition": {"control_text_pattern": ["ppe", "防护用品", "劳保", "培训", "教育", "注意安全"]},
+      "trigger_condition": {"control_dependency_check":{"dependency_patterns":["ppe","防护用品","劳保","培训","教育","注意安全","认真操作","小心操作"],"higher_order_patterns":["消除","替代","隔离","上锁","挂牌","lototo","loto","盲板","护栏","平台","脚手架","联锁","通风","局部排风","检测","防爆工具","区域隔离","机械防护","防护罩","吊装禁入区"]}},
       "risk_category": "control_quality",
       "prompt_text": "当前控制措施可能主要依赖个体防护装备（Personal Protective Equipment，PPE）、培训或人员注意，请人工确认是否存在更高层级控制。",
       "reason": "仅依赖人员行为的控制更容易受现场条件、疲劳、沟通和执行偏差影响。",
@@ -217,13 +217,13 @@
       "source": "GB/T 45001-2020第8.1.2条；美国国家职业安全卫生研究所（NIOSH）控制层级（Hierarchy of Controls）",
       "source_refs": ["GB-T-45001-2020", "NIOSH-HIERARCHY"],
       "source_review_status": "product_owner_confirmed",
-      "version": "0.1.0",
-      "reviewer": "Go by John",
-      "review_date": "2026-07-31",
-      "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
+      "version": "0.1.1",
+      "reviewer": "Codex AI专业审核（产品负责人授权）",
+      "review_date": "2026-08-01",
+      "review_notes": "使用真实脱敏JSA复核后，将任意出现PPE即提示的宽泛条件修正为逐步骤识别主要依赖PPE、培训或行为提醒且缺少更高层级控制；产品负责人授权完成专业审核。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-005"]
     },
     {
       "rule_id": "JSA-EMERGENCY-001",
@@ -244,7 +244,7 @@
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
       "production_status": "blocked_pending_golden_case",
-      "golden_case_ids": []
+      "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     }
   ]
 }
