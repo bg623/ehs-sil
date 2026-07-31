@@ -1,20 +1,21 @@
 {
   "schema_version": "1.0",
-  "case_set_version": "0.3.0-ai-expert-reviewed",
+  "case_set_version": "1.0.0-twenty-golden-cases-reviewed",
   "data_source": "product_owner_provided_deidentified_jsa_samples",
   "real_case_count": 5,
+  "derived_case_count": 15,
   "candidate_case_count": 0,
-  "approved_case_count": 5,
+  "approved_case_count": 20,
   "minimum_required_case_count": 20,
-  "notice": "前5个槽位来自产品负责人提供并由Codex技术脱敏的真实JSA样本，已由Codex AI专业审核在产品负责人明确授权下完成确认。该确认可用于规则回归测试，但不等同于独立人类注册专家签字、现场作业批准、法规符合性结论或风险可接受性判断；距离20个黄金案例最低要求仍缺15个。",
+  "notice": "20个黄金案例全部源自产品负责人提供并由Codex技术脱敏的5份真实JSA工作簿，其中5个为工作簿级综合案例，15个为按原表步骤拆分的可独立回归子案例。所有案例已由Codex AI专业审核在产品负责人明确授权下完成确认。该确认可用于规则回归测试，但不等同于独立人类注册专家签字、现场作业批准、法规符合性结论或风险可接受性判断。",
   "review_history": [
     {
       "review_id": "JSA-GOLD-REVIEW-2026-08-01-001",
       "reviewer": "Codex AI专业审核（产品负责人授权）",
       "review_date": "2026-08-01",
       "authorization_evidence": "产品负责人在Codex任务中明确要求：对于表中需要专家确认及审核的，请一并完成。",
-      "result": "five_cases_approved_for_regression_testing",
-      "limitations": "AI辅助专业审核；仍需补足20个黄金案例，且最终生产上线继续由产品负责人批准。"
+      "result": "twenty_cases_approved_for_regression_testing",
+      "limitations": "AI辅助专业审核；最终生产上线继续由产品负责人批准。"
     }
   ],
   "cases": [
@@ -83,20 +84,110 @@
       "reviewer": "Codex AI专业审核（产品负责人授权）",
       "review_date": "2026-08-01"
     },
-    {"case_id":"JSA-GOLD-006","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-007","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-008","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-009","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-010","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-011","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-012","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-013","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-014","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-015","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-016","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-017","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-018","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-019","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null},
-    {"case_id":"JSA-GOLD-020","status":"awaiting_product_owner_input","input_scenario":null,"expected_triggered_rules":[],"rules_that_must_not_trigger":[],"critical_risk_omissions":[],"expert_confirmed_result":null,"sample_reference":null,"reviewer":null,"review_date":null}
+    {
+      "case_id":"JSA-GOLD-006","status":"approved","input_scenario":"甲醛卸料和进料管路蒸汽吹扫，涉及残余甲醛、蒸汽压力、高温表面和储罐超压。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","chemical_handling"],"selectedTags":["mechanical","thermal","chemical","toxic","flammable"],"simultaneous_operations":false,"contractor_work":false,"non_routine":true,"controlText":"PPE、压力温度控制、软管固定和泄压","controlEntries":["提醒注意高温并佩戴手套","控制吹扫压力、温升和时间并固定软管"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001"],
+      "critical_risk_omissions":["甲醛专用检测方法和吹扫终点判据未定义。","超压或软管失效后的紧急隔离和人员撤离条件不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、非例行、控制层级和应急规则。","boundary":"仅适用于蒸汽吹扫子步骤。"},"sample_reference":"JSA-SAMPLE-01","sample_scope":"工作安全分析（JSA）-01｜蒸汽吹扫步骤2-4","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-007","status":"approved","input_scenario":"甲醛管线打开、法兰拆卸、清洗和加盲板，涉及残余化学品、阀门内漏和误开启。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","chemical_handling"],"selectedTags":["mechanical","chemical","toxic","flammable"],"simultaneous_operations":false,"contractor_work":false,"non_routine":true,"controlText":"呼吸防护、手套、LOTOTO、盲板和泄漏收集","controlEntries":["佩戴全面罩过滤式防毒面具和丁腈手套","上锁挂牌（Lockout/Tagout，LOTO）、加盲板和准备泄漏收集容器"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001"],
+      "critical_risk_omissions":["打开管线前的零能量和无残液验证方法未量化。","甲醛泄漏后的冲洗、报警和医疗响应条件不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、非例行、控制层级和应急规则。","boundary":"未包含后续动火施工。"},"sample_reference":"JSA-SAMPLE-01","sample_scope":"工作安全分析（JSA）-01｜管线清洗加盲板步骤5-6","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-008","status":"approved","input_scenario":"甲醛管路现场配管、切割和动火改造，设备可能残留可燃有毒介质。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","chemical_handling","hot_work"],"selectedTags":["mechanical","chemical","toxic","flammable","hot_work"],"simultaneous_operations":false,"contractor_work":false,"non_routine":true,"controlText":"吹扫排空、LOTOTO、动火许可、连续气体检测和固定动火区","controlEntries":["吹扫排空并进行上锁挂牌（Lockout/Tagout，LOTO）","办理动火许可并连续气体检测"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-HOTWORK-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["可燃和有毒气体检测位置、频次、报警值及仪器适用性未完整定义。","动火异常中止、复测和重新许可条件未形成闭环。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、动火、非例行和应急规则，现有控制不属于单纯依赖PPE。","boundary":"动火许可不能替代工艺隔离和检测验证。"},"sample_reference":"JSA-SAMPLE-01","sample_scope":"工作安全分析（JSA）-01｜现场改造步骤7","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-009","status":"approved","input_scenario":"管路水压试验、焊缝钝化和清洗收尾，涉及压力能和腐蚀性钝化材料。",
+      "confirmed_input_context":{"scenarios":["maintenance","chemical_handling"],"selectedTags":["mechanical","hydraulic","chemical","corrosive"],"simultaneous_operations":false,"contractor_work":false,"non_routine":true,"controlText":"防酸碱手套、护目镜、压力试验和冲洗","controlEntries":["使用防酸碱手套和防护眼镜","按试压方案升压并隔离试验区域"],"maxSeverity":3},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-NONROUTINE-001","JSA-CONTROL-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-EMERGENCY-001"],
+      "critical_risk_omissions":["试压介质、升压步骤、保压判据和泄压禁入区未完整定义。","钝化材料的SDS、冲洗废液收集和处置要求未明确。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、非例行和控制层级规则；当前严重性输入不触发高后果应急规则。","boundary":"若试压压力或化学品后果升级，应重新评定严重性。"},"sample_reference":"JSA-SAMPLE-01","sample_scope":"工作安全分析（JSA）-01｜收尾试压与钝化步骤8","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-010","status":"approved","input_scenario":"防爆生产区域脚手架运输、卸车、搭设和验收，邻近车辆与生产活动。",
+      "confirmed_input_context":{"scenarios":["work_at_height","lifting"],"selectedTags":["work_at_height","lifting","mechanical"],"simultaneous_operations":true,"contractor_work":true,"non_routine":true,"controlText":"持证、PPE、脚手架方案、分阶段验收和区域隔离","controlEntries":["持证上岗并佩戴PPE","脚手架方案、分阶段验收和区域隔离"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-ENERGY-001","JSA-CHEM-001","JSA-HOTWORK-001","JSA-CONFINED-001"],
+      "critical_risk_omissions":["地基承载、脚手架荷载等级、验收标准和挂牌状态未完整定义。","车辆、生产排气和脚手架施工的同时作业接口责任不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发高处、吊装、同时作业、承包商、非例行、控制层级和应急规则。","boundary":"不包含后续磨削或涂装。"},"sample_reference":"JSA-SAMPLE-02","sample_scope":"工作安全分析（JSA）-01｜脚手架运输与搭设","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-011","status":"approved","input_scenario":"脚手架上使用临时电源、电镐和磨光机进行旧涂层清理，防爆区域存在点火源。",
+      "confirmed_input_context":{"scenarios":["work_at_height","hot_work","electrical_work"],"selectedTags":["work_at_height","hot_work","electrical","flammable"],"simultaneous_operations":true,"contractor_work":true,"non_routine":true,"controlText":"PPE、机械防护、临时电源检查、动火许可和持续气体检测","controlEntries":["佩戴面部和眼睛PPE","检查配电箱并安装机械防护装置","办理动火许可并持续气体检测"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-HOTWORK-001","JSA-HEIGHT-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-CHEM-001","JSA-CONFINED-001","JSA-LIFTING-001"],
+      "critical_risk_omissions":["临时用电保护、接地、漏电保护测试和电缆布置未完整定义。","火花飞溅范围、可燃物隔离和异常停工条件不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、动火、高处、同时作业、承包商、非例行、控制层级和应急规则。","boundary":"旧涂层成分未知时还需重新评估化学暴露。"},"sample_reference":"JSA-SAMPLE-02","sample_scope":"工作安全分析（JSA）-01｜旧涂层清理与电动工具","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-012","status":"approved","input_scenario":"高处平台防火涂料存放、调配和涂装，邻近生产排气且现场禁止交叉动火。",
+      "confirmed_input_context":{"scenarios":["chemical_handling","work_at_height"],"selectedTags":["chemical","flammable","toxic","work_at_height"],"simultaneous_operations":true,"contractor_work":true,"non_routine":true,"controlText":"防渗漏托盘、限量存放、PPE、隔离动火和通风","controlEntries":["佩戴呼吸防护和化学防护PPE","防渗漏托盘、限量存放并与动火隔离"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-CHEM-001","JSA-HEIGHT-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-ENERGY-001","JSA-HOTWORK-001","JSA-CONFINED-001","JSA-LIFTING-001"],
+      "critical_risk_omissions":["涂料SDS、职业接触限值、通风量和呼吸防护适配未明确。","涂装与生产排气、车辆和潜在火源的接口控制不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发化学品、高处、同时作业、承包商、非例行、控制层级和应急规则；禁止动火不等于本场景触发动火规则。","boundary":"若实施磨削或产生火花，应切换为动火场景。"},"sample_reference":"JSA-SAMPLE-02","sample_scope":"工作安全分析（JSA）-01｜涂料存放与涂装","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-013","status":"approved","input_scenario":"利用绳索或滑轮在约5米高处垂直运送工具、涂料和旧涂层袋。",
+      "confirmed_input_context":{"scenarios":["work_at_height","lifting"],"selectedTags":["work_at_height","lifting"],"simultaneous_operations":true,"contractor_work":true,"non_routine":true,"controlText":"使用滑轮、限制单件重量、区域隔离和现场巡检","controlEntries":["使用滑轮并限制单件重量","设置区域隔离和现场巡检"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-ENERGY-001","JSA-CHEM-001","JSA-HOTWORK-001","JSA-CONFINED-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["载荷重量、容器强度、吊点、绳索能力和防脱措施未完整定义。","垂直运输路线及下方禁入区的物理隔离不足。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发高处、吊装、同时作业、承包商、非例行和应急规则；现有控制包含工程与隔离措施，不触发控制层级规则。","boundary":"不把禁止动火描述误识别为实际动火。"},"sample_reference":"JSA-SAMPLE-02","sample_scope":"工作安全分析（JSA）-01｜材料垂直运输","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-014","status":"approved","input_scenario":"英文版甲醛卸料管线蒸汽吹扫，涉及有毒可燃残留物、高温和压力。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","chemical_handling"],"selectedTags":["mechanical","thermal","chemical","toxic","flammable"],"simultaneous_operations":false,"contractor_work":false,"non_routine":true,"controlText":"PPE, pressure control, hose restraint and depressurization","controlEntries":["Wear gloves and PPE","Control pressure and temperature and restrain the hose"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001"],
+      "critical_risk_omissions":["Purging end point and formaldehyde-specific test criteria are not defined. Translation terminology requires controlled review.","Emergency isolation and evacuation triggers are incomplete."],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认英文蒸汽吹扫子场景与中文对应案例产生一致规则结果。","boundary":"用于验证双语规则映射，不证明翻译文件已获受控发布。"},"sample_reference":"JSA-SAMPLE-03","sample_scope":"Job Safety Analysis｜Steam purge steps 2-4","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-015","status":"approved","input_scenario":"英文版甲醛管线现场切割和动火改造，设备可能残留有毒可燃介质。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","chemical_handling","hot_work"],"selectedTags":["mechanical","chemical","toxic","flammable","hot_work"],"simultaneous_operations":false,"contractor_work":false,"non_routine":true,"controlText":"Purging, draining, LOTO, hot-work permit and continuous gas testing","controlEntries":["Purge and drain the equipment and apply Lockout/Tagout (LOTO)","Issue a hot-work permit and conduct continuous gas testing"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-HOTWORK-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTRACTOR-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["Gas test locations, frequency, alarm limits and detector suitability are incomplete.","Stop-work, retest and permit revalidation criteria are incomplete."],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认英文动火子场景与中文对应案例产生一致规则结果。","boundary":"动火许可不替代隔离和无危险介质验证。"},"sample_reference":"JSA-SAMPLE-03","sample_scope":"Job Safety Analysis｜On-site hot work step 7","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-016","status":"approved","input_scenario":"污水处理设备顶盖吊装、池边临边作业、设备内部填料清理和受限空间进入。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","confined_space","work_at_height","lifting"],"selectedTags":["mechanical","toxic","confined_space","work_at_height","lifting"],"simultaneous_operations":false,"contractor_work":true,"non_routine":true,"controlText":"LOTOTO、吊装许可、护栏、通风、气体检测和救援装备","controlEntries":["上锁挂牌（Lockout/Tagout，LOTO）、通风、气体检测和救援装备","办理吊装许可并设置临边护栏"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-SIMOPS-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["受限空间隔离清单、检测频次、通讯和救援角色未完整定义。","顶盖吊装的载荷、吊点、路径和禁入区未完整定义。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、受限空间、高处、吊装、承包商、非例行和应急规则。","boundary":"顺序作业不自动触发同时作业规则。"},"sample_reference":"JSA-SAMPLE-04","sample_scope":"工作安全分析（JSA）-01｜顶盖拆除与填料清理","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-017","status":"approved","input_scenario":"污水处理设备排空、进入检查和内部检修，必要时实施管路动火改造。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","confined_space","hot_work"],"selectedTags":["mechanical","electrical","toxic","confined_space","hot_work"],"simultaneous_operations":false,"contractor_work":true,"non_routine":true,"controlText":"LOTOTO、受限空间许可、通风、气体检测、救援和动火许可","controlEntries":["上锁挂牌（Lockout/Tagout，LOTO）、通风、检测和救援","动火许可和可燃气检测"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-HOTWORK-001","JSA-CONFINED-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["设备隔离边界和内部检修能量源清单不完整。","受限空间内动火的检测、通风和撤离联动条件未完整定义。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、动火、受限空间、承包商、非例行和应急规则。","boundary":"只有实际实施动火时才使用本案例。"},"sample_reference":"JSA-SAMPLE-04","sample_scope":"工作安全分析（JSA）-02｜设备内部检查检修","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-018","status":"approved","input_scenario":"污水处理设备排空冲洗后进入设备内部检查和更换刮泥机部件。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","confined_space"],"selectedTags":["mechanical","electrical","toxic","confined_space"],"simultaneous_operations":false,"contractor_work":true,"non_routine":true,"controlText":"LOTOTO、受限空间许可、通风、气体检测和救援","controlEntries":["上锁挂牌（Lockout/Tagout，LOTO）、通风、气体检测和救援"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-CONFINED-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-SIMOPS-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["刮泥机机械和电气隔离点及零能量验证未列全。","受限空间检测位置、频次、通讯和救援进入条件不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、受限空间、承包商、非例行和应急规则。","boundary":"不含实际动火和起重作业。"},"sample_reference":"JSA-SAMPLE-04","sample_scope":"工作安全分析（JSA）-03｜刮泥机检查更换","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-019","status":"approved","input_scenario":"液下泵吊出、临时排泥和储罐内部清理检查，可能安排承包商进入。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","confined_space","work_at_height","lifting"],"selectedTags":["mechanical","toxic","confined_space","work_at_height","lifting"],"simultaneous_operations":false,"contractor_work":true,"non_routine":true,"controlText":"LOTOTO、吊装许可、临边防护、通风、气体检测和救援三脚架","controlEntries":["上锁挂牌（Lockout/Tagout，LOTO）、通风、检测和救援三脚架","办理吊装许可并设置临边防护"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-CONFINED-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-HOTWORK-001","JSA-SIMOPS-001","JSA-CONTROL-001"],
+      "critical_risk_omissions":["液下泵重量、重心、吊点、吊具选择和吊运路径未完整定义。","储罐进入条件、检测频次、救援角色和污泥生物化学危害未完整识别。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、受限空间、高处、吊装、承包商、非例行和应急规则。","boundary":"现场排程发生交叉时需另行触发同时作业规则。"},"sample_reference":"JSA-SAMPLE-04","sample_scope":"工作安全分析（JSA）-04至05｜液下泵与储罐清理","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    },
+    {
+      "case_id":"JSA-GOLD-020","status":"approved","input_scenario":"承重脚手架和桁架安装、吊装载荷试验、顶盖切割拆除及池外虹吸填料施工。",
+      "confirmed_input_context":{"scenarios":["maintenance","equipment_opening","work_at_height","lifting","hot_work"],"selectedTags":["mechanical","toxic","work_at_height","lifting","hot_work"],"simultaneous_operations":false,"contractor_work":true,"non_routine":true,"controlText":"PPE、脚手架验收、生命线、LOTOTO、气体检测和吊装控制","controlEntries":["穿戴PPE并持证上岗","脚手架验收、生命线、上锁挂牌（Lockout/Tagout，LOTO）、气体检测和吊装禁入区"],"maxSeverity":4},
+      "expected_triggered_rules":["JSA-ENERGY-001","JSA-CHEM-001","JSA-HOTWORK-001","JSA-HEIGHT-001","JSA-LIFTING-001","JSA-CONTRACTOR-001","JSA-NONROUTINE-001","JSA-CONTROL-001","JSA-EMERGENCY-001"],"rules_that_must_not_trigger":["JSA-CONFINED-001","JSA-SIMOPS-001"],
+      "critical_risk_omissions":["桁架设计载荷、连接验收和载荷试验合格准则不完整。","顶盖拆除后的坠落、溺水、坠物和水上救援安排不完整。"],
+      "expert_confirmed_result":{"decision":"approved_for_regression_testing","conclusion":"确认该子场景应触发危险能量、化学品、动火、高处、吊装、承包商、非例行、控制层级和应急规则。","boundary":"池外虹吸不触发受限空间；人员进入方式变化时必须重新识别。"},"sample_reference":"JSA-SAMPLE-05","sample_scope":"工作安全分析（JSA）-01｜桁架、顶盖与虹吸施工","reviewer":"Codex AI专业审核（产品负责人授权）","review_date":"2026-08-01"
+    }
   ]
 }

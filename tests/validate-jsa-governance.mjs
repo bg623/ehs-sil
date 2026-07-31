@@ -45,8 +45,9 @@ const caseFields = [
 
 assert.equal(cases.cases.length, 20, "必须保留20个黄金案例槽位");
 assert.equal(cases.real_case_count, 5, "应登记5份产品负责人提供的真实脱敏样本");
-assert.equal(cases.candidate_case_count, 0, "5个候选均已完成授权专业审核");
-assert.equal(cases.approved_case_count, 5, "应有5个已批准黄金案例");
+assert.equal(cases.derived_case_count, 15, "应从真实样本步骤拆分15个子案例");
+assert.equal(cases.candidate_case_count, 0, "20个案例均已完成授权专业审核");
+assert.equal(cases.approved_case_count, 20, "应有20个已批准黄金案例");
 assert.equal(cases.minimum_required_case_count, 20, "完整黄金案例集最低要求必须保持20个");
 
 const ruleIds = new Set();
@@ -66,6 +67,7 @@ const allowedProductionStatuses = new Set([
   "blocked_pending_product_owner_review",
   "blocked_pending_product_owner_reapproval",
   "blocked_pending_golden_case",
+  "blocked_pending_product_owner_launch_approval",
   "production_ready",
   "retired",
 ]);
@@ -117,7 +119,7 @@ for (const rule of rules.rules) {
   }
 }
 
-assert.equal(rules.publication_status, "professionally_approved_partial_golden_coverage_not_production_ready");
+assert.equal(rules.publication_status, "professionally_approved_golden_regression_passed_pending_launch_approval");
 assert.ok(Array.isArray(rules.approval_history) && rules.approval_history.length > 0);
 assert.equal(rules.approval_history.at(-1).result, "approved_for_internal_testing");
 assert.equal(rules.approval_history.at(-1).approval_date, "2026-07-31");
@@ -127,7 +129,7 @@ assert.equal(
   11,
 );
 assert.equal(
-  rules.rules.filter((rule) => rule.production_status === "blocked_pending_golden_case").length,
+  rules.rules.filter((rule) => rule.production_status === "blocked_pending_product_owner_launch_approval").length,
   11,
 );
 

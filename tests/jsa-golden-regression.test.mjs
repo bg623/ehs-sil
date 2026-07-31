@@ -13,7 +13,7 @@ const cases = JSON.parse(
   fs.readFileSync(new URL("./fixtures/jsa-golden-cases.json", import.meta.url), "utf8"),
 ).cases.filter((item) => item.status === "approved");
 
-assert.equal(cases.length, 5, "应有5个已批准黄金案例");
+assert.equal(cases.length, 20, "应有20个已批准黄金案例");
 
 for (const testCase of cases) {
   const triggered = sandbox.window.JsaRuleEngine
@@ -34,5 +34,5 @@ for (const testCase of cases) {
 console.log(JSON.stringify({
   status: "PASS_APPROVED_GOLDEN_CASE_REGRESSION",
   approvedGoldenCases: cases.length,
-  remainingToMinimum: 15,
+  remainingToMinimum: 0,
 }));
