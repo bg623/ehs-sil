@@ -59,10 +59,13 @@ assert.equal(
   1,
   "任一作业步骤仅依赖PPE或行为提醒时应提示控制层级",
 );
-assert.equal(
-  engine.evaluateRules(rules, maintenanceContext, { includePending: false }).length,
-  0,
-  "缺少黄金案例或生产就绪状态的规则不得进入生产规则集",
+const productionIds = engine
+  .evaluateRules(rules, maintenanceContext, { includePending: false })
+  .map((rule) => rule.rule_id);
+assert.deepEqual(
+  productionIds,
+  ids,
+  "最终上线批准后，生产规则集应与已审核规则产生一致结果",
 );
 
 const productionFixture = structuredClone(
@@ -74,6 +77,14 @@ assert.equal(
   engine.filterUsableRules([productionFixture], {includePending: false}).length,
   1,
   "同时满足专业批准、生产就绪和黄金案例覆盖的规则才可加载",
+);
+
+const blockedFixture = structuredClone(productionFixture);
+blockedFixture.production_status = "blocked_pending_product_owner_launch_approval";
+assert.equal(
+  engine.filterUsableRules([blockedFixture], {includePending: false}).length,
+  0,
+  "未进入生产就绪状态的规则不得加载",
 );
 
 console.log(JSON.stringify({ status: "PASS", triggeredInDeveloperFixture: ids }));

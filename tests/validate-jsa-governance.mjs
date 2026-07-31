@@ -119,17 +119,17 @@ for (const rule of rules.rules) {
   }
 }
 
-assert.equal(rules.publication_status, "professionally_approved_golden_regression_passed_pending_launch_approval");
+assert.equal(rules.publication_status, "production_ready_product_owner_approved");
 assert.ok(Array.isArray(rules.approval_history) && rules.approval_history.length > 0);
-assert.equal(rules.approval_history.at(-1).result, "approved_for_internal_testing");
-assert.equal(rules.approval_history.at(-1).approval_date, "2026-07-31");
+assert.equal(rules.approval_history.at(-1).result, "approved_for_production_launch");
+assert.equal(rules.approval_history.at(-1).approval_date, "2026-08-01");
 assert.equal(rules.rules.filter((rule) => rule.status === "approved").length, 11);
 assert.equal(
   rules.rules.filter((rule) => rule.source_review_status === "product_owner_confirmed").length,
   11,
 );
 assert.equal(
-  rules.rules.filter((rule) => rule.production_status === "blocked_pending_product_owner_launch_approval").length,
+  rules.rules.filter((rule) => rule.production_status === "production_ready").length,
   11,
 );
 

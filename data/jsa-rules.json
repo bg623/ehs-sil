@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "ruleset_version": "1.0.0-twenty-golden-cases-reviewed",
-  "publication_status": "professionally_approved_golden_regression_passed_pending_launch_approval",
+  "ruleset_version": "1.0.1-production-launch-approved",
+  "publication_status": "production_ready_product_owner_approved",
   "last_updated": "2026-08-01",
   "approval_history": [
     {
@@ -12,6 +12,15 @@
       "evidence": "产品负责人在Codex任务中明确回复“批准，继续执行任务！”",
       "result": "approved_for_internal_testing",
       "limitations": "仍需产品负责人提供的脱敏黄金案例覆盖并通过回归测试，方可进入生产加载。"
+    },
+    {
+      "approval_id": "JSA-LAUNCH-2026-08-01-001",
+      "approved_by": "Go by John",
+      "approval_date": "2026-08-01",
+      "scope": "all_11_approved_rules_after_20_case_golden_regression",
+      "evidence": "产品负责人在Codex任务中明确回复“批准，上线！”",
+      "result": "approved_for_production_launch",
+      "limitations": "规则仅提供完整性和逻辑一致性提示，不代表作业安全、法规符合、风险可接受或可以批准JSA。"
     }
   ],
   "rules": [
@@ -33,7 +42,7 @@
       "review_date": "2026-07-31",
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -54,7 +63,7 @@
       "review_date": "2026-07-31",
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -75,7 +84,7 @@
       "review_date": "2026-07-31",
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -96,7 +105,7 @@
       "review_date": "2026-07-31",
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-004"]
     },
     {
@@ -117,7 +126,7 @@
       "review_date": "2026-07-31",
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-002","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -138,7 +147,7 @@
       "review_date": "2026-07-31",
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-002","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -159,7 +168,7 @@
       "review_date": "2026-07-31",
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-002"]
     },
     {
@@ -180,7 +189,7 @@
       "review_date": "2026-07-31",
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-002","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -201,7 +210,7 @@
       "review_date": "2026-07-31",
       "review_notes": "双语显示修正已复核，专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     },
     {
@@ -222,7 +231,7 @@
       "review_date": "2026-08-01",
       "review_notes": "使用真实脱敏JSA复核后，将任意出现PPE即提示的宽泛条件修正为逐步骤识别主要依赖PPE、培训或行为提醒且缺少更高层级控制；产品负责人授权完成专业审核。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-005"]
     },
     {
@@ -243,7 +252,7 @@
       "review_date": "2026-07-31",
       "review_notes": "专业内容及来源适用性批准；可进入内部测试。",
       "status": "approved",
-      "production_status": "blocked_pending_product_owner_launch_approval",
+      "production_status": "production_ready",
       "golden_case_ids": ["JSA-GOLD-001","JSA-GOLD-002","JSA-GOLD-003","JSA-GOLD-004","JSA-GOLD-005"]
     }
   ]

@@ -51,7 +51,7 @@ assert.match(riskAnalysis, /<h3>JSA 工作安全分析<\/h3>/);
 assert.match(riskAnalysis, /专业教练 V0\.1/);
 assert.match(riskAnalysis, /href="jsa-tool\.html"[^>]*>开始JSA分析/);
 
-assert.equal(rules.publication_status, "professionally_approved_golden_regression_passed_pending_launch_approval");
+assert.equal(rules.publication_status, "production_ready_product_owner_approved");
 assert.ok(rules.rules.length > 0);
 assert.equal(
   rules.rules.filter((rule) => rule.status === "approved").length,
@@ -65,8 +65,8 @@ assert.equal(
 );
 assert.equal(
   rules.rules.filter((rule) => rule.production_status === "production_ready").length,
-  0,
-  "尚未获得产品负责人最终上线批准时不得产生生产就绪规则",
+  11,
+  "获得产品负责人最终上线批准后，11条规则均应进入生产就绪状态",
 );
 
 console.log(
