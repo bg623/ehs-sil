@@ -1,0 +1,10 @@
+[
+  {"id":"ordinary-machinery","profile":{"province":"江苏省","city":"苏州市","enterpriseTypes":["机械制造企业"],"industries":["通用设备制造"]},"mustExcludeDocumentNos":["GB 18218-2018","GB 18598-2019"],"mustExcludeLocal":true},
+  {"id":"hazchem-small-storage","profile":{"province":"江苏省","enterpriseTypes":["危险化学品使用企业"],"hazardousActivities":["危化品使用","危化品储存"]},"mustExcludeDocumentNos":["GB 18218-2018"]},
+  {"id":"major-hazard","profile":{"province":"江苏省","enterpriseTypes":["危险化学品使用企业"],"riskTags":["构成危险化学品重大危险源"]},"mustIncludeDocumentNos":["GB 18218-2018"]},
+  {"id":"waste-generator","profile":{"province":"江苏省","enterpriseTypes":["机械制造企业"],"hazardousWasteActivities":["危废产生","危废暂存"]},"mustExcludeDocumentNos":["GB 18598-2019"]},
+  {"id":"waste-landfill","profile":{"province":"江苏省","enterpriseTypes":["其他工贸企业"],"hazardousWasteActivities":["危废填埋"]},"mustIncludeDocumentNos":["GB 18598-2019"]},
+  {"id":"forklift-only","profile":{"province":"江苏省","enterpriseTypes":["机械制造企业"],"specialEquipmentTypes":["场（厂）内专用机动车辆"]},"mustIncludeDocumentNos":["TSG 81-2022"],"mustExcludeNameFragments":["压力容器","气瓶","起重机械"]},
+  {"id":"iso-not-adopted","profile":{"province":"江苏省","enterpriseTypes":["机械制造企业"],"riskTags":["存在职业病危害"]},"mustExcludeDocumentNos":["GB/T 45001-2020"]},
+  {"id":"iso-adopted","profile":{"province":"江苏省","enterpriseTypes":["机械制造企业"],"managementCommitments":["自愿采纳ISO 45001"]},"mustIncludeDocumentNos":["GB/T 45001-2020"]}
+]

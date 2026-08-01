@@ -50,7 +50,10 @@
         "EHS"
       ],
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "主席令第六十四号::中华人民共和国危险化学品安全法",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
     },
     {
       "id": "REG-NEW-002",
@@ -102,7 +105,10 @@
         "EHS"
       ],
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB45673-2025",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
     },
     {
       "id": "REG-NEW-003",
@@ -148,7 +154,10 @@
         "EHS"
       ],
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB2894-2025",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
     },
     {
       "id": "REG-NEW-004",
@@ -192,7 +201,10 @@
         "EHS"
       ],
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB6441-2025",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
     },
     {
       "id": "REG-NEW-005",
@@ -250,7 +262,10 @@
         "EHS"
       ],
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "AQ3026-2026",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
     },
     {
       "id": "REG-SD-001",
@@ -293,7 +308,10 @@
         "EHS"
       ],
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "山东省人民政府令第347号::山东省生产安全事故隐患排查治理办法",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
     },
     {
       "cn": "安全生产法",
@@ -336,7 +354,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第88号::安全生产法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境保护法",
@@ -379,7 +399,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第9号::环境保护法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "职业病防治法",
@@ -424,7 +446,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第24号::职业病防治法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "消防法",
@@ -469,7 +493,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第81号::消防法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "劳动法",
@@ -510,7 +536,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第28号::劳动法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "特种设备安全法",
@@ -553,7 +581,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第4号::特种设备安全法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品安全管理条例",
@@ -605,7 +635,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "国务院令第591号::危险化学品安全管理条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产安全事故应急条例",
@@ -648,7 +680,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第708号::生产安全事故应急条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工伤保险条例",
@@ -691,7 +725,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第586号::工伤保险条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产安全事故报告和调查处理条例",
@@ -734,7 +770,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第493号::生产安全事故报告和调查处理条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "易制毒化学品管理条例",
@@ -775,7 +813,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第445号::易制毒化学品管理条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全生产许可证条例",
@@ -816,7 +856,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第397号::安全生产许可证条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "女职工劳动保护特别规定",
@@ -859,7 +901,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第619号::女职工劳动保护特别规定",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "职业健康安全管理体系 要求及使用指南",
@@ -902,7 +946,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T45001-2020",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境管理体系 要求及使用指南",
@@ -943,7 +989,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T24001-2016",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品重大危险源辨识",
@@ -996,7 +1044,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB18218-2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品企业特殊作业安全规范",
@@ -1056,7 +1106,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB30871-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "企业职工伤亡事故分类",
@@ -1076,7 +1128,7 @@
       "issuingAuthority": "国家标准化管理委员会",
       "publishDate": "",
       "effectiveDate": "",
-      "status": "待核实",
+      "status": "已废止",
       "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=企业职工伤亡事故分类",
       "sourceName": "国家标准全文公开系统",
       "sourceType": "官方标准平台",
@@ -1096,8 +1148,14 @@
       "lastVerifiedAt": "",
       "verificationStatus": "待复核",
       "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "complianceEnabled": false,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB6441-86",
+      "replacedBy": [
+        "GB 6441-2025"
+      ],
+      "expiryDate": "2026-07-01",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产过程危险和有害因素分类与代码",
@@ -1140,7 +1198,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T13861-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全标志及其使用导则",
@@ -1160,7 +1220,7 @@
       "issuingAuthority": "国家标准化管理委员会",
       "publishDate": "",
       "effectiveDate": "",
-      "status": "待核实",
+      "status": "已废止",
       "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=安全标志及其使用导则",
       "sourceName": "国家标准全文公开系统",
       "sourceType": "官方标准平台",
@@ -1180,8 +1240,14 @@
       "lastVerifiedAt": "",
       "verificationStatus": "待复核",
       "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "complianceEnabled": false,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB2894-2008",
+      "replacedBy": [
+        "GB 2894-2025"
+      ],
+      "expiryDate": "2026-03-01",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产经营单位生产安全事故应急预案编制导则",
@@ -1222,10 +1288,12 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T29639-2020",
+      "sourcePrecision": "search_or_index"
     },
     {
-      "cn": "工作场所有害因素职业接触限值",
+      "cn": "工作场所有害因素职业接触限值 第1部分：化学有害因素",
       "en": "Occupational exposure limits",
       "num": "GBZ 2.1-2019",
       "auth": "国家卫生健康委员会",
@@ -1237,7 +1305,7 @@
       "id": "REG-022",
       "category": "职业健康",
       "levelRank": 6,
-      "name": "工作场所有害因素职业接触限值",
+      "name": "工作场所有害因素职业接触限值 第1部分：化学有害因素",
       "documentNo": "GBZ 2.1-2019",
       "issuingAuthority": "国家卫生健康委员会",
       "publishDate": "",
@@ -1265,7 +1333,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ2.1-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全色与安全标识",
@@ -1285,7 +1355,7 @@
       "issuingAuthority": "国家标准化管理委员会",
       "publishDate": "",
       "effectiveDate": "",
-      "status": "待核实",
+      "status": "已废止",
       "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=安全色与安全标识",
       "sourceName": "国家标准全文公开系统",
       "sourceType": "官方标准平台",
@@ -1305,8 +1375,14 @@
       "lastVerifiedAt": "",
       "verificationStatus": "待复核",
       "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "complianceEnabled": false,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB2893-2008",
+      "replacedBy": [
+        "GB 2894-2025"
+      ],
+      "expiryDate": "2026-03-01",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "职业健康安全管理体系",
@@ -1349,7 +1425,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO45001:2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境管理体系",
@@ -1390,7 +1468,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO14001:2015",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "风险管理 指南",
@@ -1431,7 +1511,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO31000:2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "质量管理体系",
@@ -1472,7 +1554,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO9001:2015",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "能源管理体系",
@@ -1513,7 +1597,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO50001:2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "功能安全 安全仪表系统",
@@ -1554,7 +1640,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "IEC61511",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "机械安全 控制系统安全相关部件",
@@ -1595,7 +1683,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO13849-1",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "美国职业安全与健康标准",
@@ -1638,7 +1728,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "29CFR1910::美国职业安全与健康标准",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "国际劳工组织职业安全与健康公约",
@@ -1681,7 +1773,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "C155::国际劳工组织职业安全与健康公约",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "API 754 工艺安全指标",
@@ -1722,7 +1816,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "APIRP754::API754工艺安全指标",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "CCPS 基于风险的过程安全",
@@ -1763,7 +1859,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "CCPSRBPS::CCPS基于风险的过程安全",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "IOGP 生命拯救规则",
@@ -1804,7 +1902,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "IOGP459::IOGP生命拯救规则",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "IOGP 工艺安全关键绩效指标",
@@ -1845,7 +1945,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "IOGP456::IOGP工艺安全关键绩效指标",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "欧盟REACH法规",
@@ -1886,7 +1988,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "EC1907/2006::欧盟REACH法规",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "全球化学品统一分类和标签制度",
@@ -1927,7 +2031,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GHSREV.10::全球化学品统一分类和标签制度",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "IEC 61508 电气/电子/可编程电子安全相关系统的功能安全",
@@ -1968,7 +2074,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "IEC61508",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "机械设备安全  EN ISO 12100",
@@ -2009,7 +2117,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ENISO12100::机械设备安全ENISO12100",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全生产培训管理办法",
@@ -2050,7 +2160,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第44号::安全生产培训管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产经营单位安全培训规定",
@@ -2091,7 +2203,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第3号::生产经营单位安全培训规定",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "建设项目安全设施'三同时'监督管理办法",
@@ -2132,7 +2246,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第36号::建设项目安全设施'三同时'监督管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品重大危险源监督管理暂行规定",
@@ -2185,7 +2301,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监总局令第40号::危险化学品重大危险源监督管理暂行规定",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工贸企业有限空间作业安全管理与监督暂行规定",
@@ -2228,7 +2346,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第59号::工贸企业有限空间作业安全管理与监督暂行规定",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "企业安全生产费用提取和使用管理办法",
@@ -2269,7 +2389,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "财企〔2012〕16号::企业安全生产费用提取和使用管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "用人单位职业健康监护监督管理办法",
@@ -2312,7 +2434,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第49号::用人单位职业健康监护监督管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "建筑设计防火规范",
@@ -2355,7 +2479,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50016-2014",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "石油化工企业设计防火标准",
@@ -2408,7 +2534,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB50160-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "爆炸危险环境电力装置设计规范",
@@ -2449,7 +2577,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50058-2014",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "职业健康监护技术规范",
@@ -2469,7 +2599,7 @@
       "issuingAuthority": "国家卫生健康委员会",
       "publishDate": "",
       "effectiveDate": "",
-      "status": "待核实",
+      "status": "已废止",
       "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=职业健康监护技术规范",
       "sourceName": "国家标准全文公开系统",
       "sourceType": "官方标准平台",
@@ -2491,8 +2621,14 @@
       "lastVerifiedAt": "",
       "verificationStatus": "待复核",
       "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "complianceEnabled": false,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ188-2014",
+      "replacedBy": [
+        "GBZ 188-2025"
+      ],
+      "expiryDate": "2026-08-01",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "固定式钢梯及平台安全要求",
@@ -2533,7 +2669,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB4053.1-2009",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险物质危害等级标识",
@@ -2574,7 +2712,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA704",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工艺安全管理",
@@ -2615,7 +2755,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "APIRP752::工艺安全管理",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "社会责任指南",
@@ -2656,7 +2798,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO26000:2010",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "欧盟Seveso III指令",
@@ -2697,7 +2841,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "2012/18/EU::欧盟SEVESOIII指令",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "美国EPA风险管理计划",
@@ -2738,7 +2884,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "40CFRPART68::美国EPA风险管理计划",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "英国COMAH条例",
@@ -2779,7 +2927,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "COMAH2015::英国COMAH条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "加拿大CSA Z462 电气安全工作",
@@ -2820,7 +2970,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "CSAZ462::加拿大CSAZ462电气安全工作",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "澳洲/新西兰ISO 45001等效标准",
@@ -2861,7 +3013,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AS/NZSISO45001::澳洲/新西兰ISO45001等效标准",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "大气污染防治法",
@@ -2904,7 +3058,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第31号::大气污染防治法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "水污染防治法",
@@ -2947,7 +3103,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第70号::水污染防治法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "固体废物污染环境防治法",
@@ -2992,7 +3150,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第57号::固体废物污染环境防治法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境噪声污染防治法",
@@ -3033,7 +3193,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第77号::环境噪声污染防治法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境影响评价法",
@@ -3076,7 +3238,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第77号::环境影响评价法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "土壤污染防治法",
@@ -3119,7 +3283,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第8号::土壤污染防治法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "节约能源法",
@@ -3160,7 +3326,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第77号::节约能源法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "清洁生产促进法",
@@ -3203,7 +3371,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第54号::清洁生产促进法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境保护税法",
@@ -3246,7 +3416,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "主席令第61号::环境保护税法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "大气污染物综合排放标准",
@@ -3287,7 +3459,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB16297-1996",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工业企业厂界环境噪声排放标准",
@@ -3328,50 +3502,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "工作场所有害因素职业接触限值 化学有害因素",
-      "en": "Occupational Exposure Limits for Hazardous Agents - Chemical",
-      "num": "GBZ 2.1-2019",
-      "auth": "国家卫健委",
-      "yr": 2019,
-      "type": "职业卫生",
-      "cat": "职业健康",
-      "c": "中国",
-      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所有害因素职业接触限值 化学有害因素",
-      "id": "REG-072",
-      "category": "职业健康",
-      "levelRank": 6,
-      "name": "工作场所有害因素职业接触限值 化学有害因素",
-      "documentNo": "GBZ 2.1-2019",
-      "issuingAuthority": "国家卫健委",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=工作场所有害因素职业接触限值 化学有害因素",
-      "sourceName": "国家标准全文公开系统",
-      "sourceType": "官方标准平台",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [
-        "存在职业病危害"
-      ],
-      "activityTags": [],
-      "applicabilityType": "风险触发",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕职业健康管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB12348-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工作场所职业病危害警示标识",
@@ -3414,50 +3547,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "职业健康监护技术规范",
-      "en": "Technical Specification for Occupational Health Surveillance",
-      "num": "GBZ 188-2014",
-      "auth": "国家卫健委",
-      "yr": 2014,
-      "type": "职业卫生",
-      "cat": "职业健康",
-      "c": "中国",
-      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=职业健康监护技术规范",
-      "id": "REG-074",
-      "category": "职业健康",
-      "levelRank": 6,
-      "name": "职业健康监护技术规范",
-      "documentNo": "GBZ 188-2014",
-      "issuingAuthority": "国家卫健委",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=职业健康监护技术规范",
-      "sourceName": "国家标准全文公开系统",
-      "sourceType": "官方标准平台",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [
-        "存在职业病危害"
-      ],
-      "activityTags": [],
-      "applicabilityType": "风险触发",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕职业健康管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ158-2003",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "企业安全生产标准化基本规范",
@@ -3498,7 +3590,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T33000-2016",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "高处作业分级",
@@ -3541,7 +3635,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T3608-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "爆破安全规程",
@@ -3582,7 +3678,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB6722-2014",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全评价通则",
@@ -3623,48 +3721,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "生产经营单位安全生产事故应急预案编制导则",
-      "en": "Guidelines for Emergency Response Plan",
-      "num": "GB/T 29639-2020",
-      "auth": "国家标准委",
-      "yr": 2020,
-      "type": "国家标准",
-      "cat": "应急",
-      "c": "中国",
-      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=生产经营单位安全生产事故应急预案编制导则",
-      "id": "REG-079",
-      "category": "应急",
-      "levelRank": 6,
-      "name": "生产经营单位安全生产事故应急预案编制导则",
-      "documentNo": "GB/T 29639-2020",
-      "issuingAuthority": "国家标准委",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=生产经营单位安全生产事故应急预案编制导则",
-      "sourceName": "国家标准全文公开系统",
-      "sourceType": "官方标准平台",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [],
-      "applicabilityType": "行业适用",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕应急管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ8001-2007",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产安全事故应急预案管理办法",
@@ -3705,7 +3764,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "应急管理部令第2号::生产安全事故应急预案管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全生产事故隐患排查治理暂行规定",
@@ -3746,7 +3807,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第16号::安全生产事故隐患排查治理暂行规定",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工作场所职业卫生管理规定",
@@ -3789,7 +3852,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "卫健委令第5号::工作场所职业卫生管理规定",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "ISO 14004 环境管理体系 通用实施指南",
@@ -3830,7 +3895,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO14004:2016",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "ISO 19011 管理体系审核指南",
@@ -3871,7 +3938,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO19011:2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "ISO 22301 业务连续性管理体系",
@@ -3912,7 +3981,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO22301:2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "ISO 20400 可持续采购",
@@ -3953,7 +4024,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO20400:2017",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "API RP 750 工艺安全管理",
@@ -3994,7 +4067,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "APIRP750::APIRP750工艺安全管理",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "NFPA 101 生命安全规范",
@@ -4035,7 +4110,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA101",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "美国EPA 40 CFR Part 68 风险管理计划",
@@ -4076,7 +4153,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "40CFRPART68::美国EPA40CFRPART68风险管理计划",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "中国地震动参数区划图",
@@ -4117,7 +4196,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB18306-2015",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "建筑防火通用规范",
@@ -4160,7 +4241,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB55037-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品企业安全风险隐患排查治理导则",
@@ -4212,7 +4295,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "应急〔2019〕78号::危险化学品企业安全风险隐患排查治理导则",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "关于加强化工过程安全管理的指导意见",
@@ -4264,7 +4349,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监总管三〔2013〕38号::关于加强化工过程安全管理的指导意见",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品登记管理办法",
@@ -4316,7 +4403,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监总局令第53号::危险化学品登记管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "关于加强化工安全仪表系统管理的指导意见",
@@ -4368,7 +4457,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监总管三〔2014〕116号::关于加强化工安全仪表系统管理的指导意见",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "化工(危险化学品)企业安全检查重点指导目录",
@@ -4420,7 +4511,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "应急〔2018〕2号::化工(危险化学品)企业安全检查重点指导目录",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险与可操作性分析(HAZOP)应用导则",
@@ -4461,7 +4554,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ/T3049-2013",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "保护层分析(LOPS)应用导则",
@@ -4502,7 +4597,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ/T3054-2015",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全仪表系统功能安全 验收规范",
@@ -4543,7 +4640,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T21109-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "石油化工可燃气体和有毒气体检测报警设计标准",
@@ -4595,7 +4694,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB/T50493-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "化工企业工艺安全管理实施导则",
@@ -4647,7 +4748,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "AQ/T3034-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品储存通则",
@@ -4699,59 +4802,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
-    },
-    {
-      "cn": "危险化学品仓库储存通则",
-      "en": "General Rules for Warehouse Storage of Hazardous Chemicals",
-      "num": "GB 17914-2013",
-      "auth": "国家标准化管理委员会",
-      "yr": 2013,
-      "type": "国家标准",
-      "cat": "化学品",
-      "c": "中国",
-      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险化学品仓库储存通则",
-      "id": "REG-103",
-      "category": "化学品",
-      "levelRank": 6,
-      "name": "危险化学品仓库储存通则",
-      "documentNo": "GB 17914-2013",
-      "issuingAuthority": "国家标准化管理委员会",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=危险化学品仓库储存通则",
-      "sourceName": "国家标准全文公开系统",
-      "sourceType": "官方标准平台",
-      "industries": [
-        "化学原料和化学制品制造",
-        "医药制造"
-      ],
-      "enterpriseTypes": [
-        "危险化学品生产企业",
-        "危险化学品经营企业",
-        "危险化学品使用企业",
-        "危险化学品储存企业",
-        "一般化工企业"
-      ],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [
-        "使用或储存危险化学品"
-      ],
-      "activityTags": [],
-      "applicabilityType": "风险触发",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕化学品管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB15603-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "易燃易爆性商品储存养护技术条件",
@@ -4803,7 +4856,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB17914-2013",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "腐蚀性商品储存养护技术条件",
@@ -4844,7 +4899,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB17915-2013",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "毒害性商品储存养护技术条件",
@@ -4885,7 +4942,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB17916-2013",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险货物道路运输安全管理办法",
@@ -4926,7 +4985,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "交通运输部令2019年第29号::危险货物道路运输安全管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工作场所空气中粉尘测定 第1部分：总粉尘浓度",
@@ -4969,7 +5030,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ/T192.1-2007",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工作场所物理因素测量 噪声",
@@ -5010,7 +5073,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ/T189.8-2007",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工业企业设计卫生标准",
@@ -5051,7 +5116,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ1-2010",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "医用X射线诊断放射防护要求",
@@ -5092,7 +5159,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ130-2020",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "用人单位职业病危害告知与警示标识管理规范",
@@ -5135,7 +5204,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总厅安健〔2014〕111号::用人单位职业病危害告知与警示标识管理规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "自动喷水灭火系统设计规范",
@@ -5176,7 +5247,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50084-2017",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "火灾自动报警系统设计规范",
@@ -5217,7 +5290,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50116-2013",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "建筑灭火器配置设计规范",
@@ -5258,7 +5333,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50140-2005",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "消防安全标志设置要求",
@@ -5301,7 +5378,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB15630-1995",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "污水综合排放标准",
@@ -5342,7 +5421,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB8978-1996",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险废物贮存污染控制标准",
@@ -5385,7 +5466,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB18597-2023",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险废物填埋污染控制标准",
@@ -5428,7 +5511,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB18598-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "一般工业固体废物贮存和填埋污染控制标准",
@@ -5471,7 +5556,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB18599-2020",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "中华人民共和国环境保护法实施条例",
@@ -5512,7 +5599,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第682号::中华人民共和国环境保护法实施条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "排污许可管理条例",
@@ -5553,7 +5642,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国务院令第736号::排污许可管理条例",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "挥发性有机物无组织排放控制标准",
@@ -5594,7 +5685,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB37822-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "固定式压力容器安全技术监察规程",
@@ -5637,7 +5730,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "TSG21-2016",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "移动式压力容器安全技术监察规程",
@@ -5680,7 +5775,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "TSGR0005-2011",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "气瓶安全技术规程",
@@ -5723,7 +5820,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "TSG23-2021",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "起重机械安全规程",
@@ -5766,7 +5865,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB6067.1-2010",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "场(厂)内专用机动车辆安全技术规程",
@@ -5809,7 +5910,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "TSG81-2022",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "低压配电设计规范",
@@ -5850,7 +5953,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50054-2011",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "建筑物防雷设计规范",
@@ -5891,7 +5996,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50057-2010",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "用电安全导则",
@@ -5932,7 +6039,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T13869-2017",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "企业安全文化建设导则",
@@ -5973,7 +6082,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ/T9004-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全培训管理信息系统建设规范",
@@ -6014,7 +6125,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ/T8012-2016",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "企业安全生产网络化监测系统技术规范",
@@ -6055,7 +6168,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ/T9009-2015",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "化工和危险化学品生产经营单位重大生产安全事故隐患判定标准",
@@ -6107,7 +6222,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "应急〔2017〕121号::化工和危险化学品生产经营单位重大生产安全事故隐患判定标准",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工贸行业重大生产安全事故隐患判定标准",
@@ -6148,7 +6265,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "应急〔2017〕121号::工贸行业重大生产安全事故隐患判定标准",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全验收评价导则",
@@ -6189,7 +6308,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ8003-2007",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全预评价导则",
@@ -6230,7 +6351,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ8002-2007",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "药品生产质量管理规范",
@@ -6271,7 +6394,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "卫生部令第79号::药品生产质量管理规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "药品生产监督管理办法",
@@ -6312,7 +6437,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国家药监局令第28号::药品生产监督管理办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产安全事故信息报告和处置办法",
@@ -6353,7 +6480,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": true,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "安监总局令第21号::生产安全事故信息报告和处置办法",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "安全生产行政执法统计调查制度",
@@ -6394,7 +6523,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "应急〔2019〕23号::安全生产行政执法统计调查制度",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "NFPA 70 国家电气规范",
@@ -6435,7 +6566,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA70",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "NFPA 70E 工作场所电气安全",
@@ -6476,7 +6609,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA70E",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "NFPA 30 易燃可燃液体规范",
@@ -6517,7 +6652,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA30",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "NFPA 68 爆炸防护的泄压通风",
@@ -6558,7 +6695,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA68",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "NFPA 69 爆炸防护系统",
@@ -6599,7 +6738,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "NFPA69",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "API 510 压力容器检验规范",
@@ -6642,7 +6783,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "API510::API510压力容器检验规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "API 570 管道检验规范",
@@ -6683,7 +6826,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "API570::API570管道检验规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "API 653 储罐检验、维修、改造和重建",
@@ -6724,7 +6869,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "API653::API653储罐检验、维修、改造和重建",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "CCPS 过程安全导则要素指南",
@@ -6765,7 +6912,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "CCPSRBPS::CCPS过程安全导则要素指南",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "IOGP 454 陆上石油工业安全关键人员能力",
@@ -6806,7 +6955,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "IOGP454::IOGP454陆上石油工业安全关键人员能力",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "IOGP 457 工艺安全事件报告指南",
@@ -6847,50 +6998,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "ISO 45001:2018 职业健康安全管理体系",
-      "en": "Occupational Health and Safety Management Systems",
-      "num": "ISO 45001:2018",
-      "auth": "ISO",
-      "yr": 2018,
-      "type": "国际标准",
-      "cat": "管理体系",
-      "c": "国际",
-      "link": "https://www.iso.org/search.html?q=ISO 45001:2018 职业健康安全管理体系",
-      "id": "REG-154",
-      "category": "管理体系",
-      "levelRank": 9,
-      "name": "ISO 45001:2018 职业健康安全管理体系",
-      "documentNo": "ISO 45001:2018",
-      "issuingAuthority": "ISO",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://www.iso.org/search.html?q=ISO 45001:2018 职业健康安全管理体系",
-      "sourceName": "政府官方入口",
-      "sourceType": "官方原文",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [
-        "存在职业病危害"
-      ],
-      "activityTags": [],
-      "applicabilityType": "风险触发",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕管理体系管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "IOGP457::IOGP457工艺安全事件报告指南",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "ISO 14064 温室气体排放核查",
@@ -6931,7 +7041,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO14064-1:2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "CDP 碳排放披露要求",
@@ -6972,7 +7084,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "CDPFRAMEWORK::CDP碳排放披露要求",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品目录（2015版）",
@@ -7024,7 +7138,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监总局等10部门公告2015年第5号::危险化学品目录（2015版）",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "首批重点监管的危险化学品名录",
@@ -7076,7 +7192,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监总管三〔2011〕95号::首批重点监管的危险化学品名录",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品生产许可证实施细则",
@@ -7128,48 +7246,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
-    },
-    {
-      "cn": "常用化学危险品贮存通则",
-      "en": "General Rules for Storage of Common Hazardous Chemicals",
-      "num": "GB 15603-2022",
-      "auth": "国家标准化管理委员会",
-      "yr": 2022,
-      "type": "国家标准",
-      "cat": "化学品",
-      "c": "中国",
-      "link": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=常用化学危险品贮存通则",
-      "id": "REG-160",
-      "category": "化学品",
-      "levelRank": 6,
-      "name": "常用化学危险品贮存通则",
-      "documentNo": "GB 15603-2022",
-      "issuingAuthority": "国家标准化管理委员会",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/std_list?keyword=常用化学危险品贮存通则",
-      "sourceName": "国家标准全文公开系统",
-      "sourceType": "官方标准平台",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [],
-      "applicabilityType": "行业适用",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕化学品管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "质检总局令第XX号::危险化学品生产许可证实施细则",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "国家突发环境事件应急预案",
@@ -7210,7 +7289,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "国办函〔2014〕119号::国家突发环境事件应急预案",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品事故应急救援预案编制导则",
@@ -7262,7 +7343,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "安监管危化〔2004〕43号::危险化学品事故应急救援预案编制导则",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "生产安全事故应急演练指南",
@@ -7303,109 +7386,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "化学品生产单位特殊作业安全规范",
-      "en": "Safety Code for Special Operations in Chemical Plants",
-      "num": "GB 30871-2022",
-      "auth": "国家标准化管理委员会",
-      "yr": 2022,
-      "type": "国家标准",
-      "cat": "作业安全",
-      "c": "中国",
-      "link": "https://www.baidu.com/s?wd=化学品生产单位特殊作业安全规范",
-      "id": "REG-164",
-      "category": "作业安全",
-      "levelRank": 6,
-      "name": "化学品生产单位特殊作业安全规范",
-      "documentNo": "GB 30871-2022",
-      "issuingAuthority": "国家标准化管理委员会",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://www.baidu.com/s?wd=化学品生产单位特殊作业安全规范",
-      "sourceName": "政府官方入口",
-      "sourceType": "官方原文",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [
-        "涉及动火作业",
-        "涉及受限空间作业",
-        "涉及高处作业",
-        "涉及吊装作业",
-        "涉及临时用电",
-        "涉及盲板抽堵",
-        "涉及断路或动土作业"
-      ],
-      "applicabilityType": "活动触发",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕作业安全管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "石油化工企业设计防火规范",
-      "en": "Fire Protection Design Code for Petrochemical Enterprises",
-      "num": "GB 50160-2008",
-      "auth": "住建部",
-      "yr": 2008,
-      "type": "国家标准",
-      "cat": "消防",
-      "c": "中国",
-      "link": "https://www.baidu.com/s?wd=石油化工企业设计防火规范",
-      "id": "REG-165",
-      "category": "消防",
-      "levelRank": 6,
-      "name": "石油化工企业设计防火规范",
-      "documentNo": "GB 50160-2008",
-      "issuingAuthority": "住建部",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://www.baidu.com/s?wd=石油化工企业设计防火规范",
-      "sourceName": "政府官方入口",
-      "sourceType": "官方原文",
-      "industries": [
-        "化学原料和化学制品制造",
-        "医药制造"
-      ],
-      "enterpriseTypes": [
-        "危险化学品生产企业",
-        "危险化学品经营企业",
-        "危险化学品使用企业",
-        "危险化学品储存企业",
-        "一般化工企业"
-      ],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [
-        "使用或储存危险化学品",
-        "涉及消防重点部位"
-      ],
-      "activityTags": [],
-      "applicabilityType": "风险触发",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕消防管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "AQ/T9007-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "储罐区防火堤设计规范",
@@ -7448,7 +7431,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50351-2014",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "泡沫灭火系统技术标准",
@@ -7489,7 +7474,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB50151-2021",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "化工建设项目环境保护设计规范",
@@ -7541,7 +7528,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB50483-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "污水排入城镇下水道水质标准",
@@ -7582,7 +7571,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T31962-2015",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险废物鉴别标准 通则",
@@ -7625,7 +7616,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB5085.7-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "工作场所空气中粉尘测定标准",
@@ -7668,7 +7661,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GBZ/T192-2007",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "噪声作业分级",
@@ -7709,7 +7704,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "LD80-1995::噪声作业分级",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "化工企业安全卫生设计规范",
@@ -7761,7 +7758,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "HG20571-2014::化工企业安全卫生设计规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "石油化工企业职业安全卫生设计规范",
@@ -7814,7 +7813,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "SH3047-2021::石油化工企业职业安全卫生设计规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品经营企业安全技术基本要求",
@@ -7866,7 +7867,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB18265-2019",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品单位应急救援物资配备要求",
@@ -7918,7 +7921,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB30077-2013",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "石油化工企业安全管理体系标准",
@@ -7970,7 +7975,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "AQ/T3012-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "危险化学品从业单位安全标准化通用规范",
@@ -8022,7 +8029,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "AQ3013-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "石油化工企业安全检查标准",
@@ -8074,7 +8083,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核"
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "AQ/T3016-2008",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "化学工业建设项目试车规范",
@@ -8115,7 +8126,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "HG20231-2014::化学工业建设项目试车规范",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "环境空气质量标准",
@@ -8156,7 +8169,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB3095-2012",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "地下水质量标准",
@@ -8197,7 +8212,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB/T14848-2017",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "土壤环境质量 建设用地土壤污染风险管控标准",
@@ -8238,48 +8255,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "ISO 14001 环境管理体系实施指南",
-      "en": "EMS - Guidelines for Implementation",
-      "num": "ISO 14004:2016",
-      "auth": "ISO",
-      "yr": 2016,
-      "type": "国际标准",
-      "cat": "管理体系",
-      "c": "国际",
-      "link": "https://www.google.com/search?q=ISO 14001 环境管理体系实施指南",
-      "id": "REG-184",
-      "category": "管理体系",
-      "levelRank": 9,
-      "name": "ISO 14001 环境管理体系实施指南",
-      "documentNo": "ISO 14004:2016",
-      "issuingAuthority": "ISO",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://www.google.com/search?q=ISO 14001 环境管理体系实施指南",
-      "sourceName": "政府官方入口",
-      "sourceType": "官方原文",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [],
-      "applicabilityType": "行业适用",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕管理体系管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB36600-2018",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "ISO 45001 职业健康安全管理体系实施指南",
@@ -8322,89 +8300,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "NFPA 704 危险品紧急响应系统",
-      "en": "Standard System for Identification of Hazards of Materials for Emergency Response",
-      "num": "NFPA 704",
-      "auth": "NFPA",
-      "yr": 2022,
-      "type": "国际标准",
-      "cat": "化学品",
-      "c": "国际",
-      "link": "https://www.google.com/search?q=NFPA 704 危险品紧急响应系统",
-      "id": "REG-186",
-      "category": "化学品",
-      "levelRank": 9,
-      "name": "NFPA 704 危险品紧急响应系统",
-      "documentNo": "NFPA 704",
-      "issuingAuthority": "NFPA",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://www.google.com/search?q=NFPA 704 危险品紧急响应系统",
-      "sourceName": "政府官方入口",
-      "sourceType": "官方原文",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [],
-      "applicabilityType": "行业适用",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕化学品管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
-    },
-    {
-      "cn": "NFPA 30 易燃和可燃液体规范",
-      "en": "Flammable and Combustible Liquids Code",
-      "num": "NFPA 30",
-      "auth": "NFPA",
-      "yr": 2021,
-      "type": "国际标准",
-      "cat": "消防",
-      "c": "国际",
-      "link": "https://www.google.com/search?q=NFPA 30 易燃和可燃液体规范",
-      "id": "REG-187",
-      "category": "消防",
-      "levelRank": 9,
-      "name": "NFPA 30 易燃和可燃液体规范",
-      "documentNo": "NFPA 30",
-      "issuingAuthority": "NFPA",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://www.google.com/search?q=NFPA 30 易燃和可燃液体规范",
-      "sourceName": "政府官方入口",
-      "sourceType": "官方原文",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [],
-      "applicabilityType": "行业适用",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕消防管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "ISO45002:2020",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "OSHA 29 CFR 1910.119 工艺安全管理",
@@ -8445,7 +8343,9 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "29CFR1910.119::OSHA29CFR1910.119工艺安全管理",
+      "sourcePrecision": "search_or_index"
     },
     {
       "cn": "CCPS 基于风险的过程安全指南",
@@ -8486,7 +8386,55 @@
       "verificationStatus": "待复核",
       "changeType": "无变化",
       "complianceEnabled": false,
-      "reviewWhenInsufficient": ""
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "CCPSRBPS::CCPS基于风险的过程安全指南",
+      "sourcePrecision": "search_or_index"
+    },
+    {
+      "id": "REG-NEW-006",
+      "name": "职业健康监护技术规范",
+      "cn": "职业健康监护技术规范",
+      "documentNo": "GBZ 188-2025",
+      "num": "GBZ 188-2025",
+      "type": "国家职业卫生标准",
+      "category": "职业健康",
+      "levelRank": 4,
+      "issuingAuthority": "国家卫生健康委员会",
+      "publishDate": "2025-08-20",
+      "effectiveDate": "2026-08-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.nhc.gov.cn/wjw/pyl/202509/1e939d64e61a4ac6b9d31191c5569c34.shtml",
+      "sourceName": "国家卫生健康委员会标准详情",
+      "sourceType": "国家卫生健康委员会",
+      "regions": [
+        "全国"
+      ],
+      "industries": [
+        "全部行业"
+      ],
+      "riskTags": [
+        "存在职业病危害"
+      ],
+      "enterpriseTypes": [],
+      "activityTags": [],
+      "applicabilityType": "条件触发",
+      "requirementSummary": "规定职业健康监护的基本原则、职业健康检查和监护档案等技术要求。具体适用内容需由专业人员结合职业病危害因素确认。",
+      "applicableClauses": "需人工确认",
+      "suggestedDepartment": [
+        "EHS部门",
+        "人力资源部门"
+      ],
+      "reviewFrequencyMonths": 12,
+      "changeType": "替代",
+      "replaces": [
+        "GBZ 188-2014"
+      ],
+      "verificationStatus": "待复核",
+      "complianceEnabled": true,
+      "lastVerifiedAt": "2026-08-01",
+      "candidateReason": "官方元数据已定位，待产品负责人审核适用规则",
+      "canonicalKey": "GBZ188-2025",
+      "sourcePrecision": "direct_detail"
     }
   ],
   "total": 189,
@@ -8507,7 +8455,7 @@
     "中国",
     "国际"
   ],
-  "schemaVersion": "1.1",
-  "updatedAt": "2026-07-31",
+  "schemaVersion": "1.2",
+  "updatedAt": "2026-08-01",
   "notice": "受控法规标签用于初步识别；待复核条目不得视为最终适用性或合规结论。"
 }

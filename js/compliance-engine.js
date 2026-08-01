@@ -6,34 +6,23 @@
   function daysBetween(from,to){if(!from||!to)return null;const a=Date.parse(from+"T00:00:00+08:00"),b=Date.parse(to+"T00:00:00+08:00");return Number.isFinite(a)&&Number.isFinite(b)?Math.round((b-a)/86400000):null;}
   function implementationStatus(reg,today){if(reg.status==="已废止"||reg.expiryDate&&daysBetween(today,reg.expiryDate)<0)return "已废止";if(!reg.effectiveDate)return reg.status||"待核实";const d=daysBetween(today,reg.effectiveDate);if(d>90)return "已发布待实施";if(d>0)return "即将实施";return reg.status==="部分失效"?"部分失效":"现行有效";}
   function reviewReminder(date,today){if(!date)return "未设置";const d=daysBetween(today||cnToday(),date);if(d<0)return "已逾期";if(d<=30)return "30日内到期";if(d<=90)return "即将评审";return "正常";}
+  function implementationDistanceLabel(date,today){const d=daysBetween(today||cnToday(),date);if(d===null)return "日期待核实";return d>0?`距实施 ${d} 天`:d===0?"今日实施":`已实施 ${Math.abs(d)} 天`;}
   function intersects(a,b){return (a||[]).some(v=>(b||[]).includes(v));}
-  function matchOne(reg,profile,today){
+  function profileFacts(profile){return new Set(["生产经营单位",...(profile.enterpriseTypes||[]),...(profile.industries||[]),...(profile.riskTags||[]),...(profile.hazardousActivities||[]),...(profile.hazardousWasteActivities||[]),...(profile.specialEquipmentTypes||[]),...(profile.industryAttributes||[]),...(profile.managementCommitments||[])]);}
+  function matchByRule(reg,profile,today,rule){
     if(!reg.complianceEnabled||implementationStatus(reg,today)==="已废止")return {applicability:"不纳入",reasons:[]};
-    const reasons=[];let applicability="不纳入";
+    const reasons=[],facts=profileFacts(profile);let applicability="不纳入";
     const regionMatch=(reg.regions||[]).includes("全国")||(reg.regions||[]).includes(profile.province)||(reg.regions||[]).includes(profile.city);
-    if(reg.applicabilityType==="地方要求"){
-      if(!regionMatch)return {applicability:"不纳入",reasons:[]};
-      const localTrigger=intersects(reg.industries,profile.industries)||intersects(reg.enterpriseTypes,profile.enterpriseTypes)||intersects(reg.riskTags,profile.riskTags)||intersects(reg.activityTags,profile.activityTags)||(reg.industries||[]).includes("全部行业");
-      if(!localTrigger)return {applicability:"不纳入",reasons:[]};
-      applicability=reg.scaleConditions&&reg.scaleConditions.length?"条件适用":"明确适用";reasons.push(`企业所在地为${profile.city||profile.province}`);
-    }else if(reg.applicabilityType==="通用基础"){
-      applicability="明确适用";reasons.push("属于生产经营单位通用要求");
-    }else{
-      const enterpriseHit=intersects(reg.enterpriseTypes,profile.enterpriseTypes);
-      const industryHit=intersects(reg.industries,profile.industries);
-      const riskHit=intersects(reg.riskTags,profile.riskTags);
-      const activityHit=intersects(reg.activityTags,profile.activityTags);
-      if(enterpriseHit){applicability="明确适用";reasons.push(`企业类型触发：${reg.enterpriseTypes.filter(v=>profile.enterpriseTypes.includes(v)).join("、")}`);}
-      if(industryHit){applicability=applicability==="不纳入"?"明确适用":applicability;reasons.push(`行业触发：${reg.industries.filter(v=>profile.industries.includes(v)).join("、")}`);}
-      if(riskHit){applicability=applicability==="不纳入"?"明确适用":applicability;reasons.push(`风险特征触发：${reg.riskTags.filter(v=>profile.riskTags.includes(v)).join("、")}`);}
-      if(activityHit){applicability=applicability==="不纳入"?"明确适用":applicability;reasons.push(`作业活动触发：${reg.activityTags.filter(v=>profile.activityTags.includes(v)).join("、")}`);}
-      if(applicability!=="不纳入"&&!enterpriseHit&&(reg.enterpriseTypes||[]).length){applicability="条件适用";reasons.push("企业类型未直接命中，需结合物料数量、许可、工艺和适用范围复核");}
-      if(applicability!=="不纳入"&&reg.scaleConditions&&reg.scaleConditions.length){applicability="条件适用";reasons.push(reg.scaleConditions.join("；"));}
-    }
-    if(applicability==="不纳入"&&reg.reviewWhenInsufficient&&((profile.enterpriseTypes||[]).length||(profile.riskTags||[]).length)){applicability="建议复核";reasons.push(reg.reviewWhenInsufficient);}
-    if(applicability!=="不纳入"&&reg.verificationStatus!=="已核验"){reasons.push("法规元数据待产品负责人复核");}
+    if(reg.applicabilityType==="地方要求"&&!regionMatch)return {applicability:"不纳入",reasons:[]};
+    if((rule.excludeAny||[]).some(x=>facts.has(x)))return {applicability:"不纳入",reasons:["企业画像命中排除条件"]};
+    const allList=rule.includeAll||[],anyList=rule.includeAny||[],hasTrigger=allList.length>0||anyList.length>0,allHit=allList.every(x=>facts.has(x)),anyHit=!anyList.length||anyList.some(x=>facts.has(x)),directHit=hasTrigger&&allHit&&anyHit,reviewHit=(rule.reviewWhen||[]).some(x=>facts.has(x));
+    if(directHit){applicability=rule.applicability==="mandatory"?"明确适用":"条件适用";const hits=[...(rule.includeAll||[]),...anyList.filter(x=>facts.has(x))];reasons.push(`${rule.explanationTemplate}${hits.length?`：${hits.join("、")}`:""}`);}
+    else if(reviewHit){applicability="建议复核";reasons.push(`信息不足，需进一步确认：${(rule.reviewWhen||[]).filter(x=>facts.has(x)).join("、")}`);}
+    if(applicability!=="不纳入"&&reg.applicabilityType==="地方要求")reasons.unshift(`企业所在地为${profile.city||profile.province}`);
+    if(applicability!=="不纳入"&&reg.verificationStatus!=="已核验"){applicability="建议复核";reasons.push("候选法规元数据或适用规则尚待人工复核，不作为正式适用结论");}
     return {applicability,reasons};
   }
-  function identify(regulations,profile,options){const today=(options&&options.today)||cnToday();return regulations.map(r=>{const m=matchOne(r,profile,today);return {...r,...m,computedStatus:implementationStatus(r,today)};}).filter(r=>(options&&options.includeExcluded)||r.applicability!=="不纳入").sort((a,b)=>(a.levelRank-b.levelRank)||(applicabilityRank[a.applicability]-applicabilityRank[b.applicability])||(statusRank[a.computedStatus]-statusRank[b.computedStatus])||a.name.localeCompare(b.name,"zh-CN"));}
-  return {cnToday,daysBetween,implementationStatus,reviewReminder,matchOne,identify};
+  function matchOne(reg,profile,today,rule){if(rule)return matchByRule(reg,profile,today,rule);const fallback={includeAll:reg.applicabilityType==="通用基础"?["生产经营单位"]:[],includeAny:[...(reg.enterpriseTypes||[]),...(reg.industries||[]),...(reg.riskTags||[]),...(reg.activityTags||[])],excludeAny:[],reviewWhen:reg.reviewWhenInsufficient?["使用或储存危险化学品"]:[],applicability:reg.scaleConditions&&reg.scaleConditions.length?"conditional":"mandatory",explanationTemplate:"企业画像命中现有标签"};return matchByRule(reg,profile,today,fallback);}
+  function identify(regulations,profile,options){const today=(options&&options.today)||cnToday(),ruleMap=new Map(((options&&options.rules)||[]).map(r=>[r.regulationId,r]));return regulations.map(r=>{const m=matchOne(r,profile,today,ruleMap.get(r.id));return {...r,...m,computedStatus:implementationStatus(r,today)};}).filter(r=>(options&&options.includeExcluded)||r.applicability!=="不纳入").sort((a,b)=>(a.levelRank-b.levelRank)||(applicabilityRank[a.applicability]-applicabilityRank[b.applicability])||(statusRank[a.computedStatus]-statusRank[b.computedStatus])||a.name.localeCompare(b.name,"zh-CN"));}
+  return {cnToday,daysBetween,implementationStatus,implementationDistanceLabel,reviewReminder,profileFacts,matchOne,identify};
 });

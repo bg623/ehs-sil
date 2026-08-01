@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-07-31T00:00:00+08:00",
+  "publicationPolicy": "candidate_requires_human_approval",
+  "candidates": [
+    {
+      "source": "应急管理部",
+      "fetchedAt": "2026-07-31T00:00:00+08:00",
+      "name": "化工和危险化学品生产经营企业重大生产安全事故隐患判定准则",
+      "documentNo": "AQ 3067-2026",
+      "publishDate": "2026-03-09",
+      "effectiveDate": "2026-09-30",
+      "changeType": "新增",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202603/t20260325_598032.shtml",
+      "difference": "正式库尚无此标准",
+      "confidence": "高",
+      "humanConfirmed": false
+    },
+    {
+      "source": "应急管理部",
+      "fetchedAt": "2026-07-31T00:00:00+08:00",
+      "name": "危险化学品重大危险源安全包保责任管理要求",
+      "documentNo": "AQ 3072-2026",
+      "publishDate": "2026-03-09",
+      "effectiveDate": "2026-09-30",
+      "changeType": "新增",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202603/t20260325_598032.shtml",
+      "difference": "正式库尚无此标准",
+      "confidence": "高",
+      "humanConfirmed": false
+    }
+  ]
+}

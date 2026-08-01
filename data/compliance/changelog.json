@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "date": "2026-08-01",
+      "version": "1.2.0",
+      "summary": "拆分受控法规、候选法规和可解释匹配规则；清理重复与错误标准记录。",
+      "removedIds": [
+        "REG-072",
+        "REG-074",
+        "REG-103",
+        "REG-164",
+        "REG-079",
+        "REG-154",
+        "REG-165",
+        "REG-160"
+      ],
+      "correctedIds": [
+        "REG-022",
+        "REG-104",
+        "REG-051",
+        "REG-018",
+        "REG-020",
+        "REG-023"
+      ]
+    }
+  ]
+}

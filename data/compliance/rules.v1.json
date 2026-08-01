@@ -1,0 +1,1430 @@
+{
+  "schemaVersion": "1.2.0",
+  "updatedAt": "2026-08-01",
+  "rules": [
+    {
+      "ruleId": "RULE-REG-NEW-001",
+      "regulationId": "REG-NEW-001",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-NEW-002",
+      "regulationId": "REG-NEW-002",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品",
+        "危化品生产",
+        "危化品储存"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-NEW-003",
+      "regulationId": "REG-NEW-003",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-NEW-004",
+      "regulationId": "REG-NEW-004",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-NEW-005",
+      "regulationId": "REG-NEW-005",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品",
+        "涉及动火作业",
+        "使用承包商",
+        "危化品生产",
+        "危化品储存"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-SD-001",
+      "regulationId": "REG-SD-001",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-001",
+      "regulationId": "REG-001",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-002",
+      "regulationId": "REG-002",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-003",
+      "regulationId": "REG-003",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-004",
+      "regulationId": "REG-004",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [
+        "涉及消防重点部位"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-005",
+      "regulationId": "REG-005",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-006",
+      "regulationId": "REG-006",
+      "includeAll": [],
+      "includeAny": [
+        "锅炉",
+        "压力容器",
+        "压力管道",
+        "气瓶",
+        "电梯",
+        "起重机械",
+        "场（厂）内专用机动车辆"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-007",
+      "regulationId": "REG-007",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-008",
+      "regulationId": "REG-008",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-009",
+      "regulationId": "REG-009",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-010",
+      "regulationId": "REG-010",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-011",
+      "regulationId": "REG-011",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-012",
+      "regulationId": "REG-012",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-013",
+      "regulationId": "REG-013",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-014",
+      "regulationId": "REG-014",
+      "includeAll": [
+        "自愿采纳ISO 45001"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "voluntary",
+      "explanationTemplate": "企业已明确自愿采纳该管理体系标准",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-015",
+      "regulationId": "REG-015",
+      "includeAll": [
+        "自愿采纳ISO 14001"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "voluntary",
+      "explanationTemplate": "企业已明确自愿采纳该管理体系标准",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-016",
+      "regulationId": "REG-016",
+      "includeAll": [
+        "构成危险化学品重大危险源"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [
+        "使用或储存危险化学品"
+      ],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-017",
+      "regulationId": "REG-017",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品",
+        "涉及动火作业",
+        "涉及受限空间作业",
+        "涉及高处作业",
+        "涉及吊装作业",
+        "涉及临时用电",
+        "涉及盲板抽堵",
+        "涉及断路或动土作业"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-019",
+      "regulationId": "REG-019",
+      "includeAll": [],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-021",
+      "regulationId": "REG-021",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-022",
+      "regulationId": "REG-022",
+      "includeAll": [],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-041",
+      "regulationId": "REG-041",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-042",
+      "regulationId": "REG-042",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-043",
+      "regulationId": "REG-043",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-044",
+      "regulationId": "REG-044",
+      "includeAll": [
+        "构成危险化学品重大危险源"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [
+        "使用或储存危险化学品"
+      ],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-045",
+      "regulationId": "REG-045",
+      "includeAll": [],
+      "includeAny": [
+        "涉及受限空间作业"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-047",
+      "regulationId": "REG-047",
+      "includeAll": [],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-048",
+      "regulationId": "REG-048",
+      "includeAll": [],
+      "includeAny": [
+        "涉及消防重点部位"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-049",
+      "regulationId": "REG-049",
+      "includeAll": [
+        "石油化工属性"
+      ],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品",
+        "涉及消防重点部位",
+        "危化品生产",
+        "危化品储存"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-050",
+      "regulationId": "REG-050",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-052",
+      "regulationId": "REG-052",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-061",
+      "regulationId": "REG-061",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-062",
+      "regulationId": "REG-062",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-063",
+      "regulationId": "REG-063",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [
+        "产生危险废物"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-064",
+      "regulationId": "REG-064",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-065",
+      "regulationId": "REG-065",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-066",
+      "regulationId": "REG-066",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-067",
+      "regulationId": "REG-067",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-068",
+      "regulationId": "REG-068",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-069",
+      "regulationId": "REG-069",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-070",
+      "regulationId": "REG-070",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-071",
+      "regulationId": "REG-071",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-073",
+      "regulationId": "REG-073",
+      "includeAll": [],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-075",
+      "regulationId": "REG-075",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-076",
+      "regulationId": "REG-076",
+      "includeAll": [],
+      "includeAny": [
+        "涉及高处作业"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-077",
+      "regulationId": "REG-077",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-078",
+      "regulationId": "REG-078",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-080",
+      "regulationId": "REG-080",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-081",
+      "regulationId": "REG-081",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-082",
+      "regulationId": "REG-082",
+      "includeAll": [],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-090",
+      "regulationId": "REG-090",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-091",
+      "regulationId": "REG-091",
+      "includeAll": [],
+      "includeAny": [
+        "涉及消防重点部位"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-094",
+      "regulationId": "REG-094",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-097",
+      "regulationId": "REG-097",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-098",
+      "regulationId": "REG-098",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-099",
+      "regulationId": "REG-099",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-100",
+      "regulationId": "REG-100",
+      "includeAll": [
+        "石油化工属性"
+      ],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-101",
+      "regulationId": "REG-101",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品",
+        "危化品生产",
+        "危化品储存"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-102",
+      "regulationId": "REG-102",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-104",
+      "regulationId": "REG-104",
+      "includeAll": [],
+      "includeAny": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "化学原料和化学制品制造",
+        "医药制造",
+        "使用或储存危险化学品"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-105",
+      "regulationId": "REG-105",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-106",
+      "regulationId": "REG-106",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-107",
+      "regulationId": "REG-107",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-108",
+      "regulationId": "REG-108",
+      "includeAll": [],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-109",
+      "regulationId": "REG-109",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-110",
+      "regulationId": "REG-110",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-111",
+      "regulationId": "REG-111",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-113",
+      "regulationId": "REG-113",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-114",
+      "regulationId": "REG-114",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-115",
+      "regulationId": "REG-115",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-116",
+      "regulationId": "REG-116",
+      "includeAll": [],
+      "includeAny": [
+        "涉及消防重点部位"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-117",
+      "regulationId": "REG-117",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-118",
+      "regulationId": "REG-118",
+      "includeAll": [],
+      "includeAny": [
+        "危废暂存",
+        "危废处置"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [
+        "危废产生"
+      ],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-119",
+      "regulationId": "REG-119",
+      "includeAll": [
+        "危废填埋"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-120",
+      "regulationId": "REG-120",
+      "includeAll": [
+        "危废填埋"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-121",
+      "regulationId": "REG-121",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-122",
+      "regulationId": "REG-122",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-123",
+      "regulationId": "REG-123",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-124",
+      "regulationId": "REG-124",
+      "includeAll": [
+        "压力容器"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-125",
+      "regulationId": "REG-125",
+      "includeAll": [
+        "压力容器"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-126",
+      "regulationId": "REG-126",
+      "includeAll": [
+        "气瓶"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-127",
+      "regulationId": "REG-127",
+      "includeAll": [
+        "起重机械"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-128",
+      "regulationId": "REG-128",
+      "includeAll": [
+        "场（厂）内专用机动车辆"
+      ],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-129",
+      "regulationId": "REG-129",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-130",
+      "regulationId": "REG-130",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-131",
+      "regulationId": "REG-131",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-132",
+      "regulationId": "REG-132",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-133",
+      "regulationId": "REG-133",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-134",
+      "regulationId": "REG-134",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-137",
+      "regulationId": "REG-137",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-138",
+      "regulationId": "REG-138",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-139",
+      "regulationId": "REG-139",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-140",
+      "regulationId": "REG-140",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-141",
+      "regulationId": "REG-141",
+      "includeAll": [],
+      "includeAny": [],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-NEW-006",
+      "regulationId": "REG-NEW-006",
+      "includeAll": [
+        "生产经营单位"
+      ],
+      "includeAny": [
+        "存在职业病危害"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像满足该法规的受控触发条件",
+      "version": "1.2.0",
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "1.2.0",
+  "updatedAt": "2026-08-01",
+  "latestVerifiedAt": "2026-07-31",
+  "records": [
+    {
+      "id": "REG-NEW-001",
+      "cn": "中华人民共和国危险化学品安全法",
+      "en": "Hazardous Chemicals Safety Law",
+      "num": "主席令第六十四号",
+      "auth": "全国人大常委会",
+      "yr": 2025,
+      "type": "法律",
+      "cat": "化学品",
+      "c": "中国",
+      "link": "https://flk.npc.gov.cn/detail?fileId=&id=2933e1a00644487bbd43d0960cb01931&title=%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8D%B1%E9%99%A9%E5%8C%96%E5%AD%A6%E5%93%81%E5%AE%89%E5%85%A8%E6%B3%95&type=",
+      "publishDate": "2025-12-27",
+      "effectiveDate": "2026-05-01",
+      "status": "现行有效",
+      "sourceName": "国家法律法规数据库",
+      "sourceType": "官方原文",
+      "lastVerifiedAt": "2026-07-31",
+      "verificationStatus": "已核验",
+      "changeType": "新增",
+      "category": "化学品",
+      "levelRank": 1,
+      "name": "中华人民共和国危险化学品安全法",
+      "documentNo": "主席令第六十四号",
+      "issuingAuthority": "全国人大常委会",
+      "sourceUrl": "https://flk.npc.gov.cn/detail?fileId=&id=2933e1a00644487bbd43d0960cb01931&title=%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8D%B1%E9%99%A9%E5%8C%96%E5%AD%A6%E5%93%81%E5%AE%89%E5%85%A8%E6%B3%95&type=",
+      "industries": [
+        "化学原料和化学制品制造",
+        "医药制造"
+      ],
+      "enterpriseTypes": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业"
+      ],
+      "regions": [
+        "全国"
+      ],
+      "riskTags": [
+        "使用或储存危险化学品"
+      ],
+      "activityTags": [],
+      "applicabilityType": "风险触发",
+      "applicableClauses": "需结合企业实际逐条确认",
+      "requirementSummary": "围绕化学品管理识别适用要求并保留符合性证据。",
+      "suggestedDepartment": [
+        "EHS"
+      ],
+      "complianceEnabled": true,
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "主席令第六十四号::中华人民共和国危险化学品安全法",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
+    },
+    {
+      "id": "REG-NEW-002",
+      "cn": "危险化学品企业安全生产标准化通用规范",
+      "en": "General specification for safety production standardization of hazardous chemical enterprises",
+      "num": "GB 45673-2025",
+      "auth": "国家市场监督管理总局、国家标准化管理委员会",
+      "yr": 2025,
+      "type": "国家标准",
+      "cat": "化学品",
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=2B5FB91F00A1C10AE3750A6DEF40C749",
+      "publishDate": "2025-04-25",
+      "effectiveDate": "2025-11-01",
+      "status": "现行有效",
+      "sourceName": "国家标准全文公开系统",
+      "sourceType": "官方标准平台",
+      "lastVerifiedAt": "2026-07-31",
+      "verificationStatus": "已核验",
+      "changeType": "新增",
+      "category": "化学品",
+      "levelRank": 6,
+      "name": "危险化学品企业安全生产标准化通用规范",
+      "documentNo": "GB 45673-2025",
+      "issuingAuthority": "国家市场监督管理总局、国家标准化管理委员会",
+      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=2B5FB91F00A1C10AE3750A6DEF40C749",
+      "industries": [
+        "化学原料和化学制品制造",
+        "医药制造"
+      ],
+      "enterpriseTypes": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业"
+      ],
+      "regions": [
+        "全国"
+      ],
+      "riskTags": [
+        "使用或储存危险化学品"
+      ],
+      "activityTags": [],
+      "applicabilityType": "风险触发",
+      "applicableClauses": "需结合企业实际逐条确认",
+      "requirementSummary": "围绕化学品管理识别适用要求并保留符合性证据。",
+      "suggestedDepartment": [
+        "EHS"
+      ],
+      "complianceEnabled": true,
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "GB45673-2025",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
+    },
+    {
+      "id": "REG-NEW-003",
+      "cn": "安全色和安全标志",
+      "en": "Safety colours and safety signs",
+      "num": "GB 2894-2025",
+      "auth": "国家市场监督管理总局、国家标准化管理委员会",
+      "yr": 2025,
+      "type": "国家标准",
+      "cat": "综合",
+      "c": "中国",
+      "link": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=26CD7C428F2BF6AE971F84D22D7B72BB&refer=outter",
+      "publishDate": "2025-05-30",
+      "effectiveDate": "2026-03-01",
+      "status": "现行有效",
+      "sourceName": "国家标准全文公开系统",
+      "sourceType": "官方标准平台",
+      "lastVerifiedAt": "2026-07-31",
+      "verificationStatus": "已核验",
+      "changeType": "修订",
+      "replaces": [
+        "GB 2893-2008",
+        "GB 7231-2003",
+        "GB 2894-2008"
+      ],
+      "category": "综合",
+      "levelRank": 6,
+      "name": "安全色和安全标志",
+      "documentNo": "GB 2894-2025",
+      "issuingAuthority": "国家市场监督管理总局、国家标准化管理委员会",
+      "sourceUrl": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=26CD7C428F2BF6AE971F84D22D7B72BB&refer=outter",
+      "industries": [],
+      "enterpriseTypes": [],
+      "regions": [
+        "全国"
+      ],
+      "riskTags": [],
+      "activityTags": [],
+      "applicabilityType": "行业适用",
+      "applicableClauses": "需结合企业实际逐条确认",
+      "requirementSummary": "围绕综合管理识别适用要求并保留符合性证据。",
+      "suggestedDepartment": [
+        "EHS"
+      ],
+      "complianceEnabled": true,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB2894-2025",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
+    },
+    {
+      "id": "REG-NEW-004",
+      "cn": "生产安全事故分类与编码",
+      "en": "Classification and coding for work safety accidents",
+      "num": "GB 6441-2025",
+      "auth": "国家市场监督管理总局、国家标准化管理委员会",
+      "yr": 2025,
+      "type": "国家标准",
+      "cat": "事故",
+      "c": "中国",
+      "link": "https://std.samr.gov.cn/gb/search/gbDetailed?id=473DC30DBF58C20FE06397BE0A0AD08C",
+      "publishDate": "2025-12-31",
+      "effectiveDate": "2026-07-01",
+      "status": "现行有效",
+      "sourceName": "全国标准信息公共服务平台",
+      "sourceType": "官方标准平台",
+      "lastVerifiedAt": "2026-07-31",
+      "verificationStatus": "已核验",
+      "changeType": "修订",
+      "replaces": [
+        "GB/T 6441-1986"
+      ],
+      "category": "事故",
+      "levelRank": 6,
+      "name": "生产安全事故分类与编码",
+      "documentNo": "GB 6441-2025",
+      "issuingAuthority": "国家市场监督管理总局、国家标准化管理委员会",
+      "sourceUrl": "https://std.samr.gov.cn/gb/search/gbDetailed?id=473DC30DBF58C20FE06397BE0A0AD08C",
+      "industries": [],
+      "enterpriseTypes": [],
+      "regions": [
+        "全国"
+      ],
+      "riskTags": [],
+      "activityTags": [],
+      "applicabilityType": "行业适用",
+      "applicableClauses": "需结合企业实际逐条确认",
+      "requirementSummary": "围绕事故管理识别适用要求并保留符合性证据。",
+      "suggestedDepartment": [
+        "EHS"
+      ],
+      "complianceEnabled": true,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "GB6441-2025",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
+    },
+    {
+      "id": "REG-NEW-005",
+      "cn": "化工企业设备检修作业安全规范",
+      "en": "Safety specification for equipment maintenance operations in chemical enterprises",
+      "num": "AQ 3026-2026",
+      "auth": "应急管理部",
+      "yr": 2026,
+      "type": "行业标准",
+      "cat": "作业安全",
+      "c": "中国",
+      "link": "https://www.mem.gov.cn/fw/flfgbz/bz/bzwb/202603/t20260325_598037.shtml",
+      "publishDate": "2026-03-09",
+      "effectiveDate": "2026-09-30",
+      "status": "即将实施",
+      "sourceName": "应急管理部",
+      "sourceType": "官方原文",
+      "lastVerifiedAt": "2026-07-31",
+      "verificationStatus": "已核验",
+      "changeType": "修订",
+      "replaces": [
+        "AQ 3026-2008"
+      ],
+      "category": "作业安全",
+      "levelRank": 7,
+      "name": "化工企业设备检修作业安全规范",
+      "documentNo": "AQ 3026-2026",
+      "issuingAuthority": "应急管理部",
+      "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/bz/bzwb/202603/t20260325_598037.shtml",
+      "industries": [
+        "化学原料和化学制品制造",
+        "医药制造"
+      ],
+      "enterpriseTypes": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业"
+      ],
+      "regions": [
+        "全国"
+      ],
+      "riskTags": [
+        "使用或储存危险化学品"
+      ],
+      "activityTags": [
+        "涉及动火作业",
+        "使用承包商"
+      ],
+      "applicabilityType": "活动触发",
+      "applicableClauses": "需结合企业实际逐条确认",
+      "requirementSummary": "围绕作业安全管理识别适用要求并保留符合性证据。",
+      "suggestedDepartment": [
+        "EHS"
+      ],
+      "complianceEnabled": true,
+      "reviewWhenInsufficient": "企业存在少量危险化学品使用时，需结合品种、数量、许可和储存方式复核",
+      "canonicalKey": "AQ3026-2026",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
+    },
+    {
+      "id": "REG-SD-001",
+      "cn": "山东省生产安全事故隐患排查治理办法",
+      "en": "Shandong Measures for Work Safety Hazard Investigation and Treatment",
+      "num": "山东省人民政府令第347号",
+      "auth": "山东省人民政府",
+      "yr": 2022,
+      "type": "地方性法规",
+      "cat": "隐患排查",
+      "c": "中国",
+      "link": "https://www.sd.gov.cn/jpaas-jpolicy-web-server/front/info/detail?iid=ce981e339c154ddeb1de22f03ad6506a",
+      "publishDate": "2022-03-14",
+      "effectiveDate": "2022-05-01",
+      "status": "现行有效",
+      "sourceName": "山东省人民政府",
+      "sourceType": "官方原文",
+      "lastVerifiedAt": "2026-07-31",
+      "verificationStatus": "已核验",
+      "changeType": "无变化",
+      "regions": [
+        "山东省"
+      ],
+      "industries": [
+        "全部行业"
+      ],
+      "enterpriseTypes": [],
+      "riskTags": [],
+      "activityTags": [],
+      "applicabilityType": "地方要求",
+      "requirementSummary": "山东省内生产经营单位承担事故隐患排查治理主体责任。",
+      "category": "隐患排查",
+      "levelRank": 3,
+      "name": "山东省生产安全事故隐患排查治理办法",
+      "documentNo": "山东省人民政府令第347号",
+      "issuingAuthority": "山东省人民政府",
+      "sourceUrl": "https://www.sd.gov.cn/jpaas-jpolicy-web-server/front/info/detail?iid=ce981e339c154ddeb1de22f03ad6506a",
+      "applicableClauses": "需结合企业实际逐条确认",
+      "suggestedDepartment": [
+        "EHS"
+      ],
+      "complianceEnabled": true,
+      "reviewWhenInsufficient": "",
+      "canonicalKey": "山东省人民政府令第347号::山东省生产安全事故隐患排查治理办法",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail"
+    }
+  ]
+}
