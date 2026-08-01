@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+const code=fs.readFileSync(new URL("../js/compliance-engine.js",import.meta.url),"utf8");const sandbox={Intl,Date,console};sandbox.globalThis=sandbox;vm.runInNewContext(code,sandbox);const E=sandbox.EHSComplianceEngine;
+const data=JSON.parse(fs.readFileSync(new URL("../data/regulations.json",import.meta.url),"utf8")).regulations;
+const sd={companyName:"测试化工",province:"山东省",city:"淄博市",enterpriseTypes:["危险化学品使用企业"],industries:["化学原料和化学制品制造"],riskTags:["使用或储存危险化学品","涉及动火作业","涉及受限空间作业","涉及高处作业","涉及临时用电","使用特种设备","存在职业病危害","产生危险废物"]};
+const js={companyName:"测试机械",province:"江苏省",city:"苏州市",enterpriseTypes:["机械制造企业"],industries:["通用设备制造"],riskTags:["使用或储存危险化学品","涉及动火作业","涉及高处作业","使用特种设备"]};
+const a=E.identify(data,sd,{today:"2026-07-31"}),b=E.identify(data,js,{today:"2026-07-31"});
+assert.ok(a.some(r=>r.id==="REG-SD-001"&&r.applicability==="明确适用"));
+assert.ok(!b.some(r=>r.id==="REG-SD-001"),"江苏画像不得匹配山东地方要求");
+assert.ok(a.some(r=>r.name==="中华人民共和国危险化学品安全法"));
+assert.ok(a.every(r=>r.reasons.length>0));
+assert.ok(b.some(r=>r.name.includes("危险化学品")&&["条件适用","建议复核"].includes(r.applicability)));
+assert.equal(E.reviewReminder("2026-07-30","2026-07-31"),"已逾期");assert.equal(E.reviewReminder("2026-08-30","2026-07-31"),"30日内到期");assert.equal(E.reviewReminder("2026-10-29","2026-07-31"),"即将评审");
+console.log(JSON.stringify({status:"PASS",shandong:a.length,jiangsu:b.length,localIsolation:true}));
