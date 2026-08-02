@@ -8,7 +8,8 @@
 (function () {
     'use strict';
 
-    var CATEGORY = 'jsa_coach';
+    var CATEGORY = 'ehs_sil_product';
+    var EVENT_VERSION = '1';
     var GROUP_KEY = 'ehs_sil_experiment_group';
     var SESSION_KEY = 'ehs_sil_analytics_session';
     var ONCE_KEY = 'ehs_sil_analytics_once';
@@ -19,19 +20,38 @@
         'junior_ehs',
         'unknown'
     ];
-    var allowedEvents = [
-        'visit_jsa_coach',
-        'start_scene_identification',
+    var funnelEvents = [
+        'search_submit',
+        'search_no_result',
+        'search_result_click',
+        'tool_start',
+        'tool_complete',
+        'export_click',
+        'vip_gate_view',
+        'vip_cta_click',
+        'planet_qr_click',
+        'content_to_tool'
+    ];
+    var diagnosticEvents = [
         'complete_scene_identification',
         'use_risk_prompt',
         'add_jsa_step',
-        'complete_jsa',
         'view_completeness_check',
-        'view_jsa_preview',
-        'print_or_export_result',
-        'view_member_benefits',
-        'click_knowledge_planet'
+        'view_jsa_preview'
     ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents);
+    var legacyAliases = {
+        visit_jsa_coach: 'content_to_tool',
+        start_scene_identification: 'tool_start',
+        complete_jsa: 'tool_complete',
+        print_or_export_result: 'export_click',
+        view_member_benefits: 'vip_gate_view',
+        click_knowledge_planet: 'planet_qr_click'
+    };
+    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'article', 'other'];
+    var allowedSourceChannels = ['direct', 'site', 'article', 'wechat', 'video', 'planet', 'other'];
+    var allowedUserTiers = ['unknown', 'public', 'member', 'legacy_vip'];
+    var allowedResultBuckets = ['0', '1-10', '11-50', '51+'];
 
     function sessionId() {
         var value = sessionStorage.getItem(SESSION_KEY);
@@ -46,24 +66,68 @@
         return allowedGroups.indexOf(value) >= 0 ? value : 'unknown';
     }
 
+    function safeEnum(value, allowed, fallback) {
+        return allowed.indexOf(value) >= 0 ? value : fallback;
+    }
+
+    function safeId(value) {
+        value = String(value || '');
+        return /^[a-z0-9][a-z0-9_-]{0,39}$/.test(value) ? value : '';
+    }
+
+    function normalizeContext(context) {
+        context = context || {};
+        return {
+            mode: context.mode === 'example' ? 'example' : 'user',
+            content_id: safeId(context.contentId),
+            tool_id: safeId(context.toolId),
+            source_channel: safeEnum(context.sourceChannel, allowedSourceChannels, 'direct'),
+            user_tier: safeEnum(context.userTier, allowedUserTiers, 'unknown'),
+            page_type: safeEnum(context.pageType, allowedPageTypes, 'other'),
+            result_count_bucket: safeEnum(context.resultBucket, allowedResultBuckets, '')
+        };
+    }
+
+    function canonicalEvent(eventName) {
+        return legacyAliases[eventName] || eventName;
+    }
+
     function track(eventName, context) {
-        if (allowedEvents.indexOf(eventName) < 0) {
+        var canonicalName = canonicalEvent(eventName);
+        if (allowedEvents.indexOf(canonicalName) < 0) {
             if (window.console) console.warn('Ignored unsupported analytics event:', eventName);
             return false;
         }
 
-        var safeContext = context && context.mode === 'example' ? 'example' : 'user';
-        var label = [userGroup(), safeContext, sessionId()].join('|');
+        var safeContext = normalizeContext(context);
+        var label = [
+            'v' + EVENT_VERSION,
+            userGroup(),
+            safeContext.mode,
+            safeContext.content_id,
+            safeContext.tool_id,
+            safeContext.source_channel,
+            safeContext.user_tier,
+            safeContext.page_type,
+            safeContext.result_count_bucket,
+            sessionId()
+        ].join('|');
         window._hmt = window._hmt || [];
-        window._hmt.push(['_trackEvent', CATEGORY, eventName, label]);
+        window._hmt.push(['_trackEvent', CATEGORY, canonicalName, label]);
         window.dispatchEvent(new CustomEvent('ehs-sil:analytics', {
-            detail: { event: eventName, group: userGroup(), mode: safeContext }
+            detail: {
+                event: canonicalName,
+                sourceEvent: eventName,
+                version: EVENT_VERSION,
+                group: userGroup(),
+                context: safeContext
+            }
         }));
         return true;
     }
 
     function trackOnce(eventName, context) {
-        var key = eventName + ':' + ((context && context.mode) || 'user');
+        var key = canonicalEvent(eventName) + ':' + ((context && context.mode) || 'user');
         var seen;
         try {
             seen = JSON.parse(sessionStorage.getItem(ONCE_KEY) || '{}');
@@ -86,6 +150,8 @@
         trackOnce: trackOnce,
         getGroup: userGroup,
         setGroup: setExperimentGroup,
-        allowedEvents: allowedEvents.slice()
+        allowedEvents: allowedEvents.slice(),
+        funnelEvents: funnelEvents.slice(),
+        eventVersion: EVENT_VERSION
     };
 })();

@@ -75,9 +75,11 @@ Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
 ## 四、VIP 系统
 
 **激活码管理：**
-1. 客服手机打开 `ehs-sil.com/dashboard/admin-codes.html`
-2. 输入密码：`ehs-sil-admin`
+1. 通过受保护的 Worker 管理入口访问激活码功能
+2. 管理凭据仅保存在平台 Secret 中，不写入本文档或前端代码
 3. 点击「获取新激活码」→ 复制发给用户
+
+> 历史版本曾在本文档记录管理凭据；该凭据必须视为已暴露并在服务端轮换。
 
 **码库：** 激活码仅以哈希形式存储在服务端 D1 数据库
 **管理：** 由受保护的服务端接口生成、吊销和查询
@@ -142,7 +144,7 @@ ehs-sil-website/
 │   └── wechat-pay-qr.jpg
 ├── dashboard/
 │   ├── register.html   # VIP激活/购买
-│   ├── admin-codes.html # 激活码管理（密码: ehs-sil-admin）
+│   ├── admin-codes.html # 激活码管理入口（必须由服务端保护）
 │   └── admin.html      # 工作台
 ├── tools/
 │   ├── index.html      # 工具库搜索

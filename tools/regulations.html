@@ -54,7 +54,8 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
             .dl-btn:hover{background:var(--primary-dark)}
             .item{position:relative}
 </style>
-<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script></head>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+<script src="../js/analytics.js"></script></head>
 <body>
 <div class="header"><div class="container">
 <a href="../index.html" class="back">&larr; 返回首页</a>
@@ -95,6 +96,25 @@ fetch('../data/regulations.json').then(function(r){return r.json()}).then(functi
 
 var currentTab = 'all';
 var currentQuery = '';
+var regulationAnalyticsTimer;
+var lastTrackedRegulationSearch = '';
+
+function resultBucket(count){
+    if(count === 0) return '0';
+    if(count <= 10) return '1-10';
+    if(count <= 50) return '11-50';
+    return '51+';
+}
+
+function trackRegulationSearch(){
+    var normalized = currentQuery.trim().toLowerCase();
+    if(normalized.length < 2 || normalized === lastTrackedRegulationSearch || !window.EhsSilAnalytics) return;
+    lastTrackedRegulationSearch = normalized;
+    var count = getFilteredData(false).length;
+    var context = {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site', resultBucket:resultBucket(count)};
+    window.EhsSilAnalytics.track('search_submit', context);
+    if(!count) window.EhsSilAnalytics.track('search_no_result', context);
+}
 
 function setTab(tab, btn){
     document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
@@ -106,10 +126,13 @@ function setTab(tab, btn){
 function filterRegs(){
     currentQuery = document.getElementById('searchInput').value.trim().toLowerCase();
     render();
+    clearTimeout(regulationAnalyticsTimer);
+    regulationAnalyticsTimer = setTimeout(trackRegulationSearch, 800);
 }
 
 
 function downloadReg(r){
+    if(window.EhsSilAnalytics) window.EhsSilAnalytics.track('export_click', {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site'});
     var bom = '\uFEFF';
     var csv = bom + '法规名称,英文名称,标准编号,发布机构,年份,类型,分类,国家/地区,原文链接\n' +
         '"' + r.cn.replace(/"/g,'""') + '","' + r.en.replace(/"/g,'""') + '","' + (r.num||'').replace(/"/g,'""') + '","' + (r.auth||'').replace(/"/g,'""') + '",' + (r.yr||'') + ',"' + (r.type||'').replace(/"/g,'""') + '","' + (r.cat||'').replace(/"/g,'""') + '","' + (r.c||'').replace(/"/g,'""') + '","' + (r.link||'').replace(/"/g,'""') + '"';
@@ -136,7 +159,7 @@ function render(){
         else if(r.type.indexOf('标准') !== -1) typeTag = '<span class="tag tag-standard">' + r.type + '</span>';
         var dl = '<button class="dl-btn" onclick="downloadRegByIndex(' + data.indexOf(r) + ')">&#128203; CSV</button>';
         var linkBtn = '';
-        if (r.link) linkBtn = ' <a class="dl-btn" href="' + r.link + '" target="_blank" rel="noopener" style="text-decoration:none;background:#1d4ed8;margin-left:.2rem">&#128279; 查看原文</a>';
+        if (r.link) linkBtn = ' <a class="dl-btn source-result-link" href="' + r.link + '" target="_blank" rel="noopener" style="text-decoration:none;background:#1d4ed8;margin-left:.2rem">&#128279; 查看原文</a>';
         return '<div class="item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><h3>' + r.cn + '</h3><div class="meta">' + tag + typeTag + '<span>' + r.num + '</span><span>' + r.auth + '</span><span>' + r.yr + '年</span></div><div class="desc">' + r.en + '</div></div><div style="flex-shrink:0;margin-left:.5rem;white-space:nowrap">' + dl + linkBtn + '</div></div></div>';
     }).join('');
 }
@@ -154,6 +177,7 @@ function getFilteredData(all) {
 function exportCSV(all) {
     var items = getFilteredData(all);
     if (!items.length) { alert('暂无数据可导出'); return; }
+    if(window.EhsSilAnalytics) window.EhsSilAnalytics.track('export_click', {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site', resultBucket:resultBucket(items.length)});
     var bom = '\uFEFF';
     var rows = [['法规名称','英文名称','标准编号','发布机构','年份','类型','分类','国家/地区','原文链接']];
     items.forEach(function(r){
@@ -165,6 +189,16 @@ function exportCSV(all) {
     a.download = 'EHS法规_' + (all ? '全部' : '筛选结果') + '_' + new Date().toISOString().slice(0,10) + '.csv';
     a.click();
 }
+
+document.addEventListener('click', function(event){
+    var link = event.target.closest('a');
+    if(!link || !window.EhsSilAnalytics) return;
+    if(link.classList.contains('source-result-link')) {
+        window.EhsSilAnalytics.track('search_result_click', {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site'});
+    } else if(link.href.indexOf('compliance-identification.html') !== -1) {
+        window.EhsSilAnalytics.track('content_to_tool', {toolId:'compliance-identification', pageType:'regulation_search', sourceChannel:'site'});
+    }
+});
 
 </script>
 

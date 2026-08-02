@@ -1,6 +1,6 @@
 # JSA Coach 产品指标
 
-版本：V0.1  
+版本：V0.2
 真实数据状态：尚未开始收集
 
 ## 实施状态
@@ -26,15 +26,44 @@
 
 会员分组的权威来源是服务端 `entitlement_source`；在生产迁移完成前，不得用页面文案、激活码标签或人工猜测替代。
 
-## 核心事件
+## 统一漏斗事件 v1
 
-- `visit_jsa_coach`
-- `start_scene_identification`
+所有页面使用统一业务语义，当前由 `js/analytics.js` 发送到既有百度统计。旧JSA调用名称在模块内部转换，不形成第二套统计口径。
+
+- `search_submit`
+- `search_no_result`
+- `search_result_click`
+- `tool_start`
+- `tool_complete`
+- `export_click`
+- `vip_gate_view`
+- `vip_cta_click`
+- `planet_qr_click`
+- `content_to_tool`
+
+允许附带的受控字段仅包括：`event_version`、`content_id`、`tool_id`、`source_channel`、`user_tier`、`page_type`、`result_count_bucket`。不发送完整搜索词。
+
+JSA产品诊断事件可以保留，但不得与漏斗转化混算：
+
 - `complete_scene_identification`
 - `use_risk_prompt`
-- `complete_jsa`
+- `add_jsa_step`
 - `view_completeness_check`
-- `print_or_export_result`
+- `view_jsa_preview`
+
+旧调用映射：
+
+| 旧调用 | 统一事件 |
+|---|---|
+| `visit_jsa_coach` | `content_to_tool` |
+| `start_scene_identification` | `tool_start` |
+| `complete_jsa` | `tool_complete` |
+| `print_or_export_result` | `export_click` |
+| `view_member_benefits` | `vip_gate_view` |
+| `click_knowledge_planet` | `planet_qr_click` |
+
+## 需要真实反馈或服务端确认的指标
+
 - `report_found_omission`
 - `report_used_for_real_work`
 - `return_within_30_days`
@@ -62,8 +91,9 @@
 ## 技术实现
 
 - 前端事件模块：`js/analytics.js`；
-- 当前复用网站已有百度统计，不引入新的用户识别服务；
+- 当前复用网站已有百度统计，不引入新的用户识别服务；连续7天无法读取统一漏斗时延长到14天，确认不是埋点错误后再评估替换方案；
 - 只发送事件名、实验分组、示例/用户模式和随机会话标识；
+- 工具库和法规搜索只发送结果数量区间，不发送用户输入的原始搜索词；
 - 不发送表单字段、作业描述、危害、措施、企业名称、人员姓名或激活码；
 - `report_found_omission`、`report_used_for_real_work`、购买、续费和30日复访必须由后续真实反馈或服务端数据确认，前端不得自动推断。
 

@@ -1,0 +1,47 @@
+name: Regulation source health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 1 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regulation-source-health
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run governance and analytics tests
+        run: node --test tests/*.test.mjs
+
+      - name: Check official source availability
+        run: node scripts/check-regulation-sources.mjs > "$RUNNER_TEMP/regulation-source-status.json"
+
+      - name: Evaluate source report
+        id: evaluate
+        continue-on-error: true
+        run: node scripts/evaluate-regulation-source-check.mjs "$RUNNER_TEMP/regulation-source-status.json"
+
+      - name: Upload source report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regulation-source-status-${{ github.run_id }}
+          path: ${{ runner.temp }}/regulation-source-status.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Keep failed source checks visible
+        if: steps.evaluate.outcome == 'failure'
+        run: |
+          echo "One or more official source entrances need manual review."
+          exit 1
