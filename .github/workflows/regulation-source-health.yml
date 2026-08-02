@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run governance and analytics tests
-        run: node --test tests/analytics-contract.test.mjs tests/compliance-governance.test.mjs tests/site-policy.test.mjs
+        run: node --test tests/*.test.mjs
 
       - name: Check official source availability
         run: node scripts/check-regulation-sources.mjs > "$RUNNER_TEMP/regulation-source-status.json"
