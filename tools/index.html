@@ -25,6 +25,7 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
+<script src="../js/analytics.js"></script>
 
 </head>
 <body>
@@ -235,12 +236,47 @@ var _hmt = _hmt || [];
 
     // Debounced search
     let searchTimer;
+    let analyticsTimer;
+    let lastTrackedSearch = '';
+
+    function resultBucket(count) {
+        if (count === 0) return '0';
+        if (count <= 10) return '1-10';
+        if (count <= 50) return '11-50';
+        return '51+';
+    }
+
+    function trackSearch() {
+        var normalized = searchQuery.trim().toLowerCase();
+        if (normalized.length < 2 || normalized === lastTrackedSearch || !window.EhsSilAnalytics) return;
+        lastTrackedSearch = normalized;
+        var context = {toolId:'tool-library', pageType:'tool_index', sourceChannel:'site', resultBucket:resultBucket(filteredTools.length)};
+        window.EhsSilAnalytics.track('search_submit', context);
+        if (!filteredTools.length) window.EhsSilAnalytics.track('search_no_result', context);
+    }
+
     searchInput.addEventListener('input', function() {
         clearTimeout(searchTimer);
+        clearTimeout(analyticsTimer);
         searchTimer = setTimeout(() => {
             searchQuery = this.value;
             filterTools();
         }, 200);
+        analyticsTimer = setTimeout(() => {
+            searchQuery = this.value;
+            filterTools();
+            trackSearch();
+        }, 800);
+    });
+
+    document.addEventListener('click', function(event) {
+        var link = event.target.closest('a');
+        if (!link || !window.EhsSilAnalytics) return;
+        if (link.href.indexOf('compliance-identification.html') !== -1) {
+            window.EhsSilAnalytics.track('content_to_tool', {toolId:'compliance-identification', pageType:'tool_index', sourceChannel:'site'});
+        } else if (link.href.indexOf('wx.zsxq.com') !== -1) {
+            window.EhsSilAnalytics.track('vip_cta_click', {toolId:'tool-library', pageType:'tool_index', sourceChannel:'site'});
+        }
     });
 
 })();
