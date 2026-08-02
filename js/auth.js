@@ -60,9 +60,22 @@
             ok: true,
             active: true,
             label: payload.label,
-            expires: payload.expires
+            expires: payload.expires,
+            member_status: payload.member_status,
+            entitlement_source: payload.entitlement_source,
+            capabilities: Array.isArray(payload.capabilities) ? payload.capabilities : []
         };
         return payload;
+    }
+
+    async function hasCapability(capability, forceRefresh) {
+        var session = await getVipInfo(Boolean(forceRefresh));
+        return Boolean(
+            session &&
+            session.active &&
+            Array.isArray(session.capabilities) &&
+            session.capabilities.indexOf(capability) >= 0
+        );
     }
 
     async function clearVip() {
@@ -162,6 +175,7 @@
         activate: activateVip,
         clear: clearVip,
         getSession: getVipInfo,
+        hasCapability: hasCapability,
         isActive: isVip,
         renderGate: renderSimpleGate
     };

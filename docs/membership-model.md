@@ -1,7 +1,8 @@
 # 会员状态与激活数据模型
 
-版本：1.0  
-状态：私有Worker迁移已建立并通过本地SQLite验证，尚未部署
+版本：1.1
+
+状态：会员能力字段与合规导出权限已完成本地验证，等待私有 Worker 先行部署
 
 ## 会员状态
 
@@ -10,6 +11,18 @@
 - `toolbox_member`：129元外企EHS工具箱有效会员；
 - `expired`：权益已到期；
 - `admin`：内部管理与测试账户。
+
+## 能力映射
+
+| 会员状态 | `compliance_excel_export` | 说明 |
+|---|---:|---|
+| `free` | 否 | 可免费在线识别、筛选、查看详情、打印/PDF及下载固定示例 |
+| `legacy_vip` | 是 | 仅为既有29.9元网站VIP继续履约至原到期日 |
+| `toolbox_member` | 是 | 129元/年外企EHS工具箱会员包含网站专业工具权益 |
+| `expired` | 否 | 到期后保留免费在线能力 |
+| `admin` | 是 | 内部管理与测试 |
+
+定制四表 Excel 与 `.ehsproject.json` 导入/导出均依赖服务端返回的 `compliance_excel_export`。前端每次执行前重新核验会话，不以按钮显示、缓存文案或本地字段作为授权依据。
 
 ## 激活数据最小字段
 
@@ -39,5 +52,7 @@
 - 私有包迁移：`ehs-sil-vip-worker/migrations/0003_member_entitlements.sql`；
 - 新增字段：`entitlement_source`、`starts_at`、`bound_user`、`activation_status`、`renewal_status`、`updated_at`；
 - 服务端会话返回会员状态和权益来源，浏览器只展示服务端结果；
+- 服务端会话同时返回可用能力数组；合规导出能力授予`legacy_vip`、`toolbox_member`和`admin`；
+- 停止销售独立29.9元网站VIP，但不削减既有用户在原有效期内的权益；
 - 2026-07-29 已在临时SQLite数据库顺序执行0001、0002、0003迁移并验证结构；
 - 未连接或修改Cloudflare生产D1，生产执行仍需产品负责人批准。
