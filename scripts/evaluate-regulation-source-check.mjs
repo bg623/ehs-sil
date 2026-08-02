@@ -17,7 +17,10 @@ try {
 }
 
 const sources = Array.isArray(report.sources) ? report.sources : [];
-const failed = sources.filter((source) => source.status !== "available");
+const manual = sources.filter((source) => source.status === "manual_review_required");
+const failed = sources.filter(
+  (source) => !["available", "manual_review_required"].includes(source.status),
+);
 const lines = [
   "## 法规官方来源健康检查",
   "",
@@ -31,7 +34,10 @@ const lines = [
   "",
   failed.length
     ? `结论：${failed.length}个来源不可用，必须人工复核；正式法规库未被修改。`
-    : "结论：所有来源入口可访问；本检查不代表法规内容或版本已经人工确认。",
+    : "结论：自动检查范围内的来源入口均可访问；本检查不代表法规内容或版本已经人工确认。",
+  manual.length
+    ? `人工复核：${manual.length}个官方来源限制自动访问，仍须按清单人工查看。`
+    : "人工复核：无。",
   "",
 ];
 
