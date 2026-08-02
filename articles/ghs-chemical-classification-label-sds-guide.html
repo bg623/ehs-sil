@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHS化学品分类和标签怎么做？9类象形图与SDS实操指南 | EHS-SIL</title>
+  <meta name="description" content="GHS化学品分类、标签和SDS如何落地？系统讲解危害分类、9类象形图、信号词、危险说明、防范说明、16项SDS及企业审核检查清单。">
+  <meta name="keywords" content="GHS标签,GHS象形图,化学品分类和标签,SDS安全数据表,化学品安全标签,GB 30000.1-2024">
+  <link rel="canonical" href="https://ehs-sil.com/articles/ghs-chemical-classification-label-sds-guide.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"GHS化学品分类和标签怎么做？9类象形图与SDS实操指南","description":"系统讲解GHS危害分类、标签要素、9类象形图、16项SDS及企业落地检查方法。","datePublished":"2026-08-02","dateModified":"2026-08-02","author":{"@type":"Person","name":"John Yu"},"publisher":{"@type":"Organization","name":"EHS-SIL"},"mainEntityOfPage":"https://ehs-sil.com/articles/ghs-chemical-classification-label-sds-guide.html"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"GHS标签通常包含哪些核心要素？","acceptedAnswer":{"@type":"Answer","text":"通常包括产品标识符、供应商信息、危险象形图、信号词、危险说明和防范说明。具体要求应按适用国家或地区法规与标准执行。"}},
+    {"@type":"Question","name":"GHS共有多少类象形图？","acceptedAnswer":{"@type":"Answer","text":"GHS常用9类危险象形图：爆炸炸弹、火焰、圆上火焰、气瓶、腐蚀、骷髅和交叉骨、感叹号、健康危害、环境。是否使用取决于分类结果和当地实施规则。"}},
+    {"@type":"Question","name":"GHS标签和SDS是什么关系？","acceptedAnswer":{"@type":"Answer","text":"两者应基于同一危害分类结论。标签用于容器上的快速危险沟通，SDS提供更完整的16项信息；分类、信号词、象形图和危险说明不应相互矛盾。"}},
+    {"@type":"Question","name":"企业收到供应商SDS后还需要审核吗？","acceptedAnswer":{"@type":"Answer","text":"需要。企业应核对产品身份、语言和版本、分类与标签一致性、适用法规标准、暴露控制和应急信息，并建立版本更新与现场可获取机制。"}}
+  ]}
+  </script>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4f0e8;color:#263238;font-family:'Helvetica Neue',Arial,'Noto Sans SC',sans-serif;line-height:1.8}header{background:#0d2836;color:#fff;padding:16px 24px}header a{color:#fff;text-decoration:none;font-weight:700}.wrap{max-width:860px;margin:36px auto;padding:0 22px}.paper{background:#fff;padding:42px;border-radius:12px;box-shadow:0 8px 30px rgba(13,40,54,.08)}h1{font-size:34px;line-height:1.35;color:#0d2836;margin:10px 0 16px}h2{color:#0d5967;margin-top:38px;border-bottom:1px solid #d8e3e3;padding-bottom:8px}h3{color:#1a4b5c;margin-top:26px}.meta,.note{color:#6c7a80;font-size:14px}.lead{font-size:18px;color:#405158}.flow{background:#eaf4f2;border-left:5px solid #1f7a70;padding:18px 22px;margin:24px 0;font-weight:700}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:#f7f5ef;border-radius:8px;padding:15px}.card strong{display:block;color:#0d5967}.check{background:#f7f5ef;border-radius:8px;padding:20px 24px}.warning{background:#fff2df;border-left:5px solid #d58a24;padding:16px 20px}.cta{margin:40px 0 16px;padding:28px;background:#0d2836;color:#fff;border-radius:10px}.cta h2{color:#fff;border:0;margin-top:0}.cta a{display:inline-block;padding:11px 18px;border-radius:6px;background:#e4b65b;color:#0d2836;text-decoration:none;font-weight:700}.related a,.sources a{color:#0d5967}.sources{margin-top:30px;padding-top:20px;border-top:1px solid #ddd;font-size:14px}footer{text-align:center;color:#718087;padding:30px}@media(max-width:680px){.paper{padding:25px 20px}h1{font-size:27px}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header><a href="../index.html">EHS-SIL · 外企EHS实操指南</a></header>
+  <main class="wrap"><article class="paper">
+    <p class="meta">化学品管理 · GHS · SDS · 更新于 2026-08-02</p>
+    <h1>GHS化学品分类和标签怎么做？9类象形图与SDS实操指南</h1>
+    <p class="lead">GHS不是“给桶上贴一个红框图标”，而是一条从危害数据、分类判断到标签和SDS的完整危险沟通链。任何一环不一致，现场员工、客户和应急人员得到的信息就可能互相冲突。</p>
+
+    <h2>GHS是什么？</h2>
+    <p>GHS（Globally Harmonized System of Classification and Labelling of Chemicals）由联合国建立，用统一框架描述化学品危害，并通过标签和安全数据表传递信息。各国家和地区会结合本地法规采用相应版本，因此“符合联合国GHS”并不自动等于满足所有目的国要求。</p>
+    <p>中国现行通则为 <strong>GB 30000.1-2024《化学品分类和标签规范 第1部分：通则》</strong>，自2025年8月1日起实施，并替代GB 13690-2009。具体危害类别还需结合GB 30000系列相关分则。</p>
+    <div class="flow">物质/混合物信息 → 危害数据审查 → GHS分类 → 标签要素 → SDS → 现场培训与版本管理</div>
+
+    <h2>第一步：先分类，再制作标签</h2>
+    <p>分类是整个流程的基础。不能看到“有毒”“易燃”等描述后凭经验挑选象形图，而应根据成分、试验数据、权威数据和混合物分类规则，分别判断物理危害、健康危害和环境危害。</p>
+    <div class="warning"><strong>常见错误：</strong>直接复制同类产品标签、只采用运输分类、将英文SDS机器翻译成中文、标签和SDS分别由不同人员制作却没有一致性复核。</div>
+
+    <h2>第二步：看懂9类GHS象形图</h2>
+    <div class="grid">
+      <div class="card"><strong>爆炸炸弹</strong>爆炸物、自反应物质、有机过氧化物等</div>
+      <div class="card"><strong>火焰</strong>易燃、自燃、自热、遇水放出易燃气体等</div>
+      <div class="card"><strong>圆上火焰</strong>氧化性气体、液体或固体</div>
+      <div class="card"><strong>气瓶</strong>加压气体</div>
+      <div class="card"><strong>腐蚀</strong>金属腐蚀、皮肤腐蚀、严重眼损伤</div>
+      <div class="card"><strong>骷髅和交叉骨</strong>较高等级急性毒性</div>
+      <div class="card"><strong>感叹号</strong>刺激、致敏或较低等级急性毒性等</div>
+      <div class="card"><strong>健康危害</strong>致癌、生殖毒性、器官毒性、吸入危害等</div>
+      <div class="card"><strong>环境</strong>对水生环境的危害</div>
+    </div>
+    <p class="note">象形图只是分类结果的表达。一个产品可能需要多个象形图，也可能因优先规则省略部分象形图；不得仅凭图形反推完整危害。</p>
+
+    <h2>第三步：标签至少核对这6类信息</h2>
+    <ol>
+      <li><strong>产品标识符：</strong>能够与SDS和采购物料唯一对应；</li>
+      <li><strong>供应商信息：</strong>名称、地址及可联系信息符合适用要求；</li>
+      <li><strong>危险象形图：</strong>与分类结果和优先规则一致；</li>
+      <li><strong>信号词：</strong>按危害严重程度使用“危险”或“警告”；</li>
+      <li><strong>危险说明：</strong>准确描述危险性质和程度；</li>
+      <li><strong>防范说明：</strong>覆盖预防、响应、储存和处置等必要措施。</li>
+    </ol>
+    <p>还应检查语言、版式、最小尺寸、补充信息、包装层级和目的国特殊要求。出口产品尤其不能用“一张中文版标签走全球”。</p>
+
+    <h2>第四步：让标签与16项SDS保持一致</h2>
+    <p>SDS通常采用16项结构，涵盖化学品及企业标识、危险性概述、成分、急救、消防、泄漏处置、操作储存、接触控制、理化性质、稳定性与反应性、毒理、生态、废弃、运输、法规和其他信息。</p>
+    <p>审核时优先做交叉检查：SDS第2项中的分类、象形图、信号词和危险说明，是否与容器标签一致；第8项PPE建议是否与现场风险控制匹配；第16项能否看出版本日期与修订记录。</p>
+
+    <h2>企业GHS落地检查清单</h2>
+    <div class="check"><ul>
+      <li>化学品清单中的每个在用物料都能对应最新版SDS；</li>
+      <li>产品名称、供应商、CAS号或内部物料号可交叉检索；</li>
+      <li>分类有数据来源和判断依据，不以“同行标签”代替分类；</li>
+      <li>入厂原包装标签完整，分装容器也有适当的危险沟通；</li>
+      <li>标签与SDS第2项保持一致，中文内容经过专业复核；</li>
+      <li>员工能看懂象形图、信号词和关键防范措施；</li>
+      <li>法规、配方、供应商或用途变化能够触发重新评审；</li>
+      <li>采购、仓库、生产、实验室和EHS的职责已经写入流程。</li>
+    </ul></div>
+
+    <h2>三个最值得先改的现场问题</h2>
+    <h3>1. 分装瓶无标签</h3><p>先盘点实验室、维修间和生产岗位的二次容器，为常用物料建立统一分装标签，而不是依赖手写简称。</p>
+    <h3>2. SDS找得到但版本失控</h3><p>建立物料名称、供应商、版本日期、存放位置和复核日期台账。关于SDS管理，可继续阅读<a href="../articles/ehs-regulation-register-compliance-evaluation-tracker.html">法规识别与合规追踪方法</a>，把更新动作纳入到期提醒。</p>
+    <h3>3. 员工只认图、不懂措施</h3><p>培训不能停留在“背9个图标”，应让员工用自己岗位上的真实标签找到信号词、主要危害、PPE、泄漏和急救信息。企业还可通过<a href="../tools/compliance-identification.html">法规识别工具</a>梳理适用要求。</p>
+
+    <section class="cta">
+      <h2>需要完整化学品培训材料？</h2>
+      <p>外企EHS培训库提供可编辑的化学品安全、GHS标签与SDS解读培训课件，用于新员工、仓储和生产岗位培训。</p>
+      <a href="../products/training.html?utm_source=seo_article&amp;utm_medium=internal&amp;utm_campaign=ghs_guide">查看化学品安全培训库</a>
+    </section>
+
+    <h2>常见问题</h2>
+    <h3>GHS标签是不是必须放满9个象形图？</h3><p>不是。象形图由危害分类结果决定，并受优先规则和当地实施要求影响。</p>
+    <h3>运输危险品标签可以替代GHS供应和使用标签吗？</h3><p>不能简单等同。运输规则和工作场所危险沟通的适用场景不同，应分别核对相关要求。</p>
+    <h3>供应商给了SDS，使用企业还要做什么？</h3><p>至少应审核身份、版本、语言、分类与标签一致性、现场可获取性，并在用途或法规发生变化时复核。</p>
+
+    <div class="sources"><strong>权威参考：</strong>
+      <ul>
+        <li><a href="https://unece.org/transport/documents/2025/09/standards/globally-harmonized-system-classification-and-labelling" target="_blank" rel="noopener">UNECE：GHS第11修订版（2025）</a></li>
+        <li><a href="https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=C008AEDBFD9A16F3C5BEB671C20618DD" target="_blank" rel="noopener">全国标准信息公共服务平台：GB 30000.1-2024</a></li>
+        <li><a href="https://mp.weixin.qq.com/s/lS2oxwp3i18hwsao2uTTTw" target="_blank" rel="noopener">原始公众号文章</a></li>
+      </ul>
+      <p>提示：GHS在不同国家和地区的实施版本、分类积木和标签要求可能不同。页面用于管理与培训参考，具体合规判断应以产品销售或使用地的最新法规和标准为准。</p>
+    </div>
+    <p class="related"><a href="index.html">← 返回全部文章</a></p>
+  </article></main>
+  <footer>© 2026 EHS-SIL · 外企EHS实操指南</footer>
+</body>
+</html>
