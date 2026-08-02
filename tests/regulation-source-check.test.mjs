@@ -19,8 +19,14 @@ const success = runFixture("success", [
   { name: "官方来源A", mode: "official_entry_check", status: "available", httpStatus: 200 },
 ]);
 assert.equal(success.result.status, 0);
-assert.match(success.summary, /所有来源入口可访问/);
+assert.match(success.summary, /自动检查范围内的来源入口均可访问/);
 assert.match(success.summary, /不代表法规内容或版本已经人工确认/);
+
+const manual = runFixture("manual", [
+  { name: "官方来源C", mode: "manual_review_required", status: "manual_review_required" },
+]);
+assert.equal(manual.result.status, 0);
+assert.match(manual.summary, /1个官方来源限制自动访问/);
 
 const failure = runFixture("failure", [
   { name: "官方来源B", mode: "official_entry_check", status: "failed", error: "timeout" },
