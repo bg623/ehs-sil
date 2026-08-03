@@ -1,9 +1,10 @@
 {
-  "checkedAt":"2026-07-31T00:00:00+08:00",
+  "checkedAt":"2026-08-03T00:00:00+08:00",
   "sources":[
     {"name":"国家法律法规数据库","url":"https://flk.npc.gov.cn/","status":"available","mode":"official_entry_check"},
     {"name":"国家标准全文公开系统","url":"https://openstd.samr.gov.cn/","status":"available","mode":"official_entry_check"},
     {"name":"应急管理部","url":"https://www.mem.gov.cn/fw/flfgbz/","status":"available","mode":"official_entry_check"},
+    {"name":"生态环境部","url":"https://www.mee.gov.cn/","status":"available","mode":"official_entry_check"},
     {"name":"山东省地方标准","url":"https://dbba.sacinfo.org.cn/","status":"manual_review_required","mode":"candidate_only"},
     {"name":"淄博市主管部门","url":"https://ajj.zibo.gov.cn/","status":"manual_review_required","mode":"candidate_only"}
   ],

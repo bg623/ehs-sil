@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.2.0",
-  "updatedAt": "2026-08-01",
+  "schemaVersion": "1.5.0",
+  "updatedAt": "2026-08-03",
   "publicationPolicy": "human_review_required",
   "records": [
     {
@@ -1560,50 +1560,6 @@
       "complianceEnabled": true,
       "reviewWhenInsufficient": "",
       "canonicalKey": "主席令第57号::固体废物污染环境防治法",
-      "sourcePrecision": "search_or_index",
-      "candidateReason": "官方来源尚非直接详情页"
-    },
-    {
-      "cn": "环境噪声污染防治法",
-      "en": "Law on Prevention of Environmental Noise Pollution",
-      "num": "主席令第77号",
-      "auth": "全国人大常委会",
-      "yr": 2021,
-      "type": "法律",
-      "cat": "环境",
-      "c": "中国",
-      "link": "https://flk.npc.gov.cn/search.html?keyword=环境噪声污染防治法",
-      "id": "REG-064",
-      "category": "环境",
-      "levelRank": 1,
-      "name": "环境噪声污染防治法",
-      "documentNo": "主席令第77号",
-      "issuingAuthority": "全国人大常委会",
-      "publishDate": "",
-      "effectiveDate": "",
-      "status": "待核实",
-      "sourceUrl": "https://flk.npc.gov.cn/search.html?keyword=环境噪声污染防治法",
-      "sourceName": "国家法律法规数据库",
-      "sourceType": "官方原文",
-      "industries": [],
-      "enterpriseTypes": [],
-      "regions": [
-        "全国"
-      ],
-      "riskTags": [],
-      "activityTags": [],
-      "applicabilityType": "行业适用",
-      "applicableClauses": "需结合企业实际逐条确认",
-      "requirementSummary": "围绕环境管理识别适用要求并保留符合性证据。",
-      "suggestedDepartment": [
-        "EHS"
-      ],
-      "lastVerifiedAt": "",
-      "verificationStatus": "待复核",
-      "changeType": "无变化",
-      "complianceEnabled": true,
-      "reviewWhenInsufficient": "",
-      "canonicalKey": "主席令第77号::环境噪声污染防治法",
       "sourcePrecision": "search_or_index",
       "candidateReason": "官方来源尚非直接详情页"
     },

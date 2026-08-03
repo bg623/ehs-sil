@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.4.0",
+  "schemaVersion": "1.5.0",
   "updatedAt": "2026-08-03",
   "rules": [
     {
@@ -650,15 +650,16 @@
       "ruleId": "RULE-REG-064",
       "regulationId": "REG-064",
       "includeAll": [],
-      "includeAny": [],
+      "includeAny": [
+        "产生工业噪声"
+      ],
       "excludeAny": [],
       "reviewWhen": [
-        "产生废水、废气或噪声",
         "设置环保治理设施"
       ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
-      "version": "1.4.0",
+      "explanationTemplate": "企业画像显示存在工业噪声产生情形",
+      "version": "1.5.0",
       "status": "active"
     },
     {
@@ -738,12 +739,12 @@
       "includeAny": [],
       "excludeAny": [],
       "reviewWhen": [
-        "产生废水、废气或噪声",
+        "产生废气",
         "设置环保治理设施"
       ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "status": "active"
     },
     {
@@ -753,12 +754,12 @@
       "includeAny": [],
       "excludeAny": [],
       "reviewWhen": [
-        "产生废水、废气或噪声",
+        "产生工业噪声",
         "设置环保治理设施"
       ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "status": "active"
     },
     {
@@ -1254,12 +1255,12 @@
       "includeAny": [],
       "excludeAny": [],
       "reviewWhen": [
-        "产生废水、废气或噪声",
+        "产生废水",
         "设置环保治理设施"
       ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "status": "active"
     },
     {
@@ -1330,12 +1331,14 @@
       "includeAny": [],
       "excludeAny": [],
       "reviewWhen": [
-        "产生废水、废气或噪声",
+        "产生废水",
+        "产生废气",
+        "产生工业噪声",
         "设置环保治理设施"
       ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "status": "active"
     },
     {
@@ -1345,12 +1348,12 @@
       "includeAny": [],
       "excludeAny": [],
       "reviewWhen": [
-        "产生废水、废气或噪声",
+        "产生废气",
         "设置环保治理设施"
       ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "status": "active"
     },
     {
@@ -1583,17 +1586,67 @@
     {
       "ruleId": "RULE-REG-NEW-006",
       "regulationId": "REG-NEW-006",
-      "includeAll": [
-        "生产经营单位"
-      ],
+      "includeAll": [],
       "includeAny": [
-        "存在职业病危害"
+        "化学原料和化学制品制造",
+        "石油化工",
+        "化工属性",
+        "石油化工属性",
+        "危废处置",
+        "危废填埋"
       ],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生一般固体废物或危险废物",
+        "设置环保治理设施",
+        "使用或储存危险化学品"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中地下水污染防治重点活动",
+      "version": "1.5.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-ENV-001",
+      "regulationId": "REG-ENV-001",
+      "includeAll": [],
+      "includeAny": [
+        "化学原料和化学制品制造",
+        "石油化工",
+        "化工属性",
+        "石油化工属性",
+        "危废处置",
+        "危废填埋"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [
+        "产生一般固体废物或危险废物",
+        "设置环保治理设施",
+        "使用或储存危险化学品"
+      ],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像命中地下水污染防治重点活动",
+      "version": "1.5.0",
+      "status": "active"
+    },
+    {
+      "ruleId": "RULE-REG-ENV-002",
+      "regulationId": "REG-ENV-002",
+      "includeAll": [],
+      "includeAny": [
+        "危废产生",
+        "危废暂存",
+        "危废自行利用",
+        "危废处置",
+        "危废填埋"
+      ],
+      "excludeAny": [],
+      "reviewWhen": [
+        "产生一般固体废物或危险废物"
+      ],
+      "applicability": "mandatory",
+      "explanationTemplate": "企业画像显示存在危险废物产生或管理活动",
+      "version": "1.5.0",
       "status": "active"
     }
   ]

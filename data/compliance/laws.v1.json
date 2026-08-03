@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "1.2.0",
-  "updatedAt": "2026-08-01",
-  "latestVerifiedAt": "2026-07-31",
+  "schemaVersion": "1.5.0",
+  "updatedAt": "2026-08-03",
+  "latestVerifiedAt": "2026-08-03",
   "records": [
     {
       "id": "REG-NEW-001",
@@ -315,6 +315,176 @@
       "canonicalKey": "山东省人民政府令第347号::山东省生产安全事故隐患排查治理办法",
       "reviewer": "Codex（官方元数据核验）",
       "sourcePrecision": "direct_detail"
+    },
+    {
+      "c": "中国",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "lastVerifiedAt": "2026-08-03",
+      "verificationStatus": "已核验",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail",
+      "id": "REG-064",
+      "cn": "中华人民共和国噪声污染防治法",
+      "en": "Law of the People’s Republic of China on Noise Pollution Prevention and Control",
+      "num": "主席令第一〇四号",
+      "auth": "全国人大常委会",
+      "yr": 2021,
+      "type": "法律",
+      "cat": "环境",
+      "category": "环境",
+      "levelRank": 1,
+      "link": "https://flk.npc.gov.cn/detail?fileId=&id=ff8081817dea9c18017deb70ddc70131&title=%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%99%AA%E5%A3%B0%E6%B1%A1%E6%9F%93%E9%98%B2%E6%B2%BB%E6%B3%95&type=",
+      "publishDate": "2021-12-24",
+      "effectiveDate": "2022-06-05",
+      "status": "现行有效",
+      "sourceName": "国家法律法规数据库",
+      "sourceType": "官方原文",
+      "name": "中华人民共和国噪声污染防治法",
+      "documentNo": "主席令第一〇四号",
+      "issuingAuthority": "全国人大常委会",
+      "sourceUrl": "https://flk.npc.gov.cn/detail?fileId=&id=ff8081817dea9c18017deb70ddc70131&title=%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%99%AA%E5%A3%B0%E6%B1%A1%E6%9F%93%E9%98%B2%E6%B2%BB%E6%B3%95&type=",
+      "industries": [
+        "全部行业"
+      ],
+      "enterpriseTypes": [],
+      "riskTags": [
+        "产生工业噪声"
+      ],
+      "activityTags": [],
+      "applicabilityType": "风险触发",
+      "applicableClauses": "第三章、第四章等；需结合工业噪声排放、排污许可和监测要求逐条确认",
+      "requirementSummary": "产生工业噪声的单位需结合实际排放、许可、监测和噪声污染防治设施识别适用要求。",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "reviewWhenInsufficient": "存在设备运行、施工或运输噪声时需进一步确认",
+      "canonicalKey": "主席令第一〇四号::中华人民共和国噪声污染防治法",
+      "changeType": "替代",
+      "replaces": [
+        "中华人民共和国环境噪声污染防治法（主席令第77号）"
+      ]
+    },
+    {
+      "c": "中国",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "lastVerifiedAt": "2026-08-03",
+      "verificationStatus": "已核验",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail",
+      "id": "REG-ENV-001",
+      "cn": "地下水管理条例",
+      "en": "Regulation on Groundwater Management",
+      "num": "国务院令第748号",
+      "auth": "国务院",
+      "yr": 2021,
+      "type": "行政法规",
+      "cat": "环境",
+      "category": "环境",
+      "levelRank": 2,
+      "link": "https://www.mee.gov.cn/zcwj/gwywj/202111/t20211109_959743.shtml",
+      "publishDate": "2021-10-21",
+      "effectiveDate": "2021-12-01",
+      "status": "现行有效",
+      "sourceName": "生态环境部（转载中国政府网）",
+      "sourceType": "官方原文",
+      "name": "地下水管理条例",
+      "documentNo": "国务院令第748号",
+      "issuingAuthority": "国务院",
+      "sourceUrl": "https://www.mee.gov.cn/zcwj/gwywj/202111/t20211109_959743.shtml",
+      "industries": [
+        "化学原料和化学制品制造",
+        "石油化工"
+      ],
+      "enterpriseTypes": [
+        "危险化学品生产企业",
+        "一般化工企业"
+      ],
+      "riskTags": [
+        "使用或储存危险化学品",
+        "产生一般固体废物或危险废物"
+      ],
+      "activityTags": [
+        "危废处置",
+        "危废填埋"
+      ],
+      "applicabilityType": "条件触发",
+      "applicableClauses": "第四十条、第四十一条等；需结合取用地下水、地下工程、地下储罐、化学品生产及危废处置活动确认",
+      "requirementSummary": "涉及地下水取用、地下工程或重点地下水污染风险活动时，应识别节约、保护、防渗漏和监测等要求。",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "工程"
+      ],
+      "reviewWhenInsufficient": "存在地下取水、地下储罐、危废填埋或化学品生产活动时需进一步确认",
+      "canonicalKey": "国务院令第748号::地下水管理条例",
+      "changeType": "新增"
+    },
+    {
+      "c": "中国",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "lastVerifiedAt": "2026-08-03",
+      "verificationStatus": "已核验",
+      "reviewer": "Codex（官方元数据核验）",
+      "sourcePrecision": "direct_detail",
+      "id": "REG-ENV-002",
+      "cn": "国家危险废物名录（2025年版）",
+      "en": "National Catalogue of Hazardous Wastes (2025 Edition)",
+      "num": "生态环境部等五部门令第36号",
+      "auth": "生态环境部、国家发展和改革委员会、公安部、交通运输部、国家卫生健康委员会",
+      "yr": 2024,
+      "type": "部门规章",
+      "cat": "环境",
+      "category": "环境",
+      "levelRank": 3,
+      "link": "https://www.mee.gov.cn/gzk/gz/202411/t20241129_1097688.shtml",
+      "publishDate": "2024-11-26",
+      "effectiveDate": "2025-01-01",
+      "status": "现行有效",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "name": "国家危险废物名录（2025年版）",
+      "documentNo": "生态环境部等五部门令第36号",
+      "issuingAuthority": "生态环境部、国家发展和改革委员会、公安部、交通运输部、国家卫生健康委员会",
+      "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202411/t20241129_1097688.shtml",
+      "industries": [
+        "全部行业"
+      ],
+      "enterpriseTypes": [],
+      "riskTags": [
+        "产生一般固体废物或危险废物"
+      ],
+      "activityTags": [
+        "危废产生",
+        "危废暂存",
+        "危废自行利用",
+        "危废处置",
+        "危废填埋"
+      ],
+      "applicabilityType": "风险触发",
+      "applicableClauses": "正文、附表及豁免管理清单；需结合废物产生行业、废物代码、危险特性和管理环节确认",
+      "requirementSummary": "产生或管理危险废物时，应依据现行名录及其豁免条件识别废物类别、代码和管理要求。",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "仓储"
+      ],
+      "reviewWhenInsufficient": "企业产生固体废物但尚未完成危险特性或名录比对时需进一步确认",
+      "canonicalKey": "生态环境部等五部门令第36号::国家危险废物名录（2025年版）",
+      "changeType": "替代",
+      "replaces": [
+        "国家危险废物名录（2021年版）（五部门令第15号）"
+      ]
     }
   ]
 }

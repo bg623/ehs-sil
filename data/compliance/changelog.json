@@ -1,6 +1,44 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.5.0",
   "entries": [
+    {
+      "date": "2026-08-03",
+      "version": "1.5.0",
+      "summary": "核验并更新噪声污染防治法，新增地下水管理条例和国家危险废物名录（2025年版）。",
+      "addedIds": [
+        "REG-ENV-001",
+        "REG-ENV-002"
+      ],
+      "correctedIds": [
+        "REG-064"
+      ],
+      "removedCandidateIds": [
+        "REG-064"
+      ],
+      "replacedDocuments": [
+        "中华人民共和国环境噪声污染防治法（主席令第77号）",
+        "国家危险废物名录（2021年版）（五部门令第15号）"
+      ]
+    },
+    {
+      "date": "2026-08-03",
+      "version": "1.5.0",
+      "summary": "核验并更新噪声污染防治法，新增地下水管理条例和国家危险废物名录（2025年版）。",
+      "addedIds": [
+        "REG-NEW-006",
+        "REG-NEW-007"
+      ],
+      "correctedIds": [
+        "REG-064"
+      ],
+      "removedCandidateIds": [
+        "REG-064"
+      ],
+      "replacedDocuments": [
+        "中华人民共和国环境噪声污染防治法（主席令第77号）",
+        "国家危险废物名录（2021年版）（五部门令第15号）"
+      ]
+    },
     {
       "date": "2026-08-01",
       "version": "1.2.0",

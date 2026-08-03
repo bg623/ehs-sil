@@ -6,7 +6,7 @@ const formal=read("data/compliance/laws.v1.json").records;
 const candidates=read("data/compliance/candidates.v1.json").records;
 const rules=read("data/compliance/rules.v1.json").rules;
 const legacy=read("data/regulations.json").regulations;
-const directOfficial=/^https:\/\/(flk\.npc\.gov\.cn\/detail|openstd\.samr\.gov\.cn\/bzgk\/(?:std|gb)\/newGbInfo|std\.samr\.gov\.cn\/gb\/search\/gbDetailed|www\.mem\.gov\.cn\/.+\/t\d+_|www\.sd\.gov\.cn\/jpaas-jpolicy|www\.nhc\.gov\.cn\/(?:wjw\/pyl|fzs\/c100048)\/)/;
+const directOfficial=/^https:\/\/(flk\.npc\.gov\.cn\/detail|openstd\.samr\.gov\.cn\/bzgk\/(?:std|gb)\/newGbInfo|std\.samr\.gov\.cn\/gb\/search\/gbDetailed|www\.mem\.gov\.cn\/.+\/t\d+_|www\.sd\.gov\.cn\/jpaas-jpolicy|www\.nhc\.gov\.cn\/(?:wjw\/pyl|fzs\/c100048)\/|www\.mee\.gov\.cn\/(?:ywgz\/fgbz\/fl|zcwj\/gwywj|gzk\/gz)\/)/;
 const normalize=s=>String(s||"").toUpperCase().replace(/[—–－]/g,"-").replace(/\s+/g,"");
 
 for(const r of formal){
@@ -16,6 +16,8 @@ for(const r of formal){
 }
 assert.equal(new Set(formal.map(r=>normalize(r.documentNo))).size,formal.length,"formal standards contain duplicate document numbers");
 assert.ok(candidates.every(r=>r.verificationStatus!=="已核验"),"candidate record cannot be marked verified");
+assert.ok(!candidates.some(r=>r.id==="REG-064"),"superseded noise-law candidate must be removed");
+for(const id of ["REG-064","REG-ENV-001","REG-ENV-002"])assert.ok(formal.some(r=>r.id===id),`${id} verified environmental record missing`);
 assert.equal(new Set([...formal,...candidates].map(r=>r.id)).size,formal.length+candidates.length,"formal and candidate IDs overlap");
 const recordIds=new Set([...formal,...candidates].map(r=>r.id));
 for(const rule of rules){
