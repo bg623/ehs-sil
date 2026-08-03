@@ -155,3 +155,12 @@ P1 页面只在本地计算：已选法规数、评价覆盖率、逾期整改�
 - `excel_exported`：具有服务端能力的用户完成定制 Excel 导出。
 
 事件只携带`example`或`user`模式，不携带企业名称、地区、行业、工艺、法规清单、评价记录、整改证据、激活码或用户标识。固定示例 Excel 下载不计作会员专业导出。会员与非会员转化必须按服务端`entitlement_source`分别汇总，不能把`legacy_vip`并入新工具箱购买转化。
+
+## 合规识别 V1.4 覆盖质量指标
+
+- `active_rule_without_condition`：启用但缺少直接匹配和复核条件的规则数，发布门槛为 0；
+- `profile_result_count`：仅作为内部回归对比，不能把结果越多解释为识别质量越高；
+- `review_result_ratio`：建议复核结果占比，用于发现规则仍过宽或资料不足；
+- `category_coverage`：测试画像覆盖到的法规类别数，用于发现整类法规被静默遗漏；
+- `verified_result_count` 与 `candidate_result_count` 必须分别统计；
+- 特殊作业只选择总项时，相关具体作业法规不得计入“明确匹配”。

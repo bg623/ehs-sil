@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.2.0",
-  "updatedAt": "2026-08-01",
+  "schemaVersion": "1.4.0",
+  "updatedAt": "2026-08-03",
   "rules": [
     {
       "ruleId": "RULE-REG-NEW-001",
@@ -52,10 +52,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -64,10 +66,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -89,10 +93,12 @@
         "危化品储存"
       ],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业"
+      ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -175,10 +181,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -270,10 +278,21 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "危化品生产",
+        "危化品经营",
+        "危化品使用",
+        "危化品储存",
+        "危化品进口"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -282,10 +301,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -368,10 +389,12 @@
         "涉及断路或动土作业"
       ],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业"
+      ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -394,10 +417,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -420,10 +445,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -432,10 +459,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -444,10 +473,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -474,10 +505,12 @@
         "涉及受限空间作业"
       ],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业"
+      ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -540,10 +573,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业",
+        "涉及易燃易爆场所"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -552,10 +588,18 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "锅炉",
+        "压力容器",
+        "压力管道",
+        "气瓶",
+        "电梯",
+        "起重机械",
+        "场（厂）内专用机动车辆"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -608,10 +652,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生废水、废气或噪声",
+        "设置环保治理设施"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -648,10 +695,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -688,10 +737,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生废水、废气或噪声",
+        "设置环保治理设施"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -700,10 +752,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生废水、废气或噪声",
+        "设置环保治理设施"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -726,10 +781,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -740,10 +797,12 @@
         "涉及高处作业"
       ],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业"
+      ],
       "applicability": "mandatory",
       "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -752,10 +811,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -764,10 +825,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -776,10 +839,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -788,10 +853,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -814,10 +881,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -861,10 +930,15 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "化工属性",
+        "石油化工属性",
+        "化学原料和化学制品制造",
+        "石油化工"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -873,10 +947,15 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "化工属性",
+        "石油化工属性",
+        "化学原料和化学制品制造",
+        "石油化工"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -885,10 +964,15 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "化工属性",
+        "石油化工属性",
+        "化学原料和化学制品制造",
+        "石油化工"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -985,10 +1069,21 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "危化品生产",
+        "危化品经营",
+        "危化品使用",
+        "危化品储存",
+        "危化品进口"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -997,10 +1092,21 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "危化品生产",
+        "危化品经营",
+        "危化品使用",
+        "危化品储存",
+        "危化品进口"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1009,10 +1115,21 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "危险化学品生产企业",
+        "危险化学品经营企业",
+        "危险化学品使用企业",
+        "危险化学品储存企业",
+        "一般化工企业",
+        "危化品生产",
+        "危化品经营",
+        "危化品使用",
+        "危化品储存",
+        "危化品进口"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1035,10 +1152,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "存在职业病危害"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1047,10 +1166,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "存在职业病危害"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1059,10 +1180,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "存在职业病危害"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1071,10 +1194,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及易燃易爆场所",
+        "涉及消防重点部位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1083,10 +1209,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及易燃易爆场所",
+        "涉及消防重点部位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1095,10 +1224,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及易燃易爆场所",
+        "涉及消防重点部位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1121,10 +1253,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生废水、废气或噪声",
+        "设置环保治理设施"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1178,10 +1313,14 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位",
+        "设置环保治理设施",
+        "自愿采纳ISO 14001"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1190,10 +1329,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生废水、废气或噪声",
+        "设置环保治理设施"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1202,10 +1344,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "产生废水、废气或噪声",
+        "设置环保治理设施"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1284,10 +1429,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业",
+        "涉及易燃易爆场所"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1296,10 +1444,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业",
+        "涉及易燃易爆场所"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1308,10 +1459,13 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "涉及特殊作业",
+        "涉及易燃易爆场所"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1320,10 +1474,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1332,10 +1488,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1344,10 +1502,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1356,10 +1516,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1368,10 +1530,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1380,10 +1544,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1392,10 +1558,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {
@@ -1404,10 +1572,12 @@
       "includeAll": [],
       "includeAny": [],
       "excludeAny": [],
-      "reviewWhen": [],
+      "reviewWhen": [
+        "生产经营单位"
+      ],
       "applicability": "mandatory",
-      "explanationTemplate": "企业画像满足该法规的受控触发条件",
-      "version": "1.2.0",
+      "explanationTemplate": "企业画像命中初步复核条件，具体适用性需结合工艺、设施、物料和条款人工确认",
+      "version": "1.4.0",
       "status": "active"
     },
     {

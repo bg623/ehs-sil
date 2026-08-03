@@ -8,7 +8,7 @@
   function reviewReminder(date,today){if(!date)return "未设置";const d=daysBetween(today||cnToday(),date);if(d<0)return "已逾期";if(d<=30)return "30日内到期";if(d<=90)return "即将评审";return "正常";}
   function implementationDistanceLabel(date,today){const d=daysBetween(today||cnToday(),date);if(d===null)return "日期待核实";return d>0?`距实施 ${d} 天`:d===0?"今日实施":`已实施 ${Math.abs(d)} 天`;}
   function intersects(a,b){return (a||[]).some(v=>(b||[]).includes(v));}
-  function profileFacts(profile){return new Set(["生产经营单位",...(profile.enterpriseTypes||[]),...(profile.industries||[]),...(profile.riskTags||[]),...(profile.hazardousActivities||[]),...(profile.hazardousWasteActivities||[]),...(profile.specialEquipmentTypes||[]),...(profile.industryAttributes||[]),...(profile.managementCommitments||[])]);}
+  function profileFacts(profile){return new Set(["生产经营单位",...(profile.enterpriseTypes||[]),...(profile.industries||[]),...(profile.riskTags||[]),...(profile.specialOperationTypes||[]),...(profile.hazardousActivities||[]),...(profile.hazardousWasteActivities||[]),...(profile.specialEquipmentTypes||[]),...(profile.industryAttributes||[]),...(profile.managementCommitments||[])]);}
   function matchByRule(reg,profile,today,rule){
     if(!reg.complianceEnabled||implementationStatus(reg,today)==="已废止")return {applicability:"不纳入",reasons:[]};
     const reasons=[],facts=profileFacts(profile);let applicability="不纳入";

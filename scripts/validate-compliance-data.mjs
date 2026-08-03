@@ -22,6 +22,7 @@ for(const rule of rules){
   for(const key of ["ruleId","regulationId","version","status","applicability","explanationTemplate"])assert.ok(rule[key],`${rule.ruleId||"rule"} missing ${key}`);
   for(const key of ["includeAll","includeAny","excludeAny","reviewWhen"])assert.ok(Array.isArray(rule[key]),`${rule.ruleId} ${key} must be an array`);
   assert.ok(recordIds.has(rule.regulationId),`${rule.ruleId} references unknown regulation`);
+  if(rule.status==="active")assert.ok(rule.includeAll.length||rule.includeAny.length||rule.reviewWhen.length,`${rule.ruleId} active rule has no match or review condition`);
 }
 for(const id of ["REG-018","REG-020","REG-023","REG-051"]){const r=legacy.find(x=>x.id===id);assert.ok(r,`${id} missing`);assert.equal(r.complianceEnabled,false,`${id} replacement must not be enabled`);assert.equal(r.status,"已废止",`${id} replacement status must be 已废止`);}
 console.log(JSON.stringify({status:"PASS",formal:formal.length,candidates:candidates.length,rules:rules.length,replacedDisabled:4}));
