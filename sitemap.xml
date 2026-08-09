@@ -137,4 +137,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ehs-sil.com/articles/raci-responsibility-matrix-ehs-guide.html</loc>
+    <lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ehs-sil.com/articles/contractor-safety-management-maturity-model.html</loc>
+    <lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ehs-sil.com/articles/safety-performance-leading-lagging-indicators-guide.html</loc>
+    <lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
 </urlset>
