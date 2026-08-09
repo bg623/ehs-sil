@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="13年外企化工EHS管理经验，汇集数百条工具与内容索引。从BBS到HAZOP，从SafeStart到Tripod Beta，帮助EHS从业者提升实操与职业能力。">
-    <title>EHS-SIL · 外企EHS实操指南</title>
+    <meta name="description" content="EHS-SIL是面向个人EHS从业者的外企EHS工具与成长工作台。使用JSA专业教练检查风险遗漏、改善控制措施，并找到完成实际工作的专业资源。">
+    <title>EHS-SIL · 外企EHS工具与成长工作台</title>
+    <link rel="canonical" href="https://ehs-sil.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EHS-SIL · 外企EHS工具与成长工作台">
+    <meta property="og:description" content="检查你的JSA是否遗漏关键风险，并找到完成实际工作的专业资源。">
+    <meta property="og:url" content="https://ehs-sil.com/">
+    <meta property="og:image" content="https://ehs-sil.com/assets/og-ehs-sil-v1.png">
+    <meta property="og:image:width" content="1731">
+    <meta property="og:image:height" content="909">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EHS-SIL · 外企EHS工具与成长工作台">
+    <meta name="twitter:description" content="检查你的JSA是否遗漏关键风险，并找到完成实际工作的专业资源。">
+    <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-v1.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 
@@ -28,253 +40,149 @@
                 <div class="logo">
                     <a href="#hero">
                         <img src="assets/ehs-sil-logo.png" alt="EHS-SIL" style="height:32px;width:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:6px"><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span>
-                        <span class="logo-tag">· 外企EHS实操指南</span>
+                        <span class="logo-tag">· 外企EHS工具与成长工作台</span>
                     </a>
                 </div>
                 <button class="nav-toggle" id="navToggle" aria-label="切换菜单">
                     <span></span><span></span><span></span>
                 </button>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#products" class="nav-link">产品</a></li>
-                    <li><a href="tools/" class="nav-link">工具库</a></li>
-                    <li><a href="tools/risk-analysis.html#risk-assessment" class="nav-link">风险分析</a></li>
-                    <li><a href="tools/risk-analysis.html#incident-investigation" class="nav-link">事故调查</a></li>
-                    <li><a href="tools/bbs-tool.html" class="nav-link">BBS观察</a></li>
-
-                    <li><a href="#content" class="nav-link">精选内容</a></li>
-                    <li><a href="#about" class="nav-link">关于</a></li>
-                    <li><a href="tools/regulations.html" class="nav-link">法规速查</a></li>
-                    <li><a href="#footer" class="nav-link">联系</a></li>
-                    <li><a href="dashboard/register.html" class="nav-link">VIP</a></li>
+                    <li><a href="tools/jsa-tool.html" class="nav-link">JSA专业教练</a></li>
+                    <li><a href="#workbench" class="nav-link">专业工具</a></li>
+                    <li><a href="tools/" class="nav-link">专业资源</a></li>
+                    <li><a href="tools/regulations.html" class="nav-link">法规导航</a></li>
+                    <li><a href="#content" class="nav-link">职业成长</a></li>
+                    <li><a href="#membership" class="nav-link">会员权益</a></li>
+                    <li><a href="dashboard/register.html" class="nav-link">登录 / 激活</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="hero" style="background:linear-gradient(135deg,var(--bg) 0%,rgba(184,134,11,0.03) 50%,var(--bg) 100%)">
+        <section class="hero hero-focused" id="hero">
             <div class="container">
                 <div class="hero-content">
-                    <span class="hero-badge">13年外企化工EHS实战经验</span>
-                    <h1 class="hero-title">外企EHS<br>实操指南</h1>
-                    <p class="hero-subtitle">
-                        13年外企化工经验 + 数百条工具索引 + 189条法规标准<br class="hide-mobile">
-                        从BBS到HAZOP，从SafeStart到Tripod Beta<br class="hide-mobile">
-                        让每一个EHS从业者都拥有"外企级"的专业能力。
-                    </p>
+                    <span class="hero-badge">EHS-SIL · 外企EHS工具与成长工作台</span>
+                    <h1 class="hero-title">检查你的JSA<br>是否遗漏关键风险</h1>
+                    <p class="hero-subtitle">从作业场景、危险能量到控制措施层级，JSA专业教练帮助你把风险问题问得更完整，并形成可用于人工评审的专业结果。</p>
                     <div class="hero-cta">
-                        <a href="products/toolbox.html" class="btn btn-primary">了解产品</a>
-                        <a href="#content" class="btn btn-secondary">免费阅读</a>
-                        <a href="tools/" class="btn btn-secondary">搜索工具库</a>
-                        <a href="tools/risk-analysis.html#risk-assessment" class="btn btn-secondary">风险分析</a>
-                        <a href="tools/risk-analysis.html#incident-investigation" class="btn btn-secondary">事故调查</a>
-                        <a href="tools/bbs-tool.html" class="btn btn-secondary">BBS观察</a>
+                        <a href="tools/jsa-tool.html" class="btn btn-primary btn-lg" data-home-action="start-jsa">免费开始JSA检查</a>
                     </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-num" data-target="10000">0</span><span class="stat-suffix">+</span>
-                            <span class="stat-label">公众号粉丝</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-num" data-target="350">0</span><span class="stat-suffix">+</span>
-                            <span class="stat-label">知识星球成员</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-num" data-target="535">0</span><span class="stat-suffix">+</span>
-                            <span class="stat-label">工具与模板</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-num" data-target="70000">0</span><span class="stat-suffix">+</span>
-                            <span class="stat-label">工具下载</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-bg-pattern"></div>
-        </section>
-
-        
-        <section class="daily-section" style="background:var(--bg-card);border-bottom:1px solid var(--border-light)">
-            <div class="container" style="display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;padding:2rem 1.5rem;align-items:center">
-                <div>
-                    <span style="font-size:.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.1em">今日安全贴士</span>
-                    <p id="dailyTip" style="font-size:.95rem;color:var(--text);line-height:1.7;margin-top:.5rem">加载中...</p>
-                </div>
-                <div style="text-align:center;background:var(--bg);border:1px solid var(--border-light);border-radius:10px;padding:1.25rem">
-                    <p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.3rem">→ 本周推荐工具</p>
-                    <p id="featuredTool" style="font-size:.9rem;color:var(--primary-dark);font-weight:600">加载中...</p>
-                    <a href="tools/" style="font-size:.75rem;color:var(--accent);display:inline-block;margin-top:.3rem">查看工具库 →</a>
-                </div>
-            </div>
-        </section>
-
-    <section class="why-section" id="why">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">为什么是 EHS-SIL</span>
-                    <h2 class="section-title">你的EHS管理，值得更专业</h2>
-                    <p class="section-desc">不是资料搬运工——而是将外企13年实战经验，提炼成可复制、可落地的系统化工具与方法。</p>
-                </div>
-                <div class="why-grid">
-                    <div class="why-card">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 48 48" fill="none"><path d="M24 6C14.058 6 6 14.058 6 24s8.058 18 18 18 18-8.058 18-18S33.942 6 24 6z" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <h3 class="why-title">外企血统</h3>
-                        <p class="why-desc">13年化工+10年外企实战经验。工具和方法论来自世界500强真实场景，拒绝纸上谈兵。</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 48 48" fill="none"><path d="M8 40V16l16-8 16 8v24" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 40h32" stroke="currentColor" stroke-width="2"/><path d="M20 20h8v12h-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-                        </div>
-                        <h3 class="why-title">即拿即用</h3>
-                        <p class="why-desc">所有工具均为Excel/Word/PPT格式。下载后5分钟上手，立刻解决一线的实际问题。</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 40c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                        </div>
-                        <h3 class="why-title">持续成长</h3>
-                        <p class="why-desc">每周更新3+份高质量内容。加入的不是资料库，而是一个不断进化的知识系统。</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 48 48" fill="none"><path d="M24 6v12m0 12v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 24h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/></svg>
-                        </div>
-                        <h3 class="why-title">社群共鸣</h3>
-                        <p class="why-desc">与数百位EHS同行共同成长。这里的每一个问题都有人回应，每一份经验都在传递价值。</p>
+                    <div class="hero-assurance" aria-label="使用说明">
+                        <span>免费开始</span>
+                        <span>无需上传文件</span>
+                        <span>结果需要人工确认</span>
                     </div>
                 </div>
             </div>
         </section>
 
         
-        <section class="why-section" style="background:var(--bg-card)">
+        <section class="value-section" id="value">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">如何开始</span>
-                    <h2 class="section-title">三步上手</h2>
-                    <p class="section-desc">免费内容 → 搜索工具 → 加入知识星球</p>
+                    <span class="section-label">专业检查的价值</span>
+                    <h2 class="section-title">不只写下“戴安全带”</h2>
+                    <p class="section-desc">专业JSA需要继续追问：控制措施是否具体、可验证，并能应对现场变化？</p>
                 </div>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:800px;margin:0 auto">
-                    <div style="text-align:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem 1.5rem">
-                        <div style="width:50px;height:50px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem;font-weight:800">1</div>
-                        <h3 style="font-size:.95rem;color:var(--primary-dark);margin-bottom:.3rem">浏览免费内容</h3>
-                        <p style="font-size:.8rem;color:var(--text-secondary);line-height:1.6">阅读精选文章、查询法规标准</p>
-                    </div>
-                    <div style="text-align:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem 1.5rem">
-                        <div style="width:50px;height:50px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem;font-weight:800">2</div>
-                        <h3 style="font-size:.95rem;color:var(--primary-dark);margin-bottom:.3rem">搜索工具库</h3>
-                        <p style="font-size:.8rem;color:var(--text-secondary);line-height:1.6">535条站内资料索引，快速了解工具主题</p>
-                    </div>
-                    <div style="text-align:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem 1.5rem">
-                        <div style="width:50px;height:50px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem;font-weight:800">3</div>
-                        <h3 style="font-size:.95rem;color:var(--primary-dark);margin-bottom:.3rem">加入知识星球</h3>
-                        <p style="font-size:.8rem;color:var(--text-secondary);line-height:1.6">获取知识星球已正式发布的可编辑文件</p>
-                    </div>
+                <div class="comparison-grid">
+                    <article class="comparison-card comparison-basic">
+                        <span class="comparison-kicker">普通JSA写法</span>
+                        <dl class="comparison-fields">
+                            <div><dt>风险</dt><dd>高处坠落</dd></div>
+                            <div><dt>措施</dt><dd>戴安全带</dd></div>
+                        </dl>
+                    </article>
+                    <div class="comparison-arrow" aria-hidden="true">→</div>
+                    <article class="comparison-card comparison-professional">
+                        <span class="comparison-kicker">EHS-SIL建议确认</span>
+                        <ul class="prompt-list">
+                            <li>锚点是否经过确认，并适合当前连接方式？</li>
+                            <li>是否优先设置平台、护栏等工程控制？</li>
+                            <li>下方区域是否隔离，工具是否防坠？</li>
+                            <li>是否明确天气、人员状态和停止作业条件？</li>
+                            <li>发生悬吊后，救援方式和响应人员是否明确？</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="professional-boundary">EHS-SIL不替你判断“安全”，而是帮助你发现可能遗漏的问题；最终结论仍需结合现场、企业程序和适用要求人工确认。</p>
+            </div>
+        </section>
+
+        <section class="workbench-section" id="workbench">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">EHS人的专业工具台</span>
+                    <h2 class="section-title">遇到问题，先选择正确的方法</h2>
+                    <p class="section-desc">第一阶段集中验证JSA专业教练；其他已有工具继续提供入口，但暂不扩大开发。</p>
+                </div>
+                <div class="workbench-grid">
+                    <article class="workbench-card featured-tool">
+                        <span class="tool-status">当前重点</span>
+                        <div class="workbench-index">01</div>
+                        <h3>风险分析工具</h3>
+                        <p>检查作业风险、失效模式与异常场景。</p>
+                        <ul><li><strong>JSA专业教练</strong>：完整性与控制措施检查</li><li>FMEA：设备与工艺失效分析</li><li>What-If：结构化假设分析</li></ul>
+                        <a href="tools/risk-analysis.html#risk-assessment" class="workbench-link">进入风险分析 →</a>
+                    </article>
+                    <article class="workbench-card">
+                        <span class="tool-status neutral">已有入口</span>
+                        <div class="workbench-index">02</div>
+                        <h3>事故学习工具</h3>
+                        <p>从直接原因走向系统因素和组织学习。</p>
+                        <ul><li>5Why：连续追问因果链</li><li>RCA：结构化根因分析</li><li>LFI：把事件转化为组织学习</li></ul>
+                        <a href="tools/risk-analysis.html#incident-investigation" class="workbench-link">进入事故分析 →</a>
+                    </article>
+                    <article class="workbench-card">
+                        <span class="tool-status neutral">方法与资源</span>
+                        <div class="workbench-index">03</div>
+                        <h3>外企管理实践</h3>
+                        <p>把成熟理念转化为日常管理动作。</p>
+                        <ul><li>BBS：行为安全观察</li><li>LOTO与MOC：关键风险控制</li><li>PSSR：启动前安全检查</li></ul>
+                        <a href="tools/" class="workbench-link">浏览专业资源 →</a>
+                    </article>
                 </div>
             </div>
         </section>
 
-
-<section class="why-section" id="analysis-tools" style="background:var(--bg);padding:3rem 0">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-label">专业工具</span>
-            <h2 class="section-title">风险辨识 与 事故分析</h2>
-            <p class="section-desc">基于国际最佳实践的在线分析工具——从预防到调查，覆盖EHS管理全链路</p>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:900px;margin:0 auto">
-            <div style="background:#fff;border:1px solid #e8e4dc;border-radius:10px;padding:1.5rem;transition:all .3s">
-                <div style="font-size:2rem;margin-bottom:.4rem">&#128200;</div>
-                <h3 style="font-size:.95rem;font-weight:600;color:#0d2836;margin-bottom:.3rem">风险辨识与评估</h3>
-                <p style="font-size:.78rem;color:#666;line-height:1.6;margin-bottom:.6rem">免费使用 JSA、BBS；VIP 解锁 FMEA、What-If 等高级分析工具，覆盖危害识别、风险评估与控制措施。</p>
-                <div style="font-size:.72rem;color:#999;margin-bottom:.8rem">
-                    <span style="display:inline-block;background:#dcfce7;color:#16a34a;padding:.05rem .35rem;border-radius:3px;font-weight:500;margin-right:.25rem">JSA / BBS 免费</span>
-                    <span style="display:inline-block;background:#fef3c7;color:#b8860b;padding:.05rem .35rem;border-radius:3px;font-weight:500;margin-right:.25rem">FMEA / What-If VIP</span>
-                </div>
-                <a href="tools/risk-analysis.html#risk-assessment" class="btn btn-sm btn-outline" style="display:inline-block;padding:.35rem .8rem;font-size:.75rem;color:#0d2836;border:1.5px solid #0d2836;border-radius:6px;text-decoration:none;transition:.2s">查看免费与 VIP 工具 &rarr;</a>
-
-            </div>
-            <div style="background:#fff;border:1px solid #e8e4dc;border-radius:10px;padding:1.5rem;transition:all .3s">
-                <div style="font-size:2rem;margin-bottom:.4rem">&#128270;</div>
-                <h3 style="font-size:.95rem;font-weight:600;color:#0d2836;margin-bottom:.3rem">事故分析与根因调查</h3>
-                <p style="font-size:.78rem;color:#666;line-height:1.6;margin-bottom:.6rem">免费使用 5Why + 鱼骨图；VIP 解锁 Apollo RCA、Tripod Beta，支持更复杂的事件调查。</p>
-                <div style="font-size:.72rem;color:#999;margin-bottom:.8rem">
-                    <span style="display:inline-block;background:#dcfce7;color:#16a34a;padding:.05rem .35rem;border-radius:3px;font-weight:500;margin-right:.25rem">5Why + 鱼骨图免费</span>
-                    <span style="display:inline-block;background:#fef3c7;color:#b8860b;padding:.05rem .35rem;border-radius:3px;font-weight:500;margin-right:.25rem">Apollo / Tripod VIP</span>
-                </div>
-                <a href="tools/risk-analysis.html#incident-investigation" class="btn btn-sm btn-outline" style="display:inline-block;padding:.35rem .8rem;font-size:.75rem;color:#0d2836;border:1.5px solid #0d2836;border-radius:6px;text-decoration:none;transition:.2s">查看免费与 VIP 工具 &rarr;</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section class="products-section" id="products">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">产品体系</span>
-                    <h2 class="section-title">选择适合你的进阶方式</h2>
-                    <p class="section-desc">两个知识星球产品，分别满足不同层次的需求。从工具到方法论，覆盖EHS管理的完整闭环。</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card featured">
-                        <div class="product-badge">最受欢迎</div>
-                        <div class="product-header">
-                            <h3 class="product-name"><a href="products/toolbox.html" style="color:inherit">外企EHS工具箱</a></h3>
-                            <div class="product-price">
-                                <span class="price-amount">129</span>
-                                <span class="price-unit">元/年</span>
-                            </div>
-                        </div>
-                        <p class="product-desc">13年外企实战经验沉淀的<span class="highlight">持续更新工具集</span>，覆盖EHS管理十大模块。从BBS行为安全到HAZOP工艺分析，从根源事故分析到合规矩阵，帮助你更快找到可参考的方法和模板。</p>
-                        <ul class="product-features">
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>十大模块覆盖EHS全场景</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>每周更新3+份高质量工具</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Excel/Word/PPT格式，5分钟上手</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>一对一问答，解决管理难题</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>300+同行社群，共同成长</li>
-                        </ul>
-                        <div class="product-cta">
-                            <a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="btn btn-primary btn-block">立即加入 · 129元/年</a>
-                            <span class="product-note">按年加入，有效期内持续更新</span>
-                        </div>
-                    </div>
-
-                    <div class="product-card">
-                        <div class="product-header">
-                            <h3 class="product-name"><a href="products/training.html" style="color:inherit">外企EHS培训库</a></h3>
-                            <div class="product-price">
-                                <span class="price-amount">299</span>
-                                <span class="price-unit">元/年</span>
-                            </div>
-                        </div>
-                        <p class="product-desc">以外企标准培训课件为核心的知识库，覆盖安全管理、体系认证、工艺安全、职业健康等完整培训体系。适合需要<span class="highlight">系统化培训素材</span>的EHS管理者和培训负责人。</p>
-                        <ul class="product-features">
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>外企原版培训课件改编</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>覆盖体系/工艺/安全/职业健康</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>持续更新，紧跟行业标准变化</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>PPT解读讲义+音频稿</li>
-                            <li><svg class="feat-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>适合培训管理者与EHS负责人</li>
-                        </ul>
-                        <div class="product-cta">
-                            <a href="https://wx.zsxq.com/group/51115515242254" target="_blank" rel="noopener" class="btn btn-secondary btn-block">立即加入 · 299元/年</a>
-                            <span class="product-note">系统化培训素材，拿来即用</span>
-                        </div>
+        <section class="membership-section" id="membership">
+            <div class="container membership-layout">
+                <div class="membership-context">
+                    <span class="section-label">完成工作后的专业资源</span>
+                    <h2 class="section-title">检查完JSA，继续把结果落到现场</h2>
+                    <p>根据当前任务，查找知识星球中已正式发布的配套资源，帮助你准备程序、交底与关键控制材料。</p>
+                    <div class="resource-chips" aria-label="JSA配套资源示例">
+                        <span>LOTO模板</span>
+                        <span>SWP模板</span>
+                        <span>高风险作业案例</span>
+                        <span>外企JSA范例</span>
+                        <span>作业前确认表</span>
+                        <span>培训与交底材料</span>
                     </div>
                 </div>
+                <aside class="membership-card">
+                    <span class="membership-label">统一会员权益</span>
+                    <h3>外企EHS工具箱会员</h3>
+                    <div class="membership-price"><strong>129</strong><span>元 / 年</span></div>
+                    <ul>
+                        <li>会员范围内的网站专业工具</li>
+                        <li>知识星球正式发布的工具与模板</li>
+                        <li>脱敏案例、培训材料和持续更新</li>
+                    </ul>
+                    <a href="products/toolbox.html" class="btn btn-primary btn-block" data-home-action="click-member">查看工具箱会员权益</a>
+                    <a href="dashboard/register.html" class="membership-login">已有会员？登录或激活 →</a>
+                    <small>按年加入；原29.9元历史用户继续履约至原到期日。</small>
+                </aside>
             </div>
         </section>
 
         <section class="content-section" id="content">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">内容与工具库</span>
-                    <h2 class="section-title">来自一线的高阅读好文</h2>
-                    <p class="section-desc">从安全管理到职业发展，从技术实操到体系搭建——这是 EHS-SIL 全部公开发布的文章精选。每周更新，持续成长。</p>
+                    <span class="section-label">专业内容与职业成长</span>
+                    <h2 class="section-title">理解方法，再把工具用对</h2>
+                    <p class="section-desc">从风险分析和事故学习到法规变化与职业成长，用内容建立认知，再回到工具完成实际工作。</p>
                 </div>
                 <div class="content-grid">
                     <article class="content-card">
@@ -438,38 +346,6 @@
             </div>
         </section>
 
-        <section class="testimonial-section" id="testimonials">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">社群声音</span>
-                    <h2 class="section-title">同行怎么说</h2>
-                </div>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">"从JSA模板到BBS观察记录表，每一个工具都经过实际验证。今天用了那个RCA双模版，直接把重复事故减下来了。"</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">L</div>
-                            <div><span class="testimonial-name">李工</span><span class="testimonial-role">某化工企业 · EHS主管</span></div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">"在外面花了很多钱买培训课件，质量参差不齐。EHS-SIL的课件结构逻辑清晰，每一页都知道怎么讲给我的人听。"</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">W</div>
-                            <div><span class="testimonial-name">王经理</span><span class="testimonial-role">跨国制药 · EHS经理</span></div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">"最值的是那个面试50问和评分逻辑——帮我在两周内搞定了一个外企EHS经理的offer。薪资翻了一倍。"</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">C</div>
-                            <div><span class="testimonial-name">陈同学</span><span class="testimonial-role">原国内厂 · 现外企EHS</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="about-section" id="about">
             <div class="container">
                 <div class="about-layout">
@@ -481,7 +357,7 @@
                             <li>10年世界500强外企EHS实战背景</li>
                             <li>曾主导HAZOP/LOPA、BBS、PSSR等项目落地</li>
                             <li>熟悉ISO 45001/14001体系搭建与审核</li>
-                            <li>公众号 EHS-SIL 创始人，1万+从业者关注</li>
+                            <li>公众号 EHS-SIL 主理人，持续分享外企EHS方法与实践</li>
                         </ul>
                         <p class="about-story">做过现场检查，写过事故报告，经历过深夜应急响应，也主导过集团级的安全文化变革。<br><br>创立 EHS-SIL 的初衷很简单——把外企验证过的好方法、好工具，变成每一个EHS从业者都能用得起的专业资源。让经验不被行业壁垒困住，让更多人拥有"外企级"的专业能力。</p>
                     </div>
@@ -500,14 +376,14 @@
         <section class="why-section" id="regulations" style="background:var(--bg-card)">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">法规速查</span>
-                    <h2 class="section-title">中国法规 + 国际标准</h2>
-                    <p class="section-desc">安全生产法、ISO 45001、GB 30871… EHS从业者必备的法规标准搜索引擎</p>
+                    <span class="section-label">EHS法规导航</span>
+                    <h2 class="section-title">从官方来源找到适用要求</h2>
+                    <p class="section-desc">提供官方来源、标准解释、EHS关注点及关联工具；不替代企业适用性判断或法律意见。</p>
                 </div>
                 <div style="max-width:600px;margin:0 auto">
                     <a href="tools/regulations.html" style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.5rem;background:#fff;border:2px solid var(--border);border-radius:10px;font-size:1rem;color:var(--text-secondary);text-decoration:none;transition:all .3s">
                         <span style="font-size:1.3rem">&#128214;</span>
-                        <span>点击搜索 <strong style="color:var(--primary)">189</strong> 条EHS法规与标准</span>
+                        <span>进入EHS法规与标准导航</span>
                         <span style="color:var(--accent)">&rarr;</span>
                     </a>
                     <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem">
@@ -559,8 +435,8 @@
                         <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7">化工、制药行业EHS从业者，想提升管理水平的中小企业安全管理者，以及希望进入外企的EHS新人。所有工具都来自真实外企场景，拿来就能用。</p>
                     </div>
                     <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:.8rem">
-                        <h3 style="font-size:1rem;color:var(--primary-dark);margin-bottom:.4rem">❓ 工具箱和培训库有什么区别？</h3>
-                        <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7">工具箱（129元/年）侧重模板工具和检查表，适合日常EHS管理工作；培训库（299元/年）侧重完整培训课件和系统化教材，适合需要做培训的EHS管理者和培训负责人。</p>
+                        <h3 style="font-size:1rem;color:var(--primary-dark);margin-bottom:.4rem">❓ 129元/年的工具箱会员包含什么？</h3>
+                        <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.7">会员有效期内可使用对应的网站专业工具，并获取知识星球内已正式发布的工具、模板、案例、培训材料和持续更新内容。</p>
                     </div>
                     <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:.8rem">
                         <h3 style="font-size:1rem;color:var(--primary-dark);margin-bottom:.4rem">❓ 内容多久更新一次？</h3>
@@ -576,9 +452,9 @@
 
     <section class="cta-section">
             <div class="container">
-                <h2 class="cta-title">你的EHS管理，值得更专业</h2>
-                <p class="cta-desc">加入知识星球，获取已正式发布的工具、模板与持续更新内容。</p>
-                <a href="products/toolbox.html" class="btn btn-primary btn-lg">查看产品 →</a>
+                <h2 class="cta-title">遇到EHS问题，先把方法选对</h2>
+                <p class="cta-desc">从JSA专业检查开始，完成一份更完整、可供人工评审的工作成果。</p>
+                <a href="tools/jsa-tool.html" class="btn btn-primary btn-lg">免费开始JSA检查 →</a>
             </div>
         </section>
     </main>
@@ -588,7 +464,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo"><img src="assets/ehs-sil-logo.png" alt="EHS-SIL" style="height:32px;width:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:6px"><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span></div>
-                    <p class="footer-desc">外企EHS实操指南 · 让专业触手可及</p>
+                    <p class="footer-desc">外企EHS工具与成长工作台</p>
                 </div>
                 <div class="footer-links">
                     <h4>产品</h4>
@@ -604,218 +480,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 EHS-SIL. All rights reserved. · AI建议仅供参考，具体执行须以现场注册安全工程师确认为准。</p>
+                <p>&copy; 2026 EHS-SIL. All rights reserved. · 工具结果仅供专业判断参考，须结合现场、企业程序和适用要求人工确认。</p>
             </div>
         </div>
     </footer>
 
-    <script>
-/**
- * EHS-SIL · Main Site Scripts
- * Smooth scroll, stat counter, mobile nav, scroll animations
- */
-(function() {
-    'use strict';
-
-    // ===== Mobile Nav Toggle =====
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-        // Close nav on link click (mobile)
-        navLinks.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-            });
-        });
-    }
-
-    // ===== Sticky nav background on scroll =====
-    const header = document.getElementById('siteHeader');
-    let lastScroll = 0;
-    window.addEventListener('scroll', function() {
-        const scrollY = window.scrollY;
-        if (scrollY > 60) {
-            header.style.borderBottomColor = 'var(--border)';
-            header.style.background = 'rgba(249, 248, 246, 0.97)';
-        } else {
-            header.style.borderBottomColor = 'var(--border-light)';
-            header.style.background = 'rgba(249, 248, 246, 0.92)';
-        }
-        lastScroll = scrollY;
-    }, { passive: true });
-
-    // ===== Animated Stat Counters =====
-    function animateCounters() {
-        const counters = document.querySelectorAll('.stat-num');
-        if (!counters.length) return;
-
-        let hasAnimated = false;
-
-        function isInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return rect.top < window.innerHeight - 80 && rect.bottom > 0;
-        }
-
-        function startCounters() {
-            if (hasAnimated) return;
-            const triggerEl = counters[0];
-            if (!isInViewport(triggerEl)) return;
-            hasAnimated = true;
-
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'), 10);
-                if (isNaN(target) || target <= 0) return;
-
-                // For larger numbers, count faster
-                const duration = target > 5000 ? 2000 : 1500;
-                const increment = target > 5000 ? Math.ceil(target / 60) : Math.ceil(target / 50);
-                let current = 0;
-
-                function updateCounter() {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target.toLocaleString();
-                        return;
-                    }
-                    counter.textContent = current.toLocaleString();
-                    requestAnimationFrame(function() {
-                        setTimeout(updateCounter, 25);
-                    });
-                }
-                updateCounter();
-            });
-        }
-
-        // Check on scroll
-        window.addEventListener('scroll', function() {
-            if (!hasAnimated) startCounters();
-        }, { passive: true });
-
-        // Also check on load
-        startCounters();
-    }
-
-    // ===== Smooth fade-in scroll animations =====
-    function initScrollAnimations() {
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            section.classList.add('fade-in');
-        });
-
-        function checkVisibility() {
-            const elements = document.querySelectorAll('.fade-in:not(.visible)');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 60) {
-                    el.classList.add('visible');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkVisibility, { passive: true });
-        checkVisibility(); // initial check
-    }
-
-    // ===== Smooth scroll for anchor links =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-            }
-        });
-    });
-
-    // ===== Initialize =====
-    document.addEventListener('DOMContentLoaded', function() {
-        animateCounters();
-        initScrollAnimations();
-    });
-})();
-
-// Back-to-top button
-(function() {
-    var btn = document.getElementById('backToTop');
-    if (!btn) return;
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 400) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    }, { passive: true });
-})();
-
-
-// Daily Safety Tip
-(function() {
-    var tips = [
-        "安全观察（BBS）的核心不是“抓违章”，而是理解行为背后的系统条件，并通过对话推动改进。",
-        "检维修前应识别电气、机械、液压、气压、热能和重力等危险能量，完成隔离、残余能量处理和有效性验证。",
-        "新作业、非例行作业或条件发生变化时，应在作业前重新识别危害，并由了解现场的人员共同确认控制措施。",
-        "5Why用于追问原因链，不应用来追责个人；每一步结论都需要事实或证据支持。",
-        "控制措施应优先考虑消除、替代和工程控制，再考虑管理措施与个人防护用品。",
-        "当现场条件、人员、设备或作业范围发生变化时，应暂停作业并重新确认风险与控制措施。",
-        "Bowtie分析用于展示从威胁到顶事件、再到后果的路径，并检查预防屏障和减缓屏障是否清晰有效。",
-        "PSSR启动前安全检查用于确认人员、设备、程序和应急准备满足启动条件，未关闭事项需要明确责任和限制。",
-        "安全帽的更换应结合制造商说明、使用环境和检查结果；出现裂纹、变形或遭受冲击后应立即停用。",
-        "手工搬运评估不仅看重量，还要同时考虑频次、距离、姿势、抓握条件和作业环境。"
-    ];
-    var tipEl = document.getElementById("dailyTip");
-    if (tipEl) {
-        var day = new Date().getDate();
-        var idx = day % tips.length;
-        tipEl.textContent = tips[idx];
-    }
-})();
-
-// Featured Tool of the Week
-(function() {
-    var el = document.getElementById("featuredTool");
-    if (!el) return;
-    fetch("data/tools.json").then(function(r){return r.json()}).then(function(data) {
-        var tools = data.tools || [];
-        if (tools.length === 0) return;
-        var day = new Date().getDate();
-        // BBS featured 60% of the time (days 1-6, 11-16, 21-26, 31)
-        var showBBS = (day % 10) >= 1 && (day % 10) <= 6;
-        if (showBBS) {
-            el.innerHTML = '<a href="tools/bbs-tool.html" style="color:var(--primary-dark);text-decoration:none">BBS 行为安全观察 · 免费在线工具</a>';
-        } else {
-            var idx = day % tools.length;
-            var tool = tools[idx];
-            var name = tool.name;
-            if (name.length > 35) name = name.substring(0, 32) + "...";
-            el.textContent = name;
-        }
-    }).catch(function() {
-        el.innerHTML = '<a href="tools/bbs-tool.html" style="color:var(--primary-dark);text-decoration:none">BBS 行为安全观察 · 免费在线工具</a>';
-    });
-})();
-
-</script>
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
-<script>
-(function(){
-    var u = document.getElementById("navLinks");
-    if (!u) return;
-    var l = document.createElement("li");
-    var a = document.createElement("a");
-    if (s) { a.href = "dashboard/account.html"; a.className = "nav-link"; a.textContent = "账户"; }
-    else { a.href = "dashboard/register.html"; a.className = "nav-link"; a.textContent = "登录"; }
-    l.appendChild(a);
-    var last = u.querySelector("li:last-child");
-    u.insertBefore(l, last.nextSibling);
-})();
-
+    <script src="js/analytics.js"></script>
+    <script src="js/main.js"></script>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 </body>
 </html>

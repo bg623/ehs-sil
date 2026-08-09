@@ -127,6 +127,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         animateCounters();
         initScrollAnimations();
+        document.querySelectorAll('[data-home-action]').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (!window.EhsSilAnalytics) return;
+                var action = link.getAttribute('data-home-action');
+                if (action === 'start-jsa') {
+                    window.EhsSilAnalytics.track('content_to_tool', {
+                        toolId: 'jsa-coach', sourceChannel: 'site', pageType: 'other'
+                    });
+                } else if (action === 'click-member') {
+                    window.EhsSilAnalytics.track('click_member', {
+                        toolId: 'jsa-coach', sourceChannel: 'site', pageType: 'other'
+                    });
+                }
+            });
+        });
     });
 })();
 

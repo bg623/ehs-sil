@@ -27,9 +27,23 @@ for (const event of [
   assert.ok(metrics.includes("`" + event + "`"), `指标文档缺少 ${event}`);
 }
 
-assert.match(analytics, /visit_jsa_coach:\s*['"]content_to_tool['"]/);
-assert.match(analytics, /complete_jsa:\s*['"]tool_complete['"]/);
-assert.match(analytics, /print_or_export_result:\s*['"]export_click['"]/);
+for (const event of [
+  "visit_jsa",
+  "start_jsa",
+  "complete_scene",
+  "use_prompt",
+  "finish_jsa",
+  "export",
+  "click_member",
+  "return_visit",
+]) {
+  assert.match(analytics, new RegExp(`['"]${event}['"]`), `JSA事件字典缺少 ${event}`);
+  assert.ok(metrics.includes("`" + event + "`"), `JSA指标文档缺少 ${event}`);
+}
+
+assert.match(analytics, /visit_jsa_coach:\s*['"]visit_jsa['"]/);
+assert.match(analytics, /complete_jsa:\s*['"]finish_jsa['"]/);
+assert.match(analytics, /print_or_export_result:\s*['"]export['"]/);
 assert.match(analytics, /result_count_bucket/);
 assert.doesNotMatch(analytics, /searchQuery|currentQuery/);
 
@@ -77,9 +91,9 @@ context.window.EhsSilAnalytics.track("complete_jsa", {
   pageType: "jsa_coach",
   rawSearch: "不得上传的企业名称",
 });
-assert.equal(context.window._hmt[0][2], "tool_complete");
+assert.equal(context.window._hmt[0][2], "finish_jsa");
 assert.doesNotMatch(context.window._hmt[0][3], /不得上传的企业名称/);
-assert.equal(dispatched[0].detail.event, "tool_complete");
+assert.equal(dispatched[0].detail.event, "finish_jsa");
 assert.equal(dispatched[0].detail.context.tool_id, "jsa-coach");
 
-console.log(JSON.stringify({ status: "PASS", event_version: 1, funnel_events: 10 }));
+console.log(JSON.stringify({ status: "PASS", event_version: 1, funnel_events: 10, jsa_events: 8 }));

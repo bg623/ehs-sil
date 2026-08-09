@@ -248,12 +248,17 @@ var jsaRules = [];
 var currentFindings = [];
 var confirmedRuleIds = {};
 var sceneIdentified = false;
+var visitStorageKey = 'ehs_sil_jsa_last_visit';
 var includePendingRules = location.hostname === 'localhost' ||
     location.hostname === '127.0.0.1' ||
     location.protocol === 'file:';
 
 if (window.EhsSilAnalytics) {
-    window.EhsSilAnalytics.trackOnce('visit_jsa_coach', {mode: experienceMode});
+    window.EhsSilAnalytics.trackOnce('visit_jsa', {mode: experienceMode});
+    if (experienceMode === 'user' && localStorage.getItem(visitStorageKey)) {
+        window.EhsSilAnalytics.trackOnce('return_visit', {mode: experienceMode});
+    }
+    if (experienceMode === 'user') localStorage.setItem(visitStorageKey, String(Date.now()));
 }
 
 // Set default date
@@ -309,7 +314,7 @@ function runScenarioReview() {
         return;
     }
     if (window.EhsSilAnalytics) {
-        window.EhsSilAnalytics.trackOnce('start_scene_identification', {mode: experienceMode});
+        window.EhsSilAnalytics.trackOnce('start_jsa', {mode: experienceMode});
     }
     sceneIdentified = true;
     currentFindings = window.JsaRuleEngine.evaluateRules(jsaRules, context, {
@@ -317,10 +322,7 @@ function runScenarioReview() {
     });
     renderFindings('riskPromptList', currentFindings);
     if (window.EhsSilAnalytics) {
-        window.EhsSilAnalytics.track('complete_scene_identification', {mode: experienceMode});
-        if (currentFindings.length) {
-            window.EhsSilAnalytics.track('use_risk_prompt', {mode: experienceMode});
-        }
+        window.EhsSilAnalytics.track('complete_scene', {mode: experienceMode});
     }
     document.getElementById('riskPromptSection').scrollIntoView({behavior:'smooth'});
 }
@@ -340,7 +342,7 @@ function runCompletenessCheck() {
     });
     renderFindings('completenessList', currentFindings);
     if (window.EhsSilAnalytics) {
-        window.EhsSilAnalytics.track('complete_jsa', {mode: experienceMode});
+        window.EhsSilAnalytics.track('finish_jsa', {mode: experienceMode});
         window.EhsSilAnalytics.track('view_completeness_check', {mode: experienceMode});
     }
     document.getElementById('completenessSection').scrollIntoView({behavior:'smooth'});
@@ -377,6 +379,9 @@ function renderFindings(containerId, findings) {
 function confirmFinding(ruleId, checked) {
     if (checked) confirmedRuleIds[ruleId] = true;
     else delete confirmedRuleIds[ruleId];
+    if (checked && window.EhsSilAnalytics) {
+        window.EhsSilAnalytics.track('use_prompt', {mode: experienceMode});
+    }
     if (document.getElementById('riskPromptList').className === 'findings') {
         renderFindings('riskPromptList', currentFindings);
     }
@@ -564,7 +569,7 @@ function generateReport() {
     var highCount = steps.filter(function(s){return s.R >= 10}).length;
     html += '<p style="margin-top:.5rem;font-size:.78rem;color:#666">共 ' + steps.length + ' 个步骤，其中高风险以上 ' + highCount + ' 项。</p>';
     html += '<p style="margin-top:.7rem;padding:.6rem;background:#f3f4f4;font-size:.7rem;color:#68757a">本结果只进行完整性和逻辑一致性提示。所有“已覆盖”均由使用者人工确认；不代表作业安全、符合法规、可以批准或风险已经可接受。</p>';
-    html += '<p style="margin-top:.5rem;font-size:.7rem;color:#999;border-top:1px solid #eee;padding-top:.5rem">EHS-SIL · 外企EHS实操指南 · ' + now + '</p>';
+    html += '<p style="margin-top:.5rem;font-size:.7rem;color:#999;border-top:1px solid #eee;padding-top:.5rem">EHS-SIL · 外企EHS工具与成长工作台 · ' + now + '</p>';
     document.getElementById('reportContent').innerHTML = html;
     if (window.EhsSilAnalytics) {
         window.EhsSilAnalytics.track('view_jsa_preview', {mode: experienceMode});
@@ -579,7 +584,7 @@ function printReport() {
     win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>JSA Report</title><style>body{font-family:-apple-system,sans-serif;padding:1.5rem;font-size:13px;color:#333}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{border:1px solid #ccc;padding:.4rem .5rem;text-align:left;font-size:12px}th{background:#0d2836;color:#fff}h3{color:#0d2836}@media print{body{padding:.5in}}</style></head><body>' + content + '</body></html>');
     win.document.close();
     if (window.EhsSilAnalytics) {
-        window.EhsSilAnalytics.track('print_or_export_result', {mode: experienceMode});
+        window.EhsSilAnalytics.track('export', {mode: experienceMode});
     }
     setTimeout(function(){win.print()}, 500);
 }

@@ -39,14 +39,26 @@
         'view_completeness_check',
         'view_jsa_preview'
     ];
-    var allowedEvents = funnelEvents.concat(diagnosticEvents);
+    var jsaExperimentEvents = [
+        'visit_jsa',
+        'start_jsa',
+        'complete_scene',
+        'use_prompt',
+        'finish_jsa',
+        'export',
+        'click_member',
+        'return_visit'
+    ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents);
     var legacyAliases = {
-        visit_jsa_coach: 'content_to_tool',
-        start_scene_identification: 'tool_start',
-        complete_jsa: 'tool_complete',
-        print_or_export_result: 'export_click',
-        view_member_benefits: 'vip_gate_view',
-        click_knowledge_planet: 'planet_qr_click'
+        visit_jsa_coach: 'visit_jsa',
+        start_scene_identification: 'start_jsa',
+        complete_scene_identification: 'complete_scene',
+        use_risk_prompt: 'use_prompt',
+        complete_jsa: 'finish_jsa',
+        print_or_export_result: 'export',
+        view_member_benefits: 'click_member',
+        click_knowledge_planet: 'click_member'
     };
     var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'article', 'other'];
     var allowedSourceChannels = ['direct', 'site', 'article', 'wechat', 'video', 'planet', 'other'];
@@ -152,6 +164,7 @@
         setGroup: setExperimentGroup,
         allowedEvents: allowedEvents.slice(),
         funnelEvents: funnelEvents.slice(),
+        jsaExperimentEvents: jsaExperimentEvents.slice(),
         eventVersion: EVENT_VERSION
     };
 })();

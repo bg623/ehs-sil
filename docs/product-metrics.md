@@ -1,16 +1,17 @@
 # JSA Coach 产品指标
 
-版本：V0.2
-真实数据状态：尚未开始收集
+版本：V1.0
+
+真实数据状态：生产埋点已存在，本轮事件口径待部署；历史数据尚未完成质量审计
 
 ## 实施状态
 
 - 前端隐私受限埋点：已开发；
 - 自动化结构与事件检查：已通过；
-- 生产数据：0；
-- 真实用户反馈：0；
+- 可用于决策的生产数据：尚未完成读取与质量审计；
+- 已验证的真实用户反馈：尚无受控记录；
 - 30日复访数据：尚不可用；
-- 上述“0”表示实验尚未启动，不表示用户未发现遗漏或产品无效。
+- 未完成数据审计不表示用户未发现遗漏或产品无效。
 
 ## 用户分组
 
@@ -26,9 +27,24 @@
 
 会员分组的权威来源是服务端 `entitlement_source`；在生产迁移完成前，不得用页面文案、激活码标签或人工猜测替代。
 
-## 统一漏斗事件 v1
+## JSA 90天实验事件 V1
 
-所有页面使用统一业务语义，当前由 `js/analytics.js` 发送到既有百度统计。旧JSA调用名称在模块内部转换，不形成第二套统计口径。
+JSA产品实验使用以下固定事件名：
+
+- `visit_jsa`：进入JSA专业教练；
+- `start_jsa`：首次开始场景识别；
+- `complete_scene`：完成一次场景识别；
+- `use_prompt`：用户勾选并人工确认一条专业提示；
+- `finish_jsa`：完成完整性检查；
+- `export`：打印或导出结果；
+- `click_member`：点击工具箱会员权益入口；
+- `return_visit`：同一浏览器曾访问JSA后再次访问。
+
+`return_visit`只表示浏览器端复访信号，不等于“30天内再次使用”。30天复访仍需按时间窗口汇总，且不得跨设备推断为同一用户。
+
+## 全站统一漏斗事件 V1
+
+全站搜索、法规导航和其他工具继续使用通用事件；JSA使用上面的产品实验事件，不与其他工具的漏斗混算。事件由`js/analytics.js`发送到既有百度统计。
 
 - `search_submit`
 - `search_no_result`
@@ -51,16 +67,18 @@ JSA产品诊断事件可以保留，但不得与漏斗转化混算：
 - `view_completeness_check`
 - `view_jsa_preview`
 
-旧调用映射：
+旧调用兼容映射：
 
 | 旧调用 | 统一事件 |
 |---|---|
-| `visit_jsa_coach` | `content_to_tool` |
-| `start_scene_identification` | `tool_start` |
-| `complete_jsa` | `tool_complete` |
-| `print_or_export_result` | `export_click` |
-| `view_member_benefits` | `vip_gate_view` |
-| `click_knowledge_planet` | `planet_qr_click` |
+| `visit_jsa_coach` | `visit_jsa` |
+| `start_scene_identification` | `start_jsa` |
+| `complete_scene_identification` | `complete_scene` |
+| `use_risk_prompt` | `use_prompt` |
+| `complete_jsa` | `finish_jsa` |
+| `print_or_export_result` | `export` |
+| `view_member_benefits` | `click_member` |
+| `click_knowledge_planet` | `click_member` |
 
 ## 需要真实反馈或服务端确认的指标
 
@@ -99,10 +117,15 @@ JSA产品诊断事件可以保留，但不得与漏斗转化混算：
 
 ## 入口口径
 
-- JSA实验入口：`tools/risk-analysis.html`中的“JSA工作安全分析”卡片；
-- 首页不设置JSA专属入口，因此首页访问量不得计为JSA访问；
+- JSA实验主入口：首页第一屏“免费开始JSA检查”；
+- JSA次级入口：`tools/risk-analysis.html`中的“JSA工作安全分析”卡片；
+- 首页访问本身不计为`visit_jsa`，只有进入JSA工具页面后才记录；
 - 工具库访问用于知识星球工具库与培训库引流，不并入JSA转化漏斗。
 - 工具库条目数表示网站索引数量，不等同于知识星球已正式发布或可下载文件数量。
+
+## 每周产品Review
+
+每周固定检查：用户为什么来、在哪里退出、哪个功能被使用、哪个功能没人使用，以及下一轮只优化哪一个问题。90天方向成立的目标是50人开始、25人完成、15份成果输出、10人再次使用、5人明确表达付费意愿；演示数据、自动化测试和推测不得计入。
 
 ## 规则治理指标
 
