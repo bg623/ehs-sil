@@ -10,25 +10,40 @@ const jsa = read("tools/jsa-tool.html");
 const register = read("dashboard/register.html");
 const toolbox = read("products/toolbox.html");
 const riskAnalysis = read("tools/risk-analysis.html");
+const mainJs = read("js/main.js");
+const styles = read("css/style.css");
 const rules = JSON.parse(read("data/jsa-rules.json"));
 
 const hero = home.match(/<section class="hero[^"]*"[\s\S]*?<\/section>/)?.[0] || "";
 assert.match(home, /<title>EHS-SIL · 外企EHS工具与成长工作台<\/title>/);
-assert.match(home, /property="og:image" content="https:\/\/ehs-sil\.com\/assets\/og-ehs-sil-v1\.png"/);
-assert.ok(fs.existsSync(new URL("../assets/og-ehs-sil-v1.png", import.meta.url)), "缺少首页社交分享图");
-assert.match(hero, /检查你的JSA<br>是否遗漏关键风险/);
-assert.match(hero, />免费开始JSA检查</);
+assert.match(home, /property="og:image" content="https:\/\/ehs-sil\.com\/assets\/og-ehs-sil-platform\.png"/);
+assert.ok(fs.existsSync(new URL("../assets/og-ehs-sil-platform.png", import.meta.url)), "缺少首页社交分享图");
+assert.match(hero, /EHS人的<br>专业工具台/);
+assert.match(hero, />浏览专业工具</);
+assert.match(hero, />了解EHS-SIL</);
+assert.doesNotMatch(hero, /JSA专业教练|JSA检查/);
 assert.equal(
   (hero.match(/class="btn /g) || []).length,
-  1,
-  "首页第一屏只能保留一个主要行动",
+  2,
+  "首页第一屏应保留工具入口和网站介绍两个行动",
 );
-assert.match(home, /class="nav-link">JSA专业教练</);
-assert.match(home, /普通JSA写法/);
-assert.match(home, /EHS-SIL建议确认/);
+assert.match(home, /class="nav-item has-dropdown"/);
+assert.match(home, /class="nav-dropdown-toggle"/);
+assert.match(home, /aria-expanded="false"/);
+assert.match(mainJs, /dropdown-open/);
+assert.match(mainJs, /event\.key !== 'Escape'/);
+assert.match(home, /JSA专业教练（试用版）/);
+assert.match(home, /从遇到问题，到完成专业成果/);
+assert.match(home, /试用版 · 持续优化/);
 assert.match(home, /风险分析工具/);
 assert.match(home, /事故学习工具/);
 assert.match(home, /外企管理实践/);
+assert.match(home, /class="workbench-card risk-tools-card" id="risk-tools"/);
+assert.match(home, /class="workbench-card incident-tools-card" id="incident-tools"/);
+assert.match(home, /class="workbench-card practice-tools-card" id="practice-tools"/);
+assert.match(styles, /\.risk-tools-card/);
+assert.match(styles, /\.incident-tools-card/);
+assert.match(styles, /\.practice-tools-card/);
 assert.match(home, /外企EHS工具箱会员/);
 assert.match(home, /129/);
 assert.doesNotMatch(home, /李工|王经理|陈同学|535条站内|70000|189<\/strong>|VIP专属/);
@@ -74,8 +89,8 @@ assert.equal(
 console.log(
   JSON.stringify({
     status: "PASS",
-    hero_actions: 1,
-    jsa_location: "home-and-risk-analysis",
+    hero_actions: 2,
+    jsa_location: "compact-home-and-risk-analysis",
     candidate_rules: rules.rules.length,
     professionally_approved_rules: 11,
     changes_requested_rules: 0,

@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EHS-SIL是面向个人EHS从业者的外企EHS工具与成长工作台。使用JSA专业教练检查风险遗漏、改善控制措施，并找到完成实际工作的专业资源。">
+    <meta name="description" content="EHS-SIL是面向个人EHS从业者的专业工具与成长工作台，帮助你选择正确方法、使用在线工具、完成专业成果并连接外企EHS资源。">
     <title>EHS-SIL · 外企EHS工具与成长工作台</title>
     <link rel="canonical" href="https://ehs-sil.com/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="EHS-SIL · 外企EHS工具与成长工作台">
-    <meta property="og:description" content="检查你的JSA是否遗漏关键风险，并找到完成实际工作的专业资源。">
+    <meta property="og:description" content="遇到EHS问题，找到正确方法、专业工具和可落地资源。">
     <meta property="og:url" content="https://ehs-sil.com/">
-    <meta property="og:image" content="https://ehs-sil.com/assets/og-ehs-sil-v1.png">
-    <meta property="og:image:width" content="1731">
-    <meta property="og:image:height" content="909">
+    <meta property="og:image" content="https://ehs-sil.com/assets/og-ehs-sil-platform.png">
+    <meta property="og:image:width" content="1734">
+    <meta property="og:image:height" content="907">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EHS-SIL · 外企EHS工具与成长工作台">
-    <meta name="twitter:description" content="检查你的JSA是否遗漏关键风险，并找到完成实际工作的专业资源。">
-    <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-v1.png">
+    <meta name="twitter:description" content="遇到EHS问题，找到正确方法、专业工具和可落地资源。">
+    <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-platform.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 
@@ -43,15 +43,36 @@
                         <span class="logo-tag">· 外企EHS工具与成长工作台</span>
                     </a>
                 </div>
-                <button class="nav-toggle" id="navToggle" aria-label="切换菜单">
+                <button class="nav-toggle" id="navToggle" aria-label="切换菜单" aria-expanded="false" aria-controls="navLinks">
                     <span></span><span></span><span></span>
                 </button>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="tools/jsa-tool.html" class="nav-link">JSA专业教练</a></li>
-                    <li><a href="#workbench" class="nav-link">专业工具</a></li>
-                    <li><a href="tools/" class="nav-link">专业资源</a></li>
-                    <li><a href="tools/regulations.html" class="nav-link">法规导航</a></li>
-                    <li><a href="#content" class="nav-link">职业成长</a></li>
+                    <li class="nav-item has-dropdown">
+                        <div class="nav-parent-row"><a href="#workbench" class="nav-link">专业工具</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业工具选项" aria-expanded="false">⌄</button></div>
+                        <ul class="nav-dropdown">
+                            <li><a href="#risk-tools">01 风险分析工具</a></li>
+                            <li><a href="#incident-tools">02 事故学习工具</a></li>
+                            <li><a href="#practice-tools">03 外企管理实践</a></li>
+                            <li><a href="tools/jsa-tool.html">JSA专业教练（试用版）</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <div class="nav-parent-row"><a href="tools/" class="nav-link">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false">⌄</button></div>
+                        <ul class="nav-dropdown">
+                            <li><a href="tools/">工具库导航</a></li>
+                            <li><a href="tools/regulations.html">EHS法规导航</a></li>
+                            <li><a href="products/toolbox.html">外企EHS工具箱</a></li>
+                            <li><a href="products/training.html">外企EHS培训库</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <div class="nav-parent-row"><a href="#content" class="nav-link">职业成长</a><button class="nav-dropdown-toggle" type="button" aria-label="展开职业成长选项" aria-expanded="false">⌄</button></div>
+                        <ul class="nav-dropdown">
+                            <li><a href="#content">专业文章</a></li>
+                            <li><a href="topics/process-safety.html">工艺安全专题</a></li>
+                            <li><a href="products/training-camp.html">培训与成长</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#membership" class="nav-link">会员权益</a></li>
                     <li><a href="dashboard/register.html" class="nav-link">登录 / 激活</a></li>
                 </ul>
@@ -64,15 +85,17 @@
             <div class="container">
                 <div class="hero-content">
                     <span class="hero-badge">EHS-SIL · 外企EHS工具与成长工作台</span>
-                    <h1 class="hero-title">检查你的JSA<br>是否遗漏关键风险</h1>
-                    <p class="hero-subtitle">从作业场景、危险能量到控制措施层级，JSA专业教练帮助你把风险问题问得更完整，并形成可用于人工评审的专业结果。</p>
+                    <h1 class="hero-title">EHS人的<br>专业工具台</h1>
+                    <p class="hero-subtitle">遇到EHS问题，从这里找到正确方法、使用专业工具、完成工作成果，并持续学习外企EHS管理实践。</p>
                     <div class="hero-cta">
-                        <a href="tools/jsa-tool.html" class="btn btn-primary btn-lg" data-home-action="start-jsa">免费开始JSA检查</a>
+                        <a href="#workbench" class="btn btn-primary btn-lg">浏览专业工具</a>
+                        <a href="#value" class="btn btn-secondary btn-lg">了解EHS-SIL</a>
                     </div>
-                    <div class="hero-assurance" aria-label="使用说明">
-                        <span>免费开始</span>
-                        <span>无需上传文件</span>
-                        <span>结果需要人工确认</span>
+                    <div class="hero-assurance" aria-label="网站核心价值">
+                        <span>方法选择</span>
+                        <span>在线工具</span>
+                        <span>专业资源</span>
+                        <span>职业成长</span>
                     </div>
                 </div>
             </div>
@@ -82,31 +105,34 @@
         <section class="value-section" id="value">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">专业检查的价值</span>
-                    <h2 class="section-title">不只写下“戴安全带”</h2>
-                    <p class="section-desc">专业JSA需要继续追问：控制措施是否具体、可验证，并能应对现场变化？</p>
+                    <span class="section-label">EHS-SIL如何帮助你</span>
+                    <h2 class="section-title">从遇到问题，到完成专业成果</h2>
+                    <p class="section-desc">这里不只是资料入口，而是一条连接方法、工具、实践与成长的工作路径。</p>
                 </div>
-                <div class="comparison-grid">
-                    <article class="comparison-card comparison-basic">
-                        <span class="comparison-kicker">普通JSA写法</span>
-                        <dl class="comparison-fields">
-                            <div><dt>风险</dt><dd>高处坠落</dd></div>
-                            <div><dt>措施</dt><dd>戴安全带</dd></div>
-                        </dl>
+                <div class="site-value-grid">
+                    <article class="site-value-card">
+                        <span class="site-value-index">01</span>
+                        <h3>找到正确方法</h3>
+                        <p>根据风险分析、事故调查、管理实践等真实工作场景，选择适合的方法，而不是盲目套模板。</p>
                     </article>
-                    <div class="comparison-arrow" aria-hidden="true">→</div>
-                    <article class="comparison-card comparison-professional">
-                        <span class="comparison-kicker">EHS-SIL建议确认</span>
-                        <ul class="prompt-list">
-                            <li>锚点是否经过确认，并适合当前连接方式？</li>
-                            <li>是否优先设置平台、护栏等工程控制？</li>
-                            <li>下方区域是否隔离，工具是否防坠？</li>
-                            <li>是否明确天气、人员状态和停止作业条件？</li>
-                            <li>发生悬吊后，救援方式和响应人员是否明确？</li>
-                        </ul>
+                    <article class="site-value-card">
+                        <span class="site-value-index">02</span>
+                        <h3>使用专业工具</h3>
+                        <p>把思考过程结构化，通过在线工具检查遗漏、梳理逻辑，并形成可继续完善的工作结果。</p>
+                    </article>
+                    <article class="site-value-card">
+                        <span class="site-value-index">03</span>
+                        <h3>连接资源与成长</h3>
+                        <p>从法规导航、外企案例、模板和培训内容中继续学习，把一次工作沉淀为长期专业能力。</p>
                     </article>
                 </div>
-                <p class="professional-boundary">EHS-SIL不替你判断“安全”，而是帮助你发现可能遗漏的问题；最终结论仍需结合现场、企业程序和适用要求人工确认。</p>
+                <div class="site-workflow" aria-label="EHS-SIL使用路径">
+                    <span>遇到问题</span><i>→</i><span>选择方法</span><i>→</i><span>使用工具</span><i>→</i><span>完成成果</span><i>→</i><span>持续提升</span>
+                </div>
+                <aside class="jsa-compact-callout">
+                    <div><span class="jsa-version">试用版 · 持续优化</span><h3>JSA专业教练</h3><p>用于提示可能遗漏的作业风险和控制措施问题。当前版本适合体验和辅助思考，结果仍需结合现场人工确认。</p></div>
+                    <a href="tools/jsa-tool.html" class="btn btn-secondary" data-home-action="start-jsa">体验JSA专业教练 →</a>
+                </aside>
             </div>
         </section>
 
@@ -115,27 +141,27 @@
                 <div class="section-header">
                     <span class="section-label">EHS人的专业工具台</span>
                     <h2 class="section-title">遇到问题，先选择正确的方法</h2>
-                    <p class="section-desc">第一阶段集中验证JSA专业教练；其他已有工具继续提供入口，但暂不扩大开发。</p>
+                    <p class="section-desc">按工作任务选择入口：分析风险、学习事故，或把外企成熟做法转化为日常管理动作。</p>
                 </div>
                 <div class="workbench-grid">
-                    <article class="workbench-card featured-tool">
-                        <span class="tool-status">当前重点</span>
+                    <article class="workbench-card risk-tools-card" id="risk-tools">
+                        <span class="tool-status">RISK ANALYSIS · 风险分析</span>
                         <div class="workbench-index">01</div>
                         <h3>风险分析工具</h3>
                         <p>检查作业风险、失效模式与异常场景。</p>
-                        <ul><li><strong>JSA专业教练</strong>：完整性与控制措施检查</li><li>FMEA：设备与工艺失效分析</li><li>What-If：结构化假设分析</li></ul>
+                        <ul><li><strong>JSA专业教练（试用版）</strong>：完整性与控制措施提示</li><li>FMEA：设备与工艺失效分析</li><li>What-If：结构化假设分析</li></ul>
                         <a href="tools/risk-analysis.html#risk-assessment" class="workbench-link">进入风险分析 →</a>
                     </article>
-                    <article class="workbench-card">
-                        <span class="tool-status neutral">已有入口</span>
+                    <article class="workbench-card incident-tools-card" id="incident-tools">
+                        <span class="tool-status">LEARNING · 事故学习</span>
                         <div class="workbench-index">02</div>
                         <h3>事故学习工具</h3>
                         <p>从直接原因走向系统因素和组织学习。</p>
                         <ul><li>5Why：连续追问因果链</li><li>RCA：结构化根因分析</li><li>LFI：把事件转化为组织学习</li></ul>
                         <a href="tools/risk-analysis.html#incident-investigation" class="workbench-link">进入事故分析 →</a>
                     </article>
-                    <article class="workbench-card">
-                        <span class="tool-status neutral">方法与资源</span>
+                    <article class="workbench-card practice-tools-card" id="practice-tools">
+                        <span class="tool-status">PRACTICE · 管理实践</span>
                         <div class="workbench-index">03</div>
                         <h3>外企管理实践</h3>
                         <p>把成熟理念转化为日常管理动作。</p>
@@ -150,9 +176,9 @@
             <div class="container membership-layout">
                 <div class="membership-context">
                     <span class="section-label">完成工作后的专业资源</span>
-                    <h2 class="section-title">检查完JSA，继续把结果落到现场</h2>
-                    <p>根据当前任务，查找知识星球中已正式发布的配套资源，帮助你准备程序、交底与关键控制材料。</p>
-                    <div class="resource-chips" aria-label="JSA配套资源示例">
+                    <h2 class="section-title">完成工作后，继续把方法落到现场</h2>
+                    <p>根据当前任务，查找知识星球中已正式发布的配套资源，帮助你准备程序、模板、案例、交底与培训材料。</p>
+                    <div class="resource-chips" aria-label="专业配套资源示例">
                         <span>LOTO模板</span>
                         <span>SWP模板</span>
                         <span>高风险作业案例</span>
@@ -452,9 +478,9 @@
 
     <section class="cta-section">
             <div class="container">
-                <h2 class="cta-title">遇到EHS问题，先把方法选对</h2>
-                <p class="cta-desc">从JSA专业检查开始，完成一份更完整、可供人工评审的工作成果。</p>
-                <a href="tools/jsa-tool.html" class="btn btn-primary btn-lg">免费开始JSA检查 →</a>
+                <h2 class="cta-title">遇到EHS问题，从正确的方法开始</h2>
+                <p class="cta-desc">进入EHS-SIL专业工具台，找到与你当前任务匹配的工具、内容和资源。</p>
+                <a href="#workbench" class="btn btn-primary btn-lg">浏览专业工具 →</a>
             </div>
         </section>
     </main>
