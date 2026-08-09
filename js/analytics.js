@@ -64,6 +64,7 @@
     var allowedSourceChannels = ['direct', 'site', 'article', 'wechat', 'video', 'planet', 'other'];
     var allowedUserTiers = ['unknown', 'public', 'member', 'legacy_vip'];
     var allowedResultBuckets = ['0', '1-10', '11-50', '51+'];
+    var allowedExportTypes = ['', 'print', 'xlsx'];
 
     function sessionId() {
         var value = sessionStorage.getItem(SESSION_KEY);
@@ -96,7 +97,8 @@
             source_channel: safeEnum(context.sourceChannel, allowedSourceChannels, 'direct'),
             user_tier: safeEnum(context.userTier, allowedUserTiers, 'unknown'),
             page_type: safeEnum(context.pageType, allowedPageTypes, 'other'),
-            result_count_bucket: safeEnum(context.resultBucket, allowedResultBuckets, '')
+            result_count_bucket: safeEnum(context.resultBucket, allowedResultBuckets, ''),
+            export_type: safeEnum(context.exportType, allowedExportTypes, '')
         };
     }
 
@@ -122,6 +124,7 @@
             safeContext.user_tier,
             safeContext.page_type,
             safeContext.result_count_bucket,
+            safeContext.export_type,
             sessionId()
         ].join('|');
         window._hmt = window._hmt || [];

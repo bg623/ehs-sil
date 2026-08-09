@@ -45,6 +45,7 @@ assert.match(analytics, /visit_jsa_coach:\s*['"]visit_jsa['"]/);
 assert.match(analytics, /complete_jsa:\s*['"]finish_jsa['"]/);
 assert.match(analytics, /print_or_export_result:\s*['"]export['"]/);
 assert.match(analytics, /result_count_bucket/);
+assert.match(analytics, /export_type/);
 assert.doesNotMatch(analytics, /searchQuery|currentQuery/);
 
 assert.match(tools, /src="\.\.\/js\/analytics\.js"/);
@@ -95,5 +96,9 @@ assert.equal(context.window._hmt[0][2], "finish_jsa");
 assert.doesNotMatch(context.window._hmt[0][3], /不得上传的企业名称/);
 assert.equal(dispatched[0].detail.event, "finish_jsa");
 assert.equal(dispatched[0].detail.context.tool_id, "jsa-coach");
+
+context.window.EhsSilAnalytics.track("export", { mode: "user", exportType: "xlsx" });
+assert.equal(dispatched[1].detail.context.export_type, "xlsx");
+assert.match(context.window._hmt[1][3], /\|xlsx\|/);
 
 console.log(JSON.stringify({ status: "PASS", event_version: 1, funnel_events: 10, jsa_events: 8 }));

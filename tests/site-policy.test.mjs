@@ -50,7 +50,15 @@ assert.doesNotMatch(home, /李工|王经理|陈同学|535条站内|70000|189<\/s
 assert.doesNotMatch(home, /加入球星|735份|一次付费，永久使用/);
 
 assert.doesNotMatch(jsa, /JSA得分|质量良好/);
-assert.doesNotMatch(jsa, /function\s+(?:exportToExcel|saveToLocal|loadFromLocal)\s*\(/);
+assert.doesNotMatch(jsa, /function\s+(?:saveToLocal|loadFromLocal)\s*\(/);
+assert.match(jsa, /JSA 专业教练 <span[^>]*>V0\.2 试用版/);
+assert.match(jsa, /id="taskDescription"/);
+assert.match(jsa, /id="generateDraftButton"/);
+assert.match(jsa, /jsa-draft-generator\.js/);
+assert.match(jsa, /vendor\/exceljs\.min\.js/);
+assert.match(jsa, /id="exportExcelButton"/);
+assert.match(jsa, /async function exportJsaExcel\(\)/);
+assert.match(jsa, /请先完成完整性检查/);
 for (const status of ["已覆盖", "建议关注", "需要人工确认"]) {
   assert.match(jsa, new RegExp(status));
 }
@@ -64,7 +72,7 @@ assert.match(toolbox, /元\/年/);
 assert.match(read("tools/index.html"), /网站当前用于检索和内容预览，不提供文件下载/);
 assert.match(read("tools/index.html"), /正式发布及可下载文件以知识星球为准/);
 assert.match(riskAnalysis, /<h3>JSA 工作安全分析<\/h3>/);
-assert.match(riskAnalysis, /专业教练 V0\.1/);
+assert.match(riskAnalysis, /专业教练 V0\.2试用版/);
 assert.match(riskAnalysis, /href="jsa-tool\.html"[^>]*>开始JSA分析/);
 assert.doesNotMatch(riskAnalysis, /VIP专属|VIP在线工具|查看 VIP 权益/);
 

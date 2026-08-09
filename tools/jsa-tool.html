@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>JSA专业教练 V0.1 · 完整性检查 · EHS-SIL</title>
+<title>JSA专业教练 V0.2 · 自动初稿与Excel导出 · EHS-SIL</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <link rel="stylesheet" href="../css/style.css">
 <style>
@@ -36,6 +36,18 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .btn-danger:hover{background:#b91c1c}
 .btn-secondary{background:#f0f0f0;color:#555}
 .btn-secondary:hover{background:#e0e0e0}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.task-lead{font-size:.82rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.7}
+.task-description{min-height:130px!important;font-size:.88rem!important;line-height:1.65}
+.task-hints{display:flex;flex-wrap:wrap;gap:.35rem;margin:.45rem 0 .9rem}
+.task-hints span{font-size:.68rem;color:var(--primary);background:var(--secondary);padding:.22rem .55rem;border-radius:999px}
+.generate-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.draft-status{font-size:.74rem;color:var(--text-muted)}
+.draft-status.success{color:#166534}.draft-status.warning{color:#92400e}
+.generated-banner{display:none;margin:.8rem 0 0;padding:.75rem .9rem;background:#eef7f3;border:1px solid #b9d8cd;border-radius:7px;font-size:.75rem;color:#245c51;line-height:1.6}
+.generated-banner.active{display:block}
+.step-actions{display:flex;gap:.3rem;justify-content:flex-end}
+.step-origin{display:inline-block;margin-top:.25rem;font-size:.62rem;color:#5b6d72;background:#eef2f2;padding:.08rem .35rem;border-radius:999px}
 .step-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.8rem}
 .step-table th{background:var(--primary);color:#fff;padding:.5rem .4rem;text-align:left;font-weight:500;white-space:nowrap}
 .step-table td{padding:.45rem .4rem;border-bottom:1px solid var(--border-light);vertical-align:top}
@@ -82,7 +94,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .finding-confirm{display:flex;align-items:center;gap:.35rem;margin-top:.6rem;font-size:.72rem;color:#42545b}
 .result-disclaimer{margin-top:1rem;padding:.8rem;background:#f3f4f4;border-radius:6px;font-size:.7rem;color:#68757a;line-height:1.6}
 .empty-findings{padding:1.2rem;text-align:center;color:var(--text-muted);font-size:.78rem;border:1px dashed var(--border);border-radius:7px}
-@media(max-width:480px){.form-row,.form-row-3{grid-template-columns:1fr}.header h1{font-size:1.2rem}.step-table{font-size:.7rem}}
+@media(max-width:480px){.form-row,.form-row-3{grid-template-columns:1fr}.header h1{font-size:1.2rem}.step-table{font-size:.7rem}.generate-actions .btn{width:100%}.toolbar-right{margin-left:0;width:100%}}
 @media(max-width:720px){.scenario-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.scenario-grid{grid-template-columns:1fr}}
 </style>
@@ -91,23 +103,46 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <div class="header"><div class="container">
 <a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
-<h1>&#128269; JSA 专业教练 <span style="font-size:.65em;color:#d9b45b">V0.1</span></h1>
-<p>帮助发现风险遗漏、检查控制措施完整性，并由使用者人工确认结果</p>
+<h1>&#128269; JSA 专业教练 <span style="font-size:.65em;color:#d9b45b">V0.2 试用版</span></h1>
+<p>描述作业任务，自动生成可编辑的步骤、风险与控制措施建议，再由使用者逐项调整确认</p>
 </div></div>
 
 <div class="container" id="app">
 
 <div class="scope-banner">
-<strong>V0.1范围：</strong>场景识别、风险遗漏提示、控制措施完整性检查、网页预览和基础打印。结果不代表作业安全、法规符合、作业批准或风险可接受。
+<strong>V0.2试用范围：</strong>根据任务描述生成结构化JSA建议草稿、场景与风险提示、人工编辑、完整性检查、网页预览、打印及Excel导出。自动内容不是专业结论，结果不代表作业安全、法规符合、作业批准或风险可接受。
 </div>
 <div class="review-banner" id="reviewBanner">
 <strong>内部规则审查模式：</strong>当前加载的是等待产品负责人审核的候选规则，只能用于内部验证，不得部署为正式专业结论。
 </div>
 
+<!-- Task definition and draft generation -->
+<div class="section" id="taskSection">
+<h2>&#9312; 确定作业任务并生成初稿</h2>
+<p class="task-lead">请尽可能准确描述“在哪里、对什么设备或物料、使用什么方法、由谁、在什么条件下做什么”。描述越具体，自动识别和初稿越有针对性。</p>
+<div class="form-row">
+<div class="form-group"><label>作业名称 *</label><input id="jobName" placeholder="例：甲醛储罐出口管线法兰更换" value=""></div>
+<div class="form-group"><label>作业编号</label><input id="jobRef" placeholder="JSA-2026-001"></div>
+</div>
+<div class="form-group"><label>作业内容详细描述 *</label><textarea class="task-description" id="taskDescription" placeholder="例：在罐区更换甲醛储罐出口管线法兰垫片。承包商使用手动工具拆卸，管线已计划停用，需要隔离、排空泄压和清洗；作业区域附近存在其他装卸活动。"></textarea></div>
+<div class="task-hints" aria-label="建议包含的信息"><span>作业地点/区域</span><span>设备或物料</span><span>具体动作</span><span>使用工具</span><span>能量与介质</span><span>承包商/同时作业</span><span>特殊作业条件</span></div>
+<div class="form-row-3">
+<div class="form-group"><label>部门/区域</label><input id="jobDept" placeholder="生产部 / 公用工程"></div>
+<div class="form-group"><label>评估人</label><input id="jobAssessor" placeholder="可稍后填写"></div>
+<div class="form-group"><label>日期</label><input id="jobDate" type="date"></div>
+</div>
+<div class="generate-actions">
+<button class="btn btn-primary" id="generateDraftButton" type="button">&#10024; 自动生成JSA建议初稿</button>
+<button class="btn btn-outline" id="loadExampleButton" type="button">使用离心泵检修示例</button>
+<span class="draft-status" id="draftStatus">请先填写作业名称和详细描述</span>
+</div>
+<div class="generated-banner" id="generatedBanner"></div>
+</div>
+
 <!-- Scenario identification -->
 <div class="section" id="scenarioSection">
-<h2>&#9312; 作业场景识别</h2>
-<p style="font-size:.76rem;color:var(--text-secondary)">只选择真实适用的场景。系统据此提示可能遗漏的检查方向，不会替代现场确认。</p>
+<h2>&#9313; 检查系统识别的作业场景</h2>
+<p style="font-size:.76rem;color:var(--text-secondary)">系统会根据任务描述自动勾选。请删除不适用项、补充遗漏项，再重新检查风险提示。</p>
 <div class="scenario-subtitle">作业场景</div>
 <div class="scenario-grid" id="scenarioChoices">
 <label class="check-card"><input type="checkbox" name="scenario" value="maintenance">设备检维修</label>
@@ -137,38 +172,23 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <label class="check-card"><input type="checkbox" id="simultaneousOperations">存在同时作业</label>
 </div>
 <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-<button class="btn btn-primary" id="runScenarioButton" type="button">完成场景识别并查看提示</button>
-<button class="btn btn-outline" id="loadExampleButton" type="button">使用离心泵检修示例</button>
+<button class="btn btn-outline" id="runScenarioButton" type="button">重新检查场景与风险提示</button>
 </div>
 </div>
 
 <div class="section" id="riskPromptSection">
-<h2>&#9313; 风险遗漏提示</h2>
-<div id="riskPromptList" class="empty-findings">请先完成作业场景识别。</div>
-</div>
-
-<!-- Job Info -->
-<div class="section" id="jobInfo">
-<h2>&#9314; JSA内容</h2>
-<div class="form-row">
-<div class="form-group"><label>作业名称 *</label><input id="jobName" placeholder="例：离心泵检修" value=""></div>
-<div class="form-group"><label>作业编号</label><input id="jobRef" placeholder="JSA-2026-001"></div>
-</div>
-<div class="form-row-3">
-<div class="form-group"><label>部门/区域</label><input id="jobDept" placeholder="生产部 / 公用工程"></div>
-<div class="form-group"><label>评估人 *</label><input id="jobAssessor" placeholder="姓名"></div>
-<div class="form-group"><label>日期</label><input id="jobDate" type="date"></div>
-</div>
+<h2>&#9314; 风险遗漏提示</h2>
+<div id="riskPromptList" class="empty-findings">请先描述任务并生成JSA建议初稿。</div>
 </div>
 
 <div class="tips" id="stepTips">
-<strong>&#128161; JSA 操作指南：</strong>
-将作业分解为3-8个逻辑步骤。对每个步骤：①描述作业动作 → ②识别潜在危害 → ③列出已有控制措施 → ④评估风险等级(L×S) → ⑤提出补充控制。完成所有步骤后，可以导出为报告。
+<strong>&#128161; 人工调整指南：</strong>
+系统会先生成步骤、风险和控制措施建议。请逐项核对动作顺序、现场危险和控制措施，使用“编辑”修改；发现缺少步骤时再手工添加。完成检查后可下载Excel继续评审。
 </div>
 
 <!-- Add Step -->
 <div class="section" id="addStep">
-<h2>&#10133; 添加作业步骤</h2>
+<h2>&#9315; 人工调整或添加作业步骤</h2>
 <div class="form-row">
 <div class="form-group"><label>步骤描述 *</label><textarea id="stepDesc" placeholder="描述此步骤的具体作业动作（例：关闭进口阀门）" rows="2"></textarea></div>
 </div>
@@ -187,19 +207,21 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="form-group"><label>补充控制措施</label><textarea id="stepAddCtrl" placeholder="需要增加的额外安全措施（例：增加气体检测、设置监护人员）" rows="2"></textarea></div>
 </div>
 <div style="display:flex;gap:.5rem;margin-top:.5rem">
-<button class="btn btn-primary" onclick="addStep()">&#10133; 添加步骤</button>
+<button class="btn btn-primary" id="saveStepButton" onclick="addStep()">&#10133; 添加步骤</button>
+<button class="btn btn-outline" id="cancelEditButton" onclick="cancelEdit()" style="display:none">取消编辑</button>
 <button class="btn btn-secondary" onclick="clearForm()">清空表单</button>
 </div>
 </div>
 
 <!-- Steps List -->
-<div class="section">
+<div class="section" id="stepsSection">
 <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">
 <h2 style="margin-bottom:0">&#128221; 作业步骤列表</h2>
 <span id="stepCount" style="font-size:.78rem;color:var(--text-muted)">0 个步骤</span>
 <div class="toolbar-right">
 <button class="btn btn-sm btn-accent" onclick="runCompletenessCheck()">&#128269; 检查完整性</button>
 <button class="btn btn-sm btn-outline" onclick="generateReport()">&#128196; 网页预览</button>
+<button class="btn btn-sm btn-primary" id="exportExcelButton" onclick="exportJsaExcel()" disabled>&#128202; 下载Excel</button>
 <button class="btn btn-sm btn-danger" onclick="clearAll()">&#128465; 清空</button>
 </div>
 </div>
@@ -218,7 +240,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 </div>
 
 <div class="section" id="completenessSection">
-<h2>&#9315; 完整性与逻辑一致性检查</h2>
+<h2>&#9316; 完整性与逻辑一致性检查</h2>
 <div id="completenessList" class="empty-findings">完成场景识别并添加至少一个作业步骤后，可以检查控制措施和需要人工确认的事项。</div>
 <div class="result-disclaimer">本检查只提示可能遗漏和逻辑一致性问题。所有“已覆盖”均由使用者人工确认，不代表作业安全、符合法规、可以批准或风险已经可接受。</div>
 </div>
@@ -229,6 +251,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <h2 style="margin-bottom:0">&#128196; 报告预览</h2>
 <div style="display:flex;gap:.4rem">
 <button class="btn btn-sm btn-primary" onclick="printReport()">&#128424; 打印</button>
+<button class="btn btn-sm btn-accent" onclick="exportJsaExcel()">&#128202; 下载Excel</button>
 <button class="btn btn-sm btn-secondary" onclick="closeReport()">关闭</button>
 </div>
 </div>
@@ -237,17 +260,23 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 </div>
 
-<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · V0.1不提供云端保存 · 请勿输入企业或人员敏感信息</p></footer>
+<footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · V0.2不提供云端保存 · 请勿输入企业或人员敏感信息</p></footer>
 
 <script src="../js/jsa-rule-engine.js"></script>
+<script src="../js/jsa-draft-generator.js"></script>
+<script src="../vendor/exceljs.min.js"></script>
+<script src="../js/jsa-export.js"></script>
 <script src="../js/analytics.js"></script>
 <script>
 var steps = [];
 var experienceMode = new URLSearchParams(location.search).get('example') === '1' ? 'example' : 'user';
 var jsaRules = [];
+var draftTemplates = null;
 var currentFindings = [];
 var confirmedRuleIds = {};
 var sceneIdentified = false;
+var completenessChecked = false;
+var editingStepId = null;
 var visitStorageKey = 'ehs_sil_jsa_last_visit';
 var includePendingRules = location.hostname === 'localhost' ||
     location.hostname === '127.0.0.1' ||
@@ -264,19 +293,32 @@ if (window.EhsSilAnalytics) {
 // Set default date
 document.getElementById('jobDate').valueAsDate = new Date();
 document.getElementById('runScenarioButton').addEventListener('click', runScenarioReview);
+document.getElementById('generateDraftButton').addEventListener('click', generateJsaDraft);
 document.getElementById('loadExampleButton').addEventListener('click', loadExample);
+document.querySelectorAll('input[name="scenario"],input[name="tag"],#nonRoutine,#contractorWork,#simultaneousOperations').forEach(function(input) {
+    input.addEventListener('change', function(){setCompletionChecked(false)});
+});
 if (includePendingRules) document.getElementById('reviewBanner').style.display = 'block';
 
-fetch('../data/jsa-rules.json')
-    .then(function(response) {
+Promise.all([
+    fetch('../data/jsa-rules.json').then(function(response) {
         if (!response.ok) throw new Error('规则库加载失败');
         return response.json();
+    }),
+    fetch('../data/jsa-draft-templates.json').then(function(response) {
+        if (!response.ok) throw new Error('初稿模板加载失败');
+        return response.json();
     })
-    .then(function(payload) {
-        jsaRules = payload.rules || [];
+])
+    .then(function(payloads) {
+        jsaRules = payloads[0].rules || [];
+        draftTemplates = payloads[1];
+        document.getElementById('draftStatus').textContent = '可以开始生成建议初稿';
         if (experienceMode === 'example') loadExample();
     })
     .catch(function() {
+        document.getElementById('draftStatus').textContent = '专业规则或初稿模板暂时不可用，请稍后重试';
+        document.getElementById('draftStatus').className = 'draft-status warning';
         document.getElementById('riskPromptList').innerHTML =
             '<div class="finding needs-confirmation"><div class="finding-head"><h3>规则库暂时不可用</h3><span class="finding-status">需要人工确认</span></div><p>请稍后重试，或在不依赖系统提示的情况下由专业人员完成JSA。</p></div>';
     });
@@ -307,15 +349,88 @@ function collectContext() {
     };
 }
 
+var scenarioLabels = {
+    maintenance:'设备检维修', equipment_opening:'设备或管线打开', chemical_handling:'化学品操作',
+    electrical_work:'电气作业', hot_work:'动火作业', confined_space:'受限空间',
+    work_at_height:'高处作业', lifting:'吊装作业'
+};
+var tagLabels = {
+    electrical:'电能', mechanical:'机械能', hydraulic:'液压', pneumatic:'气压',
+    thermal:'热能', gravity:'重力势能', chemical:'化学品', flammable:'易燃介质'
+};
+
+function setCheckedValues(name, values) {
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function(input) {
+        input.checked = values.indexOf(input.value) !== -1;
+    });
+}
+
+function setCompletionChecked(value) {
+    completenessChecked = Boolean(value);
+    document.getElementById('exportExcelButton').disabled = !completenessChecked;
+}
+
+function generateJsaDraft(force) {
+    if (!draftTemplates || !window.JsaDraftGenerator) {
+        alert('初稿模板尚未加载，请稍后重试');
+        return;
+    }
+    var name = document.getElementById('jobName').value.trim();
+    var description = document.getElementById('taskDescription').value.trim();
+    if (!description || description.length < 10) {
+        alert('请尽可能准确描述作业内容，至少写明作业对象、具体动作和主要条件');
+        document.getElementById('taskDescription').focus();
+        return;
+    }
+    if (!name) {
+        name = description.replace(/[。；;\n].*$/, '').slice(0, 28);
+        document.getElementById('jobName').value = name;
+    }
+    if (!force && steps.length && !confirm('自动生成将替换当前作业步骤，是否继续？')) return;
+    var draft = window.JsaDraftGenerator.createDraft({
+        jobName: name,
+        taskDescription: description,
+        scenarios: selectedValues('scenario'),
+        tags: selectedValues('tag'),
+        contractor_work: document.getElementById('contractorWork').checked,
+        simultaneous_operations: document.getElementById('simultaneousOperations').checked,
+        non_routine: document.getElementById('nonRoutine').checked
+    }, draftTemplates);
+    setCheckedValues('scenario', draft.scenarios);
+    setCheckedValues('tag', draft.tags);
+    document.getElementById('contractorWork').checked = draft.contractor_work;
+    document.getElementById('simultaneousOperations').checked = draft.simultaneous_operations;
+    document.getElementById('nonRoutine').checked = draft.non_routine;
+    var baseId = Date.now();
+    steps = draft.steps.map(function(step, index) {
+        step.id = baseId + index;
+        return step;
+    });
+    confirmedRuleIds = {};
+    currentFindings = [];
+    setCompletionChecked(false);
+    cancelEdit();
+    renderSteps();
+    runScenarioReview();
+    var recognized = draft.scenarios.map(function(key){return scenarioLabels[key]||key}).join('、') || '通用作业';
+    document.getElementById('draftStatus').textContent = '已生成 ' + steps.length + ' 个建议步骤，请逐项人工调整';
+    document.getElementById('draftStatus').className = 'draft-status success';
+    var banner = document.getElementById('generatedBanner');
+    banner.className = 'generated-banner active';
+    banner.innerHTML = '<strong>系统识别：</strong>' + esc(recognized) + '。<strong>下一步：</strong>检查自动勾选场景，并编辑步骤、风险和控制措施。' + esc(draft.notice);
+    document.getElementById('stepsSection').scrollIntoView({behavior:'smooth'});
+}
+
 function runScenarioReview() {
     var context = collectContext();
-    if (!context.scenarios.length) {
-        alert('请至少选择一个作业场景');
+    if (!context.scenarios.length && !steps.length) {
+        alert('请先描述任务并生成初稿，或至少选择一个作业场景');
         return;
     }
     if (window.EhsSilAnalytics) {
         window.EhsSilAnalytics.trackOnce('start_jsa', {mode: experienceMode});
     }
+    setCompletionChecked(false);
     sceneIdentified = true;
     currentFindings = window.JsaRuleEngine.evaluateRules(jsaRules, context, {
         includePending: includePendingRules
@@ -341,6 +456,7 @@ function runCompletenessCheck() {
         includePending: includePendingRules
     });
     renderFindings('completenessList', currentFindings);
+    setCompletionChecked(true);
     if (window.EhsSilAnalytics) {
         window.EhsSilAnalytics.track('finish_jsa', {mode: experienceMode});
         window.EhsSilAnalytics.track('view_completeness_check', {mode: experienceMode});
@@ -395,30 +511,12 @@ function loadExample() {
     document.querySelectorAll('input[type="checkbox"]').forEach(function(input) {
         input.checked = false;
     });
-    ['maintenance', 'equipment_opening'].forEach(function(value) {
-        var input = document.querySelector('input[name="scenario"][value="' + value + '"]');
-        if (input) input.checked = true;
-    });
-    ['mechanical', 'chemical', 'pneumatic'].forEach(function(value) {
-        var input = document.querySelector('input[name="tag"][value="' + value + '"]');
-        if (input) input.checked = true;
-    });
+    document.getElementById('jobName').value = '示例：离心泵检修（非真实作业）';
+    document.getElementById('taskDescription').value = '在公用工程泵房对输送化学品的离心泵进行机械密封更换。承包商拆卸泵体和进出口法兰，设备停机后需要进行电气与机械隔离、管线排空泄压并确认残余物料；检修完成后复装、试运并交付。该作业属于非例行检修。';
+    document.getElementById('jobDept').value = '公用工程 / 泵房';
     document.getElementById('nonRoutine').checked = true;
     document.getElementById('contractorWork').checked = true;
-    document.getElementById('jobName').value = '示例：离心泵检修（非真实作业）';
-    steps = [{
-        id: Date.now(),
-        step: 1,
-        desc: '停泵并准备拆卸',
-        hazard: '残余压力、机械能和残余物料',
-        existingCtrl: '停机，佩戴PPE，加强培训',
-        L: 3,
-        S: 4,
-        R: 12,
-        addCtrl: ''
-    }];
-    renderSteps();
-    runScenarioReview();
+    generateJsaDraft(true);
 }
 
 // Risk preview
@@ -458,25 +556,33 @@ function addStep() {
     var desc = document.getElementById('stepDesc').value.trim();
     var hazard = document.getElementById('stepHazard').value.trim();
     if (!desc || !hazard) { alert('请填写步骤描述和潜在危害'); return; }
-    steps.push({
-        id: Date.now(),
-        step: steps.length + 1,
+    var values = {
         desc: desc,
         hazard: hazard,
         existingCtrl: document.getElementById('stepCtrl').value.trim(),
         L: parseInt(document.getElementById('stepL').value),
         S: parseInt(document.getElementById('stepS').value),
         R: parseInt(document.getElementById('stepL').value) * parseInt(document.getElementById('stepS').value),
-        addCtrl: document.getElementById('stepAddCtrl').value.trim()
-    });
+        addCtrl: document.getElementById('stepAddCtrl').value.trim(),
+        source: 'human_edited'
+    };
+    if (editingStepId !== null) {
+        var target = steps.find(function(step){return step.id === editingStepId});
+        if (target) Object.assign(target, values);
+    } else {
+        values.id = Date.now();
+        values.step = steps.length + 1;
+        steps.push(values);
+    }
     if (window.EhsSilAnalytics) {
         window.EhsSilAnalytics.track('add_jsa_step', {mode: experienceMode});
     }
-    clearForm();
+    setCompletionChecked(false);
+    cancelEdit();
     renderSteps();
 }
 
-function clearForm() {
+function resetStepForm() {
     document.getElementById('stepDesc').value = '';
     document.getElementById('stepHazard').value = '';
     document.getElementById('stepCtrl').value = '';
@@ -484,12 +590,43 @@ function clearForm() {
     document.getElementById('stepL').value = '3';
     document.getElementById('stepS').value = '3';
     updateRiskPreview();
+}
+
+function clearForm() {
+    editingStepId = null;
+    resetStepForm();
+    document.getElementById('saveStepButton').innerHTML = '&#10133; 添加步骤';
+    document.getElementById('cancelEditButton').style.display = 'none';
     document.getElementById('stepDesc').focus();
+}
+
+function beginEditStep(id) {
+    var step = steps.find(function(item){return item.id === id});
+    if (!step) return;
+    editingStepId = id;
+    document.getElementById('stepDesc').value = step.desc;
+    document.getElementById('stepHazard').value = step.hazard;
+    document.getElementById('stepCtrl').value = step.existingCtrl;
+    document.getElementById('stepAddCtrl').value = step.addCtrl;
+    document.getElementById('stepL').value = String(step.L);
+    document.getElementById('stepS').value = String(step.S);
+    updateRiskPreview();
+    document.getElementById('saveStepButton').textContent = '保存步骤修改';
+    document.getElementById('cancelEditButton').style.display = 'inline-flex';
+    document.getElementById('addStep').scrollIntoView({behavior:'smooth'});
+}
+
+function cancelEdit() {
+    editingStepId = null;
+    resetStepForm();
+    document.getElementById('saveStepButton').innerHTML = '&#10133; 添加步骤';
+    document.getElementById('cancelEditButton').style.display = 'none';
 }
 
 function removeStep(id) {
     steps = steps.filter(function(s){return s.id !== id});
     steps.forEach(function(s,i){s.step = i + 1});
+    setCompletionChecked(false);
     renderSteps();
 }
 
@@ -497,6 +634,10 @@ function clearAll() {
     if (!steps.length) return;
     if (!confirm('确定清空所有步骤？')) return;
     steps = [];
+    currentFindings = [];
+    confirmedRuleIds = {};
+    setCompletionChecked(false);
+    cancelEdit();
     renderSteps();
 }
 
@@ -507,18 +648,18 @@ function renderSteps() {
         el.innerHTML = '<div class="empty-state"><div class="icon">&#128221;</div><p>暂无作业步骤，请在上方添加</p><p style="font-size:.72rem;color:#bbb">将作业分解为逻辑步骤，逐一分析危害与控制措施</p></div>';
         return;
     }
-    var html = '<table class="step-table"><thead><tr><th style="width:40px">#</th><th style="width:18%">步骤描述</th><th style="width:18%">潜在危害</th><th style="width:15%">现有控制</th><th style="width:50px">L</th><th style="width:50px">S</th><th style="width:60px">风险</th><th style="width:15%">补充控制</th><th style="width:40px"></th></tr></thead><tbody>';
+    var html = '<table class="step-table"><thead><tr><th style="width:40px">#</th><th style="width:18%">步骤描述</th><th style="width:18%">潜在危害</th><th style="width:15%">现有控制</th><th style="width:50px">L</th><th style="width:50px">S</th><th style="width:60px">风险</th><th style="width:15%">补充控制</th><th style="width:105px">操作</th></tr></thead><tbody>';
     steps.forEach(function(s){
         var riskClass = getRiskClass(s.R);
         html += '<tr><td><span class="step-num">' + s.step + '</span></td>' +
-            '<td>' + esc(s.desc) + '</td>' +
+            '<td>' + esc(s.desc) + (s.source === 'auto_suggestion' ? '<span class="step-origin">系统建议</span>' : '<span class="step-origin">人工调整</span>') + '</td>' +
             '<td>' + esc(s.hazard) + '</td>' +
             '<td>' + esc(s.existingCtrl) + '</td>' +
             '<td style="text-align:center">' + s.L + '</td>' +
             '<td style="text-align:center">' + s.S + '</td>' +
             '<td><span class="risk-badge ' + riskClass + '">' + s.R + '</span></td>' +
             '<td>' + esc(s.addCtrl) + '</td>' +
-            '<td><button class="btn btn-sm btn-danger" onclick="removeStep(' + s.id + ')">&#10005;</button></td></tr>';
+            '<td><div class="step-actions"><button class="btn btn-sm btn-outline" onclick="beginEditStep(' + s.id + ')">编辑</button><button class="btn btn-sm btn-danger" onclick="removeStep(' + s.id + ')">&#10005;</button></div></td></tr>';
     });
     html += '</tbody></table>';
     el.innerHTML = html;
@@ -538,6 +679,7 @@ function generateReport() {
     var dept = document.getElementById('jobDept').value || '';
     var assessor = document.getElementById('jobAssessor').value || '';
     var date = document.getElementById('jobDate').value || '';
+    var taskDescription = document.getElementById('taskDescription').value || '';
     var now = new Date().toLocaleString('zh-CN');
     var html = '<h3 style="margin-bottom:.3rem">JSA 工作安全分析报告</h3>' +
         '<p style="font-size:.72rem;color:#999;margin-bottom:.8rem">生成时间: ' + now + '</p>' +
@@ -545,7 +687,8 @@ function generateReport() {
         '<td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>编号:</strong> ' + esc(ref) + '</td></tr>' +
         '<tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>部门/区域:</strong> ' + esc(dept) + '</td>' +
         '<td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>评估人:</strong> ' + esc(assessor) + '</td></tr>' +
-        '<tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>日期:</strong> ' + date + '</td><td style="border:none;padding:.2rem .5rem;font-size:.78rem"></td></tr></table>' +
+        '<tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>日期:</strong> ' + date + '</td><td style="border:none;padding:.2rem .5rem;font-size:.78rem"></td></tr>' +
+        '<tr><td colspan="2" style="border:none;padding:.35rem .5rem;font-size:.78rem"><strong>作业内容:</strong> ' + esc(taskDescription) + '</td></tr></table>' +
         '<table><thead><tr><th>步骤</th><th>作业描述</th><th>潜在危害</th><th>现有控制</th><th>L</th><th>S</th><th>RPN</th><th>风险等级</th><th>补充控制</th></tr></thead><tbody>';
     steps.forEach(function(s){
         html += '<tr><td>' + s.step + '</td><td>' + esc(s.desc) + '</td><td>' + esc(s.hazard) + '</td><td>' + esc(s.existingCtrl) + '</td>' +
@@ -578,13 +721,65 @@ function generateReport() {
     document.getElementById('reportSection').scrollIntoView({behavior:'smooth'});
 }
 
+async function exportJsaExcel() {
+    if (!steps.length) { alert('请先生成或添加作业步骤'); return; }
+    if (!completenessChecked) { alert('请先完成完整性检查，确认当前步骤和场景后再下载Excel'); return; }
+    if (!window.ExcelJS || !window.JsaExcelExport) { alert('Excel组件暂时不可用，请刷新页面后重试'); return; }
+    currentFindings = window.JsaRuleEngine.evaluateRules(jsaRules, collectContext(), {
+        includePending: includePendingRules
+    });
+    var selectedScenarios = selectedValues('scenario');
+    var selectedTags = selectedValues('tag');
+    var button = document.getElementById('exportExcelButton');
+    button.disabled = true;
+    button.textContent = '正在生成Excel...';
+    try {
+        var workbook = window.JsaExcelExport.buildWorkbook(window.ExcelJS, {
+            meta: {
+                jobName: document.getElementById('jobName').value,
+                jobRef: document.getElementById('jobRef').value,
+                department: document.getElementById('jobDept').value,
+                assessor: document.getElementById('jobAssessor').value,
+                date: document.getElementById('jobDate').value,
+                taskDescription: document.getElementById('taskDescription').value
+            },
+            scenarios: selectedScenarios,
+            tags: selectedTags,
+            scenarioLabels: selectedScenarios.map(function(key){return scenarioLabels[key]||key}),
+            tagLabels: selectedTags.map(function(key){return tagLabels[key]||key}),
+            steps: steps,
+            findings: currentFindings,
+            confirmedRuleIds: confirmedRuleIds
+        });
+        var buffer = await workbook.xlsx.writeBuffer();
+        var blob = new Blob([buffer], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = window.JsaExcelExport.fileName(document.getElementById('jobName').value, document.getElementById('jobDate').value);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(function(){URL.revokeObjectURL(url)}, 1500);
+        if (window.EhsSilAnalytics) {
+            window.EhsSilAnalytics.track('export', {mode: experienceMode, exportType: 'xlsx'});
+        }
+    } catch (error) {
+        console.error(error);
+        alert('Excel生成失败，请稍后重试或使用打印功能');
+    } finally {
+        button.textContent = '📊 下载Excel';
+        button.disabled = !completenessChecked;
+    }
+}
+
 function printReport() {
     var content = document.getElementById('reportContent').innerHTML;
     var win = window.open('', '_blank');
     win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>JSA Report</title><style>body{font-family:-apple-system,sans-serif;padding:1.5rem;font-size:13px;color:#333}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{border:1px solid #ccc;padding:.4rem .5rem;text-align:left;font-size:12px}th{background:#0d2836;color:#fff}h3{color:#0d2836}@media print{body{padding:.5in}}</style></head><body>' + content + '</body></html>');
     win.document.close();
     if (window.EhsSilAnalytics) {
-        window.EhsSilAnalytics.track('export', {mode: experienceMode});
+        window.EhsSilAnalytics.track('export', {mode: experienceMode, exportType: 'print'});
     }
     setTimeout(function(){win.print()}, 500);
 }

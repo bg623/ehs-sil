@@ -36,7 +36,7 @@ JSA产品实验使用以下固定事件名：
 - `complete_scene`：完成一次场景识别；
 - `use_prompt`：用户勾选并人工确认一条专业提示；
 - `finish_jsa`：完成完整性检查；
-- `export`：打印或导出结果；
+- `export`：打印或导出结果；V0.2中Excel下载仅在完成完整性检查后触发，并使用`exportType: xlsx`区分；
 - `click_member`：点击工具箱会员权益入口；
 - `return_visit`：同一浏览器曾访问JSA后再次访问。
 
