@@ -1,13 +1,13 @@
-# EHS-SIL · 外企EHS实操指南
+# EHS-SIL · 外企EHS工具与成长工作台
 
-13年外企化工EHS管理经验，735份实战工具与方法。
+帮助个人EHS从业者选择正确方法、使用专业工具并形成可用于实际工作的成果。
 
 ## 网站结构
 
 - `index.html` — 首页
 - `products/toolbox.html` — 外企EHS工具箱 产品页
 - `products/training.html` — 外企EHS培训库 产品页
-- `tools/index.html` — 工具库搜索引擎（735份工具）
+- `tools/index.html` — 知识星球工具与培训资源索引（当前535条）
 - `tools/content-repurposer.html` — 内容分发助手（内部工具）
 - `dashboard/index.html` — 副业数据仪表盘（内部工具）
 
