@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>EHS法规速查 · 中国+国际标准 · EHS-SIL</title>
+<title>EHS法规导航 · 中国与国际EHS法规标准 · EHS-SIL</title>
 <meta name="description" content="已知法规名称时快速查询官方入口；如不确定企业适用哪些法规，可使用 EHS-SIL 企业适用法规智能识别工具。">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 <style>
@@ -36,6 +36,8 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .tag-intl{background:#fef3c7;color:#92400e}
 .tag-law{background:#fee2e2;color:#dc2626}
 .tag-standard{background:#dcfce7;color:#16a34a}
+.tag-policy{background:#eef2f7;color:#475569}
+.source-note{max-width:760px;margin:.15rem auto .8rem;padding:.65rem .85rem;border-radius:8px;background:#fffaf0;border:1px solid #ead9ae;color:#6b5a2e;font-size:.75rem;line-height:1.55;text-align:center}
 .count{font-size:.78rem;color:var(--text-muted);text-align:center;padding:.5rem}
 .compliance-cta{margin:1rem 0 .2rem;padding:1.15rem 1.25rem;background:linear-gradient(135deg,#fff 0%,#fffaf0 100%);border:1px solid #d8c38b;border-left:5px solid var(--accent);border-radius:12px;display:flex;gap:1rem;align-items:center;box-shadow:0 8px 24px rgba(7,29,39,.08)}
 .compliance-cta-icon{width:54px;height:54px;border-radius:14px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:1.75rem;line-height:1;flex:0 0 auto;box-shadow:0 6px 14px rgba(13,40,54,.2)}
@@ -59,8 +61,8 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <body>
 <div class="header"><div class="container">
 <a href="../index.html" class="back">&larr; 返回首页</a>
-<h1>&#128214; EHS法规速查</h1>
-<p>中国法律法规 + 国际标准 · EHS从业者必备参考</p>
+<h1>&#128214; EHS法规导航</h1>
+<p>中国与国际EHS法规、标准和官方来源导航</p>
 <div class="search-box">
 <span class="search-icon">&#128269;</span>
 <input type="text" id="searchInput" placeholder="搜索法规名称、编号、关键词..." oninput="filterRegs()">
@@ -76,8 +78,12 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="tabs" id="tabs">
 <button class="tab active" onclick="setTab('all',this)">全部</button>
 <button class="tab" onclick="setTab('中国',this)">&#128205; 中国法规</button>
-<button class="tab" onclick="setTab('国际',this)">&#127758; 国际标准</button>
+<button class="tab" onclick="setTab('美国',this)">美国</button>
+<button class="tab" onclick="setTab('欧盟',this)">欧盟</button>
+<button class="tab" onclick="setTab('英国',this)">英国</button>
+<button class="tab" onclick="setTab('国际标准',this)">&#127758; 国际标准/指南</button>
 </div>
+<div class="source-note">法规优先链接官方原文；ISO、IEC、NFPA、API、GB/T等版权标准仅提供官方阅读或购买入口，本站不托管未经授权的标准PDF。</div>
 <div class="count" id="count"></div>
 <div style="text-align:center;margin-bottom:.6rem">
     <button class="tab" onclick="exportCSV()">&#128203; 批量导出当前筛选</button>
@@ -88,7 +94,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <script>
 var data = [];
-fetch('../data/regulations.json').then(function(r){return r.json()}).then(function(d){
+fetch('../data/regulations.json?v=20260809').then(function(r){return r.json()}).then(function(d){
     data = d.regulations;
     render();
     document.getElementById('count').textContent = data.length + ' 条法规标准';
@@ -130,12 +136,18 @@ function filterRegs(){
     regulationAnalyticsTimer = setTimeout(trackRegulationSearch, 800);
 }
 
+function matchesTab(r){
+    if(currentTab === 'all') return true;
+    if(currentTab === '国际标准') return r.sourceCategory === '版权标准' || r.sourceCategory === '国际指南';
+    return (r.jurisdiction || r.c) === currentTab;
+}
+
 
 function downloadReg(r){
     if(window.EhsSilAnalytics) window.EhsSilAnalytics.track('export_click', {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site'});
     var bom = '\uFEFF';
-    var csv = bom + '法规名称,英文名称,标准编号,发布机构,年份,类型,分类,国家/地区,原文链接\n' +
-        '"' + r.cn.replace(/"/g,'""') + '","' + r.en.replace(/"/g,'""') + '","' + (r.num||'').replace(/"/g,'""') + '","' + (r.auth||'').replace(/"/g,'""') + '",' + (r.yr||'') + ',"' + (r.type||'').replace(/"/g,'""') + '","' + (r.cat||'').replace(/"/g,'""') + '","' + (r.c||'').replace(/"/g,'""') + '","' + (r.link||'').replace(/"/g,'""') + '"';
+    var csv = bom + '法规名称,英文名称,标准编号,发布机构,年份,类型,分类,国家/地区,来源类别,下载政策,官方链接\n' +
+        '"' + r.cn.replace(/"/g,'""') + '","' + r.en.replace(/"/g,'""') + '","' + (r.num||'').replace(/"/g,'""') + '","' + (r.auth||'').replace(/"/g,'""') + '",' + (r.yr||'') + ',"' + (r.type||'').replace(/"/g,'""') + '","' + (r.cat||'').replace(/"/g,'""') + '","' + (r.jurisdiction||r.c||'').replace(/"/g,'""') + '","' + (r.sourceCategory||'').replace(/"/g,'""') + '","' + (r.downloadPolicy||'').replace(/"/g,'""') + '","' + (r.officialSourceUrl||r.link||'').replace(/"/g,'""') + '"';
     var blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -146,29 +158,35 @@ function downloadRegByIndex(index){ downloadReg(data[index]); }
 
 function render(){
     var results = data;
-    if(currentTab !== 'all') results = results.filter(function(r){return (currentTab === '中国' && r.c === '中国') || (currentTab === '国际' && r.c === '国际')});
+    if(currentTab !== 'all') results = results.filter(matchesTab);
     if(currentQuery) results = results.filter(function(r){
-        var c = (r.cn + ' ' + r.en + ' ' + r.num + ' ' + r.cat + ' ' + r.auth).toLowerCase();
+        var c = (r.cn + ' ' + r.en + ' ' + r.num + ' ' + r.cat + ' ' + r.auth + ' ' + (r.jurisdiction||'') + ' ' + (r.sourceCategory||'')).toLowerCase();
         return c.indexOf(currentQuery) !== -1;
     });
     document.getElementById('count').textContent = results.length + ' / ' + data.length + ' 条法规';
     document.getElementById('list').innerHTML = results.map(function(r, idx){
-        var tag = r.c === '中国' ? '<span class="tag tag-cn">中国</span>' : '<span class="tag tag-intl">国际</span>';
+        var jurisdiction = r.jurisdiction || r.c || '待分类';
+        var tag = jurisdiction === '中国' ? '<span class="tag tag-cn">中国</span>' : '<span class="tag tag-intl">' + jurisdiction + '</span>';
         var typeTag = '';
         if(r.type.indexOf('法') !== -1) typeTag = '<span class="tag tag-law">' + r.type + '</span>';
         else if(r.type.indexOf('标准') !== -1) typeTag = '<span class="tag tag-standard">' + r.type + '</span>';
+        var policyLabel = r.downloadPolicy === 'official_purchase_or_read' ? '版权标准·官方阅读/购买' : '官方来源';
+        var policyTag = '<span class="tag tag-policy">' + policyLabel + '</span>';
         var dl = '<button class="dl-btn" onclick="downloadRegByIndex(' + data.indexOf(r) + ')">&#128203; CSV</button>';
         var linkBtn = '';
-        if (r.link) linkBtn = ' <a class="dl-btn source-result-link" href="' + r.link + '" target="_blank" rel="noopener" style="text-decoration:none;background:#1d4ed8;margin-left:.2rem">&#128279; 查看原文</a>';
-        return '<div class="item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><h3>' + r.cn + '</h3><div class="meta">' + tag + typeTag + '<span>' + r.num + '</span><span>' + r.auth + '</span><span>' + r.yr + '年</span></div><div class="desc">' + r.en + '</div></div><div style="flex-shrink:0;margin-left:.5rem;white-space:nowrap">' + dl + linkBtn + '</div></div></div>';
+        var officialUrl = r.officialSourceUrl || r.link;
+        var sourceLabel = r.downloadPolicy === 'official_purchase_or_read' ? '官方阅读/购买' : '查看官方原文';
+        if (officialUrl) linkBtn = ' <a class="dl-btn source-result-link" href="' + officialUrl + '" target="_blank" rel="noopener" style="text-decoration:none;background:#1d4ed8;margin-left:.2rem">&#128279; ' + sourceLabel + '</a>';
+        var year = r.yr ? '<span>' + r.yr + '年</span>' : '';
+        return '<div class="item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><h3>' + r.cn + '</h3><div class="meta">' + tag + typeTag + policyTag + '<span>' + r.num + '</span><span>' + r.auth + '</span>' + year + '</div><div class="desc">' + r.en + '</div></div><div style="flex-shrink:0;margin-left:.5rem;white-space:nowrap">' + dl + linkBtn + '</div></div></div>';
     }).join('');
 }
 function getFilteredData(all) {
     if (all) return data;
     var results = data;
-    if(currentTab !== 'all') results = results.filter(function(r){return (currentTab === '中国' && r.c === '中国') || (currentTab === '国际' && r.c === '国际')});
+    if(currentTab !== 'all') results = results.filter(matchesTab);
     if(currentQuery) results = results.filter(function(r){
-        var c = (r.cn + ' ' + r.en + ' ' + r.num + ' ' + r.cat + ' ' + r.auth).toLowerCase();
+        var c = (r.cn + ' ' + r.en + ' ' + r.num + ' ' + r.cat + ' ' + r.auth + ' ' + (r.jurisdiction||'') + ' ' + (r.sourceCategory||'')).toLowerCase();
         return c.indexOf(currentQuery) !== -1;
     });
     return results;
@@ -179,9 +197,9 @@ function exportCSV(all) {
     if (!items.length) { alert('暂无数据可导出'); return; }
     if(window.EhsSilAnalytics) window.EhsSilAnalytics.track('export_click', {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site', resultBucket:resultBucket(items.length)});
     var bom = '\uFEFF';
-    var rows = [['法规名称','英文名称','标准编号','发布机构','年份','类型','分类','国家/地区','原文链接']];
+    var rows = [['法规名称','英文名称','标准编号','发布机构','年份','类型','分类','国家/地区','来源类别','下载政策','官方链接']];
     items.forEach(function(r){
-        rows.push([r.cn,r.en||'',r.num||'',r.auth||'',r.yr||'',r.type||'',r.cat||'',r.c||'',r.link||'']);
+        rows.push([r.cn,r.en||'',r.num||'',r.auth||'',r.yr||'',r.type||'',r.cat||'',r.jurisdiction||r.c||'',r.sourceCategory||'',r.downloadPolicy||'',r.officialSourceUrl||r.link||'']);
     });
     var csv = bom + rows.map(function(r){return r.map(function(c){return '"'+(c||'').toString().replace(/"/g,'""')+'"'}).join(',')}).join('\n');
     var a = document.createElement('a');
