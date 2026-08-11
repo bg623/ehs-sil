@@ -39,6 +39,14 @@ assert.match(shell, /aria-expanded/);
 assert.match(shell, /ArrowDown/);
 assert.match(shell, /event\.key !== 'Escape'/);
 assert.match(pages[0], /class="skip-link"/);
+assert.match(
+  pages[0],
+  /js\/main\.js\?v=2\.0\.0/,
+  "首页主脚本必须与公共导航同步更新缓存版本，避免旧导航事件重复绑定",
+);
+for (const page of pages) {
+  assert.match(page, /rel="apple-touch-icon"/, "关键页面必须声明 Safari / iOS 触摸图标");
+}
 for (const page of pages.slice(1)) {
   assert.match(page, /data-site-shell-header/);
   assert.match(page, /js\/site-shell\.js/);
