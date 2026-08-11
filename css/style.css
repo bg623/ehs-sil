@@ -1,34 +1,12 @@
+@import url("./design-system.css");
+
 /* ============================================
    EHS-SIL · 外企EHS实操指南
    Nordic Business Design System
    ============================================ */
 
-/* ---------- Variables ---------- */
-:root {
-    /* Realtime Colors roles: text, background, primary, secondary, accent */
-    --text: #263238;
-    --bg: #f7f4ee;
-    --primary: #123b4a;
-    --secondary: #dce9e7;
-    --accent: #96630b;
-    --bg-card: #ffffff;
-    --bg-warm: #ece6dc;
-    --primary-dark: #082630;
-    --primary-light: #e6f0ef;
-    --accent-light: #f6ebd8;
-    --accent-on-dark: #f0c879;
-    --text-secondary: #4a5b61;
-    --text-muted: #5f6f74;
-    --border: #d7d1c6;
-    --border-light: #e7e1d8;
-    --shadow: rgba(0, 0, 0, 0.08);
-    --shadow-hover: rgba(0, 0, 0, 0.12);
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
-    --section-py: 5.5rem;
-    --container-w: 1200px;
-    --t-fast: 0.2s ease;
-    --t-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+/* Page-specific layout variables; shared tokens live in design-system.css. */
+:root { --section-py: 5.5rem; }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -343,7 +321,7 @@ ul { list-style: none; }
 .btn {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 0.8rem 2rem; font-size: 0.95rem; font-weight: 600;
-    border-radius: 6px; transition: all var(--t-fast); cursor: pointer; border: none;
+    border-radius: var(--radius-sm); transition: all var(--t-fast); cursor: pointer; border: 1px solid transparent;
 }
 .btn-primary { background: var(--primary); color: white; white-space: nowrap; }
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(18,59,74,0.22); }
@@ -457,6 +435,20 @@ ul { list-style: none; }
 .placeholder-sub { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.3rem; }
 @media (max-width: 768px) { .about-layout { grid-template-columns: 1fr; } .about-visual { order: -1; } }
 
+/* MINI PROGRAM */
+.miniapp-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 2rem;
+    align-items: center; max-width: 700px; margin: 0 auto;
+}
+.miniapp-qr {
+    width: 180px; height: 180px; margin: 0 auto; overflow: hidden;
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+}
+.miniapp-qr img { width: 100%; height: 100%; display: block; object-fit: cover; }
+@media (max-width: 640px) {
+    .miniapp-grid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+
 /* CTA SECTION */
 .cta-section {
     padding: 5rem 0; background: var(--primary-dark); color: white; text-align: center; position: relative; overflow: hidden;
@@ -497,7 +489,7 @@ ul { list-style: none; }
 /* Back-to-top button */
 .back-to-top {
     position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-    width: 42px; height: 42px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 50%;
     background: var(--primary); color: white; border: none;
     cursor: pointer; opacity: 0; visibility: hidden;
     transition: all .3s; box-shadow: 0 2px 10px rgba(0,0,0,.15);

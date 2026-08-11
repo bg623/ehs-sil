@@ -1,20 +1,5 @@
-:root {
-    --bg: #f7f4ee;
-    --bg-card: #ffffff;
-    --primary: #123b4a;
-    --secondary: #dce9e7;
-    --primary-dark: #082630;
-    --primary-light: #e6f0ef;
-    --accent: #96630b;
-    --accent-on-dark: #f0c879;
-    --text: #263238;
-    --text-secondary: #4a5b61;
-    --text-muted: #5f6f74;
-    --border: #d7d1c6;
-    --border-light: #e7e1d8;
-    --shadow: rgba(0, 0, 0, 0.06);
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
-}
+@import url("./design-system.css");
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-sans); color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
@@ -75,7 +60,7 @@ a { color: inherit; text-decoration: none; }
 .filter-group { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
 .filter-group.secondary { flex: 1; }
 .filter-btn {
-    padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 500;
+    min-height: 44px; padding: 0.35rem 0.8rem; font-size: 0.78rem; font-weight: 600;
     border: 1px solid var(--border); border-radius: 20px;
     background: var(--bg-card); color: var(--text-secondary);
     cursor: pointer; transition: all .2s; white-space: nowrap;
@@ -99,7 +84,7 @@ a { color: inherit; text-decoration: none; }
 
 .tool-card {
     background: var(--bg-card); border: 1px solid var(--border-light);
-    border-radius: 8px; padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm); padding: 1rem 1.25rem;
     transition: all .2s; display: flex; flex-direction: column;
 }
 .tool-card:hover { border-color: var(--border); box-shadow: 0 4px 12px var(--shadow); }

@@ -4,9 +4,8 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>JSA专业教练 V0.2 · 自动初稿与Excel导出 · EHS-SIL</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css?v=2.0.0">
 <style>
-:root{--text:#263238;--bg:#f7f4ee;--primary:#123b4a;--secondary:#dce9e7;--accent:#96630b;--primary-dark:#082630;--accent-on-dark:#f0c879;--text-secondary:#4a5b61;--text-muted:#5f6f74;--border:#d7d1c6;--border-light:#e7e1d8;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
 .container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
@@ -24,14 +23,14 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .form-group input,.form-group select,.form-group textarea{width:100%;padding:.5rem .6rem;border:1.5px solid var(--border-light);border-radius:6px;font-size:.82rem;outline:none;transition:.2s;font-family:var(--font-sans)}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.08)}
 .form-group textarea{min-height:60px;resize:vertical}
-.btn{padding:.5rem 1rem;border:none;border-radius:6px;font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s}
+.btn{min-height:44px;padding:.5rem 1rem;border:1px solid transparent;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;cursor:pointer;transition:var(--transition-fast)}
 .btn-primary{background:var(--primary);color:#fff}
 .btn-primary:hover{background:var(--primary-dark)}
 .btn-accent{background:var(--accent);color:#fff}
 .btn-accent:hover{background:#805207}
 .btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
 .btn-outline:hover{background:var(--primary);color:#fff}
-.btn-sm{padding:.35rem .7rem;font-size:.75rem}
+.btn-sm{min-height:44px;padding:.35rem .7rem;font-size:.75rem}
 .btn-danger{background:#dc2626;color:#fff}
 .btn-danger:hover{background:#b91c1c}
 .btn-secondary{background:#f0f0f0;color:#555}
@@ -101,6 +100,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script></head>
 <body>
 
+<div data-site-shell-header data-prefix="../" data-mode="dark" data-main-target="app"></div>
 <div class="header"><div class="container">
 <a href="risk-analysis.html" class="back">&larr; 返回工具集</a>
 <h1>&#128269; JSA 专业教练 <span style="font-size:.65em;color:#d9b45b">V0.2 试用版</span></h1>
@@ -262,6 +262,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · V0.2不提供云端保存 · 请勿输入企业或人员敏感信息</p></footer>
 
+<script src="../js/site-shell.js?v=2.0.0"></script>
 <script src="../js/jsa-rule-engine.js"></script>
 <script src="../js/jsa-draft-generator.js"></script>
 <script src="../vendor/exceljs.min.js"></script>

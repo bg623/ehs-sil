@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="EHS-SIL · 外企EHS工具与成长工作台">
     <meta name="twitter:description" content="遇到EHS问题，找到正确方法、专业工具和可落地资源。">
     <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-platform.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2.0.0">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 
     <!-- Baidu Analytics - 注册后取消注释并替换 YOUR_ID -->
@@ -34,12 +34,13 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
     <header class="site-header" id="siteHeader">
         <div class="container">
             <nav class="nav-bar">
                 <div class="logo">
                     <a href="#hero">
-                        <img src="assets/ehs-sil-logo.png" alt="EHS-SIL" style="height:32px;width:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:6px"><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span>
+                        <img class="brand-logo-image" src="assets/ehs-sil-logo.png" alt="" width="32" height="32"><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span>
                         <span class="logo-tag">· 外企EHS工具与成长工作台</span>
                     </a>
                 </div>
@@ -80,7 +81,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero hero-focused" id="hero">
             <div class="container">
                 <div class="hero-content">
@@ -432,7 +433,7 @@
                     <h2 class="section-title">EHS工具箱</h2>
                     <p class="section-desc">微信小程序 — 随时随地查阅EHS工具与资源</p>
                 </div>
-                <div style="display:grid;grid-template-columns:1fr 300px;gap:2rem;align-items:center;max-width:700px;margin:0 auto">
+                <div class="miniapp-grid">
                     <div style="text-align:left">
                         <div style="display:flex;flex-direction:column;gap:.6rem">
                             <div style="display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--text)"><span style="width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0">1</span>打开微信 → 发现 → 小程序</div>
@@ -442,8 +443,8 @@
                         <p style="margin-top:1rem;font-size:.75rem;color:var(--text-muted)">小程序ID: wx5429944f0af1ccb5</p>
                         <p style="font-size:.75rem;color:var(--text-muted)">或扫下方二维码直接进入</p>
                     </div>
-                    <div style="width:180px;height:180px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.1)">
-                        <img src="assets/miniapp-qr.jpg" alt="EHS工具箱小程序码" style="width:100%;height:100%;display:block">
+                    <div class="miniapp-qr">
+                        <img src="assets/miniapp-qr.jpg" alt="EHS工具箱小程序码" width="180" height="180">
                     </div>
                 </div>
             </div>
@@ -489,7 +490,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo"><img src="assets/ehs-sil-logo.png" alt="EHS-SIL" style="height:32px;width:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:6px"><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span></div>
+                    <div class="footer-logo"><img class="brand-logo-image" src="assets/ehs-sil-logo.png" alt="" width="32" height="32"><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span></div>
                     <p class="footer-desc">外企EHS工具与成长工作台</p>
                 </div>
                 <div class="footer-links">
@@ -512,6 +513,7 @@
     </footer>
 
     <script src="js/analytics.js"></script>
+    <script src="js/site-shell.js?v=2.0.0"></script>
     <script src="js/main.js"></script>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 </body>

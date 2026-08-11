@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="浏览535条EHS工具资料索引，了解外企EHS工具箱与培训库的内容方向。正式发布及可下载文件以知识星球为准。">
     <title>工具资料索引 · 外企EHS工具箱与培训库 · EHS-SIL</title>
-    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/tools.css?v=2.0.0">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
 
             <style>
             .cat-overview{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:1.5rem 0 0}
-            .cat-card{display:flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;color:rgba(255,255,255,.85);cursor:pointer;transition:all .2s;font-size:.82rem}
+            .cat-card{min-height:44px;display:flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;color:rgba(255,255,255,.85);cursor:pointer;transition:all var(--transition-fast);font-size:.82rem}
             .cat-card:hover{background:rgba(255,255,255,.15);border-color:var(--accent);transform:translateY(-1px)}
             .cat-emoji{font-size:1rem}
             .cat-count{font-size:.7rem;color:var(--accent);font-weight:600}
@@ -29,14 +29,9 @@ var _hmt = _hmt || [];
 
 </head>
 <body>
+    <div data-site-shell-header data-prefix="../" data-mode="dark"></div>
     <header class="tools-header">
         <div class="container">
-            <nav class="tools-nav">
-                <a href="../index.html" class="tools-logo">
-                    <span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span>
-                </a>
-                <a href="../index.html#products" class="back-link">← 工作台</a>
-            </nav>
             <div class="tools-hero">
                 <span class="tools-badge">外企EHS工具箱</span>
                 <h1 class="tools-title">工具与培训资料索引</h1>
@@ -68,7 +63,7 @@ var _hmt = _hmt || [];
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <div class="container">
             <div style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 1.1rem;margin:1rem 0;background:#fff;border:1px solid #d6d0c4;border-left:4px solid #3A6EA5;border-radius:8px">
                 <div><strong style="color:#0d2836">在线专业工具：企业适用法规智能识别</strong><p style="margin:.2rem 0 0;font-size:.8rem;color:#4a555a">输入企业画像，生成可解释、可复核、可导出的初步法规清单。</p></div>
@@ -99,12 +94,9 @@ var _hmt = _hmt || [];
         </div>
     </main>
 
-    <footer class="tools-footer">
-        <div class="container">
-            <p>本站用于介绍 <a href="../index.html#products">外企EHS工具箱与培训库</a> 的内容方向 · 正式发布及可下载文件以知识星球为准</p>
-        </div>
-    </footer>
+    <div data-site-shell-footer data-prefix="../"></div>
 
+    <script src="../js/site-shell.js?v=2.0.0"></script>
     <script>
 (function() {
     'use strict';

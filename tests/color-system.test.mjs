@@ -1,13 +1,15 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 
-const files = ["css/style.css", "css/product.css", "css/tools.css"];
+const files = ["css/style.css", "css/product.css", "css/tools.css", "css/compliance.css"];
 const expected = {
-  text: "#263238",
-  bg: "#f7f4ee",
-  primary: "#123b4a",
-  secondary: "#dce9e7",
-  accent: "#96630b",
+  "color-text": "#17211e",
+  "color-bg": "#f5f7f5",
+  "color-primary": "#0d473f",
+  "color-primary-hover": "#083a34",
+  "color-accent": "#d7a23a",
+  "color-accent-text": "#805810",
+  "color-border": "#dce4e0",
 };
 
 function read(path) {
@@ -35,28 +37,27 @@ function contrast(first, second) {
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 }
 
+const tokens = read("css/design-system.css");
+for (const [name, value] of Object.entries(expected)) {
+  assert.equal(variable(tokens, name), value, `design-system.css 的 ${name} 色彩角色不一致`);
+}
 for (const file of files) {
-  const css = read(file);
-  for (const [name, value] of Object.entries(expected)) {
-    assert.equal(variable(css, name), value, `${file} 的 ${name} 色彩角色不一致`);
-  }
+  assert.match(read(file), /@import url\("\.\/design-system\.css"\);/, `${file} 未引用集中设计变量`);
 }
 
 const ratios = {
-  text_on_background: contrast(expected.text, expected.bg),
-  primary_on_background: contrast(expected.primary, expected.bg),
-  white_on_primary: contrast("#ffffff", expected.primary),
-  accent_on_background: contrast(expected.accent, expected.bg),
-  white_on_accent: contrast("#ffffff", expected.accent),
-  primary_on_secondary: contrast(expected.primary, expected.secondary),
+  text_on_background: contrast(expected["color-text"], expected["color-bg"]),
+  primary_on_background: contrast(expected["color-primary"], expected["color-bg"]),
+  white_on_primary: contrast("#ffffff", expected["color-primary"]),
+  accent_text_on_background: contrast(expected["color-accent-text"], expected["color-bg"]),
+  white_on_accent_text: contrast("#ffffff", expected["color-accent-text"]),
 };
 
 assert.ok(ratios.text_on_background >= 7);
 assert.ok(ratios.primary_on_background >= 7);
 assert.ok(ratios.white_on_primary >= 7);
-assert.ok(ratios.accent_on_background >= 4.5);
-assert.ok(ratios.white_on_accent >= 4.5);
-assert.ok(ratios.primary_on_secondary >= 7);
+assert.ok(ratios.accent_text_on_background >= 4.5);
+assert.ok(ratios.white_on_accent_text >= 4.5);
 
 console.log(
   JSON.stringify({

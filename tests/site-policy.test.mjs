@@ -11,6 +11,7 @@ const register = read("dashboard/register.html");
 const toolbox = read("products/toolbox.html");
 const riskAnalysis = read("tools/risk-analysis.html");
 const mainJs = read("js/main.js");
+const siteShellJs = read("js/site-shell.js");
 const styles = read("css/style.css");
 const rules = JSON.parse(read("data/jsa-rules.json"));
 
@@ -30,8 +31,9 @@ assert.equal(
 assert.match(home, /class="nav-item has-dropdown"/);
 assert.match(home, /class="nav-dropdown-toggle"/);
 assert.match(home, /aria-expanded="false"/);
-assert.match(mainJs, /dropdown-open/);
-assert.match(mainJs, /event\.key !== 'Escape'/);
+assert.match(siteShellJs, /dropdown-open/);
+assert.match(siteShellJs, /event\.key !== 'Escape'/);
+assert.match(home, /js\/site-shell\.js/);
 assert.match(home, /JSA专业教练（试用版）/);
 assert.match(home, /从遇到问题，到完成专业成果/);
 assert.match(home, /试用版 · 持续优化/);
