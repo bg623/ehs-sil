@@ -24,7 +24,7 @@
             '<button class="nav-toggle" type="button" aria-label="打开网站导航" aria-expanded="false" aria-controls="' + id + '"><span></span><span></span><span></span></button>' +
             '<ul class="site-shell-links nav-links" id="' + id + '">' +
             '<li class="nav-item has-dropdown"><div class="nav-parent-row"><a class="site-shell-link nav-link" href="' + prefix + 'index.html#workbench">专业工具</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业工具选项" aria-expanded="false">⌄</button></div>' +
-            '<ul class="nav-dropdown"><li><a href="' + prefix + 'tools/jsa-tool.html">JSA 专业教练</a></li><li><a href="' + prefix + 'tools/risk-analysis.html">风险与事故分析</a></li><li><a href="' + prefix + 'tools/compliance-identification.html">企业适用法规识别</a></li></ul></li>' +
+            '<ul class="nav-dropdown"><li><a href="' + prefix + 'tools/jsa-tool.html">JSA 专业教练</a></li><li><a href="' + prefix + 'tools/risk-analysis.html">风险与事故分析</a></li><li><a href="' + prefix + 'tools/incident-learning.html">事故与事件 / LFI闭环</a></li><li><a href="' + prefix + 'tools/compliance-identification.html">企业适用法规识别</a></li></ul></li>' +
             '<li class="nav-item has-dropdown"><div class="nav-parent-row"><a class="site-shell-link nav-link" href="' + prefix + 'tools/">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false">⌄</button></div>' +
             '<ul class="nav-dropdown"><li><a href="' + prefix + 'tools/">工具与培训资料索引</a></li><li><a href="' + prefix + 'tools/regulations.html">EHS 法规导航</a></li><li><a href="' + prefix + 'products/toolbox.html">外企 EHS 工具箱</a></li></ul></li>' +
             '<li><a class="site-shell-link nav-link" href="' + prefix + 'index.html#membership">会员权益</a></li>' +

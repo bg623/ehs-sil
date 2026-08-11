@@ -28,6 +28,16 @@ for (const event of [
 }
 
 for (const event of [
+  "visit_incident_lfi",
+  "incident_resource_click",
+]) {
+  assert.match(analytics, new RegExp(`['"]${event}['"]`), `LFI事件字典缺少 ${event}`);
+  assert.ok(metrics.includes("`" + event + "`"), `指标文档缺少 ${event}`);
+}
+
+assert.match(analytics, /['"]incident_lfi['"]/);
+
+for (const event of [
   "visit_jsa",
   "start_jsa",
   "complete_scene",

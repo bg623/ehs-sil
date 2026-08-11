@@ -57,6 +57,13 @@ JSA产品实验使用以下固定事件名：
 - `planet_qr_click`
 - `content_to_tool`
 
+事故与事件 / LFI 第1阶段使用独立的准备期事件，不与JSA或正式事故闭环指标混算：
+
+- `visit_incident_lfi`：访问公开LFI闭环介绍页；
+- `incident_resource_click`：点击闭环流程、LFI文章或现有事故分析工具等受控资源入口。
+
+当前没有真实事故提交入口，因此不得根据上述事件推断用户已报告事故、完成调查、采取措施或用于真实工作。事件仅允许携带固定资源编号，不发送事故描述、企业、人员、健康、法规判断或附件信息。
+
 允许附带的受控字段仅包括：`event_version`、`content_id`、`tool_id`、`source_channel`、`user_tier`、`page_type`、`result_count_bucket`。不发送完整搜索词。
 
 JSA产品诊断事件可以保留，但不得与漏斗转化混算：

@@ -49,7 +49,11 @@
         'click_member',
         'return_visit'
     ];
-    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents);
+    var incidentExperimentEvents = [
+        'visit_incident_lfi',
+        'incident_resource_click'
+    ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents);
     var legacyAliases = {
         visit_jsa_coach: 'visit_jsa',
         start_scene_identification: 'start_jsa',
@@ -60,7 +64,7 @@
         view_member_benefits: 'click_member',
         click_knowledge_planet: 'click_member'
     };
-    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'article', 'other'];
+    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'incident_lfi', 'article', 'other'];
     var allowedSourceChannels = ['direct', 'site', 'article', 'wechat', 'video', 'planet', 'other'];
     var allowedUserTiers = ['unknown', 'public', 'member', 'legacy_vip'];
     var allowedResultBuckets = ['0', '1-10', '11-50', '51+'];
@@ -168,6 +172,7 @@
         allowedEvents: allowedEvents.slice(),
         funnelEvents: funnelEvents.slice(),
         jsaExperimentEvents: jsaExperimentEvents.slice(),
+        incidentExperimentEvents: incidentExperimentEvents.slice(),
         eventVersion: EVENT_VERSION
     };
 })();
