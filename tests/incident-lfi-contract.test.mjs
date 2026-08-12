@@ -8,11 +8,15 @@ function read(path) {
 const page = read("tools/incident-learning.html");
 const toolIndex = read("tools/risk-analysis.html");
 const shell = read("js/site-shell.js");
-const schema = read("data/incidents/schema-v0.1.sql");
+const schema = read("data/incidents/schema-v0.2.sql");
 const plan = read("docs/incident-lfi-stage-1-plan.md");
 const gate = read("docs/incident-lfi-stage-1.5-security-gate.md");
 const rbac = JSON.parse(read("data/incidents/rbac-v0.2.json"));
-const audit = JSON.parse(read("data/incidents/audit-event-allowlist-v0.2.json"));
+const tenantAudit = JSON.parse(read("data/incidents/tenant-audit-contract-v0.2.json"));
+const securityAudit = JSON.parse(read("data/incidents/security-audit-contract-v0.2.json"));
+const platformAudit = JSON.parse(read("data/incidents/platform-audit-contract-v0.2.json"));
+const invitations = JSON.parse(read("data/incidents/invitations-contract-v0.2.json"));
+const roleGrant = JSON.parse(read("data/incidents/role-grant-matrix-v0.2.json"));
 const negative = JSON.parse(read("tests/fixtures/incident-cross-tenant-negative-cases.json"));
 
 assert.match(page, /阶段1\.5 · 产品与安全闸门/);
@@ -36,6 +40,9 @@ for (const table of [
   "tenant_membership_roles",
   "platform_administrators",
   "platform_support_grants",
+  "invitations",
+  "invitation_roles",
+  "tenant_bootstrap_grants",
   "auth_challenges",
   "user_sessions",
   "incidents",
@@ -45,7 +52,10 @@ for (const table of [
   "corrective_actions",
   "lfi_notices",
   "rollout_checks",
-  "audit_logs",
+  "audit_event_policies",
+  "tenant_audit_logs",
+  "security_audit_logs",
+  "platform_audit_logs",
 ]) {
   assert.match(schema, new RegExp(`CREATE TABLE ${table}\\b`), `数据契约缺少 ${table}`);
 }
@@ -56,12 +66,22 @@ assert.match(schema, /tenant_memberships[\s\S]*status TEXT NOT NULL DEFAULT 'inv
 assert.doesNotMatch(schema, /role IN \([^\n]*action_owner/);
 assert.match(schema, /tenant_membership_roles/);
 assert.match(schema, /platform_support_grants/);
+assert.match(schema, /auth_challenges[\s\S]*invitation_id TEXT/);
+assert.match(schema, /purpose = 'accept_invite' AND invitation_id IS NOT NULL/);
+assert.match(schema, /purpose <> 'accept_invite' AND invitation_id IS NULL/);
 assert.match(schema, /challenge_hash TEXT NOT NULL UNIQUE/);
 assert.match(schema, /token_hash TEXT PRIMARY KEY/);
 assert.match(schema, /REFERENCES incidents\(tenant_id, id\)/);
 assert.match(schema, /REFERENCES tenant_memberships\(tenant_id, user_id\)/);
-assert.match(schema, /audit_logs_no_update/);
-assert.match(schema, /audit_logs_no_delete/);
+for (const domain of ["tenant", "security", "platform"]) {
+  assert.match(schema, new RegExp(`CREATE TRIGGER ${domain}_audit_logs_validate`));
+  assert.match(schema, new RegExp(`CREATE TRIGGER ${domain}_audit_logs_no_update`));
+  assert.match(schema, new RegExp(`CREATE TRIGGER ${domain}_audit_logs_no_delete`));
+}
+assert.match(schema, /audit_event_policies_no_update/);
+assert.match(schema, /audit_event_policies_no_delete/);
+assert.match(schema, /event is not allowlisted/);
+assert.match(schema, /audit field is not allowlisted/);
 assert.doesNotMatch(schema, /before_json|after_json/);
 assert.match(schema, /changed_fields_json/);
 assert.match(schema, /allowed_values_json/);
@@ -72,7 +92,8 @@ assert.match(plan, /Incident Worker/);
 assert.match(plan, /跨租户自动测试/);
 assert.match(gate, /一个tenant（租户）只代表一个site/);
 assert.match(gate, /服务端tenant_id解析规则/);
-assert.match(gate, /阶段2A验收标准/);
+assert.match(gate, /2A-Sandbox启动门槛/);
+assert.match(gate, /2A-Pilot部署门槛/);
 assert.match(gate, /不得创建生产D1\/R2/);
 
 assert.equal(rbac.default_effect, "deny");
@@ -83,12 +104,29 @@ assert.ok(rbac.role_model.resource_scopes.includes("corrective_action_owner"));
 assert.match(rbac.constraints.platform_admin, /no tenant business-data permission/i);
 assert.match(rbac.constraints.tenant_admin, /may not read incidents, health data/i);
 
-assert.equal(audit.policy, "deny_unlisted");
-assert.ok(audit.forbidden_payload_keys.includes("before_json"));
-assert.ok(audit.forbidden_payload_keys.includes("health_details"));
-assert.ok(!audit.record_shape.includes("before_json"));
-assert.ok(!audit.record_shape.includes("after_json"));
-assert.ok(audit.record_shape.includes("changed_fields_json"));
+assert.equal(tenantAudit.tenant_id_required, true);
+assert.equal(securityAudit.tenant_id_required, false);
+assert.equal(platformAudit.tenant_id_required, false);
+assert.match(securityAudit.subject_rule, /must not invent tenant_id/);
+assert.match(platformAudit.actor_rule, /must not be inserted into tenant_memberships/);
+for (const contract of [tenantAudit, securityAudit, platformAudit]) {
+  assert.ok(contract.storage_enforcement.includes("event_allowlist_trigger"));
+  assert.ok(contract.storage_enforcement.includes("field_allowlist_trigger"));
+  assert.ok(contract.storage_enforcement.includes("no_update_trigger"));
+  assert.ok(contract.storage_enforcement.includes("no_delete_trigger"));
+}
+
+assert.match(invitations.challenge_binding, /invitation_id/);
+assert.match(invitations.multi_site_isolation, /same normalized email/i);
+assert.deepEqual(invitations.acceptance_transaction.slice(-4), [
+  "grant_invitation_roles", "mark_invitation_accepted", "consume_challenge",
+  "write_security_and_tenant_minimal_audit",
+]);
+assert.equal(roleGrant.global_constraints.self_grant, "deny");
+assert.equal(roleGrant.global_constraints.tenant_admin_grants_site_leader, "deny");
+assert.equal(roleGrant.global_constraints.last_active_site_leader_disable_or_revoke, "deny");
+assert.deepEqual(roleGrant.rules.find((item) => item.target_role === "ehs_manager").grant_by, ["site_leader"]);
+assert.equal(roleGrant.initial_site_leader_bootstrap.repeatable, false);
 
 assert.equal(negative.synthetic_only, true);
 assert.equal(negative.cases.length, 16);
@@ -98,8 +136,9 @@ for (const id of Array.from({ length: 16 }, (_, index) => `XT-${String(index + 1
 
 console.log(JSON.stringify({
   status: "PASS",
-  stage: "stage-1.5-security-gate",
+  stage: "stage-1.5.1-contract-correction",
   data_intake: false,
-  schema_tables: 16,
+  schema_tables: 22,
   negative_cases: negative.cases.length,
+  api_negative_tests_executed: false,
 }));

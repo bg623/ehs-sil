@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "domain": "tenant",
+  "table": "tenant_audit_logs",
+  "tenant_id_required": true,
+  "events": [
+    "membership.role_changed", "membership.status_changed", "incident.created",
+    "incident.fields_changed", "incident.status_changed", "incident.closed",
+    "regulatory_report.status_changed", "investigation.status_changed",
+    "corrective_action.assigned", "corrective_action.status_changed",
+    "corrective_action.verified", "lfi.status_changed", "rollout.status_changed",
+    "export.requested", "export.completed", "export.denied"
+  ],
+  "allowed_value_fields": [
+    "status", "actual_consequence", "potential_consequence", "investigation_level",
+    "confidentiality", "reminder_status", "role", "membership_status"
+  ],
+  "allowed_changed_fields": [
+    "title", "occurred_at", "category", "actual_consequence", "potential_consequence",
+    "investigation_level", "status", "confidentiality", "reminder_status", "role",
+    "membership_status", "owner_user_id", "due_at", "effectiveness_result"
+  ],
+  "value_constraint": "Allowlisted values must be scalar and at most 80 characters; objects and arrays are rejected.",
+  "forbidden_content": ["free_text", "before_json", "after_json", "incident_body", "person_identity", "health_data", "attachment", "secret"],
+  "storage_enforcement": ["event_allowlist_trigger", "json_shape_trigger", "field_allowlist_trigger", "no_update_trigger", "no_delete_trigger"]
+}
