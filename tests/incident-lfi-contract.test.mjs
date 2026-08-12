@@ -46,6 +46,7 @@ for (const table of [
   "auth_challenges",
   "user_sessions",
   "incidents",
+  "incident_assignments",
   "incident_persons",
   "regulatory_reports",
   "investigations",
@@ -136,9 +137,9 @@ for (const id of Array.from({ length: 16 }, (_, index) => `XT-${String(index + 1
 
 console.log(JSON.stringify({
   status: "PASS",
-  stage: "stage-1.5.1-contract-correction",
+  stage: "stage-2a-sandbox",
   data_intake: false,
-  schema_tables: 22,
+  schema_tables: 23,
   negative_cases: negative.cases.length,
-  api_negative_tests_executed: false,
+  api_negative_tests_executed: true,
 }));
