@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "synthetic_only": true,
+  "fixtures": {
+    "tenant_a": "tenant-fixture-a",
+    "tenant_b": "tenant-fixture-b",
+    "user_a_reporter": "user-fixture-a-reporter",
+    "user_b_ehs": "user-fixture-b-ehs",
+    "incident_b": "incident-fixture-b-001"
+  },
+  "cases": [
+    {"id":"XT-001","operation":"read","actor":"tenant_a","target":"tenant_b.incident","expected":"deny"},
+    {"id":"XT-002","operation":"search","actor":"tenant_a","target":"tenant_b.incident","expected":"empty_without_existence_leak"},
+    {"id":"XT-003","operation":"update","actor":"tenant_a","target":"tenant_b.incident","expected":"deny"},
+    {"id":"XT-004","operation":"delete","actor":"tenant_a","target":"tenant_b.incident","expected":"deny"},
+    {"id":"XT-005","operation":"signed_attachment_read","actor":"tenant_a","target":"tenant_b.attachment","expected":"deny_and_no_signature"},
+    {"id":"XT-006","operation":"body_tenant_id_tamper","actor":"tenant_a","target":"tenant_b","expected":"ignore_body_tenant_and_deny"},
+    {"id":"XT-007","operation":"close_incident","actor":"tenant_a.reporter","target":"tenant_a.incident","expected":"deny"},
+    {"id":"XT-008","operation":"read_health_data","actor":"tenant_a.tenant_admin","target":"tenant_a.health_data","expected":"deny"},
+    {"id":"XT-009","operation":"reuse_session","actor":"disabled_user","target":"tenant_a.incident","expected":"deny_and_revoke"},
+    {"id":"XT-010","operation":"consume_invite_twice","actor":"invited_user","target":"used_invite","expected":"deny"},
+    {"id":"XT-011","operation":"consume_expired_invite","actor":"invited_user","target":"expired_invite","expected":"deny"},
+    {"id":"XT-012","operation":"brute_force_invite","actor":"unknown","target":"invite_endpoint","expected":"rate_limit_and_audit"},
+    {"id":"XT-013","operation":"export","actor":"tenant_a","target":"tenant_b.records","expected":"deny"},
+    {"id":"XT-014","operation":"update_audit_log","actor":"tenant_a.site_leader","target":"tenant_a.audit_log","expected":"database_abort"},
+    {"id":"XT-015","operation":"delete_audit_log","actor":"tenant_a.site_leader","target":"tenant_a.audit_log","expected":"database_abort"},
+    {"id":"XT-016","operation":"read_tenant_business_data","actor":"platform_admin","target":"tenant_a.incident","expected":"deny_without_break_glass_grant"}
+  ]
+}

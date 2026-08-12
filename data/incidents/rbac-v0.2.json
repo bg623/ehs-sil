@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "stage": "1.5-design-only",
+  "default_effect": "deny",
+  "role_model": {
+    "multiple_roles": true,
+    "implicit_inheritance": false,
+    "effective_permissions": "union_of_explicit_active_tenant_roles_then_apply_resource_and_field_constraints",
+    "tenant_roles": ["reporter", "investigator", "ehs_manager", "site_leader", "tenant_admin"],
+    "resource_scopes": ["corrective_action_owner"],
+    "platform_roles": ["platform_admin"]
+  },
+  "permissions": {
+    "incident.create": ["reporter", "investigator", "ehs_manager", "site_leader"],
+    "incident.read_own": ["reporter"],
+    "incident.read_assigned": ["investigator"],
+    "incident.read_tenant": ["ehs_manager", "site_leader"],
+    "incident.update_own_draft": ["reporter"],
+    "incident.triage": ["ehs_manager", "site_leader"],
+    "incident.close": ["site_leader"],
+    "investigation.manage_assigned": ["investigator", "ehs_manager", "site_leader"],
+    "regulatory_report.recommend": ["ehs_manager"],
+    "regulatory_report.confirm": ["site_leader"],
+    "corrective_action.update_owned": ["corrective_action_owner"],
+    "corrective_action.verify": ["ehs_manager", "site_leader"],
+    "lfi.edit": ["investigator", "ehs_manager"],
+    "lfi.approve_publish": ["site_leader"],
+    "member.invite_manage": ["tenant_admin"],
+    "tenant.settings_manage": ["tenant_admin"],
+    "health_data.read": ["investigator", "ehs_manager", "site_leader"],
+    "audit.read_tenant": ["ehs_manager", "site_leader"],
+    "export.tenant_records": ["ehs_manager", "site_leader"]
+  },
+  "constraints": {
+    "all_tenant_permissions": "session.active_tenant_id must equal resource.tenant_id and membership must be active",
+    "corrective_action_owner": "actor.user_id must equal corrective_actions.owner_user_id; this is not a tenant role",
+    "tenant_admin": "may administer memberships and tenant settings but may not read incidents, health data, investigations, exports or audit content by default",
+    "platform_admin": "may operate platform metadata only; no tenant business-data permission by default",
+    "platform_break_glass": "requires active time-limited support grant, tenant approver, reason, separate audit event and field-minimized response",
+    "disabled_user": "deny all requests and revoke or reject every existing session",
+    "anonymous_report": "reporter identity is absent from business records; technical abuse-prevention data is separately retained"
+  }
+}

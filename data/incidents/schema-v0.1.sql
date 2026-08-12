@@ -1,5 +1,5 @@
--- EHS-SIL Incident / LFI schema contract V0.1
--- This file is not a production migration. It defines the Week 1 D1 baseline.
+-- EHS-SIL Incident / LFI schema contract V0.2 (Stage 1.5 security gate)
+-- This file is design/test input only, not a production migration.
 -- Real data intake remains disabled until server-side RBAC and isolation tests pass.
 
 PRAGMA foreign_keys = ON;
@@ -7,6 +7,9 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE tenants (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
+  site_name TEXT NOT NULL,
+  tenancy_model TEXT NOT NULL DEFAULT 'single_site_pilot'
+    CHECK (tenancy_model = 'single_site_pilot'),
   status TEXT NOT NULL DEFAULT 'pilot' CHECK (status IN ('pilot', 'active', 'suspended')),
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -22,12 +25,49 @@ CREATE TABLE users (
 CREATE TABLE tenant_memberships (
   tenant_id TEXT NOT NULL,
   user_id TEXT NOT NULL,
-  role TEXT NOT NULL CHECK (role IN ('reporter', 'investigator', 'action_owner', 'ehs_manager', 'site_leader', 'tenant_admin')),
-  status TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('invited', 'active', 'disabled')),
+  status TEXT NOT NULL DEFAULT 'invited' CHECK (status IN ('invited', 'active', 'disabled')),
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (tenant_id, user_id),
   FOREIGN KEY (tenant_id) REFERENCES tenants(id),
   FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- A user can hold multiple tenant-scoped roles. Roles do not inherit implicitly;
+-- effective permissions are the union of explicit active roles, subject to
+-- resource ownership and field-level restrictions enforced by the API.
+CREATE TABLE tenant_membership_roles (
+  tenant_id TEXT NOT NULL,
+  user_id TEXT NOT NULL,
+  role TEXT NOT NULL CHECK (role IN ('reporter', 'investigator', 'ehs_manager', 'site_leader', 'tenant_admin')),
+  granted_by TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (tenant_id, user_id, role),
+  FOREIGN KEY (tenant_id, user_id) REFERENCES tenant_memberships(tenant_id, user_id),
+  FOREIGN KEY (tenant_id, granted_by) REFERENCES tenant_memberships(tenant_id, user_id)
+);
+
+-- Platform administration is deliberately outside tenant RBAC. This table
+-- grants platform operations only and never grants tenant business-data read.
+CREATE TABLE platform_administrators (
+  user_id TEXT PRIMARY KEY,
+  status TEXT NOT NULL DEFAULT 'disabled' CHECK (status IN ('active', 'disabled')),
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Time-limited, approved break-glass access is the only path by which a
+-- platform administrator may support a tenant. It must be independently audited.
+CREATE TABLE platform_support_grants (
+  id TEXT PRIMARY KEY,
+  platform_user_id TEXT NOT NULL,
+  tenant_id TEXT NOT NULL,
+  approved_by_tenant_user_id TEXT NOT NULL,
+  reason_code TEXT NOT NULL,
+  expires_at TEXT NOT NULL,
+  revoked_at TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (platform_user_id) REFERENCES platform_administrators(user_id),
+  FOREIGN KEY (tenant_id, approved_by_tenant_user_id) REFERENCES tenant_memberships(tenant_id, user_id)
 );
 
 CREATE TABLE auth_challenges (
@@ -176,9 +216,11 @@ CREATE TABLE audit_logs (
   action TEXT NOT NULL,
   resource_type TEXT NOT NULL,
   resource_id TEXT NOT NULL,
-  before_json TEXT,
-  after_json TEXT,
+  changed_fields_json TEXT NOT NULL DEFAULT '[]',
+  allowed_values_json TEXT NOT NULL DEFAULT '{}',
   request_id TEXT NOT NULL,
+  result TEXT NOT NULL CHECK (result IN ('allowed', 'denied', 'failed')),
+  reason_code TEXT,
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (tenant_id) REFERENCES tenants(id),
   FOREIGN KEY (tenant_id, actor_user_id) REFERENCES tenant_memberships(tenant_id, user_id)
