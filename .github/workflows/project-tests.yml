@@ -1,0 +1,29 @@
+name: Project tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  project-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Full project test suite
+        run: node --test tests/*.test.mjs
+      - name: Schema creation and immutability test
+        run: node --test tests/incident-schema-security.test.mjs
+      - name: Static link check
+        run: node --test tests/static-links.test.mjs
+      - name: Sensitive data and secret scan
+        run: node scripts/scan-sensitive-data.mjs
+      - name: 2A-Sandbox API integration tests
+        run: node --test tests/incident-2a-sandbox-api.test.mjs

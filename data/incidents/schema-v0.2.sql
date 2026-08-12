@@ -167,6 +167,16 @@ CREATE TABLE incidents (
 
 CREATE INDEX idx_incidents_tenant_status ON incidents(tenant_id, status, occurred_at);
 
+CREATE TABLE incident_assignments (
+  tenant_id TEXT NOT NULL,
+  incident_id TEXT NOT NULL,
+  investigator_user_id TEXT NOT NULL,
+  assigned_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (tenant_id, incident_id, investigator_user_id),
+  FOREIGN KEY (tenant_id, incident_id) REFERENCES incidents(tenant_id, id),
+  FOREIGN KEY (tenant_id, investigator_user_id) REFERENCES tenant_memberships(tenant_id, user_id)
+);
+
 CREATE TABLE incident_persons (
   id TEXT PRIMARY KEY,
   tenant_id TEXT NOT NULL,
