@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "domain": "security",
+  "table": "security_audit_logs",
+  "tenant_id_required": false,
+  "events": [
+    "auth.invite_created", "auth.invite_consumed", "auth.invite_denied",
+    "auth.recovery_requested", "auth.recovery_consumed", "auth.session_revoked",
+    "auth.access_denied", "auth.rate_limited"
+  ],
+  "allowed_value_fields": ["challenge_purpose", "membership_status", "attempt_bucket"],
+  "allowed_changed_fields": ["challenge_status", "membership_status", "session_status", "attempt_bucket"],
+  "value_constraint": "Allowlisted values must be scalar and at most 80 characters; objects and arrays are rejected.",
+  "subject_rule": "Use an opaque subject_id; recovery or pre-authentication events must not invent tenant_id.",
+  "forbidden_content": ["email", "challenge", "token", "ip_address", "user_agent", "request_body", "before_json", "after_json"],
+  "storage_enforcement": ["event_allowlist_trigger", "json_shape_trigger", "field_allowlist_trigger", "no_update_trigger", "no_delete_trigger"]
+}

@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "entity": "invitations",
+  "required_fields": [
+    "id", "tenant_id", "invited_email_normalized", "invited_by_user_id",
+    "proposed_roles", "expires_at", "status", "created_at"
+  ],
+  "statuses": ["pending", "accepted", "expired", "revoked"],
+  "challenge_binding": "Every accept_invite auth_challenge must contain invitation_id; non-invite challenges must not contain it.",
+  "multi_site_isolation": "Invitations are identified by invitation_id and tenant_id. Two factories may invite the same normalized email without sharing status, challenge, roles or acceptance transaction.",
+  "acceptance_transaction": [
+    "validate_unconsumed_challenge", "validate_pending_unexpired_invitation",
+    "validate_email_binding", "activate_or_create_user", "activate_membership",
+    "grant_invitation_roles", "mark_invitation_accepted", "consume_challenge",
+    "write_security_and_tenant_minimal_audit"
+  ],
+  "rollback_rule": "Any failed step rolls back all acceptance changes.",
+  "production_status": "design_only"
+}

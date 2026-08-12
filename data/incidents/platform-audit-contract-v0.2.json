@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "domain": "platform",
+  "table": "platform_audit_logs",
+  "tenant_id_required": false,
+  "events": [
+    "platform.deployment_changed", "platform.support_grant_created",
+    "platform.support_accessed", "platform.support_grant_revoked",
+    "platform.break_glass_denied"
+  ],
+  "allowed_value_fields": ["deployment_status", "support_grant_status", "break_glass_result"],
+  "allowed_changed_fields": ["deployment_status", "support_grant_status", "break_glass_result", "expires_at", "revoked_at"],
+  "value_constraint": "Allowlisted values must be scalar and at most 80 characters; objects and arrays are rejected.",
+  "actor_rule": "platform_actor_user_id references platform_administrators only; platform admin must not be inserted into tenant_memberships to write audit.",
+  "tenant_reference_rule": "Optional tenant_reference_id is correlation only and never grants access.",
+  "forbidden_content": ["tenant_business_data", "incident_body", "person_identity", "health_data", "secret", "before_json", "after_json"],
+  "storage_enforcement": ["event_allowlist_trigger", "json_shape_trigger", "field_allowlist_trigger", "no_update_trigger", "no_delete_trigger"]
+}

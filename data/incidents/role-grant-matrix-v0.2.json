@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "default_effect": "deny",
+  "rules": [
+    {"target_role":"reporter","grant_by":["tenant_admin","site_leader"],"revoke_by":["tenant_admin","site_leader"],"step_up":false},
+    {"target_role":"investigator","grant_by":["tenant_admin","ehs_manager","site_leader"],"revoke_by":["tenant_admin","ehs_manager","site_leader"],"step_up":false},
+    {"target_role":"tenant_admin","grant_by":["site_leader"],"revoke_by":["site_leader"],"step_up":true},
+    {"target_role":"ehs_manager","grant_by":["site_leader"],"revoke_by":["site_leader"],"step_up":true},
+    {"target_role":"site_leader","grant_by":[],"revoke_by":[],"step_up":true,"special_flow":"site_leader_change"}
+  ],
+  "global_constraints": {
+    "self_grant": "deny",
+    "tenant_admin_grants_site_leader": "deny",
+    "last_active_site_leader_disable_or_revoke": "deny",
+    "role_change_audit": "tenant_audit_logs membership.role_changed with role only",
+    "site_leader_change": "require active site_leader, step-up confirmation, second explicit confirmation, atomic replacement and nonzero active leader invariant"
+  },
+  "initial_site_leader_bootstrap": {
+    "mechanism": "single-use tenant_bootstrap_grant",
+    "issuer": "offline verified platform provisioning ceremony",
+    "requirements": ["new tenant has no roles", "verified invited email", "short expiry", "hash only", "single transaction", "platform and tenant minimal audit"],
+    "transaction": ["consume bootstrap grant", "activate user", "activate membership", "grant site_leader", "write audit"],
+    "repeatable": false
+  },
+  "production_status": "design_only"
+}
