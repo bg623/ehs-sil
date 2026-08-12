@@ -28,14 +28,15 @@
                     <h1>让事故调查真正形成闭环</h1>
                     <p class="incident-lead">从快速报告、事实调查和整改措施，到LFI（Learning From Incident，从事故中学习）、横向展开与效果验证，帮助EHS团队减少同类事件重复发生。</p>
                     <div class="incident-actions">
+                        <a class="ds-btn ds-btn-accent" href="incident-learning-demo.html" data-incident-action="demo">体验虚构案例演示</a>
                         <a class="ds-btn ds-btn-accent" href="#workflow" data-incident-action="workflow">查看闭环流程</a>
                         <a class="ds-btn ds-btn-secondary" href="../articles/lfi-learning-from-incident.html" data-incident-action="article">先了解LFI方法</a>
                     </div>
                 </div>
                 <aside class="incident-status-card" aria-label="模块状态">
-                    <span class="ds-badge ds-badge-warning">阶段1.5 · 产品与安全闸门</span>
-                    <h2>当前不收集真实事故数据</h2>
-                    <p>试点期按“一个租户等于一个工厂”设计。当前只完善角色权限、审计与跨租户测试，不开放真实报告、附件或人员健康数据。</p>
+                    <span class="ds-badge ds-badge-warning">V0.1 · 用户验证阶段</span>
+                    <h2>只体验纯虚构案例</h2>
+                    <p>当前演示只验证用户能否理解事故学习与整改闭环，不开放真实报告、附件、企业信息或人员健康数据；冻结的安全契约仍坚持“一个租户等于一个工厂”。</p>
                 </aside>
             </div>
         </section>
@@ -108,10 +109,13 @@
             <div class="ds-container">
                 <div class="incident-pilot">
                     <div>
-                        <h2>当前阶段：产品与安全闸门</h2>
-                        <p>试点期一个租户只代表一个工厂。完成邀请恢复设计、租户隔离、RBAC权限、最小化审计和跨租户负面测试并经产品负责人确认后，才会开始阶段2A编码。此页面不会要求你提交真实事件。</p>
+                        <h2>当前阶段：LFI产品验证版 V0.1</h2>
+                        <p>使用三个预置虚构案例验证事故学习、整改验证和经验推广流程是否清楚有用。演示状态只保存在当前浏览器会话，不提交到服务端；2A-Pilot和生产后端继续关闭。</p>
                     </div>
-                    <a class="ds-btn ds-btn-accent" href="risk-analysis.html#incident-investigation" data-incident-action="tools">使用现有事故分析工具</a>
+                    <div class="incident-actions" style="margin-top:0">
+                        <a class="ds-btn ds-btn-accent" href="incident-learning-demo.html" data-incident-action="demo-bottom">开始虚构案例演示</a>
+                        <a class="ds-btn ds-btn-secondary" href="risk-analysis.html#incident-investigation" data-incident-action="tools">使用现有事故分析工具</a>
+                    </div>
                 </div>
             </div>
         </section>

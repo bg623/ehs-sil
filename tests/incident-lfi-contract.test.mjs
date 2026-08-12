@@ -19,8 +19,8 @@ const invitations = JSON.parse(read("data/incidents/invitations-contract-v0.2.js
 const roleGrant = JSON.parse(read("data/incidents/role-grant-matrix-v0.2.json"));
 const negative = JSON.parse(read("tests/fixtures/incident-cross-tenant-negative-cases.json"));
 
-assert.match(page, /阶段1\.5 · 产品与安全闸门/);
-assert.match(page, /当前不收集真实事故数据/);
+assert.match(page, /V0\.1 · 用户验证阶段/);
+assert.match(page, /只体验纯虚构案例/);
 assert.match(page, /一个租户等于一个工厂/);
 assert.match(page, /不得因等待系统判断而延误救援或法定报告/);
 assert.doesNotMatch(page, /<form\b/i, "第1周页面不得出现真实数据表单");

@@ -4,7 +4,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 const root = process.cwd();
-const sandboxRoots = ["sandbox/incident", "tests/incident-2a-sandbox-api.test.mjs", "docs/incident-lfi-2a-sandbox-completion.md"];
+const sandboxRoots = ["sandbox/incident", "tests/incident-2a-sandbox-api.test.mjs", "docs/incident-lfi-2a-sandbox-completion.md", "tools/incident-learning-demo.html", "js/incident-learning-demo.mjs", "js/incident-learning-demo-model.mjs", "tests/incident-learning-demo.test.mjs"];
 const secretPatterns = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
   /\bgh[opusr]_[A-Za-z0-9]{20,}\b/,

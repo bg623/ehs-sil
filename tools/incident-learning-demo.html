@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LFI产品验证演示 V0.1 · EHS-SIL</title>
+  <meta name="description" content="使用三个纯虚构案例，在浏览器本地体验事故学习、整改验证、LFI发布与关闭闭环。">
+  <link rel="canonical" href="https://ehs-sil.com/tools/incident-learning-demo.html">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" type="image/png" href="../assets/ehs-sil-logo.png">
+  <link rel="stylesheet" href="../css/style.css?v=2.0.0">
+  <link rel="stylesheet" href="../css/design-system.css?v=1.0.0">
+  <link rel="stylesheet" href="../css/incident-learning-demo.css?v=0.1.0">
+</head>
+<body class="demo-page">
+  <div data-site-shell-header data-prefix="../" data-main-target="main-content"></div>
+  <main id="main-content" class="demo-main">
+    <aside class="demo-safety-banner" role="alert">
+      <div><strong>演示环境，请勿输入真实事故或个人信息</strong><p>本页只有三个预置虚构案例；所有进度仅保存在当前浏览器sessionStorage，不会提交到服务端。</p></div>
+      <button type="button" class="ds-btn ds-btn-secondary" data-reset-demo>一键重置演示</button>
+    </aside>
+    <header class="demo-hero">
+      <div><p class="demo-kicker">LFI产品验证版 V0.1</p><h1>用一个虚构案例走完事故学习闭环</h1><p>体验快速报告、调查、屏障分析、整改验证、Safety Alert和经验推广，判断这条工作链路是否清楚、实用。</p></div>
+      <div class="demo-time"><strong>约10分钟</strong><span>12步完成完整案例</span></div>
+    </header>
+    <nav class="demo-cases" aria-label="选择虚构案例" data-demo-cases></nav>
+    <p class="demo-notice" aria-live="polite" data-demo-notice></p>
+    <div data-demo-workspace></div>
+  </main>
+  <div data-site-shell-footer data-prefix="../"></div>
+  <script src="../js/site-shell.js?v=1.0.0"></script>
+  <script type="module" src="../js/incident-learning-demo.mjs?v=0.1.0"></script>
+</body>
+</html>

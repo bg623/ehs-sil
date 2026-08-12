@@ -27,3 +27,5 @@ jobs:
         run: node scripts/scan-sensitive-data.mjs
       - name: 2A-Sandbox API integration tests
         run: node --test tests/incident-2a-sandbox-api.test.mjs
+      - name: LFI V0.1 static demo tests
+        run: node --test tests/incident-learning-demo.test.mjs
