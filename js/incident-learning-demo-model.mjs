@@ -73,7 +73,7 @@ export const DEMO_CASES = [
 ];
 
 export function initialState(caseId = DEMO_CASES[0].id) {
-  return { version: 1, caseId, completed: [], investigationApproved: false, actionsVerified: false, lfiPublished: false, closed: false };
+  return { version: 1, caseId, completed: [], investigationApproved: false, actionsVerified: false, lfiPublished: false, closed: false, feedback: {} };
 }
 
 export function getCase(caseId) {
@@ -130,4 +130,37 @@ export function buildSafetyAlert(demoCase, state) {
     `LFI发布：${state.lfiPublished ? "是" : "否"}`,
     `关闭条件：${gate.allowed ? "已满足" : gate.missing.join("；")}`,
   ].join("\n");
+}
+
+export function alertStatus(state) {
+  if (state.closed) return { label: "CLOSED · 已关闭", tone: "closed" };
+  if (state.lfiPublished) return { label: "PUBLISHED · 已发布", tone: "published" };
+  return { label: "DRAFT · 演示草稿", tone: "draft" };
+}
+
+export function buildSafetyAlertHtml(demoCase, state) {
+  const status = alertStatus(state);
+  const gate = closureGate(state);
+  const barrierRows = demoCase.barriers.map((barrier, index) => {
+    const tone = /有效|存在/.test(barrier) && !/失效|缺失|不完整/.test(barrier) ? "effective" : "gap";
+    return `<li class="alert-barrier alert-barrier-${tone}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${barrier}</strong></li>`;
+  }).join("");
+  const actionRows = demoCase.actions.map((action) => `<tr><td>${action.id}</td><td>${action.text}</td><td>${action.owner}</td><td>${action.due}</td><td><span class="alert-pill ${state.actionsVerified ? "is-verified" : ""}">${state.actionsVerified ? "已模拟验证" : "待验证"}</span></td></tr>`).join("");
+  return `<article class="safety-alert-sheet" data-safety-alert-sheet>
+    <header class="alert-cover">
+      <div class="alert-brand"><span class="alert-mark">EHS</span><div><strong>EHS-SIL</strong><small>Learning From Incident · 从事故中学习</small></div></div>
+      <div class="alert-document"><span>SAFETY ALERT</span><strong>${demoCase.code}</strong></div>
+      <div class="alert-cover-copy"><p class="alert-overline">PURELY FICTIONAL DEMONSTRATION · 纯虚构演示</p><h2>${demoCase.title}</h2><p>${demoCase.summary}</p></div>
+      <div class="alert-cover-meta"><span class="alert-status alert-status-${status.tone}">${status.label}</span><span>${demoCase.classification}</span><span>发布日期：演示完成时</span></div>
+    </header>
+    <section class="alert-key-message"><span>KEY LEARNING<br>关键教训</span><p>${demoCase.lesson}</p></section>
+    <section class="alert-two-column">
+      <div class="alert-panel"><p class="alert-section-no">01</p><h3>发生了什么<br><small>What happened</small></h3><ol class="alert-timeline">${demoCase.timeline.map((item) => `<li>${item}</li>`).join("")}</ol></div>
+      <div class="alert-panel"><p class="alert-section-no">02</p><h3>为什么发生<br><small>Why it happened</small></h3><div class="alert-cause"><span>直接原因</span><p>${demoCase.directCause}</p></div><div class="alert-cause alert-cause-root"><span>根本原因</span><p>${demoCase.rootCause}</p></div></div>
+    </section>
+    <section class="alert-panel alert-barriers"><p class="alert-section-no">03</p><h3>关键屏障状态 <small>Critical barrier status</small></h3><ul>${barrierRows}</ul></section>
+    <section class="alert-panel alert-actions"><p class="alert-section-no">04</p><h3>关键行动与验证 <small>Actions &amp; verification</small></h3><div class="alert-table-wrap"><table><thead><tr><th>ID</th><th>行动</th><th>责任角色</th><th>期限</th><th>验证状态</th></tr></thead><tbody>${actionRows}</tbody></table></div></section>
+    <section class="alert-rollout"><div><span>SHARE &amp; APPLY · 分享与应用</span><h3>经验推广范围</h3><p>${demoCase.rollout}</p></div><div class="alert-gate"><strong>${gate.allowed ? "闭环条件已满足" : "闭环条件待完成"}</strong><span>调查批准 ${state.investigationApproved ? "✓" : "○"}</span><span>措施验证 ${state.actionsVerified ? "✓" : "○"}</span><span>LFI发布 ${state.lfiPublished ? "✓" : "○"}</span></div></section>
+    <footer class="alert-footer"><span>EHS-SIL · 外企EHS工具与成长工作台</span><strong>仅供产品演示，不对应任何真实企业、人员或事故</strong><span>PAGE 01 / 01</span></footer>
+  </article>`;
 }
