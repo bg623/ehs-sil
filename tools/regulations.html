@@ -50,7 +50,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .compliance-cta-btn:focus-visible{outline:3px solid rgba(184,134,11,.3);outline-offset:3px}
 .compliance-cta-arrow{width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:1rem}
 @media(max-width:640px){.compliance-cta{align-items:flex-start;flex-wrap:wrap}.compliance-cta-copy{min-width:calc(100% - 70px)}.compliance-cta-btn{width:100%;font-size:.9rem}}
-@media(max-width:480px){.header h1{font-size:1.4rem}.tabs{flex-wrap:wrap}}
+@media(max-width:480px){.header h1{font-size:1.4rem}.tabs{flex-wrap:wrap}.item>div{display:block!important}.item>div>div:last-child{margin:.65rem 0 0!important;white-space:normal!important;display:flex;gap:.3rem;flex-wrap:wrap}.dl-btn{margin-left:0!important}.item .meta span{overflow-wrap:anywhere}.item .desc{overflow-wrap:anywhere}}
 
             .dl-btn{display:inline-block;padding:.15rem .5rem;font-size:.7rem;background:var(--primary);color:#fff;border:none;border-radius:3px;cursor:pointer;transition:all .2s}
             .dl-btn:hover{background:var(--primary-dark)}
@@ -94,7 +94,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <script>
 var data = [];
-fetch('../data/regulations.json?v=20260809').then(function(r){return r.json()}).then(function(d){
+fetch('../data/regulations.json?v=20260813').then(function(r){return r.json()}).then(function(d){
     data = d.regulations;
     render();
     document.getElementById('count').textContent = data.length + ' 条法规标准';
@@ -170,13 +170,14 @@ function render(){
         var typeTag = '';
         if(r.type.indexOf('法') !== -1) typeTag = '<span class="tag tag-law">' + r.type + '</span>';
         else if(r.type.indexOf('标准') !== -1) typeTag = '<span class="tag tag-standard">' + r.type + '</span>';
-        var policyLabel = r.downloadPolicy === 'official_purchase_or_read' ? '版权标准·官方阅读/购买' : '官方来源';
+        var policyLabel = r.downloadPolicy === 'official_purchase_or_read' ? '版权标准·官方阅读/购买' : (r.downloadPolicy === 'official_download' ? '开放许可·官方下载' : '官方来源');
         var policyTag = '<span class="tag tag-policy">' + policyLabel + '</span>';
         var dl = '<button class="dl-btn" onclick="downloadRegByIndex(' + data.indexOf(r) + ')">&#128203; CSV</button>';
         var linkBtn = '';
         var officialUrl = r.officialSourceUrl || r.link;
         var sourceLabel = r.downloadPolicy === 'official_purchase_or_read' ? '官方阅读/购买' : '查看官方原文';
         if (officialUrl) linkBtn = ' <a class="dl-btn source-result-link" href="' + officialUrl + '" target="_blank" rel="noopener" style="text-decoration:none;background:#1d4ed8;margin-left:.2rem">&#128279; ' + sourceLabel + '</a>';
+        if (r.officialDownloadUrl) linkBtn += ' <a class="dl-btn official-download-link" href="' + r.officialDownloadUrl + '" target="_blank" rel="noopener" style="text-decoration:none;background:#166534;margin-left:.2rem">&#11015; 官方下载</a>';
         var year = r.yr ? '<span>' + r.yr + '年</span>' : '';
         return '<div class="item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><h3>' + r.cn + '</h3><div class="meta">' + tag + typeTag + policyTag + '<span>' + r.num + '</span><span>' + r.auth + '</span>' + year + '</div><div class="desc">' + r.en + '</div></div><div style="flex-shrink:0;margin-left:.5rem;white-space:nowrap">' + dl + linkBtn + '</div></div></div>';
     }).join('');
@@ -213,6 +214,8 @@ document.addEventListener('click', function(event){
     if(!link || !window.EhsSilAnalytics) return;
     if(link.classList.contains('source-result-link')) {
         window.EhsSilAnalytics.track('search_result_click', {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site'});
+    } else if(link.classList.contains('official-download-link')) {
+        window.EhsSilAnalytics.track('export_click', {toolId:'regulation-official-download', pageType:'regulation_search', sourceChannel:'site'});
     } else if(link.href.indexOf('compliance-identification.html') !== -1) {
         window.EhsSilAnalytics.track('content_to_tool', {toolId:'compliance-identification', pageType:'regulation_search', sourceChannel:'site'});
     }
