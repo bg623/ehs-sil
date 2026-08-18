@@ -53,7 +53,12 @@
         'visit_incident_lfi',
         'incident_resource_click'
     ];
-    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents);
+    var trainingMatrixEvents = [
+        'training_matrix_start', 'training_profile_complete', 'training_matrix_generated',
+        'training_excel_export', 'training_pdf_print', 'training_reset',
+        'training_toolbox_click', 'training_library_click'
+    ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents);
     var legacyAliases = {
         visit_jsa_coach: 'visit_jsa',
         start_scene_identification: 'start_jsa',
@@ -173,6 +178,7 @@
         funnelEvents: funnelEvents.slice(),
         jsaExperimentEvents: jsaExperimentEvents.slice(),
         incidentExperimentEvents: incidentExperimentEvents.slice(),
+        trainingMatrixEvents: trainingMatrixEvents.slice(),
         eventVersion: EVENT_VERSION
     };
 })();

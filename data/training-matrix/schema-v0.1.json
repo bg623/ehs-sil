@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"EHS-SIL Training Matrix V0.1 data contract","type":"object","description":"本目录各文件的字段契约由自动测试进一步校验；规则结果必须可追溯至rule_id。","properties":{"version":{"const":"0.1.0"}}}

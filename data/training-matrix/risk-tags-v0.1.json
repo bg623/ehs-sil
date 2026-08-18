@@ -1,0 +1,6 @@
+{
+  "version":"0.1.0",
+  "risk_tags":[
+    {"id":"chemicals","name":"危险化学品"},{"id":"occupational_health","name":"职业病危害"},{"id":"fire_explosion","name":"火灾爆炸"},{"id":"confined_space","name":"受限空间"},{"id":"hot_work","name":"动火"},{"id":"work_at_height","name":"高处作业"},{"id":"temporary_power","name":"临时用电"},{"id":"lifting","name":"吊装"},{"id":"loto","name":"能量隔离 LOTO"},{"id":"vehicles","name":"叉车与厂内车辆"},{"id":"special_equipment","name":"特种设备"},{"id":"ppe","name":"PPE 个体防护装备"},{"id":"emergency","name":"应急处置"},{"id":"contractor","name":"承包商作业"},{"id":"change","name":"新工艺、新技术、新材料或新设备"}
+  ]
+}

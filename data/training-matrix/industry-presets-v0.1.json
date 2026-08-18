@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0",
+  "industries": [
+    {"id":"chemical","name":"化工","description":"适用于涉及危险化学品生产、储存或使用的常见岗位初筛。","recommended_roles":["principal","ehs","supervisor","operator","maintenance","electrician","hotwork","forklift","warehouse","contractor","newcomer","emergency"]},
+    {"id":"pharma","name":"制药","description":"兼顾实验室、生产、维修及职业健康场景，不替代GxP培训体系。","recommended_roles":["principal","ehs","supervisor","operator","maintenance","electrician","warehouse","laboratory","contractor","newcomer","emergency"]},
+    {"id":"manufacturing","name":"通用制造","description":"覆盖加工制造常见岗位与高风险作业，行业专项要求需另行复核。","recommended_roles":["principal","ehs","supervisor","operator","maintenance","electrician","hotwork","forklift","warehouse","contractor","newcomer","emergency"]}
+  ]
+}

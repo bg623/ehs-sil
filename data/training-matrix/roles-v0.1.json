@@ -1,0 +1,6 @@
+{
+  "version":"0.1.0",
+  "roles":[
+    {"id":"principal","name":"主要负责人"},{"id":"ehs","name":"EHS管理人员"},{"id":"supervisor","name":"车间主任/班组长"},{"id":"operator","name":"生产操作人员"},{"id":"maintenance","name":"维修人员"},{"id":"electrician","name":"电工"},{"id":"hotwork","name":"焊接与热切割作业人员"},{"id":"forklift","name":"叉车/场内车辆作业人员"},{"id":"warehouse","name":"仓库人员"},{"id":"laboratory","name":"实验室人员"},{"id":"contractor","name":"承包商作业人员"},{"id":"newcomer","name":"新员工/实习人员"},{"id":"emergency","name":"应急队员"}
+  ]
+}

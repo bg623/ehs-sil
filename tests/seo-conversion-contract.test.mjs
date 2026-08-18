@@ -8,6 +8,7 @@ const allowedCampaigns = new Set([
     'compliance_tool',
     'incident_learning_tool',
     'risk_analysis_tool',
+    'training_matrix_tool',
     'tool_index',
     'toolbox',
     'training_library'
