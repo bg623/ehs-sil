@@ -1,0 +1,31 @@
+{
+  "version":"0.1.0",
+  "topics":[
+    {"topic_id":"safety_leadership","title_zh":"主要负责人安全职责与领导力","category":"管理","description":"理解法定职责、双重预防和资源保障。","delivery_methods":["专题培训","案例研讨"],"assessment_methods":["知识测试","履职访谈"],"evidence_examples":["签到记录","测试记录"],"active":true},
+    {"topic_id":"ehs_management","title_zh":"安全生产管理人员能力","category":"管理","description":"履行安全管理职责所需知识与能力。","delivery_methods":["专题培训"],"assessment_methods":["知识测试"],"evidence_examples":["合格记录"],"active":true},
+    {"topic_id":"induction","title_zh":"三级安全教育与岗位入职培训","category":"基础","description":"入职前完成厂级、车间级和班组级培训。","delivery_methods":["课堂培训","现场带教"],"assessment_methods":["知识测试","实操确认"],"evidence_examples":["三级教育卡","考核记录"],"active":true},
+    {"topic_id":"job_sop","title_zh":"岗位安全操作规程","category":"基础","description":"掌握岗位风险、规程和异常处置。","delivery_methods":["现场培训","岗位带教"],"assessment_methods":["实操观察"],"evidence_examples":["培训记录","能力确认"],"active":true},
+    {"topic_id":"change_training","title_zh":"变更前安全培训","category":"基础","description":"新工艺、新技术、新材料、新设备或岗位变化前培训。","delivery_methods":["变更专项培训"],"assessment_methods":["理解确认"],"evidence_examples":["变更培训记录"],"active":true},
+    {"topic_id":"chemical_safety","title_zh":"危险化学品与SDS/GHS","category":"化学品","description":"识别危害、标签、SDS和相容性。","delivery_methods":["课堂培训","现场讲解"],"assessment_methods":["情景问答"],"evidence_examples":["培训记录","现场抽查"],"active":true},
+    {"topic_id":"occupational_health","title_zh":"职业病危害与健康防护","category":"职业健康","description":"了解接触危害、工程控制和健康防护。","delivery_methods":["专题培训"],"assessment_methods":["知识测试"],"evidence_examples":["培训记录"],"active":true},
+    {"topic_id":"ppe","title_zh":"个体防护装备 PPE","category":"职业健康","description":"正确选择、佩戴、检查和维护PPE。","delivery_methods":["示范与实操"],"assessment_methods":["佩戴实操"],"evidence_examples":["实操确认记录"],"active":true},
+    {"topic_id":"fire_safety","title_zh":"消防安全与初起火灾处置","category":"应急","description":"掌握火灾预防、报警、疏散和初起火灾处置。","delivery_methods":["培训","演练"],"assessment_methods":["演练观察"],"evidence_examples":["培训及演练记录"],"active":true},
+    {"topic_id":"emergency_response","title_zh":"应急处置与疏散","category":"应急","description":"掌握岗位应急职责、报警和疏散。","delivery_methods":["培训","演练"],"assessment_methods":["演练评估"],"evidence_examples":["演练记录","评估报告"],"active":true},
+    {"topic_id":"emergency_team","title_zh":"应急队专业技能","category":"应急","description":"按预案角色训练专业处置和协同。","delivery_methods":["专项培训","实战演练"],"assessment_methods":["技能考核"],"evidence_examples":["技能考核记录"],"active":true},
+    {"topic_id":"loto","title_zh":"能量隔离 LOTO","category":"高风险作业","description":"识别能源并实施隔离、验证和恢复。","delivery_methods":["课堂培训","实操"],"assessment_methods":["实操考核"],"evidence_examples":["授权记录","实操考核"],"active":true},
+    {"topic_id":"hot_work","title_zh":"动火作业安全","category":"高风险作业","description":"理解动火许可、气体检测、监护和消防措施。","delivery_methods":["专项培训","现场交底"],"assessment_methods":["知识与实操确认"],"evidence_examples":["资格/培训记录","交底记录"],"active":true},
+    {"topic_id":"electrical","title_zh":"电气与临时用电安全","category":"高风险作业","description":"识别电气危害并实施许可、接地和防护。","delivery_methods":["专项培训","实操"],"assessment_methods":["实操考核"],"evidence_examples":["资格及培训记录"],"active":true},
+    {"topic_id":"confined_space","title_zh":"受限空间作业安全","category":"高风险作业","description":"掌握辨识、许可、检测、通风、监护和救援。","delivery_methods":["专项培训","演练"],"assessment_methods":["情景考核"],"evidence_examples":["培训记录","演练记录"],"active":true},
+    {"topic_id":"work_at_height","title_zh":"高处作业与坠落防护","category":"高风险作业","description":"掌握许可、锚点、坠落防护与救援。","delivery_methods":["专项培训","实操"],"assessment_methods":["实操观察"],"evidence_examples":["培训和授权记录"],"active":true},
+    {"topic_id":"lifting","title_zh":"吊装作业安全","category":"高风险作业","description":"掌握吊装策划、指挥、索具和禁入区。","delivery_methods":["专项培训","现场交底"],"assessment_methods":["实操观察"],"evidence_examples":["资格/培训记录"],"active":true},
+    {"topic_id":"forklift","title_zh":"叉车与厂内车辆安全","category":"车辆","description":"掌握授权驾驶、检查、行人隔离和装卸。","delivery_methods":["专项培训","驾驶实操"],"assessment_methods":["实操考核"],"evidence_examples":["资格与授权记录"],"active":true},
+    {"topic_id":"special_equipment","title_zh":"特种设备安全与岗位责任","category":"设备","description":"按设备类别落实使用管理和作业人员要求。","delivery_methods":["专项培训"],"assessment_methods":["知识/实操确认"],"evidence_examples":["资格和培训记录"],"active":true},
+    {"topic_id":"contractor","title_zh":"承包商入场与作业要求","category":"承包商","description":"明确现场规则、作业许可、接口和应急。","delivery_methods":["入场培训","作业交底"],"assessment_methods":["理解确认"],"evidence_examples":["入场和交底记录"],"active":true},
+    {"topic_id":"supervisor_control","title_zh":"班组风险沟通与现场控制","category":"管理","description":"开展班前会、JSA复核和停止作业。","delivery_methods":["案例研讨","现场演练"],"assessment_methods":["现场观察"],"evidence_examples":["班前会记录"],"active":true},
+    {"topic_id":"incident_reporting","title_zh":"事件报告与经验反馈","category":"基础","description":"及时报告事件并参与经验学习。","delivery_methods":["微课","案例学习"],"assessment_methods":["情景问答"],"evidence_examples":["培训记录"],"active":true},
+    {"topic_id":"lab_safety","title_zh":"实验室安全","category":"实验室","description":"化学品、设备、废物和应急的实验室控制。","delivery_methods":["专题培训","现场演示"],"assessment_methods":["现场观察"],"evidence_examples":["培训记录"],"active":true},
+    {"topic_id":"warehouse_safety","title_zh":"仓储与装卸安全","category":"物流","description":"相容性、堆垛、搬运和泄漏处置。","delivery_methods":["岗位培训"],"assessment_methods":["现场观察"],"evidence_examples":["岗位考核记录"],"active":true},
+    {"topic_id":"permit_to_work","title_zh":"作业许可与JSA","category":"高风险作业","description":"策划许可、风险分析、现场确认和关闭。","delivery_methods":["案例培训","现场演练"],"assessment_methods":["案例评审"],"evidence_examples":["授权和培训记录"],"active":true},
+    {"topic_id":"manual_handling","title_zh":"人工搬运与人体工效学","category":"职业健康","description":"识别搬运负荷、姿势、重复动作和辅助工具。","delivery_methods":["现场培训","动作示范"],"assessment_methods":["现场观察"],"evidence_examples":["培训记录","改善记录"],"active":true}
+  ]
+}
