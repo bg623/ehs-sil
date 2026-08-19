@@ -123,6 +123,10 @@
                     window.EhsSilAnalytics.track('content_to_tool', {
                         toolId: 'jsa-coach', sourceChannel: 'site', pageType: 'other'
                     });
+                } else if (action === 'start-training') {
+                    window.EhsSilAnalytics.track('content_to_tool', {
+                        toolId: 'training-matrix', sourceChannel: 'site', pageType: 'other'
+                    });
                 } else if (action === 'click-member') {
                     window.EhsSilAnalytics.track('click_member', {
                         toolId: 'jsa-coach', sourceChannel: 'site', pageType: 'other'
