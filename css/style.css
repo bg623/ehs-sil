@@ -279,8 +279,12 @@ ul { list-style: none; }
 .workbench-card ul { display: grid; gap: .65rem; margin-bottom: 1.5rem; }
 .workbench-card li { position: relative; padding-left: 1rem; color: var(--text-secondary); font-size: .84rem; }
 .workbench-card li::before { content: '—'; position: absolute; left: 0; color: var(--card-accent); }
+.workbench-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; margin-top: auto; }
+.workbench-actions .workbench-link { margin-top: 0; }
 .workbench-link { margin-top: auto; color: var(--card-accent); font-weight: 800; font-size: .88rem; }
 .workbench-link:hover { color: var(--accent); }
+.workbench-secondary-link { color: var(--text-secondary); font-size: .78rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.workbench-secondary-link:hover { color: var(--primary); }
 .risk-tools-card h3, .risk-tools-card > p, .risk-tools-card li { color: white; }
 .risk-tools-card > p, .risk-tools-card li { color: rgba(255,255,255,.78); }
 .risk-tools-card .workbench-link { color: #f1c672; }
