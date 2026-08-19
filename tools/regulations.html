@@ -112,12 +112,40 @@ function resultBucket(count){
     return '51+';
 }
 
+function queryCategoryFor(query){
+    var q = String(query || '').trim().toLowerCase();
+    if(!q) return '';
+    if(/(?:\b(?:gb|gbz|aq|hj|tsg|hg|sh|iso|iec|nfpa|api|cfr)\s*[/t-]?\s*\d|\d{2,4}\/\d{2,4}\/e[cu]|主席令|国务院令|部令)/i.test(q)) return 'document-number';
+    if(/有限空间|受限空间|confined/.test(q)) return 'confined-space';
+    if(/动火|焊接|切割|hot\s*work|welding/.test(q)) return 'hot-work';
+    if(/上锁|挂牌|loto|危险能量|energy\s*control/.test(q)) return 'loto-energy';
+    if(/高处|高空|work\s*at\s*height|fall\s*protection/.test(q)) return 'work-at-height';
+    if(/危化|危险化学|hazardous\s*chemical/.test(q)) return 'hazardous-chemicals';
+    if(/重大危险源|major\s*hazard/.test(q)) return 'major-hazard';
+    if(/重大事故隐患|重大隐患/.test(q)) return 'major-accident-hazard';
+    if(/承包商|外包|contractor/.test(q)) return 'contractor';
+    if(/机械|机器防护|machine|machinery/.test(q)) return 'machinery';
+    if(/电气|临时用电|触电|electrical|electricity/.test(q)) return 'electrical';
+    if(/消防|火灾|爆炸|防爆|fire|explosion|atex/.test(q)) return 'fire-explosion';
+    if(/职业病|职业健康|职业卫生|接触限值|occupational\s*health/.test(q)) return 'occupational-health';
+    if(/噪声|noise/.test(q)) return 'noise';
+    if(/危险废物|危废|hazardous\s*waste/.test(q)) return 'hazardous-waste';
+    if(/废水|污水|废气|排放|vocs?|emission|wastewater/.test(q)) return 'water-air-emissions';
+    if(/应急|预案|救援|emergency/.test(q)) return 'emergency';
+    if(/事故调查|事故报告|根因|incident|accident|riddor/.test(q)) return 'accident-investigation';
+    if(/个体防护|个人防护|劳保|ppe/.test(q)) return 'ppe';
+    if(/运输|道路|危险货物|transport|adr/.test(q)) return 'transport';
+    if(/压力容器|锅炉|起重|叉车|特种设备|lifting|pressure|forklift/.test(q)) return 'pressure-lifting';
+    if(/化学品|sds|msds|reach|clp|coshh/.test(q)) return 'chemical-management';
+    return 'other-ehs';
+}
+
 function trackRegulationSearch(){
     var normalized = currentQuery.trim().toLowerCase();
     if(normalized.length < 2 || normalized === lastTrackedRegulationSearch || !window.EhsSilAnalytics) return;
     lastTrackedRegulationSearch = normalized;
     var count = getFilteredData(false).length;
-    var context = {toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site', resultBucket:resultBucket(count)};
+    var context = {contentId:'query-' + queryCategoryFor(normalized), toolId:'regulation-search', pageType:'regulation_search', sourceChannel:'site', resultBucket:resultBucket(count)};
     window.EhsSilAnalytics.track('search_submit', context);
     if(!count) window.EhsSilAnalytics.track('search_no_result', context);
 }
