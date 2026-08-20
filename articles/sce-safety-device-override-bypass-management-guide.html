@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>联锁旁路后装置能继续运行吗？SCE与Safety Device Override管理指南 | EHS-SIL</title>
+<meta name="description" content="讲清SCE安全关键要素与Safety Device Override联锁旁路的区别、七步风险判断、补偿措施、审批、交接和恢复验证，避免把旁路当成仪表作业票。">
+<meta name="keywords" content="SCE,Safety Device Override,联锁旁路,安全关键设备,SIS旁路,安全装置旁路,Override管理,过程安全">
+<link rel="canonical" href="https://ehs-sil.com/articles/sce-safety-device-override-bypass-management-guide.html">
+<meta property="og:title" content="联锁旁路后装置能继续运行吗？SCE与Safety Device Override管理指南"><meta property="og:description" content="从安全功能、剩余风险、补偿措施和恢复验证判断联锁旁路后能否继续运行。"><meta property="og:url" content="https://ehs-sil.com/articles/sce-safety-device-override-bypass-management-guide.html"><meta property="og:type" content="article"><meta property="og:site_name" content="EHS-SIL · 外企EHS实操指南">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"联锁旁路后装置能继续运行吗？SCE与Safety Device Override管理指南","description":"讲清SCE安全关键要素与Safety Device Override联锁旁路的区别、七步风险判断、补偿措施、审批、交接和恢复验证。","datePublished":"2026-08-19","dateModified":"2026-08-20","author":{"@type":"Person","name":"Thunder"},"publisher":{"@type":"Organization","name":"EHS-SIL"},"mainEntityOfPage":"https://ehs-sil.com/articles/sce-safety-device-override-bypass-management-guide.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"SCE和Safety Device Override是同一个概念吗？","acceptedAnswer":{"@type":"Answer","text":"不是。SCE用于识别和全生命周期管理重大事故关键屏障；Safety Device Override用于管理安全功能临时退出或降级期间的实时风险状态。"}},{"@type":"Question","name":"联锁被旁路后装置一定要停车吗？","acceptedAnswer":{"@type":"Answer","text":"不一定，但必须重新评价剩余风险。若剩余独立保护和经验证的补偿措施不能把风险控制在企业可接受标准内，应降负荷、停止相关操作或安全停车。"}},{"@type":"Question","name":"安排操作工持续监控能替代联锁吗？","acceptedAnswer":{"@type":"Answer","text":"不能默认等效。必须验证报警独立性、人员发现和响应时间、操作清晰度、人员可用性及其他任务干扰，人工监控通常不能直接获得与原安全仪表功能相同的风险降低信用。"}}]}</script>
+<link rel="stylesheet" href="../css/style.css"><style>*{box-sizing:border-box}body{margin:0;background:#f4f0e8;color:#263238;font-family:'Helvetica Neue',Arial,'Noto Sans SC',sans-serif;line-height:1.8}header,footer{background:#0d2836;color:#fff;padding:18px 24px}header a{color:#fff;text-decoration:none;font-weight:700}.wrap{max-width:900px;margin:38px auto;padding:0 22px}.paper{background:#fff;padding:44px;border-radius:12px;box-shadow:0 8px 30px rgba(13,40,54,.08)}h1{font-size:34px;line-height:1.35;color:#0d2836}h2{color:#0d5967;margin-top:38px;border-bottom:1px solid #d8e3e3;padding-bottom:8px}.lead{font-size:18px;color:#405158}.note,.related{background:#f5f3ed;border-radius:8px;padding:18px 22px}.warning{background:#fff3df;border-left:5px solid #c77a13;padding:18px 22px;margin:24px 0}.steps li{margin-bottom:14px}.matrix{width:100%;border-collapse:collapse}.matrix th,.matrix td{border:1px solid #d9dfdf;padding:10px;text-align:left;vertical-align:top}.matrix th{background:#eaf4f2}.cta{margin-top:36px;background:#0d2836;color:#fff;padding:28px;border-radius:10px}.cta a{display:inline-block;background:#e4b65b;color:#0d2836;padding:11px 18px;border-radius:6px;text-decoration:none;font-weight:700}.sources{font-size:14px;border-top:1px solid #ddd;margin-top:30px;padding-top:20px}.paper a{color:#0d5967}@media(max-width:680px){.paper{padding:26px 20px}h1{font-size:27px}.matrix{font-size:14px}}</style><script src="../js/baidu-analytics.js?v=1.0.0"></script></head>
+<body><header><a href="../index.html">EHS-SIL · 外企EHS实操指南</a></header><main class="wrap"><article class="paper">
+<p><a href="../topics/process-safety.html">← 返回工艺安全专题</a></p><p style="color:#6c7a80">过程安全 · SCE与安全装置旁路 · 更新于2026-08-20</p>
+<h1>联锁被旁路后，装置还能继续开吗？一次讲清SCE与Safety Device Override</h1>
+<p class="lead">SCE回答“哪些设备或要素绝不能随便失效”；Safety Device Override回答“某项安全功能临时退出后，装置能否继续运行、由谁批准、靠什么控制、何时恢复”。一个管理关键屏障的身份和完整性，一个管理保护能力下降期间的实时风险。</p>
+<div class="warning"><strong>先说结论：</strong>联锁旁路不是多签几个人就能继续生产。必须识别失去的安全功能，撤销原保护层信用，评价剩余风险，并验证补偿措施。风险不可接受时，正确答案是降负荷、停止相关操作或安全停车。</div>
+
+<h2>SCE是什么：不是“重要设备大全”</h2>
+<p>SCE（Safety-Critical Element，安全关键要素）指失效可能导致或显著促成重大事故，或者用于预防、控制或减轻重大事故后果的装置、设备或程序。判断依据不是价格、设备名称或红色标签，而是它与特定重大事故场景之间是否存在可证明的风险控制关系。</p>
+<p>常见对象包括承担关键一次密封的设备和管道、泄压与火炬系统、安全仪表功能、ESD与远程切断、火气探测、固定消防、被动防护、应急电源及关键公用工程。同型号设备因承担的安全功能不同，可能只有其中一台属于SCE。</p>
+<h2>SCE管理的完整链条</h2>
+<p>识别清单只是起点。成熟管理应形成：</p><p class="note"><strong>重大事故场景 → 关键屏障 → SCE → 性能标准 → 检验测试与维护 → 缺陷和逾期管理 → 有效性验证</strong></p>
+<p>性能标准至少说明功能性、可用性与可靠性、生存能力，以及供电、仪表风、通信、共用取压口等相互作用和依赖。若说不清设备防什么事故、要达到什么性能、如何证明仍有效，就不能算真正的SCE管理。</p>
+
+<h2>Safety Device Override是什么</h2>
+<p>Override/Bypass、Inhibit、Force、临时跨线、Manual Override、Isolation或Suppression，都会使安全功能全部或部分退出、失效或降级。其本质不是DCS多了一个旁路符号，而是HAZOP、LOPA或风险评估中原本有效的一层保护可能已经不可用。</p>
+<table class="matrix"><thead><tr><th>维度</th><th>SCE管理</th><th>Safety Device Override</th></tr></thead><tbody><tr><td>核心问题</td><td>哪些要素对重大事故风险至关重要</td><td>安全功能临时退出后能否继续运行</td></tr><tr><td>属性</td><td>关键性分类与全生命周期完整性</td><td>临时异常状态和实时风险管理</td></tr><tr><td>重点</td><td>性能标准、测试、维护和有效性</td><td>风险重评、授权、补偿、交接和复位</td></tr><tr><td>输出</td><td>SCE清单、性能标准、维护测试计划</td><td>旁路许可证、在役清单、恢复记录</td></tr></tbody></table>
+<p><strong>SCE问“你是谁”；Override问“你现在还能不能履行职责”。</strong>两张清单有交集，但不能互相替代。被动防火、围堰等SCE没有软件旁路按钮，却可能发生Impairment；普通人员防护联锁可能需要Override管理，却未必属于重大事故SCE。</p>
+
+<h2>联锁旁路后能否继续运行：七步判断</h2>
+<ol class="steps"><li><strong>写清安全功能：</strong>不只写“PT-101校验”，还要说明检测的偏差、触发动作和防止的后果。</li><li><strong>确认SCE和保护层信用：</strong>若功能在LOPA中计入风险降低，旁路时应视为不可用或按实际降级能力重新评价。</li><li><strong>确认完整影响：</strong>检查2oo3、1oo2表决、诊断覆盖率、共因失效和最终执行元件，不能仅按退出设备数量判断。</li><li><strong>评价剩余风险：</strong>考虑控制失效、人员误操作、冷却中断等进一步故障，确认剩余屏障能否阻止重大事故。</li><li><strong>设置可验证的补偿措施：</strong>降温降压、减少库存或负荷、暂停高风险操作、启用独立备用保护、缩短旁路时限并准备立即停车。</li><li><strong>授权、标识、交接和倒计时：</strong>记录场景、风险等级、批准人、开始时间、最长有效期和恢复责任人；延期必须重新评估。</li><li><strong>恢复与功能验证：</strong>取消旁路和强制、拆除临时跨线、核对设定值与阀位，完成必要的功能测试或Proof Test后关闭许可证。</li></ol>
+<div class="warning"><strong>“安排一个人盯着”不天然等于独立保护层。</strong>还必须验证报警独立性、发现和响应时间、人工动作的清晰度、人员是否持续可用，以及其他任务是否会造成干扰。</div>
+
+<h2>反应器高高压力联锁案例</h2>
+<p>若高高压力SIF负责关闭进料阀并停泵，旁路传感器前应确认SIF是完全失效还是降级、表决结构如何变化、原LOPA信用还能保留多少、备用显示是否独立，以及人员是否有足够响应时间。若降负荷和替代检测仍不能把风险降至企业标准，就应停车校验。</p>
+<h2>企业需要两条闭环和一个状态看板</h2>
+<ul><li><strong>SCE完整性闭环：</strong>场景—屏障—清单—性能标准—检验维护—缺陷整改—有效性验证。</li><li><strong>Override风险闭环：</strong>申请—影响分析—剩余风险—补偿措施—分级授权—监控交接—恢复测试—关闭。</li><li><strong>实时状态看板：</strong>在役旁路、失效或降级SCE、超期事项、同一场景多屏障同时失效、即将到期任务。</li></ul>
+
+<div class="related"><strong>继续学习：</strong><ul><li><a href="bowtie-risk-analysis-barrier-management.html">BowTie屏障管理：识别关键屏障和失效升级因素</a></li><li><a href="lopa-analysis-sil-determination-guide.html">LOPA与SIL定级：保护层信用如何评价</a></li><li><a href="pssr-pre-startup-safety-review-checklist.html">PSSR：恢复运行前如何验证安全条件</a></li></ul></div>
+<section class="cta"><h2>把SCE与旁路逻辑用于企业培训</h2><p>外企EHS培训库提供过程安全、HAZOP、LOPA、SIL和屏障管理的培训材料与讲解框架。</p><a href="../products/training.html?utm_source=seo&amp;utm_medium=article&amp;utm_campaign=training_library&amp;utm_content=sce-safety-device-override-bypass-management-guide">查看过程安全培训资料</a></section>
+<div class="sources"><strong>权威依据：</strong><ul><li><a href="https://www.hse.gov.uk/offshore/assets/docs/operations-notice-84-scr-2015-scr-2005.pdf" target="_blank" rel="noopener">英国HSE：SCE/SECE定义与适用范围</a></li><li><a href="https://www.hse.gov.uk/comah/sragtech/techmeascontsyst.htm" target="_blank" rel="noopener">英国HSE：安全相关控制系统、Override管理与维修后验证</a></li><li><a href="https://www.hse.gov.uk/pubns/priced/hsg238.pdf" target="_blank" rel="noopener">英国HSE HSG238：维修期间旁路与等效安全措施</a></li></ul><p>不同集团的术语、范围和审批等级可能不同，执行时应结合适用法规、设计依据、风险评估和企业程序。原文首发：<a href="https://mp.weixin.qq.com/s/et740P0frYzWl-8BesAo8g">微信公众号 EHS-SIL</a>。</p></div>
+</article></main><footer>© 2026 EHS-SIL · 外企EHS实操指南</footer></body></html>
