@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>哪些安全设施失效必须开Override Permit？9类适用范围与判断清单 | EHS-SIL</title>
+<meta name="description" content="Override Permit不只管DCS联锁旁路。本文用四问判断法梳理SIS、安全阀、消防、机械防护、冲淋洗眼、护栏、防火堤、关键公用工程等9类安全设施失效的管理边界。">
+<meta name="keywords" content="Override Permit,Override Safety Device,安全设施旁路,安全系统失效,Safety System Impairment,安全设施绕开许可证,Defeated Safety Device">
+<link rel="canonical" href="https://ehs-sil.com/articles/override-permit-safety-device-impairment-scope.html">
+<meta property="og:title" content="哪些安全设施失效必须开Override Permit？9类适用范围与判断清单"><meta property="og:description" content="从DCS联锁扩展到安全阀、消防、机械防护、冲淋洗眼、防火堤和关键公用工程。"><meta property="og:url" content="https://ehs-sil.com/articles/override-permit-safety-device-impairment-scope.html"><meta property="og:type" content="article"><meta property="og:site_name" content="EHS-SIL · 外企EHS实操指南">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"哪些安全设施失效必须开Override Permit？9类适用范围与判断清单","description":"用四问判断法和九类清单界定Override Permit与Safety System Impairment的适用范围。","datePublished":"2026-08-23","dateModified":"2026-08-23","author":{"@type":"Person","name":"Thunder"},"publisher":{"@type":"Organization","name":"EHS-SIL"},"mainEntityOfPage":"https://ehs-sil.com/articles/override-permit-safety-device-impairment-scope.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"只有DCS联锁旁路才需要开Override Permit吗？","acceptedAnswer":{"@type":"Answer","text":"不是。判断核心是事故预防或减缓功能是否在危险仍存在时被削弱。安全阀、消防系统、机械防护、冲淋洗眼、固定护栏、防火堤和关键公用工程都可能需要进入Override或Impairment管理。"}},{"@type":"Question","name":"安全设施故障但没人主动旁路，也要管理吗？","acceptedAnswer":{"@type":"Answer","text":"要。只要测试或检查发现安全功能已经达不到设计性能，且被保护的危险仍存在，就应进入同等的缺陷、降级或Safety System Impairment管理。"}},{"@type":"Question","name":"开了Override Permit就能继续运行吗？","acceptedAnswer":{"@type":"Answer","text":"不能。许可证只记录受控决策，不能豁免法规或接受不可接受风险。若失去最后一道必要保护且没有经验证的等效保护，应降压、停料、停止相关作业或停车。"}}]}</script>
+<link rel="stylesheet" href="../css/style.css"><style>*{box-sizing:border-box}body{margin:0;background:#f4f0e8;color:#263238;font-family:'Helvetica Neue',Arial,'Noto Sans SC',sans-serif;line-height:1.8}header,footer{background:#0d2836;color:#fff;padding:18px 24px}header a{color:#fff;text-decoration:none;font-weight:700}.wrap{max-width:920px;margin:38px auto;padding:0 22px}.paper{background:#fff;padding:44px;border-radius:12px;box-shadow:0 8px 30px rgba(13,40,54,.08)}h1{font-size:34px;line-height:1.35;color:#0d2836}h2{color:#0d5967;margin-top:38px;border-bottom:1px solid #d8e3e3;padding-bottom:8px}.lead{font-size:18px;color:#405158}.warning{background:#fff3df;border-left:5px solid #c77a13;padding:18px 22px;margin:24px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid #d9dfdf;border-radius:8px;padding:18px}.card h3{margin-top:0;color:#0d5967}.matrix{width:100%;border-collapse:collapse}.matrix th,.matrix td{border:1px solid #d9dfdf;padding:10px;text-align:left;vertical-align:top}.matrix th{background:#eaf4f2}.related{background:#f5f3ed;border-radius:8px;padding:18px 22px}.cta{margin-top:36px;background:#0d2836;color:#fff;padding:28px;border-radius:10px}.cta a{display:inline-block;background:#e4b65b;color:#0d2836;padding:11px 18px;border-radius:6px;text-decoration:none;font-weight:700}.sources{font-size:14px;border-top:1px solid #ddd;margin-top:30px;padding-top:20px}.paper a{color:#0d5967}@media(max-width:700px){.paper{padding:26px 20px}h1{font-size:27px}.grid{grid-template-columns:1fr}.matrix{font-size:14px}}</style><script src="../js/baidu-analytics.js?v=1.0.0"></script></head>
+<body><header><a href="../index.html">EHS-SIL · 外企EHS实操指南</a></header><main class="wrap"><article class="paper">
+<p><a href="../topics/process-safety.html">← 返回工艺安全专题</a></p><p style="color:#6c7a80">工艺安全 · Override Permit适用范围 · 更新于2026-08-23</p>
+<h1>哪些安全设施失效必须开Override Permit？9类适用范围与判断清单</h1>
+<p class="lead">Override Permit管的不是DCS上的一个按钮，而是安全保护能力下降后的危险窗口。安全阀、消防系统、机器护罩、冲淋洗眼、固定护栏、防火堤和关键公用工程，都可能属于管理范围。</p>
+<div class="warning"><strong>先说结论：</strong>用于预防或减轻事故的技术保护功能，在危险仍存在时被临时削弱、停用或失效，原则上就应进入受控的Override、Impairment或同等管理流程。许可证不能豁免法规，也不能批准不可接受风险。</div>
+
+<h2>Override、Impairment与Defeat有什么区别</h2>
+<p><strong>Safety Device</strong>是针对明确事故场景承担预防、控制或减缓功能的技术措施，既可能自动动作，也可能是被动屏障。<strong>Override</strong>是经过风险评价、授权、补偿、监控和恢复安排的受控降级；未经授权、偷偷绕开或失效后无人管理的状态属于<strong>Defeated Safety Device</strong>。</p>
+
+<h2>是否需要许可证：先问四个问题</h2>
+<ol><li><strong>是否承担风险降低功能：</strong>它防止或减轻的事故是什么？</li><li><strong>功能是否被削弱：</strong>包括Bypass、Inhibit、Force、Jumper、Isolation、停用、遮挡、拆除、堵塞或自然故障。</li><li><strong>危险是否仍存在：</strong>设备是否仍带压、带料、带电，人员是否仍暴露？</li><li><strong>是否已有完整流程覆盖：</strong>经批准SOP、完整MOC、经验证等效冗余或彻底消除危险的LOTO是否真实满足？</li></ol>
+
+<h2>九类常见安全设施失效</h2><div class="grid">
+<section class="card"><h3>1. 报警、联锁、跳车与SIS</h3><p>承担安全信用的报警、Permissive、Trip、SIS/SIF、ESD、火焰保护及其传感器、逻辑和最终元件。不是所有普通工艺报警都自动纳入。</p></section>
+<section class="card"><h3>2. 压力保护与紧急泄放</h3><p>PSV、爆破片、呼吸阀、HIPPS、火炬、洗涤器、事故罐、紧急泄压和关键切断。唯一超压保护失效时，许可证不能代替停车。</p></section>
+<section class="card"><h3>3. 火气探测与主动消防</h3><p>烟感、温感、火焰和气体探测，F&amp;G逻辑，喷淋、雨淋、泡沫、消防泵、水罐、环网和防排烟联动。</p></section>
+<section class="card"><h3>4. 机械、电气与点火源保护</h3><p>防护罩、防护门联锁、光幕、双手按钮、急停、安全制动、超速限位、电气保护、防爆通风和局部排风联锁。</p></section>
+<section class="card"><h3>5. 冲淋洗眼与救生设施</h3><p>应急冲淋、洗眼、紧急广播、应急照明、疏散、逃生呼吸和去污设施。替代设施必须真正可达并满足能力。</p></section>
+<section class="card"><h3>6. 防坠落与人员隔离</h3><p>固定护栏、孔洞盖板、生命线、锚点、危险区围栏、车辆行人隔离和防坠物设施。</p></section>
+<section class="card"><h3>7. 二次围堵与被动防护</h3><p>防火堤、围堰、事故池、导流排水、防火墙、防爆墙、防火涂层、防火门、封堵和防撞结构。</p></section>
+<section class="card"><h3>8. 关键公用工程</h3><p>SIS/ESD/F&amp;G的UPS与应急电源、仪表风、液压、氮气、紧急冷却、惰化、吹扫、伴热和关键通信。</p></section>
+<section class="card"><h3>9. 环境与重大事故应急</h3><p>尾气应急处理、事故废水截流、雨污切换、防溢流、泄漏监测、自动切断及重大事故警报封控。</p></section>
+</div>
+
+<h2>哪些情况可能不需单独开证</h2>
+<ul><li>经批准SOP已经明确旁路条件、时间、监控和恢复；</li><li>经计算和验证的冗余仍完整满足原安全功能；</li><li>LOTO已彻底消除危险，并保证先恢复保护再重新送能；</li><li>完整的临时或永久MOC已经覆盖技术依据、风险、期限和批准；</li><li>故障被立即完全修复和验证，另按缺陷或事件流程记录。</li></ul>
+
+<h2>三类情况不能靠许可证批准过去</h2>
+<ol><li><strong>违反法规、许可或强制条件：</strong>企业内部许可证不能创造豁免。</li><li><strong>失去最后一道必要保护：</strong>无等效独立保护时，应停机、停产或停止相关作业。</li><li><strong>长期或反复旁路：</strong>应转入MOC、PHA复审和设计整改，而不是不断续签。</li></ol>
+
+<h2>建立工厂自己的Override适用性矩阵</h2>
+<table class="matrix"><thead><tr><th>字段</th><th>需要回答的问题</th></tr></thead><tbody><tr><td>事故场景与安全功能</td><td>设施防范什么事故，必须完成什么动作？</td></tr><tr><td>失效方式与立即行动</td><td>旁路、强制、隔离、拆除或故障；何时必须停车？</td></tr><tr><td>等级与补偿措施</td><td>风险分级是什么，如何降低触发概率或建立替代保护？</td></tr><tr><td>期限与审批</td><td>允许多久，何时升级MOC，哪些专业必须参与？</td></tr><tr><td>恢复验证</td><td>如何证明安全功能已恢复，谁负责关闭？</td></tr></tbody></table>
+
+<div class="related"><strong>与上一篇的分工：</strong><ul><li><a href="sce-safety-device-override-bypass-management-guide.html">联锁旁路后装置能否继续运行：七步剩余风险判断</a></li><li><a href="bowtie-risk-analysis-barrier-management.html">BowTie：从事故场景识别关键屏障</a></li><li><a href="permit-to-work-ptw-special-work-management-guide.html">PTW：高风险作业许可的审批和关闭</a></li></ul></div>
+<section class="cta"><h2>把判断边界变成现场可执行清单</h2><p>外企EHS工具箱提供可编辑的安全管理模板、检查表和许可管理工具。进入后优先查找Override适用性矩阵、旁路许可证或安全设施缺陷台账。</p><a href="../products/toolbox.html?utm_source=seo&amp;utm_medium=article&amp;utm_campaign=toolbox&amp;utm_content=override-permit-safety-device-impairment-scope">查看外企EHS工具箱</a></section>
+<div class="sources"><strong>权威依据：</strong><ul><li><a href="https://www.osha.gov/chemical-executive-order/psm-terminology" target="_blank" rel="noopener">OSHA：PSM机械完整性覆盖泄压、ESD、报警、联锁等关键设备</a></li><li><a href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.212" target="_blank" rel="noopener">OSHA 1910.212：机械防护要求</a></li><li><a href="https://www.osha.gov/laws-regs/standardinterpretations/2007-02-27" target="_blank" rel="noopener">OSHA 1910.151(c)：腐蚀性暴露区域的紧急冲洗设施</a></li><li><a href="https://www.hse.gov.uk/agriculture/topics/machinery/safe-use-4.htm" target="_blank" rel="noopener">英国HSE：防护装置应有效且不易被绕开</a></li></ul><p>Override、Impairment的术语、时限和审批等级因法规、保险要求和集团程序而异，应结合本厂风险评估与适用要求执行。原文首发：<a href="https://mp.weixin.qq.com/s/MB6EhXWXZNxZsQdCeXHEsg">微信公众号 EHS-SIL</a>。</p></div>
+</article></main><footer>© 2026 EHS-SIL · 外企EHS实操指南</footer></body></html>
