@@ -7,12 +7,20 @@ export function escapeText(value){return String(value??'').replace(/[&<>"']/g,c=
 export function cleanCustomRole(value){return String(value||'').replace(/[<>]/g,'').replace(/\s+/g,' ').trim().slice(0,30);}
 
 export function matchRule(rule,profile){
-  const industries=list(rule.industries),risks=list(profile.risks);
+  const industries=list(rule.industries),risks=list(profile.risks),statuses=list(profile.personnelStatuses);
   const riskAny=list(rule.risk_tags_any),riskAll=list(rule.risk_tags_all),riskNone=list(rule.risk_tags_none);
   if(industries.length&&!industries.includes(profile.industry))return false;
-  if(riskAll.length&&!riskAll.every(id=>risks.includes(id)))return false;
-  if(riskAny.length&&!riskAny.some(id=>risks.includes(id)))return false;
-  if(riskNone.length&&riskNone.some(id=>risks.includes(id)))return false;
+  const applicability=profile.applicability||{};
+  const status=id=>Object.hasOwn(applicability,id)?applicability[id]:(risks.includes(id)?'yes':'unknown');
+  if(riskAll.length&&!riskAll.every(id=>status(id)==='yes'))return false;
+  if(riskAny.length&&!riskAny.some(id=>status(id)==='yes'))return false;
+  if(riskNone.length&&!riskNone.every(id=>status(id)==='no'))return false;
+  const personnelAny=list(rule.personnel_statuses_any);
+  if(personnelAny.length&&!personnelAny.some(id=>statuses.includes(id)))return false;
+  const specialModes=rule.special_work_modes||{};
+  for(const [riskId,allowed]of Object.entries(specialModes)){
+    if(status(riskId)==='yes'&&!list(allowed).includes(profile.specialWorkModes?.[riskId]))return false;
+  }
   return true;
 }
 
@@ -20,8 +28,10 @@ function requirementFromRule(rule,role,topic){
   return {
     role_id:role.id,role_name:role.name,topic_id:rule.topic_id,topic,
     requirement_level:rule.requirement_level,priority:rule.priority,
+    basis_kinds:[rule.basis_kind],
     reasons:[rule.reason],rule_ids:[rule.rule_id],source_ids:[...list(rule.source_ids)],
     training_triggers:[rule.training_trigger],frequencies:[rule.frequency],
+    drill_frequencies:[rule.drill_frequency],
     minimum_durations:[rule.minimum_duration],competence_levels:[rule.competence_level],
     assessment_requirements:[rule.assessment_requirement],record_requirements:[rule.record_requirement],
     internal_review_required:rule.internal_review_required!==false
@@ -34,8 +44,10 @@ function mergeRequirement(existing,rule){
   existing.reasons=unique([...existing.reasons,rule.reason]);
   existing.rule_ids=unique([...existing.rule_ids,rule.rule_id]);
   existing.source_ids=unique([...existing.source_ids,...list(rule.source_ids)]);
+  existing.basis_kinds=unique([...existing.basis_kinds,rule.basis_kind]);
   existing.training_triggers=unique([...existing.training_triggers,rule.training_trigger]);
   existing.frequencies=unique([...existing.frequencies,rule.frequency]);
+  existing.drill_frequencies=unique([...existing.drill_frequencies,rule.drill_frequency]);
   existing.minimum_durations=unique([...existing.minimum_durations,rule.minimum_duration]);
   existing.competence_levels=unique([...existing.competence_levels,rule.competence_level]);
   existing.assessment_requirements=unique([...existing.assessment_requirements,rule.assessment_requirement]);
@@ -48,6 +60,9 @@ export function generateMatrix(profile,data){
   const topicMap=new Map(data.topics.map(x=>[x.topic_id,x]));
   const sourceMap=new Map(data.sources.map(x=>[x.source_id,x]));
   const roleIds=unique(list(profile.roles)).filter(id=>roleMap.has(id));
+  const keyAttributes=list(data.risk_tags).filter(x=>x.applicability_mode==='tri_state');
+  const applicabilityRecords=keyAttributes.map(item=>({id:item.id,name:item.name,status:profile.applicability?.[item.id]||'unknown',question:item.diagnostic_question||item.description||''}));
+  const pendingSpecialChecks=list(data.special_work_checks).filter(check=>list(profile.risks).includes(check.risk_id)&&check.trigger_roles.some(id=>roleIds.includes(id))&&!profile.specialWorkModes?.[check.risk_id]);
   const out=new Map();
   for(const rule of data.rules){
     if(!matchRule(rule,profile))continue;
@@ -62,7 +77,7 @@ export function generateMatrix(profile,data){
   }
   const requirements=[...out.values()].map(item=>{
     const cleaned={...item};
-    for(const key of ['training_triggers','frequencies','minimum_durations','competence_levels','assessment_requirements','record_requirements'])cleaned[key]=unique(cleaned[key]);
+    for(const key of ['basis_kinds','training_triggers','frequencies','drill_frequencies','minimum_durations','competence_levels','assessment_requirements','record_requirements'])cleaned[key]=unique(cleaned[key]);
     cleaned.sources=cleaned.source_ids.map(id=>sourceMap.get(id)).filter(Boolean);
     cleaned.source_statuses=unique(cleaned.sources.map(source=>source.status));
     return cleaned;
@@ -71,14 +86,18 @@ export function generateMatrix(profile,data){
   if(custom){
     roleIds.push('custom');
     const topic=topicMap.get('job_sop'),source=sourceMap.get('risk_review');
-    requirements.push({role_id:'custom',role_name:custom,topic_id:'job_sop',topic,requirement_level:'recommended',priority:'medium',reasons:['自定义岗位需要结合实际职责、风险和操作规程建立培训要求。'],rule_ids:['CUSTOM-REVIEW'],source_ids:['risk_review'],sources:source?[source]:[],source_statuses:['needs_review'],training_triggers:['上岗前及岗位、风险或规程变化时'],frequencies:['上岗/变化触发'],minimum_durations:[],competence_levels:['practical'],assessment_requirements:['岗位知识与实操确认'],record_requirements:['培训与岗位授权记录'],internal_review_required:true});
+    requirements.push({role_id:'custom',role_name:custom,topic_id:'job_sop',topic,requirement_level:'recommended',priority:'medium',basis_kinds:['enterprise_risk_control'],reasons:['自定义岗位需要结合实际职责、风险和操作规程建立培训要求。'],rule_ids:['CUSTOM-REVIEW'],source_ids:['risk_review'],sources:source?[source]:[],source_statuses:['needs_review'],training_triggers:['上岗前及岗位、风险或规程变化时'],frequencies:['上岗/变化触发'],drill_frequencies:[],minimum_durations:[],competence_levels:['practical'],assessment_requirements:['岗位知识与实操确认'],record_requirements:['培训与岗位授权记录'],internal_review_required:true});
   }
   requirements.sort((a,b)=>a.role_name.localeCompare(b.role_name,'zh-CN')||LEVEL_RANK[b.requirement_level]-LEVEL_RANK[a.requirement_level]||a.topic.title_zh.localeCompare(b.topic.title_zh,'zh-CN'));
   return {
     profile:{...profile,roles:roleIds,customRole:custom},requirements,
     roles:roleIds.map(id=>id==='custom'?{id,name:custom}:roleMap.get(id)).filter(Boolean),
     topics:[...new Map(requirements.map(x=>[x.topic_id,x.topic])).values()],
-    generated_at:new Date().toISOString(),version:data.version||'0.2.0',verified_at:data.verified_at||null
+    applicability_records:applicabilityRecords,
+    pending_applicability:applicabilityRecords.filter(x=>x.status==='unknown'),
+    pending_special_checks:pendingSpecialChecks,
+    document_status:applicabilityRecords.some(x=>x.status==='unknown')||pendingSpecialChecks.length?'draft_pending_confirmation':'confirmed_draft',
+    generated_at:new Date().toISOString(),version:data.version||'0.3.0',verified_at:data.verified_at||null
   };
 }
 

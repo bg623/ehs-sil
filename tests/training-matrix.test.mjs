@@ -9,13 +9,18 @@ import{buildTrainingWorkbook}from'../js/training-matrix-export.mjs';
 
 const require=createRequire(import.meta.url),ExcelJS=require('../vendor/exceljs.min.js');
 const root=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/training-matrix/catalog-v0.2.json'),'utf8'));
+const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/training-matrix/catalog-v0.3.json'),'utf8'));
 const data={...catalog,risks:catalog.risk_tags};
-const profile=(overrides={})=>({industry:'manufacturing',roles:['operator'],risks:[],customRole:'',...overrides});
+const keyAttributes=data.risks.filter(x=>x.applicability_mode==='tri_state').map(x=>x.id);
+const profile=(overrides={})=>{
+  const inputRisks=overrides.risks||[],applicability=Object.fromEntries(keyAttributes.map(id=>[id,'no']));
+  for(const id of inputRisks)if(keyAttributes.includes(id))applicability[id]='yes';
+  return{industry:'manufacturing',roles:['operator'],personnelStatuses:[],risks:inputRisks.filter(id=>!keyAttributes.includes(id)),applicability,specialWorkModes:{},customRole:'',...overrides,applicability:{...applicability,...overrides.applicability},risks:inputRisks.filter(id=>!keyAttributes.includes(id))};
+};
 
-test('V0.2 数据规模、唯一 ID 与交叉引用完整',()=>{
-  assert.equal(data.version,'0.2.0');assert.equal(data.verified_at,'2026-08-19');
-  assert.ok(data.industries.length>=5);assert.ok(data.roles.length>=30);assert.ok(data.risks.length>=38);
+test('V0.3 数据规模、唯一 ID 与交叉引用完整',()=>{
+  assert.equal(data.version,'0.3.0');assert.equal(data.verified_at,'2026-08-25');
+  assert.ok(data.industries.length>=5);assert.ok(data.roles.length>=31);assert.equal(data.personnel_statuses.length,5);assert.ok(data.risks.length>=40);
   assert.ok(data.topics.length>=70);assert.ok(data.sources.length>=40);assert.ok(data.rules.length>=80);
   for(const set of [data.industries,data.roles,data.risks,data.topics,data.sources,data.rules]){
     const ids=set.map(item=>item.rule_id||item.source_id||item.topic_id||item.id);
@@ -24,6 +29,7 @@ test('V0.2 数据规模、唯一 ID 与交叉引用完整',()=>{
   const roles=new Set(data.roles.map(x=>x.id)),risks=new Set(data.risks.map(x=>x.id)),topics=new Set(data.topics.map(x=>x.topic_id)),sources=new Map(data.sources.map(x=>[x.source_id,x]));
   for(const rule of data.rules){
     rule.roles_any.forEach(id=>assert.ok(roles.has(id),`${rule.rule_id} role ${id}`));
+    rule.personnel_statuses_any.forEach(id=>assert.ok(data.personnel_statuses.some(x=>x.id===id),`${rule.rule_id} personnel status ${id}`));
     [...rule.risk_tags_any,...rule.risk_tags_all,...rule.risk_tags_none].forEach(id=>assert.ok(risks.has(id),`${rule.rule_id} risk ${id}`));
     assert.ok(topics.has(rule.topic_id),`${rule.rule_id} topic`);
     rule.source_ids.forEach(id=>assert.ok(sources.has(id),`${rule.rule_id} source ${id}`));
@@ -41,9 +47,10 @@ test('法规版本切换与即将实施状态正确分离',()=>{
   for(const source of data.sources)assert.match(source.official_url,/^https:\/\//);
 });
 
-test('risk_tags_none 排除逻辑生效',()=>{
+test('risk_tags_none 仅把明确不适用作为排除证据',()=>{
   const rule={industries:[],risk_tags_all:[],risk_tags_any:[],risk_tags_none:['hazchem_high_risk_unit']};
   assert.equal(matchRule(rule,profile()),true);
+  assert.equal(matchRule(rule,profile({applicability:{hazchem_high_risk_unit:'unknown'}})),false);
   assert.equal(matchRule(rule,profile({risks:['hazchem_high_risk_unit']})),false);
 });
 
@@ -54,11 +61,12 @@ test('一般与高危单位负责人学时不会同时误配',()=>{
   assert.deepEqual(highRisk.minimum_durations,['初次不少于48学时；每年再培训不少于16学时']);
 });
 
-test('一般与高危单位新员工学时准确区分',()=>{
-  const general=generateMatrix(profile({roles:['newcomer']}),data).requirements;
+test('一般与高危单位新员工学时准确区分并绑定实际岗位',()=>{
+  assert.ok(!data.roles.some(x=>x.id==='newcomer'));
+  const general=generateMatrix(profile({roles:['operator'],personnelStatuses:['new_hire']}),data).requirements;
   assert.ok(general.some(x=>x.topic_id==='induction_general'&&x.minimum_durations.includes('岗前安全培训不少于24学时')));
   assert.ok(!general.some(x=>x.topic_id==='induction_high_risk'));
-  const highRisk=generateMatrix(profile({roles:['newcomer'],risks:['hazchem_high_risk_unit']}),data).requirements;
+  const highRisk=generateMatrix(profile({roles:['operator'],personnelStatuses:['new_hire'],risks:['hazchem_high_risk_unit']}),data).requirements;
   assert.ok(highRisk.some(x=>x.topic_id==='induction_high_risk'&&x.minimum_durations.includes('岗前不少于72学时；每年再培训不少于20学时')));
   assert.ok(!highRisk.some(x=>x.topic_id==='induction_general'));
 });
@@ -98,22 +106,73 @@ test('自定义岗位防注入且页面不采集个人信息',()=>{
   assert.equal(cleanCustomRole('<img onerror=alert(1)> 公用工程'),'img onerror=alert(1) 公用工程');
   const html=fs.readFileSync(path.join(root,'tools/training-matrix.html'),'utf8');
   for(const bad of ['name="身份证"','name="手机号"','name="证件上传"','name="员工姓名"'])assert.ok(!html.includes(bad));
-  assert.ok(html.includes('请勿输入真实人员'));assert.ok(html.includes('法规版本与适用边界'));assert.ok(html.includes('即将实施标准与国际实践均单独标注'));
+  assert.ok(html.includes('请勿输入真实人员'));assert.ok(html.includes('法规版本与适用边界'));assert.ok(html.includes('即将实施标准与国际实践不作为当前中国法定依据'));
 });
 
 test('页面、导出、打印与分析事件契约存在',()=>{
   const exporter=fs.readFileSync(path.join(root,'js/training-matrix-export.mjs'),'utf8'),app=fs.readFileSync(path.join(root,'js/training-matrix-app.mjs'),'utf8'),html=fs.readFileSync(path.join(root,'tools/training-matrix.html'),'utf8'),css=fs.readFileSync(path.join(root,'css/training-matrix.css'),'utf8'),analytics=fs.readFileSync(path.join(root,'js/analytics.js'),'utf8');
   for(const name of ['岗位培训矩阵','培训要求明细','年度培训计划','依据与使用说明'])assert.ok(exporter.includes(name));
   for(const field of ['最低学时','目标能力','依据层级','依据状态','实施日期','记录证据'])assert.ok(exporter.includes(field));
-  assert.ok(app.includes('catalog-v0.2.json'));assert.ok(html.includes('vendor/exceljs.min.js'));assert.ok(css.includes('@media print'));assert.ok(css.includes('@media(max-width:720px)'));
+  assert.ok(app.includes('catalog-v0.3.json'));assert.ok(html.includes('vendor/exceljs.min.js'));assert.ok(css.includes('@media print'));assert.ok(css.includes('@media(max-width:720px)'));
   for(const event of ['training_matrix_start','training_profile_complete','training_matrix_generated','training_excel_export','training_pdf_print','training_reset','training_toolbox_click','training_library_click'])assert.ok(analytics.includes(event));
 });
 
-test('真实 XLSX 可解析并保留四个指定工作表',async()=>{
+test('普通生产岗位无专项风险也命中岗位、全员消防和全员应急基线',()=>{
+  const topics=generateMatrix(profile(),data).requirements.map(x=>x.topic_id);
+  for(const topic of ['job_sop','fire_all','emergency_general'])assert.ok(topics.includes(topic),topic);
+  const managerTopics=generateMatrix(profile({roles:['principal']}),data).requirements.map(x=>x.topic_id);
+  for(const topic of ['fire_all','emergency_general'])assert.ok(managerTopics.includes(topic),`principal ${topic}`);
+});
+
+test('企业关键属性待确认时只生成待确认底稿且不会套用一般或高危学时',()=>{
+  const result=generateMatrix(profile({roles:['operator'],personnelStatuses:['new_hire'],applicability:{hazchem_high_risk_unit:'unknown'}}),data);
+  assert.equal(result.document_status,'draft_pending_confirmation');
+  assert.ok(result.pending_applicability.some(x=>x.id==='hazchem_high_risk_unit'));
+  assert.ok(!result.requirements.some(x=>['induction_general','induction_high_risk'].includes(x.topic_id)));
+});
+
+test('维修人员加动火先确认身份，只有本人实施才产生焊接取证要求',()=>{
+  const base={roles:['maintenance'],risks:['hot_work']};
+  const pending=generateMatrix(profile(base),data);
+  assert.ok(pending.pending_special_checks.some(x=>x.risk_id==='hot_work'));
+  assert.ok(!pending.requirements.some(x=>x.topic_id==='hot_work_performer'));
+  const affected=generateMatrix(profile({...base,specialWorkModes:{hot_work:'affected'}}),data);
+  assert.ok(!affected.requirements.some(x=>x.topic_id==='hot_work_performer'));
+  const performer=generateMatrix(profile({...base,specialWorkModes:{hot_work:'perform'}}),data);
+  const requirement=performer.requirements.find(x=>x.topic_id==='hot_work_performer');
+  assert.ok(requirement);assert.ok(requirement.basis_kinds.includes('statutory_qualification'));
+  assert.ok(requirement.frequencies.some(x=>x.includes('有效期6年')));
+});
+
+test('普通、消防重点单位和公众聚集场所培训频次分层且与演练分列',()=>{
+  const ordinary=generateMatrix(profile(),data).requirements.find(x=>x.topic_id==='fire_all');
+  assert.ok(ordinary.frequencies.some(x=>x.includes('每年至少一次')));assert.ok(ordinary.drill_frequencies.length);
+  const key=generateMatrix(profile({risks:['fire_key_unit']}),data).requirements.find(x=>x.topic_id==='fire_key_all');
+  assert.deepEqual(key.frequencies,['每年至少一次']);assert.ok(key.drill_frequencies.some(x=>x.includes('每半年')));
+  const publicPlace=generateMatrix(profile({risks:['public_gathering_place']}),data).requirements.find(x=>x.topic_id==='fire_public_all');
+  assert.deepEqual(publicPlace.frequencies,['至少每半年一次']);
+});
+
+test('规则均显式记录依据性质且即将实施来源不能单独支撑当前 mandatory',()=>{
+  const sourceMap=new Map(data.sources.map(x=>[x.source_id,x]));
+  const allowed=new Set(['explicit_training_clause','statutory_qualification','mandatory_standard','statutory_duty_inference','enterprise_risk_control','international_practice']);
+  for(const rule of data.rules){assert.ok(allowed.has(rule.basis_kind),rule.rule_id);if(rule.requirement_level==='mandatory')assert.ok(rule.source_ids.some(id=>sourceMap.get(id)?.status==='effective'),`${rule.rule_id} lacks effective source`);}
+});
+
+test('页面不再把待核验要求称为真实培训缺口',()=>{
+  const html=fs.readFileSync(path.join(root,'tools/training-matrix.html'),'utf8'),app=fs.readFileSync(path.join(root,'js/training-matrix-app.mjs'),'utf8');
+  assert.ok(html.includes('待核验要求清单'));assert.ok(!html.includes('培训缺口与行动清单'));
+  assert.ok(app.includes('不代表已认定违法、已完成培训或存在培训缺口'));
+});
+
+test('真实 XLSX 可解析并保留适用性判定和原四个工作表',async()=>{
   const state=profile({industry:'chemical',roles:['principal','operator'],risks:['hazchem_high_risk_unit','chemicals','process_operation'],customRole:''}),result=generateMatrix(state,data),built=buildTrainingWorkbook(ExcelJS,result,data,state,'2026-08-19'),buffer=await built.workbook.xlsx.writeBuffer();
   assert.equal(Buffer.from(buffer).subarray(0,2).toString(),'PK');
   const reread=new ExcelJS.Workbook();await reread.xlsx.load(buffer);
-  assert.deepEqual(reread.worksheets.map(x=>x.name),['岗位培训矩阵','培训要求明细','年度培训计划','依据与使用说明']);
+  assert.deepEqual(reread.worksheets.map(x=>x.name),['岗位培训矩阵','培训要求明细','适用性判定','年度培训计划','依据与使用说明']);
   assert.ok(reread.getWorksheet('培训要求明细').getRow(1).values.includes('最低学时'));
+  assert.ok(reread.getWorksheet('培训要求明细').getRow(1).values.includes('依据性质'));
+  assert.ok(reread.getWorksheet('培训要求明细').getRow(1).values.includes('官方链接'));
+  assert.equal(reread.getWorksheet('适用性判定').rowCount,keyAttributes.length+1);
   assert.ok(reread.getWorksheet('依据与使用说明').rowCount>40);assert.ok(buffer.length>12000);
 });
