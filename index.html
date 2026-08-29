@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="EHS-SIL · 外企EHS工具与成长工作台">
     <meta name="twitter:description" content="遇到EHS问题，找到正确方法、专业工具和可落地资源。">
     <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-platform.png">
-    <link rel="stylesheet" href="css/style.css?v=2.0.1">
+    <link rel="stylesheet" href="css/style.css?v=2.1.0">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
     <link rel="apple-touch-icon" href="assets/ehs-sil-logo.png">
 
@@ -45,39 +45,44 @@
                         <span class="logo-tag">· 外企EHS工具与成长工作台</span>
                     </a>
                 </div>
-                <button class="nav-toggle" id="navToggle" aria-label="切换菜单" aria-expanded="false" aria-controls="navLinks">
+                <button class="nav-toggle" id="navToggle" aria-label="打开网站导航" aria-expanded="false" aria-controls="navLinks">
                     <span></span><span></span><span></span>
                 </button>
                 <ul class="nav-links" id="navLinks">
-                    <li class="nav-item has-dropdown">
-                        <div class="nav-parent-row"><a href="#workbench" class="nav-link">专业工具</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业工具选项" aria-expanded="false">⌄</button></div>
-                        <ul class="nav-dropdown">
-                            <li><a href="#risk-tools">01 风险分析工具</a></li>
-                            <li><a href="#incident-tools">02 事故学习工具</a></li>
-                            <li><a href="#practice-tools">03 外企管理实践</a></li>
-                            <li><a href="tools/jsa-tool.html">JSA专业教练（试用版）</a></li>
-                            <li><a href="tools/training-matrix.html" data-home-action="start-training">岗位EHS培训矩阵生成器</a></li>
+                    <li class="nav-item" data-nav-section="home"><a href="#hero" class="nav-link" data-nav-section-link="home">首页</a></li>
+                    <li class="nav-item has-dropdown" data-nav-section="tools">
+                        <div class="nav-parent-row"><a href="#workbench" class="nav-link" data-nav-section-link="tools">专业工具</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业工具选项" aria-expanded="false" aria-controls="homeToolsMenu"><span class="nav-chevron" aria-hidden="true"></span></button></div>
+                        <ul class="nav-dropdown nav-dropdown-wide" id="homeToolsMenu">
+                            <li><a href="#workbench" class="nav-entry-featured"><span class="nav-entry-title">专业工具总览</span><span class="nav-entry-desc">按风险、事故与管理任务选择方法</span></a></li>
+                            <li><a href="tools/jsa-tool.html" data-home-action="start-jsa"><span class="nav-entry-title">JSA 工作安全分析专业教练</span><span class="nav-entry-desc">生成可编辑初稿并检查风险与控制措施</span></a></li>
+                            <li><a href="tools/risk-analysis.html#risk-assessment"><span class="nav-entry-title">风险辨识与评估</span><span class="nav-entry-desc">FMEA 失效模式分析、What-If 假设分析</span></a></li>
+                            <li><a href="tools/risk-analysis.html#incident-investigation"><span class="nav-entry-title">事故调查与根因分析</span><span class="nav-entry-desc">5Why 五问法、RCA 根本原因分析、Tripod Beta 三脚架分析</span></a></li>
+                            <li><a href="tools/incident-learning.html"><span class="nav-entry-title">LFI 事故学习闭环</span><span class="nav-entry-desc">事件报告、调查、整改与组织学习</span></a></li>
+                            <li><a href="tools/training-matrix.html" data-home-action="start-training"><span class="nav-entry-title">岗位 EHS 培训矩阵</span><span class="nav-entry-desc">生成可编辑的培训需求底稿</span></a></li>
+                            <li><a href="tools/compliance-identification.html"><span class="nav-entry-title">企业适用法规识别</span><span class="nav-entry-desc">按行业与地区生成候选清单</span></a></li>
+                            <li><a href="#practice-tools"><span class="nav-entry-title">外企管理实践</span><span class="nav-entry-desc">BBS 行为安全观察、LOTO 上锁挂牌等</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item has-dropdown">
-                        <div class="nav-parent-row"><a href="tools/" class="nav-link">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false">⌄</button></div>
-                        <ul class="nav-dropdown">
-                            <li><a href="tools/">工具库导航</a></li>
-                            <li><a href="tools/regulations.html">EHS法规导航</a></li>
-                            <li><a href="products/toolbox.html">外企EHS工具箱</a></li>
-                            <li><a href="products/training.html">外企EHS培训库</a></li>
+                    <li class="nav-item has-dropdown" data-nav-section="resources">
+                        <div class="nav-parent-row"><a href="tools/" class="nav-link" data-nav-section-link="resources">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false" aria-controls="homeResourcesMenu"><span class="nav-chevron" aria-hidden="true"></span></button></div>
+                        <ul class="nav-dropdown nav-dropdown-wide" id="homeResourcesMenu">
+                            <li><a href="tools/" class="nav-entry-featured"><span class="nav-entry-title">工具与培训资料索引</span><span class="nav-entry-desc">预览知识星球已发布与规划内容</span></a></li>
+                            <li><a href="tools/regulations.html"><span class="nav-entry-title">法规与标准导航</span><span class="nav-entry-desc">查找中国与国际官方来源</span></a></li>
+                            <li><a href="articles/"><span class="nav-entry-title">专业文章</span><span class="nav-entry-desc">方法、案例与 EHS 实操指南</span></a></li>
+                            <li><a href="products/toolbox.html"><span class="nav-entry-title">外企 EHS 工具箱</span><span class="nav-entry-desc">模板、案例与持续更新资源</span></a></li>
+                            <li><a href="products/training.html"><span class="nav-entry-title">外企 EHS 培训库</span><span class="nav-entry-desc">课程与职业能力成长资源</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item has-dropdown">
-                        <div class="nav-parent-row"><a href="#content" class="nav-link">职业成长</a><button class="nav-dropdown-toggle" type="button" aria-label="展开职业成长选项" aria-expanded="false">⌄</button></div>
-                        <ul class="nav-dropdown">
-                            <li><a href="#content">专业文章</a></li>
-                            <li><a href="topics/process-safety.html">工艺安全专题</a></li>
-                            <li><a href="products/training-camp.html">培训与成长</a></li>
+                    <li class="nav-item has-dropdown" data-nav-section="about">
+                        <div class="nav-parent-row"><a href="#value" class="nav-link" data-nav-section-link="about">了解 EHS-SIL</a><button class="nav-dropdown-toggle" type="button" aria-label="展开网站介绍选项" aria-expanded="false" aria-controls="homeAboutMenu"><span class="nav-chevron" aria-hidden="true"></span></button></div>
+                        <ul class="nav-dropdown nav-dropdown-compact" id="homeAboutMenu">
+                            <li><a href="#value"><span class="nav-entry-title">网站能帮你做什么</span><span class="nav-entry-desc">从问题到方法、工具与成果</span></a></li>
+                            <li><a href="#about"><span class="nav-entry-title">主理人与 EHS-SIL</span><span class="nav-entry-desc">了解网站定位与专业背景</span></a></li>
+                            <li><a href="#faq"><span class="nav-entry-title">常见问题</span><span class="nav-entry-desc">使用范围、资源与专业边界</span></a></li>
                         </ul>
                     </li>
-                    <li><a href="#membership" class="nav-link">会员权益</a></li>
-                    <li><a href="dashboard/register.html" class="nav-link">登录 / 激活</a></li>
+                    <li class="nav-item nav-membership" data-nav-section="membership"><a href="#membership" class="nav-link" data-nav-section-link="membership">会员权益</a></li>
+                    <li class="nav-item nav-account" data-nav-section="account"><a href="dashboard/register.html" class="nav-link nav-account-link" data-nav-section-link="account">登录 / 激活</a></li>
                 </ul>
             </nav>
         </div>
@@ -518,8 +523,8 @@
     </footer>
 
     <script src="js/analytics.js"></script>
-    <script src="js/site-shell.js?v=2.0.1"></script>
-    <script src="js/main.js?v=2.0.1"></script>
+    <script src="js/site-shell.js?v=2.1.0"></script>
+    <script src="js/main.js?v=2.1.0"></script>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 </body>
 </html>
