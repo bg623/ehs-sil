@@ -113,8 +113,19 @@ test('页面、导出、打印与分析事件契约存在',()=>{
   const exporter=fs.readFileSync(path.join(root,'js/training-matrix-export.mjs'),'utf8'),app=fs.readFileSync(path.join(root,'js/training-matrix-app.mjs'),'utf8'),html=fs.readFileSync(path.join(root,'tools/training-matrix.html'),'utf8'),css=fs.readFileSync(path.join(root,'css/training-matrix.css'),'utf8'),analytics=fs.readFileSync(path.join(root,'js/analytics.js'),'utf8');
   for(const name of ['岗位培训矩阵','培训要求明细','年度培训计划','依据与使用说明'])assert.ok(exporter.includes(name));
   for(const field of ['最低学时','目标能力','依据层级','依据状态','实施日期','记录证据'])assert.ok(exporter.includes(field));
-  assert.ok(app.includes('catalog-v0.3.json'));assert.ok(html.includes('vendor/exceljs.min.js'));assert.ok(css.includes('@media print'));assert.ok(css.includes('@media(max-width:720px)'));
+  assert.ok(app.includes('catalog-v0.3.json'));assert.ok(html.includes('vendor/exceljs.min.js'));assert.ok(css.includes('@media print'));assert.match(css,/@media\s*\(max-width:\s*720px\)/);
   for(const event of ['training_matrix_start','training_profile_complete','training_matrix_generated','training_excel_export','training_pdf_print','training_reset','training_toolbox_click','training_library_click'])assert.ok(analytics.includes(event));
+});
+
+test('简洁版使用三步流程、智能排序但不自动替用户确认',()=>{
+  const app=fs.readFileSync(path.join(root,'js/training-matrix-app.mjs'),'utf8'),html=fs.readFileSync(path.join(root,'tools/training-matrix.html'),'utf8'),css=fs.readFileSync(path.join(root,'css/training-matrix.css'),'utf8');
+  assert.equal((html.match(/class="tm-progress-step/g)||[]).length,3);
+  assert.ok(html.includes('更简单的使用路径'));
+  assert.ok(app.includes('const TOTAL_STEPS = 3'));
+  assert.ok(app.includes('recommendedRiskIds'));
+  assert.ok(app.includes('系统只调整显示顺序，不会替你判断适用性'));
+  assert.ok(!app.includes('一键采用建议'));
+  assert.ok(css.includes('.tm-result-matrix table { font-size: .76rem'));
 });
 
 test('普通生产岗位无专项风险也命中岗位、全员消防和全员应急基线',()=>{

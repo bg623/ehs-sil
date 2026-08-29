@@ -1,6 +1,132 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="基于中国安全、职业健康、消防、环保法规及国际最佳实践，生成可复核的岗位EHS培训需求底稿、频次学时、能力验证和依据清单。"><title>EHS培训矩阵生成器 · EHS-SIL</title><link rel="stylesheet" href="../css/style.css?v=2.0.0"><link rel="stylesheet" href="../css/training-matrix.css?v=0.3.0"><link rel="apple-touch-icon" href="../assets/ehs-sil-logo.png"><script>var _hmt=_hmt||[];(function(){var h=document.createElement('script');h.src='https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(h,s)})();</script><script src="../js/analytics.js"></script></head><body>
-<div data-site-shell-header data-prefix="../" data-mode="light"></div><main class="tm-main"><div class="tm-container"><section class="tm-hero"><div class="tm-kicker">ROLE-BASED EHS TRAINING MATRIX BUILDER · V0.3</div><h1>EHS 培训矩阵生成器</h1><p class="tm-lead">以中国现行法律、行政法规、部门规章和强制标准为全国通用基线，区分法规明确要求、职责推导与风险建议，生成可复核的岗位培训需求底稿。</p></section><div class="tm-privacy">🔒 所有选择和结果仅保存在当前浏览器。请勿输入真实人员姓名、证件号码或敏感企业信息。</div>
-<div id="loading" class="tm-card tm-loading">正在加载规则数据…</div><div id="error" class="tm-card tm-hidden"><h2>暂时无法加载工具</h2><p class="tm-error" id="errorText">请刷新页面重试。</p></div>
-<section id="wizard" class="tm-card tm-hidden" aria-live="polite"><div class="tm-progress" aria-label="五步进度"><span class="active"></span><span></span><span></span><span></span><span></span></div><div id="stepContent"></div><p id="stepError" class="tm-error" role="alert"></p><div class="tm-actions"><button id="backBtn" class="tm-btn secondary" type="button">上一步</button><button id="nextBtn" class="tm-btn" type="button">下一步</button></div></section>
-<section id="results" class="tm-hidden"><div class="tm-card no-print"><div class="tm-actions"><button class="tm-btn secondary" id="editBtn">返回修改</button><div><button class="tm-btn secondary" id="printBtn">打印 / 另存为 PDF</button> <button class="tm-btn" id="excelBtn">导出 Excel</button></div></div></div><div class="tm-card"><h2>结果总览</h2><div id="summary" class="tm-summary"></div></div><div class="tm-card tm-basis"><h2>法规版本与适用边界</h2><div id="basis"></div></div><div class="tm-card"><h2>岗位培训矩阵</h2><div class="tm-legend"><span class="code-M">M 法规明确培训/资格要求</span><span class="code-C">C 条件适用或由法定职责推导</span><span class="code-R">R 企业风险控制/国际最佳实践</span><span>N/A 未匹配，不等于确认不适用</span></div><div id="matrixDesktop" class="tm-table-wrap"></div><div id="matrixMobile" class="tm-mobile-list"></div></div><div class="tm-card"><h2>培训要求明细</h2><div id="details" class="tm-details"></div></div><div class="tm-card"><h2>培训计划底稿</h2><p>培训频次与演练频次分别记录；没有全国统一固定周期的要求不强行年度化。</p><div id="plan" class="tm-table-wrap"></div></div><div class="tm-card"><h2>待核验要求清单</h2><div id="gaps" class="tm-details"></div></div><div class="tm-card tm-disclaimer"><strong>使用边界：</strong>本工具用于建立全国通用培训需求初稿，不构成法律意见或最终合规结论。企业应结合所在地法规、行业专项规定、许可证条件、设备目录、岗位风险和内部制度完成复核；“待确认”不得解释为“不适用”，即将实施标准与国际实践不作为当前中国法定依据。</div><div class="tm-card tm-cta no-print"><a id="toolboxLink" href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener">需要完整模板、年度计划和更多EHS工具 → 外企EHS工具箱（129元/年）</a><a id="libraryLink" href="../products/training.html">需要培训课件、讲义和素材 → 外企EHS培训库（299元/年）</a></div><div class="tm-card no-print"><div class="tm-actions"><button class="tm-btn secondary" id="restartBtn">重新开始</button><button class="tm-btn danger" id="clearBtn">清除本地数据</button></div></div></section>
-</div></main><div data-site-shell-footer data-prefix="../"></div><script src="../vendor/exceljs.min.js?v=4.4.0-ehs1"></script><script src="../js/site-shell.js?v=2.0.0"></script><script type="module" src="../js/training-matrix-app.mjs?v=0.3.0"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="用三步简洁流程生成可复核的岗位EHS培训需求底稿，区分法规明确要求、职责推导与风险建议。">
+  <title>EHS培训矩阵生成器 · EHS-SIL</title>
+  <link rel="stylesheet" href="../css/style.css?v=2.0.1">
+  <link rel="stylesheet" href="../css/training-matrix.css?v=0.3.1">
+  <link rel="icon" type="image/png" href="../assets/ehs-sil-logo.png">
+  <link rel="apple-touch-icon" href="../assets/ehs-sil-logo.png">
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var h = document.createElement('script');
+      h.src = 'https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(h, s);
+    })();
+  </script>
+  <script src="../js/analytics.js"></script>
+</head>
+<body>
+  <div data-site-shell-header data-prefix="../" data-mode="light"></div>
+  <main class="tm-main">
+    <div class="tm-container">
+      <section class="tm-hero">
+        <div class="tm-hero-copy">
+          <span class="tm-kicker">EHS-SIL · 专业工具</span>
+          <h1>EHS 培训矩阵生成器</h1>
+          <p class="tm-lead">选行业、选岗位，再确认少量重点信息。系统会把相关选项排在前面，生成可继续复核的培训需求底稿。</p>
+          <div class="tm-hero-assurance" aria-label="工具特点">
+            <span>3 步完成</span>
+            <span>本地处理</span>
+            <span>Excel 导出</span>
+          </div>
+        </div>
+        <aside class="tm-hero-guide" aria-label="使用路径">
+          <strong>更简单的使用路径</strong>
+          <ol>
+            <li><span>1</span>选择场景与岗位</li>
+            <li><span>2</span>确认系统提示的重点</li>
+            <li><span>3</span>复核并生成矩阵</li>
+          </ol>
+        </aside>
+      </section>
+
+      <div class="tm-privacy">🔒 所有选择和结果仅保存在当前浏览器。请勿输入真实人员姓名、证件号码或敏感企业信息。</div>
+      <div id="loading" class="tm-card tm-loading">正在加载规则数据…</div>
+      <div id="error" class="tm-card tm-hidden">
+        <h2>暂时无法加载工具</h2>
+        <p class="tm-error" id="errorText">请刷新页面重试。</p>
+      </div>
+
+      <section id="wizard" class="tm-card tm-wizard tm-hidden" aria-live="polite">
+        <div class="tm-progress" aria-label="三步进度">
+          <div class="tm-progress-step active"><span>1</span><small>场景岗位</small></div>
+          <div class="tm-progress-step"><span>2</span><small>重点确认</small></div>
+          <div class="tm-progress-step"><span>3</span><small>生成矩阵</small></div>
+        </div>
+        <div id="stepContent"></div>
+        <p id="stepError" class="tm-error" role="alert"></p>
+        <div class="tm-actions">
+          <button id="backBtn" class="tm-btn secondary" type="button">上一步</button>
+          <button id="nextBtn" class="tm-btn" type="button">继续</button>
+        </div>
+      </section>
+
+      <section id="results" class="tm-hidden">
+        <div class="tm-card no-print">
+          <div class="tm-actions tm-result-actions">
+            <button class="tm-btn secondary" id="editBtn">返回修改</button>
+            <div>
+              <button class="tm-btn secondary" id="printBtn">打印 / 另存为 PDF</button>
+              <button class="tm-btn" id="excelBtn">导出 Excel</button>
+            </div>
+          </div>
+        </div>
+        <div class="tm-card">
+          <h2>结果总览</h2>
+          <div id="summary" class="tm-summary"></div>
+        </div>
+        <div class="tm-card tm-basis">
+          <h2>法规版本与适用边界</h2>
+          <div id="basis"></div>
+        </div>
+        <div class="tm-card tm-matrix-card">
+          <h2>岗位培训矩阵</h2>
+          <div class="tm-legend">
+            <span class="code-M">M 法规明确培训/资格要求</span>
+            <span class="code-C">C 条件适用或由法定职责推导</span>
+            <span class="code-R">R 企业风险控制/国际最佳实践</span>
+            <span>N/A 未匹配，不等于确认不适用</span>
+          </div>
+          <div id="matrixDesktop" class="tm-table-wrap tm-result-matrix"></div>
+          <div id="matrixMobile" class="tm-mobile-list"></div>
+        </div>
+        <div class="tm-card">
+          <h2>培训要求明细</h2>
+          <div id="details" class="tm-details"></div>
+        </div>
+        <div class="tm-card">
+          <h2>培训计划底稿</h2>
+          <p>培训频次与演练频次分别记录；没有全国统一固定周期的要求不强行年度化。</p>
+          <div id="plan" class="tm-table-wrap"></div>
+        </div>
+        <div class="tm-card">
+          <h2>待核验要求清单</h2>
+          <div id="gaps" class="tm-details"></div>
+        </div>
+        <div class="tm-card tm-disclaimer">
+          <strong>使用边界：</strong>本工具用于建立全国通用培训需求初稿，不构成法律意见或最终合规结论。企业应结合所在地法规、行业专项规定、许可证条件、设备目录、岗位风险和内部制度完成复核；“待确认”不得解释为“不适用”，即将实施标准与国际实践不作为当前中国法定依据。
+        </div>
+        <div class="tm-card tm-cta no-print">
+          <a id="toolboxLink" href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener">需要完整模板、年度计划和更多EHS工具 → 外企EHS工具箱（129元/年）</a>
+          <a id="libraryLink" href="../products/training.html">需要培训课件、讲义和素材 → 外企EHS培训库（299元/年）</a>
+        </div>
+        <div class="tm-card no-print">
+          <div class="tm-actions">
+            <button class="tm-btn secondary" id="restartBtn">重新开始</button>
+            <button class="tm-btn danger" id="clearBtn">清除本地数据</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div data-site-shell-footer data-prefix="../"></div>
+  <script src="../vendor/exceljs.min.js?v=4.4.0-ehs1"></script>
+  <script src="../js/site-shell.js?v=2.0.0"></script>
+  <script type="module" src="../js/training-matrix-app.mjs?v=0.3.1"></script>
+</body>
+</html>

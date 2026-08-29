@@ -227,6 +227,15 @@ Routine Work 控制规则（2026-08-25）：每次生产发布必须先判断是
 - M/C/R数量不代表企业合规率、培训完成率或风险水平，N/A也不代表已经确认不适用；
 - 自动化测试、内部试用和Excel下载不计入真实工作采用；没有用户现状和证据时不得统计“培训缺口数量”。
 
+简洁交互版本继续使用既有事件，不增加自动推断类指标：
+
+- `training_matrix_start`：页面完成加载，不等于用户开始填写；
+- `training_profile_complete`：用户进入第3步复核页；
+- `training_matrix_generated`：用户点击生成并看到结果；
+- `training_excel_export`：用户触发Excel导出，不等于已用于真实工作；
+- 重点观察 `training_profile_complete / training_matrix_start` 与 `training_matrix_generated / training_profile_complete` 的分步完成率；
+- 产品负责人转述、内部浏览器验收与自动化测试不计入真实粉丝样本；真实工作采用仍需用户确认。
+
 ## LFI V0.1 用户验证口径
 
 - 验证对象：3个预置纯虚构案例，不接收真实事故、企业、人员、健康或附件数据；
