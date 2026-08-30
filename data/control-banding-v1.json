@@ -1,0 +1,54 @@
+{
+  "methodVersion": "CRM-2026.08-v1",
+  "source": {
+    "name": "ILO International Chemical Control Toolkit",
+    "url": "https://webapps.ilo.org/static/english/protection/safework/ctrl_banding/toolkit/icct/howto.htm",
+    "hazardMappingUrl": "https://webapps.ilo.org/static/english/protection/safework/ctrl_banding/toolkit/icct/hgroup.htm",
+    "skinMappingUrl": "https://webapps.ilo.org/static/english/protection/safework/ctrl_banding/toolkit/icct/skin.htm",
+    "lastReviewed": "2026-08-30"
+  },
+  "hazardClassifications": [
+    {"id":"mutagenicity_1","label":"生殖细胞致突变性 类别1/1A/1B","band":"E"},
+    {"id":"mutagenicity_2","label":"生殖细胞致突变性 类别2","band":"E"},
+    {"id":"carcinogenicity_1","label":"致癌性 类别1/1A/1B","band":"E"},
+    {"id":"respiratory_sensitisation_1","label":"呼吸道致敏 类别1/1A/1B","band":"E"},
+    {"id":"acute_toxicity_1","label":"急性毒性（吸入或经口）类别1","band":"D"},
+    {"id":"acute_toxicity_dermal_1","label":"急性经皮毒性 类别1","band":"D","skin":true},
+    {"id":"acute_toxicity_2","label":"急性毒性（吸入或经口）类别2","band":"D"},
+    {"id":"acute_toxicity_dermal_2","label":"急性经皮毒性 类别2","band":"D","skin":true},
+    {"id":"carcinogenicity_2","label":"致癌性 类别2","band":"D"},
+    {"id":"stot_re_1","label":"特异性靶器官毒性-反复接触 类别1","band":"D"},
+    {"id":"reproductive_toxicity_1","label":"生殖毒性 类别1/1A/1B","band":"D"},
+    {"id":"reproductive_toxicity_2","label":"生殖毒性 类别2","band":"D"},
+    {"id":"acute_toxicity_3","label":"急性毒性（吸入或经口）类别3","band":"C"},
+    {"id":"acute_toxicity_dermal_3","label":"急性经皮毒性 类别3","band":"C","skin":true},
+    {"id":"stot_se_1","label":"特异性靶器官毒性-一次接触 类别1","band":"C"},
+    {"id":"skin_corrosion_1a","label":"皮肤腐蚀 类别1A","band":"C","skin":true},
+    {"id":"skin_corrosion_1b","label":"皮肤腐蚀 类别1B","band":"C","skin":true},
+    {"id":"skin_corrosion_1c","label":"皮肤腐蚀 类别1C","band":"C","skin":true},
+    {"id":"serious_eye_damage_1","label":"严重眼损伤 类别1","band":"C","skin":true},
+    {"id":"respiratory_irritancy","label":"呼吸道刺激（SDS明确分类）","band":"C"},
+    {"id":"skin_sensitisation_1","label":"皮肤致敏 类别1/1A/1B","band":"C","skin":true},
+    {"id":"stot_re_2","label":"特异性靶器官毒性-反复接触 类别2","band":"C"},
+    {"id":"acute_toxicity_4","label":"急性毒性（吸入或经口）类别4","band":"B"},
+    {"id":"acute_toxicity_dermal_4","label":"急性经皮毒性 类别4","band":"B","skin":true},
+    {"id":"stot_se_2","label":"特异性靶器官毒性-一次接触 类别2","band":"B"},
+    {"id":"acute_toxicity_5","label":"急性毒性（任一途径）类别5","band":"A"},
+    {"id":"skin_irritation_2","label":"皮肤刺激 类别2","band":"A","skin":true},
+    {"id":"skin_irritation_3","label":"皮肤刺激 类别3","band":"A"},
+    {"id":"eye_irritation_2","label":"眼刺激 类别2/2A/2B","band":"A","skin":true}
+  ],
+  "matrix": {
+    "A":{"small":{"low":1,"medium_volatility":1,"medium_dustiness":1,"high":1},"medium":{"low":1,"medium_volatility":1,"medium_dustiness":1,"high":2},"large":{"low":1,"medium_volatility":1,"medium_dustiness":2,"high":2}},
+    "B":{"small":{"low":1,"medium_volatility":1,"medium_dustiness":1,"high":1},"medium":{"low":1,"medium_volatility":2,"medium_dustiness":2,"high":2},"large":{"low":1,"medium_volatility":2,"medium_dustiness":3,"high":3}},
+    "C":{"small":{"low":1,"medium_volatility":2,"medium_dustiness":1,"high":2},"medium":{"low":2,"medium_volatility":3,"medium_dustiness":3,"high":3},"large":{"low":2,"medium_volatility":4,"medium_dustiness":4,"high":4}},
+    "D":{"small":{"low":2,"medium_volatility":3,"medium_dustiness":2,"high":3},"medium":{"low":3,"medium_volatility":4,"medium_dustiness":4,"high":4},"large":{"low":3,"medium_volatility":4,"medium_dustiness":4,"high":4}},
+    "E":{"small":{"low":4,"medium_volatility":4,"medium_dustiness":4,"high":4},"medium":{"low":4,"medium_volatility":4,"medium_dustiness":4,"high":4},"large":{"low":4,"medium_volatility":4,"medium_dustiness":4,"high":4}}
+  },
+  "controlApproaches": {
+    "1":{"code":"CA1","title":"一般控制","action":"保持容器密闭、良好作业方法、一般通风、清洁和培训，并核实现有控制持续有效。"},
+    "2":{"code":"CA2","title":"工程控制","action":"采用局部排风或等效源头控制，验证捕集效果并建立维护检查。"},
+    "3":{"code":"CA3","title":"遏制 / 密闭","action":"优先采用更高等级密闭、隔离或自动化控制，限制人员进入并验证泄漏控制。"},
+    "4":{"code":"CA4","title":"专家方案","action":"暂停依赖通用建议，由职业卫生与工艺安全专业人员制定并验证专项控制方案。"}
+  }
+}

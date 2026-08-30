@@ -1,6 +1,15 @@
 {
   "tools": [
     {
+      "name": "化学品作业风险矩阵（在线工具）",
+      "path": "tools/chemical-risk-matrix.html",
+      "category": "职业健康",
+      "format": "其他",
+      "bilingual": true,
+      "description": "SDS、作业条件与检测数据双轨职业健康分级辅助工具",
+      "tags": ["职业健康", "化学品", "风险评估", "SDS"]
+    },
+    {
       "name": "SWP模板_XQ.pdf",
       "path": "SWP模板_XQ.pdf",
       "category": "SWP/作业许可",
@@ -6979,7 +6988,7 @@
       ]
     }
   ],
-  "total": 535,
+  "total": 536,
   "categories": [
     "5S/可视化",
     "LOTO/作业许可",
@@ -6989,6 +6998,7 @@
     "人因与组织绩效",
     "其他",
     "培训课件",
+    "职业健康",
     "工艺安全",
     "根源分析",
     "管理体系",
