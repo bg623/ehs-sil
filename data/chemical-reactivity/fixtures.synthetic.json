@@ -10,6 +10,7 @@
       "reactiveGroupIds": ["SYNTH-GROUP-ACID", "SYNTH-GROUP-WATER-REACTIVE"],
       "directIncompatibilities": [],
       "reactivityAlerts": ["SYNTHETIC_ONLY"],
+      "selfReactivityStatus": "SELF_REACTIVE",
       "sourceRefs": [{"sourceId":"SYNTH","recordId":"A","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}],
       "reviewStatus": "APPROVED",
       "identityConfirmed": true
@@ -22,6 +23,7 @@
       "reactiveGroupIds": ["SYNTH-GROUP-BASE"],
       "directIncompatibilities": [],
       "reactivityAlerts": [],
+      "selfReactivityStatus": "NO_SELF_REACTION_IDENTIFIED",
       "sourceRefs": [{"sourceId":"SYNTH","recordId":"B","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}],
       "reviewStatus": "APPROVED",
       "identityConfirmed": true
@@ -34,6 +36,7 @@
       "reactiveGroupIds": [],
       "directIncompatibilities": [],
       "reactivityAlerts": [],
+      "selfReactivityStatus": "UNKNOWN",
       "sourceRefs": [{"sourceId":"SYNTH","recordId":"C","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}],
       "reviewStatus": "APPROVED",
       "identityConfirmed": true

@@ -11,9 +11,10 @@ const manifest = read("source-manifest.json");
 const chemicals = read("chemicals.index.json");
 const groupPairs = read("reactive-group-pairs.json");
 const directEvidence = read("direct-evidence.json");
+const mixingScenarios = read("mixing-scenarios.json");
 const fixture = read("fixtures.synthetic.json");
 
-validateProductionData({ manifest, chemicals, groupPairs, directEvidence });
+validateProductionData({ manifest, chemicals, groupPairs, directEvidence, mixingScenarios });
 if (!fixture.testOnly || fixture.licenseClass !== "TEST_ONLY") throw new Error("合成 fixture 必须明确标记 TEST_ONLY");
 for (const filename of manifest.dataFiles || []) {
   if (!fs.existsSync(path.join(dataDir, filename))) throw new Error(`数据清单引用缺失文件：${filename}`);

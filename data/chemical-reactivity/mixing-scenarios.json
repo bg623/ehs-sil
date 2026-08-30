@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CRW-REFERENCE-35C-24H",
+    "mode": "CRW_REFERENCE",
+    "name": "CRW 默认参考情景",
+    "temperatureMaxC": 35,
+    "pressureNote": "绝热但非气密容器；可能自由泄压",
+    "insulatedVessel": true,
+    "airtightVessel": false,
+    "durationHours": 24,
+    "ratioNote": "两种化学品混合；比例未限定",
+    "waterPresent": false,
+    "airPresent": true,
+    "catalystOrImpurityNote": "未特别考虑催化剂、杂质或稳定剂变化",
+    "additionOrderNote": "未模拟具体加料顺序或搅拌状态",
+    "sourceRefs": [
+      {
+        "sourceId": "AICHE_CRW_SCENARIO",
+        "title": "CRW4 reference mixing scenario",
+        "version": "4.0.3",
+        "reviewedAt": "2026-08-30",
+        "licenseClass": "METHOD_DESCRIPTION_ONLY"
+      }
+    ]
+  }
+]
