@@ -12,7 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ehs-sil.com/tools/chemical-reactivity-matrix.html">
   <link rel="stylesheet" href="../css/style.css?v=2.1.0">
-  <link rel="stylesheet" href="../css/chemical-reactivity-matrix.css?v=2.0.0">
+  <link rel="stylesheet" href="../css/chemical-reactivity-matrix.css?v=2.1.0">
+  <link rel="stylesheet" href="../css/chemical-reactivity-matrix-v2-1.css?v=2.1.0">
   <link rel="icon" type="image/png" href="../assets/ehs-sil-logo.png">
   <script>var _hmt=window._hmt||[];(function(){var h=document.createElement('script');h.src='https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(h,s)})();</script>
   <script src="../js/analytics.js?v=1.2.0"></script>
@@ -25,7 +26,7 @@
         <nav class="crx-breadcrumb" aria-label="面包屑"><a href="index.html">工具</a><span>›</span><a href="risk-analysis.html">风险分析</a><span>›</span><span>化学品反应与禁忌矩阵</span></nav>
         <div class="crx-hero-grid">
           <div><span class="crx-kicker">Chemical Reactivity &amp; Incompatibility Matrix</span><h1>化学品反应与禁忌矩阵</h1><p>输入一种化学品，查询禁忌物与反应性红旗；加入第二种或导入库存，筛查混放、误混和反应失控风险。</p></div>
-          <aside class="crx-version" id="versionCard"><strong>规则版本 CRIM-2026.08-v2</strong><span>正在核验数据包…</span><button type="button" data-open-dialog="methodDialog">查看方法与限制</button></aside>
+          <aside class="crx-version" id="versionCard"><strong>规则版本 CRIM-2026.08-v2.1</strong><span>正在核验数据包…</span><button type="button" data-open-dialog="methodDialog">查看方法与限制</button></aside>
         </div>
         <div class="crx-safety-banner" role="note"><strong>筛查工具，不代表“安全批准”</strong><span>结果需结合实际浓度、温度、压力、杂质、加料顺序、设备材质及最新版 SDS 复核。三种及以上物质、催化效应和实际投料顺序可能超出两两算法能力。</span></div>
       </div>
@@ -36,7 +37,13 @@
         <button role="tab" aria-selected="true" aria-controls="singlePanel" id="singleTab" data-tab="single">单品禁忌</button>
         <button role="tab" aria-selected="false" aria-controls="pairPanel" id="pairTab" data-tab="pair">两两配伍</button>
         <button role="tab" aria-selected="false" aria-controls="matrixPanel" id="matrixTab" data-tab="matrix">库存矩阵 <span id="inventoryCount">0</span></button>
+        <button role="tab" aria-selected="false" aria-controls="projectsPanel" id="projectsTab" data-tab="projects">我的项目 <span id="projectCount">1</span></button>
       </div>
+
+      <section class="crx-scenario" id="scenarioCard" aria-labelledby="scenarioTitle">
+        <div><span>当前评估情景</span><h2 id="scenarioTitle">CRW 默认参考情景</h2><p id="scenarioSummary">最高约 35°C · 绝热但非气密容器 · 混合物储存少于 1 天 · 未模拟具体加料顺序</p></div>
+        <button class="crx-btn secondary" type="button" data-open-dialog="scenarioDialog">编辑情景</button>
+      </section>
       <div class="crx-gate" id="dataGate" role="status">
         <div><strong>权威数据包尚未启用</strong><p>当前为官方辅助模式：不会从网页抓取或本地伪造化学品结论。你可以在本机整理 SDS 身份与证据，并跳转官方工具核验。</p></div>
         <div class="crx-gate-actions"><a href="https://cameochemicals.noaa.gov/" target="_blank" rel="noopener" data-source-link="cameo">前往 CAMEO</a><a href="https://ccps.aiche.org/resources/chemical-reactivity-worksheet" target="_blank" rel="noopener" data-source-link="crw">下载 CRW4</a></div>
@@ -44,7 +51,7 @@
 
       <section class="crx-panel" id="singlePanel" role="tabpanel" aria-labelledby="singleTab">
         <div class="crx-panel-heading"><div><span>模式 A</span><h2>单品禁忌查询</h2><p>先唯一确认身份，再查看本机已录入的 SDS 证据；未找到不代表无禁忌。</p></div><button class="crx-btn secondary" type="button" id="openRecordForm">＋ 录入 SDS 身份与证据</button></div>
-        <div class="crx-search-wrap"><label for="chemicalSearch">名称、CAS 或 UN/NA</label><div class="crx-search"><input id="chemicalSearch" autocomplete="off" placeholder="涉及商品配方时优先输入 SDS 上的标识" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="searchResults"><button type="button" id="searchButton">查询</button></div><div class="crx-candidates" id="searchResults" role="listbox" hidden></div></div>
+        <div class="crx-search-wrap"><label for="chemicalSearch">名称、CAS 或 UN/NA</label><div class="crx-search-mode" role="radiogroup" aria-label="搜索模式"><label><input type="radio" name="searchMode" value="exact" checked> 精确</label><label><input type="radio" name="searchMode" value="starts_with"> 开头</label><label><input type="radio" name="searchMode" value="contains"> 任意位置</label></div><div class="crx-search"><input id="chemicalSearch" autocomplete="off" placeholder="涉及商品配方时优先输入 SDS 上的标识" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="searchResults"><button type="button" id="searchButton">查询</button></div><div class="crx-quick-actions"><button class="crx-btn secondary" id="quickWaterButton" type="button">＋ 快速加入水</button><button class="crx-btn secondary" id="openGroupProxyButton" type="button">＋ 仅加入反应组</button></div><div class="crx-candidates" id="searchResults" role="listbox" hidden></div></div>
         <div id="singleResult" class="crx-empty"><strong>尚未选择化学品</strong><p>公开生产数据包目前为空。请录入你有权使用的最新版 SDS 信息，或前往官方工具核验后再整理证据。</p></div>
       </section>
 
@@ -56,9 +63,17 @@
 
       <section class="crx-panel" id="matrixPanel" role="tabpanel" aria-labelledby="matrixTab" hidden>
         <div class="crx-panel-heading"><div><span>模式 C</span><h2>库存相容矩阵</h2><p>矩阵只展开所有二元组合，不预测三元协同、催化效应或实际投料顺序。</p></div><div class="crx-toolbar"><button class="crx-btn secondary" id="downloadTemplateButton" type="button">下载导入模板</button><label class="crx-btn secondary crx-file-button">导入 CSV/XLSX<input id="inventoryImport" type="file" accept=".csv,.xlsx" hidden></label></div></div>
+        <div class="crx-view-toggle" role="group" aria-label="矩阵视图"><button type="button" data-matrix-view="lower" aria-pressed="true">下三角</button><button type="button" data-matrix-view="full" aria-pressed="false">完整对称</button><button type="button" data-matrix-view="anomalies" aria-pressed="false">异常列表</button></div>
         <div class="crx-import-report" id="importReport" hidden></div><div class="crx-summary" id="matrixSummary"></div>
         <div class="crx-matrix-layout"><div class="crx-matrix-scroll" id="matrixTableRoot"><div class="crx-empty"><strong>库存清单为空</strong><p>先在“单品禁忌”中录入并确认身份；导入条目默认待确认，不会直接进入正式矩阵。</p></div></div><div class="crx-anomaly-list" id="anomalyList"></div></div>
         <div class="crx-report-actions"><button class="crx-btn secondary" id="printButton" type="button">打印 / 保存 PDF</button><button class="crx-btn primary" id="exportButton" type="button">导出完整 Excel（会员）</button><button class="crx-link" id="clearDataButton" type="button">一键清除本地数据</button></div>
+      </section>
+
+      <section class="crx-panel" id="projectsPanel" role="tabpanel" aria-labelledby="projectsTab" hidden>
+        <div class="crx-panel-heading"><div><span>模式 D</span><h2>项目 / 混合体系</h2><p>这是虚拟筛查集合，不是实际配方或批准的工艺混合物。</p></div><button class="crx-btn secondary" id="newProjectButton" type="button">＋ 新建项目</button></div>
+        <div id="projectWorkspace"></div>
+        <div class="crx-report-actions"><button class="crx-btn secondary" id="mixtureReportButton" type="button">生成混合物报告</button><button class="crx-btn secondary" id="duplicateProjectButton" type="button">复制项目</button><button class="crx-link" id="archiveProjectButton" type="button">归档当前项目</button><button class="crx-link" id="deleteProjectButton" type="button">删除当前本地项目</button></div>
+        <div id="mixtureReport" class="crx-mixture-report" hidden></div>
       </section>
     </section>
   </main>
@@ -75,12 +90,18 @@
     </div><p class="crx-error" id="recordError" role="alert"></p><div class="crx-dialog-actions"><button class="crx-btn secondary" value="cancel">取消</button><button class="crx-btn primary" id="saveRecordButton" value="default">保存本地记录</button></div>
   </form></dialog>
 
-  <dialog id="methodDialog" class="crx-dialog crx-method-dialog"><div class="crx-dialog-head"><div><span>方法版本 CRIM-2026.08-v2</span><h2>方法、数据权利与限制</h2></div><button type="button" data-close-dialog="methodDialog" aria-label="关闭">×</button></div><div class="crx-method-copy">
-    <p><strong>生产模式：</strong><code>official_assist</code>。当前没有经批准的本地权威数据快照，公开页面只加载空生产数据表，不加载合成测试 fixture。</p><p><strong>算法：</strong>一种化学品可对应多个反应组；两种化学品展开全部组对笛卡尔积，合并直接证据和组对证据，不丢失未知项。A+B 与 B+A 对称。</p><p><strong>重要限制：</strong>未预测到危险不等于相容、安全或允许混合。三种以上物质、催化、浓度、温压、杂质、稳定剂、顺序和尺度可能改变结果。</p><p><strong>升级条件：</strong>强放热、产气升压、爆炸/强烈反应、聚合、自分解、数据冲突或资料不足时，应开展 PHA/HAZOP/What-if、反应量热/热分析、MOC 及联锁/泄压复核。</p>
+  <dialog id="scenarioDialog" class="crx-dialog"><form method="dialog" id="scenarioForm"><div class="crx-dialog-head"><div><span>结果绑定情景</span><h2>评估情景编辑器</h2></div><button value="cancel" aria-label="关闭">×</button></div><p class="crx-form-note">自定义情景只用于暴露适用边界和触发外推警告，不会重新发明反应模型。</p><div class="crx-form-grid"><label class="span-2">情景类型<select name="mode" id="scenarioMode"><option value="CRW_REFERENCE">CRW 默认参考情景</option><option value="CUSTOM">用户自定义</option></select></label><label class="span-2">情景名称<input name="name" value="用户自定义情景"></label><label>最高温度 °C<input name="temperatureMaxC" type="number" step="0.1" value="35"></label><label>接触/储存小时<input name="durationHours" type="number" step="0.1" value="24"></label><label>容器热边界<select name="insulatedVessel"><option value="true">绝热</option><option value="false">非绝热 / 未知</option></select></label><label>密闭性<select name="airtightVessel"><option value="false">非气密</option><option value="true">气密 / 可能密闭升压</option></select></label><label class="span-2">压力与泄压备注<input name="pressureNote"></label><label class="span-2">浓度、物态和大致比例<input name="ratioNote"></label><label class="span-2">水、空气、催化剂、杂质或稳定剂<input name="catalystOrImpurityNote"></label><label class="span-2">加料顺序和搅拌状态<input name="additionOrderNote"></label></div><p class="crx-error" id="scenarioError" role="alert"></p><div class="crx-dialog-actions"><button class="crx-btn secondary" value="cancel">取消</button><button class="crx-btn primary" id="saveScenarioButton" value="default">应用情景</button></div></form></dialog>
+
+  <dialog id="groupProxyDialog" class="crx-dialog"><form method="dialog" id="groupProxyForm"><div class="crx-dialog-head"><div><span>组级推断</span><h2>加入反应组代理</h2></div><button value="cancel" aria-label="关闭">×</button></div><p class="crx-form-note">必须依据 SDS 或专业判断人工填写经核验的反应组 ID；系统不会根据名称或 AI 猜测。</p><div class="crx-form-grid"><label class="span-2">代理名称<input name="preferredName" required placeholder="例如：SDS 已确认的某类物料"></label><label class="span-2">反应组 ID<input name="reactiveGroupId" required></label><label>证据版本 / 日期<input name="sdsVersion" required></label><label>证据文件 / 来源<input name="supplier" required></label><label class="span-2 crx-confirm"><input type="checkbox" name="groupConfirmed" required>我已查看反应组定义并确认仅进行组级筛查</label></div><p class="crx-error" id="groupProxyError" role="alert"></p><div class="crx-dialog-actions"><button class="crx-btn secondary" value="cancel">取消</button><button class="crx-btn primary" value="default">加入本地项目</button></div></form></dialog>
+
+  <dialog id="overrideDialog" class="crx-dialog"><form method="dialog" id="overrideForm"><div class="crx-dialog-head"><div><span>原预测永远保留</span><h2>提出人工修订</h2></div><button value="cancel" aria-label="关闭">×</button></div><p class="crx-form-note">普通备注不会改变状态。修订默认为草稿，必须由第二人复核后才进入正式报告。</p><input type="hidden" name="pairKey"><input type="hidden" name="predictedStatus"><div class="crx-form-grid"><label>修订后状态<select name="revisedStatus"><option value="INCOMPATIBLE">N 不相容</option><option value="CAUTION">C 谨慎</option><option value="UNKNOWN">? 未知</option><option value="NO_PREDICTED_HAZARD">Y 未预测到两两不相容</option></select></label><label>修订人<input name="createdBy" required></label><label class="span-2">理由<textarea name="reason" required rows="3"></textarea></label><label>证据标题<input name="evidenceTitle" required></label><label>证据版本 / 日期<input name="evidenceVersion" required></label><label class="span-2">第二复核人（可留空，保持草稿）<input name="reviewedBy"></label></div><p class="crx-error" id="overrideError" role="alert"></p><div class="crx-dialog-actions"><button class="crx-btn secondary" value="cancel">取消</button><button class="crx-btn primary" value="default">保存叠加记录</button></div></form></dialog>
+
+  <dialog id="methodDialog" class="crx-dialog crx-method-dialog"><div class="crx-dialog-head"><div><span>方法版本 CRIM-2026.08-v2.1</span><h2>方法、数据权利与限制</h2></div><button type="button" data-close-dialog="methodDialog" aria-label="关闭">×</button></div><div class="crx-method-copy">
+    <p><strong>生产模式：</strong><code>official_assist</code>。当前没有经批准的本地权威数据快照，公开页面只加载空生产数据表，不加载合成测试 fixture。</p><p><strong>版本区分：</strong>参考工具为 CRW 4.0.3；EHS-SIL 规则版本与数据包版本单独显示，不代表复制 CRW 数据库。</p><p><strong>来源代码：</strong>N=不相容、C=谨慎、Y=未预测到两两不相容、SR=潜在自反应、X=未识别出自反应、*=人工修订、?=资料不足。</p><p><strong>算法：</strong>一种化学品可对应多个反应组；两种化学品展开全部组对笛卡尔积，合并直接证据和组对证据，不丢失未知项。A+B 与 B+A 对称。</p><p><strong>重要限制：</strong>未预测到危险不等于相容、安全或允许混合。三种以上物质、催化、浓度、温压、杂质、稳定剂、顺序和尺度可能改变结果。</p><p><strong>升级条件：</strong>强放热、产气升压、爆炸/强烈反应、聚合、自分解、数据冲突或资料不足时，应开展 PHA/HAZOP/What-if、反应量热/热分析、MOC 及联锁/泄压复核。</p>
     <ul><li><a href="https://cameochemicals.noaa.gov/" target="_blank" rel="noopener">CAMEO Chemicals 官方入口</a></li><li><a href="https://ccps.aiche.org/resources/faqs" target="_blank" rel="noopener">CRW4 FAQ 与算法边界</a></li><li><a href="https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=4BB90BF6C7015DF7E4905694A80F7C57" target="_blank" rel="noopener">GB 15603—2022 官方题录</a></li></ul>
   </div></dialog>
 
   <aside class="crx-drawer" id="detailDrawer" aria-hidden="true" aria-labelledby="drawerTitle"><div class="crx-drawer-head"><h2 id="drawerTitle">组合详情</h2><button type="button" id="closeDrawer" aria-label="关闭详情">×</button></div><div id="drawerBody"></div></aside><div class="crx-drawer-backdrop" id="drawerBackdrop" hidden></div>
   <noscript><div class="crx-noscript">此工具需要 JavaScript 才能管理本地清单。你仍可前往 <a href="https://cameochemicals.noaa.gov/">CAMEO Chemicals</a> 或下载 <a href="https://ccps.aiche.org/resources/chemical-reactivity-worksheet">CRW4</a> 完成人工核验。</div></noscript>
-  <div data-site-shell-footer data-prefix="../"></div><script src="../vendor/exceljs.min.js?v=4.4.0-ehs1"></script><script src="../js/auth.js?v=2.0.0"></script><script src="../js/site-shell.js?v=2.1.0"></script><script type="module" src="../js/chemical-reactivity-matrix.mjs?v=2.0.0"></script>
+  <div data-site-shell-footer data-prefix="../"></div><script src="../vendor/exceljs.min.js?v=4.4.0-ehs1"></script><script src="../js/auth.js?v=2.0.0"></script><script src="../js/site-shell.js?v=2.1.0"></script><script type="module" src="../js/chemical-reactivity-matrix.mjs?v=2.1.0"></script>
 </body></html>

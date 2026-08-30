@@ -1,10 +1,13 @@
 {
   "featureEnabled": true,
-  "ruleVersion": "CRIM-2026.08-v2",
+  "ruleVersion": "CRIM-2026.08-v2.1",
   "sourceMode": "official_assist",
   "approvedSnapshot": null,
   "freeMatrixLimit": 10,
   "memberMatrixLimit": 100,
   "updatedAt": "2026-08-30",
-  "storageKey": "ehs_sil_chemical_reactivity_v2"
+  "referenceToolVersion": "CRW 4.0.3",
+  "defaultScenarioId": "CRW-REFERENCE-35C-24H",
+  "storageKey": "ehs_sil_chemical_reactivity_v2_1",
+  "legacyStorageKey": "ehs_sil_chemical_reactivity_v2"
 }

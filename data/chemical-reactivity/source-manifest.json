@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "dataVersion": "CRIM-2026.08-v2-official-assist",
+  "dataVersion": "CRIM-2026.08-v2.1-official-assist",
   "sourceMode": "official_assist",
   "generatedAt": "2026-08-30T00:00:00Z",
   "reviewedAt": "2026-08-30",
@@ -11,14 +11,16 @@
     "reactive-groups.json",
     "reactive-group-pairs.json",
     "direct-evidence.json",
-    "consequences.json"
+    "consequences.json",
+    "mixing-scenarios.json"
   ],
   "checksums": {
     "chemicals.index.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
     "reactive-groups.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
     "reactive-group-pairs.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
     "direct-evidence.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-    "consequences.json": "sha256:bcbf04f3b1e9306a23d25a8064f23c3cf030b959f71f242f8fa2ce33b2812ac9"
+    "consequences.json": "sha256:bcbf04f3b1e9306a23d25a8064f23c3cf030b959f71f242f8fa2ce33b2812ac9",
+    "mixing-scenarios.json": "sha256:14b04e59d3f861804cd59adf13859d44f2829c1f9dce35872ac7dafaa635b7e9"
   },
   "sources": [
     {
