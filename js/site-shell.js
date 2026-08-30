@@ -38,7 +38,7 @@
             '<ul class="nav-dropdown nav-dropdown-wide" id="' + toolsId + '">' +
             navEntry(prefix + 'index.html#workbench', '专业工具总览', '按风险、事故与管理任务选择方法', ' class="nav-entry-featured"') +
             navEntry(prefix + 'tools/jsa-tool.html', 'JSA 工作安全分析专业教练', '生成可编辑初稿并检查风险与控制措施') +
-            navEntry(prefix + 'tools/chemical-risk-matrix.html', '化学品作业风险矩阵', 'SDS、暴露与职业健康控制分级') +
+            navEntry(prefix + 'tools/chemical-reactivity-matrix.html', '化学品反应与禁忌矩阵', '禁忌物、误混与库存相容性筛查') +
             navEntry(prefix + 'tools/risk-analysis.html#risk-assessment', '风险辨识与评估', 'FMEA 失效模式分析、What-If 假设分析') +
             navEntry(prefix + 'tools/risk-analysis.html#incident-investigation', '事故调查与根因分析', '5Why 五问法、RCA 根本原因分析、Tripod Beta 三脚架分析') +
             navEntry(prefix + 'tools/incident-learning.html', 'LFI 事故学习闭环', '事件报告、调查、整改与组织学习') +

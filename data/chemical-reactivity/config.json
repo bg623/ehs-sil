@@ -1,0 +1,10 @@
+{
+  "featureEnabled": true,
+  "ruleVersion": "CRIM-2026.08-v2",
+  "sourceMode": "official_assist",
+  "approvedSnapshot": null,
+  "freeMatrixLimit": 10,
+  "memberMatrixLimit": 100,
+  "updatedAt": "2026-08-30",
+  "storageKey": "ehs_sil_chemical_reactivity_v2"
+}

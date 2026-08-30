@@ -1,0 +1,64 @@
+{
+  "testOnly": true,
+  "licenseClass": "TEST_ONLY",
+  "chemicals": [
+    {
+      "id": "SYNTH-ACID-A",
+      "preferredName": "合成测试酸 A（不可公开）",
+      "searchableNames": ["synthetic acid a"],
+      "mixtureFlag": false,
+      "reactiveGroupIds": ["SYNTH-GROUP-ACID", "SYNTH-GROUP-WATER-REACTIVE"],
+      "directIncompatibilities": [],
+      "reactivityAlerts": ["SYNTHETIC_ONLY"],
+      "sourceRefs": [{"sourceId":"SYNTH","recordId":"A","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}],
+      "reviewStatus": "APPROVED",
+      "identityConfirmed": true
+    },
+    {
+      "id": "SYNTH-BASE-B",
+      "preferredName": "合成测试碱 B（不可公开）",
+      "searchableNames": ["synthetic base b"],
+      "mixtureFlag": false,
+      "reactiveGroupIds": ["SYNTH-GROUP-BASE"],
+      "directIncompatibilities": [],
+      "reactivityAlerts": [],
+      "sourceRefs": [{"sourceId":"SYNTH","recordId":"B","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}],
+      "reviewStatus": "APPROVED",
+      "identityConfirmed": true
+    },
+    {
+      "id": "SYNTH-UNKNOWN-C",
+      "preferredName": "合成测试未知物 C（不可公开）",
+      "searchableNames": ["synthetic unknown c"],
+      "mixtureFlag": true,
+      "reactiveGroupIds": [],
+      "directIncompatibilities": [],
+      "reactivityAlerts": [],
+      "sourceRefs": [{"sourceId":"SYNTH","recordId":"C","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}],
+      "reviewStatus": "APPROVED",
+      "identityConfirmed": true
+    }
+  ],
+  "groupPairs": [
+    {
+      "key": "SYNTH-GROUP-ACID::SYNTH-GROUP-BASE",
+      "groupA": "SYNTH-GROUP-ACID",
+      "groupB": "SYNTH-GROUP-BASE",
+      "status": "INCOMPATIBLE",
+      "consequenceTags": ["GENERATES_HEAT", "PRESSURIZATION"],
+      "possibleGases": [],
+      "summary": "仅用于验证规则引擎的合成不相容规则。",
+      "sourceRefs": [{"sourceId":"SYNTH","recordId":"PAIR-1","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}]
+    },
+    {
+      "key": "SYNTH-GROUP-BASE::SYNTH-GROUP-WATER-REACTIVE",
+      "groupA": "SYNTH-GROUP-BASE",
+      "groupB": "SYNTH-GROUP-WATER-REACTIVE",
+      "status": "CAUTION",
+      "consequenceTags": ["GENERATES_GAS"],
+      "possibleGases": ["合成测试气体（不可公开）"],
+      "summary": "仅用于验证多反应组笛卡尔积和气体来源。",
+      "sourceRefs": [{"sourceId":"SYNTH","recordId":"PAIR-2","title":"Synthetic fixture","version":"1","reviewedAt":"2026-08-30","licenseClass":"TEST_ONLY"}]
+    }
+  ]
+}

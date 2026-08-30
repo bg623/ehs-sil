@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataVersion": "CRIM-2026.08-v2-official-assist",
+  "sourceMode": "official_assist",
+  "generatedAt": "2026-08-30T00:00:00Z",
+  "reviewedAt": "2026-08-30",
+  "reviewStatus": "RIGHTS_GATE_OPEN",
+  "approvedProductionRecordCount": 0,
+  "dataFiles": [
+    "chemicals.index.json",
+    "reactive-groups.json",
+    "reactive-group-pairs.json",
+    "direct-evidence.json",
+    "consequences.json"
+  ],
+  "checksums": {
+    "chemicals.index.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "reactive-groups.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "reactive-group-pairs.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "direct-evidence.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "consequences.json": "sha256:bcbf04f3b1e9306a23d25a8064f23c3cf030b959f71f242f8fa2ce33b2812ac9"
+  },
+  "sources": [
+    {
+      "sourceId": "NOAA_CAMEO_OFFICIAL_LINK",
+      "title": "CAMEO Chemicals",
+      "url": "https://cameochemicals.noaa.gov/",
+      "version": "3.1.0 rev 1 (official site observed 2026-08-30)",
+      "reviewedAt": "2026-08-30",
+      "licenseClass": "LINK_ONLY_RIGHTS_REVIEW_REQUIRED",
+      "productionFields": [],
+      "updateMethod": "manual official-site review",
+      "rightsNote": "Official links and method description only; no chemical records copied or republished."
+    },
+    {
+      "sourceId": "AICHE_CRW_OFFICIAL_LINK",
+      "title": "Chemical Reactivity Worksheet 4",
+      "url": "https://ccps.aiche.org/resources/chemical-reactivity-worksheet",
+      "version": "4.0.3",
+      "reviewedAt": "2026-08-30",
+      "licenseClass": "LINK_ONLY_RIGHTS_REVIEW_REQUIRED",
+      "productionFields": [],
+      "updateMethod": "manual official-site review",
+      "rightsNote": "No CRW chemical data, CAS synonyms, NFPA ratings, group rules or gas products are bundled."
+    },
+    {
+      "sourceId": "GB_15603_2022_CITATION",
+      "title": "GB 15603—2022 危险化学品仓库储存通则",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=4BB90BF6C7015DF7E4905694A80F7C57",
+      "version": "2022",
+      "reviewedAt": "2026-08-30",
+      "licenseClass": "OFFICIAL_CITATION_ONLY",
+      "productionFields": ["storage_review_reference"],
+      "updateMethod": "manual official-standard status review",
+      "rightsNote": "Citation and official link only; no standard text reproduced."
+    }
+  ],
+  "rightsGate": {
+    "productionChemicalDataApproved": false,
+    "productionGroupRulesApproved": false,
+    "testOnlyRecordsAllowedInProduction": false,
+    "fallbackMode": "official_assist"
+  }
+}
