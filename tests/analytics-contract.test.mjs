@@ -58,6 +58,15 @@ assert.match(analytics, /result_count_bucket/);
 assert.match(analytics, /export_type/);
 assert.doesNotMatch(analytics, /searchQuery|currentQuery/);
 
+for (const event of [
+  "reactivity_tool_view", "reactivity_search_started", "reactivity_identity_confirmed",
+  "reactivity_pair_checked", "reactivity_matrix_generated", "reactivity_unknown_result",
+  "reactivity_source_opened", "reactivity_export_started", "reactivity_upgrade_clicked",
+]) {
+  assert.match(analytics, new RegExp(`['"]${event}['"]`), `反应性工具事件字典缺少 ${event}`);
+  assert.ok(metrics.includes("`" + event + "`"), `反应性工具指标文档缺少 ${event}`);
+}
+
 assert.match(tools, /src="\.\.\/js\/analytics\.js"/);
 assert.match(tools, /track\(['"]search_submit['"]/);
 assert.match(tools, /track\(['"]search_no_result['"]/);

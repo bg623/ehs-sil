@@ -219,14 +219,14 @@ Day 1 数据质量结论（2026-08-20）：
 
 Routine Work 控制规则（2026-08-25）：每次生产发布必须先判断是否改变首页、公共导航、JSA、会员入口或统一事件口径；改变时重置14天窗口，不改变时按工具或内容分组登记。正常的每日健康检查不计入真实访问样本，只有固定检查点、异常或发布事实才进入正式记录。
 
-## 化学品作业风险矩阵 V1 事件口径
+## 化学品反应与禁忌矩阵 V2 事件口径
 
-- `chemical_matrix_view`、`chemical_matrix_start`、`chemical_matrix_route_select`：页面访问、开始与路线选择；
-- `chemical_matrix_demo_load`、`chemical_matrix_complete`、`chemical_matrix_missing_data_view`：演示、完成与缺口查看；
-- `chemical_matrix_export_click`、`chemical_matrix_vip_gate_view`、`chemical_matrix_member_cta_click`：导出和会员门槛行为；
-- `chemical_matrix_reassess`：重新评估。
+- `reactivity_tool_view`、`reactivity_search_started`、`reactivity_identity_confirmed`：页面、搜索动作与身份确认状态；
+- `reactivity_pair_checked`、`reactivity_matrix_generated`、`reactivity_unknown_result`：两两检查、矩阵生成与未知状态；
+- `reactivity_source_opened`：打开官方来源入口；
+- `reactivity_export_started`、`reactivity_upgrade_clicked`：导出与会员效率能力入口。
 
-事件只允许携带路线、是否完成、结果级别枚举和功能行为；不得采集化学品名称、CAS、工厂、部门、岗位、任务、检测值、报告编号、SDS 内容或控制措施。
+事件只允许携带功能、记录数量区间、结果状态枚举、导出类型和数据版本；不得采集化学品名称、CAS、UN、供应商、库存位置、SDS 内容、文件名或企业自有证据。
 
 Day 3数据质量结论（2026-08-25延迟补检）：百度统计脚本在浏览器请求条件下可获取，事件V1结构和关键页面调用通过回归，但没有后台真实漏斗导出，因此移动端退出率、首页进入工具率、JSA完成率和会员点击率仍不可用于趋势判断。D1聚合可读不等于激活成功率可计算；精确运营数字继续不写入公开仓库。
 

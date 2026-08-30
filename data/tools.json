@@ -1,13 +1,13 @@
 {
   "tools": [
     {
-      "name": "化学品作业风险矩阵（在线工具）",
-      "path": "tools/chemical-risk-matrix.html",
-      "category": "职业健康",
+      "name": "化学品反应与禁忌矩阵（在线工具）",
+      "path": "tools/chemical-reactivity-matrix.html",
+      "category": "风险评估",
       "format": "其他",
       "bilingual": true,
-      "description": "SDS、作业条件与检测数据双轨职业健康分级辅助工具",
-      "tags": ["职业健康", "化学品", "风险评估", "SDS"]
+      "description": "禁忌物、误混与多化学品库存相容性筛查工具",
+      "tags": ["工艺安全", "化学品", "相容性", "SDS"]
     },
     {
       "name": "SWP模板_XQ.pdf",

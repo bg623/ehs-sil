@@ -21,7 +21,7 @@ function filesAt(target) {
   return fs.readdirSync(full, { withFileTypes: true }).flatMap((entry) => filesAt(path.join(target, entry.name)));
 }
 
-const trackedFiles = execFileSync("git", ["ls-files", "-co", "--exclude-standard", "--", "*.js", "*.mjs", "*.json", "*.yml", "*.yaml", "*.md", "*.sql", "*.html", "*.css"], { encoding: "utf8" }).trim().split("\n").filter(Boolean).map((file) => path.join(root, file));
+const trackedFiles = execFileSync("git", ["ls-files", "-co", "--exclude-standard", "--", "*.js", "*.mjs", "*.json", "*.yml", "*.yaml", "*.md", "*.sql", "*.html", "*.css"], { encoding: "utf8" }).trim().split("\n").filter(Boolean).map((file) => path.join(root, file)).filter((file) => fs.existsSync(file));
 const sandboxFiles = new Set(sandboxRoots.flatMap(filesAt));
 const files = [...new Set(trackedFiles)];
 const violations = [];

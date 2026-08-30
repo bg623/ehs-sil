@@ -127,9 +127,9 @@
                     window.EhsSilAnalytics.track('content_to_tool', {
                         toolId: 'training-matrix', sourceChannel: 'site', pageType: 'other'
                     });
-                } else if (action === 'start-chemical-matrix') {
+                } else if (action === 'start-chemical-reactivity') {
                     window.EhsSilAnalytics.track('content_to_tool', {
-                        toolId: 'chemical-risk-matrix', sourceChannel: 'site', pageType: 'other'
+                        toolId: 'chemical-reactivity-matrix', sourceChannel: 'site', pageType: 'other'
                     });
                 } else if (action === 'click-member') {
                     window.EhsSilAnalytics.track('click_member', {

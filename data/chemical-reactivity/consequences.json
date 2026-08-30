@@ -1,0 +1,17 @@
+[
+  {"id":"GENERATES_HEAT","labelZh":"产热","description":"反应可能释放热量。","escalatesProcessSafety":true},
+  {"id":"GENERATES_GAS","labelZh":"产气","description":"反应可能产生气体；具体气体必须来自已批准证据。","escalatesProcessSafety":true},
+  {"id":"PRESSURIZATION","labelZh":"升压","description":"密闭或受限空间可能积聚压力。","escalatesProcessSafety":true},
+  {"id":"INTENSE_OR_EXPLOSIVE","labelZh":"强烈或爆炸性反应","description":"存在强烈反应或爆炸性后果信号。","escalatesProcessSafety":true},
+  {"id":"FIRE_RISK","labelZh":"火灾风险","description":"反应可能引发或加剧火灾。","escalatesProcessSafety":true},
+  {"id":"FLAMMABLE_GAS","labelZh":"易燃气体","description":"证据指示可能产生易燃气体。","escalatesProcessSafety":true},
+  {"id":"TOXIC_PRODUCT","labelZh":"毒性产物","description":"证据指示可能产生毒性产物。","escalatesProcessSafety":true},
+  {"id":"CORROSIVE_PRODUCT","labelZh":"腐蚀性产物","description":"证据指示可能产生腐蚀性产物。","escalatesProcessSafety":true},
+  {"id":"POLYMERIZATION","labelZh":"聚合","description":"存在失控聚合信号。","escalatesProcessSafety":true},
+  {"id":"DECOMPOSITION","labelZh":"分解","description":"存在自分解或热分解信号。","escalatesProcessSafety":true},
+  {"id":"WATER_REACTIVE","labelZh":"遇水反应","description":"与水接触可能发生危险反应。","escalatesProcessSafety":true},
+  {"id":"AIR_REACTIVE","labelZh":"遇空气反应","description":"与空气接触可能发生危险反应。","escalatesProcessSafety":true},
+  {"id":"CATALYTIC_EFFECT","labelZh":"催化效应","description":"可能催化或加速其他反应。","escalatesProcessSafety":true},
+  {"id":"MATERIAL_INCOMPATIBILITY","labelZh":"设备材料不相容","description":"可能与容器、管线或密封材料不相容。","escalatesProcessSafety":false},
+  {"id":"ABSORBENT_INCOMPATIBILITY","labelZh":"吸附剂不相容","description":"可能与泄漏处置吸附材料不相容。","escalatesProcessSafety":false}
+]
