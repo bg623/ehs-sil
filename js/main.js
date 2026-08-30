@@ -127,6 +127,10 @@
                     window.EhsSilAnalytics.track('content_to_tool', {
                         toolId: 'training-matrix', sourceChannel: 'site', pageType: 'other'
                     });
+                } else if (action === 'start-chemical-matrix') {
+                    window.EhsSilAnalytics.track('content_to_tool', {
+                        toolId: 'chemical-risk-matrix', sourceChannel: 'site', pageType: 'other'
+                    });
                 } else if (action === 'click-member') {
                     window.EhsSilAnalytics.track('click_member', {
                         toolId: 'jsa-coach', sourceChannel: 'site', pageType: 'other'

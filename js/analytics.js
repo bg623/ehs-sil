@@ -58,7 +58,13 @@
         'training_excel_export', 'training_pdf_print', 'training_reset',
         'training_toolbox_click', 'training_library_click'
     ];
-    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents);
+    var chemicalMatrixEvents = [
+        'chemical_matrix_view', 'chemical_matrix_start', 'chemical_matrix_route_select',
+        'chemical_matrix_demo_load', 'chemical_matrix_complete', 'chemical_matrix_missing_data_view',
+        'chemical_matrix_export_click', 'chemical_matrix_vip_gate_view',
+        'chemical_matrix_member_cta_click', 'chemical_matrix_reassess'
+    ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents, chemicalMatrixEvents);
     var legacyAliases = {
         visit_jsa_coach: 'visit_jsa',
         start_scene_identification: 'start_jsa',
@@ -179,6 +185,7 @@
         jsaExperimentEvents: jsaExperimentEvents.slice(),
         incidentExperimentEvents: incidentExperimentEvents.slice(),
         trainingMatrixEvents: trainingMatrixEvents.slice(),
+        chemicalMatrixEvents: chemicalMatrixEvents.slice(),
         eventVersion: EVENT_VERSION
     };
 })();
