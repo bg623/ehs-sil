@@ -7,12 +7,15 @@
 (function () {
     'use strict';
 
-    var API_BASE = '/api/vip';
+    // The production website is served directly from Alibaba OSS for ICP
+    // compliance. VIP requests use a dedicated Worker custom domain so the
+    // apex domain can remain DNS-only and continue resolving to OSS.
+    var API_BASE = 'https://vip-api.ehs-sil.com/api/vip';
     var cachedSession = null;
 
     async function request(path, options) {
         var response = await fetch(API_BASE + path, Object.assign({
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: { 'Accept': 'application/json' }
         }, options || {}));
 
