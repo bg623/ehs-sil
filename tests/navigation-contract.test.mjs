@@ -23,6 +23,7 @@ for (const href of [
   "tools/incident-learning.html",
   "tools/training-matrix.html",
   "tools/compliance-identification.html",
+  "tools/index.html",
   "tools/regulations.html",
   "articles/",
   "products/toolbox.html",
@@ -52,11 +53,13 @@ assert.match(shell, /aria-current/);
 assert.match(home, /aria-controls="homeToolsMenu"/);
 assert.match(home, /aria-controls="homeResourcesMenu"/);
 assert.match(home, /aria-controls="homeAboutMenu"/);
+assert.doesNotMatch(home, /href="tools\/"/, "首页不得使用 OSS 无法解析的 tools/ 目录路径");
+assert.doesNotMatch(shell, /prefix \+ 'tools\/'/, "公共导航不得使用 OSS 无法解析的 tools/ 目录路径");
 
 console.log(JSON.stringify({
   status: "PASS",
   primary_entries: 6,
   dropdown_groups: 3,
-  direct_destinations: 11,
+  direct_destinations: 12,
   bilingual_method_labels: 5,
 }));

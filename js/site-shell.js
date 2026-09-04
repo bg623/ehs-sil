@@ -46,9 +46,9 @@
             navEntry(prefix + 'tools/compliance-identification.html', '企业适用法规识别', '按行业与地区生成候选清单') +
             navEntry(prefix + 'index.html#practice-tools', '外企管理实践', 'BBS 行为安全观察、LOTO 上锁挂牌等') +
             '</ul></li>' +
-            '<li class="nav-item has-dropdown" data-nav-section="resources"><div class="nav-parent-row"><a class="site-shell-link nav-link" data-nav-section-link="resources" href="' + prefix + 'tools/">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false" aria-controls="' + resourcesId + '"><span class="nav-chevron" aria-hidden="true"></span></button></div>' +
+            '<li class="nav-item has-dropdown" data-nav-section="resources"><div class="nav-parent-row"><a class="site-shell-link nav-link" data-nav-section-link="resources" href="' + prefix + 'tools/index.html">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false" aria-controls="' + resourcesId + '"><span class="nav-chevron" aria-hidden="true"></span></button></div>' +
             '<ul class="nav-dropdown nav-dropdown-wide" id="' + resourcesId + '">' +
-            navEntry(prefix + 'tools/', '工具与培训资料索引', '预览知识星球已发布与规划内容', ' class="nav-entry-featured"') +
+            navEntry(prefix + 'tools/index.html', '工具与培训资料索引', '预览知识星球已发布与规划内容', ' class="nav-entry-featured"') +
             navEntry(prefix + 'tools/regulations.html', '法规与标准导航', '查找中国与国际官方来源') +
             navEntry(prefix + 'articles/', '专业文章', '方法、案例与 EHS 实操指南') +
             navEntry(prefix + 'products/toolbox.html', '外企 EHS 工具箱', '模板、案例与持续更新资源') +
@@ -69,7 +69,7 @@
         var prefix = normalisePrefix(host.getAttribute('data-prefix'));
         host.innerHTML = '<footer class="site-shell-footer"><div class="container">' +
             '<div class="site-shell-footer-row"><div><div class="site-shell-footer-brand">EHS-SIL</div><div>外企 EHS 工具与成长工作台</div></div>' +
-            '<nav class="site-shell-footer-links" aria-label="页脚导航"><a href="' + prefix + 'index.html#workbench">专业工具</a><a href="' + prefix + 'tools/">专业资源</a><a href="' + prefix + 'tools/regulations.html">法规导航</a><a href="' + prefix + 'dashboard/register.html">会员激活</a></nav></div>' +
+            '<nav class="site-shell-footer-links" aria-label="页脚导航"><a href="' + prefix + 'index.html#workbench">专业工具</a><a href="' + prefix + 'tools/index.html">专业资源</a><a href="' + prefix + 'tools/regulations.html">法规导航</a><a href="' + prefix + 'dashboard/register.html">会员激活</a></nav></div>' +
             '<p class="site-shell-footer-note">&copy; 2026 EHS-SIL · 工具结果仅供专业判断参考，须结合现场、企业程序和适用要求人工确认。</p>' +
             '</div></footer>';
     }
