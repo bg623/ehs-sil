@@ -294,9 +294,13 @@
 
     function filteredTerms() {
         if (!state.data) return [];
+        var exactAbbreviation = normalize(state.query) && state.data.terms.some(function (term) {
+            return normalize(term.abbreviation) === normalize(state.query);
+        });
         var rows = state.data.terms.map(function (term) { return { term: term, score: scoreTerm(term, state.query) }; })
             .filter(function (row) {
                 return row.score >= 0 &&
+                    (!exactAbbreviation || normalize(row.term.abbreviation) === normalize(state.query)) &&
                     (!state.category || row.term.categoryId === state.category) &&
                     (!state.importance || row.term.importance === state.importance) &&
                     (!state.hasAbbreviation || Boolean(row.term.abbreviation)) &&

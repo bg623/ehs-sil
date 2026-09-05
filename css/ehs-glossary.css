@@ -186,6 +186,7 @@ mark { padding: 0 .08em; border-radius: 2px; background: #ffedb3; color: inherit
 
 @media (max-width: 420px) {
     .container { width: min(100% - 1.4rem, 1200px); }
+    .glossary-tabs { margin-inline: -.7rem; padding-inline: .7rem; }
     .data-summary span { display: none; }
     .data-summary strong:not(:first-child)::before { content: " · "; color: rgba(255,255,255,.4); }
     .term-actions button, .term-actions a { flex: 1 1 42%; justify-content: center; }
