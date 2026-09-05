@@ -63,7 +63,13 @@
         'reactivity_pair_checked', 'reactivity_matrix_generated', 'reactivity_unknown_result',
         'reactivity_source_opened', 'reactivity_export_started', 'reactivity_upgrade_clicked'
     ];
-    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents, chemicalReactivityEvents);
+    var glossaryEvents = [
+        'glossary_view', 'glossary_search', 'glossary_no_result', 'glossary_result_open',
+        'glossary_filter', 'glossary_confusion_open', 'glossary_learning_start',
+        'glossary_learning_complete', 'glossary_download', 'glossary_related_tool_click',
+        'glossary_membership_click'
+    ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents, chemicalReactivityEvents, glossaryEvents);
     var legacyAliases = {
         visit_jsa_coach: 'visit_jsa',
         start_scene_identification: 'start_jsa',
@@ -74,11 +80,14 @@
         view_member_benefits: 'click_member',
         click_knowledge_planet: 'click_member'
     };
-    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'incident_lfi', 'article', 'other'];
+    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'incident_lfi', 'glossary', 'article', 'other'];
     var allowedSourceChannels = ['direct', 'site', 'article', 'wechat', 'video', 'planet', 'other'];
     var allowedUserTiers = ['unknown', 'public', 'member', 'legacy_vip'];
     var allowedResultBuckets = ['0', '1-10', '11-50', '51+'];
     var allowedExportTypes = ['', 'print', 'xlsx'];
+    var allowedQueryLanguages = ['', 'zh', 'en', 'mixed', 'none'];
+    var allowedBooleanFlags = ['', 'yes', 'no'];
+    var allowedFilterTypes = ['', 'category', 'importance', 'abbreviation', 'source'];
 
     function sessionId() {
         var value = sessionStorage.getItem(SESSION_KEY);
@@ -112,7 +121,11 @@
             user_tier: safeEnum(context.userTier, allowedUserTiers, 'unknown'),
             page_type: safeEnum(context.pageType, allowedPageTypes, 'other'),
             result_count_bucket: safeEnum(context.resultBucket, allowedResultBuckets, ''),
-            export_type: safeEnum(context.exportType, allowedExportTypes, '')
+            export_type: safeEnum(context.exportType, allowedExportTypes, ''),
+            query_language: safeEnum(context.queryLanguage, allowedQueryLanguages, ''),
+            query_is_abbreviation: safeEnum(context.queryIsAbbreviation, allowedBooleanFlags, ''),
+            result_category: safeId(context.resultCategory),
+            filter_type: safeEnum(context.filterType, allowedFilterTypes, '')
         };
     }
 
@@ -139,6 +152,10 @@
             safeContext.page_type,
             safeContext.result_count_bucket,
             safeContext.export_type,
+            safeContext.query_language,
+            safeContext.query_is_abbreviation,
+            safeContext.result_category,
+            safeContext.filter_type,
             sessionId()
         ].join('|');
         window._hmt = window._hmt || [];
@@ -185,6 +202,7 @@
         incidentExperimentEvents: incidentExperimentEvents.slice(),
         trainingMatrixEvents: trainingMatrixEvents.slice(),
         chemicalReactivityEvents: chemicalReactivityEvents.slice(),
+        glossaryEvents: glossaryEvents.slice(),
         eventVersion: EVENT_VERSION
     };
 })();

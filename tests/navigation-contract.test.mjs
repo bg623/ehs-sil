@@ -24,6 +24,7 @@ for (const href of [
   "tools/training-matrix.html",
   "tools/compliance-identification.html",
   "tools/index.html",
+  "tools/ehs-glossary.html",
   "tools/regulations.html",
   "articles/",
   "products/toolbox.html",
