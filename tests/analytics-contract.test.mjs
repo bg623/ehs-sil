@@ -38,6 +38,17 @@ for (const event of [
 assert.match(analytics, /['"]incident_lfi['"]/);
 
 for (const event of [
+  "glossary_view", "glossary_search", "glossary_no_result", "glossary_result_open",
+  "glossary_filter", "glossary_confusion_open", "glossary_learning_start",
+  "glossary_learning_complete", "glossary_download", "glossary_related_tool_click",
+  "glossary_membership_click",
+]) {
+  assert.match(analytics, new RegExp(`['"]${event}['"]`), `术语库事件字典缺少 ${event}`);
+  assert.ok(metrics.includes("`" + event + "`"), `术语库指标文档缺少 ${event}`);
+}
+assert.doesNotMatch(read("js/ehs-glossary.js"), /\b(queryText|searchQuery)\s*:/);
+
+for (const event of [
   "visit_jsa",
   "start_jsa",
   "complete_scene",
