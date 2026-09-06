@@ -83,8 +83,9 @@
                             <li><a href="#faq"><span class="nav-entry-title">常见问题</span><span class="nav-entry-desc">使用范围、资源与专业边界</span></a></li>
                         </ul>
                     </li>
+                    <li class="nav-item" data-nav-section="feedback"><a href="feedback.html" class="nav-link" data-nav-section-link="feedback" data-feedback-open data-feedback-entry="header">反馈建议</a></li>
                     <li class="nav-item nav-membership" data-nav-section="membership"><a href="#membership" class="nav-link" data-nav-section-link="membership">会员权益</a></li>
-                    <li class="nav-item nav-account" data-nav-section="account"><a href="dashboard/register.html" class="nav-link nav-account-link" data-nav-section-link="account">登录 / 激活</a></li>
+                    <li class="nav-item nav-account" data-nav-section="account"><a href="dashboard/register.html" class="nav-link nav-account-link" data-nav-section-link="account" data-membership-status>正在确认权益…</a></li>
                 </ul>
             </nav>
         </div>
@@ -210,7 +211,7 @@
                         <li>脱敏案例、培训材料和持续更新</li>
                     </ul>
                     <a href="products/toolbox.html" class="btn btn-primary btn-block" data-home-action="click-member">查看工具箱会员权益</a>
-                    <a href="dashboard/register.html" class="membership-login">已有会员？登录或激活 →</a>
+                    <a href="dashboard/register.html" class="membership-login" data-membership-status>正在确认当前浏览器权益…</a>
                     <small>按年加入；原29.9元历史用户继续履约至原到期日。</small>
                 </aside>
             </div>
@@ -524,7 +525,7 @@
                 </div>
                 <div class="footer-links">
                     <h4>声明</h4>
-                    <ul><li><a href="#">使用条款</a></li><li><a href="#">免责声明</a></li></ul>
+                    <ul><li><a href="feedback.html" data-feedback-open data-feedback-entry="footer">反馈建议</a></li><li><a href="#">使用条款</a></li><li><a href="#">免责声明</a></li></ul>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -534,8 +535,11 @@
         </div>
     </footer>
 
-    <script src="js/analytics.js"></script>
-    <script src="js/site-shell.js?v=2.1.0"></script>
+    <script src="js/analytics.js?v=2.3.0"></script>
+    <script src="js/auth.js?v=2.3.0"></script>
+    <script src="js/membership-ui.js?v=1.0.0"></script>
+    <script src="js/feedback.js?v=1.0.0"></script>
+    <script src="js/site-shell.js?v=2.3.0"></script>
     <script src="js/main.js?v=2.1.0"></script>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 </body>

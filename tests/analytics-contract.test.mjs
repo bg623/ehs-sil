@@ -28,6 +28,17 @@ for (const event of [
 }
 
 for (const event of [
+  "feedback_open", "feedback_submit_success", "feedback_submit_failed",
+  "activation_verified", "membership_status_error",
+]) {
+  assert.match(analytics, new RegExp(`['"]${event}['"]`), `会员与反馈事件字典缺少 ${event}`);
+  assert.ok(metrics.includes("`" + event + "`"), `指标文档缺少 ${event}`);
+}
+assert.match(analytics, /feedback_type/);
+assert.match(analytics, /source_entry/);
+assert.match(analytics, /error_type/);
+
+for (const event of [
   "visit_incident_lfi",
   "incident_resource_click",
 ]) {
@@ -131,4 +142,4 @@ context.window.EhsSilAnalytics.track("export", { mode: "user", exportType: "xlsx
 assert.equal(dispatched[1].detail.context.export_type, "xlsx");
 assert.match(context.window._hmt[1][3], /\|xlsx\|/);
 
-console.log(JSON.stringify({ status: "PASS", event_version: 1, funnel_events: 10, jsa_events: 8 }));
+console.log(JSON.stringify({ status: "PASS", event_version: 2, funnel_events: 10, jsa_events: 8, membership_feedback_events: 5 }));

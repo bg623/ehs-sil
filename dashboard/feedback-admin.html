@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>反馈管理 · EHS-SIL</title>
+    <link rel="stylesheet" href="../css/style.css?v=2.2.0">
+    <link rel="stylesheet" href="../css/feedback-membership.css?v=20260906">
+    <link rel="icon" href="../assets/ehs-sil-logo.png">
+    <link rel="apple-touch-icon" href="../assets/ehs-sil-logo.png">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <div data-site-shell-header data-prefix="../" data-mode="light"></div>
+    <main id="main-content" class="feedback-admin-shell">
+        <div class="container" data-feedback-admin-root>
+            <header class="feedback-admin-head">
+                <span class="section-label">受保护的主理人工作台</span>
+                <h1>用户反馈管理</h1>
+                <p>只有服务端确认 `admin` 权益后才能读取或修改反馈。页面本身不缓存反馈正文或联系信息。</p>
+            </header>
+            <section class="feedback-admin-state" data-admin-state role="status" aria-live="polite">正在验证管理员权益…</section>
+            <section data-admin-workspace hidden>
+                <form class="feedback-admin-filters" data-admin-filters>
+                    <label>处理状态<select name="status"><option value="">全部状态</option><option value="received">已收到</option><option value="verifying">核实中</option><option value="planned">已安排</option><option value="resolved">已解决</option><option value="closed">已关闭</option></select></label>
+                    <label>反馈类型<select name="type"><option value="">全部类型</option><option value="bug">工具问题</option><option value="content_issue">内容疑问</option><option value="membership">会员问题</option><option value="feature">功能建议</option><option value="work_pain">工作痛点</option><option value="other">其他</option></select></label>
+                    <label>工具标识<input name="tool_id" type="text" maxlength="60" placeholder="例如 training-matrix"></label>
+                    <button type="submit" class="btn btn-primary">筛选</button>
+                </form>
+                <div class="feedback-admin-summary"><strong data-admin-total>0</strong> 条反馈</div>
+                <div class="feedback-admin-grid">
+                    <section class="feedback-admin-list" data-admin-list aria-label="反馈列表"></section>
+                    <section class="feedback-admin-detail" data-admin-detail aria-label="反馈详情"><p>从左侧选择一条反馈查看详情。</p></section>
+                </div>
+                <div class="feedback-admin-pagination"><button type="button" class="btn btn-secondary" data-admin-prev>上一页</button><span data-admin-page>第 1 页</span><button type="button" class="btn btn-secondary" data-admin-next>下一页</button></div>
+            </section>
+        </div>
+    </main>
+    <div data-site-shell-footer data-prefix="../"></div>
+    <script src="../js/analytics.js?v=2.3.0"></script>
+    <script src="../js/auth.js?v=2.3.0"></script>
+    <script src="../js/membership-ui.js?v=1.0.0"></script>
+    <script src="../js/feedback.js?v=1.0.0"></script>
+    <script src="../js/site-shell.js?v=2.3.0"></script>
+    <script src="../js/feedback-admin.js?v=1.0.0"></script>
+</body>
+</html>

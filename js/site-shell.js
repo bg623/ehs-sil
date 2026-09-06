@@ -6,6 +6,16 @@
 (function () {
     'use strict';
 
+    var shellScript = document.currentScript;
+    var sharedScriptBase = shellScript && shellScript.src ? new URL('.', shellScript.src) : new URL('js/', location.href);
+    if (!document.querySelector('link[data-ehs-feedback-membership]')) {
+        var sharedStyle = document.createElement('link');
+        sharedStyle.rel = 'stylesheet';
+        sharedStyle.href = new URL('../css/feedback-membership.css?v=20260906', sharedScriptBase).href;
+        sharedStyle.dataset.ehsFeedbackMembership = '';
+        document.head.appendChild(sharedStyle);
+    }
+
     function normalisePrefix(value) {
         return value || '';
     }
@@ -61,8 +71,9 @@
             navEntry(prefix + 'index.html#about', '主理人与 EHS-SIL', '了解网站定位与专业背景') +
             navEntry(prefix + 'index.html#faq', '常见问题', '使用范围、资源与专业边界') +
             '</ul></li>' +
+            '<li class="nav-item" data-nav-section="feedback"><a class="site-shell-link nav-link" data-nav-section-link="feedback" data-feedback-open data-feedback-entry="header" href="' + prefix + 'feedback.html">反馈建议</a></li>' +
             '<li class="nav-item nav-membership" data-nav-section="membership"><a class="site-shell-link nav-link" data-nav-section-link="membership" href="' + prefix + 'index.html#membership">会员权益</a></li>' +
-            '<li class="nav-item nav-account" data-nav-section="account"><a class="site-shell-link nav-link nav-account-link" data-nav-section-link="account" href="' + prefix + 'dashboard/register.html">登录 / 激活</a></li>' +
+            '<li class="nav-item nav-account" data-nav-section="account"><a class="site-shell-link nav-link nav-account-link" data-nav-section-link="account" data-membership-status href="' + prefix + 'dashboard/register.html">正在确认权益…</a></li>' +
             '</ul></nav></div></header>';
     }
 
@@ -70,7 +81,7 @@
         var prefix = normalisePrefix(host.getAttribute('data-prefix'));
         host.innerHTML = '<footer class="site-shell-footer"><div class="container">' +
             '<div class="site-shell-footer-row"><div><div class="site-shell-footer-brand">EHS-SIL</div><div>外企 EHS 工具与成长工作台</div></div>' +
-            '<nav class="site-shell-footer-links" aria-label="页脚导航"><a href="' + prefix + 'index.html#workbench">专业工具</a><a href="' + prefix + 'tools/index.html">专业资源</a><a href="' + prefix + 'tools/regulations.html">法规导航</a><a href="' + prefix + 'dashboard/register.html">会员激活</a></nav></div>' +
+            '<nav class="site-shell-footer-links" aria-label="页脚导航"><a href="' + prefix + 'index.html#workbench">专业工具</a><a href="' + prefix + 'tools/index.html">专业资源</a><a href="' + prefix + 'tools/regulations.html">法规导航</a><a href="' + prefix + 'feedback.html" data-feedback-open data-feedback-entry="footer">反馈建议</a><a href="' + prefix + 'dashboard/register.html">会员权益</a></nav></div>' +
             '<p class="site-shell-footer-note">&copy; 2026 EHS-SIL · 工具结果仅供专业判断参考，须结合现场、企业程序和适用要求人工确认。</p>' +
             '<p class="site-shell-footer-note"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026013311号-2</a></p>' +
             '</div></footer>';
@@ -151,7 +162,8 @@
             var pathname = window.location.pathname.replace(/\/index\.html$/, '/');
             var hash = window.location.hash;
             var section = 'home';
-            if (/\/dashboard\//.test(pathname)) section = 'account';
+            if (/\/feedback\.html$/.test(pathname)) section = 'feedback';
+            else if (/\/dashboard\//.test(pathname)) section = 'account';
             else if (/\/(?:articles|topics)\//.test(pathname) || /\/products\//.test(pathname) || /\/tools\/(?:regulations\.html)?$/.test(pathname)) section = 'resources';
             else if (/\/tools\//.test(pathname)) section = 'tools';
             else if (hash === '#membership') section = 'membership';
@@ -200,4 +212,31 @@
     document.querySelectorAll('[data-site-shell-header]').forEach(renderHeader);
     document.querySelectorAll('[data-site-shell-footer]').forEach(renderFooter);
     document.querySelectorAll('.site-header, .site-shell-header').forEach(initialiseHeader);
+    if (window.EhsSilMembershipUI && window.EhsSilVip) {
+        window.EhsSilMembershipUI.render(window.EhsSilVip.getState());
+    }
+
+    function loadScript(filename, readyCheck) {
+        if (readyCheck()) return Promise.resolve();
+        var existing = document.querySelector('script[data-ehs-shared="' + filename + '"]');
+        if (existing) return new Promise(function (resolve) { existing.addEventListener('load', resolve, { once: true }); });
+        return new Promise(function (resolve) {
+            var script = document.createElement('script');
+            script.src = new URL(filename + '?v=20260906', sharedScriptBase).href;
+            script.dataset.ehsShared = filename;
+            script.addEventListener('load', resolve, { once: true });
+            script.addEventListener('error', resolve, { once: true });
+            document.head.appendChild(script);
+        });
+    }
+
+    function bootSharedFeatures() {
+        loadScript('analytics.js', function () { return Boolean(window.EhsSilAnalytics); })
+            .then(function () { return loadScript('auth.js', function () { return Boolean(window.EhsSilVip); }); })
+            .then(function () { return loadScript('membership-ui.js', function () { return Boolean(window.EhsSilMembershipUI); }); })
+            .then(function () { return loadScript('feedback.js', function () { return Boolean(window.EhsSilFeedback); }); });
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootSharedFeatures, { once: true });
+    else bootSharedFeatures();
 })();

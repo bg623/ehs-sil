@@ -1,6 +1,6 @@
 # EHS-SIL 网站运维手册
 
-> 最后更新：2026-07-22
+> 最后更新：2026-09-06
 > 网站：https://ehs-sil.com
 
 ---
@@ -8,14 +8,16 @@
 ## 一、架构概览
 
 ```
-用户 → https://ehs-sil.com
-        ↓  DNS / 路由 (Cloudflare)
-   ┌────公开内容────→ GitHub Pages
-   └────VIP 路径────→ Cloudflare Worker + D1 + 私有资产
+用户 → https://ehs-sil.com / https://www.ehs-sil.com
+        ↓  Cloudflare 权威 DNS（根域名保持 DNS-only）
+        阿里云杭州 OSS 静态网站
+
+浏览器 → https://vip-api.ehs-sil.com
+          ↓ Cloudflare Worker Custom Domain
+          会员会话、反馈接口与 D1
 ```
 
-**核心：** 公开内容保留在 GitHub Pages；VIP 验证和 VIP 工具源码由
-Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
+**核心：** GitHub `main` 是公开源码源，不是当前生产站点。公开页面只有同步到阿里云 OSS 并完成线上哈希与 HTTP 验证后才算发布。会员和反馈由独立 Worker 处理，激活码仅以哈希形式存储在 D1。
 
 ---
 
@@ -27,14 +29,12 @@ Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
 | DNS 服务器 | `laura.ns.cloudflare.com` / `lennon.ns.cloudflare.com` |
 | Cloudflare API Token | 通过 Cloudflare Secret 管理，不写入仓库 |
 
-**Cloudflare DNS 记录：**
-| 类型 | 名称 | 值 | 代理 |
-|---|---|---|---|
-| A | @ | 185.199.108.153 | 🔶 开启 |
-| A | @ | 185.199.109.153 | 🔶 开启 |
-| A | @ | 185.199.110.153 | 🔶 开启 |
-| A | @ | 185.199.111.153 | 🔶 开启 |
-| CNAME | www | bg623.github.io | 🔶 开启 |
+生产约束：
+
+- 根域名和 `www` 指向阿里云杭州 OSS，备案整改与自动复查完成前保持 DNS-only；
+- `vip-api` 是独立 Worker Custom Domain，不代表可以代理根域名；
+- DNS、ICP备案控制台状态和证书均为时效信息，每次操作前重新读取生产现状；
+- 不在文档中保存 OSS 访问密钥、Cloudflare Token、证书私钥或具体登录凭据。
 
 ---
 
@@ -43,12 +43,13 @@ Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
 **更新流程：**
 1. 告诉我需要改什么
 2. 我修改代码（本地）
-3. 通过 GitHub API 部署到 GitHub Pages
-4. Cloudflare 缓存 1-5 分钟后生效
+3. 推送或合并到 GitHub `main`，保留可审计源码提交
+4. 仅同步本次已审核的公开文件到阿里云 OSS
+5. 比对 OSS 对象与提交文件哈希，并对生产 URL 做 HTTP、静态资源和关键流程冒烟
 
 **本地路径：**
 ```
-/Users/gobyjohn/Documents/Codex/2026-06-20/ni-s/outputs/ehs-sil-website/
+/Users/gobyjohn/Documents/Codex/2026-07-26/ehs-sil-chatgpt-continuity/work/
 ```
 
 **关键文件：**
@@ -60,7 +61,7 @@ Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
 | `js/main.js` | 主脚本（已内联到 HTML） |
 | `js/tools.js` | 工具库脚本（已内联到 HTML） |
 | `dashboard/register.html` | VIP 激活/购买页面 |
-| `dashboard/admin-codes.html` | 已停用的旧管理入口 |
+| `dashboard/feedback-admin.html` | 仅服务端确认 `admin` 权益后可使用的反馈管理页 |
 | `tools/` | 所有在线工具 |
 | `data/regulations.json` | 法规数据库 |
 | `data/tools.json` | 工具数据库 |
@@ -92,9 +93,10 @@ Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
 
 | 问题 | 说明 | 状态 |
 |---|---|---|
-| Pages 部署缓存 | GitHub Pages 构建成功但部署可能滞后 | ⚠️ 需注意 |
-| JS 文件 404 | Pages 偶发不发布 JS 文件（已内联绕过） | ✅ 已修复 |
-| register.html 404 | 新页面需等 Pages 更新后出现 | ⏳ 等待中 |
+| GitHub 与生产不同步 | GitHub 提交不会自动使 OSS 生效 | 每次发布必须同步与验哈希 |
+| OSS 目录路径 | `/tools/` 等目录形式可能返回 `NoSuchKey` | 导航使用显式 `index.html` |
+| ICP 自动复查 | 根域名路由变更可能影响复查 | 2026-09-17 前不改变现有主站路由 |
+| SSL 续期 | 免费证书有到期时间 | 2026-11-15 前完成续期并复核 |
 
 ---
 
@@ -126,8 +128,7 @@ Cloudflare Worker 服务端保护，激活码仅以哈希形式存储在 D1。
 **4. 修改收款码：** 替换 `assets/wechat-pay-qr.jpg`
 **5. 补充激活码：** 通过受保护的 Worker 管理接口创建
 
-**重要：** 公开内容部署到 GitHub Pages；VIP 代码部署到私有 Worker。
-两部分必须按“先 Worker、后 Pages”的顺序发布，避免保护路由暂时失效。
+**重要：** GitHub 保存公开源码，生产公开内容部署到阿里云 OSS；会员与反馈代码部署到私有 Worker。涉及新 API 的改动必须按“先 Worker 与 D1、完成冒烟；后 GitHub 与 OSS 前端”的顺序发布。回滚优先关闭或回退前端入口，保留已接收的反馈数据。
 
 ---
 
