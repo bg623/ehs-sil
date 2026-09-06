@@ -69,7 +69,7 @@ for (const status of ["已覆盖", "建议关注", "需要人工确认"]) {
 }
 assert.match(jsa, /不代表作业安全、法规符合、作业批准或风险可接受/);
 
-assert.match(register, /停止销售29\.9元独立VIP/);
+assert.match(register, /停止销售\s*29\.9\s*元独立\s*VIP/);
 assert.doesNotMatch(register, /付款二维码|扫码支付|立即购买29\.9/);
 assert.doesNotMatch(`${register}\n${toolbox}`, /一次付费.{0,8}永久使用/);
 assert.match(toolbox, /129/);

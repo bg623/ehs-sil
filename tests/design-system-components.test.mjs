@@ -44,7 +44,7 @@ assert.match(
   /js\/main\.js\?v=2\.1\.0/,
   "首页主脚本必须与公共导航同步更新缓存版本，避免旧导航事件重复绑定",
 );
-assert.match(pages[0], /js\/site-shell\.js\?v=2\.1\.0/);
+assert.match(pages[0], /js\/site-shell\.js\?v=2\.2\.0/);
 for (const page of pages) {
   assert.match(page, /rel="apple-touch-icon"/, "关键页面必须声明 Safari / iOS 触摸图标");
 }

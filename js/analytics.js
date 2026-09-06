@@ -9,7 +9,7 @@
     'use strict';
 
     var CATEGORY = 'ehs_sil_product';
-    var EVENT_VERSION = '1';
+    var EVENT_VERSION = '2';
     var GROUP_KEY = 'ehs_sil_experiment_group';
     var SESSION_KEY = 'ehs_sil_analytics_session';
     var ONCE_KEY = 'ehs_sil_analytics_once';
@@ -69,7 +69,11 @@
         'glossary_learning_complete', 'glossary_download', 'glossary_related_tool_click',
         'glossary_membership_click'
     ];
-    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents, chemicalReactivityEvents, glossaryEvents);
+    var membershipFeedbackEvents = [
+        'feedback_open', 'feedback_submit_success', 'feedback_submit_failed',
+        'activation_verified', 'membership_status_error'
+    ];
+    var allowedEvents = funnelEvents.concat(diagnosticEvents, jsaExperimentEvents, incidentExperimentEvents, trainingMatrixEvents, chemicalReactivityEvents, glossaryEvents, membershipFeedbackEvents);
     var legacyAliases = {
         visit_jsa_coach: 'visit_jsa',
         start_scene_identification: 'start_jsa',
@@ -80,7 +84,7 @@
         view_member_benefits: 'click_member',
         click_knowledge_planet: 'click_member'
     };
-    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'incident_lfi', 'glossary', 'article', 'other'];
+    var allowedPageTypes = ['tool_index', 'regulation_search', 'jsa_coach', 'compliance_tool', 'incident_lfi', 'glossary', 'article', 'membership', 'feedback', 'feedback_admin', 'other'];
     var allowedSourceChannels = ['direct', 'site', 'article', 'wechat', 'video', 'planet', 'other'];
     var allowedUserTiers = ['unknown', 'public', 'member', 'legacy_vip'];
     var allowedResultBuckets = ['0', '1-10', '11-50', '51+'];
@@ -88,6 +92,9 @@
     var allowedQueryLanguages = ['', 'zh', 'en', 'mixed', 'none'];
     var allowedBooleanFlags = ['', 'yes', 'no'];
     var allowedFilterTypes = ['', 'category', 'importance', 'abbreviation', 'source'];
+    var allowedFeedbackTypes = ['', 'bug', 'content_issue', 'membership', 'feature', 'work_pain', 'other'];
+    var allowedFeedbackEntries = ['', 'page', 'direct', 'header', 'footer', 'tool-title', 'result', 'membership', 'membership-detail'];
+    var allowedErrorTypes = ['', 'network', 'timeout', 'validation', 'rate_limit', 'server', 'session', 'unknown'];
 
     function sessionId() {
         var value = sessionStorage.getItem(SESSION_KEY);
@@ -125,7 +132,10 @@
             query_language: safeEnum(context.queryLanguage, allowedQueryLanguages, ''),
             query_is_abbreviation: safeEnum(context.queryIsAbbreviation, allowedBooleanFlags, ''),
             result_category: safeId(context.resultCategory),
-            filter_type: safeEnum(context.filterType, allowedFilterTypes, '')
+            filter_type: safeEnum(context.filterType, allowedFilterTypes, ''),
+            feedback_type: safeEnum(context.feedbackType, allowedFeedbackTypes, ''),
+            source_entry: safeEnum(context.sourceEntry, allowedFeedbackEntries, ''),
+            error_type: safeEnum(context.errorType, allowedErrorTypes, '')
         };
     }
 
@@ -156,6 +166,9 @@
             safeContext.query_is_abbreviation,
             safeContext.result_category,
             safeContext.filter_type,
+            safeContext.feedback_type,
+            safeContext.source_entry,
+            safeContext.error_type,
             sessionId()
         ].join('|');
         window._hmt = window._hmt || [];
@@ -203,6 +216,7 @@
         trainingMatrixEvents: trainingMatrixEvents.slice(),
         chemicalReactivityEvents: chemicalReactivityEvents.slice(),
         glossaryEvents: glossaryEvents.slice(),
+        membershipFeedbackEvents: membershipFeedbackEvents.slice(),
         eventVersion: EVENT_VERSION
     };
 })();

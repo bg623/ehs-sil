@@ -1,133 +1,111 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>工具箱会员激活 · EHS-SIL</title>
-<link rel="stylesheet" href="../css/style.css?v=2.1.0">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
-<link rel="apple-touch-icon" href="../assets/ehs-sil-logo.png">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;background:var(--bg);-webkit-font-smoothing:antialiased}
-.container{max-width:520px;margin:0 auto;padding:1.5rem}
-.back{font-size:.78rem;color:var(--primary);text-decoration:none;display:inline-block;margin-bottom:1rem;opacity:.6}
-.back:hover{opacity:1}
-.card{background:#fff;border-radius:12px;padding:1.5rem 1.8rem;margin-bottom:1.2rem;border:1px solid #d7d1c6}
-.card h1,.card h2{font-size:1.05rem;color:var(--primary);font-weight:700;margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem}
-.card .sub{font-size:.78rem;color:#888;margin-bottom:.8rem;line-height:1.5}
-.or-divider{text-align:center;position:relative;margin:.8rem 0;font-size:.75rem;color:#bbb}
-.or-divider::before,.or-divider::after{content:'';position:absolute;top:50%;width:44%;height:1px;background:#e3ddd2}
-.or-divider::before{left:0}.or-divider::after{right:0}
-.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:.3rem;padding:.5rem .8rem;border:1px solid transparent;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;cursor:pointer;transition:var(--transition-fast);text-decoration:none}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{opacity:.9}
-.btn-accent{background:var(--accent);color:#fff}
-.btn-accent:hover{opacity:.9}
-input[type="text"]{width:100%;padding:.55rem .65rem;border:1.5px solid #ddd;border-radius:6px;font-size:.82rem;outline:none}
-input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,40,54,.08)}
-.purchase-box{text-align:center}
-.purchase-box .price{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1.2}
-.purchase-box .price span{font-size:.9rem;font-weight:400;color:#888}
-.purchase-box .perks{text-align:left;margin:.8rem 0;font-size:.8rem;color:#555;line-height:1.8}
-.purchase-box .perks li{list-style:none;padding-left:.2rem}
-.purchase-box .perks li::before{content:'✓ ';color:#16a34a;font-weight:700}
-.qr-area{display:flex;flex-direction:column;align-items:center;margin:.8rem 0}
-.qr-image{width:180px;height:180px;border:2px dashed #ddd;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fafafa;overflow:hidden}
-.qr-image img{width:100%;height:100%;object-fit:contain}
-.qr-image .placeholder{font-size:.68rem;color:#bbb;text-align:center;line-height:1.5;padding:.5rem}
-.qr-label{font-size:.7rem;color:#999;margin-top:.4rem}
-.steps{text-align:left;margin:.8rem 0;padding:.8rem;background:#f9f9f5;border-radius:8px}
-.steps .step{font-size:.78rem;color:#555;margin-bottom:.35rem;line-height:1.6}
-.steps .step:last-child{margin-bottom:0}
-.steps .num{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--primary);color:#fff;font-size:.6rem;font-weight:600;margin-right:.3rem;flex-shrink:0}
-.contact-line{font-size:.75rem;color:#999;margin-top:.5rem;text-align:center}
-.contact-line strong{color:var(--primary)}
-.active-box{text-align:center;padding:.5rem 0}
-.active-box .icon{font-size:2.5rem;margin-bottom:.3rem}
-.active-box .title{font-size:1.1rem;font-weight:700;color:#16a34a;margin-bottom:.2rem}
-.active-box .info{font-size:.78rem;color:#555;margin-bottom:.5rem}
-.active-box .btn{font-size:.75rem}
-@media(max-width:480px){.container{padding:1rem}.card{padding:1.2rem}}
-</style>
-<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="激活、查看和管理当前浏览器中的EHS-SIL工具箱会员权益。">
+    <title>我的会员权益 · EHS-SIL</title>
+    <link rel="canonical" href="https://ehs-sil.com/dashboard/register.html">
+    <link rel="stylesheet" href="../css/style.css?v=2.2.0">
+    <link rel="stylesheet" href="../css/feedback-membership.css?v=20260906">
+    <link rel="icon" href="../assets/ehs-sil-logo.png">
+    <link rel="apple-touch-icon" href="../assets/ehs-sil-logo.png">
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;background:var(--feedback-bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+        .member-page{max-width:720px;margin:0 auto;padding:2.2rem 1.25rem 3rem}
+        .member-page-head{margin-bottom:1.1rem}
+        .member-page-head h1{margin:.3rem 0;color:var(--feedback-primary-dark);font-size:clamp(1.7rem,4vw,2.35rem)}
+        .member-page-head p{margin:.4rem 0;color:var(--feedback-muted);line-height:1.7}
+        .member-card{margin-bottom:1rem;padding:1.35rem;border:1px solid var(--feedback-border);border-radius:14px;background:#fff;box-shadow:0 8px 26px rgba(20,42,52,.06)}
+        .member-card h2{margin:0 0 .4rem;color:var(--feedback-primary-dark);font-size:1.08rem}
+        .member-card p{color:var(--feedback-muted);line-height:1.65}
+        .activation-form{display:grid;gap:.65rem;margin-top:1rem}
+        .activation-row{display:flex;gap:.55rem}
+        .activation-row input,.nickname-form-row input{min-height:44px;padding:.65rem .72rem;border:1px solid var(--feedback-border);border-radius:8px;font:inherit}
+        .activation-row input{flex:1;min-width:0}
+        .member-perks{margin:.7rem 0;padding-left:1.2rem;color:var(--feedback-text);line-height:1.8}
+        .member-note{padding:.75rem;border-left:3px solid var(--feedback-accent);background:#fffbeb;font-size:.8rem!important}
+        .member-purchase{text-align:center}
+        .member-price{margin:.6rem 0;color:var(--feedback-primary-dark);font-size:2rem;font-weight:800}
+        .member-price span{font-size:.9rem;font-weight:500;color:var(--feedback-muted)}
+        [hidden]{display:none!important}
+        @media(max-width:520px){.member-page{padding:1.25rem .75rem 2rem}.activation-row{flex-direction:column}.activation-row .btn{width:100%}}
+    </style>
 </head>
 <body>
-<div data-site-shell-header data-prefix="../" data-mode="light"></div>
-<main class="container" id="main-content">
-<a href="../index.html" class="back">&larr; 返回首页</a>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <div data-site-shell-header data-prefix="../" data-mode="light"></div>
+    <main class="member-page" id="main-content">
+        <header class="member-page-head">
+            <span class="section-label">我的会员权益</span>
+            <h1>确认当前浏览器的权益状态</h1>
+            <p>会员状态由安全服务器确认。展示昵称仅用于辨认当前状态，不代表知识星球账号或跨设备身份。</p>
+        </header>
 
-<div class="card" style="text-align:center">
-<h1 style="justify-content:center;font-size:1.2rem">工具箱会员在线权益</h1>
-<div style="font-size:.8rem;color:#888;margin-top:.2rem">外企EHS工具箱会员包含网站专业工具权益</div>
-</div>
+        <section class="membership-detail-card" data-membership-detail data-membership-state="checking" aria-live="polite">
+            <span class="section-label">当前状态</span>
+            <h2 class="membership-state-title" data-membership-title>正在确认权益…</h2>
+            <p class="membership-state-description" data-membership-description>正在向安全服务器确认当前浏览器的会员权益。</p>
+            <p data-membership-expiry hidden></p>
+            <ul class="membership-capabilities" data-membership-capabilities hidden></ul>
+            <button type="button" class="btn btn-secondary" data-membership-retry hidden>重新验证权益</button>
 
-<!-- 会员权益已激活状态 -->
-<div id="vipActiveSection" style="display:none">
-<div class="card active-box" id="vipActiveCard">
-<div class="icon">&#9989;</div>
-<div class="title">会员权益已激活</div>
-<div class="info" id="vipActiveInfo">加载中...</div>
-<button class="btn btn-primary" onclick="if(confirm('确定清除本设备的会员登录信息？')){clearVip()}">清除会员登录信息</button>
-</div>
-<div class="card" style="text-align:center;font-size:.78rem;color:#888;line-height:1.6">
-<p>&#128161; 工具箱会员到期后，可续费并使用新的激活码续期</p>
-<p style="margin-top:.3rem">已失效或过期的激活码需要联系管理员更新</p>
-</div>
-</div>
+            <div data-nickname-section hidden>
+                <form class="nickname-form" data-nickname-form>
+                    <label for="displayNickname"><strong>展示昵称（可选）</strong></label>
+                    <div class="nickname-form-row">
+                        <input id="displayNickname" data-nickname-input type="text" minlength="2" maxlength="20" autocomplete="nickname" placeholder="例如：安全小周">
+                        <button type="submit" class="btn btn-secondary">保存昵称</button>
+                    </div>
+                    <p class="nickname-note">此昵称仅保存在当前浏览器，修改昵称不会改变任何会员权限。</p>
+                    <p class="nickname-note" data-nickname-message role="status"></p>
+                </form>
+            </div>
 
-<!-- 未激活 - 激活码输入 -->
-<div id="vipInactiveSection">
+            <div class="membership-actions" data-membership-active-actions hidden>
+                <a class="btn btn-primary" href="../index.html#workbench" data-membership-return>继续使用工具</a>
+                <a class="btn btn-secondary" href="../feedback.html?type=membership" data-feedback-open data-feedback-entry="membership-detail">反馈会员问题</a>
+                <a class="btn btn-secondary" href="feedback-admin.html" data-feedback-admin-link hidden>进入反馈管理</a>
+                <button type="button" class="btn btn-secondary" data-membership-logout>退出当前浏览器</button>
+            </div>
+            <p class="nickname-note" data-membership-action-message role="status"></p>
+        </section>
 
-<div class="card">
-<h2>&#128273; 已有激活码？</h2>
-<div class="sub">输入管理员安全发放的激活码，验证工具箱会员或原网站VIP权益</div>
-<div id="gateContainer"></div>
-</div>
+        <section class="member-card" data-membership-activate-section hidden>
+            <h2>已有激活码？</h2>
+            <p>输入管理员安全发放的激活码。成功后会再次验证 Cookie 会话，确认权益确实在当前浏览器生效。</p>
+            <form class="activation-form" data-membership-activation-form>
+                <label class="visually-hidden" for="memberActivationCode">会员激活码</label>
+                <div class="activation-row">
+                    <input id="memberActivationCode" name="code" type="password" maxlength="80" autocomplete="one-time-code" placeholder="输入激活码" required>
+                    <button type="submit" class="btn btn-primary">验证并激活</button>
+                </div>
+                <div class="feedback-form-message" data-activation-message role="status" aria-live="polite"></div>
+                <button type="button" class="btn btn-secondary" data-activation-session-retry hidden>只重新验证当前会话</button>
+            </form>
+            <p class="member-note">请勿把激活码提交到反馈表单。本次激活只在当前浏览器生效，换设备或浏览器可能需要重新激活。</p>
+        </section>
 
-<div class="card purchase-box">
-<h2 style="justify-content:center">&#128218; 加入外企EHS工具箱</h2>
-<div class="sub">网站已停止销售29.9元独立VIP。工具箱会员在有效期内使用对应网站专业工具。</div>
-
-<ul class="perks">
-<li>获取知识星球已正式发布的工具、模板、检查表和课件</li>
-<li>使用会员范围内的专业在线工具</li>
-<li>获取配套案例、方法资料、持续更新和专业答疑</li>
-<li>单人年卡默认支持最多 3 次浏览器或设备激活</li>
-<li>已有29.9元原网站VIP继续履约至原到期日</li>
-</ul>
-
-<a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%;margin-top:.4rem">查看工具箱会员 · 129元/年</a>
-</div>
-
-<div class="card" style="text-align:center;font-size:.78rem;color:#888;line-height:1.6">
-<p>已有工具箱会员请使用上方激活码；尚未收到激活码可联系管理员核验购买记录。</p>
-<p style="margin-top:.3rem">
-<a href="https://wx.zsxq.com/group/51115515242254" target="_blank" style="color:var(--accent)">外企培训库 299元/年 →</a>
-</p>
-</div>
-
-</div>
-
-</main>
-
-<div data-site-shell-footer data-prefix="../"></div>
-<script src="../js/site-shell.js?v=2.1.0"></script>
-<script src="../js/auth.js"></script>
-<script>
-(async function() {
-    var info = await getVipInfo(true);
-    if (info && info.active) {
-        document.getElementById('vipActiveSection').style.display = 'block';
-        document.getElementById('vipInactiveSection').style.display = 'none';
-        var expiryStr = (info && info.expires) ? '有效期至 ' + String(info.expires).slice(0, 10) : '';
-        var labelStr = (info && info.label) ? '激活方式：' + info.label : '';
-        document.getElementById('vipActiveInfo').textContent = expiryStr + (expiryStr && labelStr ? ' · ' : '') + labelStr;
-    } else {
-        document.getElementById('vipActiveSection').style.display = 'none';
-        document.getElementById('vipInactiveSection').style.display = 'block';
-        await renderSimpleGate('gateContainer');
-    }
-})();
-</script>
+        <section class="member-card member-purchase">
+            <h2>外企 EHS 工具箱会员</h2>
+            <div class="member-price">129 <span>元 / 年</span></div>
+            <p>网站已停止销售 29.9 元独立 VIP。工具箱会员在有效期内使用对应网站专业工具。</p>
+            <ul class="member-perks">
+                <li>知识星球正式发布的工具、模板、检查表和课件</li>
+                <li>会员范围内的网站专业工具与导出能力</li>
+                <li>配套案例、方法资料、持续更新和专业答疑</li>
+                <li>单人年卡默认支持最多 3 次浏览器或设备激活</li>
+                <li>已有 29.9 元历史用户继续履约至原到期日</li>
+            </ul>
+            <a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="btn btn-primary">查看工具箱会员</a>
+        </section>
+    </main>
+    <div data-site-shell-footer data-prefix="../"></div>
+    <script src="../js/analytics.js?v=2.2.0"></script>
+    <script src="../js/auth.js?v=2.2.0"></script>
+    <script src="../js/membership-ui.js?v=1.0.0"></script>
+    <script src="../js/feedback.js?v=1.0.0"></script>
+    <script src="../js/site-shell.js?v=2.2.0"></script>
 </body>
 </html>

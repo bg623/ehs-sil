@@ -11,7 +11,7 @@ const style = read("css/style.css");
 const design = read("css/design-system.css");
 const homeNav = home.match(/<nav class="nav-bar">[\s\S]*?<\/nav>/)?.[0] || "";
 
-for (const label of ["首页", "专业工具", "专业资源", "了解 EHS-SIL", "会员权益", "登录 / 激活"]) {
+for (const label of ["首页", "专业工具", "专业资源", "了解 EHS-SIL", "反馈建议", "会员权益", "正在确认权益…"]) {
   assert.match(home, new RegExp(`>${label}<`), `首页导航缺少“${label}”`);
   assert.ok(shell.includes(label), `公共导航缺少“${label}”`);
 }
@@ -35,7 +35,7 @@ for (const href of [
   assert.ok(shell.includes(href), `公共导航缺少链接 ${href}`);
 }
 
-assert.equal((home.match(/data-nav-section="/g) || []).length, 6, "首页应保持6个清晰的一级导航入口");
+assert.equal((home.match(/data-nav-section="/g) || []).length, 7, "首页应保持7个清晰的一级导航入口");
 assert.equal((home.match(/<ul class="nav-dropdown/g) || []).length, 3, "多项内容应归入3组下拉菜单");
 assert.match(home, /JSA 工作安全分析专业教练/);
 assert.match(home, /FMEA 失效模式分析/);
@@ -59,7 +59,7 @@ assert.doesNotMatch(shell, /prefix \+ 'tools\/'/, "公共导航不得使用 OSS 
 
 console.log(JSON.stringify({
   status: "PASS",
-  primary_entries: 6,
+  primary_entries: 7,
   dropdown_groups: 3,
   direct_destinations: 12,
   bilingual_method_labels: 5,
