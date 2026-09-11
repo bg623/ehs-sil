@@ -1,0 +1,1671 @@
+{
+  "schemaVersion": "1.6.0",
+  "checkedAt": "2026-09-11",
+  "verificationScope": "官方公布文本及所列条款核对；不等于企业现场符合性认定或全部地方/行业要求穷尽。",
+  "records": [
+    {
+      "id": "REG-ENV-CODE-2026",
+      "name": "中华人民共和国生态环境法典",
+      "documentNo": "主席令第七十号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人民代表大会",
+      "publishDate": "2026-03-12",
+      "effectiveDate": "2026-08-15",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "通用基础",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [
+          "生产经营单位"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "企业为生产经营单位，适用生态环境保护主体义务；具体要求仅按已确认的活动触发。"
+      },
+      "scopeSummary": "全国生态环境保护基础法；按企业排放、建设、固废及监管身份筛选对应条款。不把整部法的每一条都判定适用，也不以画像代替现场符合性证据。",
+      "clauses": [
+        {
+          "id": "ENV-CODE-GENERAL",
+          "reference": "第9条",
+          "summary": "企业应落实防污、生态保护、资源节约和温室气体控制责任。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "环境职责分工",
+            "资源能源管理记录"
+          ],
+          "action": "建立环境职责与运行检查清单。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-POLLUTION",
+          "reference": "第150—152条、第163—164条",
+          "summary": "排放污染物应落实防治责任、适用排放标准与排污要求，规范排放口，不得以不正常运行治理设施等方式逃避监管。",
+          "whenAny": [
+            "产生废水",
+            "排放工业废水",
+            "排放生活污水",
+            "产生废气",
+            "排放VOCs",
+            "排放颗粒物",
+            "产生工业噪声",
+            "产生一般工业固体废物",
+            "危废产生",
+            "危废暂存"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "排放口清单",
+            "适用标准及许可要求",
+            "治理设施运行台账"
+          ],
+          "action": "把每个排放口、污染物、控制设施和责任人对应起来。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-PERMIT",
+          "reference": "第174—176条、第179条、第183—185条",
+          "summary": "实行排污许可管理的单位应持证按证排污、自行监测、保存原始监测记录和管理台账至少五年，并依法公开排放信息；重点管理单位另有自动监测要求。",
+          "whenAny": [
+            "排污许可重点管理",
+            "排污许可简化管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "排污许可证及副本",
+            "自行监测方案及报告",
+            "五年记录保存制度"
+          ],
+          "action": "将许可证逐项转为监测、设施运行、台账和报告任务。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-REGISTRATION",
+          "reference": "第186条",
+          "summary": "符合排污登记范围的单位填报排污登记表；登记表有效期五年，不等同于无需污染防治。",
+          "whenAny": [
+            "排污登记管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "排污登记表",
+            "登记分类依据",
+            "设施运行记录"
+          ],
+          "action": "核对登记类别、有效期及填报信息。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-PROJECT",
+          "reference": "第102条、第106—108条、第162条",
+          "summary": "建设项目按类别审批或备案；应报批项目未经批准不得开工，重大变动重新报批；落实环保措施和三同时，投产使用前按规定验收。",
+          "whenAny": [
+            "建设项目新改扩建"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "环评批复或备案",
+            "重大变动分析",
+            "竣工环保验收材料"
+          ],
+          "action": "将项目立项、开工、变更和投产节点纳入审批验收检查。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-AIR",
+          "reference": "第197条、第217条",
+          "summary": "排放工业废气和有毒有害大气污染物应按规定监测并保存记录；工业企业应控制生产及物料堆存、转运、装卸环节的粉尘和气态污染物。",
+          "whenAny": [
+            "排放工业废气",
+            "排放有毒有害大气污染物"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "废气排放清单",
+            "废气监测记录",
+            "物料扬尘控制记录"
+          ],
+          "action": "逐个识别有组织和无组织排放环节并配置控制与监测。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-VOC",
+          "reference": "第213—214条、第216条",
+          "summary": "生产或使用含VOCs原辅材料和产品，应落实含量要求及密闭收集处理等措施；生产、使用有机溶剂的企业应维护管线设备并及时收集泄漏物料。",
+          "whenAny": [
+            "排放VOCs"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "含VOCs物料清单及含量证明",
+            "收集处理设施台账",
+            "泄漏检查记录"
+          ],
+          "action": "把VOCs物料储运、投料、使用及泄漏纳入全过程控制。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-WATER",
+          "reference": "第298条",
+          "summary": "工业废水应全部收集处理；含有毒有害污染物的废水分类处理并防止渗漏流失，不得稀释排放；排入集中处理设施前应按规定预处理。",
+          "whenAny": [
+            "排放工业废水"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "工业废水平衡图",
+            "分类收集处理流程",
+            "排口监测及接管资料"
+          ],
+          "action": "核对每股废水去向，单独确认有毒有害废水与接管预处理要求。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-SOIL",
+          "reference": "第414条",
+          "summary": "土壤污染重点监管单位应按年度报告有毒有害物质排放，开展土壤地下水隐患排查、自行监测并报送数据；贮存有毒有害物质的地下储罐信息应报送主管部门。",
+          "whenAny": [
+            "土壤污染重点监管单位"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "重点监管名录依据",
+            "隐患排查整治记录",
+            "土壤地下水监测方案和报告"
+          ],
+          "action": "把土壤地下水管理要求与排污许可证保持一致。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-SOLID",
+          "reference": "第489—494条",
+          "summary": "产生工业固废应落实全过程责任与台账，核实受托方资格技术能力并订立书面合同，依法报告去向，安全分类贮存；不得投放生活垃圾收集设施。",
+          "whenAny": [
+            "产生一般工业固体废物"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "工业固废台账",
+            "受托方核查及合同",
+            "贮存场所检查"
+          ],
+          "action": "打通产生量、库存、转移量和接收证明，形成可追溯记录。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-HAZARDOUS",
+          "reference": "第531—535条、第539条",
+          "summary": "危废产生单位应制定管理计划、建账申报；涉及贮存的应分类标识并采取防护措施。相关单位不得委托无许可单位或个人处理危废，并落实事故防范及预案备案。",
+          "whenAny": [
+            "危废产生",
+            "危废暂存",
+            "危废自行利用",
+            "危废处置",
+            "危废填埋"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "危废管理计划及备案",
+            "危废台账与标识",
+            "接收方许可核查",
+            "危废应急预案"
+          ],
+          "action": "按危废代码建立从产生至处置的闭环。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-NOISE",
+          "reference": "第550条、第564—567条",
+          "summary": "工业噪声管理针对干扰周边生活环境的声音；建立防治责任并采取减振降噪措施。职工职业噪声另按职业健康法规管理。",
+          "whenAny": [
+            "产生工业噪声"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "厂界噪声监测报告",
+            "噪声源清单",
+            "减振降噪设施维护记录"
+          ],
+          "action": "分别管理厂界环境噪声与岗位职业噪声。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-EMERGENCY",
+          "reference": "第291—292条",
+          "summary": "存在水污染事故可能性的企业应制定预案并演练；危化品生产、储存企业应防止事故消防废物直接入水，事故时隔离污染物并依法报告。",
+          "whenAny": [
+            "存在水污染事故风险",
+            "危险化学品生产企业",
+            "危险化学品储存企业"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "事故水收集及切断措施",
+            "环境应急预案和演练记录",
+            "应急联络与报告流程"
+          ],
+          "action": "检查雨污排口切断、事故水收集和外环境联防措施。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        },
+        {
+          "id": "ENV-CODE-GROUNDWATER",
+          "reference": "第287条",
+          "summary": "化工园区和化工项目、危险废物处置场等列举单位应采取防渗漏措施并建设地下水监测井；不能仅凭少量化学品使用就推断该义务。",
+          "whenAny": [
+            "危险化学品生产企业",
+            "化学原料和化学制品制造",
+            "危废处置",
+            "危废填埋"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "防渗设计和维护记录",
+            "地下水监测井布设与报告"
+          ],
+          "action": "按项目性质核对防渗、地下水井及监测方案。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+        }
+      ],
+      "replaces": [
+        "REG-002",
+        "REG-061",
+        "REG-062",
+        "REG-063",
+        "REG-064",
+        "REG-065",
+        "REG-066",
+        "REG-068"
+      ],
+      "repealSource": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml"
+    },
+    {
+      "id": "REG-122",
+      "name": "排污许可管理条例",
+      "documentNo": "国务院令第736号",
+      "type": "行政法规",
+      "levelRank": 2,
+      "category": "环境",
+      "issuingAuthority": "国务院",
+      "publishDate": "2021-01-24",
+      "effectiveDate": "2021-03-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/202101/t20210129_819519.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "排污许可重点管理",
+          "排污许可简化管理",
+          "排污登记管理"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "产生废水",
+          "产生废气",
+          "产生工业噪声"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "画像已确认排污许可或登记管理类别，按对应条款生成持证执行或登记要求。"
+      },
+      "scopeSummary": "适用于排污许可重点、简化管理和相应排污登记管理；不因存在生活污水就直接推断必须持证。",
+      "clauses": [
+        {
+          "id": "ENV-PERMIT-OPS",
+          "reference": "第17—19条、第21—23条",
+          "summary": "持证单位按证运行设施、规范排口，自行监测和环境台账至少保存五年，按许可证规定提交执行报告及公开信息。",
+          "whenAny": [
+            "排污许可重点管理",
+            "排污许可简化管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "许可证副本",
+            "监测报告",
+            "运行台账",
+            "执行报告回执"
+          ],
+          "action": "制作按证运行任务表与年度报告日历。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/202101/t20210129_819519.shtml"
+        },
+        {
+          "id": "ENV-PERMIT-CHANGE",
+          "reference": "第14—15条",
+          "summary": "许可证到期需延续的应提前六十日申请；排口位置、排放方式去向、污染物等发生规定变化或新改扩建项目时重新申请。",
+          "whenAny": [
+            "排污许可重点管理",
+            "排污许可简化管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "许可证有效期",
+            "变更管理清单"
+          ],
+          "action": "把许可到期提醒和工艺变更管理联动。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/202101/t20210129_819519.shtml"
+        },
+        {
+          "id": "ENV-PERMIT-REGISTER",
+          "reference": "第24条",
+          "summary": "登记单位填报基本信息、排放去向、标准和防治措施；信息变化后二十日内变更填报。",
+          "whenAny": [
+            "排污登记管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "登记表和变更记录"
+          ],
+          "action": "按真实排放情况维护登记信息。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/202101/t20210129_819519.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-PERMIT-RULES",
+      "name": "排污许可管理办法",
+      "documentNo": "生态环境部令第32号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "环境",
+      "issuingAuthority": "生态环境部",
+      "publishDate": "2024-04-01",
+      "effectiveDate": "2024-07-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202404/t20240408_1070147.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "排污许可重点管理",
+          "排污许可简化管理",
+          "排污登记管理"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "产生废气",
+          "排放工业废水"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "已确认许可或登记类别，匹配2024年管理办法的对应执行要求。"
+      },
+      "scopeSummary": "细化排污许可申请、变更和执行，也规定排污登记单位运行维护设施及规范排口责任。",
+      "clauses": [
+        {
+          "id": "ENV-PERMIT-RULES-CHANGE",
+          "reference": "第25—28条",
+          "summary": "触发重新申请的，应在排污行为变化前取得许可证；基本信息变化后三十日内申请变更，其他记载内容变化可申请调整。",
+          "whenAny": [
+            "排污许可重点管理",
+            "排污许可简化管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "改扩建与排污变化说明",
+            "变更申请材料"
+          ],
+          "action": "开工和变更前核对许可手续。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202404/t20240408_1070147.shtml"
+        },
+        {
+          "id": "ENV-PERMIT-RULES-EXEC",
+          "reference": "第34条、第36—37条",
+          "summary": "持证单位按证监测、记录运行及异常、填报执行报告，监测原始记录和环境台账至少保存五年。",
+          "whenAny": [
+            "排污许可重点管理",
+            "排污许可简化管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "监测记录",
+            "环境台账",
+            "执行报告"
+          ],
+          "action": "合并归集运行、监测和异常信息供报告使用。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202404/t20240408_1070147.shtml"
+        },
+        {
+          "id": "ENV-PERMIT-RULES-REGISTER",
+          "reference": "第33条第二款",
+          "summary": "排污登记单位仍须依法运行维护污染防治设施、规范排放口并控制排放。",
+          "whenAny": [
+            "排污登记管理"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "设施维护记录",
+            "排口照片及台账"
+          ],
+          "action": "不要将登记管理理解为免除日常环保义务。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202404/t20240408_1070147.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-001",
+      "name": "地下水管理条例",
+      "documentNo": "国务院令第748号",
+      "type": "行政法规",
+      "levelRank": 2,
+      "category": "环境",
+      "issuingAuthority": "国务院",
+      "publishDate": "2021-10-21",
+      "effectiveDate": "2021-12-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/zcwj/gwywj/202111/t20211109_959743.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "地下水取水",
+          "危险化学品生产企业",
+          "化学原料和化学制品制造",
+          "危废处置",
+          "危废填埋"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "使用或储存危险化学品",
+          "危废暂存",
+          "一般化工企业"
+        ],
+        "applicability": "conditional",
+        "explanationTemplate": "已确认取用地下水或条例列举的重点地下水污染风险活动。"
+      },
+      "scopeSummary": "分别识别地下水取用及特定地下水污染风险；少量危化品使用、一般固废产生不自动触发建设地下水监测井义务。",
+      "clauses": [
+        {
+          "id": "ENV-GW-USE",
+          "reference": "第6条、第21—22条",
+          "summary": "地下水取用应节约保护、遵守总量和定额要求，依法安装取水计量设施；达到当地取水规模的另有在线计量要求。",
+          "whenAny": [
+            "地下水取水"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "取水许可及定额",
+            "取水计量记录",
+            "节水措施"
+          ],
+          "action": "按取水量和地方规模条件配置计量管理。",
+          "sourceUrl": "https://www.mee.gov.cn/zcwj/gwywj/202111/t20211109_959743.shtml"
+        },
+        {
+          "id": "ENV-GW-PREVENT",
+          "reference": "第40—41条",
+          "summary": "禁止利用暗管、无防渗沟渠等污染地下水；化学品生产企业、危废处置场等条例列举单位应采取防渗漏措施并建设地下水监测井。",
+          "whenAny": [
+            "危险化学品生产企业",
+            "化学原料和化学制品制造",
+            "危废处置",
+            "危废填埋"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "防渗设计及维护记录",
+            "地下水监测井布设和报告"
+          ],
+          "action": "先核对是否属于第41条列举场所，再落实防渗和监测。",
+          "sourceUrl": "https://www.mee.gov.cn/zcwj/gwywj/202111/t20211109_959743.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-002",
+      "name": "国家危险废物名录（2025年版）",
+      "documentNo": "生态环境部等五部门令第36号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "环境",
+      "issuingAuthority": "生态环境部、国家发展改革委、公安部、交通运输部、国家卫生健康委",
+      "publishDate": "2024-11-26",
+      "effectiveDate": "2025-01-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202411/t20241129_1097688.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "危废产生",
+          "危废暂存",
+          "危废自行利用",
+          "危废处置",
+          "危废填埋"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "产生一般固体废物或危险废物",
+          "产生一般工业固体废物"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "画像已确认危险废物活动，适用现行名录与相关属性识别要求。"
+      },
+      "scopeSummary": "用于危废属性、代码和分环节豁免识别；不能仅凭行业名称自动给所有废物确定代码。",
+      "clauses": [
+        {
+          "id": "ENV-CATALOG-ID",
+          "reference": "第2条、第5—6条及附表",
+          "summary": "按产生工艺、来源和危险特性比对名录；属性不明确的固废应依国家鉴别标准及方法认定，不能把未列名直接当成一般固废。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "废物来源工艺",
+            "成分或鉴别资料",
+            "危废代码比对记录"
+          ],
+          "action": "先登记废物工序和成分，输出代码候选及需要鉴别的缺口。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202411/t20241129_1097688.shtml"
+        },
+        {
+          "id": "ENV-CATALOG-EXEMPT",
+          "reference": "第3—4条",
+          "summary": "豁免只在清单所列环节且满足相应条件时适用；危废混合物和利用处置后固废的属性应按鉴别标准判定。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "豁免环节和条件证据",
+            "混合及处置后废物鉴别依据"
+          ],
+          "action": "逐个环节记录豁免依据，不将豁免扩大为全流程豁免。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202411/t20241129_1097688.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-TRANSFER",
+      "name": "危险废物转移管理办法",
+      "documentNo": "生态环境部等三部门令第23号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "环境",
+      "issuingAuthority": "生态环境部、公安部、交通运输部",
+      "publishDate": "2021-11-30",
+      "effectiveDate": "2022-01-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211228_965467.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "危险废物转移"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "危废产生",
+          "危废暂存",
+          "危废处置"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "已确认危险废物转移活动，需落实联单和相关方责任。"
+      },
+      "scopeSummary": "适用于境内危险废物转移；海洋转移另有规定，符合豁免条件的按相应豁免执行。",
+      "clauses": [
+        {
+          "id": "ENV-TRANSFER-MANIFEST",
+          "reference": "第6—7条、第10条",
+          "summary": "危废转移应依法运行联单；移出人核实承运人和接受人资格技术能力，订合同、计量建账并核实接收处理情况。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "电子转移联单",
+            "称重与出入库记录",
+            "运输和处置合同",
+            "接收处理证明"
+          ],
+          "action": "完成转移前核查、途中联单和接收闭环。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211228_965467.shtml"
+        },
+        {
+          "id": "ENV-TRANSFER-CONTROL",
+          "reference": "第9条",
+          "summary": "移出人、承运人、接受人应采取防扬散、流失和渗漏等措施，制定防范措施及应急预案并按规定备案。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "包装检查",
+            "应急预案",
+            "防泄漏物资清单"
+          ],
+          "action": "在交接单中加入容器、包装和异常处置检查。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211228_965467.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-EMERGENCY",
+      "name": "突发环境事件应急管理办法",
+      "documentNo": "环境保护部令第34号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "环境",
+      "issuingAuthority": "环境保护部",
+      "publishDate": "2015-04-16",
+      "effectiveDate": "2015-06-05",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211211_963793.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "涉及突发环境事件风险"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "使用或储存危险化学品",
+          "危废产生",
+          "设置环保治理设施"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "已确认突发环境事件风险，适用风险评估、预案和防控等管理要求。"
+      },
+      "scopeSummary": "匹配存在突发环境事件风险的企业事业单位；核辐射事故等另按专门规定执行。",
+      "clauses": [
+        {
+          "id": "ENV-EMERGENCY-PREP",
+          "reference": "第6条、第8—10条",
+          "summary": "开展环境风险评估，完善风险防控、隐患排查、预案备案与演练，并准备环境应急资源。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "环境风险评估",
+            "预案备案和演练记录",
+            "隐患闭环台账"
+          ],
+          "action": "用风险评估结果确定预案、物资和演练重点。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211211_963793.shtml"
+        },
+        {
+          "id": "ENV-EMERGENCY-WATER",
+          "reference": "第9条",
+          "summary": "风险防控应包括泄漏物料、消防水及污染雨水的收集、导流、拦截和降污措施，避免扩散至外环境。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "雨污及事故水管网图",
+            "切断和收集设施检查",
+            "应急处置操作卡"
+          ],
+          "action": "检查事故状态下污染物的最终去向与拦截能力。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211211_963793.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-DISCLOSURE",
+      "name": "企业环境信息依法披露管理办法",
+      "documentNo": "生态环境部令第24号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "环境",
+      "issuingAuthority": "生态环境部",
+      "publishDate": "2021-12-11",
+      "effectiveDate": "2022-02-08",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202112/t20211221_964837.html",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "重点排污单位",
+          "纳入环境信息依法披露企业名单"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "排污许可重点管理"
+        ],
+        "applicability": "conditional",
+        "explanationTemplate": "已确认重点排污单位或依法披露名单身份，匹配披露义务。"
+      },
+      "scopeSummary": "适用于依法披露企业名单中的主体，包括重点排污单位及其他法定情形；不把所有排污登记单位视为名单企业。",
+      "clauses": [
+        {
+          "id": "ENV-DISCLOSURE-RECORD",
+          "reference": "第4条、第11—13条",
+          "summary": "建立披露职责和准确台账，按格式准则上传年度报告，归集环境管理、污染物、碳排放、应急和违法等实际产生的信息。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "依法披露主体依据",
+            "年度披露报告",
+            "原始数据台账"
+          ],
+          "action": "从许可、监测、危废等现有台账汇总披露，避免重复填报。",
+          "sourceUrl": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202112/t20211221_964837.html"
+        },
+        {
+          "id": "ENV-DISCLOSURE-DEADLINE",
+          "reference": "第17条、第19条",
+          "summary": "年度信息于次年3月15日前披露；收到相关许可、处罚等法律文书后，按规定五个工作日内临时披露。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "年度披露回执",
+            "法律文书接收及临时披露记录"
+          ],
+          "action": "建立年度和事件触发的披露提醒。",
+          "sourceUrl": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202112/t20211221_964837.html"
+        }
+      ]
+    },
+    {
+      "id": "REG-121",
+      "name": "建设项目环境保护管理条例",
+      "documentNo": "国务院令第253号（根据第682号令修订）",
+      "type": "行政法规",
+      "levelRank": 2,
+      "category": "环境",
+      "issuingAuthority": "国务院",
+      "publishDate": "2017-07-16",
+      "effectiveDate": "2017-10-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/201906/t20190628_707970.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "建设项目新改扩建"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "设置环保治理设施"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "已确认新改扩建项目，需按项目类别办理环评并落实环保设施建设验收。"
+      },
+      "scopeSummary": "对环境有影响的建设项目；纠正旧库将682号误写为环境保护法实施条例的问题。与生态环境法典不一致时以上位法为准。",
+      "clauses": [
+        {
+          "id": "ENV-PROJECT-EIA",
+          "reference": "第7条、第9条、第12条",
+          "summary": "按项目环境影响办理报告书、报告表审批或登记；依法应报批的未经批准不得开工，重大变动重新报批。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "项目分类依据",
+            "环评批复或备案",
+            "变更分析"
+          ],
+          "action": "在开工及变更审核流程中设置环保手续检查。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/201906/t20190628_707970.shtml"
+        },
+        {
+          "id": "ENV-PROJECT-ACCEPT",
+          "reference": "第15—19条",
+          "summary": "环保设施与主体工程同步建设；报告书、表项目竣工后依法验收、编制并公开报告，未经验收合格不得投入生产或使用。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "环保设施设计施工资料",
+            "验收监测及报告",
+            "公开记录"
+          ],
+          "action": "根据分期投产安排分期验收，保留可追溯资料。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/xzfg/201906/t20190628_707970.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-118",
+      "name": "危险废物贮存污染控制标准",
+      "documentNo": "GB 18597-2023",
+      "type": "国家标准",
+      "levelRank": 6,
+      "category": "环境",
+      "issuingAuthority": "生态环境部、国家市场监督管理总局",
+      "publishDate": "2023-01-20",
+      "effectiveDate": "2023-07-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/gtfwwrkzbz/202302/W020230224679408713470.pdf",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "危废暂存",
+          "危废贮存设施",
+          "危废贮存点"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "危废产生",
+          "危废自行利用",
+          "危废处置"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "已确认危险废物暂存，匹配分类贮存、包装标识及场所防护要求。"
+      },
+      "scopeSummary": "适用于危险废物贮存设施和贮存场所的污染控制；历史堆存清理暂放不适用，专门标准另有规定的从其规定。",
+      "clauses": [
+        {
+          "id": "ENV-STORAGE-CLASSIFY",
+          "reference": "第4.1—4.6条、第7.1—7.4条",
+          "summary": "按危废特性选择场所规模与相容包装，分类贮存、防止不相容物接触，设置场所、分区与危废标签，及时收集处理贮存衍生废物。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "危废清单及相容性分区",
+            "包装和标签检查",
+            "贮存场所照片"
+          ],
+          "action": "以危废类别和物态生成分区、包装及标识检查表。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/gtfwwrkzbz/202302/W020230224679408713470.pdf"
+        },
+        {
+          "id": "ENV-STORAGE-FACILITY",
+          "reference": "第6.1.1—6.1.4条",
+          "summary": "贮存设施采取必要的防雨、防晒、防漏、防渗等措施，不得露天堆放；设置分区，保持地面、墙脚和围堰完整且防渗材料相容。",
+          "whenAny": ["危废贮存设施"],
+          "whenAll": [],
+          "evidence": [
+            "设施防渗设计或施工记录",
+            "地面围堰检查",
+            "维护整改记录"
+          ],
+          "action": "只对已确认的危废贮存设施核查设施技术要求；贮存点不机械套用本卡。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/gtfwwrkzbz/202302/W020230224679408713470.pdf"
+        },
+        {
+          "id": "ENV-STORAGE-SPOT",
+          "reference": "第8.3.1—8.3.5条",
+          "summary": "贮存点应划定并隔离固定区域，落实防风雨晒、防流失扬散、防渗漏措施；废物置于容器包装内，及时清运，实时贮存量不超过3吨。",
+          "whenAny": ["危废贮存点"],
+          "whenAll": [],
+          "evidence": ["贮存点边界及防护照片", "危废容器检查", "实时库存和清运记录"],
+          "action": "先按第3.8条确认贮存点身份，再核对实时库存和防护措施；不能仅因库存少于3吨就自行认定为贮存点。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/gtfwwrkzbz/202302/W020230224679408713470.pdf"
+        }
+      ]
+    },
+    {
+      "id": "REG-120",
+      "name": "一般工业固体废物贮存和填埋污染控制标准",
+      "documentNo": "GB 18599-2020",
+      "type": "国家标准",
+      "levelRank": 6,
+      "category": "环境",
+      "issuingAuthority": "生态环境部、国家市场监督管理总局",
+      "publishDate": "2020-11-26",
+      "effectiveDate": "2021-07-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/gtfwwrkzbz/202012/W020250717557824114044.pdf",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "一般工业固废贮存场或填埋场",
+          "一般工业固废充填回填"
+        ],
+        "excludeAny": [
+          "仅库房包装贮存一般工业固废"
+        ],
+        "reviewWhen": [
+          "产生一般工业固体废物",
+          "产生一般固体废物或危险废物"
+        ],
+        "applicability": "conditional",
+        "explanationTemplate": "已确认一般工业固废场地贮存、填埋或充填回填活动。"
+      },
+      "scopeSummary": "适用于一般工业固废贮存场、填埋场以及替代处置的充填回填；库房或罐桶包装袋等贮存不适用本标准的场地技术要求，但仍需防渗漏、防雨淋、防扬尘。",
+      "clauses": [
+        {
+          "id": "ENV-SOLID-SCOPE",
+          "reference": "第1章（适用范围）",
+          "summary": "先区分贮存场、填埋场、充填回填和库房包装贮存；专用标准优先，不能把一般固废产生等同于全部场地技术条款适用。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "贮存设施类型",
+            "一般固废去向",
+            "专用标准核对"
+          ],
+          "action": "按照实际设施类型筛选选址、运行和监测要求，不自动填入未核实的数值限值。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/gtfwwrkzbz/202012/W020250717557824114044.pdf"
+        }
+      ]
+    },
+    {
+      "id": "REG-071",
+      "name": "工业企业厂界环境噪声排放标准",
+      "documentNo": "GB 12348-2008",
+      "type": "国家标准",
+      "levelRank": 6,
+      "category": "环境",
+      "issuingAuthority": "环境保护部、国家质量监督检验检疫总局",
+      "publishDate": "2008-08-19",
+      "effectiveDate": "2008-10-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/wlhj/hjzspfbz/200809/W020161230342919235970.pdf",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "产生工业噪声"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "画像确认工业噪声，需按厂界声环境功能区、昼夜和测量条件评价。"
+      },
+      "scopeSummary": "用于工业企业及固定设备厂界对外环境噪声排放评价，非职工个体噪声暴露限值。",
+      "clauses": [
+        {
+          "id": "ENV-NOISE-EVALUATION",
+          "reference": "第1章、第4—6章",
+          "summary": "根据厂界声环境功能区和昼夜时段选择排放限值，按测量方法及背景修正规则评价；功能区和监测结果未提供时，不自动给出达标结论。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "厂界声环境功能区依据",
+            "噪声监测报告及测点图",
+            "设备工况"
+          ],
+          "action": "将有效监测数据与正确功能区限值对应后评价。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/wlhj/hjzspfbz/200809/W020161230342919235970.pdf"
+        }
+      ]
+    },
+    {
+      "id": "REG-123",
+      "name": "挥发性有机物无组织排放控制标准",
+      "documentNo": "GB 37822-2019",
+      "type": "国家标准",
+      "levelRank": 6,
+      "category": "环境",
+      "issuingAuthority": "生态环境部、国家市场监督管理总局",
+      "publishDate": "2019-05-24",
+      "effectiveDate": "2019-07-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqgdwrywrwpfbz/201906/W020190606587693632696.pdf",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "排放VOCs"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "产生废气"
+        ],
+        "applicability": "conditional",
+        "explanationTemplate": "已确认VOCs排放，重点识别无组织逸散及收集系统运行要求。"
+      },
+      "scopeSummary": "覆盖VOCs物料储存转移、工艺、泄漏、敞开液面及收集处理；国家行业标准已有规定的按相应范围执行，地方特别要求另行匹配。",
+      "clauses": [
+        {
+          "id": "ENV-VOC-STORAGE",
+          "reference": "第5.1.1—5.1.4条",
+          "summary": "VOCs物料密闭储存，容器非取用时加盖封口；存放于室内或具雨棚、遮阳、防渗设施的专用场地。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "VOCs物料清单",
+            "包装与储区巡查记录"
+          ],
+          "action": "逐一检查物料容器的密闭和储区防护。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqgdwrywrwpfbz/201906/W020190606587693632696.pdf"
+        },
+        {
+          "id": "ENV-VOC-RUNNING",
+          "reference": "第10.1.2条",
+          "summary": "废气收集处理系统与生产同步运行；故障检修时对应生产停止，不能停产时采取应急处理或替代措施。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "生产与治理设施运行记录",
+            "检修停产记录",
+            "应急替代措施"
+          ],
+          "action": "对照生产班次与治理设施启停记录检查同步运行。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqgdwrywrwpfbz/201906/W020190606587693632696.pdf"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-MONITOR",
+      "name": "排污单位自行监测技术指南 总则",
+      "documentNo": "HJ 819-2017",
+      "type": "行业标准",
+      "levelRank": 7,
+      "category": "环境",
+      "issuingAuthority": "环境保护部",
+      "publishDate": "2017-04-25",
+      "effectiveDate": "2017-06-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/shjbh/xgbzh/201705/W020170511332490849000.pdf",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "排污许可重点管理",
+          "排污许可简化管理",
+          "重点排污单位"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "产生废水",
+          "产生废气",
+          "产生工业噪声"
+        ],
+        "applicability": "conditional",
+        "explanationTemplate": "已确认自行监测管理身份，使用总则构建方案并优先核对行业专门指南。"
+      },
+      "scopeSummary": "适用于无行业自行监测指南的排污单位，行业指南未规定内容按总则执行；监测指标与频次应结合许可证、行业及地方要求。",
+      "clauses": [
+        {
+          "id": "ENV-MONITOR-PLAN",
+          "reference": "第1章、第4.1—4.4条",
+          "summary": "查清污染源，编制点位、指标、标准限值、频次、采样分析与质量控制方案；设置合适监测设施并组织自行或委托监测。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "自行监测方案",
+            "排口与测点图",
+            "委托监测合同或能力证明"
+          ],
+          "action": "优先提取许可证要求，再补充行业指南未覆盖内容。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/shjbh/xgbzh/201705/W020170511332490849000.pdf"
+        },
+        {
+          "id": "ENV-MONITOR-QUALITY",
+          "reference": "第6章、第7章",
+          "summary": "对监测全过程开展质量控制，记录监测相关信息并按要求报告；不能只保存检测结论而遗漏工况和原始资料。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "监测质量控制记录",
+            "生产及治理设施工况",
+            "监测报告归档"
+          ],
+          "action": "将监测日期与现场生产工况、异常记录关联。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/shjbh/xgbzh/201705/W020170511332490849000.pdf"
+        }
+      ],
+      "sourceTextNote": "生态环境部公开发布稿；正式出版文本和有效行业指南优先。"
+    },
+    {
+      "id": "REG-ENV-HW-RECORDS",
+      "name": "危险废物管理计划和管理台账制定技术导则",
+      "documentNo": "HJ 1259-2022",
+      "type": "行业标准",
+      "levelRank": 7,
+      "category": "环境",
+      "issuingAuthority": "生态环境部",
+      "publishDate": "2022-06-20",
+      "effectiveDate": "2022-10-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/qtxgbz/202206/W020220630455255137316.pdf",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "危废产生"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [
+          "产生一般固体废物或危险废物"
+        ],
+        "applicability": "mandatory",
+        "explanationTemplate": "已确认产生危险废物，需按危废产生量与设施情况确定管理类别并落实计划和台账。"
+      },
+      "scopeSummary": "适用于危废产生单位的管理计划、台账及申报；按产生量和风险实施重点、简化、登记管理，不能与排污许可类别混同。",
+      "clauses": [
+        {
+          "id": "ENV-HW-CATEGORY",
+          "reference": "第4.1—4.3条",
+          "summary": "按危废产生数量和环境风险确定危废管理类别，并据此形成真实准确的管理计划、台账和申报资料。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "危废年产生量依据",
+            "危废自行利用处置设施信息",
+            "管理类别依据"
+          ],
+          "action": "分别记录危废管理类别和排污许可类别，避免互相代替。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/qtxgbz/202206/W020220630455255137316.pdf"
+        },
+        {
+          "id": "ENV-HW-PLAN-RECORD",
+          "reference": "第5—7章",
+          "summary": "管理计划、动态流向台账及申报资料应涵盖危废种类、数量、贮存、利用、处置与转移，按对应管理类别提交。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "管理计划备案",
+            "危废产生转移库存台账",
+            "申报回执"
+          ],
+          "action": "对产生、入库、出库和期末库存做数量核对。",
+          "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/gthw/qtxgbz/202206/W020220630455255137316.pdf"
+        }
+      ]
+    },
+    {
+      "id": "REG-ENV-SOIL-SITE",
+      "name": "工矿用地土壤环境管理办法（试行）",
+      "documentNo": "生态环境部令第3号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "环境",
+      "issuingAuthority": "生态环境部",
+      "publishDate": "2018-05-03",
+      "effectiveDate": "2018-08-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211211_963802.shtml",
+      "sourceName": "生态环境部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产",
+        "设备"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "土壤污染重点监管单位"
+        ],
+        "excludeAny": [
+          "矿产开采作业区用地",
+          "固体废物集中贮存填埋场用地"
+        ],
+        "reviewWhen": [
+          "危险化学品生产企业",
+          "一般化工企业"
+        ],
+        "applicability": "conditional",
+        "explanationTemplate": "已确认土壤重点监管身份；还需按工矿用地及排除范围匹配。"
+      },
+      "scopeSummary": "针对工矿用地土壤污染重点监管单位；矿产开采作业区和固废集中贮存填埋场不在其适用范围，其他涉有毒有害物质单位可参照。",
+      "clauses": [
+        {
+          "id": "ENV-SOIL-SITE-MONITOR",
+          "reference": "第11—12条",
+          "summary": "对重点区域、设施定期排查土壤地下水污染隐患、记录并整改；按规范自行或委托监测并公开信息。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "重点区域与设施清单",
+            "隐患排查治理档案",
+            "土壤地下水监测报告"
+          ],
+          "action": "优先覆盖有毒有害物质储运、地下管线和污染治理设施周边。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211211_963802.shtml"
+        },
+        {
+          "id": "ENV-SOIL-SITE-PROJECT",
+          "reference": "第7条、第9条",
+          "summary": "重点单位新改扩建时开展用地土壤地下水现状调查；涉及有毒有害物质的装置、储罐管道和污水应急池等应落实防腐防泄漏及监测设施。",
+          "whenAny": [
+            "建设项目新改扩建"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "土壤地下水现状调查",
+            "防腐防渗设计",
+            "设施验收记录"
+          ],
+          "action": "在项目环评和设计审核中预置土壤地下水防控要求。",
+          "sourceUrl": "https://www.mee.gov.cn/gzk/gz/202112/t20211211_963802.shtml"
+        }
+      ]
+    },
+    {
+      "id": "REG-002",
+      "name": "中华人民共和国环境保护法",
+      "documentNo": "主席令第九号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-061",
+      "name": "中华人民共和国大气污染防治法",
+      "documentNo": "主席令第三十一号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-062",
+      "name": "中华人民共和国水污染防治法",
+      "documentNo": "主席令第七十号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-063",
+      "name": "中华人民共和国固体废物污染环境防治法",
+      "documentNo": "主席令第五十七号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-064",
+      "name": "中华人民共和国噪声污染防治法",
+      "documentNo": "主席令第一〇四号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-065",
+      "name": "中华人民共和国环境影响评价法",
+      "documentNo": "主席令第二十四号（2018年修正）",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-066",
+      "name": "中华人民共和国土壤污染防治法",
+      "documentNo": "主席令第八号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    },
+    {
+      "id": "REG-068",
+      "name": "中华人民共和国清洁生产促进法",
+      "documentNo": "主席令第五十四号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "环境",
+      "issuingAuthority": "全国人大常委会",
+      "status": "已废止",
+      "expiryDate": "2026-08-14",
+      "repealedAt": "2026-08-15",
+      "sourceUrl": "https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml",
+      "sourceName": "生态环境部：生态环境法典第1242条",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": false,
+      "supersededBy": "REG-ENV-CODE-2026",
+      "scopeSummary": "自2026年8月15日起由生态环境法典替代，不再作为现行识别依据。",
+      "rule": {
+        "includeAll": [],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "旧法已废止，由生态环境法典承接。"
+      },
+      "clauses": []
+    }
+  ]
+}

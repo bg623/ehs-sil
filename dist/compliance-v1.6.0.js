@@ -1,3 +1,232 @@
+/* Source: js/compliance-guidance.js */
+(function(root,factory){const api=factory();if(typeof module!=="undefined"&&module.exports)module.exports=api;root.EHSComplianceGuidance=api;})(typeof globalThis!=="undefined"?globalThis:this,function(){
+  "use strict";
+  const VERSION="1.6.0";
+  const profileGroups={
+    environmentalActivities:["排放工业废水","排放生活污水","废水直接排放","废水间接排放","排放工业废气","排放有毒有害大气污染物","危废贮存设施","危废贮存点","排放VOCs","排放颗粒物","燃烧设施","产生一般工业固体废物","危险废物转移","一般工业固废贮存场或填埋场","一般工业固废充填回填","地下水取水","涉及突发环境事件风险"],
+    regulatoryAttributes:["建设项目新改扩建","重点排污单位","土壤污染重点监管单位","排污许可重点管理","排污许可简化管理","排污登记管理","纳入环境信息依法披露企业名单","消防安全重点单位","人员密集场所"],
+    workplaceActivities:["产生可燃性粉尘","涉及有限空间","涉及特种作业人员","建筑施工活动","设备检修作业","药品生产活动","医用X射线诊断活动","爆破作业","固定式钢梯或平台","仅职业性放射性因素"]
+  };
+  function mergeCatalog(baseRecords,baseRules,packs){
+    const records=new Map(baseRecords.map(r=>[r.id,{...r}])),rules=new Map(baseRules.map(r=>[r.regulationId,{...r}]));
+    const supplied=new Set();
+    for(const pack of packs){
+      if(pack.schemaVersion!==VERSION||!Array.isArray(pack.records))throw Error("法规增强库版本不兼容");
+      for(const incoming of pack.records){
+        if(supplied.has(incoming.id))throw Error(`增强库法规编号重复：${incoming.id}`);
+        supplied.add(incoming.id);
+        const {rule,...r}=incoming;
+        records.set(r.id,{...records.get(r.id),...r,guidanceVersion:VERSION,reviewer:r.reviewer||"官方公开文本核对；适用解释由规则生成"});
+        if(rule)rules.set(r.id,{...rules.get(r.id),...rule,ruleId:`V16-${r.id}`,regulationId:r.id,version:VERSION,status:r.complianceEnabled===false?"disabled":"active"});
+      }
+    }
+    // A replacement becomes exclusive only when the successor has taken effect.
+    for(const r of records.values())if(r.replaces&&r.effectiveDate)for(const old of records.values()){
+      if(old.id!==r.id&&r.replaces.some(x=>[old.id,old.name,old.documentNo].includes(x)))old.supersededBy={id:r.id,effectiveDate:r.effectiveDate,name:r.name};
+    }
+    return {records:[...records.values()],rules:[...rules.values()]};
+  }
+  function clarify(results,profile){
+    const groups=new Map();
+    for(const r of results)for(const fact of r.missingFacts||[]){
+      if(profile.answers&&profile.answers[fact]==="no")continue;
+      const entry=groups.get(fact)||{fact,regulations:[]};
+      entry.regulations.push(r.name);groups.set(fact,entry);
+    }
+    return [...groups.values()].sort((a,b)=>b.regulations.length-a.regulations.length||a.fact.localeCompare(b.fact,"zh-CN"));
+  }
+  function coverage(results,profile){
+    const dimensions=[
+      ["安全与应急",r=>/安全|事故|应急|作业|防护/.test(r.category||r.name)],
+      ["职业健康",r=>/职业|健康|GBZ/.test(r.category+r.name+r.documentNo)],
+      ["环境保护",r=>/环境|污染|废|排污|水|噪声|土壤/.test(r.category||r.name)],
+      ["消防与设备",r=>/消防|防火|特种设备|锅炉|压力/.test(r.category+r.name)]
+    ];
+    return dimensions.map(([name,predicate])=>({name,matched:results.filter(predicate).length,detailed:results.filter(r=>predicate(r)&&(r.matchedClauses||[]).length).length})).concat([{name:`${profile.province||"所在地"}地方要求`,matched:results.filter(r=>r.applicabilityType==="地方要求").length,warning:"地方排放限值、园区要求及许可证专属条件尚非全覆盖；未命中不等于没有要求。"}]);
+  }
+  function evidenceProgress(record,checks){
+    const clauses=record.matchedClauses||[],items=clauses.map(c=>checks&&checks[c.id]||{});
+    const documented=items.filter(x=>x.state==="provided"&&String(x.note||"").trim()).length;
+    const missing=items.filter(x=>x.state==="missing").length;
+    return {total:clauses.length,documented,missing,label:missing?`已记录 ${missing} 项证据缺项`:documented===clauses.length&&clauses.length?"所列证据已登记（非合规结论）":`已登记 ${documented}/${clauses.length} 项证据`};
+  }
+  return {VERSION,profileGroups,mergeCatalog,clarify,coverage,evidenceProgress};
+});
+
+;
+/* Source: js/compliance-engine.js */
+(function(root,factory){const api=factory();if(typeof module!=="undefined"&&module.exports)module.exports=api;root.EHSComplianceEngine=api;})(typeof globalThis!=="undefined"?globalThis:this,function(){
+  "use strict";
+  const applicabilityRank={"明确适用":0,"条件适用":1,"建议复核":2,"不纳入":3};
+  const statusRank={"即将实施":0,"现行有效":1,"已发布待实施":2,"部分失效":3,"待核实":4,"已废止":5};
+  function cnToday(now){const parts=new Intl.DateTimeFormat("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(now||new Date());const get=t=>parts.find(p=>p.type===t).value;return `${get("year")}-${get("month")}-${get("day")}`;}
+  function daysBetween(from,to){if(!from||!to)return null;const a=Date.parse(from+"T00:00:00+08:00"),b=Date.parse(to+"T00:00:00+08:00");return Number.isFinite(a)&&Number.isFinite(b)?Math.round((b-a)/86400000):null;}
+  function implementationStatus(reg,today){if(reg.status==="已废止"||reg.expiryDate&&daysBetween(today,reg.expiryDate)<0||reg.supersededBy&&reg.supersededBy.effectiveDate<=today)return "已废止";if(reg.verificationStatus&&reg.verificationStatus!=="已核验")return "待核实";if(!reg.effectiveDate)return reg.status||"待核实";const d=daysBetween(today,reg.effectiveDate);if(d>90)return "已发布待实施";if(d>0)return "即将实施";return reg.status==="部分失效"?"部分失效":"现行有效";}
+  function reviewReminder(date,today){if(!date)return "未设置";const d=daysBetween(today||cnToday(),date);if(d<0)return "已逾期";if(d<=30)return "30日内到期";if(d<=90)return "即将评审";return "正常";}
+  function implementationDistanceLabel(date,today){const d=daysBetween(today||cnToday(),date);if(d===null)return "日期待核实";return d>0?`距实施 ${d} 天`:d===0?"今日实施":`已实施 ${Math.abs(d)} 天`;}
+  function intersects(a,b){return (a||[]).some(v=>(b||[]).includes(v));}
+  function profileFacts(profile){
+    const facts=new Set(["生产经营单位",...["enterpriseTypes","industries","riskTags","specialOperationTypes","hazardousActivities","hazardousWasteActivities","specialEquipmentTypes","industryAttributes","managementCommitments","environmentalActivities","regulatoryAttributes","workplaceActivities"].flatMap(k=>Array.isArray(profile[k])?profile[k]:[]),...Object.entries(profile.answers||{}).filter(([,v])=>v==="yes").map(([k])=>k)]);
+    const imply=(from,to)=>{if(from.some(x=>facts.has(x)))for(const x of to)facts.add(x);};
+    imply(["危险化学品生产企业"],["危化品生产"]);imply(["危险化学品使用企业"],["危化品使用"]);imply(["危险化学品经营企业"],["危化品经营"]);imply(["危险化学品储存企业"],["危化品储存"]);
+    if(facts.has("危化品经营")&&facts.has("危化品储存"))facts.add("危化品经营（带储存）");
+    imply(["接触职业病危害"],["存在职业病危害"]);
+    imply(["排放工业废水","排放生活污水","废水直接排放","废水间接排放"],["产生废水"]);
+    imply(["排放VOCs","排放颗粒物","燃烧设施"],["产生废气"]);
+    imply(["排放工业废气","排放有毒有害大气污染物"],["产生废气"]);
+    if(facts.has("产生废气")&&(profile.industries||[]).some(x=>/制造|金属制品|石油化工/.test(x)))facts.add("排放工业废气");
+    imply(["危废产生","危废暂存","危废自行利用","危废处置","危废填埋","产生一般工业固体废物"],["产生一般固体废物或危险废物"]);
+    imply(["涉及有限空间"],["涉及受限空间作业"]);
+    imply(["涉及受限空间作业"],["涉及有限空间"]);
+    imply(["涉及动火作业","涉及受限空间作业","涉及高处作业","涉及吊装作业","涉及临时用电","涉及盲板抽堵","涉及断路或动土作业"],["涉及特殊作业"]);
+    imply(["机械制造企业","电子制造企业","食品加工企业","其他工贸企业","通用设备制造","专用设备制造","金属制品","电子设备制造","食品制造"],["工贸企业"]);
+    imply(["消防安全重点单位"],["涉及消防重点部位"]);
+    if((profile.specialEquipmentTypes||[]).length)facts.add("使用特种设备");
+    return facts;
+  }
+  const permitModes=["排污许可重点管理","排污许可简化管理","排污登记管理"];
+  function factState(fact,profile,facts){if(facts.has(fact))return "yes";if(profile.answers&&profile.answers[fact]==="no")return "no";if(permitModes.includes(fact)&&permitModes.some(x=>x!==fact&&facts.has(x)))return "no";return "unknown";}
+  function matchByRule(reg,profile,today,rule){
+    if(!reg.complianceEnabled||rule.status==="disabled"||implementationStatus(reg,today)==="已废止")return {applicability:"不纳入",reasons:[]};
+    const reasons=[],facts=profileFacts(profile);let applicability="不纳入";
+    const regionMatch=(reg.regions||[]).includes("全国")||(reg.regions||[]).includes(profile.province)||(reg.regions||[]).includes(profile.city);
+    if(reg.applicabilityType==="地方要求"&&!regionMatch)return {applicability:"不纳入",reasons:[]};
+    if((rule.excludeAny||[]).some(x=>facts.has(x)))return {applicability:"不纳入",reasons:["企业画像命中排除条件"]};
+    const allList=rule.includeAll||[],anyList=rule.includeAny||[],hasTrigger=allList.length>0||anyList.length>0,allHit=allList.every(x=>facts.has(x)),anyHit=!anyList.length||anyList.some(x=>facts.has(x)),directHit=hasTrigger&&allHit&&anyHit,reviewHit=(rule.reviewWhen||[]).some(x=>facts.has(x));
+    const rejected=allList.some(x=>factState(x,profile,facts)==="no")||anyList.length&&anyList.every(x=>factState(x,profile,facts)==="no");
+    if(rejected)return {applicability:"不纳入",reasons:["企业已确认不具备本项适用条件"]};
+    if(directHit){applicability=rule.applicability==="mandatory"?"明确适用":"条件适用";const hits=[...(rule.includeAll||[]),...anyList.filter(x=>facts.has(x))];reasons.push(`${rule.explanationTemplate}${hits.length?`；画像依据：${hits.join("、")}`:""}`);if(reg.scopeSummary)reasons.push(`适用范围：${reg.scopeSummary}`);}
+    else if(reviewHit){applicability="建议复核";reasons.push(`信息不足，需进一步确认：${(rule.reviewWhen||[]).filter(x=>facts.has(x)).join("、")}`);}
+    if(applicability!=="不纳入"&&reg.applicabilityType==="地方要求")reasons.unshift(`企业所在地为${profile.city||profile.province}`);
+    const scopeApplicability=directHit?(rule.applicability==="mandatory"?"画像范围匹配":"画像条件匹配"):applicability==="建议复核"?"范围信息待补充":"不纳入";
+    if(applicability!=="不纳入"&&reg.verificationStatus!=="已核验"){applicability="建议复核";reasons.push("来源版本尚待核验；画像条件匹配不等于正式适用结论");}
+    const missingFacts=reviewHit&&!directHit?[...allList.filter(x=>!facts.has(x)),...(!anyHit?anyList:[])].filter(x=>factState(x,profile,facts)==="unknown"):[];
+    return {applicability,scopeApplicability,reasons,missingFacts:[...new Set(missingFacts)]};
+  }
+  function matchOne(reg,profile,today,rule){if(rule)return matchByRule(reg,profile,today,rule);const fallback={includeAll:reg.applicabilityType==="通用基础"?["生产经营单位"]:[],includeAny:[...(reg.enterpriseTypes||[]),...(reg.industries||[]),...(reg.riskTags||[]),...(reg.activityTags||[])],excludeAny:[],reviewWhen:reg.reviewWhenInsufficient?["使用或储存危险化学品"]:[],applicability:reg.scaleConditions&&reg.scaleConditions.length?"conditional":"mandatory",explanationTemplate:"企业画像命中现有标签"};return matchByRule(reg,profile,today,fallback);}
+  function guidance(reg,match,profile){
+    const facts=profileFacts(profile),matchedClauses=[],pendingClauses=[],missingFacts=[...(match.missingFacts||[])];
+    for(const c of reg.clauses||[]){
+      const all=c.whenAll||[],any=c.whenAny||[],yes=all.every(x=>facts.has(x))&&(!any.length||any.some(x=>facts.has(x)));
+      const no=all.some(x=>factState(x,profile,facts)==="no")||any.length&&any.every(x=>factState(x,profile,facts)==="no");
+      if(yes)matchedClauses.push(c);else if(!no){pendingClauses.push(c);missingFacts.push(...all.filter(x=>factState(x,profile,facts)==="unknown"),...(!any.some(x=>facts.has(x))?any.filter(x=>factState(x,profile,facts)==="unknown"):[]));}
+    }
+    const detailed=matchedClauses.length>0,verified=reg.verificationStatus==="已核验";
+    return {matchedClauses,pendingClauses,missingFacts:[...new Set(missingFacts)],sourceVerification:verified?`${(reg.clauses||[]).length?"官方文本/条款已核对":"官方元数据已核对"}（${reg.lastVerifiedAt||"日期未记录"}）`:"版本/来源尚待核验",applicableClauses:detailed?matchedClauses.map(c=>c.reference).join("；"):reg.applicableClauses||"尚无已核对的条款卡",requirementSummary:detailed?matchedClauses.map(c=>`${c.reference}：${c.summary}`).join("\n"):reg.requirementSummary||"此记录尚未完成条款结构化，不生成具体义务。",evidenceRequirement:[...new Set(matchedClauses.flatMap(c=>c.evidence||[]))].join("；"),suggestedAction:matchedClauses.map(c=>c.action).filter(Boolean).join("；"),evaluationDraft:detailed?`${match.applicability==="建议复核"?"范围尚缺信息；以下为预备检查项":"已根据画像生成检查项"}。${pendingClauses.length?`另有 ${pendingClauses.length} 组条件条款可通过补充画像判断。`:""}履行情况需以实际证据为准，不自动判定符合。`:"暂未形成条款级检查清单；不会以空白摘要冒充已完成评价。"};
+  }
+  function identify(regulations,profile,options){const today=(options&&options.today)||cnToday(),ruleMap=new Map(((options&&options.rules)||[]).map(r=>[r.regulationId,r]));return regulations.map(r=>{const m=matchOne(r,profile,today,ruleMap.get(r.id));return {...r,...m,...guidance(r,m,profile),computedStatus:implementationStatus(r,today)};}).filter(r=>(options&&options.includeExcluded)||r.applicability!=="不纳入").sort((a,b)=>(applicabilityRank[a.applicability]-applicabilityRank[b.applicability])||((b.matchedClauses.length>0)-(a.matchedClauses.length>0))||(a.levelRank-b.levelRank)||(statusRank[a.computedStatus]-statusRank[b.computedStatus])||a.name.localeCompare(b.name,"zh-CN"));}
+  return {cnToday,daysBetween,implementationStatus,implementationDistanceLabel,reviewReminder,profileFacts,factState,matchOne,identify};
+});
+
+;
+/* Source: js/compliance-workflow.js */
+(function(root,factory){const api=factory();if(typeof module!=="undefined"&&module.exports)module.exports=api;root.EHSComplianceWorkflow=api;})(typeof globalThis!=="undefined"?globalThis:this,function(){
+  "use strict";
+  const PROJECT_SCHEMA="1.0.0";
+  function requiredMissing(e){const missing=["基本符合","不符合"].includes(e.judgment)?[["gap","差距分析"],["action","整改措施"],["owner","责任人"],["due","计划完成日期"]].filter(([key])=>!String(e[key]||"").trim()).map(([,label])=>label):[];if(e.judgment==="符合"&&!String(e.evidence||"").trim())missing.push("符合判定的客观证据");if(e.judgment==="不适用"&&!String(e.evidence||"").trim())missing.push("不适用的范围依据");return missing;}
+  function evaluationStatus(e,today,daysBetween){if(e.judgment==="待评价"||!e.judgment)return "未开始";if(["符合","不适用"].includes(e.judgment))return "已关闭";if(e.completedAt&&e.verification)return "已关闭";if(e.completedAt)return "待验证";const days=e.due?daysBetween(today,e.due):null;if(days!==null&&days<0)return `已逾期 ${Math.abs(days)} 天`;return "整改中";}
+  function createProject({profile,selected,evaluations,addedUpdates,updatedAt}){return {schemaVersion:PROJECT_SCHEMA,tool:"EHS-SIL Compliance Identification",profile,selectedRegulationIds:Object.entries(selected).filter(([,value])=>value).map(([id])=>id),evaluations,addedUpdates:addedUpdates||[],dynamicRecords:{},updatedAt:updatedAt||new Date().toISOString()};}
+  function validateProject(project){if(!project||typeof project!=="object")throw Error("项目文件不是有效对象");if(project.schemaVersion!==PROJECT_SCHEMA)throw Error(`不支持的项目版本：${project.schemaVersion||"缺失"}`);if(!project.profile||typeof project.profile!=="object")throw Error("项目文件缺少企业画像");if(!Array.isArray(project.selectedRegulationIds))throw Error("项目文件缺少已选法规");if(!project.evaluations||typeof project.evaluations!=="object"||Array.isArray(project.evaluations))throw Error("项目文件缺少评价记录");if(project.addedUpdates!==undefined&&!Array.isArray(project.addedUpdates))throw Error("项目文件的动态法规记录格式无效");return project;}
+  const legacyValidateProject=validateProject;
+  function validateSafeProject(project){
+    legacyValidateProject(project);
+    const walk=(value,depth=0)=>{if(depth>12)throw Error("项目嵌套过深");if(value&&typeof value==="object")for(const [key,v] of Object.entries(value)){if(["__proto__","constructor","prototype"].includes(key))throw Error("项目含不安全字段");walk(v,depth+1);}};
+    walk(project);
+    const p=project.profile;
+    if(Array.isArray(p))throw Error("企业画像应为对象");
+    for(const field of ["enterpriseTypes","industries","riskTags","specialOperationTypes","hazardousActivities","hazardousWasteActivities","specialEquipmentTypes","industryAttributes","managementCommitments","environmentalActivities","regulatoryAttributes","workplaceActivities"])if(p[field]!==undefined&&(!Array.isArray(p[field])||p[field].length>200||p[field].some(v=>typeof v!=="string"||v.length>160)))throw Error(`画像字段无效：${field}`);
+    if(p.answers!==undefined&&(!p.answers||typeof p.answers!=="object"||Array.isArray(p.answers)||Object.values(p.answers).some(v=>!["yes","no","unknown"].includes(v))))throw Error("画像追问回答无效");
+    if(project.selectedRegulationIds.length>1000||project.selectedRegulationIds.some(v=>typeof v!=="string"||!/^[-A-Za-z0-9_]+$/.test(v)))throw Error("法规编号无效");
+    for(const e of Object.values(project.evaluations)){if(!e||typeof e!=="object"||Array.isArray(e))throw Error("评价记录格式无效");if(e.judgment!==undefined&&!["待评价","符合","基本符合","不符合","不适用"].includes(e.judgment))throw Error("评价判定无效");}
+    return project;
+  }
+  return {PROJECT_SCHEMA,requiredMissing,evaluationStatus,createProject,validateProject:validateSafeProject};
+});
+
+;
+/* Source: js/compliance-export.js */
+(function(root,factory){const api=factory();if(typeof module!=="undefined"&&module.exports)module.exports=api;root.EHSComplianceExport=api;})(typeof globalThis!=="undefined"?globalThis:this,function(){
+  "use strict";
+  const judgments=["待评价","符合","基本符合","不符合","不适用"],conversionStates=["未开始","制度修订中","已转化","不适用"];
+  const profileLabels={enterpriseTypes:"企业类型",industries:"行业",riskTags:"高风险活动",specialOperationTypes:"特殊作业详情",hazardousActivities:"危险化学品活动",hazardousWasteActivities:"危险废物活动",specialEquipmentTypes:"特种设备",industryAttributes:"行业属性",managementCommitments:"自愿采纳的管理标准",environmentalActivities:"环境活动",regulatoryAttributes:"监管与项目属性",workplaceActivities:"工作场所活动"};
+  function header(ws,row){row.eachCell(c=>{c.font={bold:true,color:{argb:"FFFFFFFF"}};c.fill={type:"pattern",pattern:"solid",fgColor:{argb:"FF1E3A5F"}};c.alignment={vertical:"middle",wrapText:true};});ws.views=[{state:"frozen",ySplit:1}];ws.autoFilter={from:{row:1,column:1},to:{row:1,column:row.cellCount}};ws.pageSetup={orientation:"landscape",fitToPage:true,fitToWidth:1,fitToHeight:0,paperSize:9,margins:{left:.25,right:.25,top:.5,bottom:.5,header:.2,footer:.2}};ws.pageSetup.printTitlesRow="1:1";}
+  function listValidation(values){return {type:"list",allowBlank:true,formulae:['"'+values.join(",")+'"'],showErrorMessage:true,errorTitle:"请输入有效选项",error:"请从下拉列表中选择。"};}
+  function finish(ws,widths){ws.columns.forEach((c,i)=>{c.width=widths[i]||16;c.style={alignment:{vertical:"top",wrapText:true}};});ws.eachRow(r=>r.eachCell(c=>{c.alignment={vertical:"top",wrapText:true};if(c.value instanceof Date)c.numFmt="yyyy-mm-dd";}));}
+  function join(values){return [...new Set(values.filter(v=>v!==undefined&&v!==null&&String(v).trim()).map(String))].join("\n");}
+  function clauseRequirements(record){return (record.matchedClauses||[]).length?record.matchedClauses.map(c=>c.reference+"："+c.summary).join("\n"):join([record.applicableClauses,record.requirementSummary]);}
+  function checkRows(record,evaluation){
+    const clauses=new Map((record.matchedClauses||[]).map(c=>[c.id,c])),checks=evaluation.checks||{},ids=[...new Set([...clauses.keys(),...Object.keys(checks)])];
+    return ids.map(id=>{
+      const item=checks[id]||{},note=String(item.note||""),label=clauses.has(id)?id+" · "+clauses.get(id).reference:"历史/未匹配条款 "+id;
+      const state=item.state==="missing"?"已发现缺项":item.state==="provided"?(note.trim()?"已登记证据索引（非合规结论）":"已选择提供，但缺少证据索引"):"尚未提供";
+      return {status:label+"："+state,note:note.trim()?label+"："+note:""};
+    });
+  }
+  function versionWarning(e){return e.needsReassessment?"版本已变，需重评；历史记录保留，不作为当前版本已完成评价":"";}
+  function buildWorkbook(ExcelJS,payload){
+    const {profile:p,selected,evaluations,today,statusFor,reminderFor,distanceFor}=payload,meta=payload.meta||{},wb=new ExcelJS.Workbook();wb.creator="EHS-SIL";wb.created=new Date();
+    let ws=wb.addWorksheet("企业画像与使用说明");
+    ws.addRow(["字段","内容"]);
+    Object.entries({企业名称:p.companyName,省份:p.province,城市:p.city,企业规模:p.scale,所有制:p.ownership}).forEach(x=>ws.addRow(x));
+    for(const [key,label] of Object.entries(profileLabels))ws.addRow([label,(p[key]||[]).join("、")]);
+    for(const [key,value] of Object.entries(p))if(Array.isArray(value)&&!profileLabels[key])ws.addRow(["补充画像："+key,value.join("、")]);
+    for(const [fact,value] of Object.entries(p.answers||{}))ws.addRow(["画像追问："+fact,value==="yes"?"是":value==="no"?"否":"尚不确定"]);
+    Object.entries({数据版本:meta.schemaVersion||"未提供",受控法规数:Number.isFinite(meta.verified)?meta.verified:"未提供",候选记录数:Number.isFinite(meta.total)&&Number.isFinite(meta.verified)?Math.max(0,meta.total-meta.verified):"未提供",最近核验日期:meta.latestVerifiedAt||"未记录",导出时间:today+"（中国标准时间）"}).forEach(x=>ws.addRow(x));
+    ws.addRow([]);
+    ws.addRow(["填写说明","条款摘要、待补充画像和建议动作由规则自动整理；客观证据、企业实际判定与整改完成情况由用户提供。未提供证据不自动判定符合；版本变化后的历史评价须重评。"]);
+    ws.addRow(["画像说明","勾选项表示已确认；未勾选不等于不存在。追问中的“否”与“尚不确定”分别保留。法规有效状态、来源核验、画像适用范围和企业履行情况是不同维度。"]);
+    ws.addRow(["版权与使用边界","法规及标准基本信息来源于公开官方渠道；EHS-SIL 对本文件中的原创编排、匹配逻辑、摘要说明和模板设计保留相应权利。本文件仅供会员本人或所在企业内部 EHS 管理使用，不得整表转售、公开传播或作为数据库二次发布。"]);
+    ws.addRow(["免责声明","识别结果仅供管理参考，不构成法律意见。条款卡不是法规全文，未命中不代表没有要求；地方排放限值、许可证和工艺专属条件仍须结合实际情况确认。"]);
+    header(ws,ws.getRow(1));finish(ws,[30,90]);
+
+    ws=wb.addWorksheet("法规识别台账");
+    ws.addRow(["序号","类别层级","法规或标准名称","文号/标准号","法规有效状态","发布日期","实施日期","发布机关","适用性结论","匹配原因","适用条款或章节","要求摘要","转化落实情况","主责部门","协同部门","证据要求（建议或用户修订）","下次评审日期","评审提醒","来源核验状态","官方来源","画像范围判断","待补充事实","建议动作（自动生成）","版本重评提示"]);
+    selected.forEach((r,i)=>{
+      const e=evaluations[r.id]||{};
+      ws.addRow([i+1,r.type,r.name,r.documentNo,r.computedStatus,r.publishDate,r.effectiveDate,r.issuingAuthority,r.applicability,(r.reasons||[]).join("；"),r.applicableClauses,r.requirementSummary,e.conversion||"未开始",e.primaryDepartment||(r.suggestedDepartment||[])[0]||"",e.cooperatingDepartments||(r.suggestedDepartment||[]).slice(1).join("、"),e.evidenceRequirement||r.evidenceRequirement||"尚无已核对的证据清单",e.reviewDate||"",reminderFor(e.reviewDate),r.sourceVerification||r.verificationStatus||"未记录",{text:r.sourceName||"官方来源",hyperlink:r.sourceUrl},r.scopeApplicability||r.applicability,(r.missingFacts||[]).join("；"),r.suggestedAction||"",versionWarning(e)]);
+    });
+    header(ws,ws.getRow(1));
+    for(let row=2;row<=ws.rowCount;row++){ws.getCell(row,13).dataValidation=listValidation(conversionStates);ws.getCell(row,17).numFmt="yyyy-mm-dd";}
+    if(ws.rowCount>1)ws.addConditionalFormatting({ref:"R2:R"+ws.rowCount,rules:[{type:"containsText",operator:"containsText",text:"逾期",style:{fill:{type:"pattern",pattern:"solid",bgColor:{argb:"FFFECACA"}}}},{type:"containsText",operator:"containsText",text:"30日内",style:{fill:{type:"pattern",pattern:"solid",bgColor:{argb:"FFFEF3C7"}}}}]});
+    finish(ws,[8,14,32,18,14,13,13,20,14,36,24,48,16,18,22,32,15,15,30,26,24,30,40,34]);
+
+    ws=wb.addWorksheet("符合性评价记录");
+    ws.addRow(["法规或标准名称","条款号与要求摘要（自动整理）","公司现状与客观证据（用户提供）","判定（用户填写）","差距分析","整改措施","责任部门或责任人","计划完成日期","实际完成日期","验证结果","自动状态","逾期天数","落实建议（自动生成，非履行证据）","条款证据登记状态","条款证据索引或缺项说明（用户提供）"]);
+    selected.forEach(r=>{
+      const e=evaluations[r.id]||{},status=e.needsReassessment?"版本已变，需重评":statusFor(e),overdue=status.startsWith("已逾期")?Number(status.replace(/\D/g,"")):0,checks=checkRows(r,e);
+      ws.addRow([r.name,clauseRequirements(r),e.evidence||"",e.judgment||"待评价",e.gap||"",e.action||"",e.owner||"",e.due||"",e.completedAt||"",e.verification||"",status,overdue,join([r.evaluationDraft,r.suggestedAction,versionWarning(e)]),checks.map(c=>c.status).join("\n"),checks.map(c=>c.note).filter(Boolean).join("\n")]);
+    });
+    header(ws,ws.getRow(1));
+    for(let row=2;row<=ws.rowCount;row++){ws.getCell(row,4).dataValidation=listValidation(judgments);for(const col of [8,9])ws.getCell(row,col).numFmt="yyyy-mm-dd";}
+    if(ws.rowCount>1){
+      ws.addConditionalFormatting({ref:"D2:D"+ws.rowCount,rules:[{type:"containsText",operator:"containsText",text:"不符合",style:{fill:{type:"pattern",pattern:"solid",bgColor:{argb:"FFFECACA"}}}},{type:"containsText",operator:"containsText",text:"基本符合",style:{fill:{type:"pattern",pattern:"solid",bgColor:{argb:"FFFEF3C7"}}}}]});
+      ws.addConditionalFormatting({ref:"L2:L"+ws.rowCount,rules:[{type:"cellIs",operator:"greaterThan",formulae:[0],style:{fill:{type:"pattern",pattern:"solid",bgColor:{argb:"FFFECACA"}},font:{color:{argb:"FF991B1B"}}}}]});
+    }
+    finish(ws,[32,48,36,16,32,32,20,15,15,26,24,12,48,40,48]);
+
+    ws=wb.addWorksheet("法规动态跟踪及官方来源");
+    ws.addRow(["获知日期","信息来源","法规或标准名称","变化类型","原版本","新版本","发布日期","实施日期","实施状态","实施进度","影响等级","影响评估","应对措施","责任人","完成状态","官方来源"]);
+    selected.filter(r=>r.changeType&&r.changeType!=="无变化"||r.computedStatus==="即将实施").forEach(r=>{
+      const e=evaluations[r.id]||{};
+      ws.addRow([r.lastVerifiedAt,r.sourceName,r.name,r.changeType,(r.replaces||[]).join("、"),r.documentNo,r.publishDate,r.effectiveDate,r.computedStatus,distanceFor(r.effectiveDate),"未作影响分级",join([r.evaluationDraft,versionWarning(e)])||"尚无已核对的条款变化分析",r.suggestedAction||"核对适用条款并更新内部文件",e.owner||"待指定",e.conversion||"未开始",{text:"官方原文",hyperlink:r.sourceUrl}]);
+    });
+    header(ws,ws.getRow(1));for(let row=2;row<=ws.rowCount;row++)ws.getCell(row,15).dataValidation=listValidation(conversionStates);finish(ws,[15,18,32,14,20,20,15,15,14,18,16,40,40,18,16,24]);
+    return wb;
+  }
+  return {buildWorkbook};
+});
+
+;
+/* Source: js/compliance-analytics.js */
+/** Privacy-limited analytics for the compliance identification tool. */
+(function(){"use strict";
+const CATEGORY="compliance_identification",allowed=new Set(["example_used","result_generated","export_clicked","excel_exported","detail_opened","vip_prompt_viewed","vip_entry_clicked","knowledge_planet_clicked","profile_refined","evidence_recorded"]);
+function track(eventName,mode){if(!allowed.has(eventName))return false;const safeMode=mode==="example"?"example":"user";window._hmt=window._hmt||[];window._hmt.push(["_trackEvent",CATEGORY,eventName,safeMode]);window.dispatchEvent(new CustomEvent("ehs-sil:compliance-analytics",{detail:{event:eventName,mode:safeMode}}));return true;}
+window.EhsComplianceAnalytics={track,allowedEvents:[...allowed]};
+})();
+
+;
+/* Source: js/compliance-app.js */
 (function(){"use strict";
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],Engine=window.EHSComplianceEngine,Guidance=window.EHSComplianceGuidance,Workflow=window.EHSComplianceWorkflow,Exporter=window.EHSComplianceExport,Analytics=window.EhsComplianceAnalytics,KEY="ehs-sil-compliance-v1.2",EXPORT_CAPABILITY="compliance_excel_export",FREE_PREVIEW_LIMIT=6;let step=0,regulations=[],rules=[],changes=[],results=[],databaseMeta={},usageMode="user",memberHasFullAccess=false,dataReady=false,state={profile:{},evaluations:{},selected:{},addedUpdates:[],updatedAt:""};
 const specialOperationTags=["涉及动火作业","涉及受限空间作业","涉及高处作业","涉及吊装作业","涉及临时用电","涉及盲板抽堵","涉及断路或动土作业"];

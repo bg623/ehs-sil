@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import crypto from 'node:crypto';
+const root=fileURLToPath(new URL('../',import.meta.url)),target=path.join(root,'dist');
+const files=['guidance','engine','workflow','export','analytics','app'].map(x=>`js/compliance-${x}.js`);
+fs.mkdirSync(target,{recursive:true});
+const js=files.map(f=>`/* Source: ${f} */\n${fs.readFileSync(path.join(root,f),'utf8')}`).join('\n;\n');
+const css=fs.readFileSync(path.join(root,'css/compliance.css'),'utf8').replace('./design-system.css','../css/design-system.css');
+fs.writeFileSync(path.join(target,'compliance-v1.6.0.js'),js);
+fs.writeFileSync(path.join(target,'compliance-v1.6.0.css'),css);
+console.log(JSON.stringify({version:'1.6.0',files:[['dist/compliance-v1.6.0.js',js],['dist/compliance-v1.6.0.css',css]].map(([file,body])=>({file,sha256:crypto.createHash('sha256').update(body).digest('hex')}))}));

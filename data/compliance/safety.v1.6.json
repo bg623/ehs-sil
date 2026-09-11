@@ -1,0 +1,1985 @@
+{
+  "schemaVersion": "1.6.0",
+  "checkedAt": "2026-09-11",
+  "reviewPolicy": "官方元数据及所列条款核对；规则匹配不构成企业现场符合性或行政审批结论",
+  "records": [
+    {
+      "id": "REG-001",
+      "name": "中华人民共和国安全生产法",
+      "documentNo": "主席令第八十八号（2021年修正）",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "综合",
+      "issuingAuthority": "全国人大常委会",
+      "publishDate": "2021-06-10",
+      "effectiveDate": "2021-09-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml",
+      "sourceName": "应急管理部（中国人大网原文）",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "通用基础",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "生产经营单位"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "境内生产经营单位适用安全生产通用义务；消防、交通、核与辐射、特种设备等另有专门规定的，依其规定。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "境内生产经营单位适用安全生产通用义务；消防、交通、核与辐射、特种设备等另有专门规定的，依其规定。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-001-C01",
+          "reference": "第二十一、二十二条",
+          "summary": "明确主要负责人和各岗位的安全职责、责任范围与考核标准，落实责任制、制度、教育培训、投入、双重预防、应急与事故报告。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "全员安全生产责任清单",
+            "责任制考核记录",
+            "年度安全工作计划"
+          ],
+          "action": "把职责分配到岗位并记录考核与改进。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        },
+        {
+          "id": "REG-001-C02",
+          "reference": "第二十四条",
+          "summary": "按行业性质和人数配置安全管理机构或人员；其他行业超过100人需机构或专职人员，100人以下可配专职或兼职人员。高危行业执行专门配置要求。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "从业人数台账",
+            "安全管理机构或人员任命文件"
+          ],
+          "action": "核对行业和实际人数与人员配置是否一致。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        },
+        {
+          "id": "REG-001-C03",
+          "reference": "第二十八条",
+          "summary": "上岗前完成安全教育培训并考核合格；将派遣人员和实习学生纳入相应教育管理，保存培训时间、内容、人员及考核记录。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "人员花名册",
+            "岗位培训与考核记录",
+            "派遣和实习人员培训档案"
+          ],
+          "action": "对照人员名单查漏补训，不以签到代替考核。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        },
+        {
+          "id": "REG-001-C04",
+          "reference": "第四十一条",
+          "summary": "按风险级别落实管控，持续排查治理事故隐患；如实记录并向从业人员通报，重大事故隐患按规定报告。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "风险分级管控台账",
+            "隐患整改和复查记录",
+            "通报及重大隐患报告记录"
+          ],
+          "action": "逐项关联风险、措施、责任人和闭环证据。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        },
+        {
+          "id": "REG-001-C05",
+          "reference": "第四十三条",
+          "summary": "进行爆破、吊装、动火、临时用电等法定危险作业时安排专门人员现场安全管理，落实规程与安全措施。",
+          "whenAny": [
+            "涉及特殊作业",
+            "涉及动火作业",
+            "涉及吊装作业",
+            "涉及临时用电作业",
+            "涉及临时用电"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "危险作业管理制度",
+            "作业审批和现场管理记录"
+          ],
+          "action": "建立作业清单并核对现场专门管理责任。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        },
+        {
+          "id": "REG-001-C06",
+          "reference": "第四十五、四十七条",
+          "summary": "提供符合标准的劳动防护用品，保障配备与培训经费，教育和监督员工正确佩戴使用。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "岗位劳动防护用品配备表",
+            "发放与使用检查记录",
+            "相关预算"
+          ],
+          "action": "按岗位风险检查防护用品选型、发放与使用。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        },
+        {
+          "id": "REG-001-C07",
+          "reference": "第四十九条",
+          "summary": "发包或出租时核查承包承租单位安全条件和资质，明确安全责任，统一协调管理、定期检查并督促整改。",
+          "whenAny": [
+            "使用承包商"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "承包商资质审查",
+            "安全管理协议",
+            "联合检查及整改记录"
+          ],
+          "action": "把承包商纳入本单位风险和隐患管理。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/fg/202107/t20210716_416558.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-004",
+      "name": "中华人民共和国消防法",
+      "documentNo": "2021年4月29日修正",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "消防",
+      "issuingAuthority": "全国人大常委会",
+      "publishDate": "2021-04-29",
+      "effectiveDate": "2021-04-29",
+      "status": "现行有效",
+      "sourceUrl": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/202307/t20230726_3207767.html",
+      "sourceName": "北京市人民政府（法律全文）",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "通用基础",
+      "suggestedDepartment": [
+        "EHS",
+        "行政",
+        "工程"
+      ],
+      "rule": {
+        "includeAll": [
+          "生产经营单位"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "企业等单位承担通用消防职责；消防安全重点单位、建设工程和特殊作业分别触发附加义务，不能把‘消防重点部位’等同‘消防安全重点单位’。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "企业等单位承担通用消防职责；消防安全重点单位、建设工程和特殊作业分别触发附加义务，不能把‘消防重点部位’等同‘消防安全重点单位’。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-004-C01",
+          "reference": "第十六条",
+          "summary": "建立消防责任制、制度及灭火疏散预案，配置和维护消防设施，保障疏散及消防车通道，开展检查与针对性演练；建筑消防设施每年至少全面检测一次并留档。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "消防责任制和应急疏散预案",
+            "建筑消防设施年度检测记录",
+            "防火检查与演练记录"
+          ],
+          "action": "核查设施年度检测、通道和防火检查闭环。",
+          "sourceUrl": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/202307/t20230726_3207767.html"
+        },
+        {
+          "id": "REG-004-C02",
+          "reference": "第十七条",
+          "summary": "被确定为消防安全重点单位的，还需明确消防安全管理人、建立消防档案、管理重点部位、每日巡查并记录，开展岗前及定期培训演练。",
+          "whenAny": [
+            "消防安全重点单位"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "重点单位确定信息",
+            "消防档案",
+            "每日防火巡查记录"
+          ],
+          "action": "仅对依法确定的重点单位追加重点管理清单。",
+          "sourceUrl": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/202307/t20230726_3207767.html"
+        },
+        {
+          "id": "REG-004-C03",
+          "reference": "第九至十三条",
+          "summary": "建设工程消防设计、施工应执行消防技术标准；按工程类别办理设计审查、验收或备案抽查，未满足法定验收使用条件不得投入使用。",
+          "whenAny": [
+            "建设项目新改扩建",
+            "建筑施工活动"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "消防设计文件",
+            "消防设计审查/验收/备案资料"
+          ],
+          "action": "根据项目类别整理对应消防审验资料，不一概要求所有工程审批。",
+          "sourceUrl": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/202307/t20230726_3207767.html"
+        },
+        {
+          "id": "REG-004-C04",
+          "reference": "第二十一条",
+          "summary": "火灾爆炸危险场所原则上禁烟禁明火；因施工等需明火时事先审批并落实措施；电气焊等具有火灾危险作业及自动消防系统操作人员按规定持证。",
+          "whenAny": [
+            "涉及动火作业",
+            "涉及电气焊作业",
+            "涉及易燃易爆场所",
+            "自动消防系统操作"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "动火审批与防火措施记录",
+            "相应岗位资格核验记录"
+          ],
+          "action": "检查动火制度、审批和人员证件。",
+          "sourceUrl": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/202307/t20230726_3207767.html"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-003",
+      "name": "中华人民共和国职业病防治法",
+      "documentNo": "2018年12月29日修正",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "职业健康",
+      "issuingAuthority": "全国人大常委会",
+      "publishDate": "2018-12-29",
+      "effectiveDate": "2018-12-29",
+      "status": "现行有效",
+      "sourceUrl": "https://www.npc.gov.cn/zgrdw/npc/xinwen/2019-01/07/content_2070275.htm",
+      "sourceName": "中国人大网",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "职业健康",
+        "人力资源",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "接触职业病危害",
+          "存在职业病危害因素",
+          "存在职业病危害"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "用人单位存在职业病危害接触时，适用危害申报、防护、告知、检测及健康监护义务；具体检测和体检项目由实际危害因素确定。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "用人单位存在职业病危害接触时，适用危害申报、防护、告知、检测及健康监护义务；具体检测和体检项目由实际危害因素确定。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-003-C01",
+          "reference": "第十六条",
+          "summary": "工作场所存在职业病目录所列危害因素的，及时、如实申报危害项目并接受监督。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "职业病危害因素清单",
+            "职业病危害项目申报回执"
+          ],
+          "action": "将岗位和危害因素与申报信息交叉核对。",
+          "sourceUrl": "https://www.npc.gov.cn/zgrdw/npc/xinwen/2019-01/07/content_2070275.htm"
+        },
+        {
+          "id": "REG-003-C02",
+          "reference": "第二十至二十二、二十四条",
+          "summary": "建立职业卫生管理制度和档案，采取职业病防护措施并提供个人防护用品，公告制度、应急措施和检测结果，严重危害岗位设置警示说明。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "职业卫生制度与档案",
+            "防护设施与用品台账",
+            "告知栏及岗位警示记录"
+          ],
+          "action": "对照危害岗位核对防护、公告和警示覆盖。",
+          "sourceUrl": "https://www.npc.gov.cn/zgrdw/npc/xinwen/2019-01/07/content_2070275.htm"
+        },
+        {
+          "id": "REG-003-C03",
+          "reference": "第二十六条",
+          "summary": "安排专人开展职业病危害因素日常监测，定期检测评价，存档并向劳动者公布；发现不达标立即治理，仍不达标的停止有关作业。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "职业病危害检测评价报告",
+            "日常监测记录",
+            "超标治理与复测记录"
+          ],
+          "action": "用检测结果定位超标岗位并跟踪治理。",
+          "sourceUrl": "https://www.npc.gov.cn/zgrdw/npc/xinwen/2019-01/07/content_2070275.htm"
+        },
+        {
+          "id": "REG-003-C04",
+          "reference": "第三十三至三十五条",
+          "summary": "如实告知职业病危害及防护待遇并载入劳动合同，开展上岗前与在岗培训；组织接害劳动者上岗前、在岗及离岗职业健康检查并书面告知。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "劳动合同危害告知",
+            "职业卫生培训记录",
+            "职业健康检查及书面告知记录"
+          ],
+          "action": "将接害人员名单与体检、培训和告知逐项关联。",
+          "sourceUrl": "https://www.npc.gov.cn/zgrdw/npc/xinwen/2019-01/07/content_2070275.htm"
+        },
+        {
+          "id": "REG-003-C05",
+          "reference": "第三十六条",
+          "summary": "建立职业健康监护档案，妥善保存职业史、接触史、检查及诊疗资料；劳动者离开时按要求提供本人档案复印件。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "职业健康监护档案目录",
+            "离职资料交付记录"
+          ],
+          "action": "确保一人一档和本人获取渠道，同时保护健康隐私。",
+          "sourceUrl": "https://www.npc.gov.cn/zgrdw/npc/xinwen/2019-01/07/content_2070275.htm"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-006",
+      "name": "中华人民共和国特种设备安全法",
+      "documentNo": "主席令第四号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "特种设备",
+      "issuingAuthority": "全国人大常委会",
+      "publishDate": "2013-06-29",
+      "effectiveDate": "2014-01-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.samr.gov.cn/tzsbj/zcfg/flfg/art/2019/art_39715c5a62f64e32aa522fcc2afd6298.html",
+      "sourceName": "国家市场监督管理总局",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "设备",
+        "EHS"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "锅炉",
+          "压力容器",
+          "压力管道",
+          "气瓶",
+          "电梯",
+          "起重机械",
+          "场（厂）内专用机动车辆",
+          "涉及特种设备"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "所用设备进入特种设备目录及参数范围时适用使用管理义务；并非所有容器、管线或机动车都属于法定特种设备。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "所用设备进入特种设备目录及参数范围时适用使用管理义务；并非所有容器、管线或机动车都属于法定特种设备。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-006-C01",
+          "reference": "第三十二、三十三条",
+          "summary": "使用依法许可生产并检验合格的设备，禁止使用淘汰和报废设备；在投入使用前或投入使用后30日内办理使用登记并设置登记标志。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "设备目录与技术参数",
+            "产品与检验证明",
+            "使用登记证"
+          ],
+          "action": "先确认法定设备范围，再核对合格证明与登记。",
+          "sourceUrl": "https://www.samr.gov.cn/tzsbj/zcfg/flfg/art/2019/art_39715c5a62f64e32aa522fcc2afd6298.html"
+        },
+        {
+          "id": "REG-006-C02",
+          "reference": "第三十四至三十六条",
+          "summary": "建立岗位责任、隐患治理、应急制度和操作规程，保存设备安全技术档案，按规定设置安全管理机构或配备专兼职管理人员。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "安全技术档案",
+            "安全管理人员任命及资格",
+            "操作规程"
+          ],
+          "action": "检查设备、档案、管理人员是否对应。",
+          "sourceUrl": "https://www.samr.gov.cn/tzsbj/zcfg/flfg/art/2019/art_39715c5a62f64e32aa522fcc2afd6298.html"
+        },
+        {
+          "id": "REG-006-C03",
+          "reference": "第三十九、四十条",
+          "summary": "经常维护保养并定期自行检查，按要求校验检修安全附件与保护装置；在检验有效期届满前1个月提出定期检验申请，未检或不合格不得继续使用。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "维保和自行检查记录",
+            "安全附件校验记录",
+            "定期检验报告及到期计划"
+          ],
+          "action": "用设备台账建立检验和附件校验到期提醒。",
+          "sourceUrl": "https://www.samr.gov.cn/tzsbj/zcfg/flfg/art/2019/art_39715c5a62f64e32aa522fcc2afd6298.html"
+        },
+        {
+          "id": "REG-006-C04",
+          "reference": "第四十一、四十二条",
+          "summary": "安全管理人员经常检查设备使用情况并及时处理问题；作业人员发现隐患或不安全因素及时报告；设备故障或异常时全面检查并消除隐患后方可继续使用。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "作业前点检",
+            "异常停机与隐患处理记录"
+          ],
+          "action": "把异常发现、停用、修复和恢复使用形成闭环。",
+          "sourceUrl": "https://www.samr.gov.cn/tzsbj/zcfg/flfg/art/2019/art_39715c5a62f64e32aa522fcc2afd6298.html"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-008",
+      "name": "生产安全事故应急条例",
+      "documentNo": "国务院令第708号",
+      "type": "行政法规",
+      "levelRank": 2,
+      "category": "应急管理",
+      "issuingAuthority": "国务院",
+      "publishDate": "2019-02-17",
+      "effectiveDate": "2019-04-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/201903/t20190301_231790.shtml",
+      "sourceName": "应急管理部（国务院条例）",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "通用基础",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "生产经营单位"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "生产经营单位的生产安全事故应急准备和处置适用；特定高风险单位和人员密集场所承担更高频率演练及救援准备义务。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "生产经营单位的生产安全事故应急准备和处置适用；特定高风险单位和人员密集场所承担更高频率演练及救援准备义务。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-008-C01",
+          "reference": "第四、五条",
+          "summary": "明确主要负责人应急责任，辨识评估本单位事故风险，制定相应预案并向从业人员公布。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "事故风险评估",
+            "应急预案与发布记录",
+            "应急责任分工"
+          ],
+          "action": "将预案场景与企业实际主要风险对应。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/201903/t20190301_231790.shtml"
+        },
+        {
+          "id": "REG-008-C02",
+          "reference": "第八条",
+          "summary": "按规定定期组织应急预案演练；危险物品生产经营储运、矿山、金属冶炼、城市轨道交通、建筑施工和所列人员密集场所经营单位至少每半年演练一次并报送情况。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "年度演练计划",
+            "演练评估记录",
+            "依法需要报送的演练报告"
+          ],
+          "action": "按本企业行业类别落实演练频次，普通企业不得套用所有高危单位要求。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/201903/t20190301_231790.shtml"
+        },
+        {
+          "id": "REG-008-C03",
+          "reference": "第十五条",
+          "summary": "对从业人员开展应急教育和培训，使其具备应急知识，掌握风险防范技能和事故应急措施。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "应急知识培训与考核记录"
+          ],
+          "action": "对照风险场景检查员工应急职责和技能培训。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/201903/t20190301_231790.shtml"
+        },
+        {
+          "id": "REG-008-C04",
+          "reference": "第十七条",
+          "summary": "事故发生后立即启动相应预案，组织救援、疏散与风险控制，维护现场秩序并依法报告。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "事故响应流程",
+            "应急联系人和外援联络表"
+          ],
+          "action": "在预案中明确启动、报告、疏散和外援接口。",
+          "sourceUrl": "https://www.mem.gov.cn/fw/flfgbz/201903/t20190301_231790.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-010",
+      "name": "生产安全事故报告和调查处理条例",
+      "documentNo": "国务院令第493号",
+      "type": "行政法规",
+      "levelRank": 2,
+      "category": "应急管理",
+      "issuingAuthority": "国务院",
+      "publishDate": "2007-04-09",
+      "effectiveDate": "2007-06-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/200704/t20070420_233735.shtml",
+      "sourceName": "应急管理部（国务院条例）",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "通用基础",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "生产经营单位"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "生产经营活动中造成人身伤亡或直接经济损失的生产安全事故报告、调查处理适用；环境污染、核设施和国防科研生产事故不适用本条例。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "生产经营活动中造成人身伤亡或直接经济损失的生产安全事故报告、调查处理适用；环境污染、核设施和国防科研生产事故不适用本条例。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-010-C01",
+          "reference": "第四、九条",
+          "summary": "事故报告须及时、准确、完整；现场人员立即报告本单位负责人，负责人接报后1小时内向事故地县级以上有关主管部门报告。紧急情形现场人员可直接报告。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "事故报告流程与联系人",
+            "事故报告时间和内容记录"
+          ],
+          "action": "固化1小时报告时限及紧急直接报告通道。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/200704/t20070420_233735.shtml"
+        },
+        {
+          "id": "REG-010-C02",
+          "reference": "第十二、十三条",
+          "summary": "首报包括单位、时间地点、现场、经过、已造成或可能伤亡及经济损失、采取措施等；新情况及时补报，伤亡变化按法定期限补报。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "事故报告模板",
+            "补报记录"
+          ],
+          "action": "确保首报要素完整，并保留后续补报机制。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/200704/t20070420_233735.shtml"
+        },
+        {
+          "id": "REG-010-C03",
+          "reference": "第十四、十六条",
+          "summary": "立即启动应急响应组织抢救，保护事故现场及证据；确需移动物件时作标志、绘图和书面记录，妥善保存重要痕迹物证。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "应急处置和现场保护程序",
+            "证据保存及移交记录"
+          ],
+          "action": "在救人优先前提下安排现场保护和证据管理。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/200704/t20070420_233735.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-042",
+      "name": "生产经营单位安全培训规定",
+      "documentNo": "原国家安全监管总局令第3号（2015年修正）",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "培训",
+      "issuingAuthority": "原国家安全生产监督管理总局",
+      "publishDate": "2015-05-29",
+      "effectiveDate": "2015-07-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/201505/t20150529_233772.shtml",
+      "sourceName": "应急管理部规章文本",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "工贸企业",
+          "危险化学品生产企业",
+          "危险化学品经营企业",
+          "危险化学品使用企业",
+          "危险化学品储存企业",
+          "一般化工企业",
+          "制药企业",
+          "仓储物流企业",
+          "化学原料和化学制品制造",
+          "医药制造",
+          "矿山企业"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "工矿商贸生产经营单位从业人员安全培训适用；按人员类别及行业确定学时，不把危险化学品等高风险行业学时强加给所有企业。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "工矿商贸生产经营单位从业人员安全培训适用；按人员类别及行业确定学时，不把危险化学品等高风险行业学时强加给所有企业。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-042-C01",
+          "reference": "第三、四、二十二条",
+          "summary": "建立安全培训制度，将应训人员及派遣、实习人员纳入管理，建立培训档案，记录时间、内容、人员和考核结果。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "年度培训计划",
+            "人员花名册与培训档案"
+          ],
+          "action": "比较人员名单与培训记录，发现遗漏或未考核人员。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/201505/t20150529_233772.shtml"
+        },
+        {
+          "id": "REG-042-C02",
+          "reference": "第九条",
+          "summary": "主要负责人和安全管理人员初训不少于32学时、每年再培训不少于12学时；煤矿、非煤矿山、危化、烟花爆竹、金属冶炼等单位分别不少于48和16学时。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "负责人及安全管理人员培训学时和考核证明"
+          ],
+          "action": "按本企业行业对应培训学时，记录复训到期日。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/201505/t20150529_233772.shtml"
+        },
+        {
+          "id": "REG-042-C03",
+          "reference": "第十二、十三条",
+          "summary": "加工制造等生产单位新上岗其他从业人员接受三级教育；通用岗前培训不少于24学时，所列高危单位新上岗不少于72学时且每年再培训不少于20学时。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "三级教育记录",
+            "课程与学时",
+            "岗位考核结果"
+          ],
+          "action": "逐岗核对上岗培训，不只统计签到人数。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/201505/t20150529_233772.shtml"
+        },
+        {
+          "id": "REG-042-C04",
+          "reference": "第十七条",
+          "summary": "内部转岗或离岗一年以上重新上岗的人员重新接受车间和班组培训；采用新工艺、技术、材料或设备时开展针对性培训。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "转岗复岗名单",
+            "变更培训记录"
+          ],
+          "action": "关联人事变动和工艺变更触发补充培训。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/gwgg/agwzlfl/zjl_01/201505/t20150529_233772.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-080",
+      "name": "生产安全事故应急预案管理办法",
+      "documentNo": "原国家安全监管总局令第88号（应急管理部令第2号修正）",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "应急管理",
+      "issuingAuthority": "应急管理部",
+      "publishDate": "2019-07-11",
+      "effectiveDate": "2019-09-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201606/t20160603_405633.shtml",
+      "sourceName": "应急管理部规章库",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "通用基础",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "生产经营单位"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "生产经营单位应急预案编制、评审或论证、公布、备案和实施适用；备案和定期评估的附加要求按法定单位类别执行。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "生产经营单位应急预案编制、评审或论证、公布、备案和实施适用；备案和定期评估的附加要求按法定单位类别执行。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-080-C01",
+          "reference": "第十至十五、十九条",
+          "summary": "编制前开展事故风险辨识评估和应急资源调查，按事故类型与风险选择综合、专项或现场处置方案，并编制便于现场使用的处置卡。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "风险评估与资源调查",
+            "相应预案/现场处置方案",
+            "岗位应急处置卡"
+          ],
+          "action": "用实际事故场景检查预案与资源是否相互匹配。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201606/t20160603_405633.shtml"
+        },
+        {
+          "id": "REG-080-C02",
+          "reference": "第二十一、二十四、二十六条",
+          "summary": "按单位类型组织预案评审或论证，经主要负责人签署后公布；属于第二十六条所列单位的在公布之日起20个工作日内备案。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "预案评审/论证记录",
+            "签署与公布记录",
+            "应备案单位的备案回执"
+          ],
+          "action": "明确企业是否进入备案范围，不把备案要求无差别扩展。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201606/t20160603_405633.shtml"
+        },
+        {
+          "id": "REG-080-C03",
+          "reference": "第三十一、三十三、三十四条",
+          "summary": "开展应急培训；每年至少一次综合或专项演练，每半年至少一次现场处置演练；所列高风险及人员密集场所单位至少每半年应急预案演练，并评估效果。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "应急培训档案",
+            "演练计划、记录和评估报告"
+          ],
+          "action": "检查不同预案类型的演练频次与改进闭环。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201606/t20160603_405633.shtml"
+        },
+        {
+          "id": "REG-080-C04",
+          "reference": "第三十五至三十八条",
+          "summary": "建立定期评估制度；法定所列单位每三年评估一次。风险、法律或重要资源重大变化时及时修订；落实队伍物资，定期检测维护。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "预案评估与修订记录",
+            "应急物资使用维护档案"
+          ],
+          "action": "把工艺和法规变化纳入预案更新机制。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201606/t20160603_405633.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-045",
+      "name": "工贸企业有限空间作业安全规定",
+      "documentNo": "应急管理部令第13号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "作业安全",
+      "issuingAuthority": "应急管理部",
+      "publishDate": "2023-11-29",
+      "effectiveDate": "2024-01-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202312/t20231208_471355.shtml",
+      "sourceName": "应急管理部",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "工贸企业",
+          "涉及有限空间"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "仅适用于冶金、有色、建材、机械、轻工、纺织、烟草、商贸等工贸企业有限空间作业；不能把所有受限空间或化工企业自动套用本规定。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "仅适用于冶金、有色、建材、机械、轻工、纺织、烟草、商贸等工贸企业有限空间作业；不能把所有受限空间或化工企业自动套用本规定。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-045-C01",
+          "reference": "第四至七条",
+          "summary": "明确有限空间审批、监护和作业职责；辨识并更新台账，按风险明确审批权限。存在硫化氢、一氧化碳、二氧化碳等中毒窒息风险的，由主要负责人或其书面委托人员审批。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "有限空间台账",
+            "作业审批制度与委托书",
+            "审批和监护记录"
+          ],
+          "action": "把台账中的位置、风险与每次作业审批关联。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202312/t20231208_471355.shtml"
+        },
+        {
+          "id": "REG-045-C02",
+          "reference": "第八条",
+          "summary": "外包有限空间作业时在合同或协议约定安全职责，统一协调管理并现场检查、督促承包单位落实措施。",
+          "whenAny": [
+            "使用承包商"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "外包安全协议",
+            "承包商现场检查记录"
+          ],
+          "action": "外包不转移发包方统一管理责任。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202312/t20231208_471355.shtml"
+        },
+        {
+          "id": "REG-045-C03",
+          "reference": "第十四、十五条",
+          "summary": "执行先通风、再检测、后作业，交底并逐项确认隔断、防护和救援准备；全程监护、持续通风检测，异常撤离，禁止无安全措施盲目施救；作业中断后，再进入前须重新通风并经气体检测合格。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "通风检测和作业前确认",
+            "监护联络及持续检测记录",
+            "现场处置与救援演练记录"
+          ],
+          "action": "按作业前、作业中、中断复工和异常撤离核对现场记录。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202312/t20231208_471355.shtml"
+        },
+        {
+          "id": "REG-045-C04",
+          "reference": "第九条",
+          "summary": "对有限空间审批、监护、作业及应急救援人员，每年至少开展一次专题安全培训并记录；未经培训合格的人员不得参与有限空间作业。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "年度有限空间专题培训计划及记录",
+            "审批、监护、作业、救援人员培训考核结果"
+          ],
+          "action": "核对各岗位培训覆盖、最近培训日期及合格记录，将未合格人员排除在作业安排之外。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202312/t20231208_471355.shtml"
+        }
+      ],
+      "replaces": [
+        "原国家安全监管总局令第59号"
+      ],
+      "changeType": "替代",
+      "legacyEvaluationNotice": "法规名称、文号和要求已换版，旧评价不能直接代表第13号令的落实情况。",
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-SAF-001",
+      "name": "特种作业人员安全技术培训考核管理规定",
+      "documentNo": "应急管理部令第19号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "培训",
+      "issuingAuthority": "应急管理部",
+      "publishDate": "2025-12-17",
+      "effectiveDate": "2026-06-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202512/t20251219_589223.shtml",
+      "sourceName": "应急管理部规章库",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "涉及特种作业人员"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "适用于特种作业目录内人员培训、考核、发证和换证；特殊作业审批与特种作业操作资格是不同制度，建筑施工及特种设备等另有规定的从其规定。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "适用于特种作业目录内人员培训、考核、发证和换证；特殊作业审批与特种作业操作资格是不同制度，建筑施工及特种设备等另有规定的从其规定。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-SAF-001-C01",
+          "reference": "第二至四条",
+          "summary": "仅对目录内特种作业人员适用本证书制度；经专门安全技术培训并考核合格、取得相应操作证后方可上岗。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "岗位与特种作业目录对应表",
+            "操作证及官方查询结果"
+          ],
+          "action": "核对证书作业类别与实际岗位，而非只确认是否持有任意证书。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202512/t20251219_589223.shtml"
+        },
+        {
+          "id": "REG-SAF-001-C02",
+          "reference": "第九、十条",
+          "summary": "接受与作业相应的理论和实际操作培训；具备条件的单位可自主培训，其他单位依法委托，委托不免除本单位培训责任。法定免训情形按规定办理。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "培训课程与学时证明",
+            "委托培训资质和考核资料"
+          ],
+          "action": "按对应操作项目安排培训并核实培训记录。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202512/t20251219_589223.shtml"
+        },
+        {
+          "id": "REG-SAF-001-C03",
+          "reference": "第二十六至二十九条",
+          "summary": "证书到期继续作业需换证；届满前6个月内完成相应理论培训考试，届满前60日内提出申请。延期或证书失效期间不得从事特种作业。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "证书有效期台账",
+            "换证培训考试与申请记录"
+          ],
+          "action": "改用2026年换证规则设置提醒，不沿用旧版复审周期。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202512/t20251219_589223.shtml"
+        },
+        {
+          "id": "REG-SAF-001-C04",
+          "reference": "第三十六条",
+          "summary": "单位核查证书真实有效性，建立特种作业人员管理档案，组织培训、报考和换证。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "特种作业人员档案",
+            "证件核验与到期提醒记录"
+          ],
+          "action": "将人员、岗位、证书与有效期建立一一对应。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202512/t20251219_589223.shtml"
+        }
+      ],
+      "replaces": [
+        "原国家安全监管总局令第30号（2015年修正）"
+      ],
+      "changeType": "替代",
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-SAF-002",
+      "name": "工贸企业粉尘防爆安全规定",
+      "documentNo": "应急管理部令第6号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "粉尘防爆",
+      "issuingAuthority": "应急管理部",
+      "publishDate": "2021-07-25",
+      "effectiveDate": "2021-09-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202107/t20210725_405574.shtml",
+      "sourceName": "应急管理部规章库",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "工贸企业",
+          "产生可燃性粉尘"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "仅对存在可燃性粉尘爆炸危险的工贸企业适用；普通惰性粉尘或仅勾选职业危害，不能认定为粉尘涉爆企业。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "仅对存在可燃性粉尘爆炸危险的工贸企业适用；普通惰性粉尘或仅勾选职业危害，不能认定为粉尘涉爆企业。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-SAF-002-C01",
+          "reference": "第六至八条",
+          "summary": "明确粉尘防爆职责，建立风险辨识、清理处置、除尘系统维护和应急制度，对相关岗位进行专项培训并考核合格。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "粉尘防爆职责与制度",
+            "粉尘岗位专项培训记录"
+          ],
+          "action": "将产尘、收尘、清理、检维修岗位纳入专项管理。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202107/t20210725_405574.shtml"
+        },
+        {
+          "id": "REG-SAF-002-C02",
+          "reference": "第十一、十二条",
+          "summary": "辨识粉尘爆炸危险，确定场所范围与责任，变更时重新评估；建立有内容、周期和责任人的隐患排查清单并记录、通报治理情况。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "粉尘风险辨识评估",
+            "除尘系统和风险场所清单",
+            "隐患治理记录"
+          ],
+          "action": "按粉尘特性和工艺检查风险与控制措施的匹配。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202107/t20210725_405574.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-SAF-003",
+      "name": "工贸企业重大事故隐患判定标准",
+      "documentNo": "应急管理部令第10号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "隐患治理",
+      "issuingAuthority": "应急管理部",
+      "publishDate": "2023-04-14",
+      "effectiveDate": "2023-05-15",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202305/t20230523_451578.shtml",
+      "sourceName": "应急管理部规章库",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "工贸企业"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "用于工贸企业重大事故隐患排查判定，按行业和实际工艺选取对应条款；涉及危化、消防、燃气及特种设备另有判定规定的从其规定。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "用于工贸企业重大事故隐患排查判定，按行业和实际工艺选取对应条款；涉及危化、消防、燃气及特种设备另有判定规定的从其规定。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-SAF-003-C01",
+          "reference": "第二、三条",
+          "summary": "按工贸行业及专项范围建立重大隐患清单；检查承包承租统一管理、特种作业持证及金属冶炼相关负责人考核要求。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "行业分类依据",
+            "重大隐患排查清单",
+            "承包商与人员资格记录"
+          ],
+          "action": "先选择本企业行业条款，再核对通用管理项。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202305/t20230523_451578.shtml"
+        },
+        {
+          "id": "REG-SAF-003-C02",
+          "reference": "第十一条",
+          "summary": "粉尘涉爆企业对照除尘系统、防爆和控火、粉尘清理等所列重大隐患情形开展排查。",
+          "whenAny": [
+            "产生可燃性粉尘"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "粉尘涉爆专项排查及整改复查记录"
+          ],
+          "action": "逐项对照官方十一条，保留判定所用工艺和设施证据。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202305/t20230523_451578.shtml"
+        },
+        {
+          "id": "REG-SAF-003-C03",
+          "reference": "第十三条",
+          "summary": "存在硫化氢、一氧化碳等中毒风险的有限空间作业，应检查辨识台账和警示，以及审批、通风检测、现场监护落实情况。",
+          "whenAny": [
+            "涉及有限空间"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "有限空间风险与台账",
+            "作业审批、检测、监护记录"
+          ],
+          "action": "先确认中毒风险再核对第十三条，不把全部有限空间自动判重大隐患。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202305/t20230523_451578.shtml"
+        },
+        {
+          "id": "REG-SAF-003-C04",
+          "reference": "第十四条",
+          "summary": "本标准所列与生产安全直接相关的监控、报警、防护等设施装置应保持有效，失效或无效属于所列重大隐患情形。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "相关安全装置清单",
+            "功能测试及缺陷处理记录"
+          ],
+          "action": "对适用条目中的安全装置核对有效性证据。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/202305/t20230523_451578.shtml"
+        }
+      ],
+      "replaces": [
+        "安监总管四〔2017〕129号"
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-082",
+      "name": "工作场所职业卫生管理规定",
+      "documentNo": "国家卫生健康委员会令第5号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "职业健康",
+      "issuingAuthority": "国家卫生健康委员会",
+      "publishDate": "2020-12-31",
+      "effectiveDate": "2021-02-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202101/81a8f966e5044befaa516cc6d6a713f7.shtml",
+      "sourceName": "国家卫生健康委员会",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "职业健康",
+        "人力资源",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "接触职业病危害",
+          "存在职业病危害因素",
+          "存在职业病危害"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "用人单位职业病防治管理适用；检测与评价频次按职业病危害一般或严重分类，不能将所有单位统一设为每年检测。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "用人单位职业病防治管理适用；检测与评价频次按职业病危害一般或严重分类，不能将所有单位统一设为每年检测。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-082-C01",
+          "reference": "第十三、十五条",
+          "summary": "及时如实申报危害项目；公布职业卫生制度、应急措施和检测结果，在危害岗位设置符合要求的警示及中文说明。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "项目申报回执",
+            "公告栏和警示标识记录"
+          ],
+          "action": "对照岗位危害和申报、告知内容查缺项。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202101/81a8f966e5044befaa516cc6d6a713f7.shtml"
+        },
+        {
+          "id": "REG-082-C02",
+          "reference": "第十八至二十条",
+          "summary": "维护职业病防护设施并开展专人日常监测；危害严重单位每年至少检测一次、每三年至少现状评价一次，危害一般单位每三年至少检测一次。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "危害风险分类依据",
+            "检测评价报告",
+            "防护设施维护和日常监测记录"
+          ],
+          "action": "先核实危害分类，再据其安排法定检测评价频次。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202101/81a8f966e5044befaa516cc6d6a713f7.shtml"
+        },
+        {
+          "id": "REG-082-C03",
+          "reference": "第三十条",
+          "summary": "按危害因素及健康监护标准组织接害人员上岗前、在岗和离岗职业健康检查，书面如实告知结果；放射工作人员按对应专门规定执行。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "岗位接害人员名单",
+            "职业健康检查报告",
+            "书面结果告知"
+          ],
+          "action": "不以普通福利体检代替有针对性的职业健康检查。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202101/81a8f966e5044befaa516cc6d6a713f7.shtml"
+        },
+        {
+          "id": "REG-082-C04",
+          "reference": "第十四条",
+          "summary": "可能产生职业病危害的新改扩建及技术改造引进项目，按职业病防护设施三同时要求开展预评价、设计、控制效果评价、评审和验收。",
+          "whenAny": [
+            "建设项目新改扩建"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "职业病危害预评价",
+            "防护设施设计和控制效果评价",
+            "验收及评审记录"
+          ],
+          "action": "把职业病防护设施要求纳入项目全流程。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202101/81a8f966e5044befaa516cc6d6a713f7.shtml"
+        }
+      ],
+      "replaces": [
+        "原国家安全监管总局令第47号"
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-NEW-001",
+      "name": "中华人民共和国危险化学品安全法",
+      "documentNo": "主席令第六十四号",
+      "type": "法律",
+      "levelRank": 1,
+      "category": "化学品",
+      "issuingAuthority": "全国人大常委会",
+      "publishDate": "2025-12-27",
+      "effectiveDate": "2026-05-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.npc.gov.cn/npc/c2/c30834/202512/t20251227_450708.html",
+      "sourceName": "中国人大网",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "危险化学品生产企业",
+          "危险化学品经营企业",
+          "危险化学品使用企业",
+          "危险化学品储存企业",
+          "使用或储存危险化学品",
+          "危化品生产",
+          "危化品经营",
+          "危化品使用",
+          "危化品储存",
+          "危化品进口",
+          "危险化学品运输"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "实际从事危险化学品生产、储存、使用、经营、运输活动时适用；仅有医药或化工行业标签不足以确认所有危化活动。废弃危化品处置另按生态环境规定执行。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "实际从事危险化学品生产、储存、使用、经营、运输活动时适用；仅有医药或化工行业标签不足以确认所有危化活动。废弃危化品处置另按生态环境规定执行。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-NEW-001-C01",
+          "reference": "第二、五条",
+          "summary": "危险化学品单位建立健全安全管理责任、制度和岗位规程，开展从业人员培训；适用活动按生产、储存、使用、经营和运输区分。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "化学品清单与危险性分类",
+            "危化安全制度与岗位培训记录"
+          ],
+          "action": "先按物料目录和真实活动确定本单位管理边界。",
+          "sourceUrl": "https://www.npc.gov.cn/npc/c2/c30834/202512/t20251227_450708.html"
+        },
+        {
+          "id": "REG-NEW-001-C02",
+          "reference": "第三十七、三十八、五十二条",
+          "summary": "生产、储存以及使用单位按化学品危险特性设置并维护相应安全设施、警示及通信报警装置，禁止关闭破坏相关安全设施或篡改数据。",
+          "whenAny": [
+            "危化品生产",
+            "危化品储存",
+            "危化品使用",
+            "危险化学品生产企业",
+            "危险化学品储存企业",
+            "危险化学品使用企业",
+            "使用或储存危险化学品"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "危险特性与安全设施对应表",
+            "安全设施维保和测试记录",
+            "警示与报警检查"
+          ],
+          "action": "把每类危险特性与防泄漏、防火防爆等适用设施逐项关联。",
+          "sourceUrl": "https://www.npc.gov.cn/npc/c2/c30834/202512/t20251227_450708.html"
+        },
+        {
+          "id": "REG-NEW-001-C03",
+          "reference": "第五十一条",
+          "summary": "使用单位向从业人员提供作业场所化学品安全技术说明书和安全标签，培训正确使用及紧急处置方法。",
+          "whenAny": [
+            "危化品使用",
+            "危险化学品使用企业",
+            "使用或储存危险化学品"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "中文安全技术说明书和标签",
+            "岗位使用与应急培训记录"
+          ],
+          "action": "确保现场能获取与实用物料相符的说明书和标签。",
+          "sourceUrl": "https://www.npc.gov.cn/npc/c2/c30834/202512/t20251227_450708.html"
+        },
+        {
+          "id": "REG-NEW-001-C04",
+          "reference": "第五十七条",
+          "summary": "生产或经营企业销售危化品时提供符合规定的安全技术说明书，不经营缺少说明书或标签的危化品，不擅自更改说明书或标签。",
+          "whenAny": [
+            "危化品生产",
+            "危化品经营",
+            "危险化学品生产企业",
+            "危险化学品经营企业"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "销售物料与说明书清单",
+            "标签审核和交付记录"
+          ],
+          "action": "在采购、入库及销售环节校验一书一签。",
+          "sourceUrl": "https://www.npc.gov.cn/npc/c2/c30834/202512/t20251227_450708.html"
+        }
+      ],
+      "transitionNote": "第一百二十七条仅明确2026年5月1日施行；本轮未找到国务院591号条例整体废止依据，不将其自动标为废止。",
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-017",
+      "name": "危险化学品企业特殊作业安全规范",
+      "documentNo": "GB 30871-2022",
+      "type": "国家标准",
+      "levelRank": 4,
+      "category": "作业安全",
+      "issuingAuthority": "国家市场监督管理总局、国家标准化管理委员会",
+      "publishDate": "2022-03-15",
+      "effectiveDate": "2022-10-01",
+      "status": "现行有效",
+      "sourceUrl": "https://std.samr.gov.cn/gb/search/gbDetailed?id=DAB6B92C0762FC96E05397BE0A0A5F84",
+      "sourceName": "全国标准信息公共服务平台",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "涉及特殊作业"
+        ],
+        "includeAny": [
+          "危险化学品生产企业",
+          "危化品生产",
+          "危化品经营（带储存）",
+          "化工属性",
+          "石油化工属性",
+          "一般化工企业",
+          "制药企业",
+          "化学原料和化学制品制造",
+          "医药制造"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "适用于危险化学品生产、经营（带储存）企业及化工、医药企业的特殊作业；普通制造企业仅勾选动火或使用少量化学品，不自动纳入强制适用。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "适用于危险化学品生产、经营（带储存）企业及化工、医药企业的特殊作业；普通制造企业仅勾选动火或使用少量化学品，不自动纳入强制适用。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-017-C01",
+          "reference": "第1章；4.1至4.4",
+          "summary": "在适用企业开展特殊作业前辨识危害、进行作业危害分析，落实物料与能量隔离、个体防护和安全措施交底。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "作业危害分析",
+            "能量隔离及现场确认",
+            "安全交底记录"
+          ],
+          "action": "将每次作业风险分析与隔离措施、人员交底对应。",
+          "sourceUrl": "https://www.fxxh.gov.cn/xhq/file/2023-08-25/16929458376564028e4928a108a34439018a2b6f6e584bcb.pdf"
+        },
+        {
+          "id": "REG-017-C02",
+          "reference": "4.6至4.10",
+          "summary": "办理相应作业审批；交叉作业统一协调，异常立即停工撤离，相关特种作业人员持相应资格，设置经培训考核合格的监护人。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "作业票和现场审批记录",
+            "监护培训与资格证明",
+            "交叉作业协调记录"
+          ],
+          "action": "复合作业分别满足相应要求并设全程监护。",
+          "sourceUrl": "https://www.fxxh.gov.cn/xhq/file/2023-08-25/16929458376564028e4928a108a34439018a2b6f6e584bcb.pdf"
+        },
+        {
+          "id": "REG-017-C03",
+          "reference": "第6章",
+          "summary": "开展受限空间作业时执行可靠隔离、通风、气体检测、防护和监护等要求；按具体空间和介质选择措施，不以关闭阀门代替规定的隔离。",
+          "whenAny": [
+            "涉及受限空间作业",
+            "涉及有限空间"
+          ],
+          "whenAll": [],
+          "evidence": [
+            "受限空间作业票",
+            "隔离及气体检测记录",
+            "监护和应急准备记录"
+          ],
+          "action": "检查空间连接、介质、隔离方式及作业期间控制措施。",
+          "sourceUrl": "https://www.fxxh.gov.cn/xhq/file/2023-08-25/16929458376564028e4928a108a34439018a2b6f6e584bcb.pdf"
+        }
+      ],
+      "replaces": [
+        "GB 30871-2014"
+      ],
+      "clauseSourceUrl": "https://www.fxxh.gov.cn/xhq/file/2023-08-25/16929458376564028e4928a108a34439018a2b6f6e584bcb.pdf",
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-043",
+      "name": "建设项目安全设施“三同时”监督管理办法",
+      "documentNo": "原国家安全监管总局令第36号（第77号修正）",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "建设项目",
+      "issuingAuthority": "原国家安全生产监督管理总局",
+      "publishDate": "2015-04-02",
+      "effectiveDate": "2015-05-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201102/t20110201_405595.shtml",
+      "sourceName": "应急管理部规章库",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [
+          "建设项目新改扩建"
+        ],
+        "includeAny": [],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "依法审批、核准或备案的生产经营单位新建、改建、扩建工程安全设施建设适用；法定高危项目与其他项目的评价、设计审查程序不同。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "依法审批、核准或备案的生产经营单位新建、改建、扩建工程安全设施建设适用；法定高危项目与其他项目的评价、设计审查程序不同。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-043-C01",
+          "reference": "第二、四条",
+          "summary": "生产经营单位作为责任主体，将建设项目安全设施与主体工程同时设计、施工、投入生产和使用，相关投资纳入项目概算。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "项目审批/核准/备案信息",
+            "安全设施投资概算",
+            "项目三同时计划"
+          ],
+          "action": "在立项时明确安全设施范围、预算和里程碑。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201102/t20110201_405595.shtml"
+        },
+        {
+          "id": "REG-043-C02",
+          "reference": "第七、九、十、十六条",
+          "summary": "法定所列高危项目按规定开展安全预评价等程序；其他项目对安全条件和设施综合分析并形成报告，安全设施同时设计、按规定审查。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "项目类别判定依据",
+            "安全预评价或综合分析报告",
+            "安全设施设计及审查记录"
+          ],
+          "action": "根据项目类别分流所需文件，不把正式安全评价要求强加所有项目。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201102/t20110201_405595.shtml"
+        },
+        {
+          "id": "REG-043-C03",
+          "reference": "第二十三条",
+          "summary": "投入生产或使用前组织安全设施竣工验收并形成书面报告；验收合格后方可投入。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "安全设施竣工验收报告",
+            "验收缺陷整改和复查记录"
+          ],
+          "action": "建立投用前安全验收关口并保留闭环资料。",
+          "sourceUrl": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/gz11/201102/t20110201_405595.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-047",
+      "name": "用人单位职业健康监护监督管理办法",
+      "documentNo": "原国家安全监管总局令第49号",
+      "type": "部门规章",
+      "levelRank": 3,
+      "category": "职业健康",
+      "issuingAuthority": "原国家安全生产监督管理总局",
+      "publishDate": "2012-04-27",
+      "effectiveDate": "2012-06-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.nhc.gov.cn/zyjks/c100153/201204/afcaff73d92442e48a3db962c34c1e95.shtml",
+      "sourceName": "国家卫生健康委员会",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "职业健康",
+        "人力资源",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "接触职业病危害",
+          "存在职业病危害因素",
+          "存在职业病危害"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "对从事接触职业病危害作业劳动者的职业健康检查及档案管理适用；现由卫生健康主管部门按职责监管，不能沿用旧文本机构名称推定现行主管部门。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "对从事接触职业病危害作业劳动者的职业健康检查及档案管理适用；现由卫生健康主管部门按职责监管，不能沿用旧文本机构名称推定现行主管部门。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-047-C01",
+          "reference": "第七、八条",
+          "summary": "制定并落实职业健康检查年度计划，保证专项经费；组织职业健康检查并承担费用，劳动者接受检查视同正常出勤。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "职业健康检查年度计划",
+            "专项经费和检查费用记录"
+          ],
+          "action": "将接害人员名单与年度检查计划、预算对应。",
+          "sourceUrl": "https://www.nhc.gov.cn/zyjks/c100153/201204/afcaff73d92442e48a3db962c34c1e95.shtml"
+        },
+        {
+          "id": "REG-047-C02",
+          "reference": "第十三条",
+          "summary": "根据接触危害因素定期安排在岗职业健康检查，依据健康监护规范、职业接触实际和技术要求确定检查项目与周期。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "危害因素与岗位人员对应表",
+            "在岗检查计划与报告"
+          ],
+          "action": "按具体接触因素选择检查，避免统一体检套餐遗漏。",
+          "sourceUrl": "https://www.nhc.gov.cn/zyjks/c100153/201204/afcaff73d92442e48a3db962c34c1e95.shtml"
+        },
+        {
+          "id": "REG-047-C03",
+          "reference": "第十七条",
+          "summary": "按检查报告对职业禁忌、健康损害、需复查及疑似职业病等情形采取相应复查、调离安置或诊断等措施。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "健康检查异常结论处理记录",
+            "复查/调岗/诊断跟踪"
+          ],
+          "action": "只依据专业机构结论处理，不由本工具诊断职业病。",
+          "sourceUrl": "https://www.nhc.gov.cn/zyjks/c100153/201204/afcaff73d92442e48a3db962c34c1e95.shtml"
+        }
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-NEW-006",
+      "name": "职业健康监护技术规范",
+      "documentNo": "GBZ 188-2025",
+      "type": "国家标准",
+      "levelRank": 4,
+      "category": "职业健康",
+      "issuingAuthority": "国家卫生健康委员会",
+      "publishDate": "2025-08-20",
+      "effectiveDate": "2026-08-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202509/93c5090f626f471b98dac5088824fc8a/files/GBZ%20188%E2%80%942025.pdf",
+      "sourceName": "国家卫生健康委员会（标准全文）",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "职业健康",
+        "人力资源",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "接触职业病危害",
+          "存在职业病危害因素",
+          "接触粉尘",
+          "接触化学有害因素",
+          "接触职业噪声",
+          "涉及高处作业",
+          "电工作业",
+          "存在职业病危害"
+        ],
+        "excludeAny": [
+          "仅职业性放射性因素"
+        ],
+        "reviewWhen": [],
+        "applicability": "conditional",
+        "explanationTemplate": "存在职业危害或标准所列特殊作业健康监护需求；已定位总则，具体因素项目与周期需由接触信息确定，排除仅职业性放射性因素。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "接触相关职业病危害因素人员的健康监护及标准所列特殊作业监护；不包括职业性放射性因素。具体检查项目和周期取决于接触因素、人群及岗位，不由行业标签直接决定。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-NEW-006-C01",
+          "reference": "第1章；4.4、4.5.5",
+          "summary": "依据危害因素检测或评价报告、职业接触史确定监护对象，将接害人员名单交职业健康检查机构；职业性放射性因素不在本标准范围。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "危害因素检测/评价报告",
+            "职业接触与接害人员清单"
+          ],
+          "action": "先完成岗位—危害因素—人员对应，放射性因素按专门标准处理。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202509/93c5090f626f471b98dac5088824fc8a/files/GBZ%20188%E2%80%942025.pdf"
+        },
+        {
+          "id": "REG-NEW-006-C02",
+          "reference": "4.6.1",
+          "summary": "开展规定的上岗前、在岗和离岗检查；在岗周期按危害因素、浓度或强度及相关条件确定，离岗检查豁免只在标准明示条件满足时采用。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "按因素确定的检查项目与周期",
+            "上岗/在岗/离岗检查记录"
+          ],
+          "action": "由有资质机构依据具体因素落实项目和周期，不能统一套一年一次。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202509/93c5090f626f471b98dac5088824fc8a/files/GBZ%20188%E2%80%942025.pdf"
+        },
+        {
+          "id": "REG-NEW-006-C03",
+          "reference": "4.8、4.9",
+          "summary": "取得职业健康检查报告并跟踪专业建议；与检查机构确认报告告知和健康检查档案管理安排。4.9规定的检查机构档案保存义务不得直接当作企业档案保存期限。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "职业健康检查报告和档案",
+            "异常处理与随访记录",
+            "健康隐私访问权限"
+          ],
+          "action": "仅汇总落实状态；不要把个人健康原始数据上传公共网站。",
+          "sourceUrl": "https://www.nhc.gov.cn/fzs/c100048/202509/93c5090f626f471b98dac5088824fc8a/files/GBZ%20188%E2%80%942025.pdf"
+        }
+      ],
+      "replaces": [
+        "GBZ 188-2014"
+      ],
+      "changeType": "替代",
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-111",
+      "name": "放射诊断放射防护要求",
+      "documentNo": "GBZ 130-2020",
+      "type": "国家标准",
+      "levelRank": 4,
+      "category": "职业健康",
+      "issuingAuthority": "国家卫生健康委员会",
+      "publishDate": "2020-04-03",
+      "effectiveDate": "2020-10-01",
+      "status": "现行有效",
+      "sourceUrl": "https://www.nhc.gov.cn/wjw/pcrb/202004/e9869f761b514a8c95ec2471596e9988/files/1739781028657_55110.pdf",
+      "sourceName": "国家卫生健康委员会（标准全文）",
+      "sourceType": "官方原文",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "职业健康",
+        "人力资源",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "医用X射线诊断活动",
+          "X射线影像诊断",
+          "介入放射学"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "mandatory",
+        "explanationTemplate": "直接适用于X射线影像诊断与介入放射学；放疗和核医学中的X射线成像设备参照执行。工业探伤、普通职业病危害或企业委托员工体检不构成直接适用。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "直接适用于X射线影像诊断与介入放射学；放疗和核医学中的X射线成像设备参照执行。工业探伤、普通职业病危害或企业委托员工体检不构成直接适用。",
+      "verificationScope": "官方文本版本、日期及所列条款核对；不代表企业现场符合性已核验",
+      "clauses": [
+        {
+          "id": "REG-111-C01",
+          "reference": "第1章；第5、6章",
+          "summary": "核对诊断设备类型、设备防护性能与机房布局屏蔽要求；按具体设备类别选择要求，不能用统一屏蔽参数覆盖所有设备。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "诊断设备清单",
+            "机房防护设计与检测报告"
+          ],
+          "action": "将设备类别与机房设计、检测逐一对应。",
+          "sourceUrl": "https://www.nhc.gov.cn/wjw/pcrb/202004/e9869f761b514a8c95ec2471596e9988/files/1739781028657_55110.pdf"
+        },
+        {
+          "id": "REG-111-C02",
+          "reference": "第7、8章",
+          "summary": "落实X射线设备操作中的防护安全措施及机房防护检测要求。",
+          "whenAny": [],
+          "whenAll": [],
+          "evidence": [
+            "放射防护操作规程",
+            "防护用品与检测记录"
+          ],
+          "action": "按诊疗设备和操作场景建立防护检查清单。",
+          "sourceUrl": "https://www.nhc.gov.cn/wjw/pcrb/202004/e9869f761b514a8c95ec2471596e9988/files/1739781028657_55110.pdf"
+        }
+      ],
+      "replaces": [
+        "GBZ 130-2013"
+      ],
+      "changeType": "元数据纠错",
+      "legacyEvaluationNotice": "纠正旧版名称与2020版文号混用，适用范围不包含一般制造业职业病防治。",
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    },
+    {
+      "id": "REG-SAF-004",
+      "name": "个体防护装备配备规范 第1部分：总则",
+      "documentNo": "GB 39800.1-2020",
+      "type": "国家标准",
+      "levelRank": 4,
+      "category": "个体防护",
+      "issuingAuthority": "国家市场监督管理总局、国家标准化管理委员会",
+      "publishDate": "2020-12-24",
+      "effectiveDate": "2022-01-01",
+      "status": "现行有效",
+      "sourceUrl": "https://std.samr.gov.cn/gb/search/gbDetailed?id=h4tx%2BDMqOwA%3D&mode=p",
+      "sourceName": "全国标准信息公共服务平台",
+      "sourceType": "官方标准元数据",
+      "verificationStatus": "已核验",
+      "lastVerifiedAt": "2026-09-11",
+      "regions": [
+        "全国"
+      ],
+      "complianceEnabled": true,
+      "applicabilityType": "风险触发",
+      "suggestedDepartment": [
+        "EHS",
+        "生产"
+      ],
+      "rule": {
+        "includeAll": [],
+        "includeAny": [
+          "工贸企业",
+          "危险化学品生产企业",
+          "一般化工企业",
+          "接触职业病危害",
+          "存在职业病危害因素",
+          "涉及特殊作业",
+          "存在职业病危害"
+        ],
+        "excludeAny": [],
+        "reviewWhen": [],
+        "applicability": "conditional",
+        "explanationTemplate": "存在需要职业防护的生产或作业画像，列入个体防护配备标准导航；具体配备需按岗位危害选型，暂未自动抽取全文。",
+        "version": "1.6.0",
+        "status": "active"
+      },
+      "scopeSummary": "用于个体防护装备配备与管理的基础标准导航。官方平台确认现行且存在修订计划；本轮仅核验元数据，未将未核对的全文条号或性能参数写入自动条款卡。",
+      "verificationScope": "仅核验标准名称、文号、现行状态、发布实施日期和替代关系；未完成全文条款抽取",
+      "clauses": [],
+      "replaces": [
+        "GB/T 11651-2008",
+        "GB/T 29510-2013"
+      ],
+      "reviewer": "Codex（官方元数据及所列条款核对；非现场审核）",
+      "reviewDate": "2026-09-11"
+    }
+  ]
+}
