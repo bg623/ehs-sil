@@ -30,6 +30,10 @@
 
 ## 发布及回退
 
+发布状态：已上线。代码提交 `d9f1764` 已推送 GitHub main，并于 2026-09-11 同步既有阿里云 OSS。6 个对象的公网 SHA-256 与源文件一致，12 项 HTTP/HTTPS 冒烟检查通过，首页哈希未变。VIP session 只读检查返回 200 JSON，主站来源的凭据式 CORS 正常；未更改 Worker 或数据库。
+
+私有发布证据位于本工作区 `outputs/compliance-v16-20260911/manifest.json`，旧入口备份位于同目录 `backup/tools/compliance-identification.html`。线上 HTML 实际引用 V1.6 独立资源，服务端标识为 AliyunOSS。正式页面浏览器自动化服务连续超时，未把此项记为完成；本地桌面/移动端交互已验证，线上以内容哈希、公开 GET 和接口检查完成本轮技术验收。
+
 使用独立的 `dist/compliance-v1.6.0.js`、CSS 和三个增强数据文件。先上传并验证这些新路径，最后替换工具 HTML。现有 `js/compliance-*.js` 生产对象保持不动，缓存旧 HTML 的用户不会读到不兼容的新脚本。
 
 只同步 6 个公开对象到既有阿里云杭州 OSS；记录原 HTML 备份、每个对象 SHA-256 和 HTTP 冒烟结果。必要时恢复原 HTML 即可回退，不删除新数据文件，不接触用户本地记录。
