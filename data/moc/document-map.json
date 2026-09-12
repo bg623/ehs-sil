@@ -1,0 +1,372 @@
+{
+  "items": [
+    {
+      "id": "pfd_pid",
+      "title": "PFD／P&ID 与工艺参数",
+      "categories": [
+        "process",
+        "utilities",
+        "chemical"
+      ],
+      "impacts": [
+        "process"
+      ]
+    },
+    {
+      "id": "equipment_data",
+      "title": "设备数据表、安装图及维护要求",
+      "categories": [
+        "equipment"
+      ],
+      "impacts": [
+        "equipment"
+      ]
+    },
+    {
+      "id": "instrument_data",
+      "title": "仪表数据表、联锁／报警说明及测试记录",
+      "categories": [
+        "instrument"
+      ],
+      "impacts": [
+        "instrument"
+      ]
+    },
+    {
+      "id": "electrical_drawings",
+      "title": "电气图、保护整定与接地／防爆确认",
+      "categories": [
+        "electrical"
+      ],
+      "impacts": [
+        "electrical"
+      ]
+    },
+    {
+      "id": "layout_plan",
+      "title": "布置图、通道与疏散图",
+      "categories": [
+        "layout"
+      ],
+      "impacts": [
+        "work",
+        "emergency"
+      ]
+    },
+    {
+      "id": "sds",
+      "title": "SDS、化学品标签及相容性确认",
+      "categories": [
+        "chemical"
+      ],
+      "impacts": [
+        "health"
+      ]
+    },
+    {
+      "id": "operating_procedure",
+      "title": "操作确认与操作程序",
+      "categories": [
+        "process",
+        "equipment",
+        "chemical",
+        "procedure"
+      ],
+      "impacts": [
+        "process"
+      ]
+    },
+    {
+      "id": "maintenance_procedure",
+      "title": "检维修程序及检查计划",
+      "categories": [
+        "equipment",
+        "instrument",
+        "electrical"
+      ],
+      "impacts": [
+        "equipment"
+      ]
+    },
+    {
+      "id": "emergency_procedure",
+      "title": "应急程序与消防配置",
+      "categories": [
+        "chemical",
+        "organization",
+        "procedure"
+      ],
+      "impacts": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "permit_record",
+      "title": "许可、检验、认证及适用性记录",
+      "categories": [],
+      "impacts": [
+        "compliance",
+        "environment"
+      ]
+    },
+    {
+      "id": "responsibility",
+      "title": "岗位职责、替补授权及能力要求",
+      "categories": [
+        "organization",
+        "management"
+      ],
+      "impacts": [
+        "organization"
+      ]
+    },
+    {
+      "id": "quality_record",
+      "title": "质量控制与供应商确认",
+      "categories": [
+        "supplier",
+        "chemical"
+      ],
+      "impacts": [
+        "quality"
+      ]
+    },
+    {
+      "id": "cyber_record",
+      "title": "控制系统配置、权限与备份记录",
+      "categories": [],
+      "impacts": [
+        "cyber"
+      ]
+    },
+    {
+      "id": "training_material",
+      "title": "培训资料与变更沟通材料",
+      "categories": [
+        "process",
+        "equipment",
+        "instrument",
+        "electrical",
+        "organization",
+        "procedure",
+        "chemical",
+        "supplier"
+      ],
+      "impacts": [
+        "work",
+        "organization"
+      ]
+    }
+  ],
+  "training": [
+    {
+      "id": "operators",
+      "label": "操作人员",
+      "categories": [
+        "process",
+        "equipment",
+        "instrument",
+        "electrical",
+        "chemical",
+        "procedure"
+      ],
+      "impacts": [
+        "process",
+        "work"
+      ]
+    },
+    {
+      "id": "maintenance",
+      "label": "检维修人员",
+      "categories": [
+        "equipment",
+        "instrument",
+        "electrical",
+        "utilities"
+      ],
+      "impacts": [
+        "equipment"
+      ]
+    },
+    {
+      "id": "engineering",
+      "label": "工程／技术人员",
+      "categories": [
+        "process",
+        "equipment",
+        "instrument",
+        "electrical"
+      ],
+      "impacts": [
+        "process"
+      ]
+    },
+    {
+      "id": "contractors",
+      "label": "承包商／供应商",
+      "categories": [
+        "supplier"
+      ],
+      "impacts": [
+        "work",
+        "quality"
+      ]
+    },
+    {
+      "id": "emergency_team",
+      "label": "应急人员",
+      "categories": [
+        "chemical",
+        "organization"
+      ],
+      "impacts": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "affected_roles",
+      "label": "受影响岗位与替补人员",
+      "categories": [
+        "organization",
+        "management",
+        "procedure"
+      ],
+      "impacts": [
+        "organization"
+      ]
+    },
+    {
+      "id": "other_parties",
+      "label": "其他受影响方",
+      "categories": [
+        "external"
+      ],
+      "impacts": [
+        "environment"
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "owner",
+      "label": "申请人／变更负责人",
+      "categories": [],
+      "impacts": [],
+      "always": true,
+      "important": false
+    },
+    {
+      "id": "area_owner",
+      "label": "属地区域负责人",
+      "categories": [],
+      "impacts": [],
+      "always": true,
+      "important": false
+    },
+    {
+      "id": "process",
+      "label": "工艺专业",
+      "categories": [
+        "process",
+        "chemical"
+      ],
+      "impacts": [
+        "process"
+      ],
+      "always": false,
+      "important": false
+    },
+    {
+      "id": "equipment",
+      "label": "设备专业",
+      "categories": [
+        "equipment"
+      ],
+      "impacts": [
+        "equipment"
+      ],
+      "always": false,
+      "important": false
+    },
+    {
+      "id": "instrument",
+      "label": "仪表／控制专业",
+      "categories": [
+        "instrument"
+      ],
+      "impacts": [
+        "instrument",
+        "cyber"
+      ],
+      "always": false,
+      "important": false
+    },
+    {
+      "id": "electrical",
+      "label": "电气专业",
+      "categories": [
+        "electrical"
+      ],
+      "impacts": [
+        "electrical"
+      ],
+      "always": false,
+      "important": false
+    },
+    {
+      "id": "production",
+      "label": "生产／操作负责人",
+      "categories": [
+        "process",
+        "equipment",
+        "organization",
+        "procedure"
+      ],
+      "impacts": [
+        "organization",
+        "work"
+      ],
+      "always": false,
+      "important": false
+    },
+    {
+      "id": "ehs",
+      "label": "EHS",
+      "categories": [],
+      "impacts": [],
+      "always": true,
+      "important": false
+    },
+    {
+      "id": "quality_compliance",
+      "label": "质量／法规／客户接口",
+      "categories": [
+        "supplier",
+        "chemical"
+      ],
+      "impacts": [
+        "compliance",
+        "quality",
+        "environment"
+      ],
+      "always": false,
+      "important": false
+    },
+    {
+      "id": "important_approver",
+      "label": "重要变更批准人",
+      "categories": [],
+      "impacts": [],
+      "always": false,
+      "important": true
+    },
+    {
+      "id": "independent_verifier",
+      "label": "独立验证人",
+      "categories": [],
+      "impacts": [],
+      "always": false,
+      "important": true
+    }
+  ]
+}

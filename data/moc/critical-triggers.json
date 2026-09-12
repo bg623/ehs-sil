@@ -1,0 +1,90 @@
+{
+  "items": [
+    {
+      "id": "design_boundary",
+      "label": "新建、重大改造、产能或设计操作边界改变",
+      "categories": [
+        "layout",
+        "process"
+      ],
+      "impacts": [
+        "process",
+        "equipment",
+        "compliance"
+      ],
+      "pssr": true
+    },
+    {
+      "id": "chemical_change",
+      "label": "新化学品或显著反应性／相容性变化",
+      "categories": [
+        "chemical"
+      ],
+      "impacts": [
+        "process",
+        "health",
+        "environment",
+        "emergency",
+        "compliance"
+      ],
+      "pssr": true
+    },
+    {
+      "id": "safety_function",
+      "label": "安全仪表、联锁、报警、泄压、防火防爆或其他安全关键功能改变／旁路",
+      "categories": [
+        "instrument"
+      ],
+      "impacts": [
+        "process",
+        "instrument",
+        "emergency"
+      ],
+      "pssr": true
+    },
+    {
+      "id": "critical_equipment",
+      "label": "压力设备、关键设备、关键材质、布置或交通组织显著变化",
+      "categories": [
+        "equipment"
+      ],
+      "impacts": [
+        "equipment",
+        "work"
+      ],
+      "pssr": true
+    },
+    {
+      "id": "permit",
+      "label": "法定许可、环保排放、质量关键属性或合规条件变化",
+      "categories": [],
+      "impacts": [
+        "compliance",
+        "environment",
+        "quality"
+      ],
+      "pssr": false
+    },
+    {
+      "id": "key_organization",
+      "label": "重大组织调整或关键安全职责变化",
+      "categories": [
+        "organization"
+      ],
+      "impacts": [
+        "organization",
+        "emergency"
+      ],
+      "pssr": false
+    },
+    {
+      "id": "complex",
+      "label": "多专业耦合、后果不确定或需要专项分析",
+      "categories": [],
+      "impacts": [
+        "process"
+      ],
+      "pssr": true
+    }
+  ]
+}

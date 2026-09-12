@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "id": "layout",
+      "label": "总图／布局"
+    },
+    {
+      "id": "process",
+      "label": "工艺技术"
+    },
+    {
+      "id": "equipment",
+      "label": "设备"
+    },
+    {
+      "id": "instrument",
+      "label": "仪表／控制／联锁"
+    },
+    {
+      "id": "electrical",
+      "label": "电气"
+    },
+    {
+      "id": "utilities",
+      "label": "公用工程"
+    },
+    {
+      "id": "chemical",
+      "label": "原料／产品／化学品"
+    },
+    {
+      "id": "procedure",
+      "label": "操作／检维修／应急程序"
+    },
+    {
+      "id": "management",
+      "label": "管理制度"
+    },
+    {
+      "id": "organization",
+      "label": "组织结构、生产组织、关键岗位／职责"
+    },
+    {
+      "id": "supplier",
+      "label": "供应商／承包商"
+    },
+    {
+      "id": "external",
+      "label": "外部条件"
+    },
+    {
+      "id": "other",
+      "label": "其他"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "position",
+      "label": "本岗位"
+    },
+    {
+      "id": "department",
+      "label": "本部门"
+    },
+    {
+      "id": "cross_department",
+      "label": "跨部门"
+    },
+    {
+      "id": "site",
+      "label": "全厂"
+    },
+    {
+      "id": "external",
+      "label": "外部相关方"
+    }
+  ],
+  "replacementComparisons": [
+    {
+      "id": "type",
+      "label": "类型／型号与设计功能"
+    },
+    {
+      "id": "material",
+      "label": "材质与相容性"
+    },
+    {
+      "id": "dimensions",
+      "label": "尺寸、连接方式与安装条件"
+    },
+    {
+      "id": "pressure",
+      "label": "压力等级与适用工况"
+    },
+    {
+      "id": "capacity",
+      "label": "能力、流量与功率"
+    },
+    {
+      "id": "seal",
+      "label": "密封与润滑"
+    },
+    {
+      "id": "measurement",
+      "label": "测量范围、单位与精度"
+    },
+    {
+      "id": "logic",
+      "label": "报警、联锁逻辑与设定值"
+    },
+    {
+      "id": "chemical",
+      "label": "物料成分、反应特性与 SDS"
+    },
+    {
+      "id": "supplier",
+      "label": "供应商／制造商与质量保证"
+    },
+    {
+      "id": "standards",
+      "label": "适用标准、许可条件与维护要求"
+    }
+  ]
+}

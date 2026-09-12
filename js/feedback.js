@@ -14,6 +14,7 @@
         other: '请简要描述你希望我们了解的情况。'
     };
     var toolMap = {
+        '/tools/moc-coach.html': ['moc-coach', 'MOC 变更管理教练'],
         '/tools/jsa-tool.html': ['jsa-coach', 'JSA 工作安全分析专业教练'],
         '/tools/compliance-identification.html': ['compliance-identification', '企业适用法规识别'],
         '/tools/training-matrix.html': ['training-matrix', '岗位 EHS 培训矩阵'],
@@ -115,7 +116,7 @@
             '<label>问题描述 <span aria-hidden="true">*</span><textarea name="description" minlength="10" maxlength="2000" rows="6" required placeholder="请描述发生了什么，以及你希望得到什么结果"></textarea>' +
             '<span class="feedback-field-help" data-feedback-prompt>建议 10–2000 字</span></label>' +
             '<div class="feedback-grid"><label>所属工具或页面<select name="tool_id_choice">' +
-            '<option value="">网站整体</option><option value="jsa-coach">JSA 工作安全分析专业教练</option>' +
+            '<option value="">网站整体</option><option value="moc-coach">MOC 变更管理教练</option><option value="jsa-coach">JSA 工作安全分析专业教练</option>' +
             '<option value="compliance-identification">企业适用法规识别</option><option value="training-matrix">岗位 EHS 培训矩阵</option>' +
             '<option value="ehs-glossary">外企 EHS 专业术语库</option><option value="tool-index">工具与培训资料索引</option>' +
             '<option value="chemical-reactivity">化学品反应与禁忌矩阵</option><option value="risk-analysis">风险分析与事故调查工具</option>' +

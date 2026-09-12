@@ -1,0 +1,42 @@
+{
+  "baseline": "2026-09-12",
+  "disclaimer": "本工具用于辅助形成 MOC 草案和检查思路，不能替代适用法律法规、企业制度、专业风险评估、工程审查、正式审批或 PSSR。风险矩阵、审批权限、记录期限和投用条件应由所在企业确认。",
+  "sources": [
+    {
+      "id": "gb45673",
+      "title": "GB 45673-2025《危险化学品企业安全生产标准化通用规范》",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=2B5FB91F00A1C10AE3750A6DEF40C749",
+      "kind": "强制性国家标准",
+      "scope": "适用于危险化学品生产、使用危险化学品从事化工生产及危险化学品仓储经营企业；具体适用性由企业确认。",
+      "effectiveDate": "2025-11-01",
+      "note": "在适用范围内提供变更分类分级、申请审批、实施、验收关闭和归档要求。"
+    },
+    {
+      "id": "aq3034",
+      "title": "AQ/T 3034-2022《化工过程安全管理导则》",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202212/t20221213_433289.shtml",
+      "kind": "推荐性行业标准／专业依据",
+      "scope": "化工过程安全管理专业参考，不能扩大为对所有行业的法定义务。",
+      "effectiveDate": "2023-04-01",
+      "note": "应急变更仍须在实施前落实最低控制和授权，实施后尽快补办正式手续；一般性 48 小时参考不能替代企业制度、法规或实际控制要求。"
+    },
+    {
+      "id": "aq3034_text",
+      "title": "AQ/T 3034-2022 标准正文",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202212/W020221213599799114552.pdf",
+      "kind": "标准正文",
+      "scope": "用于核对分类、临时／应急变更、同类替换及过程控制。",
+      "effectiveDate": "2023-04-01",
+      "note": "以现行文本及实际适用性核查为准。"
+    },
+    {
+      "id": "osha",
+      "title": "OSHA 29 CFR 1910.119(l) — Management of change",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.119",
+      "kind": "国际实践补充",
+      "scope": "美国过程安全管理规则适用范围内要求，不是中国法定要求。",
+      "effectiveDate": "",
+      "note": "用于补充非同类替换、技术依据、影响、期限、授权与启动前培训的控制思路。"
+    }
+  ]
+}

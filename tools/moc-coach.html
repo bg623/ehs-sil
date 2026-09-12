@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="面向EHS、工艺、设备与生产人员的MOC变更管理教练，逐步完成同类替换判断、分类分级、风险措施、PSSR判定与关闭记录。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>MOC变更管理工具｜同类替换判断、风险评估与关闭清单 - EHS-SIL</title>
+  <link rel="canonical" href="https://ehs-sil.com/tools/moc-coach.html">
+  <link rel="icon" href="../assets/ehs-sil-logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css?v=2.1.0">
+  <link rel="stylesheet" href="../css/moc-coach.css?v=1.0.0">
+</head>
+<body data-site-shell-features="local">
+  <div data-site-shell-header data-prefix="../" data-mode="light"></div>
+  <main id="main-content" class="moc-main">
+    <div class="moc-container">
+      <section class="moc-hero no-print" aria-labelledby="page-title">
+        <div>
+          <div class="moc-eyebrow"><span class="moc-mark">↗</span> EHS-SIL / 管理实践工作台</div>
+          <h1 id="page-title">让每一次变更，<br>都有清晰的安全边界。</h1>
+          <p class="moc-lead">MOC 变更管理教练</p>
+          <p>从“这算不算变更”开始，逐步完成风险评估、投用准备与关闭验证。</p>
+          <div class="moc-toolbar">
+            <button id="new-record" class="moc-btn" type="button" disabled>新建 MOC <span aria-hidden="true">→</span></button>
+            <button id="load-demo" class="moc-btn secondary" type="button" disabled>加载脱敏示例</button>
+          </div>
+          <div class="moc-meta-line"><span>约 10–20 分钟基础建档</span><span>完整单记录免费</span><span>浏览器本地保存</span></div>
+        </div>
+        <aside class="moc-path" aria-label="变更闭环">
+          <span class="moc-eyebrow">CHANGE WITH CONFIDENCE</span>
+          <ol><li><span>01</span><div><b>把边界说清楚</b><small>同类替换 · 分类分级 · 影响筛查</small></div></li><li><span>02</span><div><b>把控制落到实处</b><small>风险措施 · 线下评审 · 投用门禁</small></div></li><li><span>03</span><div><b>让结果有据可查</b><small>验证关闭 · 行动台账 · 完整记录</small></div></li></ol>
+          <a href="#method">了解方法与适用范围 <span aria-hidden="true">↗</span></a>
+        </aside>
+      </section>
+      <div class="moc-privacy no-print"><b>数据保存在当前浏览器。</b> 表单内容不会上传；清理浏览器数据会丢失记录，请定期导出 JSON 备份。建议使用岗位代称与脱敏描述。</div>
+      <p id="boot-status" class="moc-card" role="status">正在准备 MOC 工作台…</p>
+      <div id="workspace" class="no-print" hidden>
+        <div class="moc-workspace-top"><div><span class="moc-eyebrow">MOC WORKSPACE</span><h2>变更记录工作台</h2></div><div class="moc-save"><span class="moc-save-dot" aria-hidden="true"></span><span id="save-status" role="status" aria-live="polite">尚未保存</span></div></div>
+        <nav id="steps" class="moc-steps" aria-label="七步变更向导"></nav>
+        <div class="moc-layout">
+          <section class="moc-editor moc-card" aria-labelledby="step-title">
+            <p class="moc-eyebrow" id="step-number"></p><h2 id="step-title" tabindex="-1"></h2><p class="moc-intro" id="step-intro"></p>
+            <div id="form-content"></div>
+            <div id="validation" class="moc-validation" role="alert" tabindex="-1" hidden></div>
+            <div class="moc-step-actions"><button class="moc-btn secondary" type="button" id="previous-step">上一步</button><span id="step-count"></span><button class="moc-btn" type="button" id="next-step">下一步 →</button></div>
+          </section>
+          <aside class="moc-sidebar" aria-label="当前变更摘要"><details class="moc-card moc-status-card" id="summary-card" open><summary>当前变更摘要 <span id="status-badge" class="moc-badge"></span></summary><div id="record-summary"></div></details><div class="moc-small-note"><b>批准来自线下。</b><p>这里录入的是企业线下评审与授权结果，不构成电子签章。准备度通过也不等于自动确认安全。</p></div></aside>
+        </div>
+        <section class="moc-card moc-output" aria-labelledby="output-title">
+          <div><span class="moc-eyebrow">RECORD PACKAGE</span><h2 id="output-title">带走一份可继续复核的记录</h2><p>完整报告、风险与行动、文件培训、PSSR、关闭依据及审计轨迹。</p></div>
+          <div class="moc-toolbar"><button class="moc-btn" type="button" id="print-report">打印 / 另存 PDF</button><button class="moc-btn secondary" type="button" id="export-json">导出 JSON 备份</button><button class="moc-btn secondary" type="button" id="export-actions">行动清单 CSV</button><button class="moc-btn secondary" type="button" id="export-register">MOC 台账 CSV</button></div>
+          <div class="moc-toolbar moc-data-tools"><button class="moc-btn quiet" type="button" id="import-json">导入 JSON</button><input type="file" id="import-file" accept=".json,application/json" hidden><button class="moc-btn quiet" type="button" id="duplicate-record">复制为新草稿</button><button class="moc-btn quiet danger" type="button" id="clear-record">清除本地记录</button><span>当前浏览器保留一条记录；切换项目前请备份。</span></div>
+        </section>
+      </div>
+      <section class="moc-method no-print" id="method">
+        <div class="moc-method-heading"><span class="moc-eyebrow">METHOD & SCOPE</span><h2>用专业判断，把流程连成闭环</h2></div>
+        <div class="moc-info-grid">
+          <article class="moc-card" id="scope"><h3>从判断到验证</h3><p>同类替换采用逐项对比。信息不足就保留待判断；技术、边界或关键措施改变后，重新评估并录入新的线下批准依据。</p><p>工具提供演示风险矩阵与门禁建议。实际等级、审批权限、期限和适用条件由企业确认。</p><p>临时变更到期不会自动关闭；应急变更也须先控制风险、取得授权。</p></article>
+          <article class="moc-card"><h3>把分析结果接回来</h3><p>按变更特征选用已有工具，再把分析结论录入本记录。</p><div class="moc-related"><a href="what-if-tool.html">What-If 假设分析（会员工具）↗</a><a href="fmea-tool.html">FMEA 失效模式分析（会员工具）↗</a><a href="jsa-tool.html">JSA 工作安全分析 ↗</a><a href="training-matrix.html">岗位 EHS 培训矩阵 ↗</a><a href="compliance-identification.html">适用法规识别 ↗</a></div></article>
+        </div>
+        <article class="moc-card" id="references"><h3>法规与专业依据</h3><p class="moc-muted">公开依据复核日期：2026-09-12。请结合所在地、行业和企业实际核对适用性。</p><div id="reference-list"></div></article>
+        <article class="moc-card" id="faq"><h3>常见问题</h3>
+          <details><summary>什么是同类替换？</summary><p>对照类型、材质、尺寸、功能、安装条件、设计要求等关键属性，有证据支持完全等同后，才可能属于同类替换。仍需授权人确认并留存记录。</p></details>
+          <details><summary>哪些变更需要 MOC？</summary><p>技术、设备、工艺、程序、组织及外部条件等变化，都应按适用要求筛查。关键属性改变、边界不清或不能证明等同时，建议进入 MOC 评审。</p></details>
+          <details><summary>临时变更到期如何处理？</summary><p>到期前完成恢复评审与手续。需延期或转为永久变更时，重新申请并关联新的评审与授权；不能仅修改日期或勾选“转永久”来关闭。</p></details>
+          <details><summary>应急变更能否先实施、再审批？</summary><p>紧急变更仍需实施前风险控制与授权。实施后应检查控制效果并尽快补办手续；AQ/T 3034-2022 给出一般不超过 48 小时的要求，请同时核对适用法规和企业制度。</p></details>
+          <details><summary>MOC 与 PSSR 有什么关系？</summary><p>MOC 管理整个变更生命周期；启动前安全检查（PSSR）验证投用条件。涉及启动安全的变更默认建议开展 PSSR，实际适用性与检查范围由授权专业人员确认。</p></details>
+          <details><summary>免费版可以完成哪些工作？</summary><p>免费完成一条记录的全生命周期、全部安全门禁、打印和 JSON 备份与恢复、CSV 导出。多记录、企业矩阵与模板管理可后续扩展，当前不需要登录。</p></details>
+        </article>
+        <p class="moc-feedback">方法或功能建议：<a href="../feedback.html">前往反馈页 ↗</a>。反馈时请勿包含敏感记录内容。</p>
+      </section>
+      <p class="moc-disclaimer">本工具用于辅助形成 MOC 草案和检查思路，不能替代适用法律法规、企业制度、专业风险评估、工程审查、正式审批或 PSSR。风险矩阵、审批权限、记录期限和投用条件应由所在企业确认。</p>
+      <article id="print-content" aria-label="完整 MOC 打印报告"></article>
+    </div>
+  </main>
+  <div data-site-shell-footer data-prefix="../"></div>
+  <script src="../js/site-shell.js?v=20260912"></script>
+  <script type="module" src="../js/moc-app.mjs?v=1.0.0"></script>
+</body>
+</html>

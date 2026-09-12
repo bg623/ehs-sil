@@ -1,0 +1,44 @@
+name: MOC browser check
+
+on:
+  pull_request:
+    paths:
+      - 'tools/moc-coach.html'
+      - 'css/moc*.css'
+      - 'js/moc*.mjs'
+      - 'data/moc/**'
+      - 'js/site-shell.js'
+      - 'tests/moc-browser.mjs'
+      - '.github/workflows/moc-browser-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install browser test dependency
+        run: |
+          npm install --no-save playwright@1.57.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: python3 -m http.server 8769 --bind 127.0.0.1 >/tmp/ehs-moc-http.log 2>&1 &
+      - name: Run MOC acceptance tests
+        run: node tests/moc-browser.mjs
+        env:
+          MOC_BASE_URL: http://127.0.0.1:8769
+          MOC_QA_DIR: test-results/moc-qa
+      - name: Upload MOC acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: moc-browser-evidence
+          path: test-results/moc-qa/
+          if-no-files-found: warn
