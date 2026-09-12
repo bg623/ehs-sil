@@ -30,6 +30,8 @@ function h(tag, attrs = {}, ...children) {
   children.flat(Infinity).forEach(child => { if(child !== null && child !== undefined) el.append(child instanceof Node ? child : document.createTextNode(String(child))); });
   return el;
 }
+const pendingEdits=new Map();let saveTimer;
+function flushPending(){clearTimeout(saveTimer);const edits=[...pendingEdits];pendingEdits.clear();for(const [path,value] of edits)commit(path,value);}
 const get = path => path.split('.').reduce((obj,key) => obj?.[key], record);
 const idFor = path => 'field-' + path.replaceAll('.','-');
 const button = (label, fn, cls = 'secondary') => h('button',{type:'button',class:'moc-btn '+cls,onclick:fn},label);
@@ -72,7 +74,9 @@ function field(path,title,options={}) {
     input.value=value===null?'null':String(value??'');
   } else if(options.long) {input=h('textarea',{...attrs,rows:3});input.value=value??'';}
   else {input=h('input',{...attrs,type:options.type||'text'});input.value=value??'';}
+  if(!options.choices)input.addEventListener('input',()=>{pendingEdits.set(path,input.value);$('save-status').textContent='正在保存…';clearTimeout(saveTimer);saveTimer=setTimeout(flushPending,200);});
   input.addEventListener('change',()=>{
+    pendingEdits.delete(path);
     let v=input.value;
     if(options.boolean) v=v==='null'?null:v==='true';
     if(options.numeric) v=v===''?'':Number(v);
@@ -91,7 +95,7 @@ function multi(path,items) {return h('div',{class:'moc-checks'},...items.map(ite
   return h('label',{class:'moc-check',for:input.id},input,item.label);
 }));}
 function label(value){return STATUS_LABELS[value]||value;}
-function refresh(){record=refreshExpiry(record,config);persist();renderSummary();}
+function refresh(){flushPending();record=refreshExpiry(record,config);persist();renderSummary();}
 function renderSummary(){
   const ev=evaluate(record,config), blockers=step<4?ev.approvalBlockers:step===4?ev.approvalBlockers:step===5?ev.startupBlockers:ev.closeBlockers;
   $('status-badge').textContent=label(record.meta.status);
@@ -106,7 +110,7 @@ function renderSummary(){
       details('同类替换与分级理由',paragraph(ev.replacement.label),...ev.replacement.reasons.map(paragraph),paragraph(ev.level.label),...ev.level.reasons.map(paragraph)))
   );
 }
-function navigate(index,focus=true){step=index;clearError();renderForm();renderSummary();renderSteps();if(focus){$('step-title').focus();$('steps').scrollIntoView({behavior:'auto',block:'start'});}}
+function navigate(index,focus=true){flushPending();step=index;clearError();renderForm();renderSummary();renderSteps();if(focus){$('step-title').focus();$('steps').scrollIntoView({behavior:'auto',block:'start'});}}
 function renderSteps(){
   $('steps').replaceChildren(...STEPS.map((item,i)=>h('button',{type:'button',class:'moc-step','aria-current':i===step?'step':null,onclick:()=>navigate(i)},h('span',{'aria-hidden':'true'},String(i+1).padStart(2,'0')),item[0])));
   $('previous-step').disabled=step===0;$('next-step').hidden=step===6;$('step-count').textContent=(step+1)+' / 7';
@@ -213,13 +217,14 @@ function buildReport(){
   cover.insertBefore(h('div',{class:'moc-report-note'},h('b',{},'当前阻断项：'+allBlockers.length+' 项'),h('ul',{},...allBlockers.slice(0,3).map(x=>h('li',{},x))),allBlockers.length>3?'其余见“准备度与阻断项”。':''),cover.lastChild);
 }
 function download(content,kind,mime){refresh();const blob=new Blob([content],{type:mime});const url=URL.createObjectURL(blob);const anchor=h('a',{href:url,download:exportFilename(record,kind.includes('.')?kind.split('.').at(-1):kind).replace(/\.(csv)$/,kind==='actions.csv'?'_行动清单.csv':kind==='ledger.csv'?'_台账.csv':'.csv')});document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-function replaceRecord(next,message){storageLocked=false;originalStorage=null;$('export-json').textContent='导出 JSON 备份';record=next;actor='';note='';persist();navigate(0);$('save-status').textContent=message;}
+function replaceRecord(next,message){flushPending();storageLocked=false;originalStorage=null;$('export-json').textContent='导出 JSON 备份';record=next;actor='';note='';persist();navigate(0);$('save-status').textContent=message;}
 function confirmReplacement(message){return (!storageLocked&&!record?.meta.title)||confirm(message+'当前浏览器仅保留一条记录，请确认已导出备份。');}
 async function boot(){
   try{
     config=await loadConfig();const loaded=loadRecord(config);storageLocked=!loaded.ok;if(storageLocked){try{originalStorage=localStorage.getItem(STORAGE_KEY);}catch{}if(originalStorage!==null)$('export-json').textContent='下载原始存储（恢复用）';}record=loaded.record||createRecord(config);actor=record.changeSummary.owner||'';
     $('reference-list').replaceChildren(...config.references.sources.map(x=>h('div',{class:'moc-ref'},h('a',{href:x.url,target:'_blank',rel:'noopener noreferrer'},x.title+' ↗'),paragraph(x.kind+' · '+x.scope),paragraph((x.effectiveDate?'实施日期：'+x.effectiveDate+'。':'')+x.note))));
     $('boot-status').hidden=true;$('workspace').hidden=false;$('new-record').disabled=false;$('load-demo').disabled=false;
+    ['new-record','load-demo','duplicate-record','clear-record'].forEach(id=>$(id).addEventListener('click',flushPending,{capture:true}));
     $('new-record').addEventListener('click',()=>{if(confirmReplacement('新建将替换当前记录。'))replaceRecord(createRecord(config),'新草稿已保存至此浏览器');});
     $('load-demo').addEventListener('click',()=>{if(confirmReplacement('加载虚构循环泵示例将替换当前记录。'))replaceRecord(createDemo(config),'已加载虚构示例 · 仍需完成实际评审');});
     $('previous-step').addEventListener('click',()=>navigate(Math.max(0,step-1)));$('next-step').addEventListener('click',()=>navigate(Math.min(6,step+1)));
@@ -237,6 +242,8 @@ async function boot(){
     $('clear-record').addEventListener('click',()=>{if(!confirm('确认清除本浏览器的 MOC 记录？此操作不可恢复，请先导出备份。'))return;const result=clearRecord();if(!result.ok){error(result.error);return;}storageLocked=false;originalStorage=null;$('export-json').textContent='导出 JSON 备份';record=createRecord(config);navigate(0);$('save-status').textContent='本地记录已清除，不可恢复；当前为空白未保存草稿。';});
     if(matchMedia('(max-width:800px)').matches)$('summary-card').open=false;
     navigate(0,false);if(loaded.ok){persist();if(loaded.warnings?.length)error(loaded.warnings.join('；'));}else{$('save-status').textContent=loaded.error;error(loaded.error+' 原存储已隔离保留；可下载原始存储交由恢复，或导入有效备份。新建前会再次确认。');}
+    window.addEventListener('beforeunload',flushPending);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)flushPending();});
     window.addEventListener('focus',()=>{const previous=record.meta.status;record=refreshExpiry(record,config);if(record.meta.status!==previous){persist();renderForm();}renderSummary();});
     timer=setInterval(()=>{const previous=record.meta.status;record=refreshExpiry(record,config);if(record.meta.status!==previous){persist();renderForm();renderSummary();}},60000);
   }catch(err){$('boot-status').classList.add('moc-error-page');$('boot-status').textContent='工具加载失败。请检查网络后刷新；已有本地记录不会因此被清除。';}

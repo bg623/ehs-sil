@@ -145,6 +145,33 @@ try {
     await context.close();
   });
 
+  await test('Unblurred title input is flushed before a browser reload', async () => {
+    const { page, context, errors } = await openTool();
+    const title = 'QA 未离开字段就刷新';
+    await page.locator('[data-field="meta.title"]').fill(title);
+    // Intentionally no Tab, blur or timeout: unloading must flush the pending input.
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.locator('#workspace').waitFor({ state: 'visible' });
+    assert.equal(await page.locator('[data-field="meta.title"]').inputValue(), title);
+    assert.equal((await exportRecord(page, 'unblurred-title-restored.json')).meta.title, title);
+    assert.deepEqual(errors, []);
+    await context.close();
+  });
+
+  await test('Unblurred textarea input is saved before navigating to the next step', async () => {
+    const { page, context, errors } = await openTool({ width: 390, height: 844 });
+    const before = 'QA 变更前描述：切换步骤必须保留刚输入的文本。';
+    await page.locator('[data-field="changeSummary.before"]').fill(before);
+    await page.locator('#next-step').click();
+    await page.locator('#previous-step').click();
+    assert.equal(await page.locator('[data-field="changeSummary.before"]').inputValue(), before);
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.locator('#workspace').waitFor({ state: 'visible' });
+    assert.equal(await page.locator('[data-field="changeSummary.before"]').inputValue(), before);
+    assert.deepEqual(errors, []);
+    await context.close();
+  });
+
   await test('Corrupt local storage is retained and can be exported without overwrite', async () => {
     const raw = '{"meta": "QA corrupted JSON source"';
     const { page, context } = await openTool(undefined, { initialStorage: raw });
