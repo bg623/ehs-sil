@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "checklist",
+      "label": "检查表／工作安全分析（JSA）",
+      "when": "单一、边界清楚的程序或作业变化",
+      "url": "/tools/jsa-tool.html",
+      "categories": [
+        "procedure",
+        "management",
+        "organization"
+      ],
+      "triggers": []
+    },
+    {
+      "id": "what_if",
+      "label": "What-If／必要时 HAZOP",
+      "when": "工艺参数、接口或多偏差相互作用；复杂情形需专业组织 HAZOP",
+      "url": "/tools/what-if-tool.html",
+      "categories": [
+        "process",
+        "chemical",
+        "utilities"
+      ],
+      "triggers": [
+        "design_boundary",
+        "complex"
+      ]
+    },
+    {
+      "id": "fmea",
+      "label": "失效模式与影响分析（FMEA）",
+      "when": "设备／部件失效模式主导",
+      "url": "/tools/fmea-tool.html",
+      "categories": [
+        "equipment",
+        "instrument",
+        "electrical"
+      ],
+      "triggers": []
+    },
+    {
+      "id": "lopa",
+      "label": "HAZOP 后考虑保护层分析（LOPA）",
+      "when": "需要验证独立保护层或量化风险；请由专业团队实施",
+      "url": "",
+      "categories": [],
+      "triggers": [
+        "safety_function"
+      ]
+    },
+    {
+      "id": "bow_tie",
+      "label": "蝴蝶结分析（Bow-Tie）",
+      "when": "需要梳理事故路径与预防、缓解屏障",
+      "url": "",
+      "categories": [],
+      "triggers": [
+        "complex",
+        "safety_function"
+      ]
+    }
+  ]
+}

@@ -43,7 +43,7 @@ var _hmt = _hmt || [];
                 </p>
                 <div class="search-box">
                     <svg class="search-icon" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    <input type="text" id="searchInput" class="search-input" placeholder="搜索工具名称、关键词如：BBS、HAZOP、JSA、ISO 45001..." autofocus>
+                    <input type="text" id="searchInput" class="search-input" placeholder="搜索工具名称、关键词如：MOC、BBS、HAZOP、JSA、ISO 45001..." autofocus>
                 </div>
             </div>
             <div class="cat-overview">
@@ -69,6 +69,10 @@ var _hmt = _hmt || [];
 
     <main id="main-content">
         <div class="container">
+            <section id="online-moc" aria-labelledby="online-moc-title" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 1.1rem;margin:1rem 0;background:#fff;border:1px solid #d6d0c4;border-left:4px solid #2f6f73;border-radius:8px">
+                <div><strong id="online-moc-title" style="color:#0d2836">在线工具：MOC 变更管理教练</strong><p style="margin:.2rem 0 0;font-size:.8rem;color:#4a555a">免费完成一条变更的评估、行动、投用检查和关闭记录，支持本地保存、备份与导出。</p></div>
+                <a href="moc-coach.html" style="padding:.45rem .9rem;background:#123b4a;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:600">免费开始 MOC →</a>
+            </section>
             <div style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 1.1rem;margin:1rem 0;background:#fff;border:1px solid #d6d0c4;border-left:4px solid #b28024;border-radius:8px">
                 <div><strong style="color:#0d2836">新资源：外企EHS专业术语库</strong><p style="margin:.2rem 0 0;font-size:.8rem;color:#4a555a">在线查询445个中英文术语、196个缩写和24组易混辨析，完整Excel免费下载。</p></div>
                 <a href="ehs-glossary.html" style="padding:.45rem .9rem;background:#123b4a;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:600">开始查询 →</a>
@@ -112,7 +116,7 @@ var _hmt = _hmt || [];
 
     <div data-site-shell-footer data-prefix="../"></div>
 
-    <script src="../js/site-shell.js?v=2.3.0"></script>
+    <script src="../js/site-shell.js?v=20260912"></script>
     <script>
 (function() {
     'use strict';
@@ -127,6 +131,13 @@ var _hmt = _hmt || [];
     const resultCount = document.getElementById('resultCount');
     const categoryFilters = document.getElementById('categoryFilters');
     const toolCount = document.getElementById('toolCount');
+    const onlineMoc = document.getElementById('online-moc');
+
+    function matchesOnlineMoc(query, category) {
+        const keywords = 'moc management of change 变更管理 同类替换 分类分级 临时变更 应急变更 pssr 投用 验证关闭 风险评估 工艺安全 管理体系';
+        return ['all', '工艺安全', '管理体系', '风险辨识'].includes(category) &&
+            (!query.trim() || keywords.includes(query.trim().toLowerCase()));
+    }
 
     // Format icons
     const formatIcons = {
@@ -172,6 +183,8 @@ var _hmt = _hmt || [];
     // Filter tools
     function filterTools() {
         let results = toolsData;
+        onlineMoc.hidden = !matchesOnlineMoc(searchQuery, currentCategory);
+        onlineMoc.style.display = onlineMoc.hidden ? 'none' : 'flex';
 
         if (currentCategory !== 'all') {
             results = results.filter(t => t.category === currentCategory);
@@ -192,7 +205,7 @@ var _hmt = _hmt || [];
 
         filteredTools = results;
         renderTools(results);
-        resultCount.textContent = `${results.length} / ${toolsData.length} 个工具`;
+        resultCount.textContent = `${results.length} / ${toolsData.length} 条资料${onlineMoc.hidden ? '' : ' · 1 个在线工具'}`;
     }
 
     // Render tool cards
@@ -201,8 +214,8 @@ var _hmt = _hmt || [];
             toolsGrid.innerHTML = `
                 <div class="no-results">
                     <div class="no-results-icon">🔍</div>
-                    <h3>没有找到匹配的工具</h3>
-                    <p>试试其他关键词，或者换个分类</p>
+                    <h3>${onlineMoc.hidden ? '没有找到匹配的资料' : '可使用上方 MOC 在线工具'}</h3>
+                    <p>${onlineMoc.hidden ? '试试其他关键词，或者换个分类' : '以下资料索引没有匹配项；在线工具免费使用。'}</p>
                     <a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="join-cta">
                         查看工具箱知识星球的正式发布内容 →
                     </a>

@@ -1,0 +1,82 @@
+{
+  "id": "moc-demo-5x5-v1",
+  "label": "5×5 演示矩阵（须由企业确认替换）",
+  "demonstration": true,
+  "likelihood": [
+    {
+      "value": 1,
+      "label": "极少"
+    },
+    {
+      "value": 2,
+      "label": "较少"
+    },
+    {
+      "value": 3,
+      "label": "可能"
+    },
+    {
+      "value": 4,
+      "label": "较多"
+    },
+    {
+      "value": 5,
+      "label": "频繁"
+    }
+  ],
+  "severity": [
+    {
+      "value": 1,
+      "label": "轻微"
+    },
+    {
+      "value": 2,
+      "label": "较小"
+    },
+    {
+      "value": 3,
+      "label": "较重"
+    },
+    {
+      "value": 4,
+      "label": "严重"
+    },
+    {
+      "value": 5,
+      "label": "灾难性"
+    }
+  ],
+  "bands": [
+    {
+      "min": 1,
+      "max": 4,
+      "level": "low",
+      "label": "低",
+      "color": "#166534"
+    },
+    {
+      "min": 5,
+      "max": 9,
+      "level": "medium",
+      "label": "中",
+      "color": "#92400e"
+    },
+    {
+      "min": 10,
+      "max": 16,
+      "level": "high",
+      "label": "高",
+      "color": "#9a3412"
+    },
+    {
+      "min": 17,
+      "max": 25,
+      "level": "extreme",
+      "label": "极高",
+      "color": "#991b1b"
+    }
+  ],
+  "highRequiresProfessionalReview": true,
+  "temporaryReminderDays": 7,
+  "emergencyReferenceHours": 48
+}

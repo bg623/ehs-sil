@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "循环泵型号调整（虚构示例）"
+  },
+  "changeSummary": {
+    "area": "示例循环系统",
+    "before": "现有循环泵在既定工况下运行。",
+    "after": "更换为另一型号循环泵；名义流量相近，机械密封结构、电机功率和制造商改变。",
+    "reason": "拟在检修窗口改善维修便利性与备件可获得性。",
+    "expectedResult": "在经复核的操作范围内稳定运行并便于维护。",
+    "applicant": "示例申请人",
+    "owner": "示例负责人",
+    "technicalBasis": "需对比扬程曲线、运行工况、材质相容性、保护配合及基础／管口载荷。"
+  },
+  "screening": {
+    "rationale": "机械密封结构、电机功率及制造商变化，不能仅凭流量相近判断为同类替换。",
+    "replacementComparisons": [
+      {
+        "id": "type",
+        "result": "changed",
+        "evidence": "型号变化，设计及接口待专业核查。"
+      },
+      {
+        "id": "capacity",
+        "result": "changed",
+        "evidence": "名义流量相近，但电机功率不同。"
+      },
+      {
+        "id": "seal",
+        "result": "changed",
+        "evidence": "机械密封结构改变，需验证材质与泄漏控制。"
+      },
+      {
+        "id": "supplier",
+        "result": "changed",
+        "evidence": "制造商变化，需核实质量保证和维护要求。"
+      }
+    ]
+  },
+  "classification": {
+    "categories": [
+      "equipment",
+      "electrical",
+      "process"
+    ],
+    "scope": "cross_department"
+  },
+  "impactDomains": [
+    {
+      "id": "process",
+      "status": "affected",
+      "explanation": "核查泵曲线与工况、最小流量及上下游接口。"
+    },
+    {
+      "id": "equipment",
+      "status": "affected",
+      "explanation": "核查密封、材质、基础／管口载荷与备件维护。"
+    },
+    {
+      "id": "electrical",
+      "status": "affected",
+      "explanation": "核查电机功率、供电能力与保护配合。"
+    }
+  ],
+  "riskItems": [
+    {
+      "scenario": "机械密封泄漏",
+      "cause": "密封结构变化或相容性不明",
+      "consequence": "介质泄漏、人员暴露和环境污染",
+      "affected": "附近作业人员及区域环境",
+      "existingControls": "现有巡检及泄漏收集；有效性待复核。",
+      "initialLikelihood": 3,
+      "initialSeverity": {
+        "people": 4,
+        "environment": 3,
+        "asset": 3,
+        "reputation": 2
+      },
+      "additionalMeasures": "核对密封与介质相容性，完成安装及泄漏试验。",
+      "residualLikelihood": 1,
+      "residualSeverity": 4
+    },
+    {
+      "scenario": "电机过载或保护不匹配",
+      "cause": "电机功率改变，保护整定或供电容量未复核",
+      "consequence": "电气故障、失去循环及火灾风险",
+      "affected": "电气系统和生产操作人员",
+      "existingControls": "现有电机保护；需重新核对配合。",
+      "initialLikelihood": 3,
+      "initialSeverity": {
+        "people": 4,
+        "environment": 2,
+        "asset": 4,
+        "reputation": 2
+      },
+      "additionalMeasures": "完成负载计算、保护整定及联动试验。",
+      "residualLikelihood": 1,
+      "residualSeverity": 4
+    },
+    {
+      "scenario": "偏离设计工况",
+      "cause": "扬程曲线、最小流量或接口条件不一致",
+      "consequence": "振动、气蚀、失去循环或上下游异常",
+      "affected": "循环系统及上下游设备",
+      "existingControls": "现有流量与压力监测；适用性待验证。",
+      "initialLikelihood": 3,
+      "initialSeverity": {
+        "people": 3,
+        "environment": 2,
+        "asset": 4,
+        "reputation": 2
+      },
+      "additionalMeasures": "复核曲线及工况，验证运行窗口并更新操作确认。",
+      "residualLikelihood": 1,
+      "residualSeverity": 4
+    }
+  ],
+  "pssr": {
+    "required": true,
+    "rationale": "设备、电气与工艺接口发生变化，建议投用前完成 PSSR。"
+  }
+}
