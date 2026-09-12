@@ -172,6 +172,16 @@ try {
     await context.close();
   });
 
+  await test('Replacing an unnamed edited draft still requires confirmation', async () => {
+    const { page, context } = await openTool();
+    const confirmations = [];
+    page.on('dialog', dialog => confirmations.push(dialog.message()));
+    await page.locator('[data-field="changeSummary.area"]').fill('QA 尚未命名的有效草稿');
+    await page.locator('#load-demo').click();
+    assert.ok(confirmations.some(message => message.includes('替换当前记录')));
+    await context.close();
+  });
+
   await test('Corrupt local storage is retained and can be exported without overwrite', async () => {
     const raw = '{"meta": "QA corrupted JSON source"';
     const { page, context } = await openTool(undefined, { initialStorage: raw });

@@ -218,7 +218,7 @@ function buildReport(){
 }
 function download(content,kind,mime){refresh();const blob=new Blob([content],{type:mime});const url=URL.createObjectURL(blob);const anchor=h('a',{href:url,download:exportFilename(record,kind.includes('.')?kind.split('.').at(-1):kind).replace(/\.(csv)$/,kind==='actions.csv'?'_行动清单.csv':kind==='ledger.csv'?'_台账.csv':'.csv')});document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function replaceRecord(next,message){flushPending();storageLocked=false;originalStorage=null;$('export-json').textContent='导出 JSON 备份';record=next;actor='';note='';persist();navigate(0);$('save-status').textContent=message;}
-function confirmReplacement(message){return (!storageLocked&&!record?.meta.title)||confirm(message+'当前浏览器仅保留一条记录，请确认已导出备份。');}
+function confirmReplacement(message){return (!storageLocked&&!record?.meta.title&&record.auditTrail.length<=1)||confirm(message+'当前浏览器仅保留一条记录，请确认已导出备份。');}
 async function boot(){
   try{
     config=await loadConfig();const loaded=loadRecord(config);storageLocked=!loaded.ok;if(storageLocked){try{originalStorage=localStorage.getItem(STORAGE_KEY);}catch{}if(originalStorage!==null)$('export-json').textContent='下载原始存储（恢复用）';}record=loaded.record||createRecord(config);actor=record.changeSummary.owner||'';
