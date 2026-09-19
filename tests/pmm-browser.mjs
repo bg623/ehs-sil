@@ -12,6 +12,12 @@ for(const width of [1440,390,320]){
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('request',r=>requests.push({url:r.url(),method:r.method()}));page.on('dialog',d=>d.accept());
   await page.goto(base+'/tools/pmm-coach.html',{waitUntil:'networkidle'});await page.locator('.pmm-action').waitFor();
   assert.equal(await page.locator('.site-shell-header').count(),1);assert.equal(await page.locator('.site-shell-footer').count(),1);
+  if(width<920){
+    assert.ok((await page.locator('.nav-toggle span').first().boundingBox()).height>=2,'Mobile navigation strokes must be visible');
+    await page.locator('.nav-toggle').click();assert.equal(await page.locator('.nav-toggle').getAttribute('aria-expanded'),'true');
+    await page.getByRole('button',{name:'展开专业工具选项'}).click();assert.equal(await page.locator('.nav-dropdown a[href="../tools/pmm-coach.html"]').isVisible(),true);
+    await page.locator('.nav-toggle').click();assert.equal(await page.locator('.nav-toggle').getAttribute('aria-expanded'),'false');
+  }
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`overflow ${width}`);
   await page.screenshot({path:`${out}/desktop-mobile-${width}.png`,fullPage:true});
   await page.screenshot({path:`${out}/first-screen-${width}.png`});
