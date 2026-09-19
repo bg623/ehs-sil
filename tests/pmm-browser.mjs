@@ -11,6 +11,10 @@ for(const width of [1440,390,320]){
   const context=await browser.newContext({viewport:{width,height:1000},acceptDownloads:true});const page=await context.newPage();const errors=[],requests=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('request',r=>requests.push({url:r.url(),method:r.method()}));page.on('dialog',d=>d.accept());
   await page.goto(base+'/tools/pmm-coach.html',{waitUntil:'networkidle'});await page.locator('.pmm-action').waitFor();
+  assert.doesNotMatch(await page.locator('body').innerText(),/脱敏|原单位|原企业|原材料|改编/);
+  assert.equal(await page.locator('#downloads-title').innerText(),'对话模板与方法指南');
+  await page.locator('.pmm-downloads').screenshot({path:`${out}/downloads-${width}.png`});
+  await page.evaluate(()=>scrollTo(0,0));
   assert.equal(await page.locator('.site-shell-header').count(),1);assert.equal(await page.locator('.site-shell-footer').count(),1);
   if(width<920){
     assert.ok((await page.locator('.nav-toggle span').first().boundingBox()).height>=2,'Mobile navigation strokes must be visible');
@@ -24,6 +28,7 @@ for(const width of [1440,390,320]){
   await page.locator('#load-example').click();await page.locator('[type=submit]').click();assert.equal(await page.locator('#result').isVisible(),true);
   assert.match(await page.locator('#report').innerText(),/虚构教学示例/);
   assert.match(await page.locator('#report').innerText(),/待核实解释/);
+  assert.doesNotMatch(await page.locator('#report').innerText(),/脱敏|原单位|改编/);
   await page.locator('[name=event]').fill('=1+1 <img src=x onerror=alert(1)>');assert.equal(await page.locator('#result').isVisible(),false);
   await page.locator('[type=submit]').click();assert.equal(await page.locator('#report img').count(),0);
   const download=page.waitForEvent('download');await page.locator('#export-excel').click();const d=await download;await d.saveAs(`${out}/export-${width}.xlsx`);assert.equal(await d.failure(),null);
