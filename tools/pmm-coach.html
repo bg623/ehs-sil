@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>PMM 渐进式激励管理｜安全行为对话与改进 - EHS-SIL</title>
+  <meta name="description" content="理解行为发生的情境，开展公平的安全对话，形成个人支持、组织改进与正向认可行动。免费使用 PMM 引导工具，下载脱敏改编模板与 Excel 对话记录。">
+  <link rel="canonical" href="https://ehs-sil.com/tools/pmm-coach.html">
+  <link rel="icon" href="../assets/ehs-sil-logo.png"><link rel="stylesheet" href="../css/style.css?v=2.1.0"><link rel="stylesheet" href="../css/pmm-coach.css?v=20260918">
+</head>
+<body data-site-shell-features="local">
+<div data-site-shell-header data-prefix="../" data-mode="light"></div>
+<main id="main-content" class="pmm-main">
+  <nav class="pmm-breadcrumb" aria-label="当前位置"><a href="../index.html#practice-tools">03 外企管理实践</a><span aria-hidden="true"> / </span>PMM 渐进式激励管理</nav>
+  <header class="pmm-hero">
+    <div><p class="pmm-eyebrow">安全行为对话 · Safety behavior dialogue</p><h1>理解行为背后的情境，<br>让改进真正发生。</h1><p class="pmm-lead">PMM 渐进式激励管理<br><span lang="en">Progressive Motivation Management</span></p><p>从一次平等的对话开始：听到当事人的视角，找到需要改善的工作条件，也让值得坚持的安全行为得到认可。</p><div class="pmm-buttons"><a class="pmm-button" href="#workspace">开始一次对话 ↓</a><a class="pmm-button secondary" href="#method">先了解方法</a></div></div>
+    <aside class="pmm-hero-note"><span>这次对话，带走什么？</span><ol><li><b>事实与视角</b><small>分清观察、解释与待核实信息</small></li><li><b>个人与组织行动</b><small>把支持与改进落实到责任和证据</small></li><li><b>认可与跟进</b><small>保护尊严，验证改变是否有用</small></li></ol><p>免费使用 · 无需会员 · 内容不上传</p></aside>
+  </header>
+  <div class="pmm-boundary"><strong>先控制现场风险，再开展对话。</strong> PMM 不是逐级处罚表，也不替代事件调查。不要仅凭结果、动机或一次勾选给人员定性。涉及严重行为疑虑时，应由授权管理者与人力资源部门依适用程序独立复核。</div>
+  <section id="workspace" aria-labelledby="workspace-title">
+    <div class="pmm-section-heading"><div><p class="pmm-eyebrow">对话工作区 · Dialogue workspace</p><h2 id="workspace-title">把一次对话，整理为可跟进的记录</h2></div><button type="button" class="pmm-button secondary" id="load-example">使用虚构示例</button></div>
+    <p class="pmm-privacy">请只填写岗位或人员代号，不填写姓名、工号、联系方式、健康信息或商业秘密。内容仅保留在本页内存，刷新或关闭即清除；离开前请导出。导出的文件由你自行保管、控制访问与分享。</p>
+    <noscript><p class="pmm-boundary">请启用 JavaScript 使用对话工作区；下方方法说明与空白模板仍可阅读和下载。</p></noscript>
+    <form id="pmm-form">
+      <fieldset class="pmm-mode"><legend>选择对话方向</legend><label><input type="radio" name="mode" value="improvement" checked><span><b>改进对话</b><small>理解不安全行为与工作条件</small></span></label><label><input type="radio" name="mode" value="recognition"><span><b>正向认可</b><small>肯定具体行为与可复制的支持</small></span></label></fieldset>
+      <section class="pmm-panel"><h3><span>01</span> 还原事实与当事人视角</h3><div class="pmm-grid"><label>对话日期<input type="date" name="date"></label><label>参与角色或代号<input name="alias" maxlength="120" placeholder="例如：操作人员 A、班组负责人 M" autocomplete="off"></label></div><label>观察到了什么？<small>写具体动作与场景，区分亲眼所见和转述；避免“态度差”等标签。</small><textarea name="event" required maxlength="1800" rows="3" placeholder="例如：交接后漏做了哪一项确认？当时有哪些可观察的事实？"></textarea></label><label>当事人如何理解这件事？<small>可问：“当时你准备怎么做？哪些信息让这个选择看起来合理？”</small><textarea name="view" maxlength="1800" rows="3"></textarea></label><label>已核实的依据与尚未核实的信息<textarea name="evidence" maxlength="1800" rows="2" placeholder="使用证据代号，不粘贴个人资料；允许明确写‘待核实’。"></textarea></label></section>
+      <section class="pmm-panel"><h3><span>02</span> 一起理解情境</h3><fieldset><legend>需要进一步了解的工作因素（可多选，不代表已经确认原因）</legend><div id="factor-options" class="pmm-factors"></div></fieldset><label>工作条件、管理安排和已有支持<small>如果另一位同样胜任的人处于相同条件，是否也可能这样做？管理者能够改变什么？</small><textarea name="context" maxlength="1800" rows="3"></textarea></label><div id="improvement-fields"><fieldset><legend>暂定解释（可多选；不是系统判定）</legend><div id="hypothesis-options" class="pmm-hypotheses"></div></fieldset><div id="prompt-list" class="pmm-prompts" aria-live="polite"></div></div><div id="recognition-fields" hidden><label>值得认可的具体行为、价值与可复制条件<small>奖励主动报告、求助、改善与互相支持；不以“零事故”“零报告”替代真实安全表现。</small><textarea name="impact" maxlength="1800" rows="3"></textarea></label><p class="pmm-tip">先征得同意，再决定私下感谢、团队分享或带教等方式。不要强制公开身份、讲述经历或承担超出能力的角色。</p></div></section>
+      <section class="pmm-panel"><div class="pmm-section-heading"><h3><span>03</span> 约定行动与验证方式</h3><button id="add-action" class="pmm-button secondary" type="button">＋ 增加行动</button></div><p>个人支持与组织改进应一起考虑。每项行动写清：做什么、谁负责、何时完成、用什么确认有效。</p><div id="action-list"></div><label>复核、恢复信任与跟进安排<small>谁与参与者核对记录？如何听取不同意见？何时检查实际效果？分享前怎样脱敏？</small><textarea name="review" maxlength="1800" rows="3"></textarea></label></section>
+      <div class="pmm-buttons"><button class="pmm-button" type="submit">生成对话记录预览</button><button id="clear-record" class="pmm-button secondary" type="button">清空本次内容</button></div>
+    </form>
+    <p id="pmm-status" role="status" aria-live="polite"></p>
+    <section id="result" class="pmm-panel" aria-labelledby="result-title" hidden><div class="pmm-section-heading"><h2 id="result-title" tabindex="-1">对话记录预览</h2><div class="pmm-buttons"><button id="export-excel" class="pmm-button" type="button">下载 Excel 记录</button><button id="print-record" class="pmm-button secondary" type="button">打印 / 存为 PDF</button></div></div><div id="report"></div></section>
+  </section>
+  <section id="method" class="pmm-method"><p class="pmm-eyebrow">方法与边界 · Method &amp; boundaries</p><h2>公平不等于不追责，学习也不止于再培训</h2><div class="pmm-method-grid"><article><span>听取</span><h3>先听完整，再提出解释</h3><p>尽快安排有尊重、有隐私的一对一对话；需要时提供支持人员。允许补充和不同意见，避免用事后已知的结果倒推当时的判断。</p></article><article><span>支持</span><h3>匹配改进，不机械贴标签</h3><p>执行失误、判断偏差和规则偏离可能交织。检查工具、信息、工作负荷和规则可执行性，不能把所有问题都交给“加强培训”。</p></article><article><span>落实</span><h3>管理者也拥有行动</h3><p>直属管理者组织对话与资源支持；员工参与事实核对；EHS 或人因专业人员提供协助；授权负责人复核和跟进，必要时联系事件调查及人力资源部门。</p></article><article><span>认可</span><h3>让好的行为可以被重复</h3><p>认可具体的报告、暂停、求助与改善行为，也保留这些行为背后的组织支持。复盘以学习和信任恢复为目的，不要求公开检讨。</p></article></div>
+    <details><summary>如何理解“渐进式”？与 BBS、事件调查有什么区别？</summary><p>本模块使用 PMM 描述持续对话、支持、改善和跟进的管理方法，不把它等同于某个全球统一认证标准或固定处分阶梯。</p><p>BBS（Behavior-Based Safety，行为安全观察）可发现需要对话的线索；PMM 帮助双方理解情境并约定行动；事件调查继续分析屏障、组织及系统原因。三者可衔接，但不能互相替代，也不能把“人因”当作调查终点。</p></details>
+    <details><summary>专业参考与原材料改编说明</summary><p>依据用户提供的内部程序与对话表进行脱敏改编。未发布原文件、企业标识、人员信息、内部文号、隐藏数据或原判责流程图。修正了“示范行为”的翻译，并取消仅凭“个人或公司利益”判断恶意或鲁莽的分支。</p><ul class="pmm-sources"><li><a href="https://www.hse.gov.uk/humanfactors/topics/humanfail.htm" target="_blank" rel="noopener noreferrer">HSE 英国健康与安全执行局：人因失误及管理（Human failure）</a>：区分失误与偏离，关注工作设计和情境。</li><li><a href="https://www.hse.gov.uk/humanfactors/assets/docs/types.pdf" target="_blank" rel="noopener noreferrer">HSE：失误类型（Types of human failure）</a>：用于构建待核实解释，不用作自动定性。</li><li><a href="https://www.hse.gov.uk/humanfactors/assets/docs/pifs.pdf" target="_blank" rel="noopener noreferrer">HSE：绩效影响因素（Performance influencing factors）</a>：检查任务、个体与组织条件。</li><li><a href="https://www.osha.gov/safety-management/worker-participation" target="_blank" rel="noopener noreferrer">OSHA 美国职业安全健康管理局：员工参与（Worker participation）</a>：支持报告、参与和积极反馈，避免压制报告的激励。</li><li><a href="https://www.england.nhs.uk/publication/being-fair-tool/" target="_blank" rel="noopener noreferrer">NHS England 英格兰国家医疗服务体系：公平对待工具（Being fair tool）</a>：仅借鉴其支持与情境复核思路；原工具属于医疗行业，不是工业处分标准。</li></ul><p>参考资料核验日期：2026-09-18。以上为方法参考，不构成中国法律适用意见。</p></details>
+  </section>
+  <section class="pmm-downloads" aria-labelledby="downloads-title"><div><p class="pmm-eyebrow">带回现场 · Take it to work</p><h2 id="downloads-title">脱敏改编版资源</h2><p>重新制作的通用模板，不含原单位标识和隐藏资料。空白表可离线填写；如用于企业制度，应先完成企业内部审核。</p></div><div class="pmm-buttons"><a class="pmm-button" href="../assets/downloads/ehs-sil-pmm-dialogue.xlsx" download>下载 Excel 对话模板</a><a class="pmm-button secondary" href="../assets/downloads/ehs-sil-pmm-guide.docx" download>下载 Word 方法指南</a></div></section>
+</main>
+<div data-site-shell-footer data-prefix="../"></div>
+<script src="../js/site-shell.js?v=20260918"></script><script src="../vendor/exceljs.min.js"></script><script type="module" src="../js/pmm-app.mjs?v=20260918"></script>
+</body></html>

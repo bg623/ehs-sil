@@ -98,7 +98,7 @@ test('MOC is discoverable and management practices keep separate, real destinati
 test('tool-index search finds the MOC action without treating it as a downloadable resource', async () => {
   const source = [...toolIndex.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
     .map((match) => match[1]).find((script) => script.includes('let toolsData = []'));
-  const elements = Object.fromEntries(['searchInput', 'toolsGrid', 'resultCount', 'categoryFilters', 'toolCount', 'online-moc']
+  const elements = Object.fromEntries(['searchInput', 'toolsGrid', 'resultCount', 'categoryFilters', 'toolCount', 'online-moc', 'online-pmm']
     .map((id) => [id, { style: {}, hidden: false, innerHTML: '', textContent: '', value: '', listeners: {},
       addEventListener(type, fn) { this.listeners[type] = fn; } }]));
   const timers = new Map();
@@ -119,12 +119,20 @@ test('tool-index search finds the MOC action without treating it as a downloadab
   }
   search('MOC');
   assert.equal(elements['online-moc'].hidden, false);
-  assert.match(elements.resultCount.textContent, /1 个在线工具/);
-  assert.match(elements.toolsGrid.innerHTML, /可使用上方 MOC 在线工具/);
+  assert.match(elements.resultCount.textContent, /1 个匹配在线工具/);
+  assert.match(elements.toolsGrid.innerHTML, /可使用上方匹配的在线工具/);
   assert.equal(elements.toolCount.textContent, 1, 'resource inventory count must stay independent');
   search('培训');
   assert.equal(elements['online-moc'].hidden, true);
   assert.match(elements.toolsGrid.innerHTML, /培训资料/);
   search('变更管理');
   assert.equal(elements['online-moc'].hidden, false);
+  search('PMM');
+  assert.equal(elements['online-pmm'].hidden, false);
+  assert.equal(elements['online-moc'].hidden, true);
+  assert.match(elements.resultCount.textContent, /1 个匹配在线工具/);
+  search('渐进式激励管理');
+  assert.equal(elements['online-pmm'].hidden, false);
+  search('不存在的内容');
+  assert.equal(elements['online-pmm'].hidden, true);
 });

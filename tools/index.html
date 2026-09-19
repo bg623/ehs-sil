@@ -69,6 +69,10 @@ var _hmt = _hmt || [];
 
     <main id="main-content">
         <div class="container">
+            <section id="online-pmm" aria-labelledby="online-pmm-title" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 1.1rem;margin:1rem 0;background:#edf3e9;border:1px solid #c8d5c5;border-left:4px solid #174d50;border-radius:8px">
+                <div><strong id="online-pmm-title" style="color:#0d2836">在线工具：PMM 渐进式激励管理</strong><p style="margin:.2rem 0 0;font-size:.8rem;color:#4a555a">开展安全行为对话、正向认可与组织改进；免费导出记录，下载脱敏改编模板。</p></div>
+                <a href="pmm-coach.html" style="padding:.45rem .9rem;background:#174d50;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:600">开始 PMM 对话 →</a>
+            </section>
             <section id="online-moc" aria-labelledby="online-moc-title" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 1.1rem;margin:1rem 0;background:#fff;border:1px solid #d6d0c4;border-left:4px solid #2f6f73;border-radius:8px">
                 <div><strong id="online-moc-title" style="color:#0d2836">在线工具：MOC 变更管理教练</strong><p style="margin:.2rem 0 0;font-size:.8rem;color:#4a555a">免费完成一条变更的评估、行动、投用检查和关闭记录，支持本地保存、备份与导出。</p></div>
                 <a href="moc-coach.html" style="padding:.45rem .9rem;background:#123b4a;color:#fff;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:600">免费开始 MOC →</a>
@@ -92,7 +96,7 @@ var _hmt = _hmt || [];
             <!-- CTA -->
             <div style="text-align:center;padding:.8rem 1rem;margin:.5rem 0 1rem;background:linear-gradient(135deg,rgba(26,75,92,0.06),rgba(201,149,78,0.06));border-radius:8px;border:1px solid rgba(201,149,78,0.15)">
                 <p style="font-size:.82rem;color:var(--text-secondary);margin:0">
-                    🔍 网站当前用于检索和内容预览，不提供文件下载。
+                    🔍 下方资料索引用于检索和内容预览，不提供原资料下载；上方在线工具的公开模板可在对应页面下载。
                     <strong style="color:var(--primary)">知识星球正式发布内容</strong>与本站索引可能不同
                     <a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" style="display:inline-block;margin-left:.5rem;padding:.25rem .9rem;background:var(--primary);color:#fff;border-radius:5px;font-weight:600;font-size:.78rem;text-decoration:none">查看外企EHS工具箱 →</a>
                 </p>
@@ -132,6 +136,15 @@ var _hmt = _hmt || [];
     const categoryFilters = document.getElementById('categoryFilters');
     const toolCount = document.getElementById('toolCount');
     const onlineMoc = document.getElementById('online-moc');
+    const onlinePmm = document.getElementById('online-pmm');
+
+    function matchesOnlinePmm(query, category) {
+        const keywords = 'pmm progressive motivation management 渐进式激励管理 安全行为对话 不安全行为 正向认可 公平文化 人因与组织绩效 行为安全 管理体系';
+        return ['all', '管理体系', '行为安全', '人因与组织绩效'].includes(category) &&
+            (!query.trim() || keywords.includes(query.trim().toLowerCase()));
+    }
+
+    function visibleOnlineCount() { return Number(!onlineMoc.hidden) + Number(!onlinePmm.hidden); }
 
     function matchesOnlineMoc(query, category) {
         const keywords = 'moc management of change 变更管理 同类替换 分类分级 临时变更 应急变更 pssr 投用 验证关闭 风险评估 工艺安全 管理体系';
@@ -185,6 +198,8 @@ var _hmt = _hmt || [];
         let results = toolsData;
         onlineMoc.hidden = !matchesOnlineMoc(searchQuery, currentCategory);
         onlineMoc.style.display = onlineMoc.hidden ? 'none' : 'flex';
+        onlinePmm.hidden = !matchesOnlinePmm(searchQuery, currentCategory);
+        onlinePmm.style.display = onlinePmm.hidden ? 'none' : 'flex';
 
         if (currentCategory !== 'all') {
             results = results.filter(t => t.category === currentCategory);
@@ -205,7 +220,7 @@ var _hmt = _hmt || [];
 
         filteredTools = results;
         renderTools(results);
-        resultCount.textContent = `${results.length} / ${toolsData.length} 条资料${onlineMoc.hidden ? '' : ' · 1 个在线工具'}`;
+        resultCount.textContent = `${results.length} / ${toolsData.length} 条资料${visibleOnlineCount() ? ` · ${visibleOnlineCount()} 个匹配在线工具` : ''}`;
     }
 
     // Render tool cards
@@ -214,8 +229,8 @@ var _hmt = _hmt || [];
             toolsGrid.innerHTML = `
                 <div class="no-results">
                     <div class="no-results-icon">🔍</div>
-                    <h3>${onlineMoc.hidden ? '没有找到匹配的资料' : '可使用上方 MOC 在线工具'}</h3>
-                    <p>${onlineMoc.hidden ? '试试其他关键词，或者换个分类' : '以下资料索引没有匹配项；在线工具免费使用。'}</p>
+                    <h3>${visibleOnlineCount() ? '可使用上方匹配的在线工具' : '没有找到匹配的资料'}</h3>
+                    <p>${visibleOnlineCount() ? '以下资料索引没有匹配项；匹配的在线工具免费使用。' : '试试其他关键词，或者换个分类'}</p>
                     <a href="https://wx.zsxq.com/group/88882255181182" target="_blank" rel="noopener" class="join-cta">
                         查看工具箱知识星球的正式发布内容 →
                     </a>

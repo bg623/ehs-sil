@@ -1,0 +1,29 @@
+name: PMM browser check
+on:
+  pull_request:
+    paths: ['tools/pmm-coach.html', 'js/pmm*.mjs', 'css/pmm-coach.css', 'js/site-shell.js', 'tests/pmm-browser.mjs', '.github/workflows/pmm-browser-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.57.0
+          npx playwright install --with-deps chromium
+      - name: Start static site
+        run: python3 -m http.server 8773 --bind 127.0.0.1 >/tmp/pmm-http.log 2>&1 &
+      - name: Check PMM
+        run: node tests/pmm-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pmm-browser-evidence
+          path: test-results/pmm/

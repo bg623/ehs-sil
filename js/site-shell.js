@@ -57,7 +57,8 @@
             navEntry(prefix + 'tools/moc-coach.html', 'MOC 变更管理教练', '免费完成变更评估、投用检查与关闭记录') +
             navEntry(prefix + 'tools/training-matrix.html', '岗位 EHS 培训矩阵', '生成可编辑的培训需求底稿') +
             navEntry(prefix + 'tools/compliance-identification.html', '企业适用法规识别', '按行业与地区生成候选清单') +
-            navEntry(prefix + 'index.html#practice-tools', '外企管理实践', 'BBS、LOTO、MOC 与 PSSR') +
+            navEntry(prefix + 'tools/pmm-coach.html', 'PMM 渐进式激励管理', '安全行为对话、正向认可与改进') +
+            navEntry(prefix + 'index.html#practice-tools', '外企管理实践', 'BBS、PMM、LOTO、MOC 与 PSSR') +
             '</ul></li>' +
             '<li class="nav-item has-dropdown" data-nav-section="resources"><div class="nav-parent-row"><a class="site-shell-link nav-link" data-nav-section-link="resources" href="' + prefix + 'tools/index.html">专业资源</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业资源选项" aria-expanded="false" aria-controls="' + resourcesId + '"><span class="nav-chevron" aria-hidden="true"></span></button></div>' +
             '<ul class="nav-dropdown nav-dropdown-wide" id="' + resourcesId + '">' +
