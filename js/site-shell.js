@@ -53,7 +53,7 @@
             navEntry(prefix + 'tools/chemical-reactivity-matrix.html', '化学品反应与禁忌矩阵', '禁忌物、误混与库存相容性筛查') +
             navEntry(prefix + 'tools/risk-analysis.html#risk-assessment', '风险辨识与评估', 'FMEA 失效模式分析、What-If 假设分析') +
             navEntry(prefix + 'tools/risk-analysis.html#incident-investigation', '事故调查与根因分析', '5Why 五问法、RCA 根本原因分析、Tripod Beta 三脚架分析') +
-            navEntry(prefix + 'tools/incident-learning.html', 'LFI 事故学习闭环', '事件报告、调查、整改与组织学习') +
+            navEntry(prefix + 'tools/incident-learning.html', '事故调查与 LFI 专业教练', '证据、屏障、措施验证与组织学习') +
             navEntry(prefix + 'tools/moc-coach.html', 'MOC 变更管理教练', '免费完成变更评估、投用检查与关闭记录') +
             navEntry(prefix + 'tools/training-matrix.html', '岗位 EHS 培训矩阵', '生成可编辑的培训需求底稿') +
             navEntry(prefix + 'tools/compliance-identification.html', '企业适用法规识别', '按行业与地区生成候选清单') +

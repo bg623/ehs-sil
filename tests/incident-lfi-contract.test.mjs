@@ -19,14 +19,15 @@ const invitations = JSON.parse(read("data/incidents/invitations-contract-v0.2.js
 const roleGrant = JSON.parse(read("data/incidents/role-grant-matrix-v0.2.json"));
 const negative = JSON.parse(read("tests/fixtures/incident-cross-tenant-negative-cases.json"));
 
-assert.match(page, /V0\.1 · 用户验证阶段/);
-assert.match(page, /只体验纯虚构案例/);
-assert.match(page, /一个租户等于一个工厂/);
+// The 2026-09-21 local personal coach supersedes the old landing-only gate.
+// Enterprise back-end contracts below remain unchanged and frozen.
+assert.match(page, /V0\.2/);
+assert.match(page, /data-site-shell-features="local"/);
+assert.match(page, /connect-src 'none'/);
 assert.match(page, /不得因等待系统判断而延误救援或法定报告/);
-assert.doesNotMatch(page, /<form\b/i, "第1周页面不得出现真实数据表单");
-assert.doesNotMatch(page, /<input\b|<textarea\b|type=["']file["']/i, "第1周页面不得采集事故或附件");
-assert.match(page, /visit_incident_lfi/);
-assert.match(page, /incident_resource_click/);
+assert.doesNotMatch(page, /analytics\.js|hm\.baidu|auth\.js|<form\b/i);
+assert.match(page, /accept="\.json,application\/json"/);
+assert.equal((page.match(/type="file"/g)||[]).length,1,'Only local JSON backup restore; no evidence attachments');
 
 assert.match(toolIndex, /incident-learning\.html/);
 assert.match(shell, /tools\/incident-learning\.html/);
