@@ -1,0 +1,29 @@
+name: Incident coach browser check
+on:
+  pull_request:
+    paths: ['tools/incident-learning.html', 'js/incident-coach*.mjs', 'css/incident-coach.css', 'tests/incident-coach*', '.github/workflows/incident-coach-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  incident-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.57.0
+          npx playwright install --with-deps chromium
+      - name: Start static site
+        run: python3 -m http.server 8774 --bind 127.0.0.1 >/tmp/incident-http.log 2>&1 &
+      - name: Browser regression
+        run: node tests/incident-coach-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: incident-coach-evidence
+          path: test-results/incident-coach/
