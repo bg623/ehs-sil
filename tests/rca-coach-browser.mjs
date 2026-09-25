@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {pathToFileURL} from 'node:url';
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE?pathToFileURL(process.env.PLAYWRIGHT_MODULE).href:'playwright');
+const base=process.env.RCA_BASE_URL||'http://127.0.0.1:8775';
+const out=process.env.RCA_QA_DIR||'test-results/rca-coach';await fs.mkdir(out,{recursive:true});
+const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{})});
+const result=[];
+try{for(const width of [1440,390,320]){
+ const context=await browser.newContext({viewport:{width,height:1000},acceptDownloads:true});const page=await context.newPage();const errors=[],requests=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('request',r=>requests.push({url:r.url(),method:r.method()}));page.on('dialog',d=>d.accept());
+ const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`horizontal overflow at ${width}`);
+ const step=async i=>{await page.locator('#step-nav button').nth(i).click();await noOverflow();};
+ const download=async(name,button)=>{const wait=page.waitForEvent('download');await button.click();const d=await wait;await d.saveAs(`${out}/${name}`);assert.equal(await d.failure(),null);return `${out}/${name}`;};
+ await page.goto(base+'/tools/rca-tool.html',{waitUntil:'networkidle'});await page.locator('#problem-title').waitFor();assert.equal(await page.locator('#step-nav button').count(),4);await noOverflow();await page.screenshot({path:`${out}/hero-${width}.png`});
+ if(width<800){await page.locator('.nav-toggle').click();assert.equal(await page.locator('.nav-toggle').getAttribute('aria-expanded'),'true');await page.locator('.nav-toggle').click();}
+ await page.locator('#problem-title').fill('检修软管泄漏');await page.locator('#problem-description').fill('拆卸后发现残余介质，具体来源待核实。');await page.getByRole('button',{name:'生成调查提示 →',exact:true}).click();assert.match(await page.locator('#step-content').innerText(),/能量隔离/);
+ await page.getByRole('button',{name:'加入待验证',exact:true}).first().click();assert.equal(await page.locator('#cause-status').inputValue(),'待验证');assert.match(await page.locator('#inline-checks').innerText(),/调查问题/);
+ await page.locator('#cause-text').fill('操作员粗心');assert.match(await page.locator('#cause-question').innerText(),/工作条件|组织/);await page.locator('#cause-status').selectOption('证据支持');assert.match(await page.locator('#inline-checks').innerText(),/缺少证据/);
+ await page.locator('#cause-status').selectOption('待验证');await page.locator('#cause-text').fill('设备状态可能改变');
+ for(let i=0;i<6;i++){await page.getByRole('button',{name:'继续追问 Why',exact:true}).click();await page.locator('#cause-text').fill('待核实条件 '+i);}
+ assert.match(await page.locator('.path').innerText(),/C1 → C2 → C3 → C4 → C5 → C6 → C7/);
+ await page.getByRole('button',{name:'添加平行分支',exact:true}).click();assert.equal(await page.locator('#cause-parent').inputValue(),'C6');await page.locator('#cause-text').fill('另一条可能解释');
+ await step(1);await page.getByText('已有会议记录？批量整理',{exact:true}).click();await page.locator('#bulk-lines').fill('设备维护\n设备维护\n原因不明');await page.getByRole('button',{name:'批量加入并建议分类',exact:true}).click();assert.match(await page.locator('#status').innerText(),/新增 2 条/);assert.equal(await page.locator('#fishbone svg').count(),1);await page.locator('#step-content').screenshot({path:`${out}/fishbone-${width}.png`});
+ await page.locator('#example').click();const payload='=1+1 <img src=x onerror=alert(1)>';await page.locator('#problem-title').fill(payload);await page.locator('#problem-date').fill('2026-09-24');
+ await step(2);await page.locator('#cause-text').fill(payload);assert.equal(await page.locator('#step-content img').count(),0);assert.equal(await page.locator('.cause-list button').evaluateAll(nodes=>nodes.every(b=>b.querySelector('small').getBoundingClientRect().bottom<=b.getBoundingClientRect().bottom)),true,'Cause status must fit inside its selection card');await page.locator('#step-content').screenshot({path:`${out}/why-${width}.png`});
+ await step(3);await page.getByRole('button',{name:'生成行动草案',exact:true}).click();assert.equal(await page.locator('#A1-level').inputValue(),'取证验证');await page.locator('#A1-owner').fill('角色 R');await page.getByRole('button',{name:'生成行动草案',exact:true}).click();assert.match(await page.locator('#status').innerText(),/新增 0 项/);assert.equal(await page.locator('#A1-owner').inputValue(),'角色 R');await page.locator('#A1-due').fill('2026-10-01');await page.locator('#A1-status').selectOption('已验证');assert.match(await page.locator('#inline-checks').innerText(),/缺少完成依据/);
+ await page.locator('#step-content').getByRole('button',{name:'预览分析底稿',exact:true}).click();assert.equal(await page.locator('#report-content img').count(),0);assert.match(await page.locator('#report-content').innerText(),/待验证/);await noOverflow();await page.locator('#report').screenshot({path:`${out}/report-${width}.png`});
+ const xlsx=await download(`export-${width}.xlsx`,page.getByRole('button',{name:'下载 Excel',exact:true}));const xml=execFileSync('unzip',['-p',xlsx,'xl/worksheets/*.xml'],{maxBuffer:2000000}).toString();assert.doesNotMatch(xml,/<f[ >]|ht="NaN"/);const strings=execFileSync('unzip',['-p',xlsx,'xl/sharedStrings.xml'],{maxBuffer:2000000}).toString();assert.match(strings,/=1\+1/);assert.doesNotMatch(strings,/<t><\/t>/);
+ const svg=await download(`fishbone-${width}.svg`,page.getByRole('button',{name:'下载鱼骨图 SVG',exact:true}));assert.doesNotMatch(await fs.readFile(svg,'utf8'),/<img|<script|<foreignObject/);
+ const json=await download(`backup-${width}.json`,page.locator('#backup'));const backup=JSON.parse(await fs.readFile(json,'utf8'));assert.equal(backup.problem.title,payload);assert.equal(backup.actions.length,2);
+ if(width===1440){await page.emulateMedia({media:'print'});await page.pdf({path:`${out}/report.pdf`,format:'A4',printBackground:true});await page.emulateMedia({media:'screen'});}
+ await step(0);await page.locator('#problem-title').fill('changed');assert.equal(await page.locator('#report').isVisible(),false);await page.locator('#clear').click();await page.locator('#restore-file').setInputFiles(json);await page.waitForFunction(expected=>document.querySelector('#problem-title')?.value===expected,payload);
+ await page.locator('#restore-file').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"version":"bad"}')});await page.waitForFunction(()=>document.querySelector('#status')?.textContent.includes('无法恢复'));assert.equal(await page.locator('#problem-title').inputValue(),payload);
+ assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
+ await page.getByText('本机草稿与旧版恢复',{exact:true}).click();await page.locator('#save-local').click();assert.equal(await page.evaluate(()=>localStorage.length),1);await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('#problem-title').inputValue(),'');await page.getByText('本机草稿与旧版恢复',{exact:true}).click();await page.locator('#load-local').click();assert.equal(await page.locator('#problem-title').inputValue(),payload);
+ const legacy=JSON.stringify({title:'历史问题',date:'2026-09-20',causes:{man:[{text:'初始解释',why:['a','b','c','d','e','f']}]}});await page.evaluate(raw=>localStorage.setItem('ehs_sil_rca',raw),legacy);await page.locator('#load-legacy').click();assert.equal(await page.locator('#problem-title').inputValue(),'历史问题');assert.equal(await page.evaluate(()=>localStorage.getItem('ehs_sil_rca')),legacy);await step(2);assert.equal(await page.locator('.cause-list button').count(),7);assert.equal(await page.locator('#cause-status').inputValue(),'待验证');
+ await page.locator('#delete-local').click();assert.equal(await page.evaluate(()=>localStorage.length),1);assert.equal(await page.evaluate(()=>localStorage.getItem('ehs_sil_rca')),legacy);
+ assert.equal(requests.filter(r=>new URL(r.url).origin!==new URL(base).origin||r.method!=='GET').length,0);assert.deepEqual(errors,[]);await context.close();result.push({width,status:'passed',checks:['four steps','responsive navigation','scenario questions','seven levels and branching','deduplicated classification','SVG','evidence gaps','idempotent action drafts','XSS','literal Excel','backup atomicity','explicit-only local storage','legacy migration','no transmission']});
+}
+await fs.writeFile(out+'/results.json',JSON.stringify(result,null,2));console.log(result);
+}finally{await browser.close();}
