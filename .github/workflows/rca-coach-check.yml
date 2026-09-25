@@ -1,0 +1,29 @@
+name: RCA coach browser check
+on:
+  pull_request:
+    paths: ['tools/rca-tool.html', 'js/rca-coach*.mjs', 'css/rca-coach.css', 'tests/rca-coach*', '.github/workflows/rca-coach-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rca-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.57.0
+          npx playwright install --with-deps chromium
+      - name: Start static site
+        run: python3 -m http.server 8775 --bind 127.0.0.1 >/tmp/rca-http.log 2>&1 &
+      - name: Browser regression
+        run: node tests/rca-coach-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rca-coach-evidence
+          path: test-results/rca-coach/
