@@ -39,6 +39,32 @@
                 activate(tabs[nextIndex], true);
             });
         });
+
+        document.querySelectorAll('[data-open-task]').forEach(function (link) {
+            link.addEventListener('click', function () {
+                var tab = tabs.find(function (item) { return item.dataset.taskTab === link.dataset.openTask; });
+                if (!tab) return;
+                activate(tab, false);
+                tab.focus({ preventScroll: true });
+            });
+        });
+    }
+
+    function setupSocialCopy() {
+        var status = document.getElementById('socialCopyStatus');
+        document.querySelectorAll('[data-copy-account]').forEach(function (button) {
+            button.addEventListener('click', async function () {
+                var name = button.dataset.copyAccount;
+                var platform = button.dataset.copyPlatform;
+                try {
+                    if (!navigator.clipboard) throw new Error('Clipboard unavailable');
+                    await navigator.clipboard.writeText(name);
+                    status.textContent = '已复制 ' + name + '，请在' + platform + '中搜索并核对主理人信息。';
+                } catch (error) {
+                    status.textContent = '未能自动复制。请在' + platform + '中手动搜索：' + name;
+                }
+            });
+        });
     }
 
     function setupBackToTop() {
@@ -68,10 +94,12 @@
             setupTaskRouter();
             setupBackToTop();
             setupMembershipTracking();
+            setupSocialCopy();
         });
     } else {
         setupTaskRouter();
         setupBackToTop();
         setupMembershipTracking();
+        setupSocialCopy();
     }
 })();

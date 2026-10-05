@@ -27,14 +27,14 @@ test('task router exposes four keyboard-operable tabs and matching panels', () =
 });
 
 test('homepage keeps operational hooks and orders proof before membership', () => {
-  assert.match(html, /css\/homepage-astra\.css\?v=1\.0\.0/);
-  assert.match(html, /js\/homepage-astra\.js\?v=1\.0\.0/);
+  assert.match(html, /css\/homepage-astra\.css\?v=20261005/);
+  assert.match(html, /js\/homepage-astra\.js\?v=20261005/);
   assert.equal((html.match(/data-membership-status/g) || []).length, 2);
   assert.match(html, /data-feedback-entry="header"/);
   assert.match(html, /data-feedback-entry="footer"/);
   assert.match(html, /data-astra-action="click-member"/);
   assert.match(js, /toolId: 'toolbox-membership'/);
-  assert.ok(html.indexOf('id="workbench"') < html.indexOf('id="value"'));
+  assert.ok(html.indexOf('id="value"') < html.indexOf('id="workbench"'));
   assert.ok(html.indexOf('id="about"') < html.indexOf('id="membership"'));
   assert.match(html, /鲁ICP备2026013311号-2/);
 });

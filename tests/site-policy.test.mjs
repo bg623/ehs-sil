@@ -35,8 +35,8 @@ assert.match(siteShellJs, /dropdown-open/);
 assert.match(siteShellJs, /event\.key !== 'Escape'/);
 assert.match(home, /js\/site-shell\.js/);
 assert.match(home, /JSA专业教练（试用版）/);
-assert.match(home, /从遇到问题，到完成专业成果/);
-assert.match(home, /试用版 · 持续优化/);
+assert.match(home, /让好方法，变成做得出来的工作/);
+assert.match(home, /生成可编辑初稿，检查遗漏与控制措施/);
 assert.match(home, /风险分析工具/);
 assert.match(home, /事故学习工具/);
 assert.match(home, /外企管理实践/);
@@ -107,7 +107,7 @@ console.log(
   JSON.stringify({
     status: "PASS",
     hero_actions: 2,
-    jsa_location: "compact-home-and-risk-analysis",
+    jsa_location: "task-router-and-risk-analysis",
     candidate_rules: rules.rules.length,
     professionally_approved_rules: 11,
     changes_requested_rules: 0,
