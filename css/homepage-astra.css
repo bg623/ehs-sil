@@ -29,22 +29,6 @@
 .home-astra .logo a,
 .home-astra .footer-logo { align-items: center; }
 
-.brand-emblem {
-    width: 28px;
-    height: 28px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    margin-right: 0.55rem;
-    padding: 4px;
-    border-radius: 6px;
-    background: var(--color-primary);
-}
-
-.brand-emblem i { display: block; border: 1px solid rgba(255, 255, 255, 0.72); }
-.brand-emblem i:nth-child(2),
-.brand-emblem i:nth-child(3) { border-color: var(--color-accent); background: rgba(215, 162, 58, 0.18); }
-
 .home-astra .hero-focused {
     min-height: min(920px, 100svh);
     padding: 9.5rem 0 6rem;
@@ -645,4 +629,198 @@
     .task-tool-list a:hover,
     .task-tool-list a:focus-visible,
     .home-astra .workbench-card:hover { transform: none; }
+}
+
+/* October refinement: original identity, shorter path, and usable follow channels.
+   All changes remain scoped to this homepage; no shared tool UI is overridden. */
+.home-astra { --home-brand-blue: #2078b8; }
+.home-astra :where(a, button, summary):focus-visible { outline: 3px solid #358cca; outline-offset: 4px; }
+.home-astra :where(section[id], article[id], a[id]) { scroll-margin-top: 100px; }
+.home-astra .nav-bar { height: 80px; gap: 1rem; }
+.home-astra .logo { flex-shrink: 0; }
+.home-astra .logo a { align-items: center; gap: 0.7rem; }
+.home-brand-logo { width: 66px; height: 62px; object-fit: contain; border-radius: 5px; background: #fff; }
+.home-brand-name { display: grid; gap: 0.1rem; line-height: 1.35; }
+.home-brand-name strong { color: #163b48; font-size: 1.25rem; letter-spacing: 0.035em; }
+.home-brand-name small { color: #526662; font-size: 0.64rem; font-weight: 500; }
+.home-astra .hero-focused { min-height: 0; padding: 8.8rem 0 4rem; }
+.hero-astra-layout { gap: clamp(2rem, 5vw, 5rem); }
+.home-astra .hero-focused .hero-title { font-size: clamp(3rem, 5.5vw, 5.2rem); line-height: 1.15; letter-spacing: -0.045em; }
+.home-astra .hero-badge { margin-bottom: 1.3rem; }
+.home-astra .hero-focused .hero-subtitle { line-height: 1.9; font-size: 1.04rem; }
+.home-astra .hero-kicker { font-size: 0.66rem; letter-spacing: 0.1em; }
+.home-astra .hero-cta { margin-bottom: 1.8rem; }
+.home-astra .hero-assurance { color: #bed7cc; }
+.home-astra .console-question { padding: 1.2rem; }
+.home-astra .console-question strong { font-size: 1.4rem; }
+.home-astra .console-route { display: none; }
+.home-astra .console-list { margin-top: 0.8rem; }
+.home-astra .console-footer { color: #b5d0c7; letter-spacing: 0.04em; }
+.home-astra .section-title { font-size: clamp(1.8rem, 3.1vw, 2.7rem); line-height: 1.35; letter-spacing: -0.025em; }
+.home-astra .section-desc { line-height: 1.85; }
+.home-astra .section-label { letter-spacing: 0.06em; }
+.home-astra .workbench-section,
+.home-astra .content-section,
+.home-astra .about-section,
+.home-astra .membership-section { padding-block: clamp(3rem, 5.5vw, 5rem); }
+.home-astra .value-section { padding: 2.6rem 0; border-bottom: 1px solid var(--color-border); }
+.home-astra .value-section > .container { display: grid; grid-template-columns: 0.85fr 2fr; align-items: center; gap: 2.5rem; }
+.value-intro h2 { font-size: 1.35rem; line-height: 1.55; margin-bottom: 0.6rem; color: var(--color-primary-hover); }
+.value-intro p { color: var(--color-text-secondary); font-size: 0.84rem; line-height: 1.8; }
+.value-intro .section-label { margin-bottom: 0.5rem; }
+.home-astra .site-value-grid { border: 0; }
+.home-astra .site-value-card { min-height: 0; padding: 0.6rem 1.2rem; }
+.home-astra .site-value-index { font-size: 0.68rem; }
+.home-astra .site-value-card h3 { margin: 0.6rem 0; font-size: 1.08rem; }
+.home-astra .site-value-card p { font-size: 0.84rem; line-height: 1.75; }
+.home-astra .task-panel { min-height: 310px; gap: 2rem; }
+.home-astra .task-panel-copy h3 { line-height: 1.4; font-size: clamp(1.4rem, 2.2vw, 1.95rem); }
+.home-astra .task-tool-list small { color: #526662; font-size: 0.8rem; }
+.home-astra .method-map-heading { margin-top: 2.6rem; }
+.home-astra .workbench-card { min-height: 0; padding: 1.6rem; }
+.home-astra .workbench-card h3 { font-size: 1.25rem; }
+.home-astra .workbench-card p,
+.home-astra .workbench-card li { font-size: 0.85rem; }
+.home-astra .workbench-card li { line-height: 1.7; }
+.home-astra .workbench-card .workbench-actions { gap: 0.65rem; }
+.resource-directory { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.resource-directory a { position: relative; min-width: 0; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 12px; background: var(--home-paper); transition: border-color 180ms ease, background 180ms ease; }
+.resource-directory a:hover { border-color: var(--home-brand-blue); background: #f1f7fa; }
+.resource-directory span { display: block; margin-bottom: 1.6rem; font-size: 0.7rem; font-weight: 700; color: #4b6b79; }
+.resource-directory strong { display: block; font-size: 1.05rem; color: var(--color-primary-hover); }
+.resource-directory small { display: block; margin-top: 0.5rem; color: var(--color-text-secondary); font-size: 0.8rem; line-height: 1.65; }
+.resource-directory b { position: absolute; right: 1.5rem; top: 1.3rem; color: var(--home-brand-blue); }
+.editorial-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 2.6rem 0 1.2rem; }
+.editorial-heading h3 { margin: 0; font-size: 1.2rem; color: var(--color-primary-hover); }
+.home-astra .content-card { min-height: 0; padding: 1.5rem; }
+.home-astra .content-card:first-child { grid-column: auto; }
+.home-astra .content-card:first-child .content-title,
+.home-astra .content-card .content-title { font-size: 1.15rem; line-height: 1.65; }
+.home-astra .content-excerpt { font-size: 0.85rem; line-height: 1.8; }
+.reading-archive { margin-top: 1.4rem; border-block: 1px solid var(--color-border); }
+.reading-archive summary { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; cursor: pointer; color: var(--color-primary-hover); font-size: 0.86rem; font-weight: 700; }
+.reading-archive summary span { color: var(--color-text-secondary); font-size: 0.76rem; font-weight: 400; }
+.reading-archive[open] summary span { display: none; }
+.reading-archive ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; padding-bottom: 1rem; }
+.reading-archive li a { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 0.83rem; line-height: 1.65; }
+.reading-archive li a:hover { color: var(--home-brand-blue); }
+.home-astra .about-layout { gap: 3rem; grid-template-columns: 1.15fr 0.85fr; }
+.home-astra .about-creds { margin-block: 1rem; }
+.home-astra .about-story { font-size: 0.9rem; line-height: 1.9; }
+.home-astra .trust-panel { min-height: 320px; }
+.home-astra .placeholder-initials { font-size: 2.5rem; }
+.home-astra .membership-layout { gap: 3rem; }
+.home-astra .membership-card { padding: 2rem; }
+.home-astra .membership-context .section-title { font-size: clamp(1.8rem, 3.1vw, 2.7rem); }
+.home-astra .site-footer { padding: 0 0 1.5rem; background: #082b26; }
+.follow-section { display: grid; grid-template-columns: minmax(0, 1fr) 230px; align-items: center; gap: 3rem; padding-block: 3rem; border-bottom: 1px solid #36564f; }
+.follow-copy > .section-label { color: #d7bb77; }
+.follow-copy h2 { color: #f5faf7; font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.4; }
+.follow-copy > p { margin: 0.75rem 0 1.4rem; color: #c5d8d0; font-size: 0.9rem; }
+.follow-channels { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 0.7rem; }
+.social-channel { padding: 1rem; border: 1px solid #46685e; border-radius: 10px; background: #123830; color: #f4faf6; }
+a.social-channel, .social-help summary { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 0.75rem; text-align: left; }
+.social-help summary { cursor: pointer; list-style: none; }
+.social-help summary::-webkit-details-marker { display: none; }
+.social-help[open] summary > b { transform: rotate(45deg); }
+.social-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 8px; background: #e6eee7; color: #16443a; font-weight: 700; }
+.social-channel strong { display: block; font-size: 0.9rem; }
+.social-channel small { display: block; margin-top: 0.15rem; color: #bfd7cc; font-size: 0.72rem; }
+.social-channel b { color: #e4c275; }
+a.social-channel:hover, .social-help:hover { border-color: #98bcb0; }
+.social-help p { margin: 1rem 0; color: #d3e4dc; font-size: 0.8rem; line-height: 1.8; }
+.social-help button { min-height: 44px; width: 100%; padding: 0.55rem; background: #e4eee8; border: 0; border-radius: 6px; font: inherit; font-size: 0.8rem; font-weight: 700; color: #163f34; cursor: pointer; }
+.follow-copy .social-copy-status { margin: 0.5rem 0 0; min-height: 1.4em; font-size: 0.8rem; color: #e5cc91; }
+.follow-miniapp { display: grid; justify-items: center; text-align: center; gap: 1rem; }
+.follow-miniapp img { max-width: 100%; border: 8px solid #fff; border-radius: 10px; background: #fff; }
+.follow-miniapp strong { display: block; color: #f4faf7; font-size: 0.95rem; }
+.follow-miniapp p { margin-top: 0.4rem; color: #bdd2c8; font-size: 0.8rem; line-height: 1.75; }
+.home-astra .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; padding-top: 2.8rem; gap: 2rem; }
+.home-astra .footer-logo { display: flex; gap: 1rem; color: #f5faf7; font-size: 1.4rem; }
+.footer-brand-logo { width: 88px; height: auto; background: #fff; border-radius: 6px; }
+.home-astra .footer-logo small { display: block; margin-top: 0.4rem; color: #bed3c8; font-size: 0.74rem; font-weight: 400; }
+.home-astra .footer-desc { margin-top: 1rem; color: #bed3c8; }
+.home-astra .footer-links h3 { margin-bottom: 0.9rem; color: #f5faf7; font-size: 0.88rem; }
+.home-astra .footer-links a { display: inline-block; padding-block: 0.2rem; color: #bed3c8; }
+.home-astra .footer-links a:hover { color: #f0ce87; }
+.home-astra .footer-bottom { color: #b5cabe; line-height: 1.8; }
+.home-astra .footer-bottom a { color: #b5cabe; }
+@media (max-width: 1180px) and (min-width: 921px) {
+    .home-brand-name small { display: none; }
+    .home-brand-logo { width: 55px; height: 52px; }
+    .home-brand-name strong { font-size: 1.05rem; }
+    .home-astra .nav-links { gap: 0; }
+    .home-astra .nav-link { padding-inline: 0.45rem; }
+}
+@media (max-width: 980px) {
+    .hero-astra-layout { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .home-astra .hero-focused .hero-title { font-size: 3.4rem; }
+    .home-astra .hero-assurance { display: none; }
+    .home-astra .value-section > .container { grid-template-columns: 1fr; gap: 1rem; }
+    .home-astra .site-value-grid { grid-template-columns: repeat(3, 1fr); }
+    .home-astra .site-value-card { border-bottom: 0; border-right: 1px solid var(--color-border); }
+    .resource-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-astra .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .home-astra .trust-panel { min-height: 0; }
+    .follow-section { gap: 1.5rem; grid-template-columns: minmax(0, 1fr) 180px; }
+}
+@media (max-width: 920px) {
+    .home-astra .nav-toggle { flex-shrink: 0; color: var(--color-primary); border: 1px solid var(--color-border); }
+    .home-astra .nav-toggle span { flex-shrink: 0; margin: 0; }
+    .home-astra .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .home-astra .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .home-astra .nav-links { top: 80px; max-height: calc(100dvh - 80px); }
+}
+@media (max-width: 768px) {
+    .home-astra .hero-focused { padding: 7.7rem 0 2.5rem; }
+    .hero-astra-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .home-astra .hero-cta .btn { width: auto; flex: 1; padding: 0.8rem; font-size: 0.9rem; }
+    .home-astra .hero-focused .hero-title { font-size: clamp(2.8rem, 12vw, 4.2rem); }
+    .home-astra .hero-cta { margin-bottom: 0; flex-wrap: wrap; }
+    .home-astra .hero-console { width: 100%; padding: 0.7rem; }
+    .home-astra .console-question, .home-astra .console-footer { display: none; }
+    .home-astra .console-topbar { padding: 0.4rem 0.5rem; }
+    .home-astra .console-list { margin-top: 0.5rem; }
+    .home-astra .console-list a { min-height: 58px; }
+    .home-astra .console-list small { font-size: 0.72rem; }
+    .home-astra .task-panel { min-height: 0; }
+    .home-astra .task-tool-list a { padding: 0.9rem; }
+    .home-astra .task-tool-list em { font-size: 0.76rem; }
+    .home-astra .content-grid { grid-template-columns: 1fr; }
+    .home-astra .content-card:first-child { grid-column: auto; }
+    .reading-archive ul { grid-template-columns: 1fr; }
+    .home-astra .membership-layout { gap: 2rem; }
+    .follow-section { grid-template-columns: 1fr; }
+    .follow-miniapp { display: flex; justify-content: center; gap: 1.5rem; padding-top: 1rem; }
+    .follow-miniapp img { width: 120px; height: 120px; }
+    .home-astra .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .home-astra .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+    .home-astra .nav-bar { height: 76px; }
+    .home-astra .nav-links { top: 76px; max-height: calc(100dvh - 76px); }
+    .home-brand-logo { width: 60px; height: 56px; }
+    .home-brand-name strong { font-size: 1.1rem; }
+    .home-brand-name small { font-size: 0.61rem; }
+    .home-astra .site-value-grid { grid-template-columns: 1fr; }
+    .home-astra .site-value-card { display: grid; grid-template-columns: 90px 1fr; gap: 0 0.8rem; padding: 0.85rem 0; border-right: 0; border-bottom: 1px solid var(--color-border); }
+    .home-astra .site-value-card h3 { grid-column: 1; grid-row: 2; margin: 0.25rem 0; }
+    .home-astra .site-value-card p { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+    .home-astra .task-panel-copy p { font-size: 0.85rem; }
+    .resource-directory { gap: 0.6rem; }
+    .resource-directory a { padding: 1rem; }
+    .resource-directory strong { font-size: 0.92rem; }
+    .resource-directory span { font-size: 0.65rem; }
+    .resource-directory small { font-size: 0.75rem; }
+    .resource-directory b { right: 0.7rem; top: 0.7rem; }
+    .reading-archive summary { flex-wrap: wrap; gap: 0.35rem; }
+    .home-astra .membership-card { padding: 1.4rem; }
+    .home-astra .placeholder-initials { font-size: 2rem; }
+    .follow-channels { grid-template-columns: 1fr; }
+    .home-astra .footer-grid { grid-template-columns: 1fr 1fr; }
+    .home-astra .footer-links a { padding-block: 0.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .resource-directory a { transition: none; }
+    .home-astra { scroll-behavior: auto; }
 }

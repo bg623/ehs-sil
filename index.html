@@ -18,9 +18,9 @@
     <meta name="twitter:description" content="遇到EHS问题，找到正确方法、专业工具和可落地资源。">
     <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-platform.png">
     <link rel="stylesheet" href="css/style.css?v=2.1.0">
-    <link rel="stylesheet" href="css/homepage-astra.css?v=1.0.0">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a4b5c'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='bold'>ES</text></svg>">
-    <link rel="apple-touch-icon" href="assets/ehs-sil-logo.png">
+    <link rel="stylesheet" href="css/homepage-astra.css?v=20261005">
+    <link rel="icon" type="image/jpeg" href="assets/ehs-sil-logo-original.jpg">
+    <link rel="apple-touch-icon" href="assets/ehs-sil-logo-original.jpg">
 
     <!-- Baidu Analytics - 注册后取消注释并替换 YOUR_ID -->
     <script>
@@ -41,9 +41,9 @@
         <div class="container">
             <nav class="nav-bar">
                 <div class="logo">
-                    <a href="#hero">
-                        <span class="brand-emblem" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span>
-                        <span class="logo-tag">· 外企EHS工具与成长工作台</span>
+                    <a href="#hero" aria-label="EHS-SIL 首页">
+                        <img class="home-brand-logo" src="assets/ehs-sil-logo-original.jpg" alt="EHS · Share Inspire Learn" width="1064" height="1000" fetchpriority="high">
+                        <span class="home-brand-name"><strong>EHS-SIL</strong><small>外企EHS工具与成长工作台</small></span>
                     </a>
                 </div>
                 <button class="nav-toggle" id="navToggle" aria-label="打开网站导航" aria-expanded="false" aria-controls="navLinks">
@@ -100,9 +100,9 @@
             <div class="container hero-astra-layout">
                 <div class="hero-content">
                     <span class="hero-badge"><i aria-hidden="true"></i>EHS-SIL · 外企EHS工具与成长工作台</span>
-                    <p class="hero-kicker">PROFESSIONAL WORKBENCH · 专业工作入口</p>
+                    <p class="hero-kicker">SHARE · INSPIRE · LEARN / 分享 · 启发 · 学习</p>
                     <h1 class="hero-title">EHS人的<br>专业工具台</h1>
-                    <p class="hero-subtitle">把复杂的EHS任务，转化为清晰的方法、专业的工具和可继续落地的成果。</p>
+                    <p class="hero-subtitle">为一线 EHS 从业者连接方法、工具与实践。<br>从眼前的工作问题出发，形成可继续完善的专业成果。</p>
                     <div class="hero-cta">
                         <a href="#workbench" class="btn btn-primary btn-lg">浏览专业工具</a>
                         <a href="#value" class="btn btn-secondary btn-lg">了解EHS-SIL</a>
@@ -118,24 +118,35 @@
                 <aside class="hero-console" aria-label="EHS-SIL工作路径预览">
                     <div class="console-topbar">
                         <span class="console-title">WORKFLOW / 工作路径</span>
-                        <span class="console-status"><i aria-hidden="true"></i>READY</span>
+                        <span class="console-status"><i aria-hidden="true"></i>从这里开始</span>
                     </div>
                     <div class="console-question">
-                        <span class="console-eyebrow">START FROM THE TASK</span>
+                        <span class="console-eyebrow">选择任务 / CHOOSE YOUR TASK</span>
                         <strong>从当前任务，直达专业工具</strong>
-                        <p>先确定问题，再连接方法、工具和可继续落地的成果。</p>
+                        <p>不必先记住工具名，先选你正在做的事。</p>
                     </div>
                     <div class="console-route" aria-hidden="true">
                         <span>问题</span><i></i><span>方法</span><i></i><span>工具</span><i></i><span>成果</span>
                     </div>
                     <nav class="console-list" aria-label="快速前往工作模块">
-                        <a href="#risk-tools"><span class="console-index">01</span><span><strong>作业与风险</strong><small>JSA · FMEA · What-If</small></span><i aria-hidden="true">↗</i></a>
-                        <a href="#incident-tools"><span class="console-index">02</span><span><strong>事故与学习</strong><small>5Why · RCA · LFI</small></span><i aria-hidden="true">↗</i></a>
-                        <a href="tools/regulations.html"><span class="console-index">03</span><span><strong>法规与合规</strong><small>官方来源 · 适用要求</small></span><i aria-hidden="true">↗</i></a>
-                        <a href="#content"><span class="console-index">04</span><span><strong>资源与成长</strong><small>工具箱 · 培训库 · 专业文章</small></span><i aria-hidden="true">↗</i></a>
+                        <a href="#workbench" data-open-task="risk"><span class="console-index">01</span><span><strong>识别风险，完善控制措施</strong><small>作业分析 · 设备失效 · 异常场景</small></span><i aria-hidden="true">↗</i></a>
+                        <a href="#workbench" data-open-task="learning"><span class="console-index">02</span><span><strong>调查事件，让经验转化为行动</strong><small>事实证据 · 原因分析 · 组织学习</small></span><i aria-hidden="true">↗</i></a>
+                        <a href="#practice-tools"><span class="console-index">03</span><span><strong>把管理方法带到现场</strong><small>变更管理 · 安全对话 · 能力建设</small></span><i aria-hidden="true">↗</i></a>
+                        <a href="#content"><span class="console-index">04</span><span><strong>查资料，持续提升专业能力</strong><small>法规导航 · 模板与案例 · 培训资源</small></span><i aria-hidden="true">↗</i></a>
                     </nav>
-                    <div class="console-footer"><span>Industrial precision</span><span>Human judgment</span></div>
+                    <div class="console-footer"><span>工具辅助思考</span><span>专业判断由人完成</span></div>
                 </aside>
+            </div>
+        </section>
+
+        <section class="value-section" id="value" aria-labelledby="value-title">
+            <div class="container">
+                <div class="value-intro"><span class="section-label">认识 EHS-SIL</span><h2 id="value-title">让好方法，变成做得出来的工作</h2><p>一个面向个人 EHS 从业者的工作台：在线工具辅助思考，专业资源支持实践。</p></div>
+                <div class="site-value-grid">
+                    <article class="site-value-card"><span class="site-value-index">01 / 方法</span><h3>找到方向</h3><p>按工作场景选方法，先明确问题与适用边界。</p></article>
+                    <article class="site-value-card"><span class="site-value-index">02 / 工具</span><h3>形成底稿</h3><p>梳理风险、证据与行动，再结合现场完善结果。</p></article>
+                    <article class="site-value-card"><span class="site-value-index">03 / 成长</span><h3>带回工作</h3><p>连接模板、案例与培训，让一次任务沉淀为能力。</p></article>
+                </div>
             </div>
         </section>
 
@@ -187,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="method-map-heading"><span>METHOD MAP · 方法地图</span><h3>按专业任务理解工具边界</h3></div>
+                <div class="method-map-heading"><span>METHOD MAP · 方法地图</span><h3>明确边界，选对方法</h3></div>
                 <div class="workbench-grid">
                     <article class="workbench-card risk-tools-card" id="risk-tools">
                         <span class="tool-status">RISK ANALYSIS · 风险分析</span>
@@ -195,7 +206,7 @@
                         <h3>风险分析工具</h3>
                         <p>识别作业风险、失效模式与异常场景，再按控制层级改进措施。</p>
                         <ul><li><strong>JSA 工作安全分析</strong>：作业步骤、风险与控制措施</li><li><strong>FMEA 失效模式分析</strong>：设备与工艺失效</li><li><strong>What-If 假设分析</strong>：结构化异常场景</li></ul>
-                        <div class="workbench-actions"><a href="tools/jsa-tool.html" class="workbench-link" data-home-action="start-jsa">开始JSA试用 →</a><a href="tools/risk-analysis.html#risk-assessment" class="workbench-secondary-link">查看全部方法</a></div>
+                        <div class="workbench-actions"><a href="tools/what-if-tool.html" class="workbench-link">What-If 假设分析 →</a><a href="tools/risk-analysis.html#risk-assessment" class="workbench-secondary-link">查看全部风险分析方法</a></div>
                     </article>
                     <article class="workbench-card incident-tools-card" id="incident-tools">
                         <span class="tool-status">LEARNING · 事故学习</span>
@@ -228,66 +239,17 @@
             </div>
         </section>
 
-        <section class="value-section" id="value">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">EHS-SIL如何帮助你</span>
-                    <h2 class="section-title">从遇到问题，到完成专业成果</h2>
-                    <p class="section-desc">这里不只是资料入口，而是一条连接方法、工具、实践与成长的工作路径。</p>
-                </div>
-                <div class="site-value-grid">
-                    <article class="site-value-card">
-                        <span class="site-value-index">01</span>
-                        <h3>找到正确方法</h3>
-                        <p>根据风险分析、事故调查、管理实践等真实工作场景，选择适合的方法，而不是盲目套模板。</p>
-                    </article>
-                    <article class="site-value-card">
-                        <span class="site-value-index">02</span>
-                        <h3>使用专业工具</h3>
-                        <p>把思考过程结构化，通过在线工具检查遗漏、梳理逻辑，并形成可继续完善的工作结果。</p>
-                    </article>
-                    <article class="site-value-card">
-                        <span class="site-value-index">03</span>
-                        <h3>连接资源与成长</h3>
-                        <p>从法规导航、外企案例、模板和培训内容中继续学习，把一次工作沉淀为长期专业能力。</p>
-                    </article>
-                </div>
-                <div class="site-workflow" aria-label="EHS-SIL使用路径">
-                    <span>遇到问题</span><i>→</i><span>选择方法</span><i>→</i><span>使用工具</span><i>→</i><span>完成成果</span><i>→</i><span>持续提升</span>
-                </div>
-                <aside class="jsa-compact-callout">
-                    <div><span class="jsa-version">V0.2试用版 · 持续优化</span><h3>JSA专业教练</h3><p>详细描述作业任务，自动生成可编辑的步骤、风险与控制措施建议；完成检查后可下载Excel，结果仍需结合现场人工确认。</p></div>
-                    <a href="tools/jsa-tool.html" class="btn btn-secondary" data-home-action="start-jsa">体验JSA专业教练 →</a>
-                </aside>
-            </div>
-        </section>
-
         <section class="content-section" id="content">
             <div class="container">
-                <div class="section-header">
-                    <span class="section-label">专业内容与职业成长</span>
-                    <h2 class="section-title">理解方法，再把工具用对</h2>
-                    <p class="section-desc">从风险分析和事故学习到法规变化与职业成长，用内容建立认知，再回到工具完成实际工作。</p>
-                </div>
+                <div class="section-header"><span class="section-label">专业资源与成长</span><h2 class="section-title">做完一次任务，继续向前一步</h2><p class="section-desc">找依据、学方法、准备模板和培训材料。资源索引保留已发布与规划内容，下载以知识星球正式发布为准。</p></div>
+                <nav class="resource-directory" aria-label="专业资源入口">
+                    <a href="tools/index.html"><span>01 / 资源索引</span><strong>工具与培训资料</strong><small>浏览模板、案例与内容目录</small><b aria-hidden="true">↗</b></a>
+                    <a href="tools/regulations.html" id="regulations"><span>02 / 官方来源</span><strong>法规与标准导航</strong><small>查找依据，再判断适用要求</small><b aria-hidden="true">↗</b></a>
+                    <a href="tools/ehs-glossary.html"><span>03 / 专业语言</span><strong>中英文 EHS 术语</strong><small>专业释义、缩写与典型场景</small><b aria-hidden="true">↗</b></a>
+                    <a href="products/training.html"><span>04 / 能力建设</span><strong>外企 EHS 培训库</strong><small>了解课程与培训资源</small><b aria-hidden="true">↗</b></a>
+                </nav>
+                <div class="editorial-heading"><h3>精选阅读 · 从理解到实践</h3><a href="articles/" class="editorial-all-link">全部专业文章 →</a></div>
                 <div class="content-grid">
-                    <article class="content-card">
-                        <span class="content-tag">专业资源 · EHS英语</span>
-                        <h3 class="content-title">外企EHS专业术语库</h3>
-                        <p class="content-excerpt">查询445个中英文术语、196个缩写、专业释义和典型应用场景，并免费下载完整Excel。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">免费查询</span>
-                            <a href="tools/ehs-glossary.html" class="content-link">开始查询 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">法规解读 · 环境合规</span>
-                        <h3 class="content-title">生态环境法典施行：10部环保法律废止后EHS文件怎么改</h3>
-                        <p class="content-excerpt">不必重写全部体系文件；用“改引用、做映射、查变化、补缺口”完成法规清单和高风险业务换版。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">最新法规文章</span>
-                            <a href="articles/ecological-environment-code-ehs-document-update-guide.html" class="content-link">阅读全文 →</a>
-                        </div>
-                    </article>
                     <article class="content-card">
                         <span class="content-tag">EHS执行工具</span>
                         <h3 class="content-title">安全培训矩阵怎么做？岗位、课程与能力自动匹配</h3>
@@ -315,130 +277,24 @@
                             <a href="topics/incident-investigation-learning.html" class="content-link">进入专题 →</a>
                         </div>
                     </article>
-                    <article class="content-card">
-                        <span class="content-tag">事故调查</span>
-                        <h3 class="content-title">出了事故除了“罚款＋通报”，还能做什么？聊聊外企的 LFI</h3>
-                        <p class="content-excerpt">从公正文化、RCA、Safety Alert到横向展开，系统拆解如何把事故代价转化为组织学习和预防能力。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">事故学习</span>
-                            <a href="articles/lfi-learning-from-incident.html" class="content-link">阅读全文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">安全管理</span>
-                        <h3 class="content-title">一个崴脚惊动集团总部：外企为何总在'小题大做'？</h3>
-                        <p class="content-excerpt">一场寻常的崴脚事故，在外企内部引发了一场管理链条的连锁反应。从冰山理论到蝴蝶效应，揭示外企'零容忍'文化背后的深层逻辑。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">高阅读</span>
-                            <a href="https://mp.weixin.qq.com/s/ZbzkeYXNHtfcCyVSlRLHYA" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    
-                    <article class="content-card">
-                        <span class="content-tag">技术实操</span>
-                        <h3 class="content-title">PSSR启动前安全检查：A/B/C/D类项目的定义及实操指南</h3>
-                        <p class="content-excerpt">用大白话+真实场景彻底讲透PSSR的ABCD评级。搞错评级、漏签关键项？轻则延误工期，重则引发事故！</p>
-                        <div class="content-meta">
-                            <span class="content-reads">技术干货</span>
-                            <a href="https://mp.weixin.qq.com/s/0S4HXhPRRJvumvKDNnf5eg" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">事故调查</span>
-                        <h3 class="content-title">全球范围内事故调查与分析的经典方法论：Tripod Beta 方法全解析</h3>
-                        <p class="content-excerpt">起源于壳牌委托开发的经典方法论。不仅帮你快速锁定事故真相，更能从管理漏洞和人为因素入手预防事故。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">方法论</span>
-                            <a href="https://mp.weixin.qq.com/s/kagRiVUcYdDLnJUAhluTwA" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">人因安全</span>
-                        <h3 class="content-title">「SafeStart®」工具——匆忙、沮丧、疲劳、自负：外企EHS中的隐形杀手防御术</h3>
-                        <p class="content-excerpt">80%安全事故的根源藏在你的状态里。SafeStart®四维状态模型（RFAC）正在全球500强掀起安全管理革命。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">方法论</span>
-                            <a href="https://mp.weixin.qq.com/s/Uv52gBQsV5kU-lpyrPtVqw" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">安全管理</span>
-                        <h3 class="content-title">防呆防错Poka Yoke：EHS管理中零事故的神兵利器</h3>
-                        <p class="content-excerpt">Poka Yoke（防呆防错）是一种通过设计预防错误的方法论。如何把它应用到EHS管理中，实现零事故目标？</p>
-                        <div class="content-meta">
-                            <span class="content-reads">方法论</span>
-                            <a href="https://mp.weixin.qq.com/s/AsfUiCsZq00Ckq3qd6F0pQ" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">职业发展</span>
-                        <h3 class="content-title">外企化工EHS能力矩阵（EHS Competency Matrix）</h3>
-                        <p class="content-excerpt">安全不是偶然，而是每一个具备能力的人员共同创造的结果。外企如何用能力矩阵确保从CEO到一线操作员的EHS胜任力？</p>
-                        <div class="content-meta">
-                            <span class="content-reads">体系</span>
-                            <a href="https://mp.weixin.qq.com/s/r7Ifx9Nq6lFbPQYHXVNm9g" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">安全文化</span>
-                        <h3 class="content-title">Guidance on Learning From Incidents - 从事故、事件学习指南</h3>
-                        <p class="content-excerpt">能源研究所（EI）发布的事故调查中人与组织因素指南。如何系统性地从事故中学习，避免同类事件重演。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">方法论</span>
-                            <a href="https://mp.weixin.qq.com/s/f8kYUwtP9y2_qbu750E8nw" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">安全管理</span>
-                        <h3 class="content-title">EHS从业者必须需要掌握的高效工具？</h3>
-                        <p class="content-excerpt">一套强大的EHS工具库，能将模糊的安全理念转化为可执行、可追踪、可量化的具体动作。八大类核心工具盘点。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">工具</span>
-                            <a href="https://mp.weixin.qq.com/s/WPYFM2a9Al2kQ_iUMeYegg" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">职业生涯</span>
-                        <h3 class="content-title">外企化工如何量化评估安全文化成熟度</h3>
-                        <p class="content-excerpt">当国内仍聚焦于事故率等滞后指标时，国际化工巨头早已将安全文化从抽象概念转变为可量化、可追踪的管理模型。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">深度</span>
-                            <a href="https://mp.weixin.qq.com/s/HuIW0aDIrG0-TMRhRtAeGQ" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">技术实操</span>
-                        <h3 class="content-title">【EHS-SIL私藏书单-01】《The Safety Anarchy》：规则越多，事故反而越多？</h3>
-                        <p class="content-excerpt">一本极具颠覆性的著作——安全无政府状态：依靠人的专业知识和创新，减少官僚主义和合规负担。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">书单</span>
-                            <a href="https://mp.weixin.qq.com/s/HG9mVCzD6XazAqnxMWJFNA" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">安全管理</span>
-                        <h3 class="content-title">外企EHS体系的'三根柱子'：管理体系、技术标准与安全文化如何协同发力？</h3>
-                        <p class="content-excerpt">外企安全管理的真正护城河并非某一两个工具，而是管理体系、技术标准与安全文化三样东西的深度协同。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">体系</span>
-                            <a href="https://mp.weixin.qq.com/s/UU_3U1gMikXDOxB3qie_Vg" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
-                    <article class="content-card">
-                        <span class="content-tag">合规</span>
-                        <h3 class="content-title">外企 EHS 中英文对照术语大全（完整版）</h3>
-                        <p class="content-excerpt">基于OSHA、ISO等权威标准整理，覆盖12大核心模块。外企新人、EHS从业者直接收藏，附可下载表格。</p>
-                        <div class="content-meta">
-                            <span class="content-reads">工具</span>
-                            <a href="https://mp.weixin.qq.com/s/H_t5x3RU6FYtpttpTZmgzg" target="_blank" rel="noopener" class="content-link">阅读原文 →</a>
-                        </div>
-                    </article>
                 </div>
-
-                <div class="content-more">
-                    <p>更多方法、案例与实操指南，已整理到专业文章库。</p>
-                    <a href="articles/" class="editorial-all-link">浏览全部专业文章 →</a>
-                </div>
+                <details class="reading-archive"><summary>更多精选文章与公众号内容<span>展开阅读清单</span></summary><ul>
+                        <li><a href="tools/ehs-glossary.html">外企EHS专业术语库<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="articles/ecological-environment-code-ehs-document-update-guide.html">生态环境法典施行：10部环保法律废止后EHS文件怎么改<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="articles/lfi-learning-from-incident.html">出了事故除了“罚款＋通报”，还能做什么？聊聊外企的 LFI<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/ZbzkeYXNHtfcCyVSlRLHYA" target="_blank" rel="noopener noreferrer">一个崴脚惊动集团总部：外企为何总在'小题大做'？<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/0S4HXhPRRJvumvKDNnf5eg" target="_blank" rel="noopener noreferrer">PSSR启动前安全检查：A/B/C/D类项目的定义及实操指南<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/kagRiVUcYdDLnJUAhluTwA" target="_blank" rel="noopener noreferrer">全球范围内事故调查与分析的经典方法论：Tripod Beta 方法全解析<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/Uv52gBQsV5kU-lpyrPtVqw" target="_blank" rel="noopener noreferrer">「SafeStart®」工具——匆忙、沮丧、疲劳、自负：外企EHS中的隐形杀手防御术<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/AsfUiCsZq00Ckq3qd6F0pQ" target="_blank" rel="noopener noreferrer">防呆防错Poka Yoke：EHS管理中零事故的神兵利器<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/r7Ifx9Nq6lFbPQYHXVNm9g" target="_blank" rel="noopener noreferrer">外企化工EHS能力矩阵（EHS Competency Matrix）<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/f8kYUwtP9y2_qbu750E8nw" target="_blank" rel="noopener noreferrer">Guidance on Learning From Incidents - 从事故、事件学习指南<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/WPYFM2a9Al2kQ_iUMeYegg" target="_blank" rel="noopener noreferrer">EHS从业者必须需要掌握的高效工具？<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/HuIW0aDIrG0-TMRhRtAeGQ" target="_blank" rel="noopener noreferrer">外企化工如何量化评估安全文化成熟度<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/HG9mVCzD6XazAqnxMWJFNA" target="_blank" rel="noopener noreferrer">【EHS-SIL私藏书单-01】《The Safety Anarchy》：规则越多，事故反而越多？<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/UU_3U1gMikXDOxB3qie_Vg" target="_blank" rel="noopener noreferrer">外企EHS体系的'三根柱子'：管理体系、技术标准与安全文化如何协同发力？<span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/H_t5x3RU6FYtpttpTZmgzg" target="_blank" rel="noopener noreferrer">外企 EHS 中英文对照术语大全（完整版）<span aria-hidden="true">↗</span></a></li>
+                </ul></details>
             </div>
         </section>
 
@@ -446,7 +302,7 @@
             <div class="container">
                 <div class="about-layout">
                     <div class="about-content">
-                        <span class="section-label">关于创始人</span>
+                        <span class="section-label">关于主理人</span>
                         <h2 class="section-title">John Yu · EHS-SIL 主理人</h2>
                         <ul class="about-creds">
                             <li>13年化工行业EHS管理经验</li>
@@ -455,11 +311,11 @@
                             <li>熟悉ISO 45001/14001体系搭建与审核</li>
                             <li>公众号 EHS-SIL 主理人，持续分享外企EHS方法与实践</li>
                         </ul>
-                        <p class="about-story">做过现场检查，写过事故报告，经历过深夜应急响应，也主导过集团级的安全文化变革。<br><br>创立 EHS-SIL 的初衷很简单——把外企验证过的好方法、好工具，变成每一个EHS从业者都能用得起的专业资源。让经验不被行业壁垒困住，让更多人拥有"外企级"的专业能力。</p>
+                        <p class="about-story">EHS-SIL 的初衷很简单：把现场积累的经验、外企管理方法与实用工具连接起来，让每一位 EHS 从业者少一些重复摸索，多一些有依据的专业判断。</p>
                     </div>
                     <aside class="about-visual" aria-label="EHS-SIL专业原则">
                         <div class="about-placeholder trust-panel">
-                            <span class="trust-kicker">PROFESSIONAL PRINCIPLES</span>
+                            <span class="trust-kicker">专业原则 / PRINCIPLES</span>
                             <strong class="placeholder-initials">专业判断<br>始终由人完成</strong>
                             <ul class="trust-principles">
                                 <li><span>01</span>优先连接可追溯的官方来源</li>
@@ -474,21 +330,6 @@
         </section>
 
         
-        
-        <section class="why-section" id="regulations">
-            <div class="container regulations-layout">
-                <div class="regulations-copy">
-                    <span class="section-label">EHS法规导航</span>
-                    <h2 class="section-title">从官方来源，找到适用要求</h2>
-                    <p class="section-desc">连接中国与国际官方来源，并整理标准解释、EHS关注点和关联工具；不替代企业适用性判断或法律意见。</p>
-                    <a href="tools/regulations.html" class="regulations-action"><span>进入法规与标准导航</span><i aria-hidden="true">→</i></a>
-                </div>
-                <div class="regulations-sources" aria-label="法规导航示例">
-                    <div><span class="source-index">01 · CHINA</span><strong>中国法规与标准</strong><p>安全生产法 · GB 30871-2022 · GB/T 45001</p></div>
-                    <div><span class="source-index">02 · GLOBAL</span><strong>国际官方来源</strong><p>ISO 45001 · OSHA 1910 · IEC 61511</p></div>
-                </div>
-            </div>
-        </section>
 
         <section class="membership-section" id="membership">
             <div class="container membership-layout">
@@ -512,37 +353,13 @@
                     <ul>
                         <li>会员范围内的网站专业工具</li>
                         <li>知识星球正式发布的工具与模板</li>
-                        <li>脱敏案例、培训材料和持续更新</li>
+                        <li>案例、培训材料和持续更新</li>
                     </ul>
                     <div class="membership-path" aria-label="会员网站权益使用路径"><span>加入工具箱</span><i>→</i><span>获取激活码</span><i>→</i><span>激活网站权益</span></div>
                     <a href="products/toolbox.html" class="btn btn-primary btn-block" data-astra-action="click-member">查看工具箱会员权益</a>
                     <a href="dashboard/register.html" class="membership-login" data-membership-status>正在确认当前浏览器权益…</a>
                     <small>按年加入；原29.9元历史用户继续履约至原到期日。</small>
                 </aside>
-            </div>
-        </section>
-
-    
-        <section class="why-section miniapp-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">随身入口 · 微信小程序</span>
-                    <h2 class="section-title">EHS工具箱</h2>
-                    <p class="section-desc">在手机上随时查阅EHS工具与资源，作为网站工作台的辅助入口。</p>
-                </div>
-                <div class="miniapp-grid">
-                    <div class="miniapp-copy">
-                        <ol class="miniapp-steps">
-                            <li><span>01</span><p>打开微信，进入“发现 → 小程序”</p></li>
-                            <li><span>02</span><p>搜索 <strong>EHS工具箱</strong></p></li>
-                            <li><span>03</span><p>点击打开，即可查阅</p></li>
-                        </ol>
-                        <p class="miniapp-id">小程序ID · wx5429944f0af1ccb5</p>
-                    </div>
-                    <div class="miniapp-qr">
-                        <img src="assets/miniapp-qr.jpg" alt="EHS工具箱小程序码" width="180" height="180" loading="lazy">
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -561,39 +378,29 @@
             </div>
         </section>
 
-    <section class="cta-section">
-            <div class="container">
-                <h2 class="cta-title">遇到EHS问题，从正确的方法开始</h2>
-                <p class="cta-desc">进入EHS-SIL专业工具台，找到与你当前任务匹配的工具、内容和资源。</p>
-                <a href="#workbench" class="btn btn-primary btn-lg">浏览专业工具 →</a>
-            </div>
-        </section>
     </main>
 
     <footer class="site-footer" id="footer">
         <div class="container">
+            <section class="follow-section" id="follow" aria-labelledby="follow-title">
+                <div class="follow-copy"><span class="section-label">保持连接 / STAY CONNECTED</span><h2 id="follow-title">工作之外，继续分享与学习</h2><p>关注 EHS-SIL，获取方法、案例与工作灵感。</p>
+                    <div class="follow-channels">
+                        <a class="social-channel" href="https://mp.weixin.qq.com/s/ZbzkeYXNHtfcCyVSlRLHYA" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true">文</span><span><strong>微信公众号</strong><small>读文章 · 从作者名关注</small></span><b aria-hidden="true">↗</b></a>
+                        <details class="social-channel social-help"><summary><span class="social-icon" aria-hidden="true">抖</span><span><strong>抖音</strong><small>查看关注方式</small></span><b aria-hidden="true">+</b></summary><p>在抖音内搜索“EHS-SIL”。账号主页直达链接待补充，请核对主理人信息。</p><button type="button" data-copy-account="EHS-SIL" data-copy-platform="抖音">复制搜索词 EHS-SIL</button></details>
+                        <details class="social-channel social-help"><summary><span class="social-icon" aria-hidden="true">红</span><span><strong>小红书</strong><small>查看关注方式</small></span><b aria-hidden="true">+</b></summary><p>在小红书内搜索“EHS-SIL”。账号主页直达链接待补充，请核对主理人信息。</p><button type="button" data-copy-account="EHS-SIL" data-copy-platform="小红书">复制搜索词 EHS-SIL</button></details>
+                        <details class="social-channel social-help"><summary><span class="social-icon" aria-hidden="true">视</span><span><strong>微信视频号</strong><small>查看关注方式</small></span><b aria-hidden="true">+</b></summary><p>在微信“发现 → 视频号”搜索“EHS-SIL”。账号分享链接或二维码待补充，请核对主理人信息。</p><button type="button" data-copy-account="EHS-SIL" data-copy-platform="视频号">复制搜索词 EHS-SIL</button></details>
+                    </div>
+                    <p class="social-copy-status" role="status" aria-live="polite" id="socialCopyStatus"></p>
+                </div>
+                <aside class="follow-miniapp"><img src="assets/miniapp-qr.jpg" alt="EHS工具箱微信小程序码，请用微信扫描" width="160" height="160" loading="lazy"><div><strong>把工具箱放进口袋</strong><p>微信扫码，或在小程序中搜索<br>“EHS工具箱”</p></div></aside>
+            </section>
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo"><span class="brand-emblem" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="logo-mark">EHS</span><span class="logo-sep">-</span><span class="logo-sil">SIL</span></div>
-                    <p class="footer-desc">外企EHS工具与成长工作台</p>
-                </div>
-                <div class="footer-links">
-                    <h4>产品</h4>
-                    <ul><li><a href="products/toolbox.html">外企EHS工具箱</a></li><li><a href="products/training.html">外企EHS培训库</a></li></ul>
-                </div>
-                <div class="footer-links">
-                    <h4>实用工具</h4><ul><li><a href="tools/index.html">工具库搜索</a></li><!-- 内部工具不对外公开 --></ul></div><div class="footer-links"><h4>关注我</h4>
-                    <ul><li>公众号 · EHS-SIL</li><li>抖音 · EHS-SIL</li><li>小红书 · EHS-SIL</li><li>视频号 · EHS-SIL</li></ul>
-                </div>
-                <div class="footer-links">
-                    <h4>声明</h4>
-                    <ul><li><a href="feedback.html" data-feedback-open data-feedback-entry="footer">反馈建议</a></li><li>专业工具仅供辅助判断</li><li>结果须结合现场人工确认</li></ul>
-                </div>
+                <div class="footer-brand"><a class="footer-logo" href="#hero" aria-label="EHS-SIL 返回首页"><img class="footer-brand-logo" src="assets/ehs-sil-logo-original.jpg" alt="EHS · Share Inspire Learn" width="1064" height="1000" loading="lazy"><span>EHS-SIL<small>分享 · 启发 · 学习</small></span></a><p class="footer-desc">外企EHS工具与成长工作台</p></div>
+                <nav class="footer-links" aria-label="页尾专业入口"><h3>开始工作</h3><ul><li><a href="#workbench">专业工具</a></li><li><a href="tools/index.html">专业资源</a></li><li><a href="tools/regulations.html">法规与标准</a></li><li><a href="articles/">专业文章</a></li></ul></nav>
+                <nav class="footer-links" aria-label="页尾会员入口"><h3>资源与会员</h3><ul><li><a href="products/toolbox.html">外企EHS工具箱</a></li><li><a href="products/training.html">外企EHS培训库</a></li><li><a href="dashboard/register.html">会员激活与登录</a></li></ul></nav>
+                <nav class="footer-links" aria-label="页尾帮助入口"><h3>了解与联系</h3><ul><li><a href="#about">关于 EHS-SIL</a></li><li><a href="#faq">常见问题</a></li><li><a href="feedback.html" data-feedback-open data-feedback-entry="footer">反馈建议</a></li></ul></nav>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 EHS-SIL. All rights reserved. · 工具结果仅供专业判断参考，须结合现场、企业程序和适用要求人工确认。</p>
-                <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026013311号-2</a></p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 EHS-SIL · 工具仅辅助专业判断，不替代现场评估、企业程序与审批。</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026013311号-2</a></p></div>
         </div>
     </footer>
 
@@ -604,6 +411,6 @@
     <script src="js/feedback.js?v=20260912"></script>
     <script src="js/site-shell.js?v=20260921"></script>
     <script src="js/main.js?v=2.1.0"></script>
-    <script src="js/homepage-astra.js?v=1.0.0"></script>
+    <script src="js/homepage-astra.js?v=20261005"></script>
 </body>
 </html>
