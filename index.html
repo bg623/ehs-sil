@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <script src="/js/route-aliases.js?v=20261006"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="EHS-SIL是面向个人EHS从业者的专业工具与成长工作台，帮助你选择正确方法、使用在线工具、完成专业成果并连接外企EHS资源。">
@@ -33,6 +34,8 @@
     })();
     </script>
 
+<link rel="stylesheet" href="css/tool-guidance.css?v=20261006">
+<script src="js/tool-guidance.js?v=20261006" defer></script>
 </head>
 <body class="home-astra">
 
@@ -59,10 +62,10 @@
                             <li><a href="tools/chemical-reactivity-matrix.html" data-home-action="start-chemical-reactivity"><span class="nav-entry-title">化学品反应与禁忌矩阵</span><span class="nav-entry-desc">禁忌物、误混与库存相容性筛查</span></a></li>
                             <li><a href="tools/risk-analysis.html#risk-assessment"><span class="nav-entry-title">风险辨识与评估</span><span class="nav-entry-desc">FMEA 失效模式分析、What-If 假设分析</span></a></li>
                             <li><a href="tools/risk-analysis.html#incident-investigation"><span class="nav-entry-title">事故调查与根因分析</span><span class="nav-entry-desc">5Why 五问法、RCA 根本原因分析、Tripod Beta 三脚架分析</span></a></li>
-                            <li><a href="tools/incident-learning.html"><span class="nav-entry-title">事故调查与 LFI 专业教练</span><span class="nav-entry-desc">证据、屏障、措施验证与组织学习</span></a></li>
+                            <li><a href="tools/incident-learning.html" data-home-action="start-incident"><span class="nav-entry-title">事故调查与 LFI 专业教练</span><span class="nav-entry-desc">证据、屏障、措施验证与组织学习</span></a></li>
                             <li><a href="tools/moc-coach.html"><span class="nav-entry-title">MOC 变更管理教练</span><span class="nav-entry-desc">免费完成变更评估、投用检查与关闭记录</span></a></li>
                             <li><a href="tools/training-matrix.html" data-home-action="start-training"><span class="nav-entry-title">岗位 EHS 培训矩阵</span><span class="nav-entry-desc">生成可编辑的培训需求底稿</span></a></li>
-                            <li><a href="tools/compliance-identification.html"><span class="nav-entry-title">企业适用法规识别</span><span class="nav-entry-desc">按行业与地区生成候选清单</span></a></li>
+                            <li><a href="tools/compliance-identification.html" data-home-action="start-compliance"><span class="nav-entry-title">企业适用法规识别</span><span class="nav-entry-desc">按行业与地区生成候选清单</span></a></li>
                             <li><a href="tools/pmm-coach.html"><span class="nav-entry-title">PMM 渐进式激励管理</span><span class="nav-entry-desc">安全行为对话、正向认可与改进</span></a></li>
                             <li><a href="#practice-tools"><span class="nav-entry-title">外企管理实践</span><span class="nav-entry-desc">BBS、PMM、LOTO、MOC 与 PSSR</span></a></li>
                         </ul>
@@ -177,14 +180,14 @@
                             <div class="task-panel-copy"><span class="task-panel-label">OFFICIAL SOURCES · 官方来源</span><h3>先找到来源，再判断适用要求</h3><p>从中国及国际官方入口查找法规与标准，建立候选清单；不替代企业适用性判断或法律意见。</p></div>
                             <div class="task-tool-list">
                                 <a href="tools/regulations.html"><span><b>法规与标准导航</b><small>中国及国际官方来源、重点要求与关联工具</small></span><em>免费 · 查询</em></a>
-                                <a href="tools/compliance-identification.html"><span><b>企业适用法规识别</b><small>按行业、地区和业务活动生成候选清单</small></span><em>在线 · 识别</em></a>
+                                <a href="tools/compliance-identification.html" data-home-action="start-compliance"><span><b>企业适用法规识别</b><small>按行业、地区和业务活动生成候选清单</small></span><em>在线 · 识别</em></a>
                                 <a href="articles/"><span><b>法规解读与实操文章</b><small>理解变化，回到现场完成文件与行动更新</small></span><em>浏览内容</em></a>
                             </div>
                         </div>
                         <div class="task-panel" id="task-panel-learning" role="tabpanel" aria-labelledby="task-tab-learning" data-task-panel="learning" hidden>
                             <div class="task-panel-copy"><span class="task-panel-label">INVESTIGATE &amp; LEARN · 调查与学习</span><h3>用证据还原事件，让措施经得起验证</h3><p>从事实、时间线和屏障，到原因分析、措施验证与组织学习，在同一份底稿中完成。</p></div>
                             <div class="task-tool-list">
-                                <a href="tools/incident-learning.html"><span><b>事故调查与 LFI 专业教练</b><small>八步调查 · 证据关联 · Excel 底稿与学习卡片</small></span><em>免费开始 →</em></a>
+                                <a href="tools/incident-learning.html" data-home-action="start-incident"><span><b>事故调查与 LFI 专业教练</b><small>八步调查 · 证据关联 · Excel 底稿与学习卡片</small></span><em>免费开始 →</em></a>
                                 <a href="topics/incident-investigation-learning.html"><span><b>方法与主持指南</b><small>需要时查阅调查方法；高级工具在教练内继续选择</small></span><em>学习支持</em></a>
                             </div>
                         </div>
@@ -193,7 +196,7 @@
                             <div class="task-tool-list">
                                 <a href="tools/training-matrix.html" data-home-action="start-training"><span><b>岗位EHS培训矩阵</b><small>按岗位与风险生成可编辑培训需求底稿</small></span><em>免费 · 生成</em></a>
                                 <a href="tools/ehs-glossary.html"><span><b>外企EHS专业术语库</b><small>445个中英文术语、196个缩写和易混辨析</small></span><em>免费 · 查询</em></a>
-                                <a href="tools/index.html"><span><b>工具与培训资料索引</b><small>查看已发布资源与规划内容，下载以正式发布为准</small></span><em>浏览资源</em></a>
+                                <a href="tools/index.html"><span><b>工具与培训资料索引</b><small>检索资料目录；正式发布和下载以知识星球为准</small></span><em>浏览资源</em></a>
                             </div>
                         </div>
                     </div>
@@ -409,8 +412,8 @@
     <script src="js/auth.js?v=2.3.0"></script>
     <script src="js/membership-ui.js?v=1.0.0"></script>
     <script src="js/feedback.js?v=20260912"></script>
-    <script src="js/site-shell.js?v=20260921"></script>
-    <script src="js/main.js?v=2.1.0"></script>
+    <script src="js/site-shell.js?v=20261006"></script>
+    <script src="js/main.js?v=2.1.1"></script>
     <script src="js/homepage-astra.js?v=20261005"></script>
 </body>
 </html>

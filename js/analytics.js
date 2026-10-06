@@ -13,6 +13,8 @@
     var GROUP_KEY = 'ehs_sil_experiment_group';
     var SESSION_KEY = 'ehs_sil_analytics_session';
     var ONCE_KEY = 'ehs_sil_analytics_once';
+    var memorySession = '';
+    var memoryOnce = {};
     var allowedGroups = [
         'toolbox_member',
         'public_non_member',
@@ -97,15 +99,18 @@
     var allowedErrorTypes = ['', 'network', 'timeout', 'validation', 'rate_limit', 'server', 'session', 'unknown'];
 
     function sessionId() {
-        var value = sessionStorage.getItem(SESSION_KEY);
+        var value = memorySession;
+        try { value = sessionStorage.getItem(SESSION_KEY) || value; } catch (error) { /* Storage is optional. */ }
         if (value) return value;
         value = 's_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
-        sessionStorage.setItem(SESSION_KEY, value);
+        memorySession = value;
+        try { sessionStorage.setItem(SESSION_KEY, value); } catch (error) { /* Keep page-local fallback. */ }
         return value;
     }
 
     function userGroup() {
-        var value = localStorage.getItem(GROUP_KEY) || 'unknown';
+        var value = 'unknown';
+        try { value = localStorage.getItem(GROUP_KEY) || 'unknown'; } catch (error) { /* Never block a tool. */ }
         return allowedGroups.indexOf(value) >= 0 ? value : 'unknown';
     }
 
@@ -189,19 +194,20 @@
         var key = canonicalEvent(eventName) + ':' + ((context && context.mode) || 'user');
         var seen;
         try {
-            seen = JSON.parse(sessionStorage.getItem(ONCE_KEY) || '{}');
+            seen = Object.assign({}, JSON.parse(sessionStorage.getItem(ONCE_KEY) || '{}'), memoryOnce);
         } catch (error) {
-            seen = {};
+            seen = memoryOnce;
         }
         if (seen[key]) return false;
         seen[key] = true;
-        sessionStorage.setItem(ONCE_KEY, JSON.stringify(seen));
+        memoryOnce = seen;
+        try { sessionStorage.setItem(ONCE_KEY, JSON.stringify(seen)); } catch (error) { /* Page-local deduplication. */ }
         return track(eventName, context);
     }
 
     function setExperimentGroup(group) {
         if (allowedGroups.indexOf(group) < 0) throw new Error('不支持的实验用户分组');
-        localStorage.setItem(GROUP_KEY, group);
+        try { localStorage.setItem(GROUP_KEY, group); } catch (error) { /* Optional measurement only. */ }
     }
 
     window.EhsSilAnalytics = {

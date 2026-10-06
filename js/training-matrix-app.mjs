@@ -79,7 +79,12 @@ async function boot() {
 
 function keyAttributes() { return data.risks.filter(item => item.applicability_mode === 'tri_state'); }
 function operationalRisks() { return data.risks.filter(item => item.applicability_mode !== 'tri_state' && item.group !== '人员与变化'); }
-function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); }
+  catch {
+    document.querySelector('.tm-privacy').textContent = '浏览器存储不可用：选择仅留在当前页面，仍可免费生成与导出。离开前请导出 Excel 留档。';
+  }
+}
 
 function groupItems(items) {
   const groups = new Map();

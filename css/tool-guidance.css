@@ -1,0 +1,15 @@
+/* Small, shared disclosure. No change to the site's layout or brand. */
+.tool-guide { margin: 1rem 0; padding: .85rem 1rem; border: 1px solid #cbd5d2; border-left: 3px solid #2f6f73; border-radius: 8px; background: #f5f8f6; color: #253e47; font-size: .85rem; line-height: 1.7; overflow-wrap: anywhere; }
+.tool-guide-status { margin: 0 0 .5rem; font-weight: 600; }
+.tool-guide summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+.tool-guide dl { margin: .6rem 0; }
+.tool-guide dt { font-weight: 700; margin-top: .5rem; }
+.tool-guide dd { margin: 0; }
+.tool-guide a { color: #165e65; text-decoration: underline; }
+.tool-guide-feedback { display: inline-block; margin-top: .6rem; padding: .25rem 0; }
+.tool-guide :focus-visible { outline: 3px solid #986b20; outline-offset: 3px; }
+.tool-status-summary { display: block; margin-top: .3rem; font-size: .74rem; line-height: 1.65; font-weight: 400; color: inherit; opacity: .92; overflow-wrap: anywhere; }
+.core-tool-entries { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; margin: 1rem 0; }
+.core-tool-entries a { padding: 1rem; border: 1px solid #cbd5d2; border-radius: 8px; text-decoration: none; color: #174d50; background: #fff; }
+@media (max-width: 600px) { .core-tool-entries { grid-template-columns: 1fr; } }
+@media print { .tool-guide { display: none; } }
