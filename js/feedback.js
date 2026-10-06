@@ -255,6 +255,12 @@
             failure.code = response.status === 429 ? 'rate_limit' : response.status >= 500 ? 'server' : 'validation';
             throw failure;
         }
+        // A 2xx transport response is not evidence that a record was persisted.
+        if (!body || body.ok !== true || !/^FB-\d{8}-[A-Z0-9]{8}$/.test(body.feedback_number || '')) {
+            var invalidReceipt = new Error('反馈服务未返回有效接收编号，暂未确认收到');
+            invalidReceipt.code = 'server';
+            throw invalidReceipt;
+        }
         return body;
     }
 

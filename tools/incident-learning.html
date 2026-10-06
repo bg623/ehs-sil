@@ -7,11 +7,18 @@
 <meta name="description" content="从证据、时间线和屏障，到原因、措施验证与组织学习。八步整理事故调查底稿，支持本地 Excel、JSON 备份和学习卡片打印。">
 <link rel="canonical" href="https://ehs-sil.com/tools/incident-learning.html"><link rel="icon" href="../assets/ehs-sil-logo.png">
 <link rel="stylesheet" href="../css/style.css?v=2.1.0"><link rel="stylesheet" href="../css/incident-coach.css?v=20260921">
+<link rel="stylesheet" href="../css/tool-guidance.css?v=20261006">
+<script src="../js/tool-guidance.js?v=20261006" defer></script>
+<meta property="og:title" content="事故调查与 LFI 专业教练 - EHS-SIL">
+<meta property="og:description" content="从证据、时间线和屏障，到原因、措施验证与组织学习。八步整理事故调查底稿，支持本地 Excel、JSON 备份和学习卡片打印。">
+<meta property="og:url" content="https://ehs-sil.com/tools/incident-learning.html">
+<meta property="og:type" content="website">
 </head><body data-site-shell-features="local">
 <div data-site-shell-header data-prefix="../" data-main-target="main-content"></div>
 <main id="main-content" class="ic-main">
 <p class="ic-breadcrumb"><a href="../index.html#incident-tools">事故与学习</a> / 事故调查教练</p>
 <header class="ic-hero"><div><p class="ic-eyebrow">Incident Investigation &amp; Learning Coach · V0.2</p><h1>用证据还原事件，<br>让改进有据可查。</h1><p><strong>事故调查与 LFI 专业教练</strong><br>把事实、屏障、原因和措施放进同一份调查底稿，形成可复核的行动与学习记录。LFI：从事件中学习（Learning From Incidents）。</p><div class="ic-actions"><button class="ic-button" id="start-coach" type="button">开始整理调查</button><button class="ic-button secondary" id="load-example" type="button">使用虚构案例</button></div></div><aside class="ic-route"><h2>一个事件，一条调查链</h2><ol><li>先收集事实，再形成解释</li><li>从屏障追问到组织条件</li><li>把措施落实与效果验证分开</li></ol><small>基本工作流免费 · 内容不上传 · 无需会员</small></aside></header>
+<section data-tool-guide="incident-learning.html" aria-label="事故调查使用说明"></section>
 <aside class="ic-boundary"><strong>先处置紧急情况，再开展调查。</strong>不得因等待系统判断而延误救援或法定报告。本工具不自动定级、定责、认定最终根因或批准关闭；所有内容须由调查组人工核实。</aside>
 <noscript><p class="ic-nojs">请启用 JavaScript 使用本地工作台；也可阅读下方方法文章。</p></noscript>
 <section id="workspace" aria-label="调查工作台">
@@ -22,5 +29,5 @@
 <section id="report-region" class="ic-report" hidden aria-labelledby="report-title"><h2 id="report-title" tabindex="-1">预览与导出</h2><div class="ic-actions"><button id="preview-case" class="ic-button secondary" type="button">查看完整底稿</button><button id="export-excel" class="ic-button" type="button">下载 Excel 底稿</button><button id="print-case" class="ic-button secondary" type="button">打印 / 存为 PDF</button></div><p class="ic-muted">当前预览内容用于打印。Excel 包含全部记录、学习卡片及待复核项；JSON 用于恢复编辑。文件未加密，分享前请检查个人或保密信息。</p><div id="report-content"></div></section>
 <section class="ic-sources"><h2>方法支持</h2><p><a href="../articles/osha-incident-investigation-four-steps.html">事故调查四步法</a> · <a href="../articles/rca-meeting-facilitation-guide.html">调查会议主持指南</a> · <a href="../articles/lfi-learning-from-incident.html">LFI 组织学习</a></p><details><summary>已有工具与专业参考</summary><p><a href="risk-analysis.html#incident-investigation">已有事故分析工具</a> · <a href="incident-learning-demo.html">旧版固定案例演示</a>。原链接及会员权益保留；高级工具分别打开，暂不自动共享本页数据。</p><ul><li><a href="https://www.hse.gov.uk/pubns/books/hsg245.htm" target="_blank" rel="noopener noreferrer">HSE 英国健康与安全执行局 · 事故调查指南 HSG245</a></li><li><a href="https://www.osha.gov/incident-investigation" target="_blank" rel="noopener noreferrer">OSHA 美国职业安全健康管理局 · 事件调查</a></li><li><a href="https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html" target="_blank" rel="noopener noreferrer">NIOSH 美国国家职业安全卫生研究所 · 控制层级</a></li><li><a href="https://tripod.energyinst.org/beta" target="_blank" rel="noopener noreferrer">Energy Institute 能源学会 · Tripod Beta 方法介绍</a></li></ul><p>资料核对：2026-09-21。方法参考不构成中国法规适用结论、官方认证或商业方法授权。</p></details></section>
 </main><div data-site-shell-footer data-prefix="../"></div>
-<script src="../js/site-shell.js?v=20260921"></script><script src="../vendor/exceljs.min.js"></script><script type="module" src="../js/incident-coach-app.mjs?v=20260921"></script>
+<script src="../js/site-shell.js?v=20261006"></script><script src="../vendor/exceljs.min.js"></script><script type="module" src="../js/incident-coach-app.mjs?v=20260921"></script>
 </body></html>

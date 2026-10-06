@@ -226,7 +226,7 @@
         if (existing) return new Promise(function (resolve) { existing.addEventListener('load', resolve, { once: true }); });
         return new Promise(function (resolve) {
             var script = document.createElement('script');
-            script.src = new URL(filename + '?v=20260912', sharedScriptBase).href;
+            script.src = new URL(filename + '?v=20261006', sharedScriptBase).href;
             script.dataset.ehsShared = filename;
             script.addEventListener('load', resolve, { once: true });
             script.addEventListener('error', resolve, { once: true });

@@ -53,7 +53,7 @@
     ['A4','F4','A5','F5','I5','A6','A8'].forEach(function(address){var c=sheet.getCell(address);c.font={name:'Microsoft YaHei',size:9,bold:true,color:{argb:COLORS.teal}};c.fill={type:'pattern',pattern:'solid',fgColor:{argb:COLORS.sage}};c.alignment={vertical:'middle'}});
     var infoRows=[4,5,6,7,8];
     infoRows.forEach(function(rowNo){sheet.getRow(rowNo).eachCell({includeEmpty:true},function(cell){cell.border={bottom:thinBorder};if(!cell.font)cell.font={name:'Microsoft YaHei',size:9,color:{argb:COLORS.text}};if(!cell.alignment)cell.alignment={vertical:'middle',wrapText:true}})});
-    var headerRow=sheet.getRow(10);headerRow.values=['序号','作业步骤','潜在危害','现有控制措施','补充控制措施','可能性 L','严重性 S','RPN','风险等级','人工确认/备注'];styleHeader(headerRow);
+    var headerRow=sheet.getRow(10);headerRow.values=['序号','作业步骤','潜在危害','现有控制措施','补充控制措施','可能性 L','严重性 S','风险分值（L×S）','风险等级','人工确认/备注'];styleHeader(headerRow);
     steps.forEach(function(step,index){
       var rowNo=11+index;
       var row=sheet.getRow(rowNo);
@@ -94,7 +94,7 @@
     var guideRows=[
       ['文件定位','这是由JSA专业教练生成的可编辑工作草稿，不是已批准的作业许可证或安全结论。'],
       ['使用顺序','先逐行核对作业步骤、危险和控制措施，再修改L/S、补充现场信息并填写人工确认/备注。'],
-      ['风险矩阵','RPN = 可能性（L）× 严重性（S）；风险等级随L/S公式变化。风险可接受标准必须使用企业批准的标准。'],
+      ['风险矩阵','风险分值（L×S）= 可能性（L）× 严重性（S）；风险等级随L/S公式变化。评分与矩阵阈值为工具默认值，企业应按自身程序复核；风险可接受标准必须使用企业批准的标准。'],
       ['完整性检查','“已覆盖”仅表示使用者已人工确认；“建议关注”和“需要人工确认”必须在开工前处理。'],
       ['重要边界','文件不代表作业安全、法规符合、可以批准或风险已经可接受，不能替代现场风险评估和企业审批。'],
       ['隐私提示','网站不提供云端保存。请勿在任务描述或导出文件中填写不必要的企业、装置或人员敏感信息。']

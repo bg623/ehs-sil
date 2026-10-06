@@ -49,6 +49,9 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 .step-actions{display:flex;gap:.3rem;justify-content:flex-end}
 .step-origin{display:inline-block;margin-top:.25rem;font-size:.62rem;color:#5b6d72;background:#eef2f2;padding:.08rem .35rem;border-radius:999px}
 .step-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.8rem}
+#stepList,#reportContent{max-width:100%;overflow-x:auto;overflow-wrap:anywhere}
+#stepList table,#reportContent table{min-width:860px}
+#stepList:focus-visible,#reportContent:focus-visible{outline:3px solid #986b20;outline-offset:3px}
 .step-table th{background:var(--primary);color:#fff;padding:.5rem .4rem;text-align:left;font-weight:500;white-space:nowrap}
 .step-table td{padding:.45rem .4rem;border-bottom:1px solid var(--border-light);vertical-align:top}
 .step-table tr:hover{background:#fafaf5}
@@ -98,7 +101,15 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 @media(max-width:720px){.scenario-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.scenario-grid{grid-template-columns:1fr}}
 </style>
-<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script></head>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?77c75d1a7737386055212c64df8ff967";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><link rel="stylesheet" href="../css/tool-guidance.css?v=20261006">
+<script src="../js/tool-guidance.js?v=20261006" defer></script>
+<meta name="description" content="免费试用 JSA 专业教练：生成可编辑底稿，人工复核后导出 Excel；当前页处理，不自动保存。">
+<link rel="canonical" href="https://ehs-sil.com/tools/jsa-tool.html">
+<meta property="og:title" content="JSA专业教练 V0.2 · 自动初稿与Excel导出 · EHS-SIL">
+<meta property="og:description" content="免费试用 JSA 专业教练：生成可编辑底稿，人工复核后导出 Excel；当前页处理，不自动保存。">
+<meta property="og:url" content="https://ehs-sil.com/tools/jsa-tool.html">
+<meta property="og:type" content="website">
+</head>
 <body>
 
 <div data-site-shell-header data-prefix="../" data-mode="dark" data-main-target="app"></div>
@@ -110,6 +121,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 
 <div class="container" id="app">
 
+<section data-tool-guide="jsa-tool.html" aria-label="JSA 使用说明"></section>
 <div class="scope-banner">
 <strong>V0.2试用范围：</strong>根据任务描述生成结构化JSA建议草稿、场景与风险提示、人工编辑、完整性检查、网页预览、打印及Excel导出。自动内容不是专业结论，结果不代表作业安全、法规符合、作业批准或风险可接受。
 <div style="margin-top:.55rem"><a href="chemical-reactivity-matrix.html" style="color:#0f5f68;font-weight:700">识别到混放、误混或异常反应场景？进入化学品反应与禁忌矩阵筛查 →</a></div>
@@ -203,7 +215,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <div class="form-row-3">
 <div class="form-group"><label>可能性 (L)</label><select id="stepL"><option value="1">1 - 极低</option><option value="2">2 - 低</option><option value="3" selected>3 - 中</option><option value="4">4 - 高</option><option value="5">5 - 极高</option></select></div>
 <div class="form-group"><label>严重性 (S)</label><select id="stepS"><option value="1">1 - 轻微</option><option value="2">2 - 一般</option><option value="3" selected>3 - 严重</option><option value="4">4 - 重大</option><option value="5">5 - 特大</option></select></div>
-<div class="form-group"><label>风险等级 R = L×S</label><div id="riskPreview" style="padding:.5rem;font-size:.85rem;font-weight:600;text-align:center;border-radius:6px;background:#fef9c3;color:#a16207">9 - 中风险</div></div>
+<div class="form-group"><label>风险分值（L×S）</label><div id="riskPreview" style="padding:.5rem;font-size:.85rem;font-weight:600;text-align:center;border-radius:6px;background:#fef9c3;color:#a16207">9 - 中风险</div></div>
 </div>
 <div class="form-row">
 <div class="form-group"><label>补充控制措施</label><textarea id="stepAddCtrl" placeholder="需要增加的额外安全措施（例：增加气体检测、设置监护人员）" rows="2"></textarea></div>
@@ -228,7 +240,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 </div>
 </div>
 
-<div id="stepList"><div class="empty-state"><div class="icon">&#128221;</div><p>暂无作业步骤，请在上方添加</p><p style="font-size:.72rem;color:#bbb">将作业分解为逻辑步骤，逐一分析危害与控制措施</p></div></div>
+<div id="stepList" tabindex="0" role="region" aria-label="JSA步骤表，窄屏可横向滚动"><div class="empty-state"><div class="icon">&#128221;</div><p>暂无作业步骤，请在上方添加</p><p style="font-size:.72rem;color:#bbb">将作业分解为逻辑步骤，逐一分析危害与控制措施</p></div></div>
 
 <!-- Risk Matrix Legend -->
 <div style="margin-top:.6rem;font-size:.72rem;color:var(--text-muted);display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
@@ -237,7 +249,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <span class="risk-badge risk-med">中 5-9</span>
 <span class="risk-badge risk-high">高 10-16</span>
 <span class="risk-badge risk-extreme">极高 17-25</span>
-<span style="margin-left:auto">L=可能性 S=严重性 RPN=L×S</span>
+<span style="margin-left:auto">L=可能性 S=严重性 风险分值（L×S），等级采用工具默认矩阵，请按企业程序复核</span>
 </div>
 </div>
 
@@ -257,18 +269,18 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--bg);-webkit
 <button class="btn btn-sm btn-secondary" onclick="closeReport()">关闭</button>
 </div>
 </div>
-<div class="report-content" id="reportContent"></div>
+<div class="report-content" id="reportContent" tabindex="0" role="region" aria-label="JSA报告预览，窄屏可横向滚动"></div>
 </div>
 
 </div>
 
 <footer style="text-align:center;padding:1.5rem;font-size:.75rem;color:var(--text-muted)"><p>&copy; 2026 EHS-SIL · V0.2不提供云端保存 · 请勿输入企业或人员敏感信息</p></footer>
 
-<script src="../js/site-shell.js?v=20260912"></script>
+<script src="../js/site-shell.js?v=20261006"></script>
 <script src="../js/jsa-rule-engine.js"></script>
 <script src="../js/jsa-draft-generator.js"></script>
 <script src="../vendor/exceljs.min.js"></script>
-<script src="../js/jsa-export.js"></script>
+<script src="../js/jsa-export.js?v=20261006"></script>
 <script src="../js/analytics.js"></script>
 <script>
 var steps = [];
@@ -692,7 +704,7 @@ function generateReport() {
         '<td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>评估人:</strong> ' + esc(assessor) + '</td></tr>' +
         '<tr><td style="border:none;padding:.2rem .5rem;font-size:.78rem"><strong>日期:</strong> ' + date + '</td><td style="border:none;padding:.2rem .5rem;font-size:.78rem"></td></tr>' +
         '<tr><td colspan="2" style="border:none;padding:.35rem .5rem;font-size:.78rem"><strong>作业内容:</strong> ' + esc(taskDescription) + '</td></tr></table>' +
-        '<table><thead><tr><th>步骤</th><th>作业描述</th><th>潜在危害</th><th>现有控制</th><th>L</th><th>S</th><th>RPN</th><th>风险等级</th><th>补充控制</th></tr></thead><tbody>';
+        '<table><thead><tr><th>步骤</th><th>作业描述</th><th>潜在危害</th><th>现有控制</th><th>L</th><th>S</th><th>风险分值（L×S）</th><th>风险等级</th><th>补充控制</th></tr></thead><tbody>';
     steps.forEach(function(s){
         html += '<tr><td>' + s.step + '</td><td>' + esc(s.desc) + '</td><td>' + esc(s.hazard) + '</td><td>' + esc(s.existingCtrl) + '</td>' +
             '<td>' + s.L + '</td><td>' + s.S + '</td><td>' + s.R + '</td><td>' + getRiskLabel(s.R) + '</td><td>' + esc(s.addCtrl) + '</td></tr>';

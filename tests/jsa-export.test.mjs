@@ -35,6 +35,8 @@ await reread.xlsx.load(buffer);
 assert.deepEqual(reread.worksheets.map((sheet) => sheet.name), ["JSA工作表", "完整性检查", "使用说明"]);
 const jsa = reread.getWorksheet("JSA工作表");
 assert.equal(jsa.getCell("B4").value, "离心泵机械密封更换");
+assert.equal(jsa.getCell("H10").value, "风险分值（L×S）");
+assert.doesNotMatch(JSON.stringify(reread.model), /RPN/);
 assert.equal(jsa.getCell("H11").value.formula, "F11*G11");
 assert.match(jsa.getCell("I11").value.formula, /^IF\(H11<=4/);
 assert.equal(jsa.getCell("F11").dataValidation.type, "list");
