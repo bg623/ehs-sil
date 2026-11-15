@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   scenario:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +20,7 @@ jobs:
       - run: ./build/scenario/node_modules/.bin/playwright install --with-deps chromium
       - run: |
           python3 -m http.server 8785 --bind 127.0.0.1 &
+          curl --retry 10 --retry-connrefused --retry-delay 1 -fsS http://127.0.0.1:8785/tools/scenario-workbench.html -o /dev/null
           node tests/scenario-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
