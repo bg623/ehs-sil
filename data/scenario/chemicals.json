@@ -1,1 +1,12 @@
-{"dataVersion":"scenario-data-0.1.0","materials":[{"id":"teaching-a","name":"教学液体 A（合成示例）","cas":null,"synthetic":true,"testOnly":true,"reviewStatus":"draft","properties":{}}],"approvedScreeningMaterials":[]}
+{
+  "dataVersion": "scenario-data-0.1.1",
+  "purpose": "物料身份选择与定性教学；不提供工程物性。",
+  "materials": [
+    {"id":"methanol","name":"甲醇","english":"Methanol","cas":"67-56-1","composition":"pure","state":"liquid","visualProfileRef":"methanol-pool-fire","sourceRefs":["noaa-methanol","mi-methanol-burning"],"identityStatus":"referenced","engineeringPropertiesStatus":"not_reviewed","synthetic":false,"properties":{},"note":"身份引用不确认用户实际物料纯度；纯甲醇外观只在相应教学假设成立时使用。"},
+    {"id":"ethanol","name":"乙醇","english":"Ethanol","cas":"64-17-5","composition":"pure","state":"liquid","visualProfileRef":"ethanol-pool-fire","sourceRefs":["niosh-ethanol","mi-methanol-burning"],"identityStatus":"referenced","engineeringPropertiesStatus":"not_reviewed","synthetic":false,"properties":{},"note":"仅供单一物料教学替换；工业配方、含水乙醇等须另行确认，不能直接套用纯物料外观。"},
+    {"id":"n-heptane","name":"正庚烷","english":"n-Heptane","cas":"142-82-5","composition":"pure","state":"liquid","visualProfileRef":"heptane-pool-fire","sourceRefs":["niosh-heptane","nist-pool-structure-2162r1"],"identityStatus":"referenced","engineeringPropertiesStatus":"not_reviewed","synthetic":false,"properties":{},"note":"实验资料仅为燃料差异背景，不用于推导本工具的火焰尺寸、烟气浓度或后果距离。"},
+    {"id":"custom-unknown","name":"自定义物料","english":"Custom material","cas":null,"composition":"unknown","state":"unknown","visualProfileRef":"generic-pool-fire","sourceRefs":["implementation-guide-v011"],"identityStatus":"unconfirmed","engineeringPropertiesStatus":"not_reviewed","synthetic":false,"properties":{},"note":"显示通用机制，身份、组分及自然燃烧外观未确认。"},
+    {"id":"teaching-a","name":"教学液体 A（合成示例）","english":"Teaching liquid A","cas":null,"composition":"unknown","state":"unknown","visualProfileRef":"generic-pool-fire","sourceRefs":["synthetic-math"],"identityStatus":"unconfirmed","engineeringPropertiesStatus":"not_reviewed","synthetic":true,"testOnly":true,"reviewStatus":"draft","properties":{},"note":"为旧项目保留原身份，不迁移为甲醇。"}
+  ],
+  "approvedScreeningMaterials": []
+}

@@ -1,0 +1,33 @@
+{
+  "dataVersion": "scenario-data-0.1.1",
+  "purpose": "虚构教学设备与渲染锚点；尺寸不构成工程设计或容积合规结论。",
+  "equipment": [
+    {
+      "id": "vertical-atmospheric-fixed-roof",
+      "name": "立式常压固定顶储罐",
+      "geometry": { "diameterM": 4, "heightM": 4, "orientation": "vertical" },
+      "containment": { "lengthM": 12, "widthM": 10, "heightM": 1 },
+      "leakAnchors": ["valve-downstream", "tank-wall"],
+      "sourceRefs": ["implementation-guide-v011"],
+      "note": "圆筒几何约 50.27 m³；不是标称容量、允许库存或围堰有效容积。"
+    },
+    {
+      "id": "small-vertical-atmospheric",
+      "name": "小型立式常压储罐",
+      "geometry": { "diameterM": 3, "heightM": 2.5, "orientation": "vertical" },
+      "containment": { "lengthM": 10, "widthM": 8, "heightM": 0.8 },
+      "leakAnchors": ["valve-downstream"],
+      "sourceRefs": ["implementation-guide-v011"],
+      "note": "另一组虚构教学几何；设备替换不得自动压低库存或增加其许可容量。"
+    },
+    {
+      "id": "unbound",
+      "name": "未绑定模板的通用设备",
+      "geometry": { "diameterM": 4, "heightM": 4, "orientation": "generic" },
+      "containment": { "lengthM": 12, "widthM": 10, "heightM": 1 },
+      "leakAnchors": [],
+      "sourceRefs": ["implementation-guide-v011"],
+      "note": "只用于显示占位设备，不确认旧项目尺寸、有效容量、装填率或泄漏位置。"
+    }
+  ]
+}

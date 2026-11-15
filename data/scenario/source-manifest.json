@@ -1,1 +1,99 @@
-{"dataVersion":"scenario-data-0.1.0","reviewStatus":"draft","sources":[{"id":"noaa-technical","title":"NOAA / EPA, ALOHA Technical Documentation (2013)","url":"https://response.restoration.noaa.gov/sites/default/files/ALOHA_Tech_Doc.pdf","locator":"Fire and explosion scenarios; see technical resources index","use":"Further reading only; equations and parameter sets not transcribed into a production solver","checked":"2026-11-15","license":"Link only; original text and figures not redistributed"},{"id":"synthetic-math","title":"Independent synthetic arithmetic checks from implementation brief §6.5","locator":"Ideal isotropic source q=Q/(4πR²); constant-flux mass balance","use":"Arithmetic verification only; no physical validation or real chemical parameters","checked":"2026-11-15","license":"Original implementation and synthetic fixtures"},{"id":"three-docs","title":"Three.js installation and cleanup","url":"https://threejs.org/manual/pages/cleanup.html","use":"Build and GPU lifecycle","checked":"2026-11-15","license":"Dependency MIT license retained"}],"productionPropertyRecords":[]}
+{
+  "dataVersion": "scenario-data-0.1.1",
+  "reviewStatus": "draft",
+  "sources": [
+    {
+      "id":"noaa-methanol",
+      "title":"NOAA CAMEO Chemicals — METHANOL",
+      "url":"https://cameochemicals.noaa.gov/chemical/3874",
+      "section":"Chemical Identifiers; General Description; Response Recommendations / Firefighting, ERG Guide 131 (2024)",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"identity_and_qualitative_reference",
+      "supports":["materials[methanol].cas","materials[methanol].english","materials[methanol].state","profiles[methanol-pool-fire].description"],
+      "note":"核对名称、CAS、液体描述及火焰不易观察警示；不采用页面上的疏散距离或毒理数值作本工具结果。",
+      "license":"Link and concise paraphrase; original images and tables not redistributed"
+    },
+    {
+      "id":"mi-methanol-burning",
+      "title":"Methanol Institute, Methanol Safe Handling Manual, 5th Edition",
+      "url":"https://methanol.org/uploads/publications/methanol-safe-handling-manual-5th-edition.pdf",
+      "section":"§6.1.2 Burning Behavior, printed pp.134–135 (PDF zero-based pages 143–144)",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"qualitative_teaching",
+      "supports":["profiles[methanol-pool-fire].description","profiles[ethanol-pool-fire].description"],
+      "note":"用于纯甲醇与乙醇的定性外观说明；不采用燃烧通量、辐射分数、热值、火焰尺寸或伤害阈值。",
+      "license":"Link and concise paraphrase only; no manual text, figures or parameter tables copied"
+    },
+    {
+      "id":"niosh-ethanol",
+      "title":"CDC/NIOSH Pocket Guide to Chemical Hazards — Ethyl alcohol",
+      "url":"https://www.cdc.gov/niosh/npg/npgd0262.html",
+      "section":"Ethyl alcohol; Synonyms & Trade Names; CAS No.; Physical Description",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"identity_reference",
+      "supports":["materials[ethanol].english","materials[ethanol].cas","materials[ethanol].state"],
+      "note":"只核对身份和液体描述；未转录密度等数值，身份引用不是工程物性审核。",
+      "license":"Link and concise factual paraphrase; no images or full tables copied"
+    },
+    {
+      "id":"niosh-heptane",
+      "title":"CDC/NIOSH Pocket Guide to Chemical Hazards — n-Heptane",
+      "url":"https://www.cdc.gov/niosh/npg/npgd0312.html",
+      "section":"n-Heptane; Synonyms & Trade Names; CAS No.; Physical Description",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"identity_reference",
+      "supports":["materials[n-heptane].english","materials[n-heptane].cas","materials[n-heptane].state"],
+      "note":"只核对身份和液体描述；未采用暴露限值、密度或可燃范围作模型输入。",
+      "license":"Link and concise factual paraphrase; no images or full tables copied"
+    },
+    {
+      "id":"nist-pool-structure-2162r1",
+      "title":"Sung et al., The Global and Local Structure of Medium-Scale Pool Fires, NIST TN 2162r1 (October 2024)",
+      "url":"https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2162r1.pdf",
+      "landingPage":"https://www.nist.gov/publications/global-and-local-structure-medium-scale-pool-fires",
+      "section":"Abstract; §1 Introduction, fuel-sooting tendencies paragraph",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"experimental_background_only",
+      "supports":["profiles[heptane-pool-fire].description","profiles[methanol-pool-fire].description"],
+      "note":"已读中等尺度试验范围及产烟倾向段落；不将约 0.3 m 实验火焰外推为本教学罐或液池的工程尺寸。",
+      "license":"Link and concise paraphrase; no experiment images, data tables or correlations redistributed"
+    },
+    {
+      "id":"nist-pool-energy-2019",
+      "title":"Kim, Lee and Hamins, Energy Balance in Medium-Scale Methanol, Ethanol, and Acetone Pool Fires, Fire Safety Journal 107 (2019)",
+      "url":"https://www.nist.gov/publications/energy-balance-medium-scale-methanol-ethanol-and-acetone-pool-fires",
+      "section":"Publication metadata and Abstract (published July 1, 2019)",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"further_reading_only",
+      "supports":[],
+      "note":"本轮只读出版信息与摘要，用于进一步学习；没有把其测量值接入教学或工程结果。",
+      "license":"Link only; no paper text or numerical data redistributed"
+    },
+    {
+      "id":"implementation-guide-v011",
+      "title":"EHS-SIL 事故场景工作台 V0.1.1 交互与甲醇演示升级部署指南 (2026-11-15)",
+      "url":null,
+      "section":"§4.3 teaching tank configuration; §5.4 storyboard; §5.5 independent mechanisms",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"teaching_configuration",
+      "supports":["equipment","presets","scenarios[*].stages"],
+      "note":"尺寸、库存、温压、液池半径和分镜为虚构教学配置，不是规范设计值或计算结果。",
+      "license":"User-authorized implementation configuration; source document not republished"
+    },
+    {
+      "id":"visual-art-direction-v1",
+      "title":"EHS-SIL original qualitative teaching art settings v1.0.0",
+      "url":null,
+      "section":"visual-profiles.json / color, naturalOpacity, assistedOpacity",
+      "accessedAt":"2026-11-15",
+      "allowedUse":"art_direction_only",
+      "supports":["profiles[*].color","profiles[*].naturalOpacity","profiles[*].assistedOpacity"],
+      "note":"全部显示数值为美术选择；辅助模式增强轮廓，不是实测影像、热像、温度或工程影响范围。",
+      "license":"Original implementation"
+    },
+    {"id":"noaa-technical","title":"NOAA / EPA, ALOHA Technical Documentation (2013)","url":"https://response.restoration.noaa.gov/sites/default/files/ALOHA_Tech_Doc.pdf","section":"Fire and explosion scenarios; technical resources index","accessedAt":"2026-11-15","allowedUse":"further_reading_only","supports":[],"note":"保留 V0.1 原引用；不是本轮完整求解器或新增专业核查的证明。","license":"Link only; original text and figures not redistributed"},
+    {"id":"synthetic-math","title":"Independent synthetic arithmetic checks from V0.1 implementation brief §6.5","url":null,"section":"Ideal isotropic source and fixed-flux mass balance","accessedAt":"2026-11-15","allowedUse":"arithmetic_verification_only","supports":[],"note":"只核查数学实现，不代表真实物料参数或物理验证。","license":"Original synthetic fixtures"},
+    {"id":"three-docs","title":"Three.js installation and cleanup","url":"https://threejs.org/manual/pages/cleanup.html","section":"Resource disposal","accessedAt":"2026-11-15","allowedUse":"software_lifecycle","supports":[],"note":"保留原工程依赖引用，不改变专业模型状态。","license":"Dependency MIT license retained"}
+  ],
+  "productionPropertyRecords": []
+}

@@ -1,10 +1,11 @@
 import {build} from 'esbuild';
 import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';import {gzipSync} from 'node:zlib';
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),out=path.join(root,'dist/scenario/v0.1.0');
+import {APP_VERSION} from '../../js/scenario/version.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),out=path.join(root,`dist/scenario/v${APP_VERSION}`);
 await fs.mkdir(out,{recursive:true});
 // Only clear generated JS files inside this unpublished local build directory.
 for(const name of await fs.readdir(out))if(name.endsWith('.mjs'))await fs.unlink(path.join(out,name));
-await build({entryPoints:[path.join(root,'js/scenario/app.mjs')],nodePaths:[path.join(root,'build/scenario/node_modules')],outdir:out,bundle:true,splitting:true,format:'esm',minify:true,target:'es2022',entryNames:'app',chunkNames:'[name]-[hash]',outExtension:{'.js':'.mjs'},define:{SCENARIO_WORKER_URL:JSON.stringify('/dist/scenario/v0.1.0/worker.mjs')}});
+await build({entryPoints:[path.join(root,'js/scenario/app.mjs')],nodePaths:[path.join(root,'build/scenario/node_modules')],outdir:out,bundle:true,splitting:true,format:'esm',minify:true,target:'es2022',entryNames:'app',chunkNames:'[name]-[hash]',outExtension:{'.js':'.mjs'},define:{SCENARIO_WORKER_URL:JSON.stringify(`/dist/scenario/v${APP_VERSION}/worker.mjs`)}});
 await build({entryPoints:[path.join(root,'js/scenario/worker.mjs')],outfile:path.join(out,'worker.mjs'),bundle:true,format:'esm',minify:true,target:'es2022'});
 await fs.cp(path.join(root,'data/scenario'),path.join(out,'data'),{recursive:true});
 await fs.copyFile(path.join(root,'css/scenario-workbench.css'),path.join(out,'style.css'));

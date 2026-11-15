@@ -1,77 +1,1063 @@
-import {newProject,clone,CONDITION_LABELS,validateInputs,parseProject,paFromKpa,kelvinFromC} from './schema.mjs';
-import {acceptsResult,freezeA,compare} from './engine.mjs';
-import {load,save,clear} from './storage.mjs';
-import {render2d,escape} from './view-2d.mjs';
-import {csv,report,download} from './export.mjs';
-const $=id=>document.getElementById(id),on=(id,event,fn)=>$(id).addEventListener(event,fn);
-let project=newProject(true),draft=null,result=null,definitions,stages,worker,activeId=null,mode='example',stage=0,progress=0,playing=false,raf=0,last=0,view=null,viewMode='2d',saveTimer,importCandidate=null,storageBlocked=false,viewGeneration=0;
-const controlNames=['减少库存','围堵与排液','有效隔离 / 切断','报警器 / SIS','喷淋 / 泡沫','培训与程序','PPE / 疏散'];
-const fields={title:['meta','title'],materialName:['inputs','material','name'],cas:['inputs','material','cas'],composition:['inputs','material','composition'],state:['inputs','material','state'],equipment:['inputs','storage','equipment'],inventoryKg:['inputs','storage','inventoryKg'],temperatureK:['inputs','material','temperatureK'],pressurePa:['inputs','storage','pressurePa'],storageNote:['inputs','storage','note'],releaseKg:['inputs','scenario','releaseKg'],areaM2:['inputs','pool','areaM2'],diameterM:['inputs','pool','diameterM'],geometrySource:['inputs','pool','geometrySource'],ground:['inputs','pool','ground'],evidenceNotes:['evidenceNotes']};
-const numeric=new Set(['inventoryKg','temperatureK','pressurePa','releaseKg','areaM2','diameterM']);
-const get=(obj,path)=>path.reduce((a,k)=>a[k],obj),set=(obj,path,value)=>{path.slice(0,-1).reduce((a,k)=>a[k],obj)[path.at(-1)]=value;};
-function notify(text){$('notice').textContent=text;}
-function currentDefinition(){return definitions.find(x=>x.id===project.inputs.scenario.id);}
-function snapshotSave(){if(mode==='example'){$('save-status').textContent='教学示例 · 不写入草稿';return;}clearTimeout(saveTimer);$('save-status').textContent='未保存';saveTimer=setTimeout(()=>{if(storageBlocked){$('save-status').textContent='原记录已保留，请导出备份';return;}let status;try{status=save(localStorage,project);}catch{status={status:'failed'};}$('save-status').textContent=status.status==='saved'?'已保存到本浏览器':'保存失败，请导出 JSON';if(status.status==='saved')draft=clone(project);},450);}
-function dirty(){project.inputRevision++;project.meta.updatedAt=new Date().toISOString();if(result)result={...result,status:'stale'};activeId=null;renderResult();renderComparison();snapshotSave();}
-function validate(){const errors=validateInputs(project);for(const id of numeric){const e=errors.find(x=>x.field===id);$(`error-${id}`).textContent=e?.message||'';$(id).setAttribute('aria-invalid',String(!!e));$(id).setAttribute('aria-describedby',`error-${id}`);}if(errors.length){const el=$(errors[0].field);el.closest('details').open=true;el.focus();notify(errors[0].message);}return !errors.length;}
-function fill(){
-  for(const[id,path]of Object.entries(fields)){let v=get(project,path);if(id==='pressurePa'&&v!==null)v/=1000;if(id==='temperatureK'&&v!==null)v-=273.15;$(id).value=v??'';}
-  for(const k of Object.keys(CONDITION_LABELS))$(`condition-${k}`).value=project.inputs.scenario.conditions[k];
-  for(let i=0;i<controlNames.length;i++)$(`control-${i}`).checked=project.controls.some(c=>c.type===controlNames[i]);
-  const c=project.controls[0];$('boundary').value=c?.boundary||'';$('actionTimeS').value=c?.actionTimeS??'';$('controlEvidence').value=c?.evidence||'';
-  const a=project.assumptions[0];$('assumption').value=a?.text||'';$('assumptionConfirmed').checked=a?.confirmed||false;
-  const rec=project.inputs.receptors[0];for(const axis of ['X','Y','Z'])$(`receptor${axis}`).value=rec?.[axis.toLowerCase()]??'';
-  $('mode-label').textContent=mode==='example'?'教学示例 · 与个人草稿分开':'个人草稿 · 本地处理';
-  $('save-status').textContent=mode==='example'?'示例不自动保存':'本地草稿';renderDefinition();renderResult();renderComparison();
+import {
+  APP_VERSION,
+  DATA_VERSION,
+  clone,
+  parseProjectText,
+  CONDITION_LABELS,
+  kelvinFromC,
+  paFromKpa,
+} from "./schema.mjs";
+import { createPreset, deriveQuantity, equipmentById } from "./presets.mjs";
+import { previewChange, applyChange, undoLastChange } from "./controller.mjs";
+import { buildSceneSpec, sampleStoryboard } from "./scene-spec.mjs";
+import {
+  load,
+  save,
+  savePrevious,
+  loadPrevious,
+  clear,
+  LEGACY_KEY,
+} from "./storage.mjs";
+import { acceptsResult, freezeA, compare } from "./engine.mjs";
+import { render2d, escape } from "./view-2d.mjs";
+import { csv, report, download } from "./export.mjs";
+
+const $ = (id) => document.getElementById(id),
+  on = (id, event, fn) => $(id).addEventListener(event, fn),
+  num = (id) => ($(id).value === "" ? null : Number($(id).value));
+let catalogs,
+  project,
+  draft = null,
+  result = null,
+  spec,
+  frame,
+  worker,
+  activeId = null,
+  mode = "example",
+  undo = null,
+  previousDraft = null,
+  importCandidate = null,
+  legacyRaw = null,
+  storageBlocked = false,
+  dirty = false;
+let progress = 0,
+  playing = false,
+  last = 0,
+  clock = 0,
+  view = null,
+  viewRequest = 0,
+  viewMode = "2d",
+  dialogType = null,
+  pendingCommand = null,
+  importGeneration = 0;
+let controlEdits = new Map(),
+  assumptionEdited = false;
+const controlNames = [
+  "减少库存",
+  "围堵与排液",
+  "有效隔离 / 切断",
+  "报警器 / SIS",
+  "喷淋 / 泡沫",
+  "培训与程序",
+  "PPE / 疏散",
+];
+const quantities = {
+  mass: ["inventoryKg", "kg"],
+  volume: ["volumeM3", "m³"],
+  fill: ["fillFraction", "%"],
+};
+const sourceLabel = (p) =>
+  p.provenance["inputs.storage.volumeM3"]?.kind === "user_input"
+    ? "用户输入"
+    : "教学示例 / 当前记录";
+function notice(text) {
+  $("notice").textContent = text;
 }
-function renderDefinition(){const d=currentDefinition();$('scene-title').textContent=`${d.name} · ${d.english}`;for(const b of $('mechanisms').children)b.setAttribute('aria-pressed',String(b.dataset.id===d.id));
-  $('mechanism-detail').innerHTML=`<p class="sc-eyebrow">MECHANISM · 机制与条件</p><h2>${escape(d.name)}</h2><p>${escape(d.mechanism)}</p><dl class="sc-definition-grid"><div><dt>主要后果</dt><dd>${escape(d.consequence)}</dd></div><div><dt>需要的数据</dt><dd>${escape(d.data)}</dd></div><div><dt>措施作用</dt><dd>${escape(d.barrier)}</dd></div><div><dt>与其他机制的差别</dt><dd>${escape(d.difference)}</dd></div></dl><p class="sc-muted">${escape(d.support)}</p>`;
-  for(const k of Object.keys(CONDITION_LABELS))$(`condition-${k}`).closest('label').hidden=!d.conditions.includes(k);
-  const pool=d.id==='pool-fire';$('view-3d').disabled=!pool;$('play').disabled=!pool;$('replay').disabled=!pool;$('timeline').disabled=!pool;$('stages').hidden=!pool;
-  if(!pool&&viewMode==='3d')to2d();updateStage(stage);
+function currentDefinition() {
+  return catalogs.scenarios.scenarios.find(
+    (s) => s.id === project.inputs.scenario.id,
+  );
 }
-function renderResult(){const stale=!result||result.status==='stale'||result.inputRevision!==project.inputRevision;
-  $('result-state').textContent=stale?'输入待检查 / 待重算':'仅教学演示';$('result-state').dataset.state=stale?'stale':'teaching';
-  if(stale){$('result-content').textContent='当前输入尚未检查，或原结果已过期。请点击“检查当前场景”；导出将保留待重算状态。';return;}
-  const c=result.conditions;$('result-content').innerHTML=`<p><b>${c.status==='candidate'?'候选事故场景':'需要补充或复核条件'}</b>：${escape(c.explanation)}</p>${c.missing.length?`<p>待补：${escape(c.missing.join('、'))}</p>`:''}${c.contrary.length?`<p>与当前记录不一致：${escape(c.contrary.join('、'))}</p>`:''}<div class="sc-result-grid">${['热辐射','超压','浓度','持续时间','年事故频率','个人风险 / F–N'].map(x=>`<div>${x}<b>未评估</b></div>`).join('')}</div><p class="sc-muted">资料与措施已记录；当前未参与工程后果计算。结果修订 ${result.inputRevision}。</p>`;
+function updateMetrics() {
+  if (!$("workspace")) return;
+  $("workspace").dataset.inputRevision = String(project.inputRevision);
+  $("workspace").dataset.activeClocks = playing ? "1" : "0";
 }
-function renderComparison(){const c=compare(project.comparison,project);$('comparison').innerHTML=`<p>${escape(c.message)}</p>${project.comparison?`<p class="sc-muted">A：修订 ${project.comparison.inputRevision} · 模型 ${escape(project.comparison.modelVersion)} · ${escape(project.comparison.dataVersion)}　B：修订 ${project.inputRevision}</p>`:''}${c.differences.length?`<p class="sc-muted">表格可横向滚动；差异值保持 SI 单位（kg、Pa、K、m）。</p><div class="sc-table-wrap"><table><thead><tr><th>变动字段</th><th>方案 A</th><th>方案 B</th></tr></thead><tbody>${c.differences.map(d=>`<tr><td>${escape(labelPath(d.field))}</td><td>${escape(d.a)}</td><td>${escape(d.b)}</td></tr>`).join('')}</tbody></table></div>`:'<p class="sc-muted">尚无输入差异。固定液池中减少有限质量可能缩短燃烧时长，不能直接推断稳态影响半径同比下降。</p>'}`;}
-function labelPath(s){const map={inputs:'输入',material:'物质',name:'名称',cas:'CAS',id:'标识',composition:'组分',state:'物态',temperatureK:'温度 K',storage:'储存',equipment:'设备',inventoryKg:'库存 kg',pressurePa:'绝压 Pa',note:'说明',scenario:'场景',conditions:'前提条件',releaseKg:'释放质量 kg',pool:'液池',areaM2:'面积 m²',diameterM:'直径 m',geometrySource:'几何来源',ground:'地面',controls:'措施',assumptions:'假设',evidenceNotes:'资料来源',receptors:'目标点',...CONDITION_LABELS};return s.split('.').map(x=>map[x]||x).join(' / ');}
-function run(){if(!validate())return;activeId=crypto.randomUUID();$('result-state').textContent='检查中…';worker.postMessage({project:clone(project),definition:currentDefinition(),calculationId:activeId});}
-function displayResult(v){if(!acceptsResult(v,activeId,project))return;result=v;renderResult();updateStage(stage);notify('场景条件检查完成。工程数值未评估。');}
-function updateStage(next){stage=Math.max(0,Math.min(5,Math.floor(next)));project.ui.stage=stage;const d=stages[stage];$('stage-number').textContent=`第 ${stage+1} / 6 阶段 · ${currentDefinition().id==='pool-fire'?'池火教学':'池火分镜（独立于所选机制）'}`;$('stage-title').textContent=d.title;$('stage-text').textContent=d.text;$('stage-question').textContent=d.question;for(const b of $('stages').children)b.setAttribute('aria-current',String(Number(b.dataset.stage)===stage));render2d($('view-2d-host'),result?.status!=='stale'?result:{visualization:{sceneId:project.inputs.scenario.id}},stage);view?.update(result,stage,progress);}
-function stop(){playing=false;cancelAnimationFrame(raf);$('play').textContent='播放';}
-function tick(t){if(!playing||document.hidden)return;if(last){progress=Math.min(5,progress+(t-last)/3800);$('timeline').value=String(progress);updateStage(progress);}last=t;if(progress>=5)stop();else raf=requestAnimationFrame(tick);}
-function play(){if(playing){stop();return;}if(progress>=5)progress=0;playing=true;last=0;$('play').textContent='暂停';raf=requestAnimationFrame(tick);}
-function to2d(){viewGeneration++;view?.dispose();view=null;viewMode='2d';$('view-3d-host').hidden=true;$('view-2d-host').hidden=false;$('view-2d').setAttribute('aria-pressed','true');$('view-3d').setAttribute('aria-pressed','false');$('view-status').textContent='当前使用 2D 视图。机制、条件检查和导出均可使用。';}
-async function to3d(){if(project.inputs.scenario.id!=='pool-fire'||view)return;const generation=++viewGeneration;$('view-status').textContent='正在加载三维教学…';try{const mod=await import('./view-3d.mjs');if(generation!==viewGeneration)return;$('view-3d-host').hidden=false;view=mod.create3d($('view-3d-host'),message=>{to2d();$('view-status').textContent=message;});viewMode='3d';$('view-2d-host').hidden=true;$('view-2d').setAttribute('aria-pressed','false');$('view-3d').setAttribute('aria-pressed','true');$('view-status').textContent='当前使用 3D 视图。拖动旋转，双指或滚轮缩放；北向与 2D 一致，画面无工程比例。';view.update(result,stage,progress);}catch{if(generation!==viewGeneration)return;to2d();$('view-status').textContent='3D 不可用，当前使用完整 2D 视图。';}}
-async function boot(){
-  const base=new URL('./data/',import.meta.url);const [data,cap]=await Promise.all([fetch(new URL('scenarios.json',base)).then(r=>r.json()),fetch(new URL('capabilities.json',base)).then(r=>r.json())]);if(cap.dataVersion!==data.dataVersion||cap.screeningEnabled!==false)throw Error('资料版本或公开能力不一致');definitions=data.scenarios;stages=data.stages;
-  let stored;try{stored=load(localStorage);}catch{stored={status:'failed'};}draft=stored.project;storageBlocked=stored.status==='failed';if(storageBlocked)notify('已有记录无法读取，原文保留。请先导出或选择有效备份；本次可在内存使用。');
-  $('mechanisms').innerHTML=definitions.map(d=>`<button type="button" data-id="${d.id}" aria-pressed="false">${escape(d.name)}</button>`).join('');
-  $('conditions').innerHTML=Object.entries(CONDITION_LABELS).map(([k,v])=>`<label>${escape(v)}<select id="condition-${k}"><option value="unknown">待确认</option><option value="yes">条件存在</option><option value="no">当前不满足</option></select></label>`).join('');
-  $('control-fields').innerHTML=controlNames.map((n,i)=>`<label class="sc-check"><input type="checkbox" id="control-${i}">${escape(n)} · 仅记录</label>`).join('');
-  $('stages').innerHTML=stages.map((s,i)=>`<button type="button" data-stage="${i}">${i+1} ${escape(s.title)}</button>`).join('');
-  worker=new Worker(SCENARIO_WORKER_URL,{type:'module'});worker.onmessage=({data})=>{if(data.error){if(data.calculationId===activeId){notify(`检查失败：${data.error}`);renderResult();}}else displayResult(data.result);};worker.onerror=()=>{activeId=null;result=null;renderResult();notify('检查进程不可用；可继续编辑和备份，请刷新后再检查。');};
-  for(const[id,path]of Object.entries(fields))on(id,'input',()=>{let v=$(id).value;if(numeric.has(id)){v=v===''?null:Number(v);if(id==='pressurePa')v=paFromKpa(v);if(id==='temperatureK')v=kelvinFromC(v);}set(project,path,v===''&&id==='cas'?null:v);if(id==='materialName')project.inputs.material.id=null;dirty();});
-  for(const k of Object.keys(CONDITION_LABELS))on(`condition-${k}`,'change',()=>{project.inputs.scenario.conditions[k]=$(`condition-${k}`).value;dirty();});
-  const syncControls=()=>{const time=$('actionTimeS').value;project.controls=controlNames.filter((_,i)=>$(`control-${i}`).checked).map(type=>({type,target:'释放路径 / 人员暴露（需复核）',boundary:$('boundary').value,actionTimeS:time===''?null:Number(time),evidence:$('controlEvidence').value,status:'recorded_only'}));dirty();};
-  for(let i=0;i<controlNames.length;i++)on(`control-${i}`,'change',syncControls);for(const k of ['boundary','actionTimeS','controlEvidence'])on(k,'input',syncControls);
-  for(const k of ['assumption','assumptionConfirmed'])on(k,'input',()=>{project.assumptions=$('assumption').value?[{text:$('assumption').value,source:'用户记录',confirmed:$('assumptionConfirmed').checked}]:[];dirty();});
-  for(const axis of ['X','Y','Z'])on(`receptor${axis}`,'input',()=>{const values=['X','Y','Z'].map(x=>$(`receptor${x}`).value);project.inputs.receptors=values.every(x=>x!==''&&Number.isFinite(Number(x)))?[{id:'目标 A',x:Number(values[0]),y:Number(values[1]),z:Number(values[2])}]:[];dirty();});
-  on('project-form','submit',e=>e.preventDefault());
-  on('mechanisms','click',e=>{const b=e.target.closest('[data-id]');if(!b)return;stop();project.inputs.scenario.id=b.dataset.id;dirty();renderDefinition();run();});
-  on('stages','click',e=>{const b=e.target.closest('[data-stage]');if(!b)return;stop();progress=Number(b.dataset.stage);$('timeline').value=String(progress);updateStage(progress);});
-  on('timeline','input',()=>{stop();progress=Number($('timeline').value);updateStage(progress);});on('play','click',play);on('replay','click',()=>{stop();progress=0;updateStage(0);play();});on('view-2d','click',to2d);on('view-3d','click',to3d);on('reset-camera','click',()=>view?.reset());
-  on('check','click',run);on('freeze','click',()=>{try{project.comparison=freezeA(project,result);snapshotSave();renderComparison();notify('A 已冻结。继续修改左侧资料，当前编辑即为方案 B。');}catch(e){notify(e.message);}});
-  on('play-example','click',async()=>{stop();clearTimeout(saveTimer);if(mode==='draft'){draft=clone(project);if(!storageBlocked){try{const stored=save(localStorage,draft);if(stored.status!=='saved')notify('个人草稿尚未保存，请返回草稿并导出备份。');}catch{notify('个人草稿尚未保存，请返回草稿并导出备份。');}}}mode='example';project=newProject(true);result=null;progress=0;fill();run();$('workspace').scrollIntoView({behavior:'instant'});await to3d();play();});
-  on('open-draft','click',()=>{stop();$('parameters-disclosure').open=true;if(mode==='draft'){$('title').focus();return;}mode='draft';project=draft?clone(draft):newProject();result=null;fill();run();$('project-form').scrollIntoView({behavior:'instant'});$('title').focus();});
-  on('json','click',()=>{if(!validate())return;download(JSON.stringify(project,null,2),'application/json','json');notify('JSON 备份已生成。恢复时将重新校验结果。');});on('csv','click',()=>{if(validate())download(csv(project,result),'text/csv;charset=utf-8','csv');});on('print','click',()=>{if(!validate())return;$('print-report').innerHTML=report(project,result);$('print-report').hidden=false;window.print();});
-  on('import','click',()=>$('import-file').click());on('import-file','change',async()=>{const file=$('import-file').files[0];if(!file)return;try{if(file.size>1048576)throw Error('文件超过 1 MiB');importCandidate=parseProject(await file.text());$('import-summary').textContent=`有效备份：${importCandidate.meta.title}。恢复将替换个人草稿；导入的结果不会作为当前结果使用。`;$('import-preview').hidden=false;}catch(e){importCandidate=null;notify(`导入失败：${e.message}。当前记录保持不变。`);}$('import-file').value='';});
-  on('cancel-import','click',()=>{importCandidate=null;$('import-preview').hidden=true;});on('restore','click',()=>{if(!importCandidate)return;stop();clearTimeout(saveTimer);project=importCandidate;importCandidate=null;mode='draft';draft=clone(project);result=null;activeId=null;storageBlocked=false;$('import-preview').hidden=true;fill();snapshotSave();notify('备份已恢复。请检查当前场景，生成新的结果。');});
-  on('clear','click',()=>{if(!confirm('清除本工具的个人草稿？此操作不影响其他工具。请先导出 JSON。'))return;stop();clearTimeout(saveTimer);try{clear(localStorage);storageBlocked=false;draft=null;if(mode==='draft'){project=newProject();result=null;fill();}notify('本工具个人草稿已清除。');}catch{notify('无法清除存储，请在浏览器设置中处理。');}});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});window.addEventListener('pagehide',()=>{stop();viewGeneration++;view?.dispose();worker.terminate();});
-  const mobile=matchMedia('(max-width:680px)');$('parameters-disclosure').open=!mobile.matches;mobile.addEventListener('change',e=>{$('parameters-disclosure').open=!e.matches;});
-  $('boot-status').hidden=true;$('workspace').hidden=false;fill();run();
+function stop() {
+  playing = false;
+  cancelAnimationFrame(clock);
+  clock = 0;
+  last = 0;
+  $("play").textContent = "播放";
+  updateMetrics();
 }
-boot().catch(e=>{$('boot-status').textContent=`工作台加载失败：${e.message}。请刷新或使用下方方法与资源。`;});
+function persist() {
+  if (mode === "example") {
+    $("save-status").textContent = "示例未写入草稿";
+    return true;
+  }
+  dirty = true;
+  if (storageBlocked) {
+    $("save-status").textContent = "未保存，请下载 JSON 备份";
+    return false;
+  }
+  let status;
+  try {
+    status = save(localStorage, project);
+  } catch (e) {
+    status = { status: "failed", error: e.message };
+  }
+  if (status.status === "saved") {
+    draft = clone(project);
+    dirty = false;
+    $("save-status").textContent = "已保存到本浏览器";
+    $("continue-draft").hidden = false;
+    return true;
+  }
+  $("save-status").textContent = "未保存：" + (status.error || "存储不可用");
+  notice("当前内容保留在内存，请下载 JSON；原始旧版记录仍保留。");
+  return false;
+}
+function backup(p) {
+  previousDraft = clone(p);
+  $("restore-previous").hidden = false;
+  try {
+    const status = savePrevious(localStorage, p);
+    if (status.status !== "saved") throw Error(status.error);
+    return true;
+  } catch (e) {
+    notice(
+      "备份未成功：" +
+        e.message +
+        "。当前内容保留，请先下载 JSON；未覆盖原草稿。",
+    );
+    return false;
+  }
+}
+function ensureEditable() {
+  if (mode === "draft") return;
+  if (draft && !backup(draft)) storageBlocked = true;
+  project = clone(project);
+  project.meta.id = crypto.randomUUID();
+  project.meta.createdAt = new Date().toISOString();
+  mode = "draft";
+}
+function scenarioHeading() {
+  const d = currentDefinition();
+  return `${project.inputs.material.name || "未填写物料"} · ${d.name}`;
+}
+function fillControlEditor() {
+  const type = $("control-record-select").value,
+    c = controlEdits.get(type) || project.controls.find((c) => c.type === type);
+  $("boundary").value = c?.boundary || "";
+  $("controlEvidence").value = c?.evidence || "";
+  $("actionTimeS").value = c?.actionTimeS ?? "";
+}
+function controlOptions() {
+  const selected = $("control-record-select").value,
+    items = controlNames.filter((_, i) => $(`control-${i}`).checked);
+  $("control-record-select").innerHTML = items.length
+    ? items
+        .map(
+          (type) => `<option value="${escape(type)}">${escape(type)}</option>`,
+        )
+        .join("")
+    : '<option value="">先勾选一项措施</option>';
+  if (items.includes(selected)) $("control-record-select").value = selected;
+  fillControlEditor();
+}
+function fillCommon() {
+  const s = project.inputs.storage,
+    g = project.inputs.equipment.geometry,
+    b = project.inputs.equipment.containment;
+  $("quantity-basis").value = s.quantityBasis;
+  const q = s[quantities[s.quantityBasis][0]];
+  $("quantity-value").value =
+    q === null ? "" : s.quantityBasis === "fill" ? q * 100 : q;
+  $("quantity-label").textContent = `库存（${quantities[s.quantityBasis][1]}）`;
+  $("temperature").value =
+    project.inputs.material.temperatureK === null
+      ? ""
+      : Number((project.inputs.material.temperatureK - 273.15).toFixed(6));
+  $("pressure").value = s.pressurePa === null ? "" : s.pressurePa / 1000;
+  $("pressure-mode").value = s.pressureMode;
+  $("title").value = project.meta.title;
+  $("composition").value = project.inputs.material.composition;
+  $("state").value = project.inputs.material.state;
+  const e = equipmentById(catalogs, project.inputs.equipment.id);
+  $("leak-anchor").innerHTML =
+    '<option value="">未选择</option>' +
+    (e?.leakAnchors || [])
+      .map(
+        (a) =>
+          `<option value="${escape(a)}">${a === "valve-downstream" ? "根部阀后短管" : a === "tank-wall" ? "罐壁（仅机制）" : escape(a)}</option>`,
+      )
+      .join("");
+  $("leak-anchor").value = project.inputs.equipment.leakAnchor || "";
+  $("diameterM").value = g.diameterM ?? "";
+  $("heightM").value = g.heightM ?? "";
+  $("containment-length").value = b.lengthM ?? "";
+  $("containment-width").value = b.widthM ?? "";
+  $("pool-radius").value = project.inputs.pool.radiusM ?? "";
+  $("evidenceNotes").value = project.evidenceNotes;
+  $("assumption").value =
+    project.assumptions.find((a) => a.source === "用户补充")?.text || "";
+  controlEdits = new Map();
+  assumptionEdited = false;
+  for (let i = 0; i < controlNames.length; i++)
+    $(`control-${i}`).checked = project.controls.some(
+      (c) => c.type === controlNames[i],
+    );
+  controlOptions();
+  for (const k of Object.keys(CONDITION_LABELS)) {
+    $(`condition-${k}`).value = project.inputs.scenario.conditions[k];
+    $(`condition-${k}`).closest("label").hidden =
+      !currentDefinition().conditions.includes(k);
+  }
+  const d = deriveQuantity(project);
+  $("derived-quantity").textContent =
+    `${sourceLabel(project)}。教学几何容量 ${d.capacityM3 === null ? "未知" : d.capacityM3.toFixed(2) + " m³"}；液位 ${d.liquidLevelM === null ? "未知（不使用密度补算）" : d.liquidLevelM.toFixed(2) + " m（示意）"}。`;
+}
+function renderResult() {
+  const current =
+    result &&
+    result.status !== "stale" &&
+    result.inputRevision === project.inputRevision;
+  $("result-state").textContent = activeId
+    ? "检查中…"
+    : current
+      ? "仅教学演示"
+      : "待检查 / 待重算";
+  if (!current) {
+    $("result-content").textContent =
+      "教学画面来自当前输入。没有当前可信检查，导出不带旧结果或旧哈希。";
+    return;
+  }
+  const c = result.conditions;
+  $("result-content").innerHTML =
+    `<p>${c.status === "candidate" ? "可作为候选场景，需核实前提" : "需要补充或复核条件"}</p><p>${escape([...c.missing, ...c.contrary].join("、") || c.explanation)}</p><p>热辐射、超压、浓度、持续时间、事故频率与个人风险：全部未评估。</p>`;
+}
+function renderComparison() {
+  const c = compare(project.comparison, project);
+  $("comparison").innerHTML =
+    `<p>${escape(c.message)}</p>${project.comparison ? `<p>A：${escape(project.comparison.project.inputs.material.name)} / ${escape(project.comparison.project.inputs.scenario.id)}，修订 ${project.comparison.inputRevision}；B：${escape(scenarioHeading())}，修订 ${project.inputRevision}。</p>` : ""}${c.differences.length ? `<p class="sc-muted">条件可比较，工程量未评估。表格可横向滚动，数值使用 kg / m³ / Pa / K / m。</p><div class="sc-table-wrap"><table><thead><tr><th>字段</th><th>方案 A</th><th>方案 B</th></tr></thead><tbody>${c.differences.map((d) => `<tr><td>${escape(d.field)}</td><td>${escape(d.a)}</td><td>${escape(d.b)}</td></tr>`).join("")}</tbody></table></div>` : '<p class="sc-muted">冻结 A 后再修改 B；不计算风险降低百分比。</p>'}`;
+}
+function draw() {
+  frame = sampleStoryboard(spec, progress, 1);
+  project.ui.stage = frame.stage;
+  render2d($("view-2d-host"), spec, frame);
+  view?.update(spec, frame);
+  const stage = spec.stages[frame.stage];
+  $("timeline").value = String(progress);
+  $("stage-number").textContent = spec.support.canPlayDetailedStoryboard
+    ? `第 ${frame.stage + 1} / ${spec.stages.length} 阶段 · 教学进度`
+    : "独立机制教学";
+  $("stage-title").textContent = stage.title;
+  $("stage-text").textContent = stage.text;
+  $("stage-question").textContent = stage.question || "";
+  for (const b of $("stages").children)
+    b.setAttribute(
+      "aria-current",
+      String(Number(b.dataset.stage) === frame.stage),
+    );
+}
+function render() {
+  spec = buildSceneSpec(project, catalogs);
+  document.title = `${scenarioHeading()} · 教学工作台 | EHS-SIL`;
+  $("play-example").textContent = spec.support.canPlayDetailedStoryboard ? '播放事故过程 ↗' : '查看当前机制 ↗';
+  $("scene-title").textContent = scenarioHeading();
+  $("bar-material").textContent = project.inputs.material.name || "未填写";
+  $("bar-equipment").textContent = project.inputs.equipment.name;
+  const s = project.inputs.storage,
+    q = s[quantities[s.quantityBasis][0]],
+    temp = project.inputs.material.temperatureK;
+  $("bar-storage").textContent =
+    `${q === null ? "未填写" : s.quantityBasis === "fill" ? (q * 100).toFixed(1) : q} ${quantities[s.quantityBasis][1]} · ${temp === null ? "未填写" : Number((temp - 273.15).toFixed(2)) + "°C"} · ${s.pressureMode === "atmospheric" ? "常压" : s.pressurePa === null ? "压力未填写" : s.pressurePa / 1000 + " kPa绝压"}`;
+  $("bar-scenario").textContent = currentDefinition().name;
+  $("mode-label").textContent =
+    mode === "example" ? "教学示例 · 未写入个人草稿" : "个人草稿";
+  $("visual-mode").value = project.ui.visualMode;
+  $("camera-select").value = project.ui.camera;
+  $("speed").value = String(project.ui.speed);
+  $("show-labels").checked = project.ui.labels;
+  view?.setLabelsVisible(project.ui.labels);
+  $("visual-note").textContent = spec.visual.note;
+  $("material-note").textContent = spec.visual.profile.description;
+  const refs = new Set(spec.visual.profile.sourceRefs || []);
+  $("source-links").replaceChildren();
+  for (const source of catalogs.sources.sources.filter(
+    (s) => refs.has(s.id) && s.url,
+  )) {
+    const a = document.createElement("a");
+    a.href = source.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.textContent = source.title + " ↗";
+    $("source-links").append(a);
+  }
+  $("support-note").textContent = spec.support.issues.length
+    ? spec.support.issues.map((i) => i.message).join(" ")
+    : "完整教学分镜；液池与火焰是预设示意，未计算工程后果。";
+  $("stages").innerHTML = spec.support.canPlayDetailedStoryboard
+    ? spec.stages
+        .map(
+          (s, i) =>
+            `<button data-stage="${i}" type="button">${i + 1} ${escape(s.title)}</button>`,
+        )
+        .join("")
+    : "";
+  for (const id of ["play", "replay", "timeline", "view-3d"])
+    $(id).disabled = !spec.support.canPlayDetailedStoryboard;
+  if (!spec.support.canPlayDetailedStoryboard && viewMode === "3d") to2d();
+  const d = currentDefinition();
+  $("mechanism-detail").innerHTML =
+    `<p>${escape(d.mechanism)}</p><p>${escape(d.difference)}</p><p>${escape(d.data)}</p>`;
+  $("undo").disabled = !undo;
+  updateMetrics();
+  draw();
+  renderResult();
+  renderComparison();
+  fillCommon();
+}
+function invalidate() {
+  activeId = null;
+  if (result) result = { ...result, status: "stale" };
+}
+function run() {
+  activeId = crypto.randomUUID();
+  worker.postMessage({
+    project: clone(project),
+    definition: currentDefinition(),
+    calculationId: activeId,
+  });
+  renderResult();
+}
+function apply(command) {
+  try {
+    if (
+      command.type === "preset" &&
+      dirty &&
+      !confirm("当前有未保存修改。将先保留原草稿，再载入整套示例；继续吗？")
+    )
+      return false;
+    const candidate = applyChange(project, command, catalogs);
+    if (!candidate.changed && command.type !== "preset") {
+      notice("条件未改变，保留当前检查结果。");
+      return true;
+    }
+    if (
+      command.type === "preset" &&
+      !backup(mode === "example" && draft ? draft : project)
+    )
+      return false;
+    stop();
+    ensureEditable();
+    importGeneration++;
+    importCandidate = null;
+    $("import-preview").hidden = true;
+    const id = project.meta.id,
+      createdAt = project.meta.createdAt;
+    project = candidate.project;
+    project.meta.id = id;
+    project.meta.createdAt = createdAt;
+    undo = candidate.previous;
+    progress = 0;
+    invalidate();
+    render();
+    persist();
+    run();
+    notice(
+      command.type === "preset"
+        ? "整套示例已载入；原草稿与冻结 A 已保留。"
+        : "修改已应用。兼容条件保留，可撤销本次修改。",
+    );
+    return true;
+  } catch (e) {
+    notice(e.message);
+    return false;
+  }
+}
+function commonCommand() {
+  const basis = $("quantity-basis").value;
+  let quantity = num("quantity-value");
+  if (basis === "fill" && quantity !== null) quantity /= 100;
+  const selected = new Set(
+      controlNames.filter((_, i) => $(`control-${i}`).checked),
+    ),
+    updated = new Set();
+  const controls = project.controls.flatMap((c) => {
+    if (!controlNames.includes(c.type)) return [clone(c)];
+    if (!selected.has(c.type)) return [];
+    if (controlEdits.has(c.type) && !updated.has(c.type)) {
+      updated.add(c.type);
+      return [{ ...clone(c), ...controlEdits.get(c.type) }];
+    }
+    return [clone(c)];
+  });
+  for (const type of selected)
+    if (!controls.some((c) => c.type === type))
+      controls.push({
+        type,
+        target: "释放 / 围堵 / 暴露环节，需复核",
+        boundary: "",
+        actionTimeS: null,
+        evidence: "",
+        status: "recorded_only",
+        ...(controlEdits.get(type) || {}),
+      });
+  let assumptions = clone(project.assumptions);
+  if (assumptionEdited) {
+    const index = assumptions.findIndex((a) => a.source === "用户补充"),
+      text = $("assumption").value;
+    if (index < 0) {
+      if (text)
+        assumptions.push({ text, source: "用户补充", confirmed: false });
+    } else if (text)
+      assumptions[index] = { ...assumptions[index], text, confirmed: false };
+    else assumptions.splice(index, 1);
+  }
+  const patch = {
+    "meta.title": $("title").value,
+    "inputs.material.composition": $("composition").value,
+    "inputs.material.state": $("state").value,
+    "inputs.equipment.leakAnchor": $("leak-anchor").value || null,
+    "inputs.equipment.geometry.diameterM": num("diameterM"),
+    "inputs.equipment.geometry.heightM": num("heightM"),
+    "inputs.equipment.containment.lengthM": num("containment-length"),
+    "inputs.equipment.containment.widthM": num("containment-width"),
+    "inputs.pool.radiusM": num("pool-radius"),
+    evidenceNotes: $("evidenceNotes").value,
+    controls,
+    assumptions,
+  };
+  for (const k of Object.keys(CONDITION_LABELS))
+    patch[`inputs.scenario.conditions.${k}`] = $(`condition-${k}`).value;
+  return {
+    type: "batch",
+    commands: [
+      {
+        type: "storage",
+        patch: {
+          quantityBasis: basis,
+          quantityValue: quantity,
+          temperatureK: kelvinFromC(num("temperature")),
+          pressurePa: paFromKpa(num("pressure")),
+          pressureMode: $("pressure-mode").value,
+        },
+      },
+      { type: "patch", patch },
+    ],
+  };
+}
+function tick(now) {
+  if (!playing || document.hidden) return;
+  if (last)
+    progress = Math.min(
+      1,
+      progress + ((now - last) / 22000) * project.ui.speed,
+    );
+  last = now;
+  draw();
+  if (progress >= 1) stop();
+  else clock = requestAnimationFrame(tick);
+}
+function play() {
+  if (!spec.support.canPlayDetailedStoryboard) return;
+  if (playing) {
+    stop();
+    return;
+  }
+  if (progress >= 1) progress = 0;
+  playing = true;
+  last = 0;
+  $("play").textContent = "暂停";
+  updateMetrics();
+  clock = requestAnimationFrame(tick);
+}
+function to2d() {
+  viewRequest++;
+  viewMode = "2d";
+  $("view-2d-host").hidden = false;
+  $("view-3d-host").hidden = true;
+  $("view-2d").setAttribute("aria-pressed", "true");
+  $("view-3d").setAttribute("aria-pressed", "false");
+  $("view-status").textContent = spec.support.canPlayDetailedStoryboard
+    ? "当前使用 2D 视图；教学功能与导出完整可用。"
+    : "当前为机制教学，详细 3D 尚未提供或条件尚未建立。";
+}
+async function to3d() {
+  if (!spec.support.canPlayDetailedStoryboard) return;
+  const generation = ++viewRequest;
+  const sceneId = spec.sceneId;
+  $("view-status").textContent = "正在准备三维教学…";
+  try {
+    if (!view) {
+      const mod = await import("./view-3d.mjs");
+      if (generation !== viewRequest || sceneId !== spec.sceneId) return;
+      $("view-3d-host").hidden = false;
+      view = mod.create3d($("view-3d-host"), (message) => {
+        view?.dispose();
+        view = null;
+        to2d();
+        $("view-status").textContent = message || "3D 不可用，已恢复 2D。";
+      });
+    }
+    if (generation !== viewRequest || !spec.support.canPlayDetailedStoryboard)
+      return;
+    viewMode = "3d";
+    project.ui.view = "3d";
+    $("view-3d-host").hidden = false;
+    $("view-2d-host").hidden = true;
+    $("view-2d").setAttribute("aria-pressed", "false");
+    $("view-3d").setAttribute("aria-pressed", "true");
+    view.update(spec, frame);
+    view.setLabelsVisible(project.ui.labels);
+    view.setCamera(project.ui.camera);
+    $("view-status").textContent =
+      "拖动旋转，滚轮 / 双指缩放；方向与尺度仅用于教学设备关系。";
+  } catch {
+    view?.dispose();
+    view = null;
+    to2d();
+    $("view-status").textContent = "3D 不可用，当前使用完整 2D 视图。";
+  }
+}
+const options = (items, value) =>
+  items
+    .map(
+      ([v, label]) =>
+        `<option value="${escape(v)}"${v === value ? " selected" : ""}>${escape(label)}</option>`,
+    )
+    .join("");
+function dialogCommand() {
+  if (dialogType === "material") {
+    const id = $("panel-material-select").value;
+    if (id !== "custom-unknown") return { type: "material", id };
+    return {
+      type: "batch",
+      commands: [
+        { type: "material", id },
+        {
+          type: "patch",
+          patch: {
+            "inputs.material.name":
+              $("panel-custom-name").value || "自定义物料",
+            "inputs.material.english": $("panel-custom-english").value,
+            "inputs.material.cas": $("panel-custom-cas").value || null,
+            "inputs.material.composition": "unknown",
+          },
+        },
+      ],
+    };
+  }
+  if (dialogType === "equipment")
+    return {
+      type: "equipment",
+      id: $("panel-equipment-select").value,
+      leakAnchor: $("panel-leak-anchor").value || null,
+    };
+  if (dialogType === "scenario")
+    return { type: "scenario", id: $("panel-scenario-select").value };
+  if (dialogType === "preset")
+    return { type: "preset", id: $("panel-preset-select").value };
+  const basis = $("panel-basis").value;
+  let quantity = num("panel-quantity");
+  if (basis === "fill" && quantity !== null) quantity /= 100;
+  return {
+    type: "storage",
+    patch: {
+      quantityBasis: basis,
+      quantityValue: quantity,
+      temperatureK: kelvinFromC(num("panel-temperature")),
+      pressurePa: paFromKpa(num("panel-pressure")),
+      pressureMode: $("panel-pressure-mode").value,
+    },
+  };
+}
+function previewPanel() {
+  try {
+    pendingCommand = dialogCommand();
+    const change = previewChange(project, pendingCommand, catalogs);
+    $("change-summary").innerHTML =
+      `<p><b>保留</b>：${escape(change.summary.kept.join("、"))}</p><p><b>更新</b>：${escape(change.summary.updated.join("、"))}</p>${change.summary.confirm.length ? `<p><b>需要确认</b></p><ul>${[...new Set(change.summary.confirm)].map((x) => `<li>${escape(x)}</li>`).join("")}</ul>` : "<p>工程量仍未评估；原结果将重新检查。</p>"}`;
+    $("panel-errors").textContent = "";
+    $("apply-change").disabled = false;
+  } catch (e) {
+    pendingCommand = null;
+    $("panel-errors").textContent = e.message;
+    $("apply-change").disabled = true;
+  }
+}
+function setEquipmentAnchors() {
+  const e = equipmentById(catalogs, $("panel-equipment-select").value),
+    current = project.inputs.equipment.leakAnchor;
+  $("panel-leak-anchor").innerHTML = options(
+    [
+      ["", "待选择"],
+      ...e.leakAnchors.map((x) => [
+        x,
+        x === "valve-downstream" ? "根部阀后短管" : "罐壁（仅机制）",
+      ]),
+    ],
+    e.leakAnchors.includes(current) ? current : "",
+  );
+}
+function openPanel(type) {
+  dialogType = type;
+  const s = project.inputs.storage,
+    m = project.inputs.material,
+    e = project.inputs.equipment;
+  const titles = {
+    material: "只更换物料",
+    equipment: "只更换储罐",
+    storage: "修改库存与储存条件",
+    scenario: "只切换事故类型",
+    preset: "载入整套教学示例",
+  };
+  $("editor-title").textContent = titles[type];
+  let html = "";
+  if (type === "material")
+    html = `<label>物料<select id="panel-material-select">${options(
+      catalogs.chemicals.materials.map((m) => [
+        m.id,
+        `${m.name} / ${m.english || "通用教学"}`,
+      ]),
+      m.id,
+    )}</select></label><div id="panel-custom-fields"${m.id === "custom-unknown" ? "" : " hidden"}><label>物料名称<input id="panel-custom-name" maxlength="200" value="${m.id === "custom-unknown" ? escape(m.name) : ""}"></label><label>英文名称（可留空）<input id="panel-custom-english" maxlength="200" value="${m.id === "custom-unknown" ? escape(m.english) : ""}"></label><label>CAS（可留空，未经身份核对）<input id="panel-custom-cas" maxlength="80" value="${m.id === "custom-unknown" ? escape(m.cas || "") : ""}"></label></div><p class="sc-muted">物料身份与教学外观会更新，原库存基准、设备和工况保留。自定义物料使用通用机制，不推断其燃烧外观或工程物性。</p>`;
+  if (type === "equipment")
+    html = `<label>储罐模板<select id="panel-equipment-select">${options(
+      catalogs.equipment.equipment.map((x) => [x.id, x.name]),
+      e.id,
+    )}</select></label><label>泄漏位置<select id="panel-leak-anchor"></select></label><p class="sc-muted">容量与锚点重新核查；超容量不自动截断库存。</p>`;
+  if (type === "scenario")
+    html = `<label>事故类型<select id="panel-scenario-select">${options(
+      catalogs.scenarios.scenarios.map((x) => [
+        x.id,
+        `${x.name} / ${x.english}`,
+      ]),
+      project.inputs.scenario.id,
+    )}</select></label><p class="sc-muted">保留物料与温压。没有详细3D时，显示对应事故的独立机制。</p>`;
+  if (type === "preset")
+    html = `<label>完整示例<select id="panel-preset-select">${options(
+      catalogs.presets.presets.map((x) => [x.presetId, x.title]),
+      project.meta.presetId,
+    )}</select></label><p class="sc-muted">替换整套条件，原草稿备份与冻结 A 保留；可恢复上一个草稿。</p>`;
+  if (type === "storage") {
+    const q = s[quantities[s.quantityBasis][0]],
+      temp = m.temperatureK;
+    html = `<label>库存主基准<select id="panel-basis">${options(
+      [
+        ["volume", "体积（m³）"],
+        ["mass", "质量（kg）"],
+        ["fill", "装填率（%）"],
+      ],
+      s.quantityBasis,
+    )}</select></label><label>库存主输入<input id="panel-quantity" type="number" step="any" min="0" value="${q === null ? "" : s.quantityBasis === "fill" ? q * 100 : q}"></label><div class="sc-field-pair"><label>温度（°C）<input id="panel-temperature" type="number" step="any" value="${temp === null ? "" : Number((temp - 273.15).toFixed(6))}"></label><label>绝对压力（kPa）<input id="panel-pressure" type="number" step="any" min="0" value="${s.pressurePa === null ? "" : s.pressurePa / 1000}"></label></div><label>压力基准<select id="panel-pressure-mode">${options(
+      [
+        ["atmospheric", "常压教学示例"],
+        ["absolute", "绝对压力"],
+        ["unknown", "未填写"],
+      ],
+      s.pressureMode,
+    )}</select></label>`;
+  }
+  $("panel-fields").innerHTML = html;
+  if (type === "equipment") {
+    setEquipmentAnchors();
+    on("panel-equipment-select", "change", () => {
+      setEquipmentAnchors();
+      previewPanel();
+    });
+  }
+  if (type === "material")
+    on("panel-material-select", "change", () => {
+      $("panel-custom-fields").hidden =
+        $("panel-material-select").value !== "custom-unknown";
+      previewPanel();
+    });
+  if (type === "storage") {
+    on("panel-basis", "change", () => {
+      $("panel-quantity").value = "";
+      previewPanel();
+    });
+    on("panel-pressure-mode", "change", () => {
+      if ($("panel-pressure-mode").value === "atmospheric")
+        $("panel-pressure").value = "101.325";
+      if ($("panel-pressure-mode").value === "unknown")
+        $("panel-pressure").value = "";
+      previewPanel();
+    });
+  }
+  previewPanel();
+  $("editor-dialog").showModal();
+}
+async function boot() {
+  const base = new URL("./data/", import.meta.url),
+    files = {
+      chemicals: "chemicals",
+      equipment: "equipment",
+      presets: "presets",
+      visualProfiles: "visual-profiles",
+      scenarios: "scenarios",
+      capabilities: "capabilities",
+      registry: "model-registry",
+      sources: "source-manifest",
+    };
+  catalogs = Object.fromEntries(
+    await Promise.all(
+      Object.entries(files).map(async ([key, file]) => {
+        const response = await fetch(new URL(file + ".json", base));
+        if (!response.ok) throw Error("资料加载失败：" + file);
+        return [key, await response.json()];
+      }),
+    ),
+  );
+  for (const key of [
+    "chemicals",
+    "equipment",
+    "presets",
+    "visualProfiles",
+    "scenarios",
+    "sources",
+  ])
+    if (catalogs[key].dataVersion !== DATA_VERSION)
+      throw Error("资料版本不一致");
+  if (
+    catalogs.capabilities.appVersion !== APP_VERSION ||
+    catalogs.capabilities.screeningEnabled !== false ||
+    catalogs.capabilities.approvedChemicalIds.length
+  )
+    throw Error("公开能力配置不一致");
+  project = createPreset(catalogs);
+  let loaded;
+  try {
+    loaded = load(localStorage);
+    legacyRaw = localStorage.getItem(LEGACY_KEY);
+    previousDraft = loadPrevious(localStorage);
+  } catch (e) {
+    loaded = { status: "failed", error: e.message };
+  }
+  draft = loaded.project;
+  storageBlocked = loaded.status === "failed";
+  $("continue-draft").hidden = !draft;
+  $("restore-previous").hidden = !previousDraft;
+  $("legacy-json").hidden = !legacyRaw;
+  if (loaded.status === "failed")
+    notice(
+      "旧记录读取失败，原文已保留。示例仍可使用；请保留原始备份或导入有效项目。",
+    );
+  if (loaded.status === "unsaved")
+    notice("旧记录已在内存迁移但未保存；旧键仍保留，请下载 JSON。");
+  if (loaded.status === "migrated")
+    notice("旧草稿已迁移至新版键，原始旧版数据完整保留。点击“继续我的草稿”。");
+  $("conditions").innerHTML = Object.entries(CONDITION_LABELS)
+    .map(
+      ([k, label]) =>
+        `<label>${escape(label)}<select id="condition-${k}"><option value="unknown">未确认</option><option value="yes">条件存在</option><option value="no">当前不满足</option></select></label>`,
+    )
+    .join("");
+  $("control-fields").innerHTML = controlNames
+    .map(
+      (name, i) =>
+        `<label class="sc-check"><input type="checkbox" id="control-${i}">${escape(name)} · 仅记录</label>`,
+    )
+    .join("");
+  for (let i = 0; i < controlNames.length; i++)
+    on(`control-${i}`, "change", controlOptions);
+  on("control-record-select", "change", fillControlEditor);
+  for (const id of ["boundary", "controlEvidence", "actionTimeS"])
+    on(id, "input", () => {
+      const type = $("control-record-select").value;
+      if (type)
+        controlEdits.set(type, {
+          boundary: $("boundary").value,
+          actionTimeS: num("actionTimeS"),
+          evidence: $("controlEvidence").value,
+        });
+    });
+  on("assumption", "input", () => {
+    assumptionEdited = true;
+  });
+  worker = new Worker(SCENARIO_WORKER_URL, { type: "module" });
+  worker.onmessage = ({ data }) => {
+    if (data.result && acceptsResult(data.result, activeId, project)) {
+      result = data.result;
+      activeId = null;
+      renderResult();
+    } else if (data.error && data.calculationId === activeId) {
+      activeId = null;
+      renderResult();
+      notice(data.error);
+    }
+  };
+  worker.onerror = () => {
+    activeId = null;
+    renderResult();
+    notice("检查进程不可用，仍可编辑并导出当前底稿。");
+  };
+  for (const type of ["material", "equipment", "storage", "scenario"])
+    on("edit-" + type, "click", () => openPanel(type));
+  on("load-preset", "click", () => openPanel("preset"));
+  on("editor-form", "submit", (e) => e.preventDefault());
+  on("panel-fields", "input", previewPanel);
+  on("panel-fields", "change", previewPanel);
+  on("cancel-change", "click", () => {
+    $("editor-dialog").close();
+    pendingCommand = null;
+  });
+  on("apply-change", "click", () => {
+    if (!pendingCommand) return;
+    $("apply-change").disabled = true;
+    if (apply(pendingCommand)) {
+      $("editor-dialog").close();
+      pendingCommand = null;
+    } else $("apply-change").disabled = false;
+  });
+  on("modify-scene", "click", () => {
+    stop();
+    ensureEditable();
+    invalidate();
+    render();
+    persist();
+    run();
+    $("quantity-value").focus();
+    $("quantity-value").scrollIntoView({ block: "center" });
+  });
+  on("continue-draft", "click", () => {
+    if (!draft) return;
+    stop();
+    project = clone(draft);
+    mode = "draft";
+    undo = null;
+    progress = 0;
+    invalidate();
+    render();
+    run();
+    persist();
+  });
+  on("play-example", "click", async () => {
+    $("view-panel").scrollIntoView({ block: "start" });
+    if (spec.support.canPlayDetailedStoryboard) {
+      void to3d();
+      if (!playing) play();
+    } else notice("当前是独立机制教学，请修改条件或载入池火示例。");
+  });
+  on("common-form", "submit", (e) => e.preventDefault());
+  on("quantity-basis", "change", () => {
+    $("quantity-value").value = "";
+    $("quantity-label").textContent =
+      `库存（${quantities[$("quantity-basis").value][1]}）`;
+  });
+  on("pressure-mode", "change", () => {
+    if ($("pressure-mode").value === "atmospheric")
+      $("pressure").value = "101.325";
+    if ($("pressure-mode").value === "unknown") $("pressure").value = "";
+  });
+  on("apply-common", "click", () => {
+    try {
+      const command = commonCommand();
+      previewChange(project, command, catalogs);
+      $("common-error").textContent = "";
+      apply(command);
+    } catch (e) {
+      $("common-error").textContent = e.message;
+    }
+  });
+  on("undo", "click", () => {
+    if (!undo) return;
+    stop();
+    project = undoLastChange(project, undo);
+    undo = null;
+    progress = 0;
+    invalidate();
+    render();
+    persist();
+    run();
+    notice("上次输入已恢复；原异步任务不会覆盖当前输入。");
+  });
+  on("restore-previous", "click", () => {
+    if (!previousDraft) return;
+    const old = clone(previousDraft),
+      current = mode === "draft" ? project : draft;
+    if (current && !backup(current)) return;
+    stop();
+    ensureEditable();
+    old.inputRevision = project.inputRevision + 1;
+    undo = clone(project);
+    project = old;
+    mode = "draft";
+    progress = 0;
+    invalidate();
+    render();
+    persist();
+    run();
+    notice("上一个草稿已恢复。");
+  });
+  on("play", "click", play);
+  on("replay", "click", () => {
+    stop();
+    progress = 0;
+    draw();
+    play();
+  });
+  on("timeline", "input", () => {
+    stop();
+    progress = Number($("timeline").value);
+    draw();
+  });
+  on("stages", "click", (e) => {
+    const b = e.target.closest("[data-stage]");
+    if (!b) return;
+    stop();
+    progress = (Number(b.dataset.stage) + 0.2) / spec.stages.length;
+    draw();
+  });
+  on("view-2d", "click", () => {
+    project.ui.view = "2d";
+    to2d();
+  });
+  on("view-3d", "click", to3d);
+  on("camera-select", "change", () => {
+    project.ui.camera = $("camera-select").value;
+    view?.setCamera(project.ui.camera);
+    persist();
+  });
+  on("visual-mode", "change", () => {
+    project.ui.visualMode = $("visual-mode").value;
+    spec = buildSceneSpec(project, catalogs);
+    $("visual-note").textContent = spec.visual.note;
+    draw();
+    persist();
+  });
+  on("show-labels", "change", () => {
+    project.ui.labels = $("show-labels").checked;
+    view?.setLabelsVisible(project.ui.labels);
+    persist();
+  });
+  on("speed", "change", () => {
+    project.ui.speed = Number($("speed").value);
+    persist();
+  });
+  on("check", "click", run);
+  on("freeze", "click", () => {
+    try {
+      project.comparison = freezeA(project, result);
+      persist();
+      renderComparison();
+      notice("方案 A 已独立冻结；后续修改只影响 B。");
+    } catch (e) {
+      notice(e.message);
+    }
+  });
+  on("open-output", "click", () => {
+    $("comparison-output").open = true;
+  });
+  on("json", "click", () =>
+    download(JSON.stringify(project, null, 2), "application/json", "json"),
+  );
+  on("legacy-json", "click", () => {
+    if (legacyRaw) download(legacyRaw, "application/json", "v1.json");
+  });
+  on("csv", "click", () =>
+    download(csv(project, result, catalogs), "text/csv;charset=utf-8", "csv"),
+  );
+  on("print", "click", () => {
+    $("print-report").innerHTML = report(project, result, catalogs, frame);
+    $("print-report").hidden = false;
+    window.print();
+  });
+  on("import", "click", () => $("import-file").click());
+  on("import-file", "change", async () => {
+    const generation = ++importGeneration,
+      file = $("import-file").files[0];
+    if (!file) return;
+    try {
+      if (file.size > 1048576) throw Error("文件超过 1 MiB");
+      const p = parseProjectText(await file.text());
+      if (generation !== importGeneration) return;
+      importCandidate = p;
+      $("import-summary").textContent =
+        `有效备份：${p.inputs.material.name} / ${p.inputs.scenario.id}。恢复将替换新版草稿，旧版键保留；结果需重新检查。`;
+      $("import-preview").hidden = false;
+    } catch (e) {
+      if (generation !== importGeneration) return;
+      importCandidate = null;
+      notice("导入失败：" + e.message + "。当前记录保持不变。");
+    }
+    $("import-file").value = "";
+  });
+  on("cancel-import", "click", () => {
+    importGeneration++;
+    importCandidate = null;
+    $("import-preview").hidden = true;
+  });
+  on("restore", "click", () => {
+    if (!importCandidate) return;
+    if (
+      (mode === "draft" || draft) &&
+      !backup(mode === "draft" ? project : draft)
+    )
+      return;
+    stop();
+    const rev = project.inputRevision;
+    project = importCandidate;
+    project.inputRevision = Math.max(project.inputRevision, rev) + 1;
+    importCandidate = null;
+    storageBlocked = false;
+    mode = "draft";
+    progress = 0;
+    undo = null;
+    invalidate();
+    $("import-preview").hidden = true;
+    render();
+    persist();
+    notice("备份已恢复。当前结果待检查，未继承任何审核声明。");
+  });
+  on("clear", "click", () => {
+    if (
+      !confirm(
+        "清除本工具新版草稿及上一草稿备份？旧版 v1 原始记录与其他工具数据保留；可先导出 JSON。",
+      )
+    )
+      return;
+    try {
+      clear(localStorage);
+      draft = null;
+      previousDraft = null;
+      $("continue-draft").hidden = true;
+      $("restore-previous").hidden = true;
+      notice("新版草稿已清除。旧版记录保留，但不会自动重新迁移。");
+      if (mode === "draft") {
+        stop();
+        project = createPreset(catalogs);
+        mode = "example";
+        progress = 0;
+        undo = null;
+        invalidate();
+        render();
+        run();
+      }
+    } catch (e) {
+      notice("清除失败：" + e.message);
+    }
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+  });
+  window.addEventListener("pagehide", () => {
+    stop();
+    viewRequest++;
+    view?.dispose();
+    worker.terminate();
+  });
+  $("boot-status").hidden = true;
+  $("workspace").hidden = false;
+  render();
+  persist();
+  run();
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) void to3d();
+}
+boot().catch((e) => {
+  $("boot-status").textContent =
+    "工作台加载失败：" + e.message + "。请刷新或查看下方范围说明。";
+});
