@@ -1,6 +1,15 @@
 {
   "tools": [
     {
+      "name": "事故场景与后果模拟工作台（教学试用版）",
+      "path": "tools/scenario-workbench.html",
+      "category": "风险评估",
+      "format": "其他",
+      "bilingual": true,
+      "description": "池火3D教学、六类事故机制、措施比较与本地底稿；工程数值未评估",
+      "tags": ["工艺安全", "池火", "事故场景", "教学"]
+    },
+    {
       "name": "化学品反应与禁忌矩阵（在线工具）",
       "path": "tools/chemical-reactivity-matrix.html",
       "category": "风险评估",
@@ -6988,7 +6997,7 @@
       ]
     }
   ],
-  "total": 536,
+  "total": 537,
   "categories": [
     "5S/可视化",
     "LOTO/作业许可",

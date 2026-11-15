@@ -1,0 +1,15 @@
+{"dataVersion":"scenario-data-0.1.0","scenarios":[
+{"id":"pool-fire","name":"池火","english":"Pool fire","diagram":"pool","conditions":["liquid","flammable","pool","ignition"],"mechanism":"液体泄漏后形成液池，遇点火源发生燃烧。","consequence":"火焰接触、热辐射及相邻设备受热。","data":"物态、可燃性、实际释放量、经确认的液池几何、点火条件。","barrier":"防泄漏、有效隔离、围堵与排液管理、点火源控制。","difference":"本页提供完整池火教学；画面大小不代表工程影响距离。","support":"六阶段教学、2D / 3D；热辐射数值未评估。"},
+{"id":"jet-fire","name":"喷射火","english":"Jet fire","diagram":"jet","conditions":["flammable","pressurized","release","ignition"],"mechanism":"有压可燃物持续喷放并被点燃，形成定向火焰。","consequence":"定向火焰冲击、热辐射和相邻设备受热。","data":"压力、物态、破口、供料边界、隔离位置与点火。","barrier":"压力完整性、检测、有效切断与设备防护。","difference":"与池火不同：持续喷放的动量与方向需要单独源项模型。","support":"独立机制图与条件检查；喷射火数值未评估。"},
+{"id":"flash-fire","name":"闪火","english":"Flash fire","diagram":"flash","conditions":["flammable","cloud","ignition"],"mechanism":"可燃云团内的火焰传播，人员可能遭受火焰暴露。","consequence":"云团范围内的火焰暴露；不默认存在破坏性超压。","data":"释放与蒸发、可燃范围、扩散环境、点火位置。","barrier":"限制释放、控制点火源、气体检测与撤离。","difference":"与 VCE 分开判断；不能把可燃云团直接等同于爆炸。","support":"独立机制图与条件检查；云团距离未评估。"},
+{"id":"vce","name":"蒸气云爆炸","english":"Vapor cloud explosion / VCE","diagram":"vce","conditions":["flammable","cloud","ignition","congestion"],"mechanism":"可燃云团点火后，在拥塞或受限等条件下可能发生火焰加速。","consequence":"超压、火焰暴露和次生设备损坏。","data":"云团、拥塞或受限条件、反应性、点火及几何。","barrier":"限制云团形成、合理布置与通风、点火源控制。","difference":"条件检查仅列候选，不能用无拥塞信息证明爆炸不可能。","support":"独立机制图与条件检查；VCE 超压未评估。"},
+{"id":"bleve","name":"沸腾液体膨胀蒸气爆炸","english":"BLEVE","diagram":"bleve","conditions":["superheated","vesselFailure"],"mechanism":"过热液体因容器失效快速降压，产生剧烈膨胀；可燃介质还可能形成火球。","consequence":"压力作用、碎片；可燃物还可能产生火球热辐射。","data":"温压与饱和状态、容器完整性、受热与失效方式。","barrier":"防止外部火灾加热、压力保护、检测与应急隔离。","difference":"不等同于一般储罐池火，也不要求介质必须可燃。","support":"独立机制图与条件检查；火球、碎片和超压未评估。"},
+{"id":"toxic","name":"毒性扩散","english":"Toxic dispersion","diagram":"toxic","conditions":["toxic","airborne"],"mechanism":"有毒物料进入空气并迁移，影响取决于浓度和暴露时间。","consequence":"吸入暴露与健康影响；示意云团颜色不代表真实气体颜色。","data":"源项、物性、气象、地形、接收高度与暴露时间。","barrier":"密闭与隔离、检测、针对性防护与撤离安排。","difference":"与池火不同：需要专门扩散模型，重气与中性气体不能简单通用。","support":"独立机制图与条件检查；浓度与毒性距离未评估。"}
+],"stages":[
+{"title":"正常储存","text":"先了解物态、库存与储存条件。库存不自动等于泄漏量。","question":"物质身份和组分是否明确？"},
+{"title":"泄漏形成","text":"观察物料沿释放路径流动。此处流动是教学示意，未求解泄漏速率。","question":"隔离阀能否切断实际泄漏路径？"},
+{"title":"液池形成","text":"地面、围堵和排液可能改变积液位置与几何；本图仅展示机制。","question":"液池面积有测量或设计依据吗？"},
+{"title":"点火燃烧","text":"池火可能产生火焰接触和热辐射。火焰外沿不能作为安全距离。","question":"是否考虑暴露目标与相邻设备受热？"},
+{"title":"措施比较","text":"不同措施作用在不同环节。记录 SIS 或切断时间不会自动降低后果数值。","question":"措施的隔离边界、动作时间和证据是否足够？"},
+{"title":"回顾与复核","text":"整理已知资料、假设、待确认条件和措施，带走可复核的底稿。","question":"哪些资料仍缺失，下一步由谁确认？"}
+]}

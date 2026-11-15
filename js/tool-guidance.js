@@ -2,6 +2,17 @@
 (function () {
   'use strict';
   var catalog = {
+    'scenario-workbench.html': {
+      id: 'scenario-workbench', version: '0.1.0', status: '免费可用 · 教学试用版',
+      output: '场景底稿 / CSV / JSON / 打印', storage: '本浏览器保存个人草稿', rights: '无需会员；本页无统计',
+      purpose: '理解池火等六类事故机制、检查条件并比较措施；未评估工程距离、频率、IR 或 F–N。',
+      input: '准备物质身份、库存、储存条件、场景假设和措施依据；未知可留空，不上传项目资料。',
+      steps: '播放教学 → 记录场景 → 检查条件 → 冻结 A 与调整 B → 复核和导出。',
+      example: '教学液体 A 是合成示例；画面无工程比例，阶段进度不是真实事故时间。',
+      review: '需专业人员确认条件、物性、方法和措施边界。当前数值筛查未开放。',
+      backup: '定期备份 JSON；明确恢复备份后替换个人草稿。示例不覆盖草稿，CSV 不用于恢复。',
+      article: 'topics/process-safety.html'
+    },
     'jsa-tool.html': {
       id: 'jsa-coach', version: '0.2', status: '免费可用 · 试用版',
       output: 'JSA 底稿 / Excel / 打印', storage: '仅当前页，不自动保存', rights: '无需会员',

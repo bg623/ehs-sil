@@ -8,7 +8,7 @@ const htmlFiles = [];
 
 function walk(directory) {
   for (const name of fs.readdirSync(directory)) {
-    if (name === ".git") continue;
+    if ([".git", "node_modules", "test-results", "release-candidate"].includes(name)) continue;
     const entry = path.join(directory, name);
     const stat = fs.statSync(entry);
     if (stat.isDirectory()) walk(entry);
