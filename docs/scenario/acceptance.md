@@ -1,6 +1,6 @@
 # V0.1 验收 · 2026-11-15
 
-本地实际执行：npm ci（锁定依赖）、build、数据验证、全部 Node 测试 230/230、敏感扫描 PASS（353 个文本文件时），浏览器验收 9 组通过。最终新增文档后的敏感扫描结果以执行输出为准。
+本地实际执行：npm ci（锁定依赖）、build、数据验证、全部 Node 测试 230/230、敏感扫描 PASS，浏览器验收包含示例快速切换保留草稿的 10 组检查。最新执行明细与结果以交付报告及 results.json 为准。
 
 环境：macOS 本机，Node 26.3.1；Playwright 1.57.0，通过显式 executablePath 使用已安装的 Chromium 1228。Headless Chromium / 软件渲染；CI 设置 Node 24。这里不把本机结果写成 CI 已运行结果。
 
@@ -23,7 +23,7 @@
 
 资源：20 次 2D/3D 切换后旧 canvas 被移除，原 geometry/material/controls/ResizeObserver 释放。GPU 显存长期趋势、真实移动设备性能和 30fps 硬件预算 not_run，不从 canvas 数量推断 GPU 全部回收。隐藏页停止动画，默认不自动播放，点击播放才启动。
 
-性能构建测量：初始 app 32,484 B / gzip 11,414 B；动态 3D 531,195 B / gzip 137,091 B；Worker 4,938 B / gzip 2,382 B。均在初始 250 KB / 3D 1.5 MB 预算内；不等于弱网真实用户时间。
+性能构建测量：初始 app gzip 约 12 KB、动态 3D 约 137 KB，均在初始 250 KB / 3D 1.5 MB 预算内；逐文件实际字节见版本目录 asset-sizes.json，不等于弱网真实用户时间。
 
 远端 CI 首轮 project-tests 通过，浏览器安装因 ubuntu-latest 已指向 26.04、锁定的 Playwright 不支持而失败；已将新工作流固定为官方依赖表支持的 Ubuntu 24.04，并增加 HTTP 就绪检查。最新 CI 状态在交付报告中记录，不把首轮失败略去。
 

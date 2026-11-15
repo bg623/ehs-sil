@@ -1,11 +1,13 @@
-import {APP_VERSION,SCHEMA_VERSION} from './schema.mjs';
+import {APP_VERSION,SCHEMA_VERSION,CONDITION_LABELS} from './schema.mjs';
 import {compare} from './engine.mjs';
 import {escape,sceneSvg} from './view-2d.mjs';
 export function currentResult(p,r){return r&&r.inputRevision===p.inputRevision&&r.status!=='stale'?r:null;}
 export function safeCell(x){const s=String(x??'待确认');return '"'+(/^[\s]*[=+\-@]/.test(s)?"'"+s:s).replace(/"/g,'""')+'"';}
 export function rows(p,r){
   r=currentResult(p,r);const list=[['类型','字段','值','单位 / 状态'],['版本','应用',APP_VERSION,'教学试用'],['版本','项目结构',SCHEMA_VERSION,''],['结果','当前状态',r?'仅教学演示':'待重算 / 未检查',''],['结果','输入修订号',p.inputRevision,''],['结果','输入哈希',r?.inputHash??'待重算','复现关联'],['场景','标题',p.meta.title,''],['场景','物质',p.inputs.material.name,'仅记录'],['场景','组分',p.inputs.material.composition,'仅记录'],['场景','物态',p.inputs.material.state,'仅记录'],['输入','库存',p.inputs.storage.inventoryKg,'kg'],['输入','指定释放质量',p.inputs.scenario.releaseKg,'kg'],['输入','绝对压力',p.inputs.storage.pressurePa,'Pa'],['输入','温度',p.inputs.material.temperatureK,'K'],['输入','固定池面积',p.inputs.pool.areaM2,'m²'],['输入','固定池直径',p.inputs.pool.diameterM,'m'],['说明','设备',p.inputs.storage.equipment,''],['说明','设备说明',p.inputs.storage.note,''],['说明','液池几何来源',p.inputs.pool.geometrySource,''],['说明','地面',p.inputs.pool.ground,''],['说明','资料来源',p.evidenceNotes,'']];
-  for(const[k,v]of Object.entries(p.inputs.scenario.conditions))list.push(['条件',k,v,'用户记录']);
+  const terms={unknown:'待确认 / unknown',yes:'条件存在 / yes',no:'当前不满足 / no',pure:'单一纯物质 / pure',mixture:'混合物 / mixture',liquid:'液体 / liquid',gas:'气体 / gas',solid:'固体 / solid'};
+  for(const row of list)if(terms[row[2]])row[2]=terms[row[2]];
+  for(const[k,v]of Object.entries(p.inputs.scenario.conditions))list.push(['条件',`${CONDITION_LABELS[k]} / ${k}`,terms[v]||v,'用户记录']);
   list.push(['物质','CAS',p.inputs.material.cas,'仅记录']);
   for(const c of p.controls){list.push(['措施',c.type,`${c.boundary}；${c.evidence}`,'仅记录 / recorded_only']);list.push(['措施作用对象',c.type,c.target,'仅记录']);list.push(['动作时间',c.type,c.actionTimeS,'s；未计入数值']);}
   for(const r of p.inputs.receptors)list.push(['目标点',r.id,`东 x=${r.x}；北 y=${r.y}；上 z=${r.z}`,'m；仅记录']);
