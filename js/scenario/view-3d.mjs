@@ -23,12 +23,14 @@ export function create3d(host,onFail){
   const flames=[];
   for(let i=0;i<26;i++){const angle=i*2.3999,r=Math.sqrt((i+.5)/26)*2.45;const a=mesh(new THREE.ConeGeometry(.5+(i%3)*.12,2.5+(i%5)*.38,7),i%2?0xf1c96f:0xd7a23a,[3+Math.cos(angle)*r,Math.sin(angle)*r,1.5],{emissive:0x805810,emissiveIntensity:.6,transparent:true,opacity:.88});flames.push(a);}
   const target=mesh(new THREE.CylinderGeometry(.3,.3,1.5,12),0x0d473f,[9,3,.75]);
+  const markerGeometry=new THREE.SphereGeometry(.3,10,6),markerMaterial=new THREE.MeshStandardMaterial({color:0x0d473f});geometries.push(markerGeometry);materials.push(markerMaterial);
+  const markers=new THREE.Group();scene.add(markers);let markerSignature='';
   let stage=0,frame=0,disposed=false;
   const draw=()=>{if(!disposed){renderer.render(scene,camera);frame++;host.dataset.frames=String(frame);host.dataset.geometries=String(renderer.info.memory.geometries);}};
   const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();draw();};
   controls.addEventListener('change',draw);const observer=new ResizeObserver(resize);observer.observe(host);
   const lost=e=>{e.preventDefault();onFail('WebGL 已中断，已恢复 2D 视图。');};renderer.domElement.addEventListener('webglcontextlost',lost);
-  function update(result,nextStage,progress=0){stage=nextStage;liquid.visible=stage>=2;leak.visible=stage>=1;for(let i=0;i<flames.length;i++){const f=flames[i];f.visible=stage>=3;f.scale.y=1+.1*Math.sin(progress*40+i);f.rotation.y=progress*.4;}target.visible=true;draw();}
+  function update(result,nextStage,progress=0){stage=nextStage;liquid.visible=stage>=2;leak.visible=stage>=1;for(let i=0;i<flames.length;i++){const f=flames[i];f.visible=stage>=3;f.scale.y=1+.1*Math.sin(progress*40+i);f.rotation.y=progress*.4;}const receptors=result?.visualization.receptors||[],signature=JSON.stringify(receptors);if(signature!==markerSignature){markerSignature=signature;markers.clear();for(const r of receptors){const m=new THREE.Mesh(markerGeometry,markerMaterial);m.position.set(...worldToThree(r));markers.add(m);}}target.visible=!receptors.length;draw();}
   resize();update(null,0);
   return {update,reset(){camera.position.set(16,12,19);controls.target.set(0,2,0);controls.update();draw();},stats(){return {geometries:renderer.info.memory.geometries,frames:frame,sceneObjects:scene.children.length};},dispose(){disposed=true;observer.disconnect();controls.dispose();renderer.domElement.removeEventListener('webglcontextlost',lost);for(const g of geometries)g.dispose();for(const m of materials)m.dispose();renderer.dispose();host.replaceChildren();}};
 }

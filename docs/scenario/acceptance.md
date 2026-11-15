@@ -23,7 +23,9 @@
 
 资源：20 次 2D/3D 切换后旧 canvas 被移除，原 geometry/material/controls/ResizeObserver 释放。GPU 显存长期趋势、真实移动设备性能和 30fps 硬件预算 not_run，不从 canvas 数量推断 GPU 全部回收。隐藏页停止动画，默认不自动播放，点击播放才启动。
 
-性能构建测量：初始 app 32,070 B / gzip 11,315 B；动态 3D 529,761 B / gzip 136,690 B；Worker 4,938 B / gzip 2,382 B。均在初始 250 KB / 3D 1.5 MB 预算内；不等于弱网真实用户时间。
+性能构建测量：初始 app 32,484 B / gzip 11,414 B；动态 3D 531,195 B / gzip 137,091 B；Worker 4,938 B / gzip 2,382 B。均在初始 250 KB / 3D 1.5 MB 预算内；不等于弱网真实用户时间。
+
+远端 CI 首轮 project-tests 通过，浏览器安装因 ubuntu-latest 已指向 26.04、锁定的 Playwright 不支持而失败；已将新工作流固定为官方依赖表支持的 Ubuntu 24.04，并增加 HTTP 就绪检查。最新 CI 状态在交付报告中记录，不把首轮失败略去。
 
 QA 在不发布目录 test-results/scenario：desktop-2d.png、pool-fire-3d.png、comparison.png、mobile-360.png、mobile-390.png、fallback-2d.png、project.json、result.csv、report.pdf、results.json。仅虚构 QA 记录，不进入 OSS 公开包。
 
