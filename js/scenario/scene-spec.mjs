@@ -1,6 +1,7 @@
 import { clone } from "./schema.mjs";
 import { deriveQuantity, equipmentById } from "./presets.mjs";
 import { checkCompatibility } from "./compatibility.mjs";
+import { poolVisualBounds } from './rendering/pool-visual-bounds.mjs';
 
 const point = (x,y,z) => ({x,y,z});
 const normalize = ({x,y,z}) => {
@@ -47,6 +48,7 @@ export function buildSceneSpec(p, c) {
       visualValidity:{kind:"teaching-only",phaseVerified:false,
         note:"尺寸、域、方向、传播和时序为视觉配置；未执行状态方程、源项、浓度、超压或后果校验。"},
     };
+  if(d.id==='pool-fire')process.domain=poolVisualBounds(radius,poolCenter,process.direction);
   if (geometryKind === "pipe-rack") {
     const h=H ?? 1.6;
     process.nozzle={position:point(-2,0,Math.max(.3,h-.1)),direction:normalize(point(1,0,.08)),radiusM:.045};

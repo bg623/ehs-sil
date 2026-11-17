@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { worldToThree } from '../coordinates.mjs';
 import { makeNoiseVolume, NOISE_SIZE } from './noise-data.mjs';
+import { poolVisualHeight, POOL_VISUAL } from './pool-visual-bounds.mjs';
 export const VOLUME_SCENARIOS = ['pool-fire','jet-fire','flash-fire','vapor-cloud-explosion','confined-deflagration','vce'];
 const point=(p,f={x:0,y:0,z:0})=>new THREE.Vector3(...worldToThree(p||f));
 const clamp=(x)=>Math.max(0,Math.min(1,Number.isFinite(x)?x:0));
@@ -32,7 +33,7 @@ export function volumeState(spec,frame) {
     enclosureBox=new THREE.Box3().setFromPoints([point(enclosure.min||{x:-2,y:-1.5,z:0}),point(enclosure.max||{x:2,y:1.5,z:3})]),
     opening=enclosure.opening||{},
     profile=spec.visual.profile||{},pure=spec.material.composition==='pure';
-  root.y+=.07;
+  root.y+=POOL_VISUAL.rootLiftM;
   const colour=new THREE.Color(pure&&/^#[0-9a-f]{6}$/i.test(profile.color)?profile.color:'#e6a35a');
   const pressure=frame.pressureProgress;
   return {
@@ -46,7 +47,7 @@ export function volumeState(spec,frame) {
     vent:point(opening.center||process.nozzle?.position||anchors.leak||anchors.tank),
     ventDirection:point(opening.direction||process.direction||{x:1,y:0,z:0}).normalize(),
     wind:point(process.direction||{x:1,y:0,z:0}),
-    radius,nozzleRadius:process.nozzle?.radiusM||.045,visualHeight:radius*3.9,jetLength:Number.isFinite(process.jetLengthM)?process.jetLengthM:6.2,
+    radius,nozzleRadius:process.nozzle?.radiusM||.045,visualHeight:poolVisualHeight(radius),jetLength:Number.isFinite(process.jetLengthM)?process.jetLengthM:6.2,
     time:Number.isFinite(frame.noiseTime)?frame.noiseTime:frame.progress*13,
     fire:clamp(frame.fireIntensity??(frame.fireVisible?1:0)),
     release:clamp(frame.releaseIntensity??(frame.leakVisible?1:0)),

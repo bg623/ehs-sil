@@ -4,7 +4,9 @@
 
 2026-11-17复核生产来源为main `3be8660da8e96d855be8952c59ffe769c87c3fd8` / tree `c6ea0c8f549722d0b7a2edfe23c66d24aa1ec3b0`。当前工作台对象是404首页兜底，v0.1.1/v0.2.0模块也未上线；不是已经发布过V0.1.1的系统。不能用未发布V0.1.1作为生产回退备份。
 
-本轮生产授权沿用，但OSS安全连接尚待主任务建立，尚未上传。CLI/config/Secret和限定浏览器通道结果见production-readiness-v020.md。不得从历史脚本或运维手册提取旧明文密钥补足连接。
+本轮生产授权沿用。早期限定OSS页面连接失败是历史记录；当前主任务已从登录OSS页面确认杭州bucket `ehs-sil` / `oss-cn-hangzhou`，index详情ETag `5629F611188B732677680D2B830AE8C2`、43441字节、ACL继承桶、Standard、加密无。21:53双域名只读复核确认6个拟覆盖对象的bytes/SHA256/size与保留的production-before完全一致，MIME/cache无变化，原快照未改。
+
+截至21:56:28（Asia/Shanghai），公网工具仍404首页兜底，尚未上传。RC2两项CI真实成功，但RC3池火视觉域截断修复正在验收、尚待新CI及最终包，不能把RC2候选直接当RC3上线。连接、备份复核和CI链接/时长分别见production-readiness-v020.md与ci-v020.md；不得从历史脚本或运维手册提取旧明文密钥。
 
 ## 发布前必须具备
 
@@ -12,6 +14,8 @@
 2. 确认实际bucket和前缀；仅操作manifest列出对象，不整桶同步。不改DNS、代理、桶权限、会员接口或收费。
 3. 备份overwriteObjects实际生产字节及Content-Type、Cache-Control、ETag/Last-Modified等元数据，另记本来不存在的对象列表。共享依赖先GET核对；若与前置hash不同，停止并重新审查，不静默覆盖。
 4. 保存原入口备份、发布顺序、每步结果与可用恢复通道。本地原始草稿、旧v1、v2、上一草稿以及JSON导出均不得进入公开发布包。
+
+6份旧对象公开GET字节及响应元数据已保存在`outputs/scenario-v020-20261117/production-before/`，本次双域名metadata-only复核见`production-preflight-rc3.json`；两者不要互相覆盖。identity传输下4项补充出现的ETag不代表对象变更，字节已独立核对。恢复时保留原Cache-Control缺失的事实，不能把原来未设置的头恢复成新值。只用最终RC3新manifest/public，不从RC1/RC2候选目录增量拼包。
 
 ## 按phase发布
 

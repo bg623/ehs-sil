@@ -1,18 +1,18 @@
 [
   {
     "file": "app.mjs",
-    "bytes": 93033,
-    "gzipBytes": 28791
+    "bytes": 93092,
+    "gzipBytes": 28813
   },
   {
-    "file": "chunk-DBRVKPHH.mjs",
-    "bytes": 173,
-    "gzipBytes": 152
+    "file": "chunk-ENUEK4IP.mjs",
+    "bytes": 1276,
+    "gzipBytes": 717
   },
   {
-    "file": "view-3d-UQRTNV2I.mjs",
-    "bytes": 607706,
-    "gzipBytes": 162233
+    "file": "view-3d-QRC2BEVM.mjs",
+    "bytes": 608123,
+    "gzipBytes": 162402
   },
   {
     "file": "worker.mjs",

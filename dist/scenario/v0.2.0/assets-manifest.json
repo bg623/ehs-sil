@@ -15,24 +15,24 @@
     },
     {
       "path": "app.mjs",
-      "sha256": "57bfde8b3fdedeb97f0b77e12b9dc9c06366aaf4889169a23b4614bb51923273",
-      "sizeBytes": 93033,
+      "sha256": "bbe8e2672e545863cd5f2341cc95f444c91d4e03075ed1c60d236b46ed387416",
+      "sizeBytes": 93092,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
     },
     {
       "path": "asset-sizes.json",
-      "sha256": "2bbf73fba82683fed97c5fd67fd616efe98d1e84e09847180408f9cf8effb80f",
-      "sizeBytes": 326,
+      "sha256": "946624075f8ace231b017a1be2f48ef3d47beb544e6d850b120dad4fd840985e",
+      "sizeBytes": 327,
       "contentType": "application/json; charset=utf-8",
       "purpose": "样式、许可或构建记录",
       "license": "Project configuration or attribution; no third-party artwork"
     },
     {
-      "path": "chunk-DBRVKPHH.mjs",
-      "sha256": "9a5565f30440e9fd9df6f3baa78d1d1f5130f412ffd723860f3649ed9c0c542a",
-      "sizeBytes": 173,
+      "path": "chunk-ENUEK4IP.mjs",
+      "sha256": "5f5f52f365b442bae25323c1c42343abc777f22dc7e30351beb35e9dc0fd1835",
+      "sizeBytes": 1276,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
@@ -110,9 +110,9 @@
       "license": "Project configuration or attribution; no third-party artwork"
     },
     {
-      "path": "view-3d-UQRTNV2I.mjs",
-      "sha256": "8c3156b1bbe3edcfbec24b2911db5b4a7c0022acb5f0132b8f181490c6dec787",
-      "sizeBytes": 607706,
+      "path": "view-3d-QRC2BEVM.mjs",
+      "sha256": "3d21b51eac8d88d380c5a2576d98ae9948b25c78788da90c6429512772f8db2d",
+      "sizeBytes": 608123,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
