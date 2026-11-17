@@ -15,15 +15,15 @@
     },
     {
       "path": "app.mjs",
-      "sha256": "bbe8e2672e545863cd5f2341cc95f444c91d4e03075ed1c60d236b46ed387416",
-      "sizeBytes": 93092,
+      "sha256": "033e1a281a29b96b3a3b54ff9e84cb2669e06d912cfcc31e05e7d531ff99b9f7",
+      "sizeBytes": 93766,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
     },
     {
       "path": "asset-sizes.json",
-      "sha256": "946624075f8ace231b017a1be2f48ef3d47beb544e6d850b120dad4fd840985e",
+      "sha256": "37dbce0944a30573c65a56337bbcbffff1b82dee028af07d5076e905d2082581",
       "sizeBytes": 327,
       "contentType": "application/json; charset=utf-8",
       "purpose": "样式、许可或构建记录",

@@ -56,6 +56,7 @@ let controlEdits = new Map(),
   assumptionEdited = false;
 let exportingFrame = false, frameExportGeneration = 0, lastFrameMetadata = null, lastUiStage = -1;
 let displayView = null, appliedDisplay = {};
+let playbackIntent = 0;
 const controlNames = [
   "减少库存",
   "围堵与排液",
@@ -111,6 +112,9 @@ function updateMetrics() {
   $("workspace").dataset.activeClocks = playing ? "1" : "0";
 }
 function stop() {
+  playbackIntent++;
+  if ($("view-status").textContent === "正在准备三维教学…")
+    $("view-status").textContent = "播放准备已取消，可再次选择播放或切换视图。";
   playing = false;
   cancelAnimationFrame(clock);
   clock = 0;
@@ -501,6 +505,7 @@ function tick(now) {
   else clock = requestAnimationFrame(tick);
 }
 function play() {
+  playbackIntent++;
   if (!spec.support.canPlayDetailedStoryboard) return;
   if (playing) {
     stop();
@@ -513,7 +518,8 @@ function play() {
   updateMetrics();
   clock = requestAnimationFrame(tick);
 }
-function to2d() {
+function to2d({ cancelPlayback = true } = {}) {
+  if (cancelPlayback) playbackIntent++;
   viewRequest++;
   viewMode = "2d";
   $("view-2d-host").hidden = false;
@@ -530,20 +536,26 @@ async function to3d() {
   if (!spec.support.canPlayDetailedStoryboard) return;
   const generation = ++viewRequest;
   const sceneId = spec.sceneId;
+  const requestedProject = project, revision = project.inputRevision;
+  const isCurrent = () => generation === viewRequest && requestedProject === project &&
+    revision === project.inputRevision && sceneId === spec.sceneId;
   $("view-status").textContent = "正在准备三维教学…";
   try {
     if (!view) {
       const mod = await import("./view-3d.mjs");
-      if (generation !== viewRequest || sceneId !== spec.sceneId) return;
+      if (!isCurrent()) return;
       $("view-3d-host").hidden = false;
-      view = mod.create3d($("view-3d-host"), (message) => {
-        view?.dispose();
+      let createdView;
+      createdView = mod.create3d($("view-3d-host"), (message) => {
+        if (view !== createdView) return;
+        createdView.dispose();
         view = null;
         to2d();
         $("view-status").textContent = message || "3D 不可用，已恢复 2D。";
       });
+      view = createdView;
     }
-    if (generation !== viewRequest || !spec.support.canPlayDetailedStoryboard)
+    if (!isCurrent() || !spec.support.canPlayDetailedStoryboard)
       return;
     viewMode = "3d";
     project.ui.view = "3d";
@@ -557,11 +569,15 @@ async function to3d() {
     $("export-png").disabled = false;
     $("view-status").textContent =
       "拖动自由旋转，滚轮 / 双指缩放。三维体积为视觉模型，不能反推工程后果。";
+    return { generation, mode: "3d" };
   } catch {
+    // A cancelled/older import failure must not dispose a newer scene's view.
+    if (!isCurrent()) return;
     view?.dispose();
     view = null;
-    to2d();
+    to2d({ cancelPlayback: false });
     $("view-status").textContent = "3D 不可用，当前使用完整 2D 视图。";
+    return { generation: viewRequest, mode: "2d" };
   }
 }
 const options = (items, value) =>
@@ -896,10 +912,18 @@ async function boot() {
     persist();
   });
   on("play-example", "click", async () => {
-    $("view-panel").scrollIntoView({ block: "start" });
+    $("view-panel").scrollIntoView({ block: "start", behavior: "instant" });
     if (spec.support.canPlayDetailedStoryboard) {
-      void to3d();
-      if (!playing) play();
+      if (playing) return;
+      const intent = ++playbackIntent, requestedProject = project,
+        revision = project.inputRevision;
+      const prepared = await to3d();
+      // Keep the 22-second teaching clock stopped during import/first render.
+      // A later user action, scene replacement or view switch cancels this start.
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      if (prepared && intent === playbackIntent && requestedProject === project &&
+          revision === project.inputRevision && prepared.generation === viewRequest &&
+          !document.hidden && !playing) play();
     } else notice("当前条件没有匹配的三维预设。可载入对应事故的完整兼容示例；不会暗改你的条件。");
   });
   on("common-form", "submit", (e) => e.preventDefault());

@@ -24,6 +24,7 @@ jobs:
           node tests/scenario-browser.mjs
           node tests/scenario-v020-browser.mjs
           node tests/scenario-v020-protection-browser.mjs
+          node tests/scenario-playback-readiness-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
