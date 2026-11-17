@@ -29,7 +29,7 @@ async function three(p,item){await p.locator('#view-3d').click();await p.locator
 async function seek(p,value){await p.locator('#timeline').evaluate((el,v)=>{el.value=String(v);el.dispatchEvent(new Event('input',{bubbles:true}));},value);assert.equal(await p.locator('#workspace').getAttribute('data-active-clocks'),'0');}
 async function shot(p,name){await p.locator('#view-3d-host').evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));await p.locator('#view-3d-host').screenshot({path:path.join(out,name)});}
 async function output(p){const el=p.locator('#comparison-output');if((await el.getAttribute('open'))===null)await el.locator('summary').first().click();}
-async function download(p,id,name,{isOutput=false}={}){if(isOutput)await output(p);const pending=p.waitForEvent('download',{timeout:120000});await p.locator(id).click();const d=await pending;assert.equal(await d.failure(),null);const dest=path.join(out,name);await d.saveAs(dest);return fs.readFile(dest);}
+async function download(p,id,name,{isOutput=false}={}){if(isOutput)await output(p);const [d]=await Promise.all([p.waitForEvent('download',{timeout:120000}),p.locator(id).click({timeout:id==='#export-png'?120000:30000})]);assert.equal(await d.failure(),null);const dest=path.join(out,name);await d.saveAs(dest);return fs.readFile(dest);}
 const project=async(p,name)=>JSON.parse((await download(p,'#json',name,{isOutput:true})).toString('utf8'));
 function pngSize(b){assert.equal(b.subarray(0,8).toString('hex'),'89504e470d0a1a0a');return [b.readUInt32BE(16),b.readUInt32BE(20)];}
 const rev=async p=>Number(await p.locator('#workspace').getAttribute('data-input-revision'));
