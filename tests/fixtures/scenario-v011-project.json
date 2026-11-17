@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "id": "614b56cf-7997-4426-842f-61755b91dfa6",
+    "title": "甲醇储罐泄漏后池火",
+    "schemaVersion": "1.1.0",
+    "createdAt": "2026-11-15T21:26:27.597Z",
+    "updatedAt": "2026-11-15T21:26:27.013Z",
+    "presetId": "methanol-atmospheric-tank-pool-fire",
+    "presetVersion": "1.0.0"
+  },
+  "inputRevision": 1,
+  "inputs": {
+    "material": {
+      "id": "methanol",
+      "name": "甲醇",
+      "english": "Methanol",
+      "cas": "67-56-1",
+      "composition": "pure",
+      "state": "liquid",
+      "temperatureK": 293.15,
+      "visualProfileRef": "methanol-pool-fire"
+    },
+    "storage": {
+      "equipment": "立式常压固定顶储罐",
+      "quantityBasis": "volume",
+      "inventoryKg": null,
+      "volumeM3": 30,
+      "fillFraction": null,
+      "pressurePa": 101325,
+      "pressureMode": "atmospheric",
+      "note": ""
+    },
+    "equipment": {
+      "id": "vertical-atmospheric-fixed-roof",
+      "name": "立式常压固定顶储罐",
+      "geometry": {
+        "diameterM": 4,
+        "heightM": 4,
+        "orientation": "vertical"
+      },
+      "containment": {
+        "lengthM": 12,
+        "widthM": 10,
+        "heightM": 1
+      },
+      "leakAnchor": "valve-downstream"
+    },
+    "scenario": {
+      "id": "pool-fire",
+      "releaseKg": null,
+      "ignition": "delayed_teaching",
+      "conditions": {
+        "liquid": "yes",
+        "flammable": "yes",
+        "pool": "yes",
+        "ignition": "yes",
+        "pressurized": "unknown",
+        "release": "yes",
+        "cloud": "unknown",
+        "congestion": "unknown",
+        "superheated": "unknown",
+        "vesselFailure": "unknown",
+        "toxic": "unknown",
+        "airborne": "unknown"
+      }
+    },
+    "pool": {
+      "areaM2": null,
+      "diameterM": null,
+      "radiusM": 1.2,
+      "geometrySource": "教学预设范围；未求解液池扩展",
+      "ground": "示例排液路径关闭；需按现场核实"
+    },
+    "receptors": []
+  },
+  "controls": [],
+  "assumptions": [
+    {
+      "text": "虚构教学条件，不对应企业实际装置。",
+      "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+      "confirmed": false
+    },
+    {
+      "text": "按纯甲醇燃烧特征教学；纯度 100% 为本示例假设，不代表实际物料。",
+      "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+      "confirmed": false
+    },
+    {
+      "text": "罐侧出料短管在根部隔离阀之后发生泄漏。",
+      "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+      "confirmed": false
+    },
+    {
+      "text": "液池最终示意半径 1.2 m 由分镜预设，未求解泄漏速率或铺展。",
+      "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+      "confirmed": false
+    },
+    {
+      "text": "示意排液路径关闭；未建立持续补料过程、风场或真实事故时间。",
+      "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+      "confirmed": false
+    },
+    {
+      "text": "点火属于教学分镜，未评价发生概率；后果数值均未评估。",
+      "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+      "confirmed": false
+    }
+  ],
+  "evidenceNotes": "",
+  "comparison": {
+    "project": {
+      "meta": {
+        "id": "614b56cf-7997-4426-842f-61755b91dfa6",
+        "title": "甲醇储罐泄漏后池火",
+        "schemaVersion": "1.1.0",
+        "createdAt": "2026-11-15T21:26:27.597Z",
+        "updatedAt": "2026-11-15T21:26:27.013Z",
+        "presetId": "methanol-atmospheric-tank-pool-fire",
+        "presetVersion": "1.0.0"
+      },
+      "inputRevision": 1,
+      "inputs": {
+        "material": {
+          "id": "methanol",
+          "name": "甲醇",
+          "english": "Methanol",
+          "cas": "67-56-1",
+          "composition": "pure",
+          "state": "liquid",
+          "temperatureK": 293.15,
+          "visualProfileRef": "methanol-pool-fire"
+        },
+        "storage": {
+          "equipment": "立式常压固定顶储罐",
+          "quantityBasis": "volume",
+          "inventoryKg": null,
+          "volumeM3": 30,
+          "fillFraction": null,
+          "pressurePa": 101325,
+          "pressureMode": "atmospheric",
+          "note": ""
+        },
+        "equipment": {
+          "id": "vertical-atmospheric-fixed-roof",
+          "name": "立式常压固定顶储罐",
+          "geometry": {
+            "diameterM": 4,
+            "heightM": 4,
+            "orientation": "vertical"
+          },
+          "containment": {
+            "lengthM": 12,
+            "widthM": 10,
+            "heightM": 1
+          },
+          "leakAnchor": "valve-downstream"
+        },
+        "scenario": {
+          "id": "pool-fire",
+          "releaseKg": null,
+          "ignition": "delayed_teaching",
+          "conditions": {
+            "liquid": "yes",
+            "flammable": "yes",
+            "pool": "yes",
+            "ignition": "yes",
+            "pressurized": "unknown",
+            "release": "yes",
+            "cloud": "unknown",
+            "congestion": "unknown",
+            "superheated": "unknown",
+            "vesselFailure": "unknown",
+            "toxic": "unknown",
+            "airborne": "unknown"
+          }
+        },
+        "pool": {
+          "areaM2": null,
+          "diameterM": null,
+          "radiusM": 1.2,
+          "geometrySource": "教学预设范围；未求解液池扩展",
+          "ground": "示例排液路径关闭；需按现场核实"
+        },
+        "receptors": []
+      },
+      "controls": [],
+      "assumptions": [
+        {
+          "text": "虚构教学条件，不对应企业实际装置。",
+          "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+          "confirmed": false
+        },
+        {
+          "text": "按纯甲醇燃烧特征教学；纯度 100% 为本示例假设，不代表实际物料。",
+          "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+          "confirmed": false
+        },
+        {
+          "text": "罐侧出料短管在根部隔离阀之后发生泄漏。",
+          "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+          "confirmed": false
+        },
+        {
+          "text": "液池最终示意半径 1.2 m 由分镜预设，未求解泄漏速率或铺展。",
+          "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+          "confirmed": false
+        },
+        {
+          "text": "示意排液路径关闭；未建立持续补料过程、风场或真实事故时间。",
+          "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+          "confirmed": false
+        },
+        {
+          "text": "点火属于教学分镜，未评价发生概率；后果数值均未评估。",
+          "source": "教学模板 methanol-atmospheric-tank-pool-fire@1.0.0",
+          "confirmed": false
+        }
+      ],
+      "evidenceNotes": "",
+      "comparison": null,
+      "provenance": {
+        "inputs.material.id": {
+          "kind": "public_identity_reference",
+          "presetRef": null,
+          "sourceRefs": [
+            "noaa-methanol",
+            "mi-methanol-burning"
+          ]
+        },
+        "inputs.material.cas": {
+          "kind": "public_identity_reference",
+          "presetRef": null,
+          "sourceRefs": [
+            "noaa-methanol",
+            "mi-methanol-burning"
+          ]
+        },
+        "inputs.material.temperatureK": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        },
+        "inputs.material.composition": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        },
+        "inputs.storage.volumeM3": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        },
+        "inputs.storage.pressurePa": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        },
+        "inputs.equipment.geometry.diameterM": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        },
+        "inputs.equipment.geometry.heightM": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        },
+        "inputs.pool.radiusM": {
+          "kind": "teaching_assumption",
+          "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+          "sourceRefs": []
+        }
+      },
+      "scenarioMemory": {},
+      "migrationLog": [],
+      "ui": {
+        "view": "3d",
+        "stage": 0,
+        "visualMode": "assisted",
+        "camera": "overview",
+        "speed": 1,
+        "labels": true
+      }
+    },
+    "modelVersion": "0.1.0",
+    "dataVersion": "scenario-data-0.1.1",
+    "inputRevision": 1
+  },
+  "provenance": {
+    "inputs.material.id": {
+      "kind": "public_identity_reference",
+      "presetRef": null,
+      "sourceRefs": [
+        "noaa-methanol",
+        "mi-methanol-burning"
+      ]
+    },
+    "inputs.material.cas": {
+      "kind": "public_identity_reference",
+      "presetRef": null,
+      "sourceRefs": [
+        "noaa-methanol",
+        "mi-methanol-burning"
+      ]
+    },
+    "inputs.material.temperatureK": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    },
+    "inputs.material.composition": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    },
+    "inputs.storage.volumeM3": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    },
+    "inputs.storage.pressurePa": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    },
+    "inputs.equipment.geometry.diameterM": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    },
+    "inputs.equipment.geometry.heightM": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    },
+    "inputs.pool.radiusM": {
+      "kind": "teaching_assumption",
+      "presetRef": "methanol-atmospheric-tank-pool-fire@1.0.0",
+      "sourceRefs": []
+    }
+  },
+  "scenarioMemory": {},
+  "migrationLog": [],
+  "ui": {
+    "view": "3d",
+    "stage": 0,
+    "visualMode": "assisted",
+    "camera": "overview",
+    "speed": 1,
+    "labels": true
+  }
+}

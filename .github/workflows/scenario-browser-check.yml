@@ -8,7 +8,7 @@ permissions:
 jobs:
   scenario:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,8 +22,10 @@ jobs:
           python3 -m http.server 8786 --bind 127.0.0.1 &
           curl --retry 10 --retry-connrefused --retry-delay 1 -fsS http://127.0.0.1:8786/tools/scenario-workbench.html -o /dev/null
           node tests/scenario-browser.mjs
+          node tests/scenario-v020-browser.mjs
+          node tests/scenario-v020-protection-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: scenario-qa
-          path: test-results/scenario-v011
+          path: test-results/scenario-v020*

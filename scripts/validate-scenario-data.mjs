@@ -5,7 +5,7 @@ const c=Object.fromEntries(Object.entries({capabilities:'capabilities',chemicals
 for(const[k,value]of Object.entries(c))if(k!=='registry')assert.equal(value.dataVersion,DATA_VERSION,k);
 assert.equal(c.capabilities.appVersion,APP_VERSION);assert.equal(c.capabilities.screeningEnabled,false);assert.equal(c.capabilities.releaseKind,'teaching');assert.equal(c.capabilities.frequencyModel,false);assert.deepEqual(c.capabilities.approvedChemicalIds,[]);assert.deepEqual(c.chemicals.approvedScreeningMaterials,[]);
 assert.equal(read('build/scenario/package.json').version,APP_VERSION);assert.equal(read('build/scenario/package-lock.json').version,APP_VERSION);
-assert.equal(c.scenarios.scenarios.length,6);for(const d of c.scenarios.scenarios)assert.ok(d.stages.length>0);
+assert.equal(c.scenarios.scenarios.length,7);for(const d of c.scenarios.scenarios)assert.ok(d.stages.length>0);
 const sources=new Set(c.sources.sources.map(s=>s.id));for(const collection of [c.chemicals.materials,c.equipment.equipment,c.presets.presets,c.visualProfiles.profiles])for(const item of collection)for(const ref of item.sourceRefs||[])assert.ok(sources.has(ref),ref);
 for(const m of c.chemicals.materials)assert.deepEqual(m.properties,{});
 assert.ok(c.chemicals.materials.filter(m=>m.cas).length>=2);for(const p of c.presets.presets)assert.equal(createPreset(c,p.presetId).meta.schemaVersion,SCHEMA_VERSION);

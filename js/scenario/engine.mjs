@@ -119,7 +119,7 @@ export function compare(a, b) {
     };
   const compatible =
     a.modelVersion === MODEL_VERSION &&
-    ["scenario-data-0.1.0", DATA_VERSION].includes(a.dataVersion);
+    ["scenario-data-0.1.0", "scenario-data-0.1.1", DATA_VERSION].includes(a.dataVersion);
   const flatten = (x, p = "", out = {}) => {
     if (x && typeof x === "object" && !Array.isArray(x))
       for (const [k, v] of Object.entries(x))

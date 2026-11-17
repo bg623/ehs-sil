@@ -6,7 +6,7 @@ import {createRequire} from 'node:module';
 const require=createRequire(new URL('../build/scenario/package.json',import.meta.url));
 const pw=await import(process.env.PLAYWRIGHT_MODULE?pathToFileURL(process.env.PLAYWRIGHT_MODULE).href:pathToFileURL(require.resolve('playwright')).href);
 const {chromium}=pw.default||pw;
-const base=(process.env.SCENARIO_BASE_URL||'http://127.0.0.1:8786').replace(/\/$/,''),out=path.resolve(process.env.SCENARIO_QA_DIR||'test-results/scenario-v011');
+const base=(process.env.SCENARIO_BASE_URL||'http://127.0.0.1:8786').replace(/\/$/,''),out=path.resolve(process.env.SCENARIO_QA_DIR||'test-results/scenario-v020-regression');
 await fs.mkdir(out,{recursive:true});
 const legacyRaw=await fs.readFile(new URL('./fixtures/scenario-v1-project.json',import.meta.url),'utf8');
 const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{}),args:['--enable-unsafe-swiftshader']});
@@ -28,7 +28,7 @@ async function check(name,fn,options={}){
   },options);
   if(options.fail3d)await page.route('**/view-3d-*.mjs',r=>r.abort());
   await page.goto(base+'/tools/scenario-workbench.html',{waitUntil:'networkidle'});await page.locator('#workspace').waitFor();
-  assert.ok(await page.locator('[data-scenario-app-version="0.1.1"]').count(),'actual app version marker');
+  assert.ok(await page.locator('[data-scenario-app-version="0.2.0"]').count(),'actual app version marker');
   await fn(page);checks.push({name,status:'passed'});console.log('PASS',name);
  }catch(e){checks.push({name,status:'failed',error:e.message});console.error('FAIL',name,e.message);await activePage?.screenshot({path:path.join(out,`failure-${checks.length}.png`),fullPage:true}).catch(()=>{});}
  finally{await context?.close();}
@@ -36,6 +36,7 @@ async function check(name,fn,options={}){
 const shot=(p,n)=>p.screenshot({path:path.join(out,n),fullPage:true});
 async function viewShot(p,name){const host=p.locator('#view-3d-host');await host.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));await host.screenshot({path:path.join(out,name)});}
 async function output(p){const d=p.locator('#comparison-output');if(await d.count()&&(await d.getAttribute('open'))===null)await d.locator('summary').first().click();}
+async function conditions(p){if(!(await p.locator('#conditions-sidebar').isVisible()))await p.locator('#toggle-conditions').click();}
 async function download(p,id,name){await output(p);const wait=p.waitForEvent('download');await p.locator(id).click();const d=await wait,dest=path.join(out,name);await d.saveAs(dest);assert.equal(await d.failure(),null);return fs.readFile(dest,'utf8');}
 const project=async(p,name='project.json')=>JSON.parse(await download(p,'#json',name));
 async function edit(p,type){await p.locator('#edit-'+type).click();await p.locator('#editor-dialog').waitFor();}
@@ -92,12 +93,12 @@ await check('DA04: restore previous Q from example mode does not replace it with
  previous.meta.id='qa-previous-Q';previous.meta.title='上一个草稿 Q';previous.inputs.storage.volumeM3=9;previous.evidenceNotes='这是必须恢复的 Q';previous.inputRevision=3;
  await p.evaluate(({current,previous,v2,previousKey})=>{localStorage.setItem(v2,JSON.stringify(current));localStorage.setItem(previousKey,JSON.stringify(previous));},{current,previous,v2,previousKey});
  await p.reload({waitUntil:'networkidle'});await p.locator('#workspace').waitFor();assert.match(await p.locator('#mode-label').innerText(),/教学示例/);assert.match(await p.locator('#bar-storage').innerText(),/30/);
- await p.locator('#restore-previous').click();const restored=await project(p,'restore-previous-Q.json');assert.equal(restored.meta.id,previous.meta.id);assert.equal(restored.meta.title,previous.meta.title);assert.equal(restored.inputs.storage.volumeM3,9);assert.equal(restored.evidenceNotes,previous.evidenceNotes);assert.deepEqual(restored.inputs,previous.inputs);assert.deepEqual(restored.comparison,previous.comparison);assert.deepEqual(JSON.parse(await p.evaluate(k=>localStorage.getItem(k),v2)).inputs,previous.inputs);
+ await conditions(p);await p.locator('#restore-previous').click();const restored=await project(p,'restore-previous-Q.json');assert.equal(restored.meta.id,previous.meta.id);assert.equal(restored.meta.title,previous.meta.title);assert.equal(restored.inputs.storage.volumeM3,9);assert.equal(restored.evidenceNotes,previous.evidenceNotes);assert.deepEqual(restored.inputs,previous.inputs);assert.deepEqual(restored.comparison,previous.comparison);assert.deepEqual(JSON.parse(await p.evaluate(k=>localStorage.getItem(k),v2)).inputs,previous.inputs);
 });
 await check('DA05: quantity-only common edit preserves distinct controls and all user assumptions',async p=>{
  const legacy=JSON.parse(legacyRaw);legacy.controls=[{type:'有效隔离 / 切断',target:'QA 管段 A',boundary:'QA 隔离边界 A',actionTimeS:12,evidence:'QA-隔离证据-A',status:'recorded_only'},{type:'报警器 / SIS',target:'QA 储罐 B',boundary:'QA 报警边界 B',actionTimeS:45,evidence:'QA-联锁证据-B',status:'recorded_only'}];legacy.assumptions=[{text:'QA 用户假设一，应独立保留',source:'用户补充',confirmed:false},{text:'QA 用户假设二，不得被第一条合并',source:'用户补充',confirmed:false},{text:'QA 其他来源假设',source:'QA fixture',confirmed:false}];
  await output(p);await p.locator('#import-file').setInputFiles({name:'legacy-multiple-records.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(legacy))});await p.locator('#import-preview').waitFor();await p.locator('#restore').click();const before=await project(p,'multiple-records-before.json');assert.deepEqual(before.controls,legacy.controls);assert.deepEqual(before.assumptions,legacy.assumptions);assert.equal(before.inputs.storage.inventoryKg,1000);
- await p.locator('#quantity-value').fill('1250');await p.locator('#apply-common').click();const after=await project(p,'multiple-records-after-quantity.json');assert.equal(after.inputs.storage.inventoryKg,1250);assert.equal(after.inputRevision,before.inputRevision+1);assert.deepEqual(after.controls,before.controls);assert.deepEqual(after.assumptions,before.assumptions);assert.deepEqual(after.comparison,before.comparison);assert.equal(after.evidenceNotes,before.evidenceNotes);
+ await conditions(p);await p.locator('#quantity-value').fill('1250');await p.locator('#apply-common').click();const after=await project(p,'multiple-records-after-quantity.json');assert.equal(after.inputs.storage.inventoryKg,1250);assert.equal(after.inputRevision,before.inputRevision+1);assert.deepEqual(after.controls,before.controls);assert.deepEqual(after.assumptions,before.assumptions);assert.deepEqual(after.comparison,before.comparison);assert.equal(after.evidenceNotes,before.evidenceNotes);
 });
 await check('DA02: backup restore and hostile/future/oversized imports preserve the current draft',async p=>{
  await p.locator('#modify-scene').click();const a=await project(p,'import-source.json');await output(p);await p.locator('#import-file').setInputFiles({name:'good.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(a))});await p.locator('#import-preview').waitFor();await p.locator('#restore').click();const current=await project(p,'restored.json');assert.equal(current.inputs.material.id,'methanol');assert.equal(current.inputs.storage.volumeM3,30);

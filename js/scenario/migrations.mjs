@@ -9,8 +9,31 @@ import { SCHEMA_VERSION } from "./version.mjs";
 export function migrateProject(raw) {
   inspectValue(raw);
   const old = stripClaims(clone(raw));
-  if (old.meta?.schemaVersion === SCHEMA_VERSION)
-    return { project: old, log: [] };
+  if (old.meta?.schemaVersion === SCHEMA_VERSION) {
+    // Backward-compatible 1.1 extension: display preferences never enter input
+    // hashes; no engineering or material condition is inferred during import.
+    const added = [];
+    const defaults = newProject();
+    if (old.ui && typeof old.ui === "object" && !Array.isArray(old.ui)) {
+      for (const k of ["quality", "cutaway", "pressureAux", "labelDetail"])
+        if (!Object.hasOwn(old.ui, k)) {
+          old.ui[k] = defaults.ui[k];
+          added.push(`ui.${k}`);
+        }
+    }
+    for (const scenario of [old.inputs?.scenario, ...Object.values(old.scenarioMemory || {})]) {
+      if (scenario?.conditions && typeof scenario.conditions === "object" &&
+          !Object.hasOwn(scenario.conditions, "confined")) {
+        scenario.conditions.confined = "unknown";
+        added.push("conditions.confined=unknown");
+      }
+    }
+    if (old.comparison?.project)
+      old.comparison.project = migrateProject(old.comparison.project).project;
+    const log = added.length ? ["保留1.1结构与原始输入；仅补显示偏好，新增受限空间前提保持未确认。"] : [];
+    if (Array.isArray(old.migrationLog)) old.migrationLog.push(...log);
+    return { project: old, log };
+  }
   if (old.meta?.schemaVersion !== "1.0.0")
     throw Error("项目结构版本不支持，原文件保持不变");
   const legacy = newProject();
@@ -23,8 +46,9 @@ export function migrateProject(raw) {
   delete legacy.inputs.pool.radiusM;
   for (const k of ["provenance", "scenarioMemory", "migrationLog"])
     delete legacy[k];
-  for (const k of ["visualMode", "camera", "speed", "labels"])
+  for (const k of ["visualMode", "camera", "speed", "labels", "quality", "cutaway", "pressureAux", "labelDetail"])
     delete legacy.ui[k];
+  delete legacy.inputs.scenario.conditions.confined;
   shape(old, legacy);
   const p = newProject();
   Object.assign(p.meta, old.meta, { schemaVersion: SCHEMA_VERSION });
@@ -38,6 +62,7 @@ export function migrateProject(raw) {
   p.inputs.equipment.name = old.inputs.storage.equipment || "未绑定模板的设备";
   p.inputs.pool = { ...p.inputs.pool, ...old.inputs.pool };
   p.inputs.scenario = clone(old.inputs.scenario);
+  p.inputs.scenario.conditions.confined = "unknown";
   p.inputs.receptors = clone(old.inputs.receptors);
   for (const k of ["controls", "assumptions", "evidenceNotes"])
     p[k] = clone(old[k]);

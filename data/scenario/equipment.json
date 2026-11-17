@@ -1,7 +1,9 @@
 {
-  "dataVersion": "scenario-data-0.1.1",
+  "dataVersion": "scenario-data-0.2.0",
   "purpose": "虚构教学设备与渲染锚点；尺寸不构成工程设计或容积合规结论。",
   "equipment": [
+    {"id":"propane-gas-pipe-rack","name":"带压气相管线与局部管廊（教学）","geometryKind":"pipe-rack","geometry":{"diameterM":0.15,"heightM":1.6,"orientation":"horizontal"},"containment":{"lengthM":16,"widthM":12,"heightM":0.2},"leakAnchors":["pipe-flange"],"sourceRefs":["implementation-guide-v020"],"note":"几何为可视化配置；直径和安装高不用于储罐容积、气体质量、泄漏速率或相态判断。"},
+    {"id":"gas-equipment-cabinet","name":"可燃气体设备柜（教学）","geometryKind":"cabinet","geometry":{"diameterM":2.4,"heightM":3,"orientation":"generic"},"containment":{"lengthM":10,"widthM":10,"heightM":0.2},"leakAnchors":["cabinet-fitting"],"sourceRefs":["implementation-guide-v020","hse-rr1190"],"note":"柜内积聚、点火及开口开启都是分镜假设；未进行可燃浓度、结构强度、耐压或泄爆设计。"},
     {
       "id": "vertical-atmospheric-fixed-roof",
       "name": "立式常压固定顶储罐",

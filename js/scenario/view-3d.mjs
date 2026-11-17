@@ -2,9 +2,15 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { worldToThree } from "./coordinates.mjs";
 import { createSceneAssembly } from "./three/scene-components.mjs";
+import { createVolumeRenderer, QUALITY_PROFILES } from './rendering/volume-renderer.mjs';
+import { VOLUME_SCENARIOS } from './rendering/volume-field.mjs';
+import { exportFrame as encodeFrame } from './export-frame.mjs';
+import { APP_VERSION } from './version.mjs';
+import { createDaylightEnvironment } from './rendering/volume-environment.mjs';
 
 let liveRenderers = 0;
 const enu = (p) => new THREE.Vector3(...worldToThree(p));
+const PRIMARY_LABEL_KEYS=new Set(['equipment','leak','pool','nozzle','ignition','opening']);
 const textStyle = {
   position: "absolute",
   pointerEvents: "none",
@@ -23,11 +29,13 @@ export function create3d(host, onFail = () => {}) {
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: false,
-    powerPreference: "low-power",
+    powerPreference: "high-performance",
   });
+  if(renderer.getContext().getParameter(renderer.getContext().MAX_3D_TEXTURE_SIZE)<64){renderer.dispose();throw Error('当前设备不支持64³ WebGL2体积纹理');}
   liveRenderers++;
-  renderer.setClearColor(0xeaf0ec);
+  renderer.setClearColor(0xc8d8dc);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.domElement.setAttribute(
     "aria-label",
     "当前物料与设备的三维教学场景；可拖动旋转或使用视角按钮",
@@ -43,13 +51,15 @@ export function create3d(host, onFail = () => {}) {
   controls.enableDamping = false;
   controls.maxPolarAngle = Math.PI * 0.49;
   controls.listenToKeyEvents(renderer.domElement);
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x8ca197, 2.3));
-  const sun = new THREE.DirectionalLight(0xffffff, 2.5);
+  scene.add(new THREE.HemisphereLight(0xe5f2ff, 0x7b8071, 1.5));
+  const sun = new THREE.DirectionalLight(0xfff0d8, 2.4);
   sun.position.set(5, 12, 8);
+  sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-16;sun.shadow.camera.right=16;sun.shadow.camera.top=16;sun.shadow.camera.bottom=-16;sun.shadow.camera.near=.5;sun.shadow.camera.far=55;sun.shadow.bias=-.0008;sun.shadow.normalBias=.035;
   scene.add(sun);
   const rim = new THREE.DirectionalLight(0xd4e9e1, 0.65);
   rim.position.set(-8, 6, -6);
   scene.add(rim);
+  const fireLight=new THREE.PointLight(0xffa34b,0,12,2);scene.add(fireLight);
   const note = document.createElement("div");
   note.className = "sc-visual-note";
   note.setAttribute("role", "status");
@@ -72,12 +82,15 @@ export function create3d(host, onFail = () => {}) {
     labelNodes = [],
     leaderNodes = [],
     equipmentBuilds = 0,
-    activeCamera = "overview";
+    activeCamera = "overview",
+    quality='balanced',cutaway=false,pressureVisible=false,labelDetail=false,
+    lastFrameMs=0,totalFrameMs=0;
   const counts = {
     createdGeometries: 0,
     disposedGeometries: 0,
     createdMaterials: 0,
     disposedMaterials: 0,
+    createdTextures:0,disposedTextures:0,
   };
   const lifecycle = {
     createdGeometry() {
@@ -92,10 +105,19 @@ export function create3d(host, onFail = () => {}) {
     disposedMaterial() {
       counts.disposedMaterials++;
     },
+    createdTexture(){counts.createdTextures++;},
+    disposedTexture(){counts.disposedTextures++;},
   };
+  const volume=createVolumeRenderer(renderer,lifecycle);
+  let environment;
+  try{environment=createDaylightEnvironment(renderer,lifecycle);}catch(error){volume.dispose();renderer.dispose();liveRenderers--;host.replaceChildren();throw error;}
+  scene.environment=environment.texture;scene.environmentIntensity=.85;
   function stats() {
     return {
       ...counts,
+      ...volume.stats(),
+      environment:environment.stats(),
+      activeRenderTargets:disposed?0:3,
       geometries: renderer.info.memory.geometries,
       textures: renderer.info.memory.textures,
       frames: frameCount,
@@ -105,6 +127,8 @@ export function create3d(host, onFail = () => {}) {
       sceneObjects: assembly ? assembly.group.children.length : 0,
       activeCamera,
       disposed,
+      lastFrameMs,averageFrameMs:frameCount?totalFrameMs/frameCount:0,
+      cutaway,pressureVisible,
     };
   }
   function writeStats() {
@@ -120,6 +144,7 @@ export function create3d(host, onFail = () => {}) {
       "disposedGeometries",
     ])
       host.dataset[key] = String(values[key]);
+    host.dataset.quality=quality;host.dataset.renderer='volumetric-raymarch';host.dataset.raySteps=String(values.raySteps);host.dataset.renderTargets=String(values.activeRenderTargets);
   }
   function updateLabels() {
     if (!spec || !frame) return;
@@ -141,7 +166,7 @@ export function create3d(host, onFail = () => {}) {
     if (frame.fireVisible && spec.equipment.anchors.poolCenter) {
       const center = spec.equipment.anchors.poolCenter,
         radius = spec.pool.radiusM,
-        height = radius * 2.8 * Math.max(0.02, frame.fireGrowth || 0),
+        height = radius * 3.9,
         points = [];
       for (const [z, width] of [[0, radius * 0.9], [height * 0.55, radius * 0.48], [height, radius * 0.05]]) {
         for (const x of [-width, width])
@@ -159,6 +184,7 @@ export function create3d(host, onFail = () => {}) {
     }
     const placed = [],
       overlaps = (a, b, gap = 0) => a.x < b.right + gap && a.right > b.x - gap && a.y < b.bottom + gap && a.bottom > b.y - gap;
+    const important=assembly.labels.map((d,i)=>({d,i})).filter(({d})=>PRIMARY_LABEL_KEYS.has(d.key)||d.important).map(({i})=>i).slice(0,3);
     for (let i = 0; i < labelNodes.length; i++) {
       const descriptor = assembly.labels[i],
         node = labelNodes[i],
@@ -167,9 +193,13 @@ export function create3d(host, onFail = () => {}) {
         node.textContent = descriptor.text;
       const show =
         labelsVisible &&
+        (labelDetail||important.includes(i)) &&
         (!descriptor.show ||
           (descriptor.show === "leak" && frame.leakVisible) ||
-          (descriptor.show === "pool" && frame.poolVisible));
+          (descriptor.show === "pool" && frame.poolVisible) ||
+          (descriptor.show === 'cloud' && frame.cloudGrowth>0) ||
+          (descriptor.show === 'fire' && frame.fireIntensity>0) ||
+          (descriptor.show === 'vent' && frame.ventIntensity>0));
       const projected = screen(descriptor.point);
       node.hidden = !show || projected.z > 1 || projected.z < -1;
       leader.hidden = true;
@@ -210,7 +240,10 @@ export function create3d(host, onFail = () => {}) {
   }
   function draw() {
     if (disposed || contextLost) return;
-    renderer.render(scene, camera);
+    const started=performance.now();
+    try{volume.render(scene,camera,assembly?.group.visible?spec:null,frame,{pressure:pressureVisible});}
+    catch(error){contextLost=true;queueMicrotask(()=>onFail(`体积渲染不可用，已恢复2D：${error.message}`));return;}
+    lastFrameMs=performance.now()-started;totalFrameMs+=lastFrameMs;
     frameCount++;
     updateLabels();
     writeStats();
@@ -221,9 +254,10 @@ export function create3d(host, onFail = () => {}) {
       h = host.clientHeight;
     if (!w || !h) return;
     renderer.setPixelRatio(
-      Math.min(window.devicePixelRatio || 1, w < 680 ? 1.25 : 1.75),
+      Math.min(window.devicePixelRatio || 1, w < 680 ? 1 : QUALITY_PROFILES[quality].dpr),
     );
     renderer.setSize(w, h, false);
+    const physical=renderer.getDrawingBufferSize(new THREE.Vector2());volume.resize(physical.x,physical.y);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     draw();
@@ -244,11 +278,11 @@ export function create3d(host, onFail = () => {}) {
         z: tank.z + g.heightM * 1.3,
       };
     } else if (name === "leak" || name === "pool") {
-      const anchor = name === "leak" ? a.leak : a.poolCenter;
+      const anchor = name === "leak" ? (a.leak||spec.process?.nozzle?.position) : (a.poolCenter||spec.process?.cloud?.center||spec.process?.nozzle?.position);
       if (!anchor) return false;
       target = { ...anchor };
       if (name === "pool") {
-        const visualHeight = Math.max(2.8, spec.pool.radiusM * 2.8);
+        const visualHeight = Math.max(3, spec.pool.radiusM * 3.9);
         target.z += visualHeight * 0.42;
         eye = { x: anchor.x + visualHeight * 1.1, y: anchor.y - visualHeight * 1.45, z: anchor.z + visualHeight * 1.38 };
       } else {
@@ -265,6 +299,22 @@ export function create3d(host, onFail = () => {}) {
         y: tank.y - span * 0.95,
         z: tank.z + span * 0.72,
       };
+    }
+    if(spec.sceneId!=='pool-fire'&&spec.process){
+      const process=spec.process,from=process.domain?.min,to=process.domain?.max;
+      const center=from&&to?{x:(from.x+to.x)/2,y:(from.y+to.y)/2,z:(from.z+to.z)/2}:tank;
+      const sceneSpan=from&&to?Math.max(to.x-from.x,to.y-from.y,(to.z-from.z)*1.4):span;
+      if(name==='overview'){target={...center,z:Math.max(1,center.z*.7)};eye={x:center.x+sceneSpan*.78,y:center.y-sceneSpan*.88,z:Math.max(6,sceneSpan*.65)};}
+      if(name==='leak'||name==='pool'){
+        const focus=name==='leak'?process.nozzle?.position:(process.cloud?.center||process.nozzle?.position);
+        if(focus){target={...focus};const offset=name==='pool'?Math.max(5,sceneSpan*.48):4;eye={x:focus.x+offset,y:focus.y-offset*1.2,z:focus.z+offset*.65};}
+        if(name==='pool'&&spec.sceneId==='jet-fire'&&process.nozzle){
+          const n=process.nozzle,dir=n.direction,L=process.jetLengthM||6.2;
+          target={x:n.position.x+dir.x*L*.5,y:n.position.y+dir.y*L*.5,z:n.position.z+dir.z*L*.5+.35};
+          eye={x:target.x-dir.y*7.3,y:target.y+dir.x*7.3,z:target.z+.45};
+        }
+      }
+      if(name==='top'){target={...center,z:.5};eye={x:center.x+.001,y:center.y-.001,z:sceneSpan*1.45};}
     }
     controls.target.copy(enu(target));
     camera.position.copy(enu(eye));
@@ -289,7 +339,7 @@ export function create3d(host, onFail = () => {}) {
     host.dataset.materialId = spec?.material?.id || "unconfirmed";
     if (
       !spec ||
-      spec.sceneId !== "pool-fire" ||
+      !VOLUME_SCENARIOS.includes(spec.sceneId) ||
       !spec.support?.canPlayDetailedStoryboard
     ) {
       if (assembly) assembly.group.visible = false;
@@ -305,6 +355,8 @@ export function create3d(host, onFail = () => {}) {
       anchors: spec.equipment.anchors,
       containment: spec.equipment.containment,
       poolRadius: spec.pool.radiusM,
+      geometryKind:spec.process?.geometryKind,
+      process:spec.process&&{nozzle:spec.process.nozzle,enclosure:spec.process.enclosure,domain:spec.process.domain,congestion:spec.process.congestion},
     });
     if (nextSignature !== signature) {
       removeAssembly();
@@ -341,7 +393,11 @@ export function create3d(host, onFail = () => {}) {
       camera.updateProjectionMatrix();
     }
     assembly.group.visible = true;
-    assembly.update(spec, frame);
+    assembly.update(spec, frame,{cutaway});
+    const lightAnchor=spec.sceneId==='pool-fire'?spec.equipment.anchors.poolCenter:spec.process?.nozzle?.position;
+    if(lightAnchor)fireLight.position.copy(enu({...lightAnchor,z:lightAnchor.z+1.0}));
+    fireLight.color.set(spec.material.id==='methanol'?0x72b8ff:0xffa053);
+    fireLight.intensity=(frame.fireIntensity??(frame.fireVisible?1:0))*(spec.material.id==='methanol'?(spec.visual.mode==='natural'?.15:.8):2.4);
     if (typeof spec.visual.labelsVisible === "boolean")
       labelsVisible = spec.visual.labelsVisible;
     const mode =
@@ -352,7 +408,7 @@ export function create3d(host, onFail = () => {}) {
       spec.material.composition !== "pure"
         ? "；组分未确认，当前为通用教学效果"
         : "";
-    const nextNote = `${spec.material.name} · ${mode}${uncertain}。后果距离与发生频率尚未评估。`;
+    const nextNote = `${spec.material.name} · 写实演示 / 非项目计算 · ${mode}${uncertain}${pressureVisible?' · 压力传播示意（非超压结果）':''}`;
     if (note.textContent !== nextNote) note.textContent = nextNote;
     host.dataset.sceneId = spec.sceneId;
     host.dataset.materialId = spec.material.id || "unconfirmed";
@@ -363,6 +419,7 @@ export function create3d(host, onFail = () => {}) {
     } else draw();
   }
   const change = () => draw();
+  const manual=()=>{activeCamera='free';};controls.addEventListener('start',manual);
   controls.addEventListener("change", change);
   const observer = new ResizeObserver(resize);
   observer.observe(host);
@@ -383,20 +440,53 @@ export function create3d(host, onFail = () => {}) {
       labelsVisible = Boolean(value);
       updateLabels();
     },
+    setLabelDetail(value){labelDetail=Boolean(value);updateLabels();},
+    setQuality(value){if(!QUALITY_PROFILES[value])throw Error('画质档无效');quality=value;volume.setQuality(value);resize();},
+    setCutaway(value){cutaway=Boolean(value);if(assembly&&spec)assembly.update(spec,frame,{cutaway});draw();},
+    setPressureVisible(value){pressureVisible=Boolean(value);if(spec)update(spec,frame);else draw();},
+    getCameraState(){return cameraState();},
+    setOrbitAngle(degrees,elevation=23){
+      const distance=camera.position.distanceTo(controls.target),az=degrees*Math.PI/180,el=elevation*Math.PI/180;
+      camera.up.set(0,1,0);camera.position.copy(controls.target).add(new THREE.Vector3(Math.sin(az)*Math.cos(el),Math.sin(el),Math.cos(az)*Math.cos(el)).multiplyScalar(distance));controls.update();activeCamera='orbit';draw();
+    },
+    exportFrame(options={}){
+      if(disposed||contextLost||!spec||!assembly?.group.visible)return Promise.reject(Error('当前3D场景不可导出'));
+      const frozenSpec=structuredClone(spec),frozenFrame=structuredClone(frame),frozenCamera=camera.clone(),frozenLabels=structuredClone(assembly.labels),frozenDetail=labelDetail;
+      const frozenImportant=frozenLabels.map((d,i)=>({d,i})).filter(({d})=>PRIMARY_LABEL_KEYS.has(d.key)||d.important).map(({i})=>i).slice(0,3);
+      const metadata={material:{id:frozenSpec.material.id,name:frozenSpec.material.name},scenario:{id:frozenSpec.sceneId,name:frozenSpec.scenario?.name||frozenSpec.sceneId},assisted:frozenSpec.visual.mode!=='natural',appVersion:APP_VERSION,progress:frozenFrame.progress,seed:frozenFrame.seed??1,noiseTime:frozenFrame.noiseTime,inputRevision:frozenSpec.inputRevision,quality,renderer:volume.stats().renderer,camera:cameraState(),cutaway,pressureAux:pressureVisible,labelDetail:frozenDetail};
+      return encodeFrame({...options,metadata,capture(width,height){
+        const size=renderer.getSize(new THREE.Vector2()),ratio=renderer.getPixelRatio(),aspect=camera.aspect,savedTarget=renderer.getRenderTarget();
+        try{
+          renderer.setPixelRatio(1);renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();volume.resize(width,height,true);
+          volume.render(scene,camera,frozenSpec,frozenFrame,{pressure:pressureVisible});
+          const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;canvas.getContext('2d').drawImage(renderer.domElement,0,0);return canvas;
+        }finally{
+          renderer.setPixelRatio(ratio);renderer.setSize(size.x,size.y,false);camera.aspect=aspect;camera.updateProjectionMatrix();const physical=renderer.getDrawingBufferSize(new THREE.Vector2());volume.resize(physical.x,physical.y);renderer.setRenderTarget(savedTarget);draw();
+        }
+      },labelSnapshot(width,height){
+        frozenCamera.aspect=width/height;frozenCamera.updateProjectionMatrix();frozenCamera.updateMatrixWorld();
+        return frozenLabels.map((d,i)=>{const projected=enu(d.point).project(frozenCamera);const active=!d.show||(d.show==='leak'&&frozenFrame.leakVisible)||(d.show==='pool'&&frozenFrame.poolVisible)||(d.show==='cloud'&&frozenFrame.cloudGrowth>0)||(d.show==='fire'&&frozenFrame.fireIntensity>0)||(d.show==='vent'&&frozenFrame.ventIntensity>0);return {text:d.text,x:(projected.x+1)*width/2,y:(1-projected.y)*height/2,visible:(frozenDetail||frozenImportant.includes(i))&&active&&projected.z>-1&&projected.z<1};});
+      }});
+    },
     stats,
     dispose() {
       if (disposed) return;
       disposed = true;
       observer.disconnect();
       controls.removeEventListener("change", change);
+      controls.removeEventListener('start',manual);
       controls.dispose();
       renderer.domElement.removeEventListener("webglcontextlost", lost);
       removeAssembly();
       scene.clear();
+      sun.shadow.map?.dispose();sun.shadow.mapPass?.dispose();
+      volume.dispose();
+      environment.dispose();
       renderer.dispose();
       liveRenderers--;
       host.replaceChildren();
       writeStats();
     },
   };
+  function cameraState(){return {projection:'perspective',position:{x:camera.position.x,y:-camera.position.z,z:camera.position.y},target:{x:controls.target.x,y:-controls.target.z,z:controls.target.y},fov:camera.fov,aspect:camera.aspect,near:camera.near,far:camera.far,preset:activeCamera};}
 }

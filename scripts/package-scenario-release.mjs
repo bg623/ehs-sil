@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { APP_VERSION, SCHEMA_VERSION, DATA_VERSION } from '../js/scenario/version.mjs';
+import { makeNoiseVolume, NOISE_SIZE, NOISE_SEED, NOISE_VERSION } from '../js/scenario/rendering/noise-data.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -18,8 +19,8 @@ const git = (...arguments_) => execFileSync('git', arguments_, { cwd: root, enco
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const SHA_PATTERN = /^[a-f0-9]{40}$/;
 
-// Verified by GitHub GET on 2026-11-16: this local archive-root tree is the
-// actual production main tree, not the unpublished V0.1.0 feature tree.
+// Rechecked by GitHub GET on 2026-11-17: this local archive-root tree is the
+// actual production main tree, not the unpublished V0.1.0/V0.1.1 feature trees.
 const PRODUCTION_COMMIT = '3be8660da8e96d855be8952c59ffe769c87c3fd8';
 const PRODUCTION_TREE = 'c6ea0c8f549722d0b7a2edfe23c66d24aa1ec3b0';
 const version = arg('--version', APP_VERSION);
@@ -51,6 +52,8 @@ try {
   if (error.code !== 'ENOENT') throw error;
 }
 const runtime = `dist/scenario/v${version}`;
+const oldResourceDirectories = ['dist/scenario/v0.1.0/', 'dist/scenario/v0.1.1/'];
+assert.ok(!oldResourceDirectories.includes(`${runtime}/`), 'Never overwrite an existing immutable runtime');
 const entry = 'tools/scenario-workbench.html';
 const publicPath = (file) => !/(?:node_modules|test-results|release-candidate|sandbox|protected)/.test(file) && (
   /^(?:index\.html|sitemap\.xml|robots\.txt)$/.test(file) ||
@@ -121,7 +124,7 @@ for (const name of requiredData) {
     assert.equal(JSON.parse(bytes.get(file)).dataVersion, DATA_VERSION, `Mixed data version: ${name}`);
   }
 }
-for (const name of ['app.mjs', 'worker.mjs', 'style.css', 'THIRD_PARTY_NOTICES.txt']) {
+for (const name of ['app.mjs', 'worker.mjs', 'style.css', 'THIRD_PARTY_NOTICES.txt', 'assets-manifest.json']) {
   assert.ok(files.has(`${runtime}/${name}`), `Missing required runtime file: ${name}`);
 }
 assert.deepEqual(bytes.get(`${runtime}/style.css`), await readRegular('css/scenario-workbench.css'),
@@ -138,6 +141,59 @@ for (const model of models) {
   assert.equal(model.allowedUse, 'teaching');
   assert.equal(model.technicalReview, null);
 }
+
+// The asset manifest is a build inventory, not evidence of physical validity.
+// Every runtime object except the inventory itself must be accounted for once.
+const assetsManifestPath = `${runtime}/assets-manifest.json`;
+const assets = JSON.parse(bytes.get(assetsManifestPath));
+assert.equal(assets.version, version, 'Mixed asset manifest version');
+assert.equal(assets.blenderBake, 'not_run', 'Blender evidence requires a separate reviewed asset pipeline');
+assert.equal(assets.externalTextures, false, 'Unreviewed external textures are not releaseable');
+assert.deepEqual(assets.thirdPartyArtwork, [], 'Third-party artwork requires a reviewed license and export path');
+assert.ok(Array.isArray(assets.objects), 'Asset object inventory is missing');
+const assetPaths = new Set();
+for (const object of assets.objects) {
+  assert.equal(typeof object.path, 'string', 'Invalid asset path');
+  assert.ok(object.path && !object.path.startsWith('/') && !object.path.split('/').some(p => p === '..' || p === '.'),
+    `Invalid relative runtime asset path: ${object.path}`);
+  assert.ok(!assetPaths.has(object.path), `Duplicate runtime asset: ${object.path}`);
+  assetPaths.add(object.path);
+  const file = `${runtime}/${object.path}`;
+  assert.ok(files.has(file) && file !== assetsManifestPath, `Unpackaged runtime asset: ${object.path}`);
+  const content = bytes.get(file);
+  assert.equal(object.sha256, sha(content), `Asset hash differs from real bytes: ${object.path}`);
+  assert.equal(object.sizeBytes, content.length, `Asset size differs from real bytes: ${object.path}`);
+  assert.equal(object.contentType, mimeFor(file), `Asset MIME differs from release type: ${object.path}`);
+  assert.ok(typeof object.purpose === 'string' && object.purpose.length, `Asset purpose missing: ${object.path}`);
+  assert.ok(typeof object.license === 'string' && object.license.length, `Asset license missing: ${object.path}`);
+}
+const runtimeAssetPaths = [...files].filter(file => file.startsWith(`${runtime}/`) && file !== assetsManifestPath)
+  .map(file => file.slice(runtime.length + 1));
+assert.deepEqual([...assetPaths].sort(), runtimeAssetPaths.sort(), 'Asset inventory does not exactly match the runtime');
+assert.ok(Array.isArray(assets.proceduralAssets), 'Procedural asset inventory is missing');
+assert.deepEqual(assets.proceduralAssets.map(asset=>asset.assetId).sort(),
+  ['procedural-noise-r8','industrial-pbr-surfaces','liquid-release-surface','industrial-geometry','daylight-environment'].sort(),
+  'Procedural asset inventory must cover every authored visual component');
+for (const asset of assets.proceduralAssets) {
+  assert.equal(asset.sourceHash,sha(await readRegular(asset.source)),`Procedural source fingerprint differs: ${asset.assetId}`);
+  assert.ok(asset.creator && asset.license && asset.visualValidity, `Procedural provenance is missing: ${asset.assetId}`);
+}
+const noiseAsset = assets.proceduralAssets.find(asset=>asset.assetId==='procedural-noise-r8');
+assert.equal(noiseAsset.assetId, 'procedural-noise-r8');
+assert.equal(noiseAsset.version, NOISE_VERSION);
+assert.equal(NOISE_SIZE, 64, 'Review the decoded noise budget before changing its resolution');
+assert.deepEqual(noiseAsset.voxelResolution, [64, 64, 64]);
+assert.equal(noiseAsset.seed, NOISE_SEED);
+assert.equal(noiseAsset.frameCount, 1);
+assert.equal(noiseAsset.playbackDuration, null, 'Static procedural noise is not a baked animation');
+assert.equal(noiseAsset.source, 'js/scenario/rendering/noise-data.mjs');
+assert.equal(noiseAsset.sourceHash, sha(await readRegular(noiseAsset.source)), 'Noise source fingerprint differs');
+const proceduralNoiseBytes = makeNoiseVolume();
+assert.equal(proceduralNoiseBytes.byteLength, 262144, 'Decoded 64³ R8 noise must be exactly 262144 bytes');
+assert.equal(noiseAsset.decodedBytes, proceduralNoiseBytes.byteLength, 'Noise decoded memory declaration differs');
+assert.equal(noiseAsset.hash, sha(proceduralNoiseBytes), 'Declared noise hash differs from generated R8 bytes');
+assert.ok(Array.isArray(noiseAsset.channels) && noiseAsset.channels.length === 1 && noiseAsset.channels[0].includes('R8'),
+  'Noise channels must describe the single R8 artistic scalar');
 
 const prerequisites = new Set([
   'css/style.css', 'css/design-system.css', 'css/tool-guidance.css',
@@ -164,7 +220,8 @@ async function requireReference(reference, from, { runtimeOnly = false } = {}) {
 const html = bytes.get(entry).toString();
 assert.ok(html.includes(`data-scenario-app-version="${APP_VERSION}"`));
 assert.ok(html.includes(`../${runtime}/app.mjs`));
-assert.ok(!html.includes('/v0.1.0/'));
+assert.ok(oldResourceDirectories.every(directory => !html.includes(`/${directory.split('/').at(-2)}/`)),
+  'New tool HTML still references an older runtime');
 for (const match of html.matchAll(/<(script|link|img|source)\b[^>]*>/gi)) {
   const tag = match[0];
   const name = match[1].toLowerCase();
@@ -206,6 +263,7 @@ for (const file of [...prerequisites].filter((name) => !files.has(name)).sort())
   prerequisiteHashes.push({ path: file, sha256: sha(content), sizeBytes: content.length, contentType: mimeFor(file) });
 }
 const existsAtBaseline = (file) => Boolean(git('ls-tree', baseline, '--', file));
+const rollbackBytes = await readRegular('docs/scenario/rollback-v020.md');
 
 const manifest = {
   releaseId: `scenario-${version}`, sourceCommit: releaseCommit, sourceTree, localCommit,
@@ -215,12 +273,17 @@ const manifest = {
   dataVersion: DATA_VERSION, releaseKind: 'teaching', screeningEnabled: false,
   modelStates: models, files: [], overwriteObjects: changed.filter(existsAtBaseline),
   newToolObject: existsAtBaseline(entry) ? null : entry,
-  oldResourceDirectory: 'dist/scenario/v0.1.0/',
-  requiredChecks: ['data validation', 'full Node tests', 'secret scan', 'scenario browser checks'],
+  oldResourceDirectories,
+  assetsManifest: { path: assetsManifestPath, sha256: sha(bytes.get(assetsManifestPath)), objects: assets.objects.length },
+  proceduralNoise: { assetId: noiseAsset.assetId, version: NOISE_VERSION, seed: NOISE_SEED,
+    decodedBytes: proceduralNoiseBytes.byteLength, sha256: sha(proceduralNoiseBytes), sourceHash: noiseAsset.sourceHash },
+  requiredChecks: ['data validation', 'full Node tests', 'secret scan', 'scenario browser checks',
+    'five independent processes', '3D PNG', '360-degree and depth occlusion', 'asset inventory and noise hash'],
   prerequisites: prerequisiteHashes.map((item) => item.path), prerequisiteHashes,
   rollbackPlan: 'rollback.md',
 };
 for (const file of [...files].sort()) {
+  assert.ok(!oldResourceDirectories.some(directory => file.startsWith(directory)), 'Old immutable runtime entered release files');
   const content = bytes.get(file);
   const destination = path.join(out, 'public', file);
   await fs.mkdir(path.dirname(destination), { recursive: true });
@@ -251,17 +314,18 @@ for (const item of manifest.files) {
 assert.equal(git('rev-parse', 'HEAD'), localCommit, 'HEAD changed while packaging the release');
 assert.equal(git('status', '--porcelain'), '', 'Source tree changed while packaging the release');
 await fs.writeFile(path.join(out, 'release-manifest.json'), JSON.stringify(manifest, null, 2));
-await fs.copyFile(path.join(root, 'docs/scenario/rollback-v011.md'), path.join(out, 'rollback.md'));
+await fs.writeFile(path.join(out, 'rollback.md'), rollbackBytes);
 await fs.writeFile(path.join(out, 'README.md'), `# Scenario ${version} 发布候选
 
 教学版，screeningEnabled=false；源码 ${releaseCommit}，sourceTree ${sourceTree}。
 
 本包 ${files.size} 个公开运行对象，按 manifest.phase 资源→工具HTML→实际变动入口→sitemap 发布，逐项核验 hash/MIME。
-清单相对已核对的生产 main ${PRODUCTION_COMMIT} 文件树生成，不以未发布的 V0.1.0 为生产基线。
+清单相对已核对的生产 main ${PRODUCTION_COMMIT} 文件树生成，不以未发布的 V0.1.0 或 V0.1.1 为生产基线。
 
 只上传 public 中 manifest 指定文件；不整体同步仓库。QA、源码、docs、用户项目和凭据不在公开包。
 共享前置依赖仅记录本地来源哈希，上传前还需核对其实际生产字节，不擅自覆盖。
-旧 v0.1.0 资源保持原样。上传前备份 overwriteObjects 的真实字节和元数据；当前工具404首页兜底不是旧工作台，详见 rollback.md。
+旧 v0.1.0 与 v0.1.1 资源保持原样。上传前备份 overwriteObjects 的真实字节和元数据；当前工具404首页兜底不是旧工作台，详见 rollback.md。
+assets-manifest逐一覆盖运行对象（清单自身除外），并校验真实hash/MIME/size；64³ R8程序噪声解码262144字节，其哈希已从确定性源码实际生成复核，不是网络资源或工程场。
 `);
 console.log(JSON.stringify({
   status: 'DRY_RUN', files: files.size,

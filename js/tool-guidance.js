@@ -3,12 +3,12 @@
   'use strict';
   var catalog = {
     'scenario-workbench.html': {
-      id: 'scenario-workbench', version: '0.1.1', status: '免费可用 · 教学增强版',
-      output: '场景底稿 / CSV / JSON / 打印', storage: '本浏览器保存个人草稿', rights: '无需会员；本页无统计',
-      purpose: '理解池火等六类事故机制、检查条件并比较措施；未评估工程距离、频率、IR 或 F–N。',
+      id: 'scenario-workbench', version: '0.2.0', status: '免费可用 · 写实场景演示',
+      output: '高清 3D PNG / 场景底稿 / CSV / JSON / 打印', storage: '本浏览器保存个人草稿', rights: '无需会员；本页无统计',
+      purpose: '自由观察池火、喷射火、闪火、蒸气云爆炸和受限空间爆燃；另保留 BLEVE 与毒性扩散机制。未评估工程后果、频率或风险。',
       input: '准备物质身份、库存、储存条件、场景假设和措施依据；未知可留空，不上传项目资料。',
-      steps: '播放教学 → 记录场景 → 检查条件 → 冻结 A 与调整 B → 复核和导出。',
-      example: '默认甲醇储罐池火为虚构教学配置；可局部换料、设备、工况与事故，旧教学液体 A 原样兼容。可见性辅助不是实测影像。',
+      steps: '选择完整演示 → 自由旋转与慢放 → 按需调整条件 → 比较与导出当前画面或底稿。',
+      example: '甲醇与正庚烷池火、丙烷气相管线和柜内爆燃均有明确预设。普通只换事故不会暗改物料、设备和工况；三维视觉不是工业 CFD 或实测影像。',
       review: '需专业人员确认条件、物性、方法和措施边界。当前数值筛查未开放。',
       backup: '定期备份 JSON；明确恢复备份后替换个人草稿。示例不覆盖草稿，CSV 不用于恢复。',
       article: 'topics/process-safety.html'

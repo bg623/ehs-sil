@@ -17,6 +17,7 @@ import {
   loadPrevious,
   clear,
   LEGACY_KEY,
+  ORIGINAL_V011_KEY,
 } from "./storage.mjs";
 import { acceptsResult, freezeA, compare } from "./engine.mjs";
 import { render2d, escape } from "./view-2d.mjs";
@@ -38,6 +39,7 @@ let catalogs,
   previousDraft = null,
   importCandidate = null,
   legacyRaw = null,
+  originalV011Raw = null,
   storageBlocked = false,
   dirty = false;
 let progress = 0,
@@ -52,6 +54,8 @@ let progress = 0,
   importGeneration = 0;
 let controlEdits = new Map(),
   assumptionEdited = false;
+let exportingFrame = false, frameExportGeneration = 0, lastFrameMetadata = null, lastUiStage = -1;
+let displayView = null, appliedDisplay = {};
 const controlNames = [
   "减少库存",
   "围堵与排液",
@@ -72,6 +76,29 @@ const sourceLabel = (p) =>
     : "教学示例 / 当前记录";
 function notice(text) {
   $("notice").textContent = text;
+}
+function showConditions(show = true) {
+  $("conditions-sidebar").hidden = !show;
+  $("scene-layout").classList.toggle("has-conditions", show);
+  $("toggle-conditions").setAttribute("aria-expanded", String(show));
+  $("toggle-conditions").textContent = show ? "收起条件" : "调整条件";
+}
+function presetName(p) {
+  const labels = {"pool-fire":"池火", "jet-fire":"喷射火", "flash-fire":"闪火", "vce":"蒸气云爆炸", "vapor-cloud-explosion":"蒸气云爆炸", "confined-deflagration":"空间爆燃"};
+  return `${labels[p.scenarioId] || "场景"} · ${catalogs.chemicals.materials.find(m=>m.id===p.materialRef)?.name || "预设物料"}`;
+}
+function renderPresetGallery() {
+  $("preset-gallery").innerHTML = catalogs.presets.presets
+    .filter(p=>p.presetId!=="ethanol-atmospheric-tank-pool-fire")
+    .sort((a,b)=>(a.materialRef==='methanol'?-1:0)-(b.materialRef==='methanol'?-1:0))
+    .map(p=>`<button type="button" class="sc-preset-card" data-preset-id="${escape(p.presetId)}" aria-current="${p.presetId===project.meta.presetId}"><span class="sc-preset-thumb" aria-hidden="true" data-kind="${escape(p.materialRef==='methanol'?'methanol':p.scenarioId)}"></span><b>${escape(presetName(p))}</b><small>${escape(catalogs.equipment.equipment.find(e=>e.id===p.equipmentRef)?.name || "教学设备")}</small><small>查看条件并载入 ↗</small></button>`).join("");
+}
+function syncDisplayPreferences() {
+  if (!view) return;
+  if (displayView !== view) { displayView = view; appliedDisplay = {}; }
+  const values = {quality:project.ui.quality || "balanced", labels:Boolean(project.ui.labels), labelDetail:Boolean(project.ui.labelDetail), cutaway:Boolean(project.ui.cutaway), pressureAux:Boolean(project.ui.pressureAux)};
+  const methods = {quality:"setQuality",labels:"setLabelsVisible",labelDetail:"setLabelDetail",cutaway:"setCutaway",pressureAux:"setPressureVisible"};
+  for (const [key,value] of Object.entries(values)) if(appliedDisplay[key]!==value) { view[methods[key]]?.(value); appliedDisplay[key]=value; }
 }
 function currentDefinition() {
   return catalogs.scenarios.scenarios.find(
@@ -245,25 +272,25 @@ function renderComparison() {
 function draw() {
   frame = sampleStoryboard(spec, progress, 1);
   project.ui.stage = frame.stage;
-  render2d($("view-2d-host"), spec, frame);
-  view?.update(spec, frame);
+  if (viewMode === "2d") render2d($("view-2d-host"), spec, frame);
+  if (viewMode === "3d") view?.update(spec, frame);
   const stage = spec.stages[frame.stage];
   $("timeline").value = String(progress);
   $("stage-number").textContent = spec.support.canPlayDetailedStoryboard
     ? `第 ${frame.stage + 1} / ${spec.stages.length} 阶段 · 教学进度`
     : "独立机制教学";
-  $("stage-title").textContent = stage.title;
-  $("stage-text").textContent = stage.text;
-  $("stage-question").textContent = stage.question || "";
-  for (const b of $("stages").children)
-    b.setAttribute(
-      "aria-current",
-      String(Number(b.dataset.stage) === frame.stage),
-    );
+  if (lastUiStage !== frame.stage) {
+    lastUiStage = frame.stage;
+    $("stage-title").textContent = stage.title;
+    $("stage-text").textContent = stage.text;
+    $("stage-question").textContent = stage.question || "";
+    for (const b of $("stages").children) b.setAttribute("aria-current", String(Number(b.dataset.stage) === frame.stage));
+  }
 }
 function render() {
   spec = buildSceneSpec(project, catalogs);
-  document.title = `${scenarioHeading()} · 教学工作台 | EHS-SIL`;
+  lastUiStage = -1;
+  document.title = `${scenarioHeading()} · 写实场景工作台 | EHS-SIL`;
   $("play-example").textContent = spec.support.canPlayDetailedStoryboard ? '播放事故过程 ↗' : '查看当前机制 ↗';
   $("scene-title").textContent = scenarioHeading();
   $("bar-material").textContent = project.inputs.material.name || "未填写";
@@ -280,7 +307,14 @@ function render() {
   $("camera-select").value = project.ui.camera;
   $("speed").value = String(project.ui.speed);
   $("show-labels").checked = project.ui.labels;
-  view?.setLabelsVisible(project.ui.labels);
+  $("quality").value = project.ui.quality || "balanced";
+  $("cutaway").checked = Boolean(project.ui.cutaway);
+  $("pressure-aux").checked = Boolean(project.ui.pressureAux);
+  $("label-detail").checked = Boolean(project.ui.labelDetail);
+  $("cutaway").disabled = spec.sceneId !== "confined-deflagration";
+  $("pressure-aux").disabled = !["vce", "vapor-cloud-explosion", "confined-deflagration"].includes(spec.sceneId);
+  syncDisplayPreferences();
+  renderPresetGallery();
   $("visual-note").textContent = spec.visual.note;
   $("material-note").textContent = spec.visual.profile.description;
   const refs = new Set(spec.visual.profile.sourceRefs || []);
@@ -297,7 +331,8 @@ function render() {
   }
   $("support-note").textContent = spec.support.issues.length
     ? spec.support.issues.map((i) => i.message).join(" ")
-    : "完整教学分镜；液池与火焰是预设示意，未计算工程后果。";
+    : "三维体积与事件为预设视觉过程，未计算泄漏量、浓度、超压或后果距离。";
+  $("load-compatible").hidden = spec.support.canPlayDetailedStoryboard || !catalogs.presets.presets.some(p=>p.scenarioId===spec.sceneId);
   $("stages").innerHTML = spec.support.canPlayDetailedStoryboard
     ? spec.stages
         .map(
@@ -320,6 +355,9 @@ function render() {
   fillCommon();
 }
 function invalidate() {
+  frameExportGeneration++;
+  lastFrameMetadata = null;
+  $("export-frame-meta").disabled = true;
   activeId = null;
   if (result) result = { ...result, status: "stale" };
 }
@@ -366,6 +404,7 @@ function apply(command) {
     render();
     persist();
     run();
+    if (command.type === "preset" && spec.support.canPlayDetailedStoryboard && viewMode !== "3d") void to3d();
     notice(
       command.type === "preset"
         ? "整套示例已载入；原草稿与冻结 A 已保留。"
@@ -481,9 +520,11 @@ function to2d() {
   $("view-3d-host").hidden = true;
   $("view-2d").setAttribute("aria-pressed", "true");
   $("view-3d").setAttribute("aria-pressed", "false");
+  $("export-png").disabled = true;
+  render2d($("view-2d-host"), spec, frame);
   $("view-status").textContent = spec.support.canPlayDetailedStoryboard
     ? "当前使用 2D 视图；教学功能与导出完整可用。"
-    : "当前为机制教学，详细 3D 尚未提供或条件尚未建立。";
+    : "当前条件没有匹配的三维预设；记录保留，可查看兼容示例，不会自动更换物料或设备。";
 }
 async function to3d() {
   if (!spec.support.canPlayDetailedStoryboard) return;
@@ -511,10 +552,11 @@ async function to3d() {
     $("view-2d").setAttribute("aria-pressed", "false");
     $("view-3d").setAttribute("aria-pressed", "true");
     view.update(spec, frame);
-    view.setLabelsVisible(project.ui.labels);
+    syncDisplayPreferences();
     view.setCamera(project.ui.camera);
+    $("export-png").disabled = false;
     $("view-status").textContent =
-      "拖动旋转，滚轮 / 双指缩放；方向与尺度仅用于教学设备关系。";
+      "拖动自由旋转，滚轮 / 双指缩放。三维体积为视觉模型，不能反推工程后果。";
   } catch {
     view?.dispose();
     view = null;
@@ -733,15 +775,18 @@ async function boot() {
   try {
     loaded = load(localStorage);
     legacyRaw = localStorage.getItem(LEGACY_KEY);
+    originalV011Raw = localStorage.getItem(ORIGINAL_V011_KEY) || loaded.originalV011Raw || null;
     previousDraft = loadPrevious(localStorage);
   } catch (e) {
     loaded = { status: "failed", error: e.message };
   }
   draft = loaded.project;
-  storageBlocked = loaded.status === "failed";
+  storageBlocked = loaded.status === "failed" || Boolean(loaded.writeBlocked);
   $("continue-draft").hidden = !draft;
   $("restore-previous").hidden = !previousDraft;
   $("legacy-json").hidden = !legacyRaw;
+  $("original-v011-json").hidden = !originalV011Raw;
+  if (loaded.writeBlocked) notice("旧版原始备份未能写入：保留内存与原草稿，暂停覆盖保存。请先下载 V0.1.1 原始备份和当前 JSON。");
   if (loaded.status === "failed")
     notice(
       "旧记录读取失败，原文已保留。示例仍可使用；请保留原始备份或导入有效项目。",
@@ -798,6 +843,20 @@ async function boot() {
   for (const type of ["material", "equipment", "storage", "scenario"])
     on("edit-" + type, "click", () => openPanel(type));
   on("load-preset", "click", () => openPanel("preset"));
+  on("preset-gallery", "click", (e) => {
+    const b = e.target.closest("[data-preset-id]");
+    if (!b) return;
+    openPanel("preset");
+    $("panel-preset-select").value = b.dataset.presetId;
+    previewPanel();
+  });
+  on("load-compatible", "click", () => {
+    const preset = catalogs.presets.presets.find(p=>p.scenarioId===spec.sceneId);
+    if (!preset) return;
+    openPanel("preset");
+    $("panel-preset-select").value = preset.presetId;
+    previewPanel();
+  });
   on("editor-form", "submit", (e) => e.preventDefault());
   on("panel-fields", "input", previewPanel);
   on("panel-fields", "change", previewPanel);
@@ -820,6 +879,7 @@ async function boot() {
     render();
     persist();
     run();
+    showConditions(true);
     $("quantity-value").focus();
     $("quantity-value").scrollIntoView({ block: "center" });
   });
@@ -840,7 +900,7 @@ async function boot() {
     if (spec.support.canPlayDetailedStoryboard) {
       void to3d();
       if (!playing) play();
-    } else notice("当前是独立机制教学，请修改条件或载入池火示例。");
+    } else notice("当前条件没有匹配的三维预设。可载入对应事故的完整兼容示例；不会暗改你的条件。");
   });
   on("common-form", "submit", (e) => e.preventDefault());
   on("quantity-basis", "change", () => {
@@ -917,6 +977,71 @@ async function boot() {
     to2d();
   });
   on("view-3d", "click", to3d);
+  on("toggle-conditions", "click", () => showConditions($("conditions-sidebar").hidden));
+  on("fullscreen", "click", async () => {
+    const panel = $("view-panel");
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else if (panel.classList.contains("sc-fullscreen-fallback")) panel.classList.remove("sc-fullscreen-fallback");
+      else if (panel.requestFullscreen) await panel.requestFullscreen();
+      else panel.classList.add("sc-fullscreen-fallback");
+    } catch {
+      panel.classList.toggle("sc-fullscreen-fallback");
+      notice("当前浏览器未开放系统全屏，使用页面内全屏。按 Escape 退出。");
+    }
+    const active = Boolean(document.fullscreenElement || panel.classList.contains("sc-fullscreen-fallback"));
+    $("fullscreen").setAttribute("aria-pressed", String(active));
+    $("fullscreen").textContent = active ? "退出全屏" : "全屏观看";
+  });
+  document.addEventListener("fullscreenchange", () => {
+    const active = Boolean(document.fullscreenElement);
+    $("fullscreen").setAttribute("aria-pressed", String(active));
+    $("fullscreen").textContent = active ? "退出全屏" : "全屏观看";
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      $("view-panel").classList.remove("sc-fullscreen-fallback");
+      if (!document.fullscreenElement) {
+        $("fullscreen").setAttribute("aria-pressed", "false");
+        $("fullscreen").textContent = "全屏观看";
+      }
+    }
+  });
+  for (const [id, key] of [["quality", "quality"], ["cutaway", "cutaway"], ["pressure-aux", "pressureAux"], ["label-detail", "labelDetail"]]) {
+    on(id, "change", () => {
+      project.ui[key] = id === "quality" ? $(id).value : $(id).checked;
+      syncDisplayPreferences();
+      persist();
+    });
+  }
+  on("export-png", "click", async () => {
+    if (exportingFrame || !view || viewMode !== "3d") return;
+    stop();
+    const generation = frameExportGeneration, revision = project.inputRevision;
+    const [width, height] = $("png-size").value.split("x").map(Number);
+    exportingFrame = true;
+    lastFrameMetadata = null;
+    $("export-frame-meta").disabled = true;
+    $("export-png").disabled = true;
+    $("frame-export-status").textContent = `正在以 ${width} × ${height} 重新渲染当前镜头…`;
+    try {
+      const output = await view.exportFrame({width, height, labels: project.ui.labels});
+      if (generation !== frameExportGeneration || revision !== project.inputRevision) throw Error("场景已改变，未下载旧画面，请按当前场景重新导出");
+      if (!(output?.blob instanceof Blob)) throw Error("没有获得有效 3D 图像");
+      download(output.blob, "image/png", "png");
+      lastFrameMetadata = {...output.metadata, inputRevision: revision, projectId: project.meta.id, exportedAt: new Date().toISOString()};
+      $("export-frame-meta").disabled = false;
+      $("frame-export-status").textContent = `已导出 ${width} × ${height} 当前 3D 画面。镜头与阶段已冻结，元数据可单独下载；交互已恢复。`;
+    } catch (e) {
+      $("frame-export-status").textContent = "画面导出未完成：" + e.message;
+    } finally {
+      exportingFrame = false;
+      $("export-png").disabled = viewMode !== "3d" || !view;
+    }
+  });
+  on("export-frame-meta", "click", () => {
+    if (lastFrameMetadata) download(JSON.stringify(lastFrameMetadata, null, 2), "application/json", "frame.json");
+  });
   on("camera-select", "change", () => {
     project.ui.camera = $("camera-select").value;
     view?.setCamera(project.ui.camera);
@@ -957,6 +1082,9 @@ async function boot() {
   );
   on("legacy-json", "click", () => {
     if (legacyRaw) download(legacyRaw, "application/json", "v1.json");
+  });
+  on("original-v011-json", "click", () => {
+    if (originalV011Raw) download(originalV011Raw, "application/json", "v0.1.1-original.json");
   });
   on("csv", "click", () =>
     download(csv(project, result, catalogs), "text/csv;charset=utf-8", "csv"),
@@ -1016,7 +1144,7 @@ async function boot() {
   on("clear", "click", () => {
     if (
       !confirm(
-        "清除本工具新版草稿及上一草稿备份？旧版 v1 原始记录与其他工具数据保留；可先导出 JSON。",
+        "清除本工具新版草稿及上一草稿备份？旧 v1、V0.1.1 原始备份与其他工具数据保留；可先导出当前 JSON。",
       )
     )
       return;
@@ -1026,7 +1154,7 @@ async function boot() {
       previousDraft = null;
       $("continue-draft").hidden = true;
       $("restore-previous").hidden = true;
-      notice("新版草稿已清除。旧版记录保留，但不会自动重新迁移。");
+      notice("新版草稿已清除。旧 v1 与 V0.1.1 原始备份保留，但不会自动复活为当前草稿。");
       if (mode === "draft") {
         stop();
         project = createPreset(catalogs);

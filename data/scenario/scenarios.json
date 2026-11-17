@@ -1,99 +1,520 @@
 {
-  "dataVersion": "scenario-data-0.1.1",
+  "dataVersion": "scenario-data-0.2.0",
   "scenarios": [
     {
-      "id":"pool-fire","name":"池火","english":"Pool fire","diagram":"pool",
-      "conditions":["liquid","flammable","pool","ignition"],
-      "mechanism":"液体泄漏后形成液池，遇点火源发生燃烧。",
-      "consequence":"火焰接触、热辐射及相邻设备受热。",
-      "data":"物态、可燃性、实际释放量、经确认的液池几何和点火条件。",
-      "barrier":"防泄漏、有效隔离、围堵与排液管理、点火源控制。",
-      "difference":"本页提供完整池火教学；液池和火焰外观不代表工程影响距离。",
-      "support":"条件成立的池火可体验六阶段教学；工程数值未评估。",
-      "storyboardSupport":"detailed_teaching",
-      "sourceRefs":["implementation-guide-v011","noaa-technical"],
-      "stages":[
-        {"id":"storage","title":"正常储存","text":"先确认物料、设备和储存条件。液位仅由本记录的教学几何与库存基准示意。","question":"哪些条件为示例假设，哪些是用户输入？","highlight":["tank","liquid-level","containment"]},
-        {"id":"release","title":"发生泄漏","text":"本默认示例假设根部阀后短管失效；切换泄漏点后以当前锚点为准。","question":"隔离措施能够切断这条释放路径吗？","highlight":["leak","piping","valve"]},
-        {"id":"pool","title":"形成液池","text":"液体沿地面进入预设范围；范围由教学配置预设，尚未计算铺展。","question":"实际地面、围堵和排液会怎样影响积液？","highlight":["pool","containment","drain"]},
-        {"id":"ignition","title":"遇点火源","text":"火焰从液池表面出现；是否点火及何时点火未作概率评价。","question":"当前物料外观与可见性辅助的含义是否清楚？","highlight":["pool","flame"]},
-        {"id":"barriers","title":"措施作用点","text":"标记隔离、围控和探测等作用环节；未量化措施效果，也不演示自动成功灭火。","question":"措施作用对象、边界与证据是否明确？","highlight":["valve","containment","detection"]},
-        {"id":"review","title":"条件回顾","text":"保留当前条件与待确认项，可修改、冻结方案或导出底稿。","question":"工程后果与频率仍未评估，下一步需要哪些资料？","highlight":["tank","leak","pool"]}
+      "id": "pool-fire",
+      "name": "池火",
+      "english": "Pool fire",
+      "diagram": "pool",
+      "conditions": [
+        "liquid",
+        "flammable",
+        "pool",
+        "ignition"
+      ],
+      "mechanism": "液体泄漏后形成液池，遇点火源发生燃烧。",
+      "consequence": "火焰接触、热辐射及相邻设备受热。",
+      "data": "物态、可燃性、实际释放量、经确认的液池几何和点火条件。",
+      "barrier": "防泄漏、有效隔离、围堵与排液管理、点火源控制。",
+      "difference": "本页提供完整池火教学；液池和火焰外观不代表工程影响距离。",
+      "support": "条件匹配时提供独立写实3D教学；源项、真实浓度、热辐射、超压与工程距离均未评估。",
+      "storyboardSupport": "detailed_teaching",
+      "sourceRefs": [
+        "implementation-guide-v011",
+        "noaa-technical",
+        "implementation-guide-v020",
+        "hse-hfl-mechanisms"
+      ],
+      "stages": [
+        {
+          "id": "storage",
+          "title": "物料与设备",
+          "text": "核对储罐、无色液体、库存基准及教学假设。液位仅为已知体积与几何的示意。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "tank",
+            "liquid-level"
+          ]
+        },
+        {
+          "id": "liquid-release",
+          "title": "液体从锚点释放",
+          "text": "液柱从阀后锚点弯曲下落，飞沫与地面落点保持连续；未计算流率。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "leak",
+            "valve"
+          ]
+        },
+        {
+          "id": "wet-front",
+          "title": "湿润前沿铺展",
+          "text": "预设湿润前沿从落点连续展开，受教学地形范围约束；不是泄漏扩散求解。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "pool",
+            "containment"
+          ]
+        },
+        {
+          "id": "surface-ignition",
+          "title": "表面局部点燃",
+          "text": "火焰从液池局部表面起始，向预设燃烧面发展，体积结构不代表热辐射。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "pool",
+            "flame"
+          ]
+        },
+        {
+          "id": "buoyant-burning",
+          "title": "浮力燃烧发展",
+          "text": "体积密度和发光场演示上升、扰动与卷吸；燃料定性外观独立配置。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "flame"
+          ]
+        },
+        {
+          "id": "feed-end-review",
+          "title": "供料变化与回顾",
+          "text": "预设供料减弱，空中液流与残留液池分别过渡；不宣称灭火或隔离自动成功。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "valve",
+            "pool"
+          ]
+        }
       ]
     },
     {
-      "id":"jet-fire","name":"喷射火","english":"Jet fire","diagram":"jet",
-      "conditions":["flammable","pressurized","release","ignition"],
-      "mechanism":"有压可燃物持续喷放并被点燃，形成定向火焰。",
-      "consequence":"定向火焰冲击、热辐射和相邻设备受热。",
-      "data":"压力、物态、破口、供料边界、隔离位置与点火。",
-      "barrier":"压力完整性、检测、有效切断与设备防护。",
-      "difference":"持续喷放的动量和方向需要独立源项模型；不能用池火画面替代。",
-      "support":"独立 2D 机制与条件检查；详细 3D 和喷射火数值未提供。",
-      "storyboardSupport":"mechanism_only","sourceRefs":["implementation-guide-v011","noaa-technical"],
-      "stages":[
-        {"id":"pressurized-release","title":"加压释放条件","text":"先确认有压可燃物是否能通过实际破口持续喷放，不能只凭事故名称推断。","question":"压力、物态和释放路径是否有依据？","highlight":["piping","leak"]},
-        {"id":"directional-burning","title":"定向燃烧机制","text":"喷放被点燃后可能形成定向火焰；本图不计算喷射长度或热辐射。","question":"隔离边界与可能受火焰冲击的目标在哪里？","highlight":["leak","valve"]}
+      "id": "jet-fire",
+      "name": "喷射火",
+      "english": "Jet fire",
+      "diagram": "jet",
+      "conditions": [
+        "flammable",
+        "pressurized",
+        "release",
+        "ignition"
+      ],
+      "mechanism": "有压可燃物持续喷放并被点燃，形成定向火焰。",
+      "consequence": "定向火焰冲击、热辐射和相邻设备受热。",
+      "data": "压力、物态、破口、供料边界、隔离位置与点火。",
+      "barrier": "压力完整性、检测、有效切断与设备防护。",
+      "difference": "持续喷放的动量和方向需要独立源项模型；不能用池火画面替代。",
+      "support": "条件匹配时提供独立写实3D教学；源项、真实浓度、热辐射、超压与工程距离均未评估。",
+      "storyboardSupport": "detailed_teaching",
+      "sourceRefs": [
+        "implementation-guide-v011",
+        "noaa-technical",
+        "implementation-guide-v020",
+        "hse-hfl-mechanisms"
+      ],
+      "stages": [
+        {
+          "id": "gas-pipeline",
+          "title": "气相管线条件",
+          "text": "记录丙烷气相、绝压、供料边界与喷口。气相为教学输入，未执行状态方程。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "piping",
+            "valve"
+          ]
+        },
+        {
+          "id": "gas-release",
+          "title": "带压定向释放",
+          "text": "释放从当前喷口沿预设方向发生。无色气体轮廓为可见性辅助，不是浓白烟。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "leak"
+          ]
+        },
+        {
+          "id": "jet-ignition",
+          "title": "喷口流被点燃",
+          "text": "在喷放路径上出现定向燃烧，根部绑定喷口；不是横置的池火。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "leak",
+            "flame"
+          ]
+        },
+        {
+          "id": "directional-burning",
+          "title": "定向火焰发展",
+          "text": "近端定向、远端扩展与卷吸由三维视觉场表现；不预测火焰长度或冲击热量。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "flame"
+          ]
+        },
+        {
+          "id": "jet-entrainment",
+          "title": "卷吸与供料边界",
+          "text": "扰动连续随同一时间轴变化；相邻设备不因画面接近就自动失效。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "piping",
+            "flame"
+          ]
+        },
+        {
+          "id": "gas-feed-end",
+          "title": "预设供料结束",
+          "text": "喷放和火焰按分镜减弱；不代表真实切断时间或残余压力已经消除。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "valve",
+            "leak"
+          ]
+        }
       ]
     },
     {
-      "id":"flash-fire","name":"闪火","english":"Flash fire","diagram":"flash",
-      "conditions":["flammable","cloud","ignition"],
-      "mechanism":"可燃云团内发生火焰传播，人员可能遭受火焰暴露。",
-      "consequence":"云团范围内的火焰暴露；不默认存在破坏性超压。",
-      "data":"释放与蒸发、可燃范围、扩散环境、点火位置。",
-      "barrier":"限制释放、控制点火源、气体检测与撤离。",
-      "difference":"与 VCE 分开判断；可燃云团不自动等同于爆炸。",
-      "support":"独立 2D 机制；详细 3D、可燃云团边界与暴露距离未提供。",
-      "storyboardSupport":"mechanism_only","sourceRefs":["implementation-guide-v011","noaa-technical"],
-      "stages":[
-        {"id":"flammable-cloud","title":"可燃云团条件","text":"先确认可燃物进入空气、混合及点火条件；图形着色不代表实测可燃浓度。","question":"云团形成的源项与环境资料是否充分？","highlight":["release","cloud"]},
-        {"id":"flash-propagation","title":"云团内火焰传播","text":"图示解释闪燃机制，不默认添加破坏性冲击波。","question":"人员暴露与点火源控制如何安排？","highlight":["cloud","ignition"]}
+      "id": "flash-fire",
+      "name": "闪火",
+      "english": "Flash fire",
+      "diagram": "flash",
+      "conditions": [
+        "flammable",
+        "cloud",
+        "ignition"
+      ],
+      "mechanism": "可燃云团内发生火焰传播，人员可能遭受火焰暴露。",
+      "consequence": "云团范围内的火焰暴露；不默认存在破坏性超压。",
+      "data": "释放与蒸发、可燃范围、扩散环境、点火位置。",
+      "barrier": "限制释放、控制点火源、气体检测与撤离。",
+      "difference": "与 VCE 分开判断；可燃云团不自动等同于爆炸。",
+      "support": "条件匹配时提供独立写实3D教学；源项、真实浓度、热辐射、超压与工程距离均未评估。",
+      "storyboardSupport": "detailed_teaching",
+      "sourceRefs": [
+        "implementation-guide-v011",
+        "noaa-technical",
+        "implementation-guide-v020",
+        "hse-hfl-mechanisms"
+      ],
+      "stages": [
+        {
+          "id": "release-boundary",
+          "title": "室外气相释放",
+          "text": "保留气相管线与供料假设，不将气体质量转换为液体装填率或液位。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "piping",
+            "leak"
+          ]
+        },
+        {
+          "id": "cloud-formation",
+          "title": "可燃区域示意形成",
+          "text": "稀薄云团辅助显示预设区域与输运；没有LFL边界、浓度或气象预测。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "cloud"
+          ]
+        },
+        {
+          "id": "specified-ignition",
+          "title": "指定位置点火",
+          "text": "点火发生在场景中明确位置，点火概率与实际时刻未评估。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "ignition"
+          ]
+        },
+        {
+          "id": "flame-front",
+          "title": "火焰前沿经过云团",
+          "text": "区分未燃区域、传播前沿与已燃区域；演示慢放不表示真实传播速度。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "cloud",
+            "flame"
+          ]
+        },
+        {
+          "id": "cloud-consumption",
+          "title": "云团消耗",
+          "text": "预设可燃区域随前沿经过而消耗，不默认加入强冲击波、碎片或蘑菇云。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "cloud"
+          ]
+        },
+        {
+          "id": "flash-review",
+          "title": "余燃与消散",
+          "text": "是否持续回烧需独立供料假设；本示例在停止供料后回顾条件，不自动变为VCE。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "leak",
+            "cloud"
+          ]
+        }
       ]
     },
     {
-      "id":"vce","name":"蒸气云爆炸","english":"Vapor cloud explosion / VCE","diagram":"vce",
-      "conditions":["flammable","cloud","ignition","congestion"],
-      "mechanism":"可燃云团点火后，在拥塞或受限等条件下可能发生火焰加速。",
-      "consequence":"超压、火焰暴露和次生设备损坏。",
-      "data":"云团、拥塞或受限条件、反应性、点火与几何。",
-      "barrier":"限制云团形成、合理布置与通风、点火源控制。",
-      "difference":"条件检查只列候选；模型未提供或资料缺失都不能证明爆炸不可能。",
-      "support":"独立 2D 机制；详细 3D、VCE 超压及工程距离未提供。",
-      "storyboardSupport":"mechanism_only","sourceRefs":["implementation-guide-v011","noaa-technical"],
-      "stages":[
-        {"id":"cloud-geometry","title":"云团与空间条件","text":"核对可燃云团、点火、拥塞或受限空间等条件，保留未确认项。","question":"可燃范围、反应性与拥塞几何有哪些证据？","highlight":["cloud","congestion"]},
-        {"id":"flame-acceleration","title":"火焰加速机制","text":"本机制图说明可能的火焰加速，不计算超压或破坏范围。","question":"需要进一步分析哪些设备与人员暴露？","highlight":["cloud","congestion","ignition"]}
+      "id": "vce",
+      "name": "蒸气云爆炸",
+      "english": "Vapor cloud explosion / VCE",
+      "diagram": "vce",
+      "conditions": [
+        "flammable",
+        "cloud",
+        "ignition",
+        "congestion"
+      ],
+      "mechanism": "可燃云团点火后，在拥塞或受限等条件下可能发生火焰加速。",
+      "consequence": "超压、火焰暴露和次生设备损坏。",
+      "data": "云团、拥塞或受限条件、反应性、点火与几何。",
+      "barrier": "限制云团形成、合理布置与通风、点火源控制。",
+      "difference": "条件检查只列候选；模型未提供或资料缺失都不能证明爆炸不可能。",
+      "support": "条件匹配时提供独立写实3D教学；源项、真实浓度、热辐射、超压与工程距离均未评估。",
+      "storyboardSupport": "detailed_teaching",
+      "sourceRefs": [
+        "implementation-guide-v011",
+        "noaa-technical",
+        "implementation-guide-v020",
+        "hse-hfl-mechanisms"
+      ],
+      "stages": [
+        {
+          "id": "congested-rack",
+          "title": "拥塞管廊条件",
+          "text": "先显示管线、局部障碍与释放锚点；不是在空地套用爆炸火球。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "piping",
+            "congestion"
+          ]
+        },
+        {
+          "id": "cloud-accumulation",
+          "title": "云团形成与延迟点火",
+          "text": "可见性辅助显示云团与障碍空间的预设关系，不生成可燃浓度。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "cloud",
+            "congestion"
+          ]
+        },
+        {
+          "id": "vce-ignition",
+          "title": "明确点火位置",
+          "text": "在指定位置点火，点火源、云团和拥塞条件分别记录。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "ignition"
+          ]
+        },
+        {
+          "id": "accelerating-front",
+          "title": "预设燃烧前沿发展",
+          "text": "展示燃烧穿过管廊与局部障碍的定性关系；不计算湍流或火焰加速量。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "flame",
+            "congestion"
+          ]
+        },
+        {
+          "id": "pressure-cue",
+          "title": "独立压力相关辅助",
+          "text": "可选压力传播辅助与火焰分别呈现；不标实际超压、波速或破坏半径。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "pressure",
+            "congestion"
+          ]
+        },
+        {
+          "id": "vce-afterglow",
+          "title": "余燃与回顾",
+          "text": "余燃和消散为视觉分镜；没有自动爆轰、构件失效或BLEVE连锁。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "cloud",
+            "flame"
+          ]
+        }
       ]
     },
     {
-      "id":"bleve","name":"沸腾液体膨胀蒸气爆炸","english":"BLEVE","diagram":"bleve",
-      "conditions":["superheated","vesselFailure"],
-      "mechanism":"过热液体因容器失效快速降压而剧烈膨胀；可燃介质还可能形成火球。",
-      "consequence":"压力作用与碎片；可燃物还可能产生火球热辐射。",
-      "data":"温压和饱和状态、容器完整性、受热与失效方式。",
-      "barrier":"防止外部火灾加热、压力保护、检测与应急隔离。",
-      "difference":"不等同于常压储罐池火，也不要求介质必须可燃；切换事故不会自动改物料或压力。",
-      "support":"独立 2D 机制；当前条件不足时仅解释机制，未提供详细 3D 或后果数值。",
-      "storyboardSupport":"mechanism_only","sourceRefs":["implementation-guide-v011","noaa-technical"],
-      "stages":[
-        {"id":"superheated-contained-liquid","title":"过热液体与容器条件","text":"建立此事故需要核实液体热力状态、容器与压力等事实；事故名称不会自动建立这些条件。","question":"当前记录是否足以确认过热与失效方式？","highlight":["vessel","pressure"]},
-        {"id":"rapid-depressurization","title":"快速降压与膨胀","text":"图示仅解释容器失效后的快速降压和膨胀，可燃介质还可能产生火球。","question":"碎片、压力作用与火球等后果需要哪些独立分析？","highlight":["vessel","expansion"]}
+      "id": "bleve",
+      "name": "沸腾液体膨胀蒸气爆炸",
+      "english": "BLEVE",
+      "diagram": "bleve",
+      "conditions": [
+        "superheated",
+        "vesselFailure"
+      ],
+      "mechanism": "过热液体因容器失效快速降压而剧烈膨胀；可燃介质还可能形成火球。",
+      "consequence": "压力作用与碎片；可燃物还可能产生火球热辐射。",
+      "data": "温压和饱和状态、容器完整性、受热与失效方式。",
+      "barrier": "防止外部火灾加热、压力保护、检测与应急隔离。",
+      "difference": "不等同于常压储罐池火，也不要求介质必须可燃；切换事故不会自动改物料或压力。",
+      "support": "独立 2D 机制；当前条件不足时仅解释机制，未提供详细 3D 或后果数值。",
+      "storyboardSupport": "mechanism_only",
+      "sourceRefs": [
+        "implementation-guide-v011",
+        "noaa-technical"
+      ],
+      "stages": [
+        {
+          "id": "superheated-contained-liquid",
+          "title": "过热液体与容器条件",
+          "text": "建立此事故需要核实液体热力状态、容器与压力等事实；事故名称不会自动建立这些条件。",
+          "question": "当前记录是否足以确认过热与失效方式？",
+          "highlight": [
+            "vessel",
+            "pressure"
+          ]
+        },
+        {
+          "id": "rapid-depressurization",
+          "title": "快速降压与膨胀",
+          "text": "图示仅解释容器失效后的快速降压和膨胀，可燃介质还可能产生火球。",
+          "question": "碎片、压力作用与火球等后果需要哪些独立分析？",
+          "highlight": [
+            "vessel",
+            "expansion"
+          ]
+        }
       ]
     },
     {
-      "id":"toxic","name":"毒性扩散","english":"Toxic dispersion","diagram":"toxic",
-      "conditions":["toxic","airborne"],
-      "mechanism":"有毒物料进入空气并迁移，影响取决于浓度和暴露时间。",
-      "consequence":"吸入暴露和健康影响；着色不代表气体真实颜色、浓度或危害边界。",
-      "data":"源项、物性、气象、地形、接收高度与暴露时间。",
-      "barrier":"密闭与隔离、检测、针对性防护与撤离安排。",
-      "difference":"需要专门扩散模型；重气与中性气体不能用同一简单假设包办。",
-      "support":"独立 2D 机制；未建立真实风场、详细 3D、浓度与毒性距离。",
-      "storyboardSupport":"mechanism_only","sourceRefs":["implementation-guide-v011","noaa-technical"],
-      "stages":[
-        {"id":"airborne-release","title":"进入空气的源项","text":"先确认有毒物料如何进入空气、处于什么相态；没有源项模型就不生成浓度。","question":"释放、蒸发或气溶胶资料是否有依据？","highlight":["release","cloud"]},
-        {"id":"transport-exposure","title":"迁移与暴露机制","text":"迁移受风和环境影响；本版未建立风场，图示方向不是预测结果。","question":"应补充哪些气象、接收高度与暴露时间资料？","highlight":["cloud","receptor"]}
+      "id": "toxic",
+      "name": "毒性扩散",
+      "english": "Toxic dispersion",
+      "diagram": "toxic",
+      "conditions": [
+        "toxic",
+        "airborne"
+      ],
+      "mechanism": "有毒物料进入空气并迁移，影响取决于浓度和暴露时间。",
+      "consequence": "吸入暴露和健康影响；着色不代表气体真实颜色、浓度或危害边界。",
+      "data": "源项、物性、气象、地形、接收高度与暴露时间。",
+      "barrier": "密闭与隔离、检测、针对性防护与撤离安排。",
+      "difference": "需要专门扩散模型；重气与中性气体不能用同一简单假设包办。",
+      "support": "独立 2D 机制；未建立真实风场、详细 3D、浓度与毒性距离。",
+      "storyboardSupport": "mechanism_only",
+      "sourceRefs": [
+        "implementation-guide-v011",
+        "noaa-technical"
+      ],
+      "stages": [
+        {
+          "id": "airborne-release",
+          "title": "进入空气的源项",
+          "text": "先确认有毒物料如何进入空气、处于什么相态；没有源项模型就不生成浓度。",
+          "question": "释放、蒸发或气溶胶资料是否有依据？",
+          "highlight": [
+            "release",
+            "cloud"
+          ]
+        },
+        {
+          "id": "transport-exposure",
+          "title": "迁移与暴露机制",
+          "text": "迁移受风和环境影响；本版未建立风场，图示方向不是预测结果。",
+          "question": "应补充哪些气象、接收高度与暴露时间资料？",
+          "highlight": [
+            "cloud",
+            "receptor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "confined-deflagration",
+      "name": "受限空间爆燃",
+      "english": "Confined deflagration",
+      "diagram": "confined",
+      "aliases": [
+        "柜内爆燃",
+        "设备间爆燃",
+        "受限空间燃爆"
+      ],
+      "conditions": [
+        "flammable",
+        "cloud",
+        "ignition",
+        "confined"
+      ],
+      "mechanism": "明确柜体或设备间内存在可燃混合物，点火后发生内部火焰传播，并从预设开口向外喷出。",
+      "consequence": "内部燃烧、开口喷出火焰及可能的压力作用；不是自动爆轰或结构耐压结论。",
+      "data": "空间几何、混合物与释放、点火、开口及构件响应；工程计算需独立资料与适用模型。",
+      "barrier": "限制释放与积聚、适当通风、点火源控制及经独立设计的保护。",
+      "difference": "有明确内外边界和开口的教学过程，与开放管廊VCE不同；两者不是穷尽或互斥的科学分类。",
+      "support": "条件匹配时提供独立柜体3D过程与剖切；未执行柜体耐压或泄爆设计。",
+      "storyboardSupport": "detailed_teaching",
+      "sourceRefs": [
+        "implementation-guide-v020",
+        "hse-hfl-mechanisms",
+        "hse-rr1190"
+      ],
+      "stages": [
+        {
+          "id": "enclosed-mixture",
+          "title": "柜内积聚假设",
+          "text": "显示柜体边界、内部管件与开口；存在可燃混合物是教学前提，不由质量自动证明。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "enclosure",
+            "cloud"
+          ]
+        },
+        {
+          "id": "internal-ignition",
+          "title": "柜内指定位置点火",
+          "text": "点火位置在柜内明确标记；剖切仅改变观察方式，不改变工况。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "ignition",
+            "enclosure"
+          ]
+        },
+        {
+          "id": "internal-flame",
+          "title": "内部燃烧发展",
+          "text": "三维内部火焰随预设前沿发展，柜壁保持遮挡；不计算真实内压。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "enclosure",
+            "flame"
+          ]
+        },
+        {
+          "id": "preset-opening",
+          "title": "预设开口响应",
+          "text": "构件开启时刻由分镜指定；开口不代表达到经设计验证的泄爆能力。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "opening"
+          ]
+        },
+        {
+          "id": "vented-flame",
+          "title": "从真实开口向外喷出",
+          "text": "外部火焰根部绑定开口中心与朝向，内部和外部过程相互关联。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "opening",
+            "flame"
+          ]
+        },
+        {
+          "id": "confined-afterglow",
+          "title": "内外余燃与回顾",
+          "text": "余燃与消散分别过渡；不可由动画倒推柜体耐压、泄压面积或安全距离。",
+          "question": "哪些是教学假设，哪些需要现场资料或独立工程评估？",
+          "highlight": [
+            "enclosure",
+            "opening"
+          ]
+        }
       ]
     }
   ]

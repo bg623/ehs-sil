@@ -19,12 +19,14 @@ export const CONDITION_LABELS = {
   vesselFailure: "容器失效与快速降压",
   toxic: "有毒介质",
   airborne: "物料进入空气",
+  confined: "明确的空间内积聚与预设开口",
 };
 export const SCENARIOS = [
   "pool-fire",
   "jet-fire",
   "flash-fire",
   "vce",
+  "confined-deflagration",
   "bleve",
   "toxic",
 ];
@@ -105,6 +107,10 @@ export function newProject(example = false) {
       camera: "overview",
       speed: 1,
       labels: true,
+      labelDetail: false,
+      quality: "balanced",
+      cutaway: false,
+      pressureAux: false,
     },
   };
 }
@@ -223,6 +229,7 @@ export function validateProject(p, allowComparison = true) {
   enums(p.ui.view, ["2d", "3d"], "视图");
   enums(p.ui.visualMode, ["assisted", "natural"], "显示模式");
   enums(p.ui.camera, ["overview", "tank", "leak", "pool", "top"], "镜头");
+  enums(p.ui.quality, ["low", "balanced", "high"], "画质");
   if (
     !Number.isInteger(p.ui.stage) ||
     p.ui.stage < 0 ||

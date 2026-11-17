@@ -17,9 +17,15 @@ export function setQuantity(p, basis, value) {
   p.inputs.storage[fields[basis]] = value;
 }
 export function deriveQuantity(p) {
+  if (p.inputs.material.state === "gas")
+    return {
+      capacityM3: null, volumeM3: null, fillFraction: null, liquidLevelM: null,
+      massKg: p.inputs.storage.quantityBasis === "mass" ? p.inputs.storage.inventoryKg : null,
+      source: "气相记录不推导液体库存、装填率或液位；未执行状态方程、气体密度与源项校验",
+    };
   const g = p.inputs.equipment.geometry,
     capacityM3 =
-      g.orientation !== "generic" && g.diameterM !== null && g.heightM !== null
+      g.orientation === "vertical" && g.diameterM !== null && g.heightM !== null
         ? (Math.PI * g.diameterM ** 2 * g.heightM) / 4
         : null,
     s = p.inputs.storage;
@@ -106,9 +112,10 @@ export function createPreset(c, id = "methanol-atmospheric-tank-pool-fire") {
   p.inputs.scenario.id = t.scenarioId;
   p.inputs.scenario.ignition = "delayed_teaching";
   p.inputs.pool.radiusM = t.poolRadiusM;
-  p.inputs.pool.geometrySource = "教学预设范围；未求解液池扩展";
-  p.inputs.pool.ground = "示例排液路径关闭；需按现场核实";
-  for (const k of ["liquid", "flammable", "pool", "ignition", "release"])
+  p.inputs.pool.geometrySource = t.poolRadiusM === null ? "" : "教学预设范围；未求解液池扩展";
+  p.inputs.pool.ground = t.poolRadiusM === null ? "" : "示例排液路径关闭；需按现场核实";
+  if (t.conditions) Object.assign(p.inputs.scenario.conditions, t.conditions);
+  else for (const k of ["liquid", "flammable", "pool", "ignition", "release"])
     p.inputs.scenario.conditions[k] = "yes";
   p.assumptions = t.assumptions.map((text) => ({
     text,
@@ -119,7 +126,7 @@ export function createPreset(c, id = "methanol-atmospheric-tank-pool-fire") {
   for (const field of [
     "inputs.material.temperatureK",
     "inputs.material.composition",
-    "inputs.storage.volumeM3",
+    `inputs.storage.${{mass:"inventoryKg",volume:"volumeM3",fill:"fillFraction"}[t.quantity.basis]}`,
     "inputs.storage.pressurePa",
     "inputs.equipment.geometry.diameterM",
     "inputs.equipment.geometry.heightM",
