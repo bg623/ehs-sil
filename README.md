@@ -7,7 +7,7 @@
 - `index.html` — 首页
 - `products/toolbox.html` — 外企EHS工具箱 产品页
 - `products/training.html` — 外企EHS培训库 产品页
-- `tools/index.html` — 536条资料索引（不代表已发布或可下载数量，以正式发布目录为准）
+- `tools/index.html` — 537条资料索引（不代表已发布或可下载数量，以正式发布目录为准）
 - `tools/content-repurposer.html` — 内容分发助手（内部工具）
 - `dashboard/index.html` — 副业数据仪表盘（内部工具）
 

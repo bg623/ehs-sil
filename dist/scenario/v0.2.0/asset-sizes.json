@@ -1,0 +1,22 @@
+[
+  {
+    "file": "app.mjs",
+    "bytes": 93766,
+    "gzipBytes": 29058
+  },
+  {
+    "file": "chunk-ENUEK4IP.mjs",
+    "bytes": 1276,
+    "gzipBytes": 717
+  },
+  {
+    "file": "view-3d-QRC2BEVM.mjs",
+    "bytes": 608123,
+    "gzipBytes": 162402
+  },
+  {
+    "file": "worker.mjs",
+    "bytes": 12061,
+    "gzipBytes": 4789
+  }
+]

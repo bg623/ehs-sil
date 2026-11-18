@@ -1,0 +1,54 @@
+{
+  "dataVersion": "scenario-data-0.1.1",
+  "presets": [
+    {
+      "presetId": "methanol-atmospheric-tank-pool-fire",
+      "presetVersion": "1.0.0",
+      "allowedUse": "teaching",
+      "title": "甲醇储罐泄漏后池火",
+      "materialRef": "methanol",
+      "equipmentRef": "vertical-atmospheric-fixed-roof",
+      "quantity": { "basis": "volume", "value": 30 },
+      "temperatureK": 293.15,
+      "pressurePa": 101325,
+      "pressureMode": "atmospheric",
+      "scenarioId": "pool-fire",
+      "leakAnchor": "valve-downstream",
+      "poolRadiusM": 1.2,
+      "visualProfileRef": "methanol-pool-fire",
+      "assumptions": [
+        "虚构教学条件，不对应企业实际装置。",
+        "按纯甲醇燃烧特征教学；纯度 100% 为本示例假设，不代表实际物料。",
+        "罐侧出料短管在根部隔离阀之后发生泄漏。",
+        "液池最终示意半径 1.2 m 由分镜预设，未求解泄漏速率或铺展。",
+        "示意排液路径关闭；未建立持续补料过程、风场或真实事故时间。",
+        "点火属于教学分镜，未评价发生概率；后果数值均未评估。"
+      ],
+      "sourceRefs": ["implementation-guide-v011", "noaa-methanol", "mi-methanol-burning"],
+      "support": { "storyboard": "detailed_teaching", "numerical": "not_evaluated" }
+    },
+    {
+      "presetId": "ethanol-atmospheric-tank-pool-fire",
+      "presetVersion": "1.0.0",
+      "allowedUse": "teaching",
+      "title": "乙醇储罐泄漏后池火",
+      "materialRef": "ethanol",
+      "equipmentRef": "vertical-atmospheric-fixed-roof",
+      "quantity": { "basis": "volume", "value": 20 },
+      "temperatureK": 293.15,
+      "pressurePa": 101325,
+      "pressureMode": "atmospheric",
+      "scenarioId": "pool-fire",
+      "leakAnchor": "valve-downstream",
+      "poolRadiusM": 1.2,
+      "visualProfileRef": "ethanol-pool-fire",
+      "assumptions": [
+        "虚构乙醇教学条件；按单一纯物料特征理解，不代表实际配方。",
+        "泄漏点为根部阀后短管；围堵与液池范围是教学配置。",
+        "未从库存推导泄漏质量、池火强度、持续时间或后果距离。"
+      ],
+      "sourceRefs": ["implementation-guide-v011", "niosh-ethanol", "mi-methanol-burning"],
+      "support": { "storyboard": "detailed_teaching", "numerical": "not_evaluated" }
+    }
+  ]
+}

@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Locked scenario component test dependencies
+        run: npm ci --prefix build/scenario
       - name: Full project test suite
         run: node --test tests/*.test.mjs
       - name: Schema creation and immutability test

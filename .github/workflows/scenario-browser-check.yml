@@ -1,0 +1,32 @@
+name: Scenario workbench browser checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  scenario:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --prefix build/scenario
+      - run: npm run build --prefix build/scenario
+      - run: node scripts/validate-scenario-data.mjs && node --test tests/scenario-*.test.mjs
+      - run: ./build/scenario/node_modules/.bin/playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 8786 --bind 127.0.0.1 &
+          curl --retry 10 --retry-connrefused --retry-delay 1 -fsS http://127.0.0.1:8786/tools/scenario-workbench.html -o /dev/null
+          node tests/scenario-browser.mjs
+          node tests/scenario-v020-browser.mjs
+          node tests/scenario-v020-protection-browser.mjs
+          node tests/scenario-playback-readiness-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scenario-qa
+          path: test-results/scenario-v020*

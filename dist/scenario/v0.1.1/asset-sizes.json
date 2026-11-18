@@ -1,0 +1,22 @@
+[
+  {
+    "file": "app.mjs",
+    "bytes": 77073,
+    "gzipBytes": 23909
+  },
+  {
+    "file": "chunk-WGXDVRTK.mjs",
+    "bytes": 92,
+    "gzipBytes": 99
+  },
+  {
+    "file": "view-3d-TEFFUNQR.mjs",
+    "bytes": 545494,
+    "gzipBytes": 142703
+  },
+  {
+    "file": "worker.mjs",
+    "bytes": 11830,
+    "gzipBytes": 4693
+  }
+]

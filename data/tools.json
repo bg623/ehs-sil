@@ -1,6 +1,15 @@
 {
   "tools": [
     {
+      "name": "事故场景3D工作台（写实演示版）",
+      "path": "tools/scenario-workbench.html",
+      "category": "风险评估",
+      "format": "其他",
+      "bilingual": true,
+      "description": "五类独立写实3D过程、自由旋转、高清PNG及本地底稿；工程数值未评估",
+      "tags": ["工艺安全", "池火", "事故场景", "教学"]
+    },
+    {
       "name": "化学品反应与禁忌矩阵（在线工具）",
       "path": "tools/chemical-reactivity-matrix.html",
       "category": "风险评估",
@@ -6988,7 +6997,7 @@
       ]
     }
   ],
-  "total": 536,
+  "total": 537,
   "categories": [
     "5S/可视化",
     "LOTO/作业许可",

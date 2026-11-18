@@ -1,0 +1,15 @@
+{
+  "dataVersion": "scenario-data-0.2.0",
+  "parameterUse": "全部颜色、透明度及扰动参数为美术设置，不是实验标定、温度映射或工程物性；不得供后果计算调用。",
+  "profiles": [
+    {"id":"propane-gas-fire","version":"1.0.0","materialRef":"propane","color":"#eea35d","naturalOpacity":0.55,"assistedOpacity":0.8,"smoke":"low","description":"丙烷为无色气体；云团轮廓为可见性辅助，不是白烟、可燃界限或浓度。暖色燃烧场为艺术设置，未经火焰颜色、尺寸或辐射标定。","sourceRefs":["niosh-propane","visual-art-direction-v020"]},
+    {"id":"methanol-pool-fire","version":"1.0.0","materialRef":"methanol","color":"#70b9ec","naturalOpacity":0.18,"assistedOpacity":0.72,"smoke":"low","description":"纯甲醇教学：淡蓝、日光下较难观察、烟尘少；实际可见性取决于燃烧和环境条件。难看见不代表没有热危险。","sourceRefs":["mi-methanol-burning","noaa-methanol","visual-art-direction-v1"]},
+    {"id":"ethanol-pool-fire","version":"1.0.0","materialRef":"ethanol","color":"#dca650","naturalOpacity":0.62,"assistedOpacity":0.82,"smoke":"low","description":"乙醇教学：用较明亮、少烟的定性效果与甲醇作对照；具体色值和轮廓未经实测标定。","sourceRefs":["mi-methanol-burning","visual-art-direction-v1"]},
+    {"id":"heptane-pool-fire","version":"1.0.0","materialRef":"n-heptane","color":"#dc9b46","naturalOpacity":0.7,"assistedOpacity":0.84,"smoke":"generic","description":"正庚烷定性教学：中等尺度实验中的产烟尘倾向高于甲醇；此处为通用外观，不外推工业储罐火焰尺度或烟气浓度。","sourceRefs":["nist-pool-structure-2162r1","visual-art-direction-v1"]},
+    {"id":"generic-pool-fire","version":"1.0.0","materialRef":"custom-unknown","color":"#a7b2b6","naturalOpacity":0.34,"assistedOpacity":0.7,"smoke":"generic","description":"通用机制效果：物料身份或组分未确认，不表示该物料真实燃烧外观。","sourceRefs":["visual-art-direction-v1"]}
+  ],
+  "displayModes": [
+    {"id":"assisted","name":"火焰可见性辅助","label":"为便于教学已增强轮廓，不代表真实目视效果"},
+    {"id":"natural","name":"自然外观示意","label":"外观示意，非实测影像"}
+  ]
+}

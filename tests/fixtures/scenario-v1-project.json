@@ -1,0 +1,30 @@
+{
+  "meta": {"id":"qa-legacy-b","title":"旧版 QA 场景 B","schemaVersion":"1.0.0","createdAt":"2026-11-01T00:00:00.000Z","updatedAt":"2026-11-02T00:00:00.000Z"},
+  "inputRevision": 12,
+  "inputs": {
+    "material": {"id":"teaching-a","name":"教学液体 A","cas":null,"composition":"unknown","state":"liquid","temperatureK":311.15},
+    "storage": {"equipment":"用户自定义旧储罐","inventoryKg":1000,"pressurePa":187000,"note":"保留原储存条件说明"},
+    "scenario": {"id":"pool-fire","releaseKg":90,"ignition":"unknown","conditions":{"liquid":"yes","flammable":"yes","pool":"yes","ignition":"unknown","pressurized":"unknown","release":"unknown","cloud":"unknown","congestion":"unknown","superheated":"unknown","vesselFailure":"unknown","toxic":"unknown","airborne":"unknown"}},
+    "pool": {"areaM2":7,"diameterM":null,"geometrySource":"旧版 QA 图纸引用","ground":"原地面说明"},
+    "receptors": [{"id":"QA-目标1","x":7,"y":-2,"z":1.6}]
+  },
+  "controls": [{"type":"SIS","target":"旧版作用对象","boundary":"阀后短管","actionTimeS":120,"evidence":"QA-控制证据","status":"recorded_only"}],
+  "assumptions": [{"text":"仅用于迁移验证的虚构假设","source":"QA fixture","confirmed":false}],
+  "evidenceNotes":"保留旧备注 <b>不应执行</b>",
+  "comparison": {
+    "project": {
+      "meta":{"id":"qa-legacy-a","title":"旧版 QA 场景 A","schemaVersion":"1.0.0","createdAt":"2026-11-01T00:00:00.000Z","updatedAt":"2026-11-01T00:00:00.000Z"},
+      "inputRevision": 4,
+      "inputs": {
+        "material":{"id":"teaching-a","name":"教学液体 A","cas":null,"composition":"unknown","state":"liquid","temperatureK":298.15},
+        "storage":{"equipment":"冻结 A 的旧设备","inventoryKg":750,"pressurePa":null,"note":"A 原备注"},
+        "scenario":{"id":"pool-fire","releaseKg":null,"ignition":"unknown","conditions":{"liquid":"yes","flammable":"unknown","pool":"unknown","ignition":"unknown","pressurized":"unknown","release":"unknown","cloud":"unknown","congestion":"unknown","superheated":"unknown","vesselFailure":"unknown","toxic":"unknown","airborne":"unknown"}},
+        "pool":{"areaM2":null,"diameterM":null,"geometrySource":"","ground":""},
+        "receptors":[]
+      },
+      "controls":[],"assumptions":[],"evidenceNotes":"A 来源","comparison":null,"ui":{"view":"2d","stage":0}
+    },
+    "modelVersion":"0.1.0","dataVersion":"scenario-data-0.1.0","inputRevision":4
+  },
+  "ui":{"view":"2d","stage":2}
+}

@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>写实事故场景 3D 工作台 | EHS-SIL</title>
+    <meta
+      name="description"
+      content="自由观察池火、喷射火、闪火、蒸气云爆炸与受限空间爆燃的三维演示，调整条件、比较底稿并导出当前高清画面。V0.2.0写实演示，非项目计算。"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'"
+    />
+    <link
+      rel="canonical"
+      href="https://ehs-sil.com/tools/scenario-workbench.html"
+    />
+    <link rel="icon" href="../assets/ehs-sil-logo.png" />
+    <link rel="stylesheet" href="../css/style.css?v=2.1.0" />
+    <link rel="stylesheet" href="../css/tool-guidance.css?v=20261006" />
+    <link rel="stylesheet" href="../dist/scenario/v0.2.0/style.css" />
+    <script type="module" src="../dist/scenario/v0.2.0/app.mjs"></script>
+    <script src="../js/tool-guidance.js?v=20261117" defer></script>
+  </head>
+  <body data-site-shell-features="local" data-scenario-app-version="0.2.0">
+    <div data-site-shell-header data-prefix="../" data-mode="light"></div>
+    <main id="main-content" class="sc-main">
+      <div class="sc-wrap">
+        <header class="sc-hero">
+          <div>
+            <p class="sc-eyebrow">
+              EHS-SIL / SCENARIO WORKBENCH · 事故场景工作台
+            </p>
+            <h1>换一个角度，<br />看清事故如何发展。</h1>
+            <p class="sc-lead" id="scene-title">甲醇储罐泄漏后池火</p>
+            <p class="sc-muted">五类独立三维过程 · 自由旋转 · 当前镜头高清导出</p>
+            <div class="sc-actions">
+              <button id="play-example">播放事故过程 ↗</button
+              ><button id="modify-scene" class="secondary">修改这个场景</button
+              ><button id="continue-draft" class="quiet" hidden>
+                继续我的草稿
+              </button>
+            </div>
+          </div>
+          <aside>
+            <span class="sc-badge">V0.2.0 · 写实场景演示</span>
+            <p>场景有体积，判断有边界。<br />视觉过程不是项目后果计算。</p>
+            <p class="sc-muted">资料保存在本浏览器，项目内容不上传。</p>
+            <a href="#scope">了解范围与来源 →</a>
+          </aside>
+        </header>
+        <p id="boot-status" role="status">正在准备甲醇教学示例…</p>
+        <section
+          id="workspace"
+          hidden
+          aria-label="场景工作台"
+          data-active-clocks="0"
+        >
+          <nav class="sc-scenario-bar" aria-label="当前场景条件">
+            <button id="edit-material">
+              <small>物料</small><strong id="bar-material">甲醇</strong
+              ><span>更换 ↗</span></button
+            ><button id="edit-equipment">
+              <small>储罐</small><strong id="bar-equipment">立式常压储罐</strong
+              ><span>更换 ↗</span></button
+            ><button id="edit-storage">
+              <small>库存与工况</small
+              ><strong id="bar-storage">30 m³ · 20°C · 常压</strong
+              ><span>修改 ↗</span></button
+            ><button id="edit-scenario">
+              <small>事故类型</small><strong id="bar-scenario">池火</strong
+              ><span>切换 ↗</span>
+            </button>
+          </nav>
+          <div class="sc-workspace-meta">
+            <nav class="sc-tasks" aria-label="工作任务">
+              <a href="#workspace">01 选择场景</a
+              ><a href="#view-panel">02 观看与调整</a
+              ><a href="#comparison-output" id="open-output">03 比较与导出</a>
+            </nav>
+            <div>
+              <span id="mode-label" class="sc-badge"></span>
+              <span id="save-status" role="status" aria-live="polite"></span>
+            </div>
+          </div>
+          <details class="sc-gallery-wrap">
+            <summary>选择完整演示 <span>会明确载入物料、设备与工况；原草稿保留</span></summary>
+            <div id="preset-gallery" class="sc-preset-gallery" aria-label="完整场景示例"></div>
+          </details>
+          <div class="sc-layout" id="scene-layout">
+            <aside class="sc-panel sc-conditions" id="conditions-sidebar" hidden>
+              <h2>常用条件</h2>
+              <p class="sc-muted">修改后点“应用”；只影响示意与记录。</p>
+              <form id="common-form" novalidate>
+                <label
+                  >库存主基准<select id="quantity-basis">
+                    <option value="volume">体积（m³）</option>
+                    <option value="mass">质量（kg）</option>
+                    <option value="fill">装填率（%）</option>
+                  </select></label
+                ><label
+                  ><span id="quantity-label">库存（m³）</span
+                  ><input
+                    type="number"
+                    id="quantity-value"
+                    min="0"
+                    step="any"
+                  /><small>没有审核密度时，不推导质量。</small></label
+                >
+                <div class="sc-field-pair">
+                  <label
+                    >温度（°C）<input
+                      id="temperature"
+                      type="number"
+                      step="any" /></label
+                  ><label
+                    >绝对压力（kPa）<input
+                      id="pressure"
+                      type="number"
+                      step="any"
+                      min="0"
+                  /></label>
+                </div>
+                <label
+                  >压力基准<select id="pressure-mode">
+                    <option value="atmospheric">常压教学示例</option>
+                    <option value="absolute">绝对压力</option>
+                    <option value="unknown">未填写</option>
+                  </select></label
+                >
+                <p id="derived-quantity" class="sc-muted"></p>
+                <details id="advanced">
+                  <summary>高级条件与资料</summary>
+                  <label>记录标题<input id="title" maxlength="200" /></label
+                  ><label
+                    >组分状态<select id="composition">
+                      <option value="pure">按单一纯物料</option>
+                      <option value="mixture">混合物 / 含水或杂质</option>
+                      <option value="unknown">未确认</option>
+                    </select></label
+                  ><label
+                    >物态<select id="state">
+                      <option value="liquid">液体</option>
+                      <option value="gas">气体</option>
+                      <option value="solid">固体</option>
+                      <option value="unknown">未确认</option>
+                    </select></label
+                  ><label>泄漏位置<select id="leak-anchor"></select></label>
+                  <div class="sc-field-pair">
+                    <label
+                      >罐内径（m）<input
+                        id="diameterM"
+                        type="number"
+                        step="any"
+                        min="0" /></label
+                    ><label
+                      >直壁高度（m）<input
+                        id="heightM"
+                        type="number"
+                        step="any"
+                        min="0"
+                    /></label>
+                  </div>
+                  <div class="sc-field-pair">
+                    <label
+                      >围堰长（m）<input
+                        id="containment-length"
+                        type="number"
+                        step="any"
+                        min="0" /></label
+                    ><label
+                      >围堰宽（m）<input
+                        id="containment-width"
+                        type="number"
+                        step="any"
+                        min="0"
+                    /></label>
+                  </div>
+                  <label
+                    >教学液池半径（m）<input
+                      id="pool-radius"
+                      type="number"
+                      step="any"
+                      min="0"
+                    /><small>美术分镜配置，未求解扩展范围。</small></label
+                  >
+                  <div id="conditions"></div>
+                  <h3>措施与假设</h3>
+                  <div id="control-fields"></div>
+                  <label>编辑哪一项措施<select id="control-record-select"></select></label>
+                  <p class="sc-muted">只修改所选措施；其他措施的边界、时间与证据保持不变。</p>
+                  <label
+                    >隔离边界与作用对象<textarea
+                      id="boundary"
+                      rows="2"
+                      maxlength="2000"
+                    ></textarea></label
+                  ><label
+                    >动作时间（s，仅记录）<input
+                      id="actionTimeS"
+                      type="number"
+                      step="any"
+                      min="0" /></label
+                  ><label
+                    >措施依据<input
+                      id="controlEvidence"
+                      maxlength="1000" /></label
+                  ><label
+                    >补充假设<textarea
+                      id="assumption"
+                      rows="2"
+                      maxlength="2000"
+                    ></textarea></label
+                  ><label
+                    >资料引用与备注<textarea
+                      id="evidenceNotes"
+                      rows="3"
+                      maxlength="6000"
+                    ></textarea>
+                  </label>
+                </details>
+                <p id="common-error" role="alert" class="sc-error"></p>
+                <button id="apply-common" type="button">应用条件</button>
+              </form>
+              <div class="sc-small-actions">
+                <button id="undo" class="quiet" disabled>撤销上次修改</button
+                ><button id="load-preset" class="quiet">载入整套示例</button
+                ><button id="restore-previous" class="quiet" hidden>
+                  恢复上一个草稿
+                </button>
+              </div>
+            </aside>
+            <section
+              class="sc-panel sc-view-panel"
+              id="view-panel"
+              aria-label="当前事故教学视图"
+            >
+              <div class="sc-view-top">
+                <span class="sc-badge">写实演示 · 非项目计算</span>
+                <div class="sc-actions">
+                  <button id="toggle-conditions" class="secondary" aria-expanded="false" aria-controls="conditions-sidebar">调整条件</button>
+                  <button id="view-2d" class="secondary" aria-pressed="true">
+                    2D 平面</button
+                  ><button id="view-3d" class="secondary" aria-pressed="false">
+                    3D 旋转
+                  </button>
+                  <button id="fullscreen" class="secondary" aria-pressed="false">全屏观看</button>
+                </div>
+              </div>
+              <div class="sc-viewport" id="view-2d-host"></div>
+              <div class="sc-viewport" id="view-3d-host" hidden></div>
+              <p id="view-status" class="sc-muted" role="status"></p>
+              <p id="visual-note" class="sc-visual-disclosure"></p>
+              <div class="sc-view-options">
+                <label
+                  >显示模式<select id="visual-mode">
+                    <option value="assisted">教学可见性辅助</option>
+                    <option value="natural">自然外观示意</option>
+                  </select></label
+                ><label
+                  >镜头<select id="camera-select">
+                    <option value="overview">总览</option>
+                    <option value="tank">设备近景</option>
+                    <option value="leak">泄漏点</option>
+                    <option value="pool">事故过程近景</option>
+                    <option value="top">俯视</option>
+                  </select></label
+                ><label>画质<select id="quality"><option value="low">流畅 · 低采样</option><option value="balanced" selected>均衡 · 体积渲染</option><option value="high">精细 · 高采样</option></select></label>
+                <label>高清画面<select id="png-size"><option value="1920x1080">1920 × 1080</option><option value="2048x1152">2048 × 1152</option></select></label>
+              </div>
+              <div class="sc-display-options">
+                <label class="sc-check"><input id="show-labels" type="checkbox" checked>关键标签</label>
+                <label class="sc-check"><input id="label-detail" type="checkbox">全部标签</label>
+                <label class="sc-check"><input id="cutaway" type="checkbox">空间剖切</label>
+                <label class="sc-check"><input id="pressure-aux" type="checkbox">压力传播示意</label>
+                <button id="export-png" class="secondary" disabled>导出当前 3D PNG</button>
+                <button id="export-frame-meta" class="quiet" disabled>下载画面元数据</button>
+              </div>
+              <p id="frame-export-status" class="sc-muted" role="status"></p>
+              <div class="sc-playback">
+                <button id="play">播放</button
+                ><button id="replay" class="secondary">重播</button
+                ><label
+                  >速度<select id="speed">
+                    <option value="0.5">0.5×</option>
+                    <option value="1" selected>1×</option>
+                    <option value="1.5">1.5×</option>
+                    <option value="2">2×</option>
+                  </select></label
+                >
+              </div>
+              <label class="sc-timeline"
+                >演示进度（非真实时间）<input
+                  type="range"
+                  id="timeline"
+                  min="0"
+                  max="1"
+                  step="0.001"
+                  value="0"
+              /></label>
+              <div class="sc-stages" id="stages"></div>
+              <p id="support-note" class="sc-support"></p>
+              <button id="load-compatible" class="secondary" hidden>查看兼容的完整示例</button>
+            </section>
+            <aside class="sc-panel sc-explanation">
+              <p class="sc-eyebrow" id="stage-number"></p>
+              <h2 id="stage-title"></h2>
+              <p id="stage-text"></p>
+              <p id="stage-question" class="sc-question"></p>
+              <div class="sc-boundary">
+                <b>本页展示事故过程。</b>
+                <p>后果距离与发生频率尚未评估。</p>
+              </div>
+              <details>
+                <summary>当前物料与视觉依据</summary>
+                <p id="material-note"></p>
+                <div id="source-links"></div>
+              </details>
+              <details>
+                <summary>机制与完整检查</summary>
+                <div id="mechanism-detail"></div>
+                <button id="check" class="secondary">检查当前条件</button>
+                <p id="result-state" role="status"></p>
+                <div id="result-content"></div>
+              </details>
+            </aside>
+          </div>
+          <details class="sc-panel sc-output" id="comparison-output">
+            <summary>
+              <span
+                ><span class="sc-eyebrow">COMPARE & TAKE AWAY · 比较与导出</span
+                ><strong>保留当前条件，带走可复核底稿</strong></span
+              >
+            </summary>
+            <div class="sc-section-head">
+              <h2>方案 A / B</h2>
+              <button id="freeze">冻结当前方案为 A</button>
+            </div>
+            <div id="comparison"></div>
+            <div class="sc-actions">
+              <button id="print">打印 / 另存 PDF</button
+              ><button id="csv" class="secondary">下载 CSV</button
+              ><button id="json" class="secondary">备份 JSON</button
+              ><button id="import" class="quiet">选择 JSON 备份</button
+              ><button id="legacy-json" class="quiet" hidden>
+                下载旧版原始备份</button
+              ><button id="original-v011-json" class="quiet" hidden>
+                下载 V0.1.1 原始备份</button
+              ><button id="clear" class="quiet">清除本工具新版草稿</button>
+            </div>
+            <input
+              id="import-file"
+              type="file"
+              accept=".json,application/json"
+              hidden
+            />
+            <div id="import-preview" hidden>
+              <p id="import-summary"></p>
+              <button id="restore">恢复此备份，替换新版草稿</button
+              ><button id="cancel-import" class="secondary">取消</button>
+            </div>
+            <p class="sc-muted">
+              示例不自动覆盖个人草稿；旧 v1 与 V0.1.1 原始记录保留供回退。
+              新版修改写 v2，旧程序不会自动识别新增显示字段，请同时保留当前 JSON。
+            </p>
+          </details>
+          <p id="notice" class="sc-notice" role="status" aria-live="polite"></p>
+        </section>
+        <section data-tool-guide="scenario-workbench.html"></section>
+        <section class="sc-panel sc-scope" id="scope">
+          <p class="sc-eyebrow">METHOD & SCOPE · 方法与边界</p>
+          <h2>场景更具体，技术边界也更清楚</h2>
+          <p>
+            甲醇示例使用虚构的 4m×4m 立式圆筒、30m³
+            库存和20°C常压条件。液位由教学几何推导，未采用密度换算质量；液池与火焰是教学分镜，并非泄漏扩展或燃烧仿真。
+          </p>
+          <p>
+            使用程序化三维密度与发光场、预设液流及事故事件，不求解工业燃烧 CFD。甲醇弱可见、低烟尘特征有定性资料依据；无色气体、液体和火焰的可见性辅助均为教学增强，不是实测影像、浓度或后果边界。
+          </p>
+          <p>
+            本版无工程后果数值、事故频率、IR 或
+            F–N。未审核的工程物性集合保持为空，不自动确认安全、批准作业或给出合规结论。
+          </p>
+          <nav class="sc-related">
+            <a href="../topics/process-safety.html">工艺安全专题 →</a
+            ><a href="chemical-reactivity-matrix.html">化学品禁忌矩阵 →</a
+            ><a href="what-if-tool.html">What-If 假设分析 →</a
+            ><a href="moc-coach.html">MOC 变更管理 →</a
+            ><a
+              href="../feedback.html?toolId=scenario-workbench&amp;version=0.2.0"
+              >反馈建议 →</a
+            >
+          </nav>
+        </section>
+        <noscript><p>请启用 JavaScript 使用交互教学。</p></noscript>
+      </div>
+    </main>
+    <dialog id="editor-dialog" aria-labelledby="editor-title">
+      <form id="editor-form" novalidate>
+        <header>
+          <p class="sc-eyebrow">CHANGE ONE THING · 局部替换</p>
+          <h2 id="editor-title"></h2>
+        </header>
+        <div class="sc-dialog-scroll">
+          <div id="panel-fields"></div>
+          <section id="change-summary" aria-live="polite"></section>
+          <p id="panel-errors" class="sc-error" role="alert"></p>
+        </div>
+        <footer>
+          <button type="button" id="cancel-change" class="secondary">
+            取消</button
+          ><button type="button" id="apply-change">应用修改</button>
+        </footer>
+      </form>
+    </dialog>
+    <article id="print-report" hidden></article>
+    <div data-site-shell-footer data-prefix="../"></div>
+    <script src="../js/site-shell.js?v=20261006"></script>
+  </body>
+</html>
