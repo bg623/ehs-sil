@@ -26,7 +26,7 @@ for (const href of [
   "tools/index.html",
   "tools/ehs-glossary.html",
   "tools/regulations.html",
-  "articles/",
+  "articles/index.html",
   "products/toolbox.html",
   "products/training.html",
   "dashboard/register.html",
@@ -56,6 +56,19 @@ assert.match(home, /aria-controls="homeResourcesMenu"/);
 assert.match(home, /aria-controls="homeAboutMenu"/);
 assert.doesNotMatch(home, /href="tools\/"/, "首页不得使用 OSS 无法解析的 tools/ 目录路径");
 assert.doesNotMatch(shell, /prefix \+ 'tools\/'/, "公共导航不得使用 OSS 无法解析的 tools/ 目录路径");
+assert.doesNotMatch(home, /href="articles\/"/, "首页不得使用 OSS 无法解析的 articles/ 目录路径");
+assert.doesNotMatch(shell, /prefix \+ 'articles\/'/, "公共导航不得使用 OSS 无法解析的 articles/ 目录路径");
+
+for (const directory of ["articles", "topics"]) {
+  for (const file of fs.readdirSync(new URL(`../${directory}/`, import.meta.url))) {
+    if (!file.endsWith(".html")) continue;
+    assert.doesNotMatch(
+      read(`${directory}/${file}`),
+      /href=["'](?:\/|\.\.\/)?articles\/["']/,
+      `${directory}/${file} 不得链接到 OSS 无法解析的文章目录别名`,
+    );
+  }
+}
 
 console.log(JSON.stringify({
   status: "PASS",
