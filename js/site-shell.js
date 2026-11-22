@@ -65,7 +65,7 @@
             navEntry(prefix + 'tools/index.html', '工具与培训资料索引', '预览知识星球已发布与规划内容', ' class="nav-entry-featured"') +
             navEntry(prefix + 'tools/ehs-glossary.html', '外企EHS专业术语库', '445词、196缩写与24组易混辨析') +
             navEntry(prefix + 'tools/regulations.html', '法规与标准导航', '查找中国与国际官方来源') +
-            navEntry(prefix + 'articles/', '专业文章', '方法、案例与 EHS 实操指南') +
+            navEntry(prefix + 'articles/index.html', '专业文章', '方法、案例与 EHS 实操指南') +
             navEntry(prefix + 'products/toolbox.html', '外企 EHS 工具箱', '模板、案例与持续更新资源') +
             navEntry(prefix + 'products/training.html', '外企 EHS 培训库', '课程与职业能力成长资源') +
             '</ul></li>' +
