@@ -1,0 +1,22 @@
+[
+  {
+    "file": "app.mjs",
+    "bytes": 94249,
+    "gzipBytes": 29211
+  },
+  {
+    "file": "chunk-ZYH5QRSB.mjs",
+    "bytes": 4033,
+    "gzipBytes": 2066
+  },
+  {
+    "file": "view-3d-BOZZE2MK.mjs",
+    "bytes": 648123,
+    "gzipBytes": 177138
+  },
+  {
+    "file": "worker.mjs",
+    "bytes": 12061,
+    "gzipBytes": 4792
+  }
+]

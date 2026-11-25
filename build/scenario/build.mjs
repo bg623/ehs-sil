@@ -13,6 +13,7 @@ await fs.cp(path.join(root,'data/scenario'),path.join(out,'data'),{recursive:tru
 await fs.copyFile(path.join(root,'css/scenario-workbench.css'),path.join(out,'style.css'));
 const threeLicense=await fs.readFile(path.join(root,'build/scenario/node_modules/three/LICENSE'),'utf8');
 await fs.writeFile(path.join(out,'THIRD_PARTY_NOTICES.txt'),`Three.js 0.181.2 https://github.com/mrdoob/three.js\n${threeLicense}\nBuild-time: esbuild 0.25.12 (MIT), Playwright 1.57.0 (Apache-2.0); not shipped as runtime.\n`);
+await fs.appendFile(path.join(out,'THIRD_PARTY_NOTICES.txt'),'\nM01 methanol visual adapter: adapted from Kimi source supplied by project owner on 2026-11-25. Procedural equipment/materials/liquid/fire algorithms; no GLB, photos or external artwork shipped. Integration authorized for EHS-SIL; not a claim of a standalone asset license.\n');
 const files=[];for(const f of await fs.readdir(out)){if(f.endsWith('.mjs')){const b=await fs.readFile(path.join(out,f));files.push({file:f,bytes:b.length,gzipBytes:gzipSync(b).length});}}
 await fs.writeFile(path.join(out,'asset-sizes.json'),JSON.stringify(files,null,2));console.log(JSON.stringify(files));
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -28,4 +29,13 @@ for (const [assetId,source,detail] of [
   ['industrial-geometry','js/scenario/three/scene-components.mjs',{bounds:'Current ENU equipment/process spec',generation:'Procedural tank, pipe rack and cabinet geometry; no imported model'}],
   ['daylight-environment','js/scenario/rendering/volume-environment.mjs',{generation:'Authored gradient daylight scene -> Three.js PMREM; no external HDRI',estimatedResidentBytes:6291456,memoryBasis:'Observed 768x1024 HalfFloat RGBA target; transient generation buffers excluded'}],
 ]) assetManifest.proceduralAssets.push({assetId,version:APP_VERSION,creator:'EHS-SIL procedural code',source,sourceHash:sha(await fs.readFile(path.join(root,source))),license:'Project-authored procedural generation; Three.js MIT runtime',axis:'Scene ENU -> Three.js [x,z,-y]',frameCount:1,visualValidity:'Visual presets only, not validated material or engineering models',...detail});
+for(const [assetId,source] of [
+ ['m01-equipment','js/scenario/kimi-m01/vendor/equipment.mjs'],
+ ['m01-materials','js/scenario/kimi-m01/vendor/materials.mjs'],
+ ['m01-release','js/scenario/kimi-m01/vendor/effects.mjs'],
+ ['m01-config','js/scenario/kimi-m01/vendor/config.mjs'],
+ ['m01-contract','js/scenario/kimi-m01/contract.mjs'],
+ ['m01-assembly','js/scenario/kimi-m01/assembly.mjs'],
+ ['m01-flame-field','js/scenario/effects/m01-pool-fire.mjs'],
+]) assetManifest.proceduralAssets.push({assetId,version:APP_VERSION,source,sourceHash:sha(await fs.readFile(path.join(root,source))),creator:'User-supplied Kimi M01 code, adapted for EHS-SIL',license:'Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion',axis:'Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]',frameCount:1,visualValidity:'Seekable teaching art, not validated CFD or engineering results',generation:'Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded'});
 await fs.writeFile(path.join(out,'assets-manifest.json'),JSON.stringify(assetManifest,null,2));

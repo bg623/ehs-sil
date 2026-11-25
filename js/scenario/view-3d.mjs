@@ -31,6 +31,7 @@ export function create3d(host, onFail = () => {}) {
     alpha: false,
     powerPreference: "high-performance",
   });
+  renderer.debug.onShaderError=()=>{throw Error('三维着色器编译失败，不能将空白画面作为有效演示');};
   if(renderer.getContext().getParameter(renderer.getContext().MAX_3D_TEXTURE_SIZE)<64){renderer.dispose();throw Error('当前设备不支持64³ WebGL2体积纹理');}
   liveRenderers++;
   renderer.setClearColor(0xc8d8dc);
@@ -126,6 +127,7 @@ export function create3d(host, onFail = () => {}) {
       equipmentBuilds,
       sceneObjects: assembly ? assembly.group.children.length : 0,
       activeCamera,
+      visualAdapter:spec?.visualAdapter||'native',
       disposed,
       lastFrameMs,averageFrameMs:frameCount?totalFrameMs/frameCount:0,
       cutaway,pressureVisible,
@@ -145,6 +147,7 @@ export function create3d(host, onFail = () => {}) {
     ])
       host.dataset[key] = String(values[key]);
     host.dataset.quality=quality;host.dataset.renderer='volumetric-raymarch';host.dataset.raySteps=String(values.raySteps);host.dataset.renderTargets=String(values.activeRenderTargets);
+    host.dataset.visualAdapter=values.visualAdapter;
   }
   function updateLabels() {
     if (!spec || !frame) return;
@@ -316,6 +319,19 @@ export function create3d(host, onFail = () => {}) {
       }
       if(name==='top'){target={...center,z:.5};eye={x:center.x+.001,y:center.y-.001,z:sceneSpan*1.45};}
     }
+    if(spec.visualAdapter==='kimi-m01'){
+      const sx=g.diameterM/4,sy=g.heightM/4,toENU=([x,y,z])=>({x,y:-z,z:y});
+      const leak=enu(a.leak),pool=enu(a.poolCenter);
+      const presets={
+        overview:{eye:[11.8*sx,8*sy,14.8*sx],target:[0,2.2*sy,.65*sx]},
+        tank:{eye:[5.5*sx,4.5*sy,6*sx],target:[0,2.4*sy,0]},
+        leak:{eye:[leak.x+3.35*sx,leak.y+1.83*sy,leak.z+3.07*sx],target:[leak.x,leak.y+.10*sy,leak.z-.23*sx]},
+        pool:{eye:[pool.x+3.6*sx,pool.y+3.465*sy,pool.z+3.4*sx],target:[pool.x,pool.y+1.315*sy,pool.z-.05*sx]},
+        top:{eye:[.01,Math.max(c.lengthM,c.widthM)*1.55,.9*sx],target:[0,0,.85*sx]},
+      };
+      const selected=presets[name]||presets.overview;
+      eye=toENU(selected.eye);target=toENU(selected.target);camera.up.set(0,1,0);
+    }
     controls.target.copy(enu(target));
     camera.position.copy(enu(eye));
     controls.update();
@@ -352,6 +368,7 @@ export function create3d(host, onFail = () => {}) {
     }
     const nextSignature = JSON.stringify({
       geometry: spec.equipment.geometry,
+      visualAdapter:spec.visualAdapter||'native',
       anchors: spec.equipment.anchors,
       containment: spec.equipment.containment,
       poolRadius: spec.pool.radiusM,
@@ -453,7 +470,7 @@ export function create3d(host, onFail = () => {}) {
       if(disposed||contextLost||!spec||!assembly?.group.visible)return Promise.reject(Error('当前3D场景不可导出'));
       const frozenSpec=structuredClone(spec),frozenFrame=structuredClone(frame),frozenCamera=camera.clone(),frozenLabels=structuredClone(assembly.labels),frozenDetail=labelDetail;
       const frozenImportant=frozenLabels.map((d,i)=>({d,i})).filter(({d})=>PRIMARY_LABEL_KEYS.has(d.key)||d.important).map(({i})=>i).slice(0,3);
-      const metadata={material:{id:frozenSpec.material.id,name:frozenSpec.material.name},scenario:{id:frozenSpec.sceneId,name:frozenSpec.scenario?.name||frozenSpec.sceneId},assisted:frozenSpec.visual.mode!=='natural',appVersion:APP_VERSION,progress:frozenFrame.progress,seed:frozenFrame.seed??1,noiseTime:frozenFrame.noiseTime,inputRevision:frozenSpec.inputRevision,quality,renderer:volume.stats().renderer,camera:cameraState(),cutaway,pressureAux:pressureVisible,labelDetail:frozenDetail};
+      const metadata={material:{id:frozenSpec.material.id,name:frozenSpec.material.name},scenario:{id:frozenSpec.sceneId,name:frozenSpec.scenario?.name||frozenSpec.sceneId},assisted:frozenSpec.visual.mode!=='natural',appVersion:APP_VERSION,visualAdapter:frozenSpec.visualAdapter||'native',progress:frozenFrame.progress,seed:frozenFrame.seed??1,noiseTime:frozenFrame.noiseTime,inputRevision:frozenSpec.inputRevision,quality,renderer:volume.stats().renderer,camera:cameraState(),cutaway,pressureAux:pressureVisible,labelDetail:frozenDetail};
       return encodeFrame({...options,metadata,capture(width,height){
         const size=renderer.getSize(new THREE.Vector2()),ratio=renderer.getPixelRatio(),aspect=camera.aspect,savedTarget=renderer.getRenderTarget();
         try{

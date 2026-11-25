@@ -28,7 +28,7 @@ async function check(name,fn,options={}){
   },options);
   if(options.fail3d)await page.route('**/view-3d-*.mjs',r=>r.abort());
   await page.goto(base+'/tools/scenario-workbench.html',{waitUntil:'networkidle'});await page.locator('#workspace').waitFor();
-  assert.ok(await page.locator('[data-scenario-app-version="0.2.0"]').count(),'actual app version marker');
+  assert.ok(await page.locator('[data-scenario-app-version="0.2.1"]').count(),'actual app version marker');
   await fn(page);checks.push({name,status:'passed'});console.log('PASS',name);
  }catch(e){checks.push({name,status:'failed',error:e.message});console.error('FAIL',name,e.message);await activePage?.screenshot({path:path.join(out,`failure-${checks.length}.png`),fullPage:true}).catch(()=>{});}
  finally{await context?.close();}

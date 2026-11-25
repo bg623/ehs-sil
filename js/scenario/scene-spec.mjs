@@ -2,6 +2,7 @@ import { clone } from "./schema.mjs";
 import { deriveQuantity, equipmentById } from "./presets.mjs";
 import { checkCompatibility } from "./compatibility.mjs";
 import { poolVisualBounds } from './rendering/pool-visual-bounds.mjs';
+import { shouldUseM01, deriveM01Layout } from './kimi-m01/contract.mjs';
 
 const point = (x,y,z) => ({x,y,z});
 const normalize = ({x,y,z}) => {
@@ -85,10 +86,25 @@ export function buildSceneSpec(p, c) {
       : "自然外观示意，非实测影像；无色气体不默认显示为白烟",
     stages=support.canPlayDetailedStoryboard ? d.stages : [{id:"mechanism",title:`${d.name}机制`,text:d.mechanism,
       question:support.issues[0]?.message || d.difference,highlight:["mechanism"]}];
-  return {sceneId:d.id,title:p.meta.title,material,equipment:eq,quantityDerived:q,
+  const spec={sceneId:d.id,title:p.meta.title,material,equipment:eq,quantityDerived:q,
     pool:{radiusM:p.inputs.pool.radiusM,geometrySource:p.inputs.pool.geometrySource},
     visual:{profile:clone(profile),mode,note},process,support,scenario:clone(d),
-    stages:clone(stages),receptors:clone(p.inputs.receptors),inputRevision:p.inputRevision};
+    stages:clone(stages),receptors:clone(p.inputs.receptors),inputRevision:p.inputRevision,
+    visualAdapter:'native'};
+  if(shouldUseM01(spec)){
+    const layout=deriveM01Layout(eq,radius);
+    if(layout.valid){
+      spec.visualAdapter='kimi-m01';
+      eq.anchors=clone(layout.anchors);
+      process.nozzle.position=clone(eq.anchors.leak);
+      process.nozzle.direction=point(0,-1,0);
+      process.liquid={outlet:clone(eq.anchors.leak),groundImpact:clone(eq.anchors.poolCenter),poolCenter:clone(eq.anchors.poolCenter),wetRadiusM:radius};
+      process.ignition.position=point(eq.anchors.poolCenter.x-radius*.53,eq.anchors.poolCenter.y+radius*.13,.05);
+      process.domain=poolVisualBounds(radius,eq.anchors.poolCenter,process.direction);
+      process.visualValidity.adapter='kimi-m01';
+    }
+  }
+  return spec;
 }
 
 const clamp = (x) => Math.max(0,Math.min(1,x));

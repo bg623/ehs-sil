@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { createNoiseVolume, volumeState } from './volume-field.mjs';
 import { poolFireField } from '../effects/pool-fire.mjs';
+import { m01PoolFireField } from '../effects/m01-pool-fire.mjs';
+import { m01Progress } from '../kimi-m01/contract.mjs';
 import { jetFireField } from '../effects/jet-fire.mjs';
 import { flashFireField } from '../effects/flash-fire.mjs';
 import { vceField } from '../effects/vce.mjs';
@@ -18,17 +20,19 @@ uniform vec3 uRoot,uNozzle,uDirection,uWind,uCloudCenter,uCloudRadii,uIgnition;
 uniform vec3 uEnclosureMin,uEnclosureMax,uVent,uVentDirection,uColour;
 uniform float uFire,uRelease,uCloudGrowth,uFront,uVentFire,uDissipation,uSmoke;
 uniform float uVisibility,uAssisted,uMethanol,uPressure,uPressureProgress,uEnabled;
+uniform float uM01,uM01Progress;
 struct Field{float fire;float smoke;float gas;float heat;float aux;};
 Field emptyField(){return Field(0.,0.,0.,0.,0.);}
 float noise3(vec3 p){return texture(uNoise,p*.057).r;}
 float fbm(vec3 p){return noise3(p)*.55+noise3(p*2.07+11.3)*.29+noise3(p*4.13-7.2)*.16;}
 ${poolFireField}
+${m01PoolFireField}
 ${jetFireField}
 ${flashFireField}
 ${vceField}
 ${confinedDeflagrationField}
 Field field(vec3 p){
- if(uKind==0)return poolFire(p);if(uKind==1)return jetFire(p);if(uKind==2)return flashFire(p);
+ if(uKind==0){if(uM01>.5)return m01PoolFire(p);return poolFire(p);}if(uKind==1)return jetFire(p);if(uKind==2)return flashFire(p);
  if(uKind==3)return vaporCloudExplosion(p);if(uKind==4)return confinedDeflagration(p);return emptyField();
 }
 vec2 intersectBox(vec3 ro,vec3 rd){
@@ -63,6 +67,17 @@ void main(){
   vec3 source=fireColor*flame*energy*(1.0+f.heat*.65);
   source+=vec3(.14,.15,.16)*f.smoke*.42+vec3(.31,.53,.65)*gas*.27+vec3(.36,.62,.69)*f.aux*.8;
   float integration=extinction>.0001?alpha/extinction:ds;
+  if(uM01>.5){
+   float d=pow(max(0.,f.fire),1.28)*1.25;
+   extinction=d*mix(.26,3.15,uAssisted)*mix(.50,.96,uAssisted);
+   alpha=1.-exp(-extinction*ds);
+   float h=1.-f.heat;
+   vec3 colour=mix(vec3(.025,.13,.58),vec3(.10,.46,.88),smoothstep(.03,.46,h));
+   colour=mix(colour,vec3(.34,.75,1.),(1.-h)*smoothstep(.20,.90,d)*.62);
+   colour*=mix(.46,1.18,uAssisted)*(1.+d*.45);
+   source=colour*extinction;
+   integration=extinction>.0001?alpha/extinction:ds;
+  }
   emission+=transmission*source*integration;transmission*=1.-alpha;
  }
  fragColor=vec4(emission,1.-transmission);
@@ -87,7 +102,7 @@ export function createVolumeRenderer(renderer,lifecycle) {
   const uniforms={uNoise:{value:noise.texture},uDepth:{value:sceneTarget.depthTexture},uInvProjection:{value:new THREE.Matrix4()},uCameraWorld:{value:new THREE.Matrix4()},uCamera:{value:new THREE.Vector3()},uSteps:{value:72},uKind:{value:0},uEnabled:{value:0}};
   const vectorNames=['Min','Max','Root','Nozzle','Direction','Wind','CloudCenter','CloudRadii','Ignition','EnclosureMin','EnclosureMax','Vent','VentDirection','Colour'];
   for(const name of vectorNames)uniforms['u'+name]={value:name==='Colour'?new THREE.Color():new THREE.Vector3()};
-  for(const name of ['Time','Radius','NozzleRadius','VisualHeight','JetLength','Fire','Release','CloudGrowth','Front','VentFire','Dissipation','Smoke','Visibility','Assisted','Methanol','Pressure','PressureProgress'])uniforms['u'+name]={value:0};
+  for(const name of ['Time','Radius','NozzleRadius','VisualHeight','JetLength','Fire','Release','CloudGrowth','Front','VentFire','Dissipation','Smoke','Visibility','Assisted','Methanol','Pressure','PressureProgress','M01','M01Progress'])uniforms['u'+name]={value:0};
   const rayMaterial=new THREE.ShaderMaterial({glslVersion:THREE.GLSL3,vertexShader:vertex,fragmentShader:fragment,uniforms,depthTest:false,depthWrite:false,toneMapped:false});
   const compositeMaterial=new THREE.ShaderMaterial({glslVersion:THREE.GLSL3,vertexShader:vertex,fragmentShader:composite,uniforms:{uScene:{value:sceneTarget.texture},uVolume:{value:volumeTarget.texture}},depthTest:false,depthWrite:false,toneMapped:false});
   lifecycle.createdMaterial();lifecycle.createdMaterial();
@@ -105,6 +120,8 @@ export function createVolumeRenderer(renderer,lifecycle) {
     if(disposed)return;
     camera.updateMatrixWorld();
     state=spec&&frame?volumeState(spec,frame):null;
+    uniforms.uM01.value=spec?.visualAdapter==='kimi-m01'?1:0;
+    uniforms.uM01Progress.value=m01Progress(frame?.progress??0);
     uniforms.uEnabled.value=state&&(state.fire>0||state.cloudGrowth>0||state.release>0||pressure)?1:0;
     if(state){
       uniforms.uKind.value=state.kind;

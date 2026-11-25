@@ -8,7 +8,7 @@ permissions:
 jobs:
   scenario:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,8 +25,11 @@ jobs:
           node tests/scenario-v020-browser.mjs
           node tests/scenario-v020-protection-browser.mjs
           node tests/scenario-playback-readiness-browser.mjs
+          SCENARIO_BASE_URL=http://127.0.0.1:8786 node tests/scenario-m01-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: scenario-qa
-          path: test-results/scenario-v020*
+          path: |
+            test-results/scenario-v020*
+            test-results/scenario-m01
