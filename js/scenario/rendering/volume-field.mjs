@@ -33,7 +33,7 @@ export function volumeState(spec,frame) {
     enclosureBox=new THREE.Box3().setFromPoints([point(enclosure.min||{x:-2,y:-1.5,z:0}),point(enclosure.max||{x:2,y:1.5,z:3})]),
     opening=enclosure.opening||{},
     profile=spec.visual.profile||{},pure=spec.material.composition==='pure';
-  root.y+=POOL_VISUAL.rootLiftM;
+  root.y+=spec.visualAdapter==='kimi-m01'?.005:POOL_VISUAL.rootLiftM;
   const colour=new THREE.Color(pure&&/^#[0-9a-f]{6}$/i.test(profile.color)?profile.color:'#e6a35a');
   const pressure=frame.pressureProgress;
   return {

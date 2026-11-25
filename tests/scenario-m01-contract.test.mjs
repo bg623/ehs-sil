@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {createPreset} from '../js/scenario/presets.mjs';
+import {createPreset,bindEquipment,setQuantity} from '../js/scenario/presets.mjs';
 import {buildSceneSpec,sampleStoryboard} from '../js/scenario/scene-spec.mjs';
 import {shouldUseM01,deriveM01Layout,m01Progress} from '../js/scenario/kimi-m01/contract.mjs';
 import {clone,inputHash,APP_VERSION,DATA_VERSION,SCHEMA_VERSION,MODEL_VERSION,parseProjectText} from '../js/scenario/schema.mjs';
@@ -45,6 +45,38 @@ test('M01 layout derives metre anchors and fits the visual pool without changing
   for(const mutate of [e=>e.geometry.diameterM=NaN,e=>e.geometry.heightM=0,e=>e.containment.lengthM=-1,e=>e.containment.widthM=null]) {
     const invalid=clone(equipment);mutate(invalid);const result=deriveM01Layout(invalid,radius);assert.equal(result.valid,false);assert.ok(result.reason);
   }
+});
+
+test('M01 rejects narrow containment even when a small liquid pool itself would fit, without changing inputs',()=>{
+  for(const [lengthM,widthM]of [[4,10],[12,4]]) {
+    const p=createPreset(catalogs);p.inputs.equipment.containment.lengthM=lengthM;p.inputs.equipment.containment.widthM=widthM;p.inputs.pool.radiusM=.2;
+    const before=JSON.stringify(p),layout=deriveM01Layout(p.inputs.equipment,.2);
+    assert.equal(layout.valid,false,`${lengthM}×${widthM}`);assert.ok(layout.reason);
+    const spec=buildSceneSpec(p,catalogs);assert.equal(spec.visualAdapter,'native');assert.equal(shouldUseM01(spec),false);
+    // Also exercise the M01 geometry gate independently of the older mechanism
+    // compatibility check, which already rejects one of these combinations.
+    spec.support.canPlayDetailedStoryboard=true;assert.equal(shouldUseM01(spec),false);
+    assert.equal(JSON.stringify(p),before,'do not widen containment, reduce the tank or alter the pool to force a visual fit');
+  }
+});
+
+test('M01 default and explicitly compatible small-tank fixtures remain supported after device-envelope gating',()=>{
+  const fixtures=[createPreset(catalogs),createPreset(catalogs)];
+  bindEquipment(fixtures[1],'small-vertical-atmospheric',catalogs);
+  setQuantity(fixtures[1],'volume',10); // Explicit test input, never an automatic stock correction.
+  for(const p of fixtures) {
+    const before=JSON.stringify(p),spec=buildSceneSpec(p,catalogs),layout=deriveM01Layout(spec.equipment,spec.pool.radiusM);
+    assert.equal(spec.support.canPlayDetailedStoryboard,true);assert.equal(shouldUseM01(spec),true);assert.equal(spec.visualAdapter,'kimi-m01');assert.equal(layout.valid,true);
+    assert.equal(JSON.stringify(p),before);
+  }
+});
+
+test('M01 rejects a very low outlet instead of drawing liquid upward from below the pool surface',()=>{
+  const p=createPreset(catalogs);p.inputs.equipment.geometry.heightM=.1;p.inputs.pool.radiusM=.2;setQuantity(p,'volume',.5);
+  const before=JSON.stringify(p),spec=buildSceneSpec(p,catalogs),layout=deriveM01Layout(p.inputs.equipment,p.inputs.pool.radiusM);
+  assert.equal(spec.support.canPlayDetailedStoryboard,true,'this is specifically an adapter geometry limit, not a pre-existing mechanism restriction');
+  assert.equal(layout.valid,false);assert.match(layout.reason,/过低|向下液流|高度/);assert.equal(shouldUseM01(spec),false);assert.equal(spec.visualAdapter,'native');
+  assert.equal(JSON.stringify(p),before,'height, stock and pool inputs are not silently adjusted');
 });
 
 test('M01 visual adaptation leaves input hashes, revision, A/B and old drafts unchanged',async()=>{

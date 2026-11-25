@@ -425,7 +425,7 @@ export function create3d(host, onFail = () => {}) {
       spec.material.composition !== "pure"
         ? "；组分未确认，当前为通用教学效果"
         : "";
-    const nextNote = `${spec.material.name} · 写实演示 / 非项目计算 · ${mode}${uncertain}${pressureVisible?' · 压力传播示意（非超压结果）':''}`;
+    const nextNote = `${spec.material.name} · 写实演示 / 非项目计算 · ${mode}${uncertain}${pressureVisible?' · 压力传播示意（非超压结果）':''}${spec.visualAdapterNote?' · '+spec.visualAdapterNote:''}`;
     if (note.textContent !== nextNote) note.textContent = nextNote;
     host.dataset.sceneId = spec.sceneId;
     host.dataset.materialId = spec.material.id || "unconfirmed";

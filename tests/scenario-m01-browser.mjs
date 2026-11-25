@@ -138,6 +138,30 @@ await check('M01 transition to a native non-pool preset and back retains one ren
   const repeated=trend.filter(item=>item.preset===primary);assert.ok(Number(repeated.at(-1).geometries)<=Number(repeated[0].geometries)+5);assert.ok(Number(repeated.at(-1).textures)<=Number(repeated[0].textures)+5);resources.push({sceneTransitions:trend});
 });
 
+await check('M01 narrow or very-low custom geometries retain exact inputs instead of showing wall-penetrating equipment or upward liquid',async page=>{
+  for(const {lengthM,widthM,heightM,volumeM3}of [{lengthM:4,widthM:10,heightM:4,volumeM3:30},{lengthM:12,widthM:4,heightM:4,volumeM3:30},{lengthM:12,widthM:10,heightM:.1,volumeM3:.5}]) {
+    await loadPreset(page,primary);await three(page);
+    const before=await project(page,`m01-narrow-before-${lengthM}-${widthM}.json`);
+    if(!(await page.locator('#conditions-sidebar').isVisible()))await page.locator('#toggle-conditions').click();
+    const advanced=page.locator('#advanced');if(await advanced.getAttribute('open')===null)await advanced.locator('summary').click();
+    await page.locator('#containment-length').fill(String(lengthM));await page.locator('#containment-width').fill(String(widthM));await page.locator('#heightM').fill(String(heightM));await page.locator('#quantity-value').fill(String(volumeM3));await page.locator('#pool-radius').fill('0.2');await page.locator('#apply-common').click();
+    if(lengthM===4) {
+      await page.locator('#view-2d-host svg').waitFor({state:'visible'});
+      assert.match(await page.locator('#support-note').innerText(),/液池视觉预设超出围堰边界/);
+    } else {
+      await three(page,'native');
+      const reason=page.locator('#view-3d-host .sc-visual-note');assert.equal(await reason.isVisible(),true);
+      assert.match(await reason.innerText(),heightM<1?/当前设备过低.*未修改输入/:/围堰无法容纳M01完整设备.*未缩放或修改输入/);
+    }
+    assert.equal(await host(page).isVisible()&&await host(page).getAttribute('data-visual-adapter')==='kimi-m01',false);
+    const after=await project(page,`m01-narrow-after-${lengthM}-${widthM}.json`),expected=structuredClone(before.inputs);
+    expected.equipment.containment.lengthM=lengthM;expected.equipment.containment.widthM=widthM;expected.equipment.geometry.heightM=heightM;expected.storage.volumeM3=volumeM3;expected.pool.radiusM=.2;
+    assert.deepEqual(after.inputs,expected,'do not resize the tank, widen containment, shrink the pool, or change stock to force a model fit');
+    assert.equal(after.inputRevision,before.inputRevision+1);assert.equal(await clock(page),'0');
+    await page.screenshot({path:path.join(out,`m01-narrow-${lengthM}-${widthM}-preserved.png`),fullPage:true});
+  }
+});
+
 await check('M01 real shader compilation failure visibly falls back to editable 2D, never an empty successful 3D',async page=>{
   const before=await project(page,'m01-before-shader-failure.json');await page.locator('#view-3d').click();
   await page.waitForFunction(()=>/不可用|失败|错误/.test(document.getElementById('view-status').textContent),{},{timeout:60000});

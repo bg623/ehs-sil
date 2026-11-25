@@ -2,7 +2,7 @@ import { clone } from "./schema.mjs";
 import { deriveQuantity, equipmentById } from "./presets.mjs";
 import { checkCompatibility } from "./compatibility.mjs";
 import { poolVisualBounds } from './rendering/pool-visual-bounds.mjs';
-import { shouldUseM01, deriveM01Layout } from './kimi-m01/contract.mjs';
+import { isM01Candidate, deriveM01Layout } from './kimi-m01/contract.mjs';
 
 const point = (x,y,z) => ({x,y,z});
 const normalize = ({x,y,z}) => {
@@ -91,7 +91,7 @@ export function buildSceneSpec(p, c) {
     visual:{profile:clone(profile),mode,note},process,support,scenario:clone(d),
     stages:clone(stages),receptors:clone(p.inputs.receptors),inputRevision:p.inputRevision,
     visualAdapter:'native'};
-  if(shouldUseM01(spec)){
+  if(isM01Candidate(spec)){
     const layout=deriveM01Layout(eq,radius);
     if(layout.valid){
       spec.visualAdapter='kimi-m01';
@@ -102,7 +102,7 @@ export function buildSceneSpec(p, c) {
       process.ignition.position=point(eq.anchors.poolCenter.x-radius*.53,eq.anchors.poolCenter.y+radius*.13,.05);
       process.domain=poolVisualBounds(radius,eq.anchors.poolCenter,process.direction);
       process.visualValidity.adapter='kimi-m01';
-    }
+    }else spec.visualAdapterNote=layout.reason;
   }
   return spec;
 }

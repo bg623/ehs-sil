@@ -15,24 +15,24 @@
     },
     {
       "path": "app.mjs",
-      "sha256": "4255db69be6ebb04ba02e62fb6a1feb66f3ae5cfc86842ea3a77ab2cbf916a13",
-      "sizeBytes": 94249,
+      "sha256": "b1998f21a717468e90ecdf4a006e94988bf4c7c79ef483283798964d5b7c9700",
+      "sizeBytes": 94277,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
     },
     {
       "path": "asset-sizes.json",
-      "sha256": "1a94f9bc5e3a8554d9c4ab836f3deace173f096bec0392d87279984cf749d612",
+      "sha256": "2fd0c3aa894887db639ca32e2fab6eda27743475e7ade433191a14c33262dc83",
       "sizeBytes": 328,
       "contentType": "application/json; charset=utf-8",
       "purpose": "样式、许可或构建记录",
       "license": "Project configuration or attribution; no third-party artwork"
     },
     {
-      "path": "chunk-ZYH5QRSB.mjs",
-      "sha256": "f7111b58c08a17c43da6d6757222846f1e773d0aa3274767861ab1261ffae9d5",
-      "sizeBytes": 4033,
+      "path": "chunk-SB6D2JKO.mjs",
+      "sha256": "6864b1d54c47d367ac1a28583cd0af32e771528fecdc1a1215ecd78153b9e8ed",
+      "sizeBytes": 4933,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
@@ -110,9 +110,9 @@
       "license": "Project configuration or attribution; no third-party artwork"
     },
     {
-      "path": "view-3d-BOZZE2MK.mjs",
-      "sha256": "a5ba2a9121c7d45fabf3fcf5bde361844c3661f0708c3d5fa58c3feb69e49c06",
-      "sizeBytes": 648123,
+      "path": "view-3d-2TZN7FWL.mjs",
+      "sha256": "8975a10c0961b1227bdedd878ae7c21c050b521340fe677d97f3969f414a7880",
+      "sizeBytes": 648211,
       "contentType": "text/javascript; charset=utf-8",
       "purpose": "浏览器程序与体积渲染",
       "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
@@ -276,7 +276,7 @@
       "assetId": "m01-contract",
       "version": "0.2.1",
       "source": "js/scenario/kimi-m01/contract.mjs",
-      "sourceHash": "2bf61e34ce926413fe0b4f3a68ddc4e854e4d6494d26e702fe4067daa7b96375",
+      "sourceHash": "1447744251d79112777243a5ae5907bba2e583ad5ee537d0d684dea952d92058",
       "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
       "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
       "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",

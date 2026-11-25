@@ -3,11 +3,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
-import {createPreset} from '../js/scenario/presets.mjs';
+import {createPreset,bindEquipment,setQuantity} from '../js/scenario/presets.mjs';
 import {buildSceneSpec,sampleStoryboard} from '../js/scenario/scene-spec.mjs';
 import {worldToThree} from '../js/scenario/coordinates.mjs';
+import {M01_DEVICE_BOUNDS} from '../js/scenario/kimi-m01/contract.mjs';
 const require=createRequire(new URL('../build/scenario/package.json',import.meta.url)),{build}=require('esbuild');
-const {Raycaster,Vector3}=require('three');
+const {Raycaster,Vector3,Box3}=require('three');
 const compiled=await build({entryPoints:[fileURLToPath(new URL('../js/scenario/kimi-m01/assembly.mjs',import.meta.url))],nodePaths:[fileURLToPath(new URL('../build/scenario/node_modules',import.meta.url))],bundle:true,format:'esm',platform:'node',write:false});
 const {createM01Assembly}=await import('data:text/javascript;base64,'+Buffer.from(compiled.outputFiles[0].text).toString('base64'));
 const files={chemicals:'chemicals',equipment:'equipment',presets:'presets',visualProfiles:'visual-profiles',scenarios:'scenarios',capabilities:'capabilities',registry:'model-registry',sources:'source-manifest'},catalogs=Object.fromEntries(Object.entries(files).map(([k,v])=>[k,JSON.parse(fs.readFileSync(new URL('../data/scenario/'+v+'.json',import.meta.url),'utf8'))]));
@@ -61,6 +62,37 @@ test('M01 downstream nozzle has a true open bore, not a solid visual end cap',()
     const wall=new Raycaster(new Vector3(.985,.72,3.3),new Vector3(0,0,-1),0,.7);
     assert.ok(wall.intersectObject(pipe,false).length>0,'off-centre ray hits the actual pipe wall');
   } finally {a.dispose();}
+});
+
+test('M01 real default and small device meshes fit the declared non-Bund envelope and their actual containment',()=>{
+  const fixtures=[createPreset(catalogs),createPreset(catalogs)];
+  bindEquipment(fixtures[1],'small-vertical-atmospheric',catalogs);setQuantity(fixtures[1],'volume',10);
+  for(const project of fixtures) {
+    const spec=buildSceneSpec(project,catalogs),a=createM01Assembly(spec);
+    try {
+      a.update(spec,sampleStoryboard(spec,.7,17));a.group.updateMatrixWorld(true);
+      const device=a.group.getObjectByName('Equipment'),bund=a.group.getObjectByName('Bund');assert.ok(device&&bund);
+      assert.equal(device.getObjectByName('Bund'),undefined,'device envelope must not accidentally include the wide bund');
+      const actual=new Box3().setFromObject(device,true),layout=a.group.userData.layout,origin=worldToThree(layout.origin),scale=layout.scales.tank;
+      const actualMin=actual.min.toArray(),actualMax=actual.max.toArray();
+      for(let axis=0;axis<3;axis++) {
+        const declaredMin=origin[axis]+M01_DEVICE_BOUNDS.min[axis]*scale[axis],declaredMax=origin[axis]+M01_DEVICE_BOUNDS.max[axis]*scale[axis];
+        assert.ok(actualMin[axis]>=declaredMin-1e-5,`axis ${axis}: actual device min lies outside declared envelope`);
+        assert.ok(actualMax[axis]<=declaredMax+1e-5,`axis ${axis}: actual device max lies outside declared envelope`);
+      }
+      const halfX=spec.equipment.containment.lengthM/2,halfY=spec.equipment.containment.widthM/2;
+      assert.ok(actual.min.x>=origin[0]-halfX+layout.margin-1e-5);assert.ok(actual.max.x<=origin[0]+halfX-layout.margin+1e-5);
+      assert.ok(actual.min.z>=origin[2]-halfY+layout.margin-1e-5);assert.ok(actual.max.z<=origin[2]+halfY-layout.margin+1e-5);
+      for(const name of ['Pool_WetSurface_R1p2m','Pool_TeachingOutline']) {
+        const pool=a.group.getObjectByName(name);assert.ok(pool?.visible);const positions=pool.geometry.attributes.position;
+        for(let i=0;i<positions.count;i++) {
+          const point=new Vector3(positions.getX(i),positions.getY(i),positions.getZ(i)).applyMatrix4(pool.matrixWorld);
+          assert.ok(Math.abs(point.x-origin[0])<=halfX+1e-5,`${project.inputs.equipment.id} ${name}: outside length`);
+          assert.ok(Math.abs(point.z-origin[2])<=halfY+1e-5,`${project.inputs.equipment.id} ${name}: outside width`);
+        }
+      }
+    } finally {a.dispose();}
+  }
 });
 
 test('M01 seek/pause frames are history-free, with no per-frame allocations and balanced owned resources',()=>{
