@@ -4,14 +4,16 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
+import {APP_VERSION} from '../js/scenario/version.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const require=createRequire(root+'/build/scenario/package.json'),{chromium}=require('playwright');
 const base=(process.env.SCENARIO_BASE_URL||'http://127.0.0.1:8786').replace(/\/$/,'');
 const out=path.resolve(process.env.SCENARIO_PLAYBACK_QA_DIR||'test-results/scenario-v020-playback');
 const sourceApp=process.env.SCENARIO_SOURCE_APP==='1';
 await fs.mkdir(out,{recursive:true});
-const rendererName=(await fs.readdir(root+'/dist/scenario/v0.2.0')).find(n=>/^view-3d-.*\.mjs$/.test(n));
-const rendererBytes=await fs.readFile(root+'/dist/scenario/v0.2.0/'+rendererName,'utf8');
+const distPrefix='/dist/scenario/v'+APP_VERSION+'/';
+const rendererName=(await fs.readdir(root+distPrefix)).find(n=>/^view-3d-.*\.mjs$/.test(n));
+const rendererBytes=await fs.readFile(root+distPrefix+rendererName,'utf8');
 const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{}),args:['--enable-unsafe-swiftshader']});
 const checks=[],errors=[];
 const sample=page=>page.evaluate(()=>({progress:Number(document.getElementById('timeline').value),clocks:document.getElementById('workspace').dataset.activeClocks,status:document.getElementById('view-status').textContent,threeHidden:document.getElementById('view-3d-host').hidden,renderer:document.getElementById('view-3d-host').dataset.renderer||null}));
@@ -19,8 +21,8 @@ async function check(name,{delay=2000,abort=false}={},run){
  const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'}),page=await context.newPage();
  let released=false;page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push({test:name,error:e.message}));
  try{
-  await page.route('**/dist/scenario/v0.2.0/**',async route=>{
-   const rel=new URL(route.request().url()).pathname.split('/dist/scenario/v0.2.0/')[1];
+  await page.route('**'+distPrefix+'**',async route=>{
+   const rel=new URL(route.request().url()).pathname.split(distPrefix)[1];
    if(/^view-3d(?:-.*)?\.mjs$/.test(rel)){
     await new Promise(resolve=>setTimeout(resolve,delay));released=true;
     if(abort)return route.abort();

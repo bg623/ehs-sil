@@ -2,10 +2,12 @@ import * as THREE from 'three';
 import {worldToThree} from '../coordinates.mjs';
 import {createIndustrialPalette} from '../materials/industrial-palette.mjs';
 import {createLiquidRelease} from '../effects/liquid-release.mjs';
+import {createM01Assembly} from '../kimi-m01/assembly.mjs';
 const vec=p=>new THREE.Vector3(...worldToThree(p)),shift=(p,x=0,y=0,z=0)=>({x:p.x+x,y:p.y+y,z:p.z+z}),finite=(n,f)=>Number.isFinite(n)?n:f,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 
 /** Opaque industrial geometry only; combustion belongs to the volume renderer. */
 export function createSceneAssembly(spec,lifecycle={}){
+ if(spec.visualAdapter==='kimi-m01')return createM01Assembly(spec,lifecycle);
  const group=new THREE.Group(),geometries=new Set(),materials=new Set(),textures=new Set(),cache=new Map(),labels=[];
  const geometry=g=>{geometries.add(g);lifecycle.createdGeometry?.();return g;},material=m=>{materials.add(m);lifecycle.createdMaterial?.();return m;},texture=t=>{textures.add(t);lifecycle.createdTexture?.();return t;};
  const palette=createIndustrialPalette({material,texture}),kind=spec.process?.geometryKind||'tank';group.name='industrial-'+kind;group.userData.geometryKind=kind;

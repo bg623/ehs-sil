@@ -18,7 +18,7 @@ test('R14 industrial assemblies allocate once across seeks and dispose every own
 });
 
 test('R04/11/12 liquid reaches the ground before wetting; feed termination retains neutral wetness and seeks reproduce',()=>{
- const spec=make('methanol-atmospheric-tank-pool-fire'),a=createSceneAssembly(spec),objects=walk(a),stream=objects.find(o=>o.name==='gravity-liquid-column'),wet=objects.find(o=>o.name==='continuous-wet-front'),drops=objects.find(o=>o.name==='deterministic-impact-droplets'),boundary=objects.find(o=>o.name==='assisted-liquid-boundary'),seek=p=>a.update(spec,sampleStoryboard(spec,p,7));
+ const spec=make('n-heptane-atmospheric-tank-pool-fire'),a=createSceneAssembly(spec),objects=walk(a),stream=objects.find(o=>o.name==='gravity-liquid-column'),wet=objects.find(o=>o.name==='continuous-wet-front'),drops=objects.find(o=>o.name==='deterministic-impact-droplets'),boundary=objects.find(o=>o.name==='assisted-liquid-boundary'),seek=p=>a.update(spec,sampleStoryboard(spec,p,7));
  try{seek(.16);assert.equal(stream.visible,true);assert.equal(wet.visible,false);seek(.4);assert.equal(wet.visible,true);assert.equal(boundary.visible,true);seek(1);assert.equal(stream.visible,false);assert.equal(wet.visible,true);const c=wet.material.color;assert.ok(Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)<.12,'neutral liquid rather than saturated blue');const hash=()=>createHash('sha256').update(Buffer.from(drops.instanceMatrix.array.buffer)).update(Buffer.from(boundary.geometry.attributes.position.array.buffer)).digest('hex');seek(.7);const old=hash();seek(.9);seek(.7);assert.equal(hash(),old);spec.visual.mode='natural';seek(.7);assert.equal(boundary.visible,false);assert.equal(wet.visible,true);}finally{a.dispose();}
 });
 

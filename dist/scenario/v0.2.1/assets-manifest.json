@@ -1,0 +1,312 @@
+{
+  "version": "0.2.1",
+  "rendering": "procedural volumetric visual model; not industrial CFD",
+  "thirdPartyArtwork": [],
+  "blenderBake": "not_run",
+  "externalTextures": false,
+  "objects": [
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "8d8da33a183830c143172401e362b89cc8f466ab4fb2527c78e20d920a97bf33",
+      "sizeBytes": 1499,
+      "contentType": "text/plain; charset=utf-8",
+      "purpose": "样式、许可或构建记录",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "app.mjs",
+      "sha256": "b1998f21a717468e90ecdf4a006e94988bf4c7c79ef483283798964d5b7c9700",
+      "sizeBytes": 94277,
+      "contentType": "text/javascript; charset=utf-8",
+      "purpose": "浏览器程序与体积渲染",
+      "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
+    },
+    {
+      "path": "asset-sizes.json",
+      "sha256": "2fd0c3aa894887db639ca32e2fab6eda27743475e7ade433191a14c33262dc83",
+      "sizeBytes": 328,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "样式、许可或构建记录",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "chunk-SB6D2JKO.mjs",
+      "sha256": "6864b1d54c47d367ac1a28583cd0af32e771528fecdc1a1215ecd78153b9e8ed",
+      "sizeBytes": 4933,
+      "contentType": "text/javascript; charset=utf-8",
+      "purpose": "浏览器程序与体积渲染",
+      "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
+    },
+    {
+      "path": "data/capabilities.json",
+      "sha256": "c5c17507dcf6f95bf9a6d33b76a7145ef2e0c2abe66391b85a2efb723b9d988f",
+      "sizeBytes": 441,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/chemicals.json",
+      "sha256": "6286710591edabc1ffcf66a774aff5f865865958db7b1a689a4ff34d36284922",
+      "sizeBytes": 2841,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/equipment.json",
+      "sha256": "ee9553054d8c66f623dcf20d6fd642975005b628af26c760720b00c771fad2ac",
+      "sizeBytes": 2387,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/model-registry.json",
+      "sha256": "61b493d14c4a3e3b52612be10bea286a446ade78c73b38275c84d2bf632c3462",
+      "sizeBytes": 1024,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/presets.json",
+      "sha256": "64c641f35a4684ea835355054522f0101fc525252f9bfc73e7d8a8350ab24bb7",
+      "sizeBytes": 7444,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/scenarios.json",
+      "sha256": "1e40ec48bd4f3bc0696d54266eac8c73c4600a98a7b8a13152833b54856eba43",
+      "sizeBytes": 20601,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/source-manifest.json",
+      "sha256": "973d6727b4e79c40d964a897606aa249bde2e30dfb602a1f630f55a565171181",
+      "sizeBytes": 13612,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "data/visual-profiles.json",
+      "sha256": "334df343ae09918b0e264db075f921bd61a6da4cf424e7e5c1e6e0ad6d8d6593",
+      "sizeBytes": 2311,
+      "contentType": "application/json; charset=utf-8",
+      "purpose": "场景与定性来源配置",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "style.css",
+      "sha256": "63024dfb914626f7c0576ea423db3779f8eb97dedbb6f4d0c259f1038adc35e4",
+      "sizeBytes": 20233,
+      "contentType": "text/css; charset=utf-8",
+      "purpose": "样式、许可或构建记录",
+      "license": "Project configuration or attribution; no third-party artwork"
+    },
+    {
+      "path": "view-3d-2TZN7FWL.mjs",
+      "sha256": "8975a10c0961b1227bdedd878ae7c21c050b521340fe677d97f3969f414a7880",
+      "sizeBytes": 648211,
+      "contentType": "text/javascript; charset=utf-8",
+      "purpose": "浏览器程序与体积渲染",
+      "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
+    },
+    {
+      "path": "worker.mjs",
+      "sha256": "90950b49bed64c4a7f2910c6d22eeb4459e6a2ba4279e715c00234dd819fd119",
+      "sizeBytes": 12061,
+      "contentType": "text/javascript; charset=utf-8",
+      "purpose": "浏览器程序与体积渲染",
+      "license": "EHS-SIL project code; bundled Three.js MIT, see THIRD_PARTY_NOTICES.txt"
+    }
+  ],
+  "proceduralAssets": [
+    {
+      "assetId": "procedural-noise-r8",
+      "version": "xorshift32-r8-v1",
+      "creator": "EHS-SIL procedural code",
+      "source": "js/scenario/rendering/noise-data.mjs",
+      "sourceHash": "42983cad24240b5856612680c421fa5eeac54d1c9c8a5ab171d43230e75c788a",
+      "license": "Project-authored algorithm; no external artwork",
+      "axis": "texture XYZ; scene uses ENU -> Three.js Y-up",
+      "voxelResolution": [
+        64,
+        64,
+        64
+      ],
+      "channels": [
+        "R8 scalar noise; not concentration or temperature"
+      ],
+      "frameCount": 1,
+      "playbackDuration": null,
+      "seed": 2135587861,
+      "decodedBytes": 262144,
+      "hash": "ccc4131c77fa2fb5d212cead9569449dab1b7311075bb68ffdec16ccf193466f",
+      "bounds": "Per-scene process.domain; see presets and scene-spec",
+      "visualValidity": "Fixed teaching presets; advected procedural field, not a baked or validated flow solution",
+      "toolVersion": "JavaScript deterministic xorshift32; Three.js 0.181.2 Data3DTexture"
+    },
+    {
+      "assetId": "industrial-pbr-surfaces",
+      "version": "0.2.1",
+      "creator": "EHS-SIL procedural code",
+      "source": "js/scenario/materials/industrial-palette.mjs",
+      "sourceHash": "7fa8838ac69aaac24e7572f04f49177eb993c16b7b0d5dd9a88ec2e80f257275",
+      "license": "Project-authored procedural generation; Three.js MIT runtime",
+      "axis": "Scene ENU -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Visual presets only, not validated material or engineering models",
+      "voxelResolution": null,
+      "textureResolution": [
+        64,
+        64
+      ],
+      "textureCount": 4,
+      "channels": [
+        "RGBA8"
+      ],
+      "decodedBaseBytes": 65536,
+      "mipmaps": "Three grain textures generate mipmaps; base bytes exclude mip overhead",
+      "generation": "Deterministic sin-hash phase 17.19; project-authored metal, concrete, normal and contact textures"
+    },
+    {
+      "assetId": "liquid-release-surface",
+      "version": "0.2.1",
+      "creator": "EHS-SIL procedural code",
+      "source": "js/scenario/effects/liquid-release.mjs",
+      "sourceHash": "d735aaf9b97cfd6e2bb9561e96f212c60616b52759b59a2e73e1137ace4e91dc",
+      "license": "Project-authored procedural generation; Three.js MIT runtime",
+      "axis": "Scene ENU -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Visual presets only, not validated material or engineering models",
+      "voxelResolution": null,
+      "textureResolution": [
+        64,
+        64
+      ],
+      "textureCount": 1,
+      "channels": [
+        "RGBA8 normal"
+      ],
+      "decodedBaseBytes": 16384,
+      "generation": "Procedural normal surface and deterministic gravity-path geometry; no flow solver"
+    },
+    {
+      "assetId": "industrial-geometry",
+      "version": "0.2.1",
+      "creator": "EHS-SIL procedural code",
+      "source": "js/scenario/three/scene-components.mjs",
+      "sourceHash": "f92d12942a11aea13095b14e70959bc7f80e179804ad68195504f597e305a3de",
+      "license": "Project-authored procedural generation; Three.js MIT runtime",
+      "axis": "Scene ENU -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Visual presets only, not validated material or engineering models",
+      "bounds": "Current ENU equipment/process spec",
+      "generation": "Procedural tank, pipe rack and cabinet geometry; no imported model"
+    },
+    {
+      "assetId": "daylight-environment",
+      "version": "0.2.1",
+      "creator": "EHS-SIL procedural code",
+      "source": "js/scenario/rendering/volume-environment.mjs",
+      "sourceHash": "140af2e3694f2bbb47c457f8641f31e7caa28d72dc8b630299264485540eb9cf",
+      "license": "Project-authored procedural generation; Three.js MIT runtime",
+      "axis": "Scene ENU -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Visual presets only, not validated material or engineering models",
+      "generation": "Authored gradient daylight scene -> Three.js PMREM; no external HDRI",
+      "estimatedResidentBytes": 6291456,
+      "memoryBasis": "Observed 768x1024 HalfFloat RGBA target; transient generation buffers excluded"
+    },
+    {
+      "assetId": "m01-equipment",
+      "version": "0.2.1",
+      "source": "js/scenario/kimi-m01/vendor/equipment.mjs",
+      "sourceHash": "bfd46067ecd5519769a9b6fee75ea5cc3bfeab3db57fe78a2ae50f87f30e6132",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    },
+    {
+      "assetId": "m01-materials",
+      "version": "0.2.1",
+      "source": "js/scenario/kimi-m01/vendor/materials.mjs",
+      "sourceHash": "f8ecf4ba8c4ad63c225cc4806c738350e9103f4670e23dfe295155f74699e8d9",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    },
+    {
+      "assetId": "m01-release",
+      "version": "0.2.1",
+      "source": "js/scenario/kimi-m01/vendor/effects.mjs",
+      "sourceHash": "0675e5ffe35364f82809cac1549191178ae85c90ebd268de9b4b0df37e60a143",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    },
+    {
+      "assetId": "m01-config",
+      "version": "0.2.1",
+      "source": "js/scenario/kimi-m01/vendor/config.mjs",
+      "sourceHash": "17bfd0b62d34d1c5d8c8e10bb8a26899cba43f42d224dc4c3120227c2512a82d",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    },
+    {
+      "assetId": "m01-contract",
+      "version": "0.2.1",
+      "source": "js/scenario/kimi-m01/contract.mjs",
+      "sourceHash": "1447744251d79112777243a5ae5907bba2e583ad5ee537d0d684dea952d92058",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    },
+    {
+      "assetId": "m01-assembly",
+      "version": "0.2.1",
+      "source": "js/scenario/kimi-m01/assembly.mjs",
+      "sourceHash": "757a56f059cab69eeb697ba095748cf8eb09f06f215c28834c11e516eab44b5b",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    },
+    {
+      "assetId": "m01-flame-field",
+      "version": "0.2.1",
+      "source": "js/scenario/effects/m01-pool-fire.mjs",
+      "sourceHash": "d4766ab24edc6aa22b9042afee4ff3ae4079409cb212d36a1919378315a32e69",
+      "creator": "User-supplied Kimi M01 code, adapted for EHS-SIL",
+      "license": "Integration authorized by project owner; Three.js MIT runtime; no independent asset-license assertion",
+      "axis": "Supplier Y-up metres -> ENU [x,-z,y] -> Three.js [x,z,-y]",
+      "frameCount": 1,
+      "visualValidity": "Seekable teaching art, not validated CFD or engineering results",
+      "generation": "Procedural equipment, PBR maps, deterministic liquid and depth-composited density field; GLB is not loaded"
+    }
+  ]
+}

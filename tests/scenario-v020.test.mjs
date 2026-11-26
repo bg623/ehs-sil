@@ -19,7 +19,7 @@ const cases=[
  ['propane-cabinet-confined-deflagration','confined-deflagration','cabinet','propane'],
 ];
 test('R01 six explicit presets provide five distinct volumetric processes without engineering approval',()=>{
- assert.equal(APP_VERSION,'0.2.0');assert.equal(DATA_VERSION,'scenario-data-0.2.0');
+ assert.equal(APP_VERSION,'0.2.1');assert.equal(DATA_VERSION,'scenario-data-0.2.0');
  for(const [id,kind,geometry,material] of cases){const p=createPreset(c,id),s=buildSceneSpec(p,c);assert.equal(s.process.kind,kind);assert.equal(s.process.geometryKind,geometry);assert.equal(s.material.id,material);assert.equal(s.support.canPlayDetailedStoryboard,true,id);assert.equal(s.support.canCalculate,false);assert.equal(s.stages.length,6);assert.ok(s.process.visualValidity.note);}
 });
 test('R01/R18 gas-pipeline demos explicitly use gas and recorded mass, not liquefied tank fill',()=>{

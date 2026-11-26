@@ -28,7 +28,7 @@ async function check(name,fn,options={}){
   },options);
   if(options.fail3d)await page.route('**/view-3d-*.mjs',r=>r.abort());
   await page.goto(base+'/tools/scenario-workbench.html',{waitUntil:'networkidle'});await page.locator('#workspace').waitFor();
-  assert.ok(await page.locator('[data-scenario-app-version="0.2.0"]').count(),'actual app version marker');
+  assert.ok(await page.locator('[data-scenario-app-version="0.2.1"]').count(),'actual app version marker');
   await fn(page);checks.push({name,status:'passed'});console.log('PASS',name);
  }catch(e){checks.push({name,status:'failed',error:e.message});console.error('FAIL',name,e.message);await activePage?.screenshot({path:path.join(out,`failure-${checks.length}.png`),fullPage:true}).catch(()=>{});}
  finally{await context?.close();}
@@ -49,6 +49,8 @@ const progress=(p,v)=>p.locator('#timeline').evaluate((el,v)=>{el.value=String(v
 await check('UX01: full methanol template, no personal-draft write and actual interactive 3D',async p=>{
  assert.match(await p.locator('#bar-material').innerText(),/甲醇/);assert.match(await p.locator('#bar-storage').innerText(),/30/);assert.equal(await p.evaluate(k=>localStorage.getItem(k),v2),null);
  await shot(p,'first-screen.png');await p.locator('#play-example').click();await p.locator('#view-3d-host canvas').waitFor();await p.waitForFunction(()=>Number(document.getElementById('view-3d-host').dataset.frames)>4);
+ // Initialization/resize frames can exceed four before the readiness RAF starts playback.
+ await p.waitForFunction(()=>document.getElementById('workspace').dataset.activeClocks==='1');
  assert.equal(await p.locator('#workspace').getAttribute('data-active-clocks'),'1');await p.locator('#play').click();assert.equal(await p.locator('#workspace').getAttribute('data-active-clocks'),'0');await progress(p,.68);
  assert.match(await p.locator('#visual-note').innerText(),/增强轮廓|可见性辅助/);await viewShot(p,'methanol-assisted-3d.png');
  const canvas=p.locator('#view-3d-host canvas'),before=await canvas.screenshot(),box=await canvas.boundingBox();await p.mouse.move(box.x+box.width*.4,box.y+box.height*.4);await p.mouse.down();await p.mouse.move(box.x+box.width*.7,box.y+box.height*.55,{steps:12});await p.mouse.up();assert.notDeepEqual(await canvas.screenshot(),before);

@@ -34,7 +34,7 @@ const memoryStorage = initial => {
 
 test('UX01/02 default methanol preset is complete and quantity is volume, not fabricated mass', () => {
   const p = preset();
-  assert.equal(APP_VERSION, '0.2.0');
+  assert.equal(APP_VERSION, '0.2.1');
   assert.equal(SCHEMA_VERSION, '1.1.0');
   assert.equal(DATA_VERSION, 'scenario-data-0.2.0');
   assert.equal(MODEL_VERSION, '0.1.0');

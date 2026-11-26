@@ -19,10 +19,10 @@ const git = (...arguments_) => execFileSync('git', arguments_, { cwd: root, enco
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const SHA_PATTERN = /^[a-f0-9]{40}$/;
 
-// Rechecked by GitHub GET on 2026-11-17: this local archive-root tree is the
-// actual production main tree, not the unpublished V0.1.0/V0.1.1 feature trees.
-const PRODUCTION_COMMIT = '3be8660da8e96d855be8952c59ffe769c87c3fd8';
-const PRODUCTION_TREE = 'c6ea0c8f549722d0b7a2edfe23c66d24aa1ec3b0';
+// Rechecked by GitHub GET on 2026-11-25; preserve the later article-route fix.
+// Public object backups are still required: GitHub is not the OSS origin.
+const PRODUCTION_COMMIT = '4a63d7e12d484d39dda4357851261a20c356515e';
+const PRODUCTION_TREE = 'cdd2f3f8f7f70614af7d695b94e6ab82d63ae49d';
 const version = arg('--version', APP_VERSION);
 assert.equal(version, APP_VERSION, 'Requested release version differs from the application');
 assert.equal(git('status', '--porcelain'), '', 'Commit all reviewed changes before packaging a release');
@@ -52,7 +52,7 @@ try {
   if (error.code !== 'ENOENT') throw error;
 }
 const runtime = `dist/scenario/v${version}`;
-const oldResourceDirectories = ['dist/scenario/v0.1.0/', 'dist/scenario/v0.1.1/'];
+const oldResourceDirectories = ['dist/scenario/v0.1.0/', 'dist/scenario/v0.1.1/', 'dist/scenario/v0.2.0/'];
 assert.ok(!oldResourceDirectories.includes(`${runtime}/`), 'Never overwrite an existing immutable runtime');
 const entry = 'tools/scenario-workbench.html';
 const publicPath = (file) => !/(?:node_modules|test-results|release-candidate|sandbox|protected)/.test(file) && (
@@ -172,7 +172,7 @@ const runtimeAssetPaths = [...files].filter(file => file.startsWith(`${runtime}/
 assert.deepEqual([...assetPaths].sort(), runtimeAssetPaths.sort(), 'Asset inventory does not exactly match the runtime');
 assert.ok(Array.isArray(assets.proceduralAssets), 'Procedural asset inventory is missing');
 assert.deepEqual(assets.proceduralAssets.map(asset=>asset.assetId).sort(),
-  ['procedural-noise-r8','industrial-pbr-surfaces','liquid-release-surface','industrial-geometry','daylight-environment'].sort(),
+  ['procedural-noise-r8','industrial-pbr-surfaces','liquid-release-surface','industrial-geometry','daylight-environment','m01-equipment','m01-materials','m01-release','m01-config','m01-contract','m01-assembly','m01-flame-field'].sort(),
   'Procedural asset inventory must cover every authored visual component');
 for (const asset of assets.proceduralAssets) {
   assert.equal(asset.sourceHash,sha(await readRegular(asset.source)),`Procedural source fingerprint differs: ${asset.assetId}`);
@@ -263,7 +263,7 @@ for (const file of [...prerequisites].filter((name) => !files.has(name)).sort())
   prerequisiteHashes.push({ path: file, sha256: sha(content), sizeBytes: content.length, contentType: mimeFor(file) });
 }
 const existsAtBaseline = (file) => Boolean(git('ls-tree', baseline, '--', file));
-const rollbackBytes = await readRegular('docs/scenario/rollback-v020.md');
+const rollbackBytes = await readRegular('docs/scenario/rollback-v021.md');
 
 const manifest = {
   releaseId: `scenario-${version}`, sourceCommit: releaseCommit, sourceTree, localCommit,
@@ -324,7 +324,7 @@ await fs.writeFile(path.join(out, 'README.md'), `# Scenario ${version} 发布候
 
 只上传 public 中 manifest 指定文件；不整体同步仓库。QA、源码、docs、用户项目和凭据不在公开包。
 共享前置依赖仅记录本地来源哈希，上传前还需核对其实际生产字节，不擅自覆盖。
-旧 v0.1.0 与 v0.1.1 资源保持原样。上传前备份 overwriteObjects 的真实字节和元数据；当前工具404首页兜底不是旧工作台，详见 rollback.md。
+旧 v0.1.0、v0.1.1 与 v0.2.0 资源保持原样。上传前备份 overwriteObjects 的真实字节和元数据；线上当前V0.2.0工具须按真实字节和响应元数据备份，详见 rollback.md。
 assets-manifest逐一覆盖运行对象（清单自身除外），并校验真实hash/MIME/size；64³ R8程序噪声解码262144字节，其哈希已从确定性源码实际生成复核，不是网络资源或工程场。
 `);
 console.log(JSON.stringify({
