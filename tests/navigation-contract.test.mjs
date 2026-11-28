@@ -9,7 +9,10 @@ const home = read("index.html");
 const shell = read("js/site-shell.js");
 const style = read("css/style.css");
 const design = read("css/design-system.css");
-const homeNav = home.match(/<nav class="nav-bar">[\s\S]*?<\/nav>/)?.[0] || "";
+const homeNav = home.match(/<nav\b[^>]*class="nav-bar"[^>]*>[\s\S]*?<\/nav>/)?.[0] || "";
+const shortcut = homeNav.match(/<a class="scenario-shortcut" href="tools\/scenario-workbench\.html">[\s\S]*?事故场景 3D 工作台\s*<\/a>/);
+assert.ok(shortcut && shortcut.index < homeNav.indexOf('id="navToggle"'), "桌面和手机都应有菜单外的原生直达链接");
+assert.match(homeNav, /id="homeToolsMenu"[\s\S]*?href="tools\/scenario-workbench\.html"/);
 
 for (const label of ["首页", "专业工具", "专业资源", "了解 EHS-SIL", "反馈建议", "会员权益", "正在确认权益…"]) {
   assert.match(home, new RegExp(`>${label}<`), `首页导航缺少“${label}”`);

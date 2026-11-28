@@ -20,6 +20,33 @@
     <meta name="twitter:image" content="https://ehs-sil.com/assets/og-ehs-sil-platform.png">
     <link rel="stylesheet" href="css/style.css?v=2.1.0">
     <link rel="stylesheet" href="css/homepage-astra.css?v=20261005">
+    <style>
+        /* The homepage shortcut stays outside the collapsible navigation. */
+        .home-astra .scenario-shortcut {
+            display: inline-flex; align-items: center; gap: .4rem; flex: none; min-height: 44px;
+            margin-inline-start: auto; padding: .45rem .75rem; border: 1px solid #9abdb8;
+            border-radius: .6rem; background: #e6f2ef; color: #124b47;
+            font-size: .9rem; font-weight: 700; line-height: 1.25; white-space: nowrap; text-decoration: none;
+        }
+        .home-astra .scenario-shortcut:is(:hover, :focus-visible) { background: #cfe6e1; border-color: #437b74; }
+        .scenario-shortcut svg { width: 1.1em; height: 1.1em; flex: none; }
+        @media (min-width: 921px) and (max-width: 1180px) {
+            .home-astra .nav-bar { gap: .5rem; }
+            .home-astra .scenario-shortcut { padding-inline: .55rem; }
+        }
+        @media (max-width: 520px) {
+            .home-astra .nav-bar { gap: .4rem; }
+            .home-astra .scenario-shortcut { padding-inline: .5rem; font-size: .875rem; }
+            .home-astra .home-brand-name small { display: none; }
+            .home-astra .home-brand-logo { width: 36px; height: 36px; }
+            .home-astra .logo a { gap: .3rem; }
+        }
+        @media (max-width: 360px) {
+            .home-astra .site-header > .container { padding-inline: .65rem; }
+            .home-astra .home-brand-name { display: none; }
+            .home-astra .home-brand-logo { width: 46px; height: 44px; }
+        }
+    </style>
     <link rel="icon" type="image/jpeg" href="assets/ehs-sil-logo-original.jpg">
     <link rel="apple-touch-icon" href="assets/ehs-sil-logo-original.jpg">
 
@@ -42,13 +69,17 @@
     <a class="skip-link" href="#main-content">跳到主要内容</a>
     <header class="site-header" id="siteHeader">
         <div class="container">
-            <nav class="nav-bar">
+            <nav class="nav-bar" aria-label="网站主导航">
                 <div class="logo">
                     <a href="#hero" aria-label="EHS-SIL 首页">
                         <img class="home-brand-logo" src="assets/ehs-sil-logo-original.jpg" alt="EHS · Share Inspire Learn" width="1064" height="1000" fetchpriority="high">
                         <span class="home-brand-name"><strong>EHS-SIL</strong><small>外企EHS工具与成长工作台</small></span>
                     </a>
                 </div>
+                <a class="scenario-shortcut" href="tools/scenario-workbench.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5Z M3 7l9 5 9-5 M12 12v10"/></svg>
+                    事故场景 3D 工作台
+                </a>
                 <button class="nav-toggle" id="navToggle" aria-label="打开网站导航" aria-expanded="false" aria-controls="navLinks">
                     <span></span><span></span><span></span>
                 </button>
@@ -58,6 +89,7 @@
                         <div class="nav-parent-row"><a href="#workbench" class="nav-link" data-nav-section-link="tools">专业工具</a><button class="nav-dropdown-toggle" type="button" aria-label="展开专业工具选项" aria-expanded="false" aria-controls="homeToolsMenu"><span class="nav-chevron" aria-hidden="true"></span></button></div>
                         <ul class="nav-dropdown nav-dropdown-wide" id="homeToolsMenu">
                             <li><a href="#workbench" class="nav-entry-featured"><span class="nav-entry-title">专业工具总览</span><span class="nav-entry-desc">按风险、事故与管理任务选择方法</span></a></li>
+                            <li><a href="tools/scenario-workbench.html"><span class="nav-entry-title">事故场景 3D 工作台</span><span class="nav-entry-desc">分阶段观察泄漏与火灾，比较工况，导出教学画面</span></a></li>
                             <li><a href="tools/jsa-tool.html" data-home-action="start-jsa"><span class="nav-entry-title">JSA 工作安全分析专业教练</span><span class="nav-entry-desc">生成可编辑初稿并检查风险与控制措施</span></a></li>
                             <li><a href="tools/chemical-reactivity-matrix.html" data-home-action="start-chemical-reactivity"><span class="nav-entry-title">化学品反应与禁忌矩阵</span><span class="nav-entry-desc">禁忌物、误混与库存相容性筛查</span></a></li>
                             <li><a href="tools/risk-analysis.html#risk-assessment"><span class="nav-entry-title">风险辨识与评估</span><span class="nav-entry-desc">FMEA 失效模式分析、What-If 假设分析</span></a></li>
@@ -173,7 +205,7 @@
                             <div class="task-tool-list">
                                 <a href="tools/jsa-tool.html" data-home-action="start-jsa"><span><b>JSA专业教练（试用版）</b><small>生成可编辑初稿，检查遗漏与控制措施</small></span><em>试用 · 开始</em></a>
                                 <a href="tools/chemical-reactivity-matrix.html" data-home-action="start-chemical-reactivity"><span><b>化学品反应与禁忌矩阵</b><small>筛查禁忌物、误混及库存相容性</small></span><em>在线 · 开始</em></a>
-                                <a href="tools/scenario-workbench.html"><span><b>事故场景 3D 工作台</b><small>五类写实演示 · 自由旋转 · 高清画面</small></span><em>演示 · 试用</em></a>
+                                <a href="tools/scenario-workbench.html"><span><b>事故场景 3D 工作台</b><small>分阶段观察事故过程，比较工况并导出高清教学画面</small></span><em>免费 · 演示</em></a>
                                 <a href="tools/risk-analysis.html#risk-assessment"><span><b>风险分析方法</b><small>FMEA 失效模式分析 · What-If 假设分析</small></span><em>查看方法</em></a>
                             </div>
                         </div>
